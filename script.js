@@ -1,3 +1,10 @@
+var moveSlider = function(slider, direction) {
+  var value = slider.value;
+  console.log(value)
+  var circle = document.getElementById("target");
+  var coord = "c" + direction;
+  circle.setAttributeNS(null, coord, value * 5);
+}
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
@@ -8,13 +15,6 @@ window.addEventListener('load', function () {
   //   document.getElementById('root').appendChild(div);
   // }
 
-  var moveSlider = function(slider, direction) {
-    var value = slider.value;
-    console.log(value)
-    var circle = document.getElementById("target");
-    var coord = "c" + direction;
-    circle.setAttributeNS(null, coord, value * 5);
-}
 });
 
 
