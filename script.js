@@ -39,7 +39,9 @@ window.addEventListener('load', function () {
   // 3. REPRESENT TICKS DATA 
 
   for (var i = 0; i < daysDATA.length; i++) {
-    console.log('ok')
+    var week = document.getElementById('root').getElementsByClassName('week')[0];
+    var day = week.getElementsByTagName('div')[i];
+    console.log(day);
   }
   // for (var i = 0; i < 100; i++) {
   //   var div = document.createElement('div');
