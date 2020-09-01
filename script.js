@@ -41,11 +41,9 @@ window.addEventListener('load', function () {
     var button = document.createElement('button');
     button.style.width = "15px";
     button.style.height = '15px';
-
     button.onclick = (function(){
       var parent = button.parentNode;
-      console.log(parent)
-      parent.style.backgroundColor = 'blue';
+      // 4. (REPRESENT TICKS DATA) - CREATE DIVS FOR HOUR TICKS 
       var div = document.createElement('div'); 
       div.style.width = '15px';
       div.style.height = '15px';
