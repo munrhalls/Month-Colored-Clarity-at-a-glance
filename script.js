@@ -8,7 +8,11 @@ window.addEventListener('load', function () {
   document.getElementById('root').appendChild(week);
   // DAYS
   var daysDATA = ['Monday', 'Tuesday', 'Wendesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  
+  daysDATA.forEach(function(el){
+    var day = document.createElement('div');
+    day.innerText = el;
+    week.appendChild(day);
+  })
   
 
 
