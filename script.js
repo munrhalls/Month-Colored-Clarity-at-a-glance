@@ -8,9 +8,13 @@ window.addEventListener('load', function () {
   //   document.getElementById('root').appendChild(div);
   // }
 
-  var svgBackground = document.getElementById('canvas_background');
-  var y = parseFloat(svgBackground.getAttributeNS(null, 'y'));
-  svgBackground.setAttributeNS(null, 'fill', 'darkblue');
+  var moveSlider = function(slider, direction) {
+    var value = slider.value;
+    console.log(value)
+    var circle = document.getElementById("target");
+    var coord = "c" + direction;
+    circle.setAttributeNS(null, coord, value * 5);
+}
 });
 
 
