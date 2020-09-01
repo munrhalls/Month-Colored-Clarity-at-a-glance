@@ -53,21 +53,8 @@ window.addEventListener('load', function () {
 
     dayContainer.appendChild(button);
   });
-  // 4. (REPRESENT TICKS DATA) - CREATE DIVS FOR HOUR TICKS 
-  // for (var i = 0; i < daysDATA.length; i++) {
-  //   var dayContainer = document.getElementById('root').getElementsByClassName('week')[0].children[i];
-  //   var div = document.createElement('div'); 
-  //   div.style.width = '15px';
-  //   div.style.height = '15px';
-  //   div.style.backgroundColor = '#000';
-  //   dayContainer.appendChild(div);
-  // }
-  // for (var i = 0; i < 100; i++) {
-  //   var div = document.createElement('div');
-  //   div.style.border = "1px solid white";
-  //   div.style.margin = '15px';
-  //   document.getElementById('root').appendChild(div);
-  // }
+
+
 });
 
 
