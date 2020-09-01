@@ -18,7 +18,7 @@ window.addEventListener('load', function () {
   document.getElementById('root').appendChild(week);
   // 2. CREATE DAYS DIVS
   var daysDATA = [
-    {name: 'Monday', hours: 0},
+    {name: 'Monday', hours: 3},
     {name: 'Tuesday', hours: 0}, 
     {name: 'Wendesday', hours: 0},
     {name: 'Thursday', hours: 0},
@@ -36,7 +36,11 @@ window.addEventListener('load', function () {
     week.appendChild(day);
   });
   
-  // 3. CREATE TICKS 
+  // 3. REPRESENT TICKS DATA 
+
+  for (var i = 0; i < daysDATA.length; i++) {
+    console.log('ok')
+  }
   // for (var i = 0; i < 100; i++) {
   //   var div = document.createElement('div');
   //   div.style.border = "1px solid white";
