@@ -2,18 +2,21 @@
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  // WEEK
+  // 1. CREATE WEEK DIV
   var week = document.createElement('div');
-  week.className = 'week'; week.innerText = 'Week'; week.style.border = '1px solid grey'; week.style.display = 'inline-block';
+  week.className = 'week'; week.style.border = '1px solid grey';
+  week.style.display = 'inline-block';
   document.getElementById('root').appendChild(week);
-  // DAYS
+  // 2. CREATE DAYS DIVS
   var daysDATA = ['Monday', 'Tuesday', 'Wendesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   daysDATA.forEach(function(el){
     var day = document.createElement('div');
     day.innerText = el;
+    day.style.border = '1px solid gray'; day.style.padding = '3px 30px'; 
+    day.style.display = 'inline-block'; 
     week.appendChild(day);
   })
-  
+
 
 
   // for (var i = 0; i < 100; i++) {
