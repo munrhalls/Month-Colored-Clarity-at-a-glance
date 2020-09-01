@@ -10,7 +10,7 @@ window.addEventListener('load', function () {
 
   var svgBackground = document.getElementById('canvas_background');
   var y = parseFloat(svgBackground.getAttributeNS(null, 'y'));
-  svgBackground.setAttributeNS(null, 'fill', 'grey');
+  svgBackground.setAttributeNS(null, 'fill', 'darkblue');
 });
 
 
