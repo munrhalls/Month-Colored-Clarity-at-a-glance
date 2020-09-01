@@ -48,6 +48,7 @@ window.addEventListener('load', function () {
       svg.setAttribute("width", "100%");
       svg.setAttribute("height", "28");
       svg.setAttribute('display', 'block');
+      svg.style.marginTop = '7px';
       var tick = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       tick.setAttributeNS(null, 'cy', '50%');
       tick.setAttributeNS(null, 'cx', '50%');
