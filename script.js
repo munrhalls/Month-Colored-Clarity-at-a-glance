@@ -44,17 +44,19 @@ window.addEventListener('load', function () {
     button.onclick = (function(){
       var parent = button.parentNode;
       // 4. (REPRESENT TICKS DATA) - CREATE DIVS FOR HOUR TICKS 
-      var div = document.createElement('div'); 
-      div.style.width = '15px';
-      div.style.height = '15px';
-      div.style.backgroundColor = '#000';
-      parent.appendChild(div);
-    });
+      var svg = document.createElement('svg');
+      var tick = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      tick.cx = '100';
+      tick.cy = '100'; 
+      tick.r = '30';
+      tick.fill = '#000';
+      svg.appendChild(tick);
 
+      parent.appendChild(svg);
+    });
+    
     dayContainer.appendChild(button);
   });
-
-
 });
 
 
