@@ -28,6 +28,7 @@ window.addEventListener('load', function () {
   ];
   //create: container divs -> corresponding divs: 1) day's title divs, 2) day's deep work hour ticks
   daysDATA.forEach(function(el){
+    //day div
     var day = document.createElement('div');
     day.innerText = el['name'];
     //style
@@ -36,12 +37,20 @@ window.addEventListener('load', function () {
     dayContainer.appendChild(day);
     dayContainer.style.display = 'inline-block'; 
     week.appendChild(dayContainer);
+    //3. APPEND ADD HOUR TICK INPUT
+    var button = document.createElement('button');
+    button.style.width = "15px";
+    button.style.height = '15px';
+    button.onclick = (function(){
+      console.log('xd')
+    })()    
+    
+    dayContainer.appendChild(button);
+
   });
-  
-  // 3. (REPRESENT TICKS DATA) - CREATE DIVS FOR HOUR TICKS 
+  // 4. (REPRESENT TICKS DATA) - CREATE DIVS FOR HOUR TICKS 
   for (var i = 0; i < daysDATA.length; i++) {
     var dayContainer = document.getElementById('root').getElementsByClassName('week')[0].children[i];
-    
     var div = document.createElement('div'); 
     div.style.width = '15px';
     div.style.height = '15px';
