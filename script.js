@@ -32,8 +32,6 @@ window.addEventListener('load', function () {
     day.innerText = el['name'];
     //style
     day.style.border = '1px solid gray'; day.style.padding = '3px 30px'; 
-    day.style.display = 'inline-block'; 
-
     var dayContainer = document.createElement('div');
     dayContainer.appendChild(day);
     dayContainer.style.display = 'inline-block'; 
@@ -42,14 +40,13 @@ window.addEventListener('load', function () {
   
   // 3. (REPRESENT TICKS DATA) - CREATE DIVS FOR HOUR TICKS 
   for (var i = 0; i < daysDATA.length; i++) {
-    var week = document.getElementById('root').getElementsByClassName('week')[0];
-    var day = week.getElementsByTagName('div')[i];
-    // var div = document.createElement('div'); 
-    // div.style.width = '15px';
-    // div.style.height = '15px';
-    // div.style.backgroundColor = '#000';
-    // day.appendChild(div);
+    var dayContainer = document.getElementById('root').getElementsByClassName('week')[0].children[i];
     
+    var div = document.createElement('div'); 
+    div.style.width = '15px';
+    div.style.height = '15px';
+    div.style.backgroundColor = '#000';
+    dayContainer.appendChild(div);
   }
   // for (var i = 0; i < 100; i++) {
   //   var div = document.createElement('div');
