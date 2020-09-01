@@ -41,8 +41,11 @@ window.addEventListener('load', function () {
     var button = document.createElement('button');
     button.style.width = "15px";
     button.style.height = '15px';
+
     button.onclick = (function(){
-      console.log('xd')
+      var parent = button.parentNode;
+      console.log(parent)
+      parent.style.backgroundColor = 'blue';
     });
     
     dayContainer.appendChild(button);
