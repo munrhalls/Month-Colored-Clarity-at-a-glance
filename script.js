@@ -37,7 +37,7 @@ window.addEventListener('load', function () {
     dayContainer.appendChild(day);
     dayContainer.style.display = 'inline-block'; 
     week.appendChild(dayContainer);
-    //3. APPEND ADD HOUR TICK INPUT
+    //3. APPEND ADD HOUR TICKS BUTTON TO EACH DAY
     var button = document.createElement('button');
     button.style.width = "15px";
     button.style.height = '15px';
@@ -46,20 +46,24 @@ window.addEventListener('load', function () {
       var parent = button.parentNode;
       console.log(parent)
       parent.style.backgroundColor = 'blue';
+      var div = document.createElement('div'); 
+      div.style.width = '15px';
+      div.style.height = '15px';
+      div.style.backgroundColor = '#000';
+      parent.appendChild(div);
     });
-    
-    dayContainer.appendChild(button);
 
+    dayContainer.appendChild(button);
   });
   // 4. (REPRESENT TICKS DATA) - CREATE DIVS FOR HOUR TICKS 
-  for (var i = 0; i < daysDATA.length; i++) {
-    var dayContainer = document.getElementById('root').getElementsByClassName('week')[0].children[i];
-    var div = document.createElement('div'); 
-    div.style.width = '15px';
-    div.style.height = '15px';
-    div.style.backgroundColor = '#000';
-    dayContainer.appendChild(div);
-  }
+  // for (var i = 0; i < daysDATA.length; i++) {
+  //   var dayContainer = document.getElementById('root').getElementsByClassName('week')[0].children[i];
+  //   var div = document.createElement('div'); 
+  //   div.style.width = '15px';
+  //   div.style.height = '15px';
+  //   div.style.backgroundColor = '#000';
+  //   dayContainer.appendChild(div);
+  // }
   // for (var i = 0; i < 100; i++) {
   //   var div = document.createElement('div');
   //   div.style.border = "1px solid white";
