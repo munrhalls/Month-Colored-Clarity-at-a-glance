@@ -44,12 +44,15 @@ window.addEventListener('load', function () {
     button.onclick = (function(){
       var parent = button.parentNode;
       // 4. (REPRESENT TICKS DATA) - CREATE DIVS FOR HOUR TICKS 
-      var svg = document.createElement('svg');
+      var svg = document. createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("width", "100%");
+      svg.setAttribute("height", "28");
+      svg.setAttribute('display', 'block');
       var tick = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      tick.cx = '100';
-      tick.cy = '100'; 
-      tick.r = '30';
-      tick.fill = '#000';
+      tick.setAttributeNS(null, 'cy', '50%');
+      tick.setAttributeNS(null, 'cx', '50%');
+      tick.setAttributeNS(null, 'r', '14');
+      tick.setAttributeNS(null, 'fill', '#000');
       svg.appendChild(tick);
 
       parent.appendChild(svg);
