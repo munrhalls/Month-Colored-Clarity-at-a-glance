@@ -43,7 +43,7 @@ window.addEventListener('load', function () {
     button.style.height = '15px';
     button.onclick = (function(){
       console.log('xd')
-    })()    
+    });
     
     dayContainer.appendChild(button);
 
