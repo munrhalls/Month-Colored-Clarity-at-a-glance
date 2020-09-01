@@ -2,12 +2,13 @@
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
+  // WEEK
   var week = document.createElement('div');
-  week.className = 'week';
-  week.innerText = 'Week';
-  week.style.border = '1px solid grey';
-  week.style.display = 'inline-block';
+  week.className = 'week'; week.innerText = 'Week'; week.style.border = '1px solid grey'; week.style.display = 'inline-block';
   document.getElementById('root').appendChild(week);
+  // DAYS
+  var daysDATA = ['Monday', 'Tuesday', 'Wendesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  
   
 
 
