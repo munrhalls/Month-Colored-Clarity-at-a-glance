@@ -6,8 +6,10 @@ window.addEventListener('load', function () {
   var hours = document.createElement('div');
   hours.className = 'hours'; 
   hours.innerText ='Hours'
+  hours.style.color = "#fff";
   hours.style.border = '1px solid gray';   hours.style.padding = '3px 30px'; 
   hours.style.display = 'inline-block';
+  hours.style.height = '100vh'; hours.style.backgroundColor = '#000';
   document.getElementById('root').appendChild(hours);
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
