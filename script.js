@@ -17,15 +17,14 @@ window.addEventListener('load', function () {
   week.style.display = 'inline-block';
   document.getElementById('root').appendChild(week);
   // 2. CREATE DAYS DIVS
-
   var daysDATA = [
-    {name: 'Monday', count: 0},
-    {name: 'Tuesday', count: 0}, 
-    {name: 'Wendesday', count: 0},
-    {name: 'Thursday', count: 0},
-    {name: 'Friday', count: 0},
-    {name: 'Saturday', count: 0},
-    {name: 'Sunday', count: 0},
+    {name: 'Monday', hours: 0},
+    {name: 'Tuesday', hours: 0}, 
+    {name: 'Wendesday', hours: 0},
+    {name: 'Thursday', hours: 0},
+    {name: 'Friday', hours: 0},
+    {name: 'Saturday', hours: 0},
+    {name: 'Sunday', hours: 0},
   ];
     
   daysDATA.forEach(function(el){
@@ -37,17 +36,13 @@ window.addEventListener('load', function () {
     week.appendChild(day);
   });
   
-  var hoursCount = 
-
   // 3. CREATE TICKS 
-
   // for (var i = 0; i < 100; i++) {
   //   var div = document.createElement('div');
   //   div.style.border = "1px solid white";
   //   div.style.margin = '15px';
   //   document.getElementById('root').appendChild(div);
   // }
-
 });
 
 
