@@ -38,7 +38,8 @@ window.addEventListener('load', function () {
     var addBtn = document.createElement('input');
       addBtn.style.marginLeft = "auto";
       addBtn.style.backgroundColor = "#000";
-      addBtn.style.color = "#fff";
+      addBtn.style.color = "#000071";
+      addBtn.style.border = "1px solid #000071";
       addBtn.style.fontWeight = "bold";
       addBtn.style.display = "inline-block";
       addBtn.style.width = "100%";
@@ -74,6 +75,7 @@ window.addEventListener('load', function () {
       var substractBtn = document.createElement('input');
         substractBtn.style.marginLeft = "auto";
         substractBtn.style.backgroundColor = "#000";
+        substractBtn.style.border = "1px solid #000071";
         substractBtn.style.color = "#fff";
         substractBtn.style.fontWeight = "bold";
         substractBtn.style.display = "inline-block";
