@@ -2,7 +2,6 @@ window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   // 0. CREATE DEEP WORK HOURS COLUMN TO THE LEFT
   var hours = document.createElement('div');
-    hours.className = 'hours'; 
     hours.innerText ='Hours'
     hours.style.color = "#fff";
     hours.style.border = '1px solid gray';   hours.style.padding = '3px 30px'; 
@@ -48,6 +47,7 @@ window.addEventListener('load', function () {
       input.onclick = (function(){
         var parent = input.parentNode;
         var svgDiv = document.createElement('div');
+        svgDiv.className = "hour";
         svgDiv.style.backgroundColor = "#000071";
         svgDiv.style.padding = "7px 0";
         var svg = document. createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -76,11 +76,12 @@ window.addEventListener('load', function () {
         substractBtn.setAttribute('value', '-');
       substractBtn.onclick = (function(){
         var parent = input.parentNode;
+        console.log(parent.getElementsByClassName('hour').length)
+
         if (parent.getElementsByClassName('hour').length) {
           parent.removeChild(parent.getElementsByClassName('hour')[parent.getElementsByClassName('hour').length - 1]);  
         }
-      })
-
+      });
         dayContainer.appendChild(substractBtn);
   });
 });
