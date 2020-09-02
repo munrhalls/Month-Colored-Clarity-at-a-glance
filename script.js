@@ -36,11 +36,13 @@ window.addEventListener('load', function () {
       dayContainer.style.display = 'inline-block'; 
       week.appendChild(dayContainer);
     //3. APPEND ADD HOUR TICKS BUTTON TO EACH DAY
-    var button = document.createElement('button');
-      button.style.width = "15px";
-      button.style.height = '15px';
-      button.onclick = (function(){
-    var parent = button.parentNode;
+    var input = document.createElement('input');
+      input.style.width = "15px";
+      input.style.height = '15px';
+      input.style.type = "button";
+      input.setAttribute('value', '+');
+      input.onclick = (function(){
+    var parent = input.parentNode;
       // 4. (REPRESENT TICKS DATA) - CREATE DIVS FOR HOUR TICKS 
     var svg = document. createElementNS("http://www.w3.org/2000/svg", "svg");
       svg.setAttribute("width", "100%");
@@ -56,7 +58,7 @@ window.addEventListener('load', function () {
       parent.appendChild(svg);
     });
     
-    dayContainer.appendChild(button);
+    dayContainer.appendChild(input);
   });
 });
 
