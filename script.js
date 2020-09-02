@@ -37,17 +37,16 @@ window.addEventListener('load', function () {
       week.appendChild(dayContainer);
     //3. APPEND ADD HOUR TICKS BUTTON TO EACH DAY
     var input = document.createElement('input');
-      // input.style.width = "15px";
-      // input.style.height = '15px';
       input.style.marginLeft = "auto";
       input.style.backgroundColor = "#000";
       input.style.color = "#fff";
       input.style.fontWeight = "bold";
       input.setAttribute('type', 'button');
       input.setAttribute('value', '+');
+      
+      // 4. (REPRESENT TICKS DATA) - CREATE HOURS TICKS ON BTN CLICK
       input.onclick = (function(){
         var parent = input.parentNode;
-          // 4. (REPRESENT TICKS DATA) - CREATE DIVS FOR HOUR TICKS 
         var svgDiv = document.createElement('div');
         svgDiv.style.backgroundColor = "#000071";
         svgDiv.style.padding = "7px 0";
@@ -65,8 +64,22 @@ window.addEventListener('load', function () {
           svgDiv.appendChild(svg);
           parent.appendChild(svgDiv);
       });
-    
-    dayContainer.appendChild(input);
+      dayContainer.appendChild(input);
+
+      //5. APPEND SUBSTRACT HOURS BUTTON TO EACH DAY 
+      var substractBtn = document.createElement('input');
+        substractBtn.style.marginLeft = "auto";
+        substractBtn.style.backgroundColor = "#000";
+        substractBtn.style.color = "#fff";
+        substractBtn.style.fontWeight = "bold";
+        substractBtn.setAttribute('type', 'button');
+        substractBtn.setAttribute('value', '-');
+      substractBtn.onclick = (function(){
+        var parent = input.parentNode;
+        parent.style.backgroundColor = "blue"
+      })
+
+        dayContainer.appendChild(substractBtn);
   });
 });
 
