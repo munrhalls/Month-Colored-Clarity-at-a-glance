@@ -37,9 +37,10 @@ window.addEventListener('load', function () {
       week.appendChild(dayContainer);
     //3. APPEND ADD HOUR TICKS BUTTON TO EACH DAY
     var input = document.createElement('input');
-      input.style.width = "15px";
-      input.style.height = '15px';
-      input.style.type = "button";
+      // input.style.width = "15px";
+      // input.style.height = '15px';
+      input.style.hover = "cursor";
+      input.setAttribute('type', 'button');
       input.setAttribute('value', '+');
       input.onclick = (function(){
     var parent = input.parentNode;
