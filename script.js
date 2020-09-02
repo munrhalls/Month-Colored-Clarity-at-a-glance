@@ -50,6 +50,7 @@ window.addEventListener('load', function () {
         svgDiv.className = "hour";
         svgDiv.style.backgroundColor = "#000071";
         svgDiv.style.padding = "7px 0";
+        svgDiv.style.border = "1px solid darkblue"
         var svg = document. createElementNS("http://www.w3.org/2000/svg", "svg");
           svg.setAttribute("width", "100%");
           svg.setAttribute("height", "28");
