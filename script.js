@@ -35,17 +35,17 @@ window.addEventListener('load', function () {
       dayContainer.style.display = 'inline-block'; 
       week.appendChild(dayContainer);
     //3. APPEND ADD HOUR TICKS BUTTON TO EACH DAY
-    var input = document.createElement('input');
-      input.style.marginLeft = "auto";
-      input.style.backgroundColor = "#000";
-      input.style.color = "#fff";
-      input.style.fontWeight = "bold";
-      input.setAttribute('type', 'button');
-      input.setAttribute('value', '+');
+    var addBtn = document.createElement('input');
+      addBtn.style.marginLeft = "auto";
+      addBtn.style.backgroundColor = "#000";
+      addBtn.style.color = "#fff";
+      addBtn.style.fontWeight = "bold";
+      addBtn.setAttribute('type', 'button');
+      addBtn.setAttribute('value', '+');
       
       // 4. (REPRESENT TICKS DATA) - CREATE HOURS TICKS ON BTN CLICK
-      input.onclick = (function(){
-        var parent = input.parentNode;
+      addBtn.onclick = (function(){
+        var parent = addBtn.parentNode;
         var svgDiv = document.createElement('div');
         svgDiv.className = "hour";
         svgDiv.style.backgroundColor = "#000071";
@@ -65,8 +65,7 @@ window.addEventListener('load', function () {
           svgDiv.appendChild(svg);
           parent.appendChild(svgDiv);
       });
-      dayContainer.appendChild(input);
-
+      dayContainer.appendChild(addBtn);
       //5. APPEND SUBSTRACT HOURS BUTTON TO EACH DAY 
       var substractBtn = document.createElement('input');
         substractBtn.style.marginLeft = "auto";
@@ -75,10 +74,9 @@ window.addEventListener('load', function () {
         substractBtn.style.fontWeight = "bold";
         substractBtn.setAttribute('type', 'button');
         substractBtn.setAttribute('value', '-');
+      // 6. (REPRESENT TICKS DATA) - SUBSTRACT HOURS TICKS ON BTN CLICK
       substractBtn.onclick = (function(){
-        var parent = input.parentNode;
-        console.log(parent.getElementsByClassName('hour').length)
-
+        var parent = substractBtn.parentNode;
         if (parent.getElementsByClassName('hour').length) {
           parent.removeChild(parent.getElementsByClassName('hour')[parent.getElementsByClassName('hour').length - 1]);  
         }
