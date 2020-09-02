@@ -56,6 +56,7 @@ window.addEventListener('load', function () {
       // tick.setAttributeNS(null, 'cx', '50%');
       // tick.setAttributeNS(null, 'r', '14');
       // tick.setAttributeNS(null, 'fill', '#000');
+      tick.style.scale = "0.1";
       svg.appendChild(tick);
       parent.appendChild(svg);
     });
