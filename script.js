@@ -29,6 +29,8 @@ window.addEventListener('load', function () {
     var day = document.createElement('div');
       day.innerText = el['name'];
       //style
+      day.style.width = "142px";
+      day.style.textAlign = "center";
       day.style.border = '1px solid gray'; day.style.padding = '3px 30px'; 
     var dayContainer = document.createElement('div');
       dayContainer.appendChild(day);
@@ -39,9 +41,10 @@ window.addEventListener('load', function () {
       addBtn.style.marginLeft = "auto";
       addBtn.style.backgroundColor = "#000";
       addBtn.style.color = "#000071";
-      addBtn.style.border = "1px solid #000071";
+      addBtn.style.border = "none";
       addBtn.style.fontWeight = "bold";
       addBtn.style.display = "inline-block";
+      addBtn.style.height = "30px";
       addBtn.style.width = "100%";
       addBtn.style.maxWidth = "50%";
 
@@ -75,10 +78,11 @@ window.addEventListener('load', function () {
       var substractBtn = document.createElement('input');
         substractBtn.style.marginLeft = "auto";
         substractBtn.style.backgroundColor = "#000";
-        substractBtn.style.border = "1px solid #000071";
+        substractBtn.style.border = "none";
         substractBtn.style.color = "#fff";
         substractBtn.style.fontWeight = "bold";
         substractBtn.style.display = "inline-block";
+        substractBtn.style.height = "30px";
         substractBtn.style.width = "100%";
         substractBtn.style.maxWidth = "50%";
         substractBtn.setAttribute('type', 'button');
