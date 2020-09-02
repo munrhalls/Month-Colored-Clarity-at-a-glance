@@ -41,6 +41,8 @@ window.addEventListener('load', function () {
       addBtn.style.color = "#fff";
       addBtn.style.fontWeight = "bold";
       addBtn.style.display = "inline-block";
+      addBtn.style.width = "100%";
+      addBtn.style.maxWidth = "50%";
 
       addBtn.setAttribute('type', 'button');
       addBtn.setAttribute('value', '+');
@@ -75,6 +77,8 @@ window.addEventListener('load', function () {
         substractBtn.style.color = "#fff";
         substractBtn.style.fontWeight = "bold";
         substractBtn.style.display = "inline-block";
+        substractBtn.style.width = "100%";
+        substractBtn.style.maxWidth = "50%";
         substractBtn.setAttribute('type', 'button');
         substractBtn.setAttribute('value', '-');
       // 6. (REPRESENT TICKS DATA) - SUBSTRACT HOURS TICKS ON BTN CLICK
