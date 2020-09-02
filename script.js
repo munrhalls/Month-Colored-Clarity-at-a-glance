@@ -3,27 +3,21 @@ window.addEventListener('load', function () {
   document.getElementById('root').style.display = "flex";
   // 0. CREATE DEEP WORK HOURS COLUMN TO THE LEFT
   var hours = document.createElement('div');
-    hours.style.fontWeight = "bold";
-    hours.style.color = "#fff";
-    hours.style.border = '1px solid gray'; hours.style.padding = '3px 30px'; 
+    hours.style.color = "#000";
+    hours.style.border = '1px solid gray'; 
     hours.style.display = 'inline-block';
-    hours.style.height = '100vh'; hours.style.backgroundColor = '#000';
-    hours.style.padding = "59px 0 0"; 
+    hours.style.height = '100vh'; 
+    hours.style.backgroundColor = '#000';
     hours.style.textAlign = "center";
+    var hourNumContainer = document.createElement('div');
 
     for (var i = 1; i <= 12; i++) {
       var hourNum = document.createElement('div');
-      hourNum.style.height ="44px";
-      hourNum.style.width ="90%";
-      hourNum.style.margin = "0 auto"
-      hourNum.style.padding = "7px 3.5rem 7px";
-      hourNum.style.borderBottom = "2px solid #000071";
-      hourNum.style.fontSize = "22px";
-      hourNum.style.textAlign = "right";
-      hourNum.style.fontWeight = "bold";
+      hourNum.style.color = "#fff";
       hourNum.innerText = i;
-      hours.appendChild(hourNum);
+      hourNumContainer.appendChild(hourNum);
     }
+    hours.appendChild(hourNumContainer);
   document.getElementById('root').appendChild(hours);
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
