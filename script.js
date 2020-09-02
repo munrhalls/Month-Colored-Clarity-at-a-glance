@@ -76,7 +76,9 @@ window.addEventListener('load', function () {
         substractBtn.setAttribute('value', '-');
       substractBtn.onclick = (function(){
         var parent = input.parentNode;
-        parent.style.backgroundColor = "blue"
+        if (parent.getElementsByClassName('hour').length) {
+          parent.removeChild(parent.getElementsByClassName('hour')[parent.getElementsByClassName('hour').length - 1]);  
+        }
       })
 
         dayContainer.appendChild(substractBtn);
