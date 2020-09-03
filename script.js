@@ -8,6 +8,7 @@ window.addEventListener('load', function () {
 });
 
 function createSidewaysTitle(sidewaysTitle) {
+  // 0. CREATE DEEP WORK HOURS COLUMN TO THE LEFT
   var hours = document.createElement('div');
     hours.style.position = "relative";  
     hours.style.minWidth = "142px";
@@ -33,20 +34,14 @@ function createSidewaysTitle(sidewaysTitle) {
     document.getElementById('root').appendChild(hours);
 };
 
-
 function createWeek() {
   document.getElementById('root').style.display = "flex";
-  // 0. CREATE DEEP WORK HOURS COLUMN TO THE LEFT
-
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
     week.className = 'week';
     week.style.border = "60px solid #000"
     week.style.display = 'inline-block';
   document.getElementById('root').appendChild(week);
-  // CREATE 
-
-
   // 2. CREATE DAYS DIVS
   var daysDATA = [
     {name: 'Monday', hours: 0},
