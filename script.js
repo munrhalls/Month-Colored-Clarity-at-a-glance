@@ -130,7 +130,9 @@ function createWeek() {
         substractBtn.setAttribute('value', '-');
       //7. (REPRESENT TICKS DATA) - SUBSTRACT HOURS TICKS ON BTN CLICK
       substractBtn.onclick = (function(){
-        hourCountDATA--;
+        if (hourCountDATA > 0) {
+          hourCountDATA--;
+        }
         var parent = substractBtn.parentNode;
         if (parent.getElementsByClassName('hour').length) {
           parent.removeChild(parent.getElementsByClassName('hour')[parent.getElementsByClassName('hour').length - 1]);  
