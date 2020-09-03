@@ -4,12 +4,7 @@ window.addEventListener('load', function () {
   createWeek();
   createWeek();
   createWeek();
-
 });
-
-
-
-
 
 function createWeek() {
   document.getElementById('root').style.display = "flex";
@@ -59,7 +54,7 @@ function createWeek() {
   ];
   //create: container divs -> corresponding divs: 1) day's title divs, 2) day's deep work hour ticks
   daysDATA.forEach(function(el){
-    //day div
+    //day's column to add deep work hour ticks into
     var day = document.createElement('div');
       day.innerText = el['name'];
       //style
@@ -81,15 +76,13 @@ function createWeek() {
       addBtn.style.height = "30px";
       addBtn.style.width = "100%";
       addBtn.style.maxWidth = "50%";
-
       addBtn.setAttribute('type', 'button');
       addBtn.setAttribute('value', '+');
-      
-      //3. COUNT HOURS WITH CLOSURE VAR
-      var countDATA = 0;
-      // 4. (REPRESENT TICKS DATA) - CREATE HOURS TICKS ON BTN CLICK
+      //4. COUNT HOURS WITH CLOSURE VAR
+      var hourCountDATA = 0;
+      // 5. (REPRESENT TICKS DATA) - CREATE HOURS TICKS ON BTN CLICK
       addBtn.onclick = (function(){
-        countDATA++;
+        hourCountDATA++;
         var parent = addBtn.parentNode;
         var svgDiv = document.createElement('div');
         svgDiv.className = "hour";
@@ -97,8 +90,7 @@ function createWeek() {
         svgDiv.style.padding = "7px 0";
         svgDiv.style.border = "1px solid darkblue";
         svgDiv.style.position = 'relative';
-
-        
+        //deep work hour count- visual representer
         var hourCount = document.createElement('div');
         hourCount.innerText = countDATA;
         hourCount.style.color = "#000";
@@ -107,6 +99,7 @@ function createWeek() {
         hourCount.style.position = 'absolute';
         hourCount.style.left = '15px';
         svgDiv.appendChild(hourCount);
+        // deep work hour count - visual representer
         var svg = document. createElementNS("http://www.w3.org/2000/svg", "svg");
           svg.setAttribute("width", "100%");
           svg.setAttribute("height", "28");
@@ -122,7 +115,7 @@ function createWeek() {
           parent.appendChild(svgDiv);
       });
       dayContainer.appendChild(addBtn);
-      //5. APPEND SUBSTRACT HOURS BUTTON TO EACH DAY 
+      //6. APPEND SUBSTRACT HOURS BUTTON TO EACH DAY 
       var substractBtn = document.createElement('input');
         substractBtn.style.marginLeft = "auto";
         substractBtn.style.backgroundColor = "#000";
@@ -135,7 +128,7 @@ function createWeek() {
         substractBtn.style.maxWidth = "50%";
         substractBtn.setAttribute('type', 'button');
         substractBtn.setAttribute('value', '-');
-      // 6. (REPRESENT TICKS DATA) - SUBSTRACT HOURS TICKS ON BTN CLICK
+      //7. (REPRESENT TICKS DATA) - SUBSTRACT HOURS TICKS ON BTN CLICK
       substractBtn.onclick = (function(){
         countDATA--;
         var parent = substractBtn.parentNode;
