@@ -1,6 +1,9 @@
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   createWeek();
+  createWeek();
+  createWeek();
+  createWeek();
 
 });
 
@@ -38,9 +41,12 @@ function createWeek() {
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
     week.className = 'week';
-    week.style.border = "30px solid #000"
+    week.style.border = "60px solid #000"
     week.style.display = 'inline-block';
   document.getElementById('root').appendChild(week);
+  // CREATE 
+
+
   // 2. CREATE DAYS DIVS
   var daysDATA = [
     {name: 'Monday', hours: 0},
@@ -86,7 +92,16 @@ function createWeek() {
         svgDiv.className = "hour";
         svgDiv.style.backgroundColor = "#000071";
         svgDiv.style.padding = "7px 0";
-        svgDiv.style.border = "1px solid darkblue"
+        svgDiv.style.border = "1px solid darkblue";
+        svgDiv.style.position = 'relative';
+        var hourCount = document.createElement('div');
+        hourCount.innerText = '1';
+        hourCount.style.color = "#000";
+        hourCount.style.fontWeight = "bold";
+        hourCount.style.fontSize = '1.25rem';
+        hourCount.style.position = 'absolute';
+        hourCount.style.left = '15px';
+        svgDiv.appendChild(hourCount);
         var svg = document. createElementNS("http://www.w3.org/2000/svg", "svg");
           svg.setAttribute("width", "100%");
           svg.setAttribute("height", "28");
