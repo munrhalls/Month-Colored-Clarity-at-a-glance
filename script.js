@@ -12,6 +12,7 @@ function createWeek() {
   var hours = document.createElement('div');
     hours.style.position = "relative";  
     hours.style.minWidth = "142px";
+    hours.style.width = "100%"
     hours.style.color = "#000";
     hours.style.border = '1px solid gray'; 
     hours.style.display = 'inline-block';
