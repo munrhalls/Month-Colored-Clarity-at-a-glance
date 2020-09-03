@@ -85,8 +85,11 @@ function createWeek() {
       addBtn.setAttribute('type', 'button');
       addBtn.setAttribute('value', '+');
       
+      //3. COUNT HOURS WITH CLOSURE VAR
+      var countDATA = 0;
       // 4. (REPRESENT TICKS DATA) - CREATE HOURS TICKS ON BTN CLICK
       addBtn.onclick = (function(){
+        countDATA++;
         var parent = addBtn.parentNode;
         var svgDiv = document.createElement('div');
         svgDiv.className = "hour";
@@ -94,8 +97,10 @@ function createWeek() {
         svgDiv.style.padding = "7px 0";
         svgDiv.style.border = "1px solid darkblue";
         svgDiv.style.position = 'relative';
+
+        
         var hourCount = document.createElement('div');
-        hourCount.innerText = '1';
+        hourCount.innerText = countDATA;
         hourCount.style.color = "#000";
         hourCount.style.fontWeight = "bold";
         hourCount.style.fontSize = '1.25rem';
@@ -132,6 +137,7 @@ function createWeek() {
         substractBtn.setAttribute('value', '-');
       // 6. (REPRESENT TICKS DATA) - SUBSTRACT HOURS TICKS ON BTN CLICK
       substractBtn.onclick = (function(){
+        countDATA--;
         var parent = substractBtn.parentNode;
         if (parent.getElementsByClassName('hour').length) {
           parent.removeChild(parent.getElementsByClassName('hour')[parent.getElementsByClassName('hour').length - 1]);  
