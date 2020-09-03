@@ -92,7 +92,7 @@ function createWeek() {
         svgDiv.style.position = 'relative';
         //deep work hour count- visual representer
         var hourCount = document.createElement('div');
-        hourCount.innerText = countDATA;
+        hourCount.innerText = hourCountDATA;
         hourCount.style.color = "#000";
         hourCount.style.fontWeight = "bold";
         hourCount.style.fontSize = '1.25rem';
@@ -130,7 +130,7 @@ function createWeek() {
         substractBtn.setAttribute('value', '-');
       //7. (REPRESENT TICKS DATA) - SUBSTRACT HOURS TICKS ON BTN CLICK
       substractBtn.onclick = (function(){
-        countDATA--;
+        hourCountDATA--;
         var parent = substractBtn.parentNode;
         if (parent.getElementsByClassName('hour').length) {
           parent.removeChild(parent.getElementsByClassName('hour')[parent.getElementsByClassName('hour').length - 1]);  
