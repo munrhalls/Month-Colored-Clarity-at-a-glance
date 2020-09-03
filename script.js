@@ -1,5 +1,14 @@
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
+  createWeek();
+
+});
+
+
+
+
+
+function createWeek() {
   document.getElementById('root').style.display = "flex";
   // 0. CREATE DEEP WORK HOURS COLUMN TO THE LEFT
   var hours = document.createElement('div');
@@ -29,11 +38,12 @@ window.addEventListener('load', function () {
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
     week.className = 'week';
+    week.style.border = "30px solid #000"
     week.style.display = 'inline-block';
   document.getElementById('root').appendChild(week);
   // 2. CREATE DAYS DIVS
   var daysDATA = [
-    {name: 'Monday', hours: 3},
+    {name: 'Monday', hours: 0},
     {name: 'Tuesday', hours: 0}, 
     {name: 'Wendesday', hours: 0},
     {name: 'Thursday', hours: 0},
@@ -114,6 +124,4 @@ window.addEventListener('load', function () {
       });
         dayContainer.appendChild(substractBtn);
   });
-});
-
-
+}
