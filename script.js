@@ -147,14 +147,14 @@ function createDays(week) {
       createBtns(dayContainer);
   });
 }
-function createWeek(weekNum) {
+function createWeek(weekTitle) {
   document.getElementById('root').style.display = "flex";
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
     week.className = 'week';
     week.style.border = "60px solid #000"
     var weekName = document.createElement('div');
-    weekName.innerText = weekNum || 'Week';
+    weekName.innerText = weekTitle || 'Week';
     weekName.style.color = '#fff';
     weekName.style.position = 'absolute';
     weekName.style.top =  '-45px';
