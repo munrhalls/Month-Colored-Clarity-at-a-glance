@@ -13,6 +13,8 @@ function createWeeksContainer() {
   //WEEKS CONTAINER STYLE
   weeksContainer.style.display = 'flex';
   weeksContainer.style.flex = '12';
+  weeksContainer.style.overflow = 'auto';
+  weeksContainer.style.whiteSpace = 'nowrap';
   document.getElementById('root').appendChild(weeksContainer);
 }
 function createSidewaysTitle(sidewaysTitle) {
