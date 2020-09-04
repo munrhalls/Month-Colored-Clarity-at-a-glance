@@ -2,10 +2,10 @@ window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   createSidewaysTitle('Deep work hours');
   createWeeksContainer();
-  createWeek();
-  createWeek();
-  createWeek();
-  createWeek();
+  createWeek('Week 1');
+  createWeek('Week 2');
+  createWeek('Week 3');
+  createWeek('Week 4');
 });
 function createWeeksContainer() {
   var weeksContainer = document.createElement('div');
@@ -147,14 +147,14 @@ function createDays(week) {
       createBtns(dayContainer);
   });
 }
-function createWeek() {
+function createWeek(weekNum) {
   document.getElementById('root').style.display = "flex";
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
     week.className = 'week';
     week.style.border = "60px solid #000"
     var weekName = document.createElement('div');
-    weekName.innerText = 'Week 1';
+    weekName.innerText = weekNum || 'Week';
     weekName.style.color = '#fff';
     weekName.style.position = 'absolute';
     weekName.style.top =  '-45px';
