@@ -153,7 +153,17 @@ function createWeek() {
   var week = document.createElement('div');
     week.className = 'week';
     week.style.border = "60px solid #000"
+    var weekName = document.createElement('div');
+    weekName.innerText = 'Week 1';
+    weekName.style.color = '#fff';
+    weekName.style.position = 'absolute';
+    weekName.style.top =  '-45px';
+    weekName.style.left = 'calc(50% - 5rem)';
+    weekName.style.fontSize = '1.5rem'
+    weekName.style.letterSpacing = '1rem';
+    week.appendChild(weekName);
     week.style.display = 'inline-block';
+    week.style.position = 'relative';
   document.getElementById('weeksContainer').appendChild(week);
   createDays(week);
 }
