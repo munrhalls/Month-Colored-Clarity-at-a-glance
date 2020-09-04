@@ -100,7 +100,7 @@ function createBtns(dayContainer) {
         substractBtn.style.marginLeft = "auto";
         substractBtn.style.backgroundColor = "#000";
         substractBtn.style.border = "none";
-        substractBtn.style.color = "#fff";
+        substractBtn.style.color = 'rgb(225, 116, 0)';
         substractBtn.style.fontWeight = "bold";
         substractBtn.style.display = "inline-block";
         substractBtn.style.height = "30px";
