@@ -31,6 +31,7 @@ function createSidewaysTitle(sidewaysTitle) {
     hours.style.height = '100vh'; 
     hours.style.backgroundColor = '#000';
     hours.style.textAlign = "center";
+    hours.style.paddingRight = '6rem';
 
     var title = document.createElement('div');
     title.innerText = sidewaysTitle;
@@ -152,7 +153,7 @@ function createWeek(weekTitle) {
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
     week.className = 'week';
-    week.style.border = "60px solid #000"
+    week.style.border = "90px solid #000"
     var weekName = document.createElement('div');
     weekName.innerText = weekTitle || 'Week';
     weekName.style.color = '#fff';
@@ -164,6 +165,20 @@ function createWeek(weekTitle) {
     week.appendChild(weekName);
     week.style.display = 'inline-block';
     week.style.position = 'relative';
+  //CREATE TITLE OF THE MONTH; APPEND TO THE LEFT OF EACH OF THE 4 WEEKS
+  var monthTitle = document.createElement('div');
+    monthTitle.innerText ='September';  
+    monthTitle.style.color = '#fff';
+    monthTitle.style.position = "absolute";
+    monthTitle.style.transform = 'rotate(-90deg)';
+    monthTitle.style.fontSize = '2.75rem';
+    monthTitle.style.letterSpacing = '1rem';
+    monthTitle.style.top = 'calc(50%)';
+    monthTitle.style.right = 'calc(100% - 8rem)';
+
+
+    week.appendChild(monthTitle);
+
   document.getElementById('weeksContainer').appendChild(week);
   createDays(week);
 }
