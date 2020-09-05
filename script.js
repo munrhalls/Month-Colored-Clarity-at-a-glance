@@ -7,7 +7,7 @@ window.addEventListener('load', function () {
 });
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
-  weeksContainer.id = 'weeksContainer';
+  weeksContainer.className = 'weeksContainer';
   //WEEKS CONTAINER STYLE
   weeksContainer.style.display = 'flex';
   weeksContainer.style.flex = '12';
@@ -15,7 +15,7 @@ function createWeeksContainer(monthNum) {
   weeksContainer.style.whiteSpace = 'nowrap';
   document.getElementsByClassName('monthContainer')[monthNum].appendChild(weeksContainer);
 }
-function createSidewaysTitle(sidewaysTitle) {
+function createSidewaysTitle(sidewaysTitle, monthNum) {
   // 0. CREATE DEEP WORK HOURS COLUMN TO THE LEFT
   var hours = document.createElement('div');
     hours.style.display = 'flex';
@@ -42,7 +42,7 @@ function createSidewaysTitle(sidewaysTitle) {
     title.style.top = 'calc(50% - 40px)';
     title.style.left = "0";
     hours.appendChild(title);
-    document.getElementsByClassName('monthContainer')[0].appendChild(hours);
+    document.getElementsByClassName('monthContainer')[monthNum].appendChild(hours);
 };
 function createBtns(dayContainer) {
   var addBtn = document.createElement('input');
@@ -146,7 +146,7 @@ function createDays(week) {
       createBtns(dayContainer);
   });
 }
-function createWeek(weekTitle) {
+function createWeek(weekTitle, monthNum) {
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
     week.className = 'week';
@@ -175,7 +175,7 @@ function createWeek(weekTitle) {
 
     week.appendChild(monthTitle);
 
-  document.getElementById('weeksContainer').appendChild(week);
+  document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
   createDays(week);
 }
 function createMonth(monthNum) {
@@ -184,10 +184,10 @@ function createMonth(monthNum) {
   monthContainer.style.display = 'flex';
   document.getElementById('root').appendChild(monthContainer);
 
-  createSidewaysTitle('Deep work hours');
+  createSidewaysTitle('Deep work hours', monthNum);
   createWeeksContainer(monthNum);
-  createWeek('Week 1');
-  createWeek('Week 2');
-  createWeek('Week 3');
-  createWeek('Week 4');
+  createWeek('Week 1', monthNum);
+  createWeek('Week 2', monthNum);
+  createWeek('Week 3', monthNum);
+  createWeek('Week 4', monthNum);
 }
