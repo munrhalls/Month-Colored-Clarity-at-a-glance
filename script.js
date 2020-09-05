@@ -201,7 +201,34 @@ function createWeek(weekNum, monthNum) {
         behavior: 'smooth'
       });
     });
-    
+  }
+  if (weekNum <= 3) {
+    //create btn
+    var navBtnLeft = document.createElement('input');
+      navBtnLeft.style.position = 'absolute';
+      navBtnLeft.style.top = 'calc(100% + 15.5px)'; 
+      navBtnLeft.style.left = 'calc(50% - 2.25rem)';
+      navBtnLeft.style.backgroundColor = "transparent";
+      navBtnLeft.style.color = "#fff";
+      navBtnLeft.style.border = "none";
+      navBtnLeft.style.fontWeight = "bold";
+      navBtnLeft.style.fontSize = "2.5rem"
+      navBtnLeft.style.display = "inline-block";
+      navBtnLeft.style.maxWidth = "50%";
+      navBtnLeft.setAttribute('type', 'button');
+      navBtnLeft.setAttribute('value', '<');
+    week.appendChild(navBtnLeft);
+    //append callback
+    navBtnLeft.onclick = (function(e) {
+      if (e.target.parentElement.parentElement.className !== 'weeksContainer') { console.log('error - navBtnRight.onclick e.trgt. parentElement is wrong');}
+      var weeksContainer = e.target.parentElement.parentElement;
+      var scrollToWeekNum = (Number(e.target.parentElement.classList[1]) + 1);
+      var scrollToWeek = weeksContainer.getElementsByClassName(scrollToWeekNum)[0];
+      weeksContainer.scrollTo({
+        left: scrollToWeek.offsetLeft - scrollToWeek.clientWidth / 4,
+        behavior: 'smooth'
+      });
+    });
   }
 
   document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
