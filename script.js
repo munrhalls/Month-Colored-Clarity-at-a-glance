@@ -194,16 +194,13 @@ function createWeek(weekNum, monthNum) {
       if (e.target.parentElement.parentElement.className !== 'weeksContainer') { console.log('error - navBtnRight.onclick e.trgt. parentElement is wrong');}
       var weeksContainer = e.target.parentElement.parentElement;
       var scrollToWeekNum = (Number(e.target.parentElement.classList[1]) + 1);
-      console.log(scrollToWeekNum)
       var scrollToWeek = weeksContainer.getElementsByClassName(scrollToWeekNum)[0];
-
       weeksContainer.scrollTo({
         left: scrollToWeek.offsetLeft - scrollToWeek.clientWidth / 4,
         behavior: 'smooth'
       });
     });
   }
-  
 
   document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
   createDays(week);
