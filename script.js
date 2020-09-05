@@ -178,8 +178,8 @@ function createWeek(weekTitle) {
 }
 function createMonth() {
   var monthContainer = document.createElement('div');
-  monthContainer.style.className = 'monthContainer';
-  
+  monthContainer.className = 'monthContainer';
+
   createSidewaysTitle('Deep work hours');
   createWeeksContainer();
   createWeek('Week 1');
