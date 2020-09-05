@@ -171,17 +171,21 @@ function createWeek(weekTitle) {
     monthTitle.style.top = 'calc(50%)';
     monthTitle.style.right = 'calc(100% - 8rem)';
 
-
     week.appendChild(monthTitle);
 
   document.getElementById('weeksContainer').appendChild(week);
   createDays(week);
 }
 function createMonth() {
+  var monthContainer = document.createElement('div');
+  monthContainer.style.className = 'monthContainer';
+  
   createSidewaysTitle('Deep work hours');
   createWeeksContainer();
   createWeek('Week 1');
   createWeek('Week 2');
   createWeek('Week 3');
   createWeek('Week 4');
+
+  document.getElementById('root').appendChild(monthContainer);
 }
