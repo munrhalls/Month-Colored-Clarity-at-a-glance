@@ -222,7 +222,7 @@ function createWeek(weekNum, monthNum) {
     navBtnLeft.onclick = (function(e) {
       if (e.target.parentElement.parentElement.className !== 'weeksContainer') { console.log('error - navBtnRight.onclick e.trgt. parentElement is wrong');}
       var weeksContainer = e.target.parentElement.parentElement;
-      var scrollToWeekNum = (Number(e.target.parentElement.classList[1]) + 1);
+      var scrollToWeekNum = (Number(e.target.parentElement.classList[1]) - 1);
       var scrollToWeek = weeksContainer.getElementsByClassName(scrollToWeekNum)[0];
       weeksContainer.scrollTo({
         left: scrollToWeek.offsetLeft - scrollToWeek.clientWidth / 4,
