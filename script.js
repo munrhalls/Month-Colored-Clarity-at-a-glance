@@ -189,8 +189,11 @@ function createWeek(weekNum, monthNum) {
       navBtnRight.setAttribute('value', '>');
     week.appendChild(navBtnRight);
 
-    navBtnRight.onclick = (function() {
-      console.log('ok')
+    navBtnRight.onclick = (function(e) {
+      console.log(window.innerWidth)
+      var myElement = document.getElementsByClassName('week')[0];
+      var topPos = myElement.offsetTop; 
+      document.getElementsByClassName('week')[0].parentElement.scrollLeft = 1000;
     });
   }
   
