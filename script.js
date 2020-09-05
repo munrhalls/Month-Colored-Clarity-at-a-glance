@@ -188,6 +188,10 @@ function createWeek(weekNum, monthNum) {
       navBtnRight.setAttribute('type', 'button');
       navBtnRight.setAttribute('value', '>');
     week.appendChild(navBtnRight);
+
+    navBtnRight.onclick = (function() {
+      console.log('ok')
+    });
   }
   
 
