@@ -3,7 +3,6 @@ window.addEventListener('load', function () {
   createMonth(0);
   createMonth(1);
   createMonth(2);
-
 });
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
@@ -184,7 +183,8 @@ function createMonth(monthNum) {
   monthContainer.style.display = 'flex';
   document.getElementById('root').appendChild(monthContainer);
 
-  createSidewaysTitle('Deep work hours', monthNum);
+  var monthNamesDATA = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  createSidewaysTitle(monthNamesDATA[monthNum], monthNum);
   createWeeksContainer(monthNum);
   createWeek('Week 1', monthNum);
   createWeek('Week 2', monthNum);
