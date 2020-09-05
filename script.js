@@ -145,13 +145,13 @@ function createDays(week) {
       createBtns(dayContainer);
   });
 }
-function createWeek(weekTitle, monthNum) {
+function createWeek(weekNum, monthNum) {
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
     week.className = 'week';
     week.style.border = "90px solid #000"
     var weekName = document.createElement('div');
-    weekName.innerText = weekTitle || 'Week';
+    weekName.innerText = 'Week ' + weekNum || 'Week';
     weekName.style.color = '#fff';
     weekName.style.position = 'absolute';
     weekName.style.top =  '-3rem';
@@ -173,20 +173,20 @@ function createWeek(weekTitle, monthNum) {
     monthTitle.style.right = 'calc(100% - 14.75rem)';
     week.appendChild(monthTitle);
   //CREATE NAVIGATIONAL BUTTONS BELOW THE WEEK - TO SCROLL HORIZONTALLY ON CLICK
-  var navBtnLeft = document.createElement('input');
-    navBtnLeft.style.position = 'absolute';
-    navBtnLeft.style.top = '100%';
-    navBtnLeft.style.left = 'calc(50% - 2.25rem)';
-    navBtnLeft.style.backgroundColor = "transparent";
-    navBtnLeft.style.color = "blue";
-    navBtnLeft.style.border = "none";
-    navBtnLeft.style.fontWeight = "bold";
-    navBtnLeft.style.fontSize = "2.5rem"
-    navBtnLeft.style.display = "inline-block";
-    navBtnLeft.style.maxWidth = "50%";
-    navBtnLeft.setAttribute('type', 'button');
-    navBtnLeft.setAttribute('value', '>');
-   week.appendChild(navBtnLeft);
+  var navBtnRight = document.createElement('input');
+    navBtnRight.style.position = 'absolute';
+    navBtnRight.style.top = 'calc(100% + 15.5px)'; 
+    navBtnRight.style.left = 'calc(50% - 2.25rem)';
+    navBtnRight.style.backgroundColor = "transparent";
+    navBtnRight.style.color = "#fff";
+    navBtnRight.style.border = "none";
+    navBtnRight.style.fontWeight = "bold";
+    navBtnRight.style.fontSize = "2.5rem"
+    navBtnRight.style.display = "inline-block";
+    navBtnRight.style.maxWidth = "50%";
+    navBtnRight.setAttribute('type', 'button');
+    navBtnRight.setAttribute('value', '>');
+   week.appendChild(navBtnRight);
 
   document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
   createDays(week);
@@ -200,8 +200,8 @@ function createMonth(monthNum) {
   var monthNamesDATA = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   createSidewaysTitle(monthNamesDATA[monthNum], monthNum);
   createWeeksContainer(monthNum);
-  createWeek('Week 1', monthNum);
-  createWeek('Week 2', monthNum);
-  createWeek('Week 3', monthNum);
-  createWeek('Week 4', monthNum);
+  createWeek(1, monthNum);
+  createWeek(2, monthNum);
+  createWeek(3, monthNum);
+  createWeek(4, monthNum);
 }
