@@ -1,11 +1,6 @@
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  createSidewaysTitle('Deep work hours');
-  createWeeksContainer();
-  createWeek('Week 1');
-  createWeek('Week 2');
-  createWeek('Week 3');
-  createWeek('Week 4');
+  createMonth();
 });
 function createWeeksContainer() {
   var weeksContainer = document.createElement('div');
@@ -181,4 +176,12 @@ function createWeek(weekTitle) {
 
   document.getElementById('weeksContainer').appendChild(week);
   createDays(week);
+}
+function createMonth() {
+  createSidewaysTitle('Deep work hours');
+  createWeeksContainer();
+  createWeek('Week 1');
+  createWeek('Week 2');
+  createWeek('Week 3');
+  createWeek('Week 4');
 }
