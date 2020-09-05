@@ -171,8 +171,21 @@ function createWeek(weekTitle, monthNum) {
     monthTitle.style.letterSpacing = '1rem';
     monthTitle.style.top = 'calc(50% - 0.75rem)';
     monthTitle.style.right = 'calc(100% - 14.75rem)';
-
     week.appendChild(monthTitle);
+  //CREATE NAVIGATIONAL BUTTONS BELOW THE WEEK - TO SCROLL HORIZONTALLY ON CLICK
+  var navBtnLeft = document.createElement('input');
+    navBtnLeft.style.marginLeft = "auto";
+    navBtnLeft.style.backgroundColor = "#000";
+    navBtnLeft.style.color = "blue";
+    navBtnLeft.style.border = "none";
+    navBtnLeft.style.fontWeight = "bold";
+    navBtnLeft.style.display = "inline-block";
+    navBtnLeft.style.height = "30px";
+    navBtnLeft.style.width = "100%";
+    navBtnLeft.style.maxWidth = "50%";
+    navBtnLeft.setAttribute('type', 'button');
+    navBtnLeft.setAttribute('value', '->');
+   week.appendChild(navBtnLeft);
 
   document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
   createDays(week);
