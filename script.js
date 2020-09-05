@@ -10,7 +10,8 @@ function createWeeksContainer() {
   weeksContainer.style.flex = '12';
   weeksContainer.style.overflow = 'auto';
   weeksContainer.style.whiteSpace = 'nowrap';
-  document.getElementById('root').appendChild(weeksContainer);
+  document.getElementsByClassName('monthContainer')[0].appendChild(weeksContainer);
+
 }
 function createSidewaysTitle(sidewaysTitle) {
   // 0. CREATE DEEP WORK HOURS COLUMN TO THE LEFT
@@ -144,7 +145,6 @@ function createDays(week) {
   });
 }
 function createWeek(weekTitle) {
-  document.getElementById('root').style.display = "flex";
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
     week.className = 'week';
@@ -179,6 +179,7 @@ function createWeek(weekTitle) {
 function createMonth() {
   var monthContainer = document.createElement('div');
   monthContainer.className = 'monthContainer';
+  monthContainer.style.display = 'flex';
   document.getElementById('root').appendChild(monthContainer);
 
   createSidewaysTitle('Deep work hours');
