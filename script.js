@@ -175,8 +175,8 @@ function createWeek(weekTitle, monthNum) {
   //CREATE NAVIGATIONAL BUTTONS BELOW THE WEEK - TO SCROLL HORIZONTALLY ON CLICK
   var navBtnLeft = document.createElement('input');
     navBtnLeft.style.position = 'absolute';
-    navBtnLeft.style.bottom = "100%";
-    navBtnLeft.style.right = '0';
+    navBtnLeft.style.top = '100%';
+    navBtnLeft.style.left = 'calc(50% - 2.25rem)';
     navBtnLeft.style.backgroundColor = "transparent";
     navBtnLeft.style.color = "blue";
     navBtnLeft.style.border = "none";
