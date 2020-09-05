@@ -194,12 +194,9 @@ function createWeek(weekNum, monthNum) {
       if (e.target.parentElement.parentElement.className !== 'weeksContainer') {
         console.log('self-reminder: navBtnRight element, e.target.parentElement.parentElement !== weeksContainer! Fix the path to weeksContainer in order for the scroll to work')
       }
-      var btnParentWeeksContainer = e.target.parentElement.parentElement;
-      var myElement = btnParentWeeksContainer.getElementsByClassName('week')[1];
-      var width = myElement.offsetLeft;
-
-      console.log(btnParentWeeksContainer.clientWidth)
-      document.getElementsByClassName('week')[0].parentElement.scrollBy(width, 0);
+      var weeksContainer = e.target.parentElement.parentElement;
+      var secondWeek = weeksContainer.getElementsByClassName('week')[1];
+      document.getElementsByClassName('week')[0].parentElement.scrollBy(secondWeek.offsetLeft, 0);
     });
   }
   
