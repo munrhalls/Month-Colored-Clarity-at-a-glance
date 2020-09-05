@@ -154,7 +154,7 @@ function createWeek(weekTitle, monthNum) {
     weekName.innerText = weekTitle || 'Week';
     weekName.style.color = '#fff';
     weekName.style.position = 'absolute';
-    weekName.style.top =  '-45px';
+    weekName.style.top =  '-3rem';
     weekName.style.left = 'calc(50% - 5rem)';
     weekName.style.fontSize = '1.5rem'
     weekName.style.letterSpacing = '1rem';
@@ -174,17 +174,18 @@ function createWeek(weekTitle, monthNum) {
     week.appendChild(monthTitle);
   //CREATE NAVIGATIONAL BUTTONS BELOW THE WEEK - TO SCROLL HORIZONTALLY ON CLICK
   var navBtnLeft = document.createElement('input');
-    navBtnLeft.style.marginLeft = "auto";
-    navBtnLeft.style.backgroundColor = "#000";
+    navBtnLeft.style.position = 'absolute';
+    navBtnLeft.style.bottom = "100%";
+    navBtnLeft.style.right = '0';
+    navBtnLeft.style.backgroundColor = "transparent";
     navBtnLeft.style.color = "blue";
     navBtnLeft.style.border = "none";
     navBtnLeft.style.fontWeight = "bold";
+    navBtnLeft.style.fontSize = "2.5rem"
     navBtnLeft.style.display = "inline-block";
-    navBtnLeft.style.height = "30px";
-    navBtnLeft.style.width = "100%";
     navBtnLeft.style.maxWidth = "50%";
     navBtnLeft.setAttribute('type', 'button');
-    navBtnLeft.setAttribute('value', '->');
+    navBtnLeft.setAttribute('value', '>');
    week.appendChild(navBtnLeft);
 
   document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
