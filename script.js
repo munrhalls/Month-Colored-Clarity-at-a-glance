@@ -179,7 +179,7 @@ function createWeek(weekNum, monthNum) {
     var navBtnRight = document.createElement('input');
       navBtnRight.style.position = 'absolute';
       navBtnRight.style.top = 'calc(100% + 15.5px)'; 
-      navBtnRight.style.left = 'calc(50% - 2.25rem)';
+      navBtnRight.style.left = 'calc(50%)';
       navBtnRight.style.backgroundColor = "transparent";
       navBtnRight.style.color = "#fff";
       navBtnRight.style.border = "none";
@@ -202,12 +202,12 @@ function createWeek(weekNum, monthNum) {
       });
     });
   }
-  if (weekNum <= 3) {
+  if (weekNum > 1) {
     //create btn
     var navBtnLeft = document.createElement('input');
       navBtnLeft.style.position = 'absolute';
       navBtnLeft.style.top = 'calc(100% + 15.5px)'; 
-      navBtnLeft.style.left = 'calc(50% - 2.25rem)';
+      navBtnLeft.style.left = 'calc(50% - 4rem)';
       navBtnLeft.style.backgroundColor = "transparent";
       navBtnLeft.style.color = "#fff";
       navBtnLeft.style.border = "none";
