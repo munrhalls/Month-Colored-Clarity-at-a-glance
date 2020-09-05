@@ -1,8 +1,8 @@
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  createMonth(0);
-  createMonth(1);
-  createMonth(2);
+  for (var i = 0; i < 12; i++) {
+    createMonth(i);
+  }
 });
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
