@@ -1,8 +1,11 @@
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  createMonth();
+  createMonth(0);
+  createMonth(1);
+  createMonth(2);
+
 });
-function createWeeksContainer() {
+function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
   weeksContainer.id = 'weeksContainer';
   //WEEKS CONTAINER STYLE
@@ -10,8 +13,7 @@ function createWeeksContainer() {
   weeksContainer.style.flex = '12';
   weeksContainer.style.overflow = 'auto';
   weeksContainer.style.whiteSpace = 'nowrap';
-  document.getElementsByClassName('monthContainer')[0].appendChild(weeksContainer);
-
+  document.getElementsByClassName('monthContainer')[monthNum].appendChild(weeksContainer);
 }
 function createSidewaysTitle(sidewaysTitle) {
   // 0. CREATE DEEP WORK HOURS COLUMN TO THE LEFT
@@ -176,14 +178,14 @@ function createWeek(weekTitle) {
   document.getElementById('weeksContainer').appendChild(week);
   createDays(week);
 }
-function createMonth() {
+function createMonth(monthNum) {
   var monthContainer = document.createElement('div');
   monthContainer.className = 'monthContainer';
   monthContainer.style.display = 'flex';
   document.getElementById('root').appendChild(monthContainer);
 
   createSidewaysTitle('Deep work hours');
-  createWeeksContainer();
+  createWeeksContainer(monthNum);
   createWeek('Week 1');
   createWeek('Week 2');
   createWeek('Week 3');
