@@ -173,20 +173,23 @@ function createWeek(weekNum, monthNum) {
     monthTitle.style.right = 'calc(100% - 14.75rem)';
     week.appendChild(monthTitle);
   //CREATE NAVIGATIONAL BUTTONS BELOW THE WEEK - TO SCROLL HORIZONTALLY ON CLICK
-  var navBtnRight = document.createElement('input');
-    navBtnRight.style.position = 'absolute';
-    navBtnRight.style.top = 'calc(100% + 15.5px)'; 
-    navBtnRight.style.left = 'calc(50% - 2.25rem)';
-    navBtnRight.style.backgroundColor = "transparent";
-    navBtnRight.style.color = "#fff";
-    navBtnRight.style.border = "none";
-    navBtnRight.style.fontWeight = "bold";
-    navBtnRight.style.fontSize = "2.5rem"
-    navBtnRight.style.display = "inline-block";
-    navBtnRight.style.maxWidth = "50%";
-    navBtnRight.setAttribute('type', 'button');
-    navBtnRight.setAttribute('value', '>');
-   week.appendChild(navBtnRight);
+  if (weekNum <= 3) {
+    var navBtnRight = document.createElement('input');
+      navBtnRight.style.position = 'absolute';
+      navBtnRight.style.top = 'calc(100% + 15.5px)'; 
+      navBtnRight.style.left = 'calc(50% - 2.25rem)';
+      navBtnRight.style.backgroundColor = "transparent";
+      navBtnRight.style.color = "#fff";
+      navBtnRight.style.border = "none";
+      navBtnRight.style.fontWeight = "bold";
+      navBtnRight.style.fontSize = "2.5rem"
+      navBtnRight.style.display = "inline-block";
+      navBtnRight.style.maxWidth = "50%";
+      navBtnRight.setAttribute('type', 'button');
+      navBtnRight.setAttribute('value', '>');
+    week.appendChild(navBtnRight);
+  }
+  
 
   document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
   createDays(week);
