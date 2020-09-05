@@ -39,7 +39,7 @@ function createSidewaysTitle(sidewaysTitle) {
     title.style.top = 'calc(50% - 40px)';
     title.style.left = "0";
     hours.appendChild(title);
-    document.getElementById('root').appendChild(hours);
+    document.getElementsByClassName('monthContainer')[0].appendChild(hours);
 };
 function createBtns(dayContainer) {
   var addBtn = document.createElement('input');
@@ -179,6 +179,7 @@ function createWeek(weekTitle) {
 function createMonth() {
   var monthContainer = document.createElement('div');
   monthContainer.className = 'monthContainer';
+  document.getElementById('root').appendChild(monthContainer);
 
   createSidewaysTitle('Deep work hours');
   createWeeksContainer();
@@ -186,6 +187,4 @@ function createMonth() {
   createWeek('Week 2');
   createWeek('Week 3');
   createWeek('Week 4');
-
-  document.getElementById('root').appendChild(monthContainer);
 }
