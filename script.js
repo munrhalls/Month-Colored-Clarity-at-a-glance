@@ -163,14 +163,14 @@ function createWeek(weekTitle, monthNum) {
     week.style.position = 'relative';
   //CREATE TITLE OF THE MONTH; APPEND TO THE LEFT OF EACH OF THE 4 WEEKS
   var monthTitle = document.createElement('div');
-    monthTitle.innerText ='September';  
+    monthTitle.innerText ='Deep work hours';  
     monthTitle.style.color = '#fff';
     monthTitle.style.position = "absolute";
     monthTitle.style.transform = 'rotate(-90deg)';
     monthTitle.style.fontSize = '2.75rem';
     monthTitle.style.letterSpacing = '1rem';
-    monthTitle.style.top = 'calc(50%)';
-    monthTitle.style.right = 'calc(100% - 8rem)';
+    monthTitle.style.top = 'calc(50% - 0.75rem)';
+    monthTitle.style.right = 'calc(100% - 14.75rem)';
 
     week.appendChild(monthTitle);
 
