@@ -148,7 +148,8 @@ function createDays(week) {
 function createWeek(weekNum, monthNum) {
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
-    week.className = 'week';
+    week.classList.add('week');
+    week.classList.add(weekNum);
     week.style.border = "90px solid #000"
     var weekName = document.createElement('div');
     weekName.innerText = 'Week ' + weekNum || 'Week';
@@ -192,10 +193,12 @@ function createWeek(weekNum, monthNum) {
     navBtnRight.onclick = (function(e) {
       if (e.target.parentElement.parentElement.className !== 'weeksContainer') { console.log('error - navBtnRight.onclick e.trgt. parentElement is wrong');}
       var weeksContainer = e.target.parentElement.parentElement;
-      var secondWeek = weeksContainer.getElementsByClassName('week')[1];
+      var scrollToWeekNum = (Number(e.target.parentElement.classList[1]) + 1);
+      console.log(scrollToWeekNum)
+      var scrollToWeek = weeksContainer.getElementsByClassName(scrollToWeekNum)[0];
 
       weeksContainer.scrollTo({
-        left: secondWeek.offsetLeft - secondWeek.clientWidth / 4,
+        left: scrollToWeek.offsetLeft - scrollToWeek.clientWidth / 4,
         behavior: 'smooth'
       });
     });
