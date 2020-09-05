@@ -196,7 +196,13 @@ function createWeek(weekNum, monthNum) {
       }
       var weeksContainer = e.target.parentElement.parentElement;
       var secondWeek = weeksContainer.getElementsByClassName('week')[1];
-      document.getElementsByClassName('week')[0].parentElement.scrollBy(secondWeek.offsetLeft, 0);
+      // document.getElementsByClassName('week')[0].parentElement.scrollTo(secondWeek.offsetLeft, 0);
+
+      weeksContainer.scrollTo({
+        top: 100,
+        left: secondWeek.offsetLeft - secondWeek.clientWidth / 4,
+        behavior: 'smooth'
+      });
     });
   }
   
