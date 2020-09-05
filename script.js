@@ -7,7 +7,7 @@ window.addEventListener('load', function () {
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
   weeksContainer.className = 'weeksContainer';
-  //WEEKS CONTAINER STYLE
+  //WEEKS CONTAINER STYLEC
   weeksContainer.style.display = 'flex';
   weeksContainer.style.flex = '12';
   weeksContainer.style.overflow = 'auto';
@@ -39,7 +39,7 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     title.style.fontSize = '60px';
     title.style.width = '400%';
     title.style.top = 'calc(50% - 40px)';
-    title.style.left = "0";
+    title.style.left = "1.25rem";
     hours.appendChild(title);
     document.getElementsByClassName('monthContainer')[monthNum].appendChild(hours);
 };
