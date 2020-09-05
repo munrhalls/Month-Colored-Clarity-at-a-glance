@@ -175,6 +175,7 @@ function createWeek(weekNum, monthNum) {
     week.appendChild(monthTitle);
   //CREATE NAVIGATIONAL BUTTONS BELOW THE WEEK - TO SCROLL HORIZONTALLY ON CLICK
   if (weekNum <= 3) {
+    //create btn
     var navBtnRight = document.createElement('input');
       navBtnRight.style.position = 'absolute';
       navBtnRight.style.top = 'calc(100% + 15.5px)'; 
@@ -189,7 +190,7 @@ function createWeek(weekNum, monthNum) {
       navBtnRight.setAttribute('type', 'button');
       navBtnRight.setAttribute('value', '>');
     week.appendChild(navBtnRight);
-
+    //append callback
     navBtnRight.onclick = (function(e) {
       if (e.target.parentElement.parentElement.className !== 'weeksContainer') { console.log('error - navBtnRight.onclick e.trgt. parentElement is wrong');}
       var weeksContainer = e.target.parentElement.parentElement;
@@ -200,6 +201,7 @@ function createWeek(weekNum, monthNum) {
         behavior: 'smooth'
       });
     });
+    
   }
 
   document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
