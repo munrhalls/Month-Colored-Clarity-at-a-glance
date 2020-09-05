@@ -190,10 +190,12 @@ function createWeek(weekNum, monthNum) {
     week.appendChild(navBtnRight);
 
     navBtnRight.onclick = (function(e) {
-      console.log(window.innerWidth)
-      var myElement = document.getElementsByClassName('week')[0];
-      var topPos = myElement.offsetTop; 
-      document.getElementsByClassName('week')[0].parentElement.scrollLeft = 1000;
+      console.log(e.target.parentElement.parentElement)
+      if (e.target.parentElement.parentElement.className !== 'weeksContainer') {
+        console.log('self-reminder: navBtnRight element, e.target.parentElement.parentElement !== weeksContainer! Fix the path to weeksContainer in order for the scroll to work')
+      }
+      var btnParentWeeksContainer = e.target.parentElement.parentElement;
+      document.getElementsByClassName('week')[0].parentElement.scrollBy(btnParentWeeksContainer.clientWidth, 0);
     });
   }
   
