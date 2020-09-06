@@ -44,8 +44,11 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     //ACQUIRE DEEP WORK HOURS TO DAY TO WEEK TO MONTH DATA
     
     saveToExcelBtn.onclick = (function() {
-      var totalDeepWorkHours = document.getElementsByClassName('hour').length;
-      JSONToCSVConvertor([{'Total Deep Work hours': totalDeepWorkHours}], 'ReportTitle', 'ShowLabel');
+      var month = document.getElementsByClassName('month')[0];
+      console.log(month)
+
+      // var totalDeepWorkHours = document.getElementsByClassName('hour').length;
+      // JSONToCSVConvertor([{'Total Deep Work hours': totalDeepWorkHours}], 'ReportTitle', 'ShowLabel');
     });
     //title
     var title = document.createElement('div');
@@ -299,7 +302,8 @@ function createWeek(weekNum, monthNum) {
 }
 function createMonth(monthNum) {
   var monthContainer = document.createElement('div');
-  monthContainer.className = 'monthContainer';
+  monthContainer.classList.add('month');
+  monthContainer.classList.add('monthContainer');
   monthContainer.style.display = 'flex';
   document.getElementById('root').appendChild(monthContainer);
 
