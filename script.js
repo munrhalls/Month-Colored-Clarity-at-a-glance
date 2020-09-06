@@ -42,25 +42,28 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
       saveToExcelBtn.setAttribute('value', 'Save to Excel');
       hours.appendChild(saveToExcelBtn);
     //ACQUIRE DEEP WORK HOURS TO DAY TO WEEK TO MONTH DATA
-    var deepHoursData = [];
+    var monthData = [];
     saveToExcelBtn.onclick = (function() {
       var month = document.getElementsByClassName('month')[0];
+      var monthNamesDATA = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
       var weeks = month.getElementsByClassName('week');  
       for (var i = 0; i < weeks.length; i++) {
+        var weekObj = {};
+        weekObj[monthNamesDATA[0]] = 'Week' + (i + 1);
         var week = weeks[i];
         var days = week.getElementsByClassName('day');
 
         for (var j = 0; j < days.length; j++) {
           var day = days[j];
           var hours = day.getElementsByClassName('hour');
-          
-          console.log(day.classList[1]);
-          console.log(hours.length);
+
+          monthData.push(weekObj)
+
         }
       }
-
+      console.log(monthData)
       var totalDeepWorkHours = document.getElementsByClassName('hour').length;
-
+      
     JSONToCSVConvertor([
       {'January': 'Week 1',
        'Monday': 8,
@@ -80,7 +83,8 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
       'Saturday': 0,
       'Sunday': 0,
       },
-      {'Total': totalDeepWorkHours}
+      {'Total': totalDeepWorkHours,
+      },
     ], 'ReportTitle', 'ShowLabel');
     });
     //title
