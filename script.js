@@ -45,7 +45,10 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     
     saveToExcelBtn.onclick = (function() {
       var month = document.getElementsByClassName('month')[0];
-      console.log(month)
+      var weeks = month.getElementsByClassName('week');  
+      for (var i = 0; i < weeks.length; i++) {
+        console.log(weeks[i])
+      }
 
       // var totalDeepWorkHours = document.getElementsByClassName('hour').length;
       // JSONToCSVConvertor([{'Total Deep Work hours': totalDeepWorkHours}], 'ReportTitle', 'ShowLabel');
