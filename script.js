@@ -42,7 +42,7 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
       saveToExcelBtn.setAttribute('value', 'Save to Excel');
       hours.appendChild(saveToExcelBtn);
     //ACQUIRE DEEP WORK HOURS TO DAY TO WEEK TO MONTH DATA
-    
+    var deepHoursData = [];
     saveToExcelBtn.onclick = (function() {
       var month = document.getElementsByClassName('month')[0];
       var weeks = month.getElementsByClassName('week');  
@@ -53,13 +53,35 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
         for (var j = 0; j < days.length; j++) {
           var day = days[j];
           var hours = day.getElementsByClassName('hour');
+          
           console.log(day.classList[1]);
           console.log(hours.length);
         }
       }
 
-      // var totalDeepWorkHours = document.getElementsByClassName('hour').length;
-      // JSONToCSVConvertor([{'Total Deep Work hours': totalDeepWorkHours}], 'ReportTitle', 'ShowLabel');
+      var totalDeepWorkHours = document.getElementsByClassName('hour').length;
+
+    JSONToCSVConvertor([
+      {'January': 'Week 1',
+       'Monday': 8,
+       'Tuesday': 0,
+       'Wendesday': 0,
+       'Thursday': 0,
+       'Friday': 0,
+       'Saturday': 0,
+       'Sunday': 0,
+      },
+      {'January': 'Week 2',
+      'Monday': 10,
+      'Tuesday': 0,
+      'Wendesday': 0,
+      'Thursday': 0,
+      'Friday': 0,
+      'Saturday': 0,
+      'Sunday': 0,
+      },
+      {'Total': totalDeepWorkHours}
+    ], 'ReportTitle', 'ShowLabel');
     });
     //title
     var title = document.createElement('div');
