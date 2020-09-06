@@ -49,10 +49,12 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
       for (var i = 0; i < weeks.length; i++) {
         var week = weeks[i];
         var days = week.getElementsByClassName('day');
-        
+
         for (var j = 0; j < days.length; j++) {
           var day = days[j];
+          var hours = day.getElementsByClassName('hour');
           console.log(day);
+          console.log(hours.length);
         }
       }
 
@@ -214,6 +216,7 @@ function createDays(week) {
       day.style.border = '1px solid gray'; day.style.padding = '3px 30px'; 
     var dayContainer = document.createElement('div');
       dayContainer.classList.add('day');
+      dayContainer.classList.add(el['name']);
       dayContainer.appendChild(day);
       dayContainer.style.display = 'inline-block'; 
       week.appendChild(dayContainer);
