@@ -47,7 +47,13 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
       var month = document.getElementsByClassName('month')[0];
       var weeks = month.getElementsByClassName('week');  
       for (var i = 0; i < weeks.length; i++) {
-        console.log(weeks[i])
+        var week = weeks[i];
+        var days = week.getElementsByClassName('day');
+        
+        for (var j = 0; j < days.length; j++) {
+          var day = days[j];
+          console.log(day);
+        }
       }
 
       // var totalDeepWorkHours = document.getElementsByClassName('hour').length;
