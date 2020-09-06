@@ -45,9 +45,7 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     
     saveToExcelBtn.onclick = (function() {
       var totalDeepWorkHours = document.getElementsByClassName('hour').length;
-
-      console.log(totalDeepWorkHours)
-      JSONToCSVConvertor([{totalDeepWorkHours: totalDeepWorkHours}], 'ReportTitle', 'ShowLabel')
+      JSONToCSVConvertor([{'Total Deep Work hours': totalDeepWorkHours}], 'ReportTitle', 'ShowLabel');
     });
     //title
     var title = document.createElement('div');
