@@ -53,7 +53,7 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
         for (var j = 0; j < days.length; j++) {
           var day = days[j];
           var hours = day.getElementsByClassName('hour');
-          console.log(day);
+          console.log(day.classList[1]);
           console.log(hours.length);
         }
       }
