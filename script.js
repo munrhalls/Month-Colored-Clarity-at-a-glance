@@ -42,7 +42,6 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
       saveToExcelBtn.setAttribute('value', 'Save to Excel');
       hours.appendChild(saveToExcelBtn);
     saveToExcelBtn.onclick = (function() {
-      
       JSONToCSVConvertor([
         {name: 'Monday', hours: 0},
         {name: 'Tuesday', hours: 0}, 
@@ -207,6 +206,7 @@ function createDays(week) {
       day.style.textAlign = "center";
       day.style.border = '1px solid gray'; day.style.padding = '3px 30px'; 
     var dayContainer = document.createElement('div');
+      dayContainer.classList.add('day');
       dayContainer.appendChild(day);
       dayContainer.style.display = 'inline-block'; 
       week.appendChild(dayContainer);
