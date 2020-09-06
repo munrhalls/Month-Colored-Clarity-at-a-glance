@@ -42,7 +42,16 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
       saveToExcelBtn.setAttribute('value', 'Save to Excel');
       hours.appendChild(saveToExcelBtn);
     saveToExcelBtn.onclick = (function() {
-      console.log('opk')
+      
+      JSONToCSVConvertor([
+        {name: 'Monday', hours: 0},
+        {name: 'Tuesday', hours: 0}, 
+        {name: 'Wendesday', hours: 0},
+        {name: 'Thursday', hours: 0},
+        {name: 'Friday', hours: 0},
+        {name: 'Saturday', hours: 0},
+        {name: 'Sunday', hours: 0},
+      ], 'ReportTitle', 'ShowLabel')
     });
     //title
     var title = document.createElement('div');
