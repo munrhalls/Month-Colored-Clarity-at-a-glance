@@ -41,6 +41,9 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
       saveToExcelBtn.setAttribute('type', 'button');
       saveToExcelBtn.setAttribute('value', 'Save to Excel');
       hours.appendChild(saveToExcelBtn);
+    saveToExcelBtn.onclick = (function() {
+      console.log('opk')
+    });
     //title
     var title = document.createElement('div');
     title.innerText = sidewaysTitle;
