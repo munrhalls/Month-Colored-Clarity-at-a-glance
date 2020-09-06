@@ -44,22 +44,34 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     //ACQUIRE DEEP WORK HOURS TO DAY TO WEEK TO MONTH DATA
     var monthData = [];
     saveToExcelBtn.onclick = (function() {
+
+
+
+
       var month = document.getElementsByClassName('month')[0];
       var monthNamesDATA = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      var weeks = month.getElementsByClassName('week');  
+      var weeks = month.getElementsByClassName('week'); 
+
+
       for (var i = 0; i < weeks.length; i++) {
         var weekObj = {};
         weekObj[monthNamesDATA[0]] = 'Week' + (i + 1);
         var week = weeks[i];
         var days = week.getElementsByClassName('day');
 
+
+
+
         for (var j = 0; j < days.length; j++) {
           var day = days[j];
           var hours = day.getElementsByClassName('hour');
-
-          monthData.push(weekObj)
-
         }
+        monthData.push(weekObj)
+
+
+
+
+
       }
       console.log(monthData)
       var totalDeepWorkHours = document.getElementsByClassName('hour').length;
