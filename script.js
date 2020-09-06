@@ -29,7 +29,7 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     hours.style.backgroundColor = '#000';
     hours.style.textAlign = "center";
     hours.style.paddingRight = '6rem';
-    //SAVE TO EXCEL BUTTON
+    //CREATE SAVE TO EXCEL BUTTON
     var saveToExcelBtn = document.createElement('input');
       saveToExcelBtn.style.marginLeft = "auto";
       saveToExcelBtn.style.backgroundColor = "#000";
@@ -41,16 +41,13 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
       saveToExcelBtn.setAttribute('type', 'button');
       saveToExcelBtn.setAttribute('value', 'Save to Excel');
       hours.appendChild(saveToExcelBtn);
+    //ACQUIRE DEEP WORK HOURS TO DAY TO WEEK TO MONTH DATA
+    
     saveToExcelBtn.onclick = (function() {
-      JSONToCSVConvertor([
-        {name: 'Monday', hours: 0},
-        {name: 'Tuesday', hours: 0}, 
-        {name: 'Wendesday', hours: 0},
-        {name: 'Thursday', hours: 0},
-        {name: 'Friday', hours: 0},
-        {name: 'Saturday', hours: 0},
-        {name: 'Sunday', hours: 0},
-      ], 'ReportTitle', 'ShowLabel')
+      var totalDeepWorkHours = document.getElementsByClassName('hour').length;
+
+      console.log(totalDeepWorkHours)
+      JSONToCSVConvertor([{totalDeepWorkHours: totalDeepWorkHours}], 'ReportTitle', 'ShowLabel')
     });
     //title
     var title = document.createElement('div');
