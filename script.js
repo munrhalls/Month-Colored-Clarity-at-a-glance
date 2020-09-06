@@ -29,8 +29,18 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     hours.style.backgroundColor = '#000';
     hours.style.textAlign = "center";
     hours.style.paddingRight = '6rem';
-  //SAVE TO EXCEL BUTTON
-  
+    //SAVE TO EXCEL BUTTON
+    var saveToExcelBtn = document.createElement('input');
+      saveToExcelBtn.style.marginLeft = "auto";
+      saveToExcelBtn.style.backgroundColor = "#000";
+      saveToExcelBtn.style.color = "#fff";
+      saveToExcelBtn.style.border = "none";
+      saveToExcelBtn.style.fontWeight = "bold";
+      saveToExcelBtn.style.height = "30px";
+      saveToExcelBtn.style.width = "100%";
+      saveToExcelBtn.setAttribute('type', 'button');
+      saveToExcelBtn.setAttribute('value', 'Save to Excel');
+      hours.appendChild(saveToExcelBtn);
     //title
     var title = document.createElement('div');
     title.innerText = sidewaysTitle;
