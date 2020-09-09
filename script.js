@@ -272,6 +272,7 @@ function createWeek(weekNum, monthNum) {
     monthTitle.style.right = 'calc(100% - 14.75rem)';
     week.appendChild(monthTitle);
   //CREATE NAVIGATIONAL BUTTONS BELOW THE WEEK - TO SCROLL HORIZONTALLY ON CLICK
+  // (!!! !!! !!!) TO REFACTOR - ABSTRACT BUTTONS CREATION TO DISTINCT FUNCTION THAT ISN'T COUPLED WITH CREATE WEEK FUNC IN ANY WAY
   if (weekNum <= 3) {
     //create btn
     var navBtnRight = document.createElement('input');
