@@ -1,12 +1,18 @@
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   for (var i = 0; i < 12; i++) {
-    createMonth(i);
+    createMonths(i);
   }
 });
+const domNodes = new Set(); 
+
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
   weeksContainer.className = 'weeksContainer';
+
+  domNodes.add(weeksContainer);
+
+
   //WEEKS CONTAINER STYLEC
   weeksContainer.style.display = 'flex';
   weeksContainer.style.flex = '12';
@@ -62,7 +68,6 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
         monthData.push(weekObj)
 
       }
-      console.log(monthData)
       var totalDeepWorkHours = document.getElementsByClassName('hour').length;
       
     JSONToCSVConvertor([
@@ -333,7 +338,7 @@ function createWeek(weekNum, monthNum) {
   document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
   createDays(week);
 }
-function createMonth(monthNum) {
+function createMonths(monthNum) {
   var monthContainer = document.createElement('div');
   monthContainer.classList.add('month');
   monthContainer.classList.add('monthContainer');
