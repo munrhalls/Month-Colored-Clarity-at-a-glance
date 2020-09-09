@@ -8,17 +8,25 @@ window.addEventListener('load', function () {
 function createMenu() {
   const menu = document.createElement('div');
   const title = document.createElement('div');
+
   function styleMenu() {
     menu.style.color = '#fff';
     menu.style.height = '3rem';
     menu.style.borderBottom = '1px solid gray';
     menu.style.backgroundColor = '#000';
+    menu.style.display = 'flex';
   }
   function createTitle() {
     title.innerText = 'Metrics - Deep Work hours';
   }
+  function styleTitle() {
+    title.style.display = 'flex';
+    title.style.alignItems = 'center';
+  }
+
   styleMenu();
   createTitle();
+  styleTitle();
   document.getElementById('root').appendChild(menu);
   menu.appendChild(title);
 }
