@@ -9,6 +9,8 @@ function createMenu() {
   const menuContainer = document.createElement('div');
   menuContainer.innerText = 'menuContainer';
   menuContainer.style.color = '#fff';
+  menuContainer.style.height = '3rem';
+  menuContainer.style.borderBottom = '1px solid gray';
   menuContainer.style.backgroundColor = '#000';
   document.getElementById('root').appendChild(menuContainer);
 }
