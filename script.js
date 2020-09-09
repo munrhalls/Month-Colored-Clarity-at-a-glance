@@ -7,11 +7,19 @@ window.addEventListener('load', function () {
 });
 function createMenu() {
   const menuContainer = document.createElement('div');
-  menuContainer.innerText = 'menuContainer';
-  menuContainer.style.color = '#fff';
-  menuContainer.style.height = '3rem';
-  menuContainer.style.borderBottom = '1px solid gray';
-  menuContainer.style.backgroundColor = '#000';
+  function styleMenu() {
+    menuContainer.style.color = '#fff';
+    menuContainer.style.height = '3rem';
+    menuContainer.style.borderBottom = '1px solid gray';
+    menuContainer.style.backgroundColor = '#000';
+  }
+  function createAppTitle() {
+    const appTitle = document.createElement('div');
+    appTitle.innerText = 'Metrics - Deep Work hours';
+    menuContainer.appendChild(appTitle);
+  }
+  styleMenu();
+  createAppTitle();
   document.getElementById('root').appendChild(menuContainer);
 }
 function createWeeksContainer(monthNum) {
