@@ -35,6 +35,8 @@ function createMenu() {
   document.getElementById('root').appendChild(menu);
 }
 function createSaveHoursBtn() {
+  let hoursSet = new Set();
+
   console.log('ok')
   function loop() {
     function getCurrentMonth() {
@@ -75,6 +77,8 @@ function createSaveHoursBtn() {
     }
   }
   loop();
+  const hoursDATA = hoursSet;
+  console.log(hoursDATA);
 }
 
 function createWeeksContainer(monthNum) {
