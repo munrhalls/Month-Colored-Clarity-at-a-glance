@@ -37,48 +37,7 @@ function createMenu() {
 function createSaveHoursBtn() {
   let hoursSet = new Set();
 
-  console.log('ok')
-  function loop() {
-    function getCurrentMonth() {
-
-    }
-    getCurrentMonth();
-    function getWeeksOfTheMonth() {
-      function loop() {
-        function getDaysOfTheWeek() {
-
-        }
-        getDaysOfTheWeek();
-        function loop() {
-
-        }
-        loop();
-        function getCurrentDay() {
-
-        }
-        getCurrentDay();
-        function getThisDayHours() {
-
-        }
-        getThisDayHours();
-        function associateHoursToDayWeekMonth() {
-
-        }
-        associateHoursToDayWeekMonth();
-        function formatTheData() {
-
-        }
-        formatTheData();
-        function pushToTextRecord() {
-
-        }
-        pushToTextRecord();
-      }
-      loop();
-    }
-    getWeeksOfTheMonth();
-  }
-  loop();
+ 
   const hoursDATA = hoursSet;
   console.log(hoursDATA);
 }
