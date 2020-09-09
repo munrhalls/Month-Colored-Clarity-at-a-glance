@@ -8,9 +8,10 @@ window.addEventListener('load', function () {
 function createMenu() {
   const menu = document.createElement('div');
   const title = document.createElement('div');
+
   function styleMenu() {
     menu.style.color = '#fff';
-    menu.style.height = '3rem';
+    menu.style.height = '6rem';
     menu.style.borderBottom = '1px solid gray';
     menu.style.backgroundColor = '#000';
     menu.style.display = 'flex';
@@ -22,7 +23,10 @@ function createMenu() {
   function styleTitle() {
     title.style.display = 'flex';
     title.style.alignItems = 'center';
-    return title;
+    title.style.paddingLeft = '3rem';
+    title.style.fontWeight = 'bold';
+    title.style.fontSize = '1.5rem'
+    title.style.letterSpacing = '0.1rem';
   }
   styleMenu();
   createTitle();
