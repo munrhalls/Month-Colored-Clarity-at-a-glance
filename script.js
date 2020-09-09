@@ -45,13 +45,9 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     var monthData = [];
     saveToExcelBtn.onclick = (function() {
 
-
-
-
       var month = document.getElementsByClassName('month')[0];
       var monthNamesDATA = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
       var weeks = month.getElementsByClassName('week'); 
-
 
       for (var i = 0; i < weeks.length; i++) {
         var weekObj = {};
@@ -59,18 +55,11 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
         var week = weeks[i];
         var days = week.getElementsByClassName('day');
 
-
-
-
         for (var j = 0; j < days.length; j++) {
           var day = days[j];
           var hours = day.getElementsByClassName('hour');
         }
         monthData.push(weekObj)
-
-
-
-
 
       }
       console.log(monthData)
