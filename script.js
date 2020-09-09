@@ -15,7 +15,7 @@ function createWeeksContainer(monthNum) {
   document.getElementsByClassName('monthContainer')[monthNum].appendChild(weeksContainer);
 }
 function createSidewaysTitle(sidewaysTitle, monthNum) {
-  // 0. CREATE DEEP WORK HOURS COLUMN TO THE LEFT
+  // 0. CREATE DEEP WORK HOURS COLUMN TO THE LEFT 
   var hours = document.createElement('div');
     hours.style.display = 'flex';
     hours.style.flex = '1';
