@@ -1,21 +1,22 @@
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-    createMenu()
+    createMenu();
+
   for (var i = 0; i < 12; i++) {
     createMonths(i);
   }
 });
 function createMenu() {
   const menu = document.createElement('div');
+  menu.classList.add('menu');
   const title = document.createElement('div');
-
   function styleMenu() {
     menu.style.color = '#fff';
     menu.style.height = '6rem';
     menu.style.borderBottom = '1px solid gray';
     menu.style.backgroundColor = '#000';
     menu.style.display = 'flex';
-  }
+  } 
   function createTitle() {
     title.innerText = 'Metrics - Deep Work hours';
     return title;
@@ -31,12 +32,9 @@ function createMenu() {
   styleMenu();
   createTitle();
   styleTitle();
-  document.getElementById('root').appendChild(menu);
   menu.appendChild(title);
+  document.getElementById('root').appendChild(menu);
 }
-
-
-
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
   weeksContainer.className = 'weeksContainer';
