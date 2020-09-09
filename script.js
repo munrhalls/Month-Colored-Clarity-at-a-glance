@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
     createMenu();
-
+    createSaveHoursBtn();
   for (var i = 0; i < 12; i++) {
     createMonths(i);
   }
@@ -34,6 +34,49 @@ function createMenu() {
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
 }
+function createSaveHoursBtn() {
+  console.log('ok')
+  function loop() {
+    function getCurrentMonth() {
+
+    }
+    function getWeeksOfTheMonth() {
+      function loop() {
+        function getDaysOfTheWeek() {
+
+        }
+        getDaysOfTheWeek();
+        function loop() {
+
+        }
+        loop();
+        function getCurrentDay() {
+
+        }
+        getCurrentDay();
+        function getThisDayHours() {
+
+        }
+        getThisDayHours();
+        function associateHoursToDayWeekMonth() {
+
+        }
+        associateHoursToDayWeekMonth();
+        function formatTheData() {
+
+        }
+        formatTheData();
+        function pushToTextRecord() {
+
+        }
+        pushToTextRecord();
+      }
+      loop();
+    }
+  }
+  loop();
+}
+
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
   weeksContainer.className = 'weeksContainer';
