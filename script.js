@@ -6,7 +6,9 @@ window.addEventListener('load', function () {
   }
 });
 function createMenu() {
-  console.log('ok')
+  const menuContainer = document.createElement('div');
+  menuContainer.innerText = 'menu';
+  document.getElementById('root').appendChild(menuContainer);
 }
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
