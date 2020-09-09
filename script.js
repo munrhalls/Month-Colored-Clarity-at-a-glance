@@ -19,7 +19,6 @@ function createMenu() {
   } 
   function createTitle() {
     title.innerText = 'Metrics - Deep Work hours';
-    return title;
   }
   function styleTitle() {
     title.style.display = 'flex';
