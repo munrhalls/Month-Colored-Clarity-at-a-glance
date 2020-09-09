@@ -6,21 +6,21 @@ window.addEventListener('load', function () {
   }
 });
 function createMenu() {
-  const menuContainer = document.createElement('div');
+  const menu = document.createElement('div');
+  const title = document.createElement('div');
   function styleMenu() {
-    menuContainer.style.color = '#fff';
-    menuContainer.style.height = '3rem';
-    menuContainer.style.borderBottom = '1px solid gray';
-    menuContainer.style.backgroundColor = '#000';
+    menu.style.color = '#fff';
+    menu.style.height = '3rem';
+    menu.style.borderBottom = '1px solid gray';
+    menu.style.backgroundColor = '#000';
   }
-  function createAppTitle() {
-    const appTitle = document.createElement('div');
-    appTitle.innerText = 'Metrics - Deep Work hours';
-    menuContainer.appendChild(appTitle);
+  function createTitle() {
+    title.innerText = 'Metrics - Deep Work hours';
   }
   styleMenu();
-  createAppTitle();
-  document.getElementById('root').appendChild(menuContainer);
+  createTitle();
+  document.getElementById('root').appendChild(menu);
+  menu.appendChild(title);
 }
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
