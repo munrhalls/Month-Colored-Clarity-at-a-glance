@@ -8,7 +8,6 @@ window.addEventListener('load', function () {
 function createMenu() {
   const menu = document.createElement('div');
   const title = document.createElement('div');
-
   function styleMenu() {
     menu.style.color = '#fff';
     menu.style.height = '3rem';
@@ -18,22 +17,25 @@ function createMenu() {
   }
   function createTitle() {
     title.innerText = 'Metrics - Deep Work hours';
+    return title;
   }
   function styleTitle() {
     title.style.display = 'flex';
     title.style.alignItems = 'center';
+    return title;
   }
-
   styleMenu();
   createTitle();
   styleTitle();
   document.getElementById('root').appendChild(menu);
   menu.appendChild(title);
 }
+
+
+
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
   weeksContainer.className = 'weeksContainer';
-
 
   //WEEKS CONTAINER STYLEC
   weeksContainer.style.display = 'flex';
