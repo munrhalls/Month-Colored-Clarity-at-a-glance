@@ -42,6 +42,7 @@ function createSaveHoursBtn() {
     function getCurrentMonth() {
 
     }
+    getCurrentMonth();
     function getWeeksOfTheMonth() {
       function loop() {
         function getDaysOfTheWeek() {
@@ -75,6 +76,7 @@ function createSaveHoursBtn() {
       }
       loop();
     }
+    getWeeksOfTheMonth();
   }
   loop();
   const hoursDATA = hoursSet;
