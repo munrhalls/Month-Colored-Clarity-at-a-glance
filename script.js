@@ -7,7 +7,9 @@ window.addEventListener('load', function () {
 });
 function createMenu() {
   const menuContainer = document.createElement('div');
-  menuContainer.innerText = 'menu';
+  menuContainer.innerText = 'menuContainer';
+  menuContainer.style.color = '#fff';
+  menuContainer.style.backgroundColor = '#000';
   document.getElementById('root').appendChild(menuContainer);
 }
 function createWeeksContainer(monthNum) {
