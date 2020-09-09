@@ -1,16 +1,16 @@
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
+    createMenu()
   for (var i = 0; i < 12; i++) {
     createMonths(i);
   }
 });
-const domNodes = new Set(); 
-
+function createMenu() {
+  console.log('ok')
+}
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
   weeksContainer.className = 'weeksContainer';
-
-  domNodes.add(weeksContainer);
 
 
   //WEEKS CONTAINER STYLEC
