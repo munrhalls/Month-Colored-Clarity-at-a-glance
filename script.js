@@ -223,27 +223,20 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
 }
 function createDays(week) {
   // 2. CREATE DAYS DIVS
-  var daysDATA = [
-    {name: 'Monday', hours: 0},
-    {name: 'Tuesday', hours: 0}, 
-    {name: 'Wendesday', hours: 0},
-    {name: 'Thursday', hours: 0},
-    {name: 'Friday', hours: 0},
-    {name: 'Saturday', hours: 0},
-    {name: 'Sunday', hours: 0},
-  ];
+  var daysDATA = ['Monday', 'Tuesday', 'Wendesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
   //create: container divs -> corresponding divs: 1) day's title divs, 2) day's deep work hour ticks
   daysDATA.forEach(function(el){
     //day's column to add deep work hour ticks into
     var day = document.createElement('div');
-      day.innerText = el['name'];
+      day.innerText = el;
       //style
       day.style.width = "142px";
       day.style.textAlign = "center";
       day.style.border = '1px solid gray'; day.style.padding = '3px 30px'; 
     var dayContainer = document.createElement('div');
       dayContainer.classList.add('day');
-      dayContainer.classList.add(el['name']);
+      dayContainer.classList.add(el);
       dayContainer.appendChild(day);
       dayContainer.style.display = 'inline-block'; 
       week.appendChild(dayContainer);
