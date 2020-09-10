@@ -30,7 +30,12 @@ function createSaveHoursBtn() {
   const createSaveHoursBtn = document.createElement('input');
       createSaveHoursBtn.style.border = "none";
       createSaveHoursBtn.style.fontWeight = "bold";
-      createSaveHoursBtn.style.height = "30px";
+      createSaveHoursBtn.style.height = "100%";
+      createSaveHoursBtn.style.borderLeft = '1px solid grey';
+      createSaveHoursBtn.style.borderRight = '1px solid grey';
+      createSaveHoursBtn.style.marginLeft = '1rem';
+      createSaveHoursBtn.style.padding = '0 1.5rem';
+
       createSaveHoursBtn.setAttribute('type', 'button');
       createSaveHoursBtn.setAttribute('value', 'Save it!');
       createSaveHoursBtn.style.color = "#fff";
