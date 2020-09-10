@@ -55,10 +55,7 @@ function createSaveDATABtn() {
       saveDATABtn.setAttribute('value', 'SAVE \nDATA');
       saveDATABtn.style.padding = '0.15rem 1rem'
 
-  
   const saveHoursBtnSymbol = resourceCreateSaveIcon();
-    
-    saveHoursBtnSymbol.style.marginTop = '0.5rem'
 
     saveDATABtnContainer.appendChild(saveDATABtn);
     saveDATABtnContainer.appendChild(saveHoursBtnSymbol);
@@ -422,6 +419,8 @@ function resourceCreateSaveIcon() {
     // saveHoursBtnSymbol.setAttributeNS(null, 'enableBackground', 'new 0 0 24 24');
     saveHoursBtnSymbol.setAttributeNS(null, 'viewBox', '0 0 24 24');
     saveHoursBtnSymbol.style.fill = '#fff';
+    saveHoursBtnSymbol.style.marginTop = '0.5rem'
+
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', 'm21.5 20h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.827 0 1.5-.673 1.5-1.5v-11c0-.827-.673-1.5-1.5-1.5h-11.5c-.133 0-.26-.053-.354-.146l-1.853-1.854h-5.293c-.827 0-1.5.673-1.5 1.5v13c0 .827.673 1.5 1.5 1.5h2c.276 0 .5.224.5.5s-.224.5-.5.5h-2c-1.379 0-2.5-1.122-2.5-2.5v-13c0-1.378 1.121-2.5 2.5-2.5h5.5c.133 0 .26.053.354.146l1.853 1.854h11.293c1.379 0 2.5 1.122 2.5 2.5v11c0 1.378-1.121 2.5-2.5 2.5z');
   const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
