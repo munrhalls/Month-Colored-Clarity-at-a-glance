@@ -57,10 +57,17 @@ function createSaveDATABtn() {
       saveDATABtn.setAttribute('type', 'button');
       saveDATABtn.setAttribute('value', 'SAVE \nDATA');
       saveDATABtn.style.padding = '0.25rem 1rem'
+  
+  const underLineGraphic = document.createElement('span');
+    underLineGraphic.style.borderTop = '1px solid #fff';
+    underLineGraphic.style.width = '7.5rem';
+    underLineGraphic.style.borderRadius = '50%'
+
 
   const saveIcon = resourceCreateSaveIcon();
     saveDATABtnContainer.appendChild(saveDATABtn);
     saveDATABtnContainer.appendChild(saveIcon);
+    saveDATABtnContainer.appendChild(underLineGraphic);
   document.getElementById('menu').appendChild(saveDATABtnContainer);
 
   saveDATABtnContainer.onclick = (function() {
