@@ -56,7 +56,7 @@ function createSaveDATABtn() {
   const saveDATABtn = document.createElement('input');
       saveDATABtn.setAttribute('type', 'button');
       saveDATABtn.setAttribute('value', 'SAVE \nDATA');
-      saveDATABtn.style.padding = '0.15rem 1rem'
+      saveDATABtn.style.padding = '0.25rem 1rem'
 
   const saveIcon = resourceCreateSaveIcon();
     saveDATABtnContainer.appendChild(saveDATABtn);
@@ -106,11 +106,12 @@ function createFillDataBtn() {
 
 const fillDataBtn = document.createElement('input');
     fillDataBtn.setAttribute('type', 'button');
-    fillDataBtn.setAttribute('value', 'FILL \nDATA');
+    fillDataBtn.setAttribute('value', 'FILL \n DATA');
     fillDataBtn.style.marginTop = 'auto';
     fillDataBtn.style.marginBottom = '0.4rem';
     fillDataBtn.style.marginRight = 'auto';
-    fillDataBtn.style.padding = '0.15rem 1rem'
+    fillDataBtn.style.padding = '0.15rem 0.5rem'
+
 
 const fillIcon = resourceCreateFillIcon();
   fillDataBtnContainer.appendChild(fillDataBtn);
