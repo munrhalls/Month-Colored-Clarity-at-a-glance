@@ -56,7 +56,7 @@ function createSaveDATABtn() {
       saveDATABtn.style.padding = '0.15rem 1rem'
 
   
-  const saveHoursBtnSymbol = createSaveIcon();
+  const saveHoursBtnSymbol = resourceCreateSaveIcon();
     
     saveHoursBtnSymbol.style.marginTop = '0.5rem'
 
@@ -415,7 +415,7 @@ function createMonths(monthNum) {
 }
 
 // RESOURCES (graphics and so on)
-function createSaveIcon() {
+function resourceCreateSaveIcon() {
   const saveHoursBtnSymbol = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     saveHoursBtnSymbol.setAttributeNS(null, 'height', '24');
     saveHoursBtnSymbol.setAttributeNS(null, 'width', '24');
