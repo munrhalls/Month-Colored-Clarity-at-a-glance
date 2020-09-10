@@ -56,14 +56,29 @@ function createSaveDATABtn() {
       saveDATABtn.style.padding = '0.15rem 1rem'
 
   const saveIcon = resourceCreateSaveIcon();
-
     saveDATABtnContainer.appendChild(saveDATABtn);
     saveDATABtnContainer.appendChild(saveIcon);
+
   document.getElementById('menu').appendChild(saveDATABtnContainer);
 
   saveDATABtnContainer.onclick = (function() {
-    console.log('ok')
-  })
+    function createTextFile(filename, data) {
+      var blob = new Blob([data], {type: 'text'});
+      if(window.navigator.msSaveOrOpenBlob) {
+          window.navigator.msSaveBlob(blob, filename);
+      }
+      else{
+          var elem = window.document.createElement('a');
+          elem.href = window.URL.createObjectURL(blob);
+          elem.download = filename;        
+          document.body.appendChild(elem);
+          elem.click();        
+          document.body.removeChild(elem);
+      }
+    }
+    createTextFile('Metrics: Deep work hours. Per day, week, month.');
+  });
+  
 } 
 
 function createWeeksContainer(monthNum) {
