@@ -55,10 +55,10 @@ function createSaveDATABtn() {
       saveDATABtn.setAttribute('value', 'SAVE \nDATA');
       saveDATABtn.style.padding = '0.15rem 1rem'
 
-  const saveHoursBtnSymbol = resourceCreateSaveIcon();
+  const saveIcon = resourceCreateSaveIcon();
 
     saveDATABtnContainer.appendChild(saveDATABtn);
-    saveDATABtnContainer.appendChild(saveHoursBtnSymbol);
+    saveDATABtnContainer.appendChild(saveIcon);
   document.getElementById('menu').appendChild(saveDATABtnContainer);
 
   saveDATABtnContainer.onclick = (function() {
@@ -413,13 +413,13 @@ function createMonths(monthNum) {
 
 // RESOURCES (graphics and so on)
 function resourceCreateSaveIcon() {
-  const saveHoursBtnSymbol = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    saveHoursBtnSymbol.setAttributeNS(null, 'height', '24');
-    saveHoursBtnSymbol.setAttributeNS(null, 'width', '24');
-    // saveHoursBtnSymbol.setAttributeNS(null, 'enableBackground', 'new 0 0 24 24');
-    saveHoursBtnSymbol.setAttributeNS(null, 'viewBox', '0 0 24 24');
-    saveHoursBtnSymbol.style.fill = '#fff';
-    saveHoursBtnSymbol.style.marginTop = '0.5rem'
+  const saveIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    saveIcon.setAttributeNS(null, 'height', '24');
+    saveIcon.setAttributeNS(null, 'width', '24');
+    // saveIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 24 24');
+    saveIcon.setAttributeNS(null, 'viewBox', '0 0 24 24');
+    saveIcon.style.fill = '#fff';
+    saveIcon.style.marginTop = '0.5rem'
 
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', 'm21.5 20h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.827 0 1.5-.673 1.5-1.5v-11c0-.827-.673-1.5-1.5-1.5h-11.5c-.133 0-.26-.053-.354-.146l-1.853-1.854h-5.293c-.827 0-1.5.673-1.5 1.5v13c0 .827.673 1.5 1.5 1.5h2c.276 0 .5.224.5.5s-.224.5-.5.5h-2c-1.379 0-2.5-1.122-2.5-2.5v-13c0-1.378 1.121-2.5 2.5-2.5h5.5c.133 0 .26.053.354.146l1.853 1.854h11.293c1.379 0 2.5 1.122 2.5 2.5v11c0 1.378-1.121 2.5-2.5 2.5z');
@@ -430,11 +430,11 @@ function resourceCreateSaveIcon() {
   const path4 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path4.setAttribute('d', 'm15.5 22h-7c-.827 0-1.5-.673-1.5-1.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276.225.5.5.5h7c.275 0 .5-.224.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .827-.673 1.5-1.5 1.5z');
 
-  saveHoursBtnSymbol.appendChild(path);
-  saveHoursBtnSymbol.appendChild(path2);
-  saveHoursBtnSymbol.appendChild(path3);
-  saveHoursBtnSymbol.appendChild(path4);
-  return saveHoursBtnSymbol;
+  saveIcon.appendChild(path);
+  saveIcon.appendChild(path2);
+  saveIcon.appendChild(path3);
+  saveIcon.appendChild(path4);
+  return saveIcon;
 }
 function createCopyrightNote() {
   const copyrightNote = document.createElement('div');
