@@ -86,38 +86,37 @@ function createSaveDATABtn() {
   });
 } 
 function createFillDataBtn() {
-  const saveDATABtnContainer = (function createFillDataContainer() {
-    const saveDATABtnContainer = document.createElement('div');
-      saveDATABtnContainer.style.border = "none";
-      saveDATABtnContainer.style.fontWeight = "bold";
-      saveDATABtnContainer.style.height = "100%";
-      saveDATABtnContainer.style.borderLeft = '1px solid grey';
-      saveDATABtnContainer.style.borderRight = '1px solid grey';
-      saveDATABtnContainer.style.marginLeft = '1rem';
-      saveDATABtnContainer.style.padding = '0 1.5rem';
-      saveDATABtnContainer.style.textAlign = 'left';
-      saveDATABtnContainer.style.color = "#fff";
-      saveDATABtnContainer.style.position = 'relative';
-      saveDATABtnContainer.style.display = 'flex';
-      saveDATABtnContainer.style.flexDirection = 'column';
-      saveDATABtnContainer.style.alignItems = 'center';
-      saveDATABtnContainer.style.justifyContent = 'center';
-      saveDATABtnContainer.style.flexDirection = 'column';
-    return saveDATABtnContainer;
+  const fillDataBtnContainer = (function createFillDataContainer() {
+    const fillDataBtnContainer = document.createElement('div');
+      fillDataBtnContainer.style.border = "none";
+      fillDataBtnContainer.style.fontWeight = "bold";
+      fillDataBtnContainer.style.height = "100%";
+      fillDataBtnContainer.style.borderLeft = '1px solid grey';
+      fillDataBtnContainer.style.borderRight = '1px solid grey';
+      fillDataBtnContainer.style.marginLeft = '1rem';
+      fillDataBtnContainer.style.padding = '0 1.5rem';
+      fillDataBtnContainer.style.textAlign = 'left';
+      fillDataBtnContainer.style.color = "#fff";
+      fillDataBtnContainer.style.position = 'relative';
+      fillDataBtnContainer.style.display = 'flex';
+      fillDataBtnContainer.style.flexDirection = 'column';
+      fillDataBtnContainer.style.alignItems = 'center';
+      fillDataBtnContainer.style.justifyContent = 'center';
+      fillDataBtnContainer.style.flexDirection = 'column';
+    return fillDataBtnContainer;
   })()
 
-const saveDATABtn = document.createElement('input');
-    saveDATABtn.setAttribute('type', 'button');
+const fillDataBtn = document.createElement('input');
+    fillDataBtn.setAttribute('type', 'button');
+    fillDataBtn.setAttribute('value', 'FILL \nDATA');
+    fillDataBtn.style.padding = '0.15rem 1rem'
 
-    saveDATABtn.setAttribute('value', 'FILL \nDATA');
-    saveDATABtn.style.padding = '0.15rem 1rem'
+const fillIcon = resourceFillIcon();
+  fillDataBtnContainer.appendChild(fillDataBtn);
+  fillDataBtnContainer.appendChild(fillIcon);
+document.getElementById('menu').appendChild(fillIcon);
 
-const saveIcon = resourceCreateSaveIcon();
-  saveDATABtnContainer.appendChild(saveDATABtn);
-  saveDATABtnContainer.appendChild(saveIcon);
-document.getElementById('menu').appendChild(saveDATABtnContainer);
-
-saveDATABtnContainer.onclick = (function() {
+fillDataBtnContainer.onclick = (function() {
   function createTextFile(filename, data) {
     var blob = new Blob([data], {type: 'text'});
     if(window.navigator.msSaveOrOpenBlob) {
@@ -515,7 +514,7 @@ function resourceFillIcon() {
   fillIcon.setAttributeNS(null, 'y', '0px');
   fillIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 100 100');
   fillIcon.setAttributeNS(null, 'viewBox', '0 0 100 100');
-  fillIcon.setAttributeNS(null, 'xml:space', 'preserve');
+  // fillIcon.setAttributeNS(null, 'xml:space', 'preserve');
   fillIcon.style.fill = '#fff';
   fillIcon.style.marginTop = '0.5rem'
 
