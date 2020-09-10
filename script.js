@@ -541,6 +541,8 @@ function resourceFillIcon() {
 function createCopyrightNote() {
   const copyrightNote = document.createElement('div');
   copyrightNote.classList.add('copyright');
+  copyrightNote.style.letterSpacing = '0.25rem';
+  copyrightNote.style.padding = '0.15rem';
   copyrightNote.innerText = 'Icons made by ';
   const link = document.createElement('a');
     link.href = 'https://icon54.com/';
@@ -570,19 +572,22 @@ function createCopyrightNote2() {
     // <a target="_blank" href="https://www.iconbros.com/icons/ib-o-f-analysis">Analysis</a> icon by <a target="_blank" href="https://iconbros.com">IconBros</a>
   const copyrightNote2 = document.createElement('div');
   copyrightNote2.classList.add('copyright');
-  copyrightNote2.innerText = 'Analysis ';
+  copyrightNote2.style.letterSpacing = '0.25rem';
+  copyrightNote2.style.padding = '0.15rem';
   const link = document.createElement('a');
     link.href = 'https://www.iconbros.com/icons/ib-o-f-analysis/';
-    link.title = 'Pixel perfect';
-    link.innerText = 'Pixel perfect';
+    link.title = 'IconBros';
+    link.innerText = 'Analysis';
+    link.target = '_blank';
     copyrightNote2.appendChild(link);
   const betweenLinksText = document.createElement('span');
-    betweenLinksText.innerText = ' from ';
+    betweenLinksText.innerText = ' icon by ';
     copyrightNote2.appendChild(betweenLinksText);
   const linkTwo = document.createElement('a');
-    linkTwo.href = 'https://www.flaticon.com/';
-    linkTwo.title = 'Flaticon';
-    linkTwo.innerText = 'www.flaticon.com';
+    linkTwo.href = 'https://iconbros.com';
+    linkTwo.title = 'IconBros';
+    linkTwo.innerText = 'IconBros';
+    linkTwo.target = '_blank';
   copyrightNote2.appendChild(linkTwo);
   const dot = document.createElement('span');
     dot.innerText = '.';
