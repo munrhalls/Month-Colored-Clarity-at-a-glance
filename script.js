@@ -28,6 +28,8 @@ function createMenu() {
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
   createSaveDATABtn();
+  createFillDataBtn();
+
 }
 function createSaveDATABtn() {
     const saveDATABtnContainer = (function createSaveDataBtnContainer() {
@@ -58,7 +60,6 @@ function createSaveDATABtn() {
   const saveIcon = resourceCreateSaveIcon();
     saveDATABtnContainer.appendChild(saveDATABtn);
     saveDATABtnContainer.appendChild(saveIcon);
-
   document.getElementById('menu').appendChild(saveDATABtnContainer);
 
   saveDATABtnContainer.onclick = (function() {
@@ -82,9 +83,60 @@ function createSaveDATABtn() {
     console.log('REMEMBER TO ADD DEBOUNCER FUNC LATER');
     createTextFile('Metrics: Deep work hours. Per day, week, month.');
   });
-  
 } 
+function createFillDataBtn() {
+  const saveDATABtnContainer = (function createSaveDataBtnContainer() {
+    const saveDATABtnContainer = document.createElement('div');
+      saveDATABtnContainer.style.border = "none";
+      saveDATABtnContainer.style.fontWeight = "bold";
+      saveDATABtnContainer.style.height = "100%";
+      saveDATABtnContainer.style.borderLeft = '1px solid grey';
+      saveDATABtnContainer.style.borderRight = '1px solid grey';
+      saveDATABtnContainer.style.marginLeft = '1rem';
+      saveDATABtnContainer.style.padding = '0 1.5rem';
+      saveDATABtnContainer.style.textAlign = 'left';
+      saveDATABtnContainer.style.color = "#fff";
+      saveDATABtnContainer.style.position = 'relative';
+      saveDATABtnContainer.style.display = 'flex';
+      saveDATABtnContainer.style.flexDirection = 'column';
+      saveDATABtnContainer.style.alignItems = 'center';
+      saveDATABtnContainer.style.justifyContent = 'center';
+      saveDATABtnContainer.style.flexDirection = 'column';
+    return saveDATABtnContainer;
+  })()
 
+const saveDATABtn = document.createElement('input');
+    saveDATABtn.setAttribute('type', 'button');
+    saveDATABtn.setAttribute('value', 'SAVE \nDATA');
+    saveDATABtn.style.padding = '0.15rem 1rem'
+
+const saveIcon = resourceCreateSaveIcon();
+  saveDATABtnContainer.appendChild(saveDATABtn);
+  saveDATABtnContainer.appendChild(saveIcon);
+document.getElementById('menu').appendChild(saveDATABtnContainer);
+
+saveDATABtnContainer.onclick = (function() {
+  function createTextFile(filename, data) {
+    var blob = new Blob([data], {type: 'text'});
+    if(window.navigator.msSaveOrOpenBlob) {
+        window.navigator.msSaveBlob(blob, filename);
+    }
+    else{
+        var elem = window.document.createElement('a');
+        elem.href = window.URL.createObjectURL(blob);
+        elem.download = filename;        
+        document.body.appendChild(elem);
+        elem.click();        
+        document.body.removeChild(elem);
+    }
+  }
+  // (!!!!!!!!!!!!!!) ADD DEBOUNCER FUNC 
+  // (!!!!!!!!!!!!!!) ADD DEBOUNCER FUNC 
+  // (!!!!!!!!!!!!!!) ADD DEBOUNCER FUNC 
+  console.log('REMEMBER TO ADD DEBOUNCER FUNC LATER');
+  createTextFile('Metrics: Deep work hours. Per day, week, month.');
+});
+} 
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
   weeksContainer.className = 'weeksContainer';
