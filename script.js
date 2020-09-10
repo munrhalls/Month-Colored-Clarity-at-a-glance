@@ -92,8 +92,7 @@ function createFillDataBtn() {
       fillDataBtnContainer.style.height = "100%";
       fillDataBtnContainer.style.width = "15rem";
       fillDataBtnContainer.style.borderRight = '1px solid grey';
-      fillDataBtnContainer.style.marginLeft = '1rem';
-      fillDataBtnContainer.style.padding = '0 1.5rem';
+      fillDataBtnContainer.style.padding = '0 1rem 0 0';
       fillDataBtnContainer.style.textAlign = 'left';
       fillDataBtnContainer.style.color = "#fff";
       fillDataBtnContainer.style.position = 'relative';
@@ -106,11 +105,16 @@ function createFillDataBtn() {
 
 const fillDataBtn = document.createElement('input');
     fillDataBtn.setAttribute('type', 'button');
-    fillDataBtn.setAttribute('value', 'FILL \n DATA');
+    fillDataBtn.setAttribute('value', 'FILL DATA');
     fillDataBtn.style.marginTop = 'auto';
     fillDataBtn.style.marginBottom = '0.4rem';
     fillDataBtn.style.marginRight = 'auto';
-    fillDataBtn.style.padding = '0.15rem 0.5rem'
+    fillDataBtn.style.marginLeft = '1rem';
+    fillDataBtn.style.border = 'none';
+
+
+
+    fillDataBtn.style.padding = '0.25rem 0.5rem'
 
 
 const fillIcon = resourceCreateFillIcon();
