@@ -485,10 +485,6 @@ function createMonths(monthNum) {
 }
 
 // RESOURCES (graphics and so on)
-
-
-
-
 function resourceCreateSaveIcon() {
   const saveIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     saveIcon.setAttributeNS(null, 'height', '24');
@@ -514,29 +510,19 @@ function resourceCreateSaveIcon() {
   return saveIcon;
 }
 function resourceFillIcon() {
-  
-  const saveIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  saveIcon.setAttributeNS(null, 'height', '24');
-  saveIcon.setAttributeNS(null, 'width', '24');
-  // saveIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 24 24');
-  saveIcon.setAttributeNS(null, 'viewBox', '0 0 24 24');
-  saveIcon.style.fill = '#fff';
-  saveIcon.style.marginTop = '0.5rem'
+  const fillIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  fillIcon.setAttributeNS(null, 'x', '0px');
+  fillIcon.setAttributeNS(null, 'y', '0px');
+  fillIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 100 100');
+  fillIcon.setAttributeNS(null, 'viewBox', '0 0 100 100');
+  fillIcon.setAttributeNS(null, 'xml:space', 'preserve');
+  fillIcon.style.fill = '#fff';
+  fillIcon.style.marginTop = '0.5rem'
 
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.setAttribute('d', 'm21.5 20h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.827 0 1.5-.673 1.5-1.5v-11c0-.827-.673-1.5-1.5-1.5h-11.5c-.133 0-.26-.053-.354-.146l-1.853-1.854h-5.293c-.827 0-1.5.673-1.5 1.5v13c0 .827.673 1.5 1.5 1.5h2c.276 0 .5.224.5.5s-.224.5-.5.5h-2c-1.379 0-2.5-1.122-2.5-2.5v-13c0-1.378 1.121-2.5 2.5-2.5h5.5c.133 0 .26.053.354.146l1.853 1.854h11.293c1.379 0 2.5 1.122 2.5 2.5v11c0 1.378-1.121 2.5-2.5 2.5z');
-  const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path2.setAttribute('d', 'm12 18.75c-.276 0-.5-.224-.5-.5v-7.75c0-.276.224-.5.5-.5s.5.224.5.5v7.75c0 .277-.224.5-.5.5z');
-  const path3 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path3.setAttribute('d', 'm12 19c-.128 0-.256-.049-.354-.146l-2.5-2.5c-.195-.195-.195-.512 0-.707s.512-.195.707 0l2.147 2.146 2.146-2.146c.195-.195.512-.195.707 0s.195.512 0 .707l-2.5 2.5c-.097.097-.225.146-.353.146z');
-  const path4 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path4.setAttribute('d', 'm15.5 22h-7c-.827 0-1.5-.673-1.5-1.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276.225.5.5.5h7c.275 0 .5-.224.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .827-.673 1.5-1.5 1.5z');
-
-  saveIcon.appendChild(path);
-  saveIcon.appendChild(path2);
-  saveIcon.appendChild(path3);
-  saveIcon.appendChild(path4);
-  return saveIcon; 
+    path.setAttribute('d', 'M48,71h4v20c0,1.1-0.9,2-2,2s-2-0.9-2-2V71z M32.07,90.47c-0.29,1.07,0.34,2.17,1.4,2.46C33.65,92.98,33.83,93,34,93c0.88,0,1.69-0.58,1.93-1.47L41.53,71h-4.15L32.07,90.47z M62.62,71h-4.15l5.6,20.53C64.31,92.42,65.12,93,66,93c0.17,0,0.35-0.02,0.53-0.07c1.06-0.29,1.69-1.39,1.4-2.46L62.62,71z M80,7H20c-1.65,0-3,1.35-3,3c0,1.65,1.35,3,3,3h60c1.65,0,3-1.35,3-3C83,8.35,81.65,7,80,7z M23,17h54v48c0,1.1-0.9,2-2,2H25c-1.1,0-2-0.9-2-2V17z M32.59,47.41l4,4C36.98,51.8,37.49,52,38,52s1.02-0.2,1.41-0.59L48,42.83l4.59,4.58C52.98,47.8,53.49,48,54,48s1.02-0.2,1.41-0.59l7-7L64,38.83V44c0,1.1,0.9,2,2,2s2-0.9,2-2V34c0-0.13-0.01-0.26-0.04-0.39c-0.01-0.06-0.03-0.12-0.05-0.17c-0.02-0.07-0.04-0.14-0.06-0.2c-0.03-0.07-0.07-0.13-0.1-0.2c-0.03-0.05-0.05-0.1-0.09-0.15c-0.07-0.11-0.15-0.21-0.25-0.3c-0.09-0.1-0.19-0.18-0.3-0.25c-0.05-0.04-0.1-0.06-0.15-0.08c-0.06-0.04-0.13-0.08-0.2-0.11c-0.06-0.02-0.13-0.04-0.2-0.06c-0.05-0.02-0.11-0.04-0.17-0.05C66.26,32.01,66.13,32,66,32H56c-1.1,0-2,0.9-2,2c0,1.1,0.9,2,2,2h5.17l-1.58,1.59L54,43.17l-4.59-4.58c-0.78-0.79-2.04-0.79-2.82,0L38,47.17l-2.59-2.58c-0.78-0.79-2.04-0.79-2.82,0C31.8,45.37,31.8,46.63,32.59,47.41z');
+  fillIcon.appendChild(path);
+  return fillIcon; 
 }
 function createCopyrightNote() {
   const copyrightNote = document.createElement('div');
@@ -569,7 +555,6 @@ function createCopyrightNote() {
 }
 
 function createCopyrightNote2() {
-    // <a target="_blank" href="https://www.iconbros.com/icons/ib-o-f-analysis">Analysis</a> icon by <a target="_blank" href="https://iconbros.com">IconBros</a>
   const copyrightNote2 = document.createElement('div');
   copyrightNote2.classList.add('copyright');
   copyrightNote2.style.letterSpacing = '0.25rem';
