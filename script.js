@@ -113,7 +113,7 @@ const fillDataBtn = document.createElement('input');
 const fillIcon = resourceCreateFillIcon();
   fillDataBtnContainer.appendChild(fillDataBtn);
   fillDataBtnContainer.appendChild(fillIcon);
-document.getElementById('menu').appendChild(fillIcon);
+document.getElementById('menu').appendChild(fillDataBtnContainer);
 
 fillDataBtnContainer.onclick = (function() {
   console.log('ok')
