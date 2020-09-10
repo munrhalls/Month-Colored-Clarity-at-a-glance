@@ -6,33 +6,7 @@ window.addEventListener('load', function () {
   }
   createCopyrightNote();
 });
-function createCopyrightNote() {
-  const copyrightNote = document.createElement('div');
-  copyrightNote.id = 'copyright';
-  copyrightNote.innerText = 'Icons made by ';
-  const link = document.createElement('a');
-    link.href = 'https://icon54.com/';
-    link.title = 'Pixel perfect';
-    link.innerText = 'Pixel perfect';
-    copyrightNote.appendChild(link);
-  const betweenLinksText = document.createElement('span');
-    betweenLinksText.innerText = ' from ';
-    copyrightNote.appendChild(betweenLinksText);
-  const linkTwo = document.createElement('a');
-    linkTwo.href = 'https://www.flaticon.com/';
-    linkTwo.title = 'Flaticon';
-    linkTwo.innerText = 'www.flaticon.com';
-  copyrightNote.appendChild(linkTwo);
-  const dot = document.createElement('span');
-    dot.innerText = '.';
-    dot.style.color = 'blue';
-    copyrightNote.appendChild(dot);
-  copyrightNote.style.backgroundColor = '#000';
-  copyrightNote.style.color = '#fff';
-  copyrightNote.style.fontSize = '10px'
-  copyrightNote.style.textAlign = 'center';
-  document.getElementById('root').appendChild(copyrightNote);
-}
+
 function createMenu() {
   const menu = document.createElement('div');
   menu.setAttribute('id', 'menu');  
@@ -70,13 +44,18 @@ function createSaveHoursBtn() {
       createSaveHoursBtn.style.color = "#fff";
 
   const saveHoursBtnSymbol = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    saveHoursBtnSymbol.setAttribute( 'viewBox', '0 0 100 100' );
+{/* <svg id="saveFile" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m21.5 20h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.827 0 1.5-.673 1.5-1.5v-11c0-.827-.673-1.5-1.5-1.5h-11.5c-.133 0-.26-.053-.354-.146l-1.853-1.854h-5.293c-.827 0-1.5.673-1.5 1.5v13c0 .827.673 1.5 1.5 1.5h2c.276 0 .5.224.5.5s-.224.5-.5.5h-2c-1.379 0-2.5-1.122-2.5-2.5v-13c0-1.378 1.121-2.5 2.5-2.5h5.5c.133 0 .26.053.354.146l1.853 1.854h11.293c1.379 0 2.5 1.122 2.5 2.5v11c0 1.378-1.121 2.5-2.5 2.5z"/>
+<path d="m12 18.75c-.276 0-.5-.224-.5-.5v-7.75c0-.276.224-.5.5-.5s.5.224.5.5v7.75c0 .277-.224.5-.5.5z"/><path d="m12 19c-.128 0-.256-.049-.354-.146l-2.5-2.5c-.195-.195-.195-.512 0-.707s.512-.195.707 0l2.147 2.146 2.146-2.146c.195-.195.512-.195.707 0s.195.512 0 .707l-2.5 2.5c-.097.097-.225.146-.353.146z"/><path d="m15.5 22h-7c-.827 0-1.5-.673-1.5-1.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276.225.5.5.5h7c.275 0 .5-.224.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .827-.673 1.5-1.5 1.5z"/></svg> */}
+    saveHoursBtnSymbol.setAttributeNS(null, 'viewBox', '0 0 24 24');
+    saveHoursBtnSymbol.setAttributeNS(null, 'height', '512');
+    saveHoursBtnSymbol.setAttributeNS(null, 'enableBackground', 'new 0 0 24 24');
+
     // create arrow
-    var path = document.createElementNS( saveHoursBtnSymbol, 'path' );
-    path.setAttribute( 'd', 'M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z' );
-    // add class so it can be styled with CSS
-    path.setAttribute( 'class', 'arrow' );
-    saveHoursBtnSymbol.appendChild( path );
+    var path = document.createElementNS( saveHoursBtnSymbol, 'path');
+    path.setAttribute('d', 'm21.5 20h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.827 0 1.5-.673 1.5-1.5v-11c0-.827-.673-1.5-1.5-1.5h-11.5c-.133 0-.26-.053-.354-.146l-1.853-1.854h-5.293c-.827 0-1.5.673-1.5 1.5v13c0 .827.673 1.5 1.5 1.5h2c.276 0 .5.224.5.5s-.224.5-.5.5h-2c-1.379 0-2.5-1.122-2.5-2.5v-13c0-1.378 1.121-2.5 2.5-2.5h5.5c.133 0 .26.053.354.146l1.853 1.854h11.293c1.379 0 2.5 1.122 2.5 2.5v11c0 1.378-1.121 2.5-2.5 2.5z' );
+    var pathTwo = document.createElementNS( saveHoursBtnSymbol, 'path');
+    pathTwo.setAttribute('d', 'm12 18.75c-.276 0-.5-.224-.5-.5v-7.75c0-.276.224-.5.5-.5s.5.224.5.5v7.75c0 .277-.224.5-.5.5z"/><path d="m12 19c-.128 0-.256-.049-.354-.146l-2.5-2.5c-.195-.195-.195-.512 0-.707s.512-.195.707 0l2.147 2.146 2.146-2.146c.195-.195.512-.195.707 0s.195.512 0 .707l-2.5 2.5c-.097.097-.225.146-.353.146z"/><path d="m15.5 22h-7c-.827 0-1.5-.673-1.5-1.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276.225.5.5.5h7c.275 0 .5-.224.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .827-.673 1.5-1.5 1.5z' );
+    saveHoursBtnSymbol.appendChild(pathTwo);
     createSaveHoursBtn.appendChild(saveHoursBtnSymbol);
   document.getElementById('menu').appendChild(createSaveHoursBtn);
 }
@@ -424,4 +403,31 @@ function createMonths(monthNum) {
   createWeek(2, monthNum);
   createWeek(3, monthNum);
   createWeek(4, monthNum);
+}
+function createCopyrightNote() {
+  const copyrightNote = document.createElement('div');
+  copyrightNote.id = 'copyright';
+  copyrightNote.innerText = 'Icons made by ';
+  const link = document.createElement('a');
+    link.href = 'https://icon54.com/';
+    link.title = 'Pixel perfect';
+    link.innerText = 'Pixel perfect';
+    copyrightNote.appendChild(link);
+  const betweenLinksText = document.createElement('span');
+    betweenLinksText.innerText = ' from ';
+    copyrightNote.appendChild(betweenLinksText);
+  const linkTwo = document.createElement('a');
+    linkTwo.href = 'https://www.flaticon.com/';
+    linkTwo.title = 'Flaticon';
+    linkTwo.innerText = 'www.flaticon.com';
+  copyrightNote.appendChild(linkTwo);
+  const dot = document.createElement('span');
+    dot.innerText = '.';
+    dot.style.color = 'blue';
+    copyrightNote.appendChild(dot);
+  copyrightNote.style.backgroundColor = '#000';
+  copyrightNote.style.color = '#fff';
+  copyrightNote.style.fontSize = '10px'
+  copyrightNote.style.textAlign = 'center';
+  document.getElementById('root').appendChild(copyrightNote);
 }
