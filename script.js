@@ -43,12 +43,10 @@ function createSaveHoursBtn() {
       createSaveHoursBtn.style.color = "#fff";
 
   const saveHoursBtnSymbol = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    saveHoursBtnSymbol.style.width = '24px';
-    saveHoursBtnSymbol.style.height = '24px';
-    saveHoursBtnSymbol.setAttributeNS(null, 'height', '200');
-    saveHoursBtnSymbol.setAttributeNS(null, 'width', '200');
-    saveHoursBtnSymbol.setAttributeNS(null, 'viewBox', '24 24 24 24');
-
+    saveHoursBtnSymbol.setAttributeNS(null, 'height', '24');
+    saveHoursBtnSymbol.setAttributeNS(null, 'width', '24');
+    saveHoursBtnSymbol.setAttributeNS(null, 'enableBackground', 'new 0 0 24 24');
+    saveHoursBtnSymbol.setAttributeNS(null, 'viewBox', '0 0 24 24');
     var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', 'm21.5 20h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.827 0 1.5-.673 1.5-1.5v-11c0-.827-.673-1.5-1.5-1.5h-11.5c-.133 0-.26-.053-.354-.146l-1.853-1.854h-5.293c-.827 0-1.5.673-1.5 1.5v13c0 .827.673 1.5 1.5 1.5h2c.276 0 .5.224.5.5s-.224.5-.5.5h-2c-1.379 0-2.5-1.122-2.5-2.5v-13c0-1.378 1.121-2.5 2.5-2.5h5.5c.133 0 .26.053.354.146l1.853 1.854h11.293c1.379 0 2.5 1.122 2.5 2.5v11c0 1.378-1.121 2.5-2.5 2.5z');
     var path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -62,8 +60,8 @@ function createSaveHoursBtn() {
     saveHoursBtnSymbol.appendChild(path2);
     saveHoursBtnSymbol.appendChild(path3);
     saveHoursBtnSymbol.appendChild(path4);
-    createSaveHoursBtn.appendChild(saveHoursBtnSymbol);
-
+    // createSaveHoursBtn.appendChild(saveHoursBtnSymbol);
+    document.getElementById('root').appendChild(saveHoursBtnSymbol);
   document.getElementById('menu').appendChild(createSaveHoursBtn);
 }
 
