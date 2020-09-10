@@ -37,7 +37,8 @@ function createSaveHoursBtn() {
       createSaveHoursBtn.style.padding = '0 1.5rem';
 
       createSaveHoursBtn.setAttribute('type', 'button');
-      createSaveHoursBtn.setAttribute('value', 'Save it!');
+      createSaveHoursBtn.setAttribute('value', 'SAVE \n DATA');
+      createSaveHoursBtn.style.textAlign = 'left';
       createSaveHoursBtn.style.color = "#fff";
   document.getElementById('menu').appendChild(createSaveHoursBtn);
 }
