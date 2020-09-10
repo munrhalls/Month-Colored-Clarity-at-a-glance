@@ -51,20 +51,17 @@ function createSaveDATABtn() {
         saveDATABtnContainer.style.justifyContent = 'center';
         saveDATABtnContainer.style.flexDirection = 'column';
       return saveDATABtnContainer;
-    })()
-
+    })();
   const saveDATABtn = document.createElement('input');
-      saveDATABtn.setAttribute('type', 'button');
-      saveDATABtn.setAttribute('value', 'SAVE \nDATA');
-      saveDATABtn.style.padding = '0.25rem 1rem'
-  
+    saveDATABtn.setAttribute('type', 'button');
+    saveDATABtn.setAttribute('value', 'SAVE \nDATA');
+    saveDATABtn.style.padding = '0.25rem 1rem'
   const underLineGraphic = resourceCreateUnderLineGraphic();
-
-
   const saveIcon = resourceCreateSaveIcon();
-    saveDATABtnContainer.appendChild(saveDATABtn);
-    saveDATABtnContainer.appendChild(saveIcon);
-    saveDATABtnContainer.appendChild(underLineGraphic);
+
+  saveDATABtnContainer.appendChild(saveDATABtn);
+  saveDATABtnContainer.appendChild(saveIcon);
+  saveDATABtnContainer.appendChild(underLineGraphic);
   document.getElementById('menu').appendChild(saveDATABtnContainer);
 
   saveDATABtnContainer.onclick = (function() {
