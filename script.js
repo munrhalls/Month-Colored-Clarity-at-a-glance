@@ -58,13 +58,6 @@ function createSaveDATABtn() {
       saveDATABtn.setAttribute('value', 'SAVE \nDATA');
       saveDATABtn.style.padding = '0.25rem 1rem'
   
-  function resourceCreateUnderLineGraphic() {
-    const underLineGraphic = document.createElement('span');
-    underLineGraphic.style.borderTop = '1px solid #fff';
-    underLineGraphic.style.width = '7.5rem';
-    underLineGraphic.style.borderRadius = '50%'
-    return underLineGraphic;
-  }
   const underLineGraphic = resourceCreateUnderLineGraphic();
 
 
@@ -521,6 +514,13 @@ function resourceCreateFillIcon() {
   fillIcon.appendChild(path);
   return fillIcon; 
 }
+function resourceCreateUnderLineGraphic() {
+  const underLineGraphic = document.createElement('span');
+  underLineGraphic.style.borderTop = '1px solid #fff';
+  underLineGraphic.style.width = '7.5rem';
+  underLineGraphic.style.borderRadius = '50%'
+  return underLineGraphic;
+}
 function createCopyrightNote() {
   const copyrightNote = document.createElement('div');
   copyrightNote.classList.add('copyright');
@@ -550,7 +550,6 @@ function createCopyrightNote() {
   copyrightNote.style.textAlign = 'center';
   document.getElementById('root').appendChild(copyrightNote);
 }
-
 function createCopyrightNote2() {
   const copyrightNote2 = document.createElement('div');
   copyrightNote2.classList.add('copyright');
