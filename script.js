@@ -1,14 +1,13 @@
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
     createMenu();
-    createSaveHoursBtn();
   for (var i = 0; i < 12; i++) {
     createMonths(i);
   }
 });
 function createMenu() {
   const menu = document.createElement('div');
-  menu.classList.add('menu');
+  menu.setAttribute('id', 'menu');  
   const title = document.createElement('div');
     menu.style.color = '#fff';
     menu.style.height = '6rem';
@@ -26,13 +25,13 @@ function createMenu() {
 
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
+  createSaveHoursBtn();
 }
 function createSaveHoursBtn() {
-  let hoursSet = new Set();
-
- 
-  const hoursDATA = hoursSet;
-  console.log(hoursDATA);
+  const saveAllHoursToTxtBtn = document.createElement('div');
+  saveAllHoursToTxtBtn.innerText = 'Save Hours data';
+  saveAllHoursToTxtBtn.style.color = "#fff";
+  document.getElementById('menu').appendChild(saveAllHoursToTxtBtn);
 }
 
 function createWeeksContainer(monthNum) {
