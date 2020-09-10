@@ -4,7 +4,35 @@ window.addEventListener('load', function () {
   for (var i = 0; i < 12; i++) {
     createMonths(i);
   }
+  createCopyrightNote();
 });
+function createCopyrightNote() {
+  const copyrightNote = document.createElement('div');
+  copyrightNote.id = 'copyright';
+  copyrightNote.innerText = 'Icons made by ';
+  const link = document.createElement('a');
+    link.href = 'https://icon54.com/';
+    link.title = 'Pixel perfect';
+    link.innerText = 'Pixel perfect';
+    copyrightNote.appendChild(link);
+  const betweenLinksText = document.createElement('span');
+    betweenLinksText.innerText = ' from ';
+    copyrightNote.appendChild(betweenLinksText);
+  const linkTwo = document.createElement('a');
+    linkTwo.href = 'https://www.flaticon.com/';
+    linkTwo.title = 'Flaticon';
+    linkTwo.innerText = 'www.flaticon.com';
+  copyrightNote.appendChild(linkTwo);
+  const dot = document.createElement('span');
+    dot.innerText = '.';
+    dot.style.color = 'blue';
+    copyrightNote.appendChild(dot);
+  copyrightNote.style.backgroundColor = '#000';
+  copyrightNote.style.color = '#fff';
+  copyrightNote.style.fontSize = '10px'
+  copyrightNote.style.textAlign = 'center';
+  document.getElementById('root').appendChild(copyrightNote);
+}
 function createMenu() {
   const menu = document.createElement('div');
   menu.setAttribute('id', 'menu');  
@@ -40,6 +68,16 @@ function createSaveHoursBtn() {
       createSaveHoursBtn.setAttribute('value', 'SAVE \n DATA');
       createSaveHoursBtn.style.textAlign = 'left';
       createSaveHoursBtn.style.color = "#fff";
+
+  const saveHoursBtnSymbol = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    saveHoursBtnSymbol.setAttribute( 'viewBox', '0 0 100 100' );
+    // create arrow
+    var path = document.createElementNS( saveHoursBtnSymbol, 'path' );
+    path.setAttribute( 'd', 'M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z' );
+    // add class so it can be styled with CSS
+    path.setAttribute( 'class', 'arrow' );
+    saveHoursBtnSymbol.appendChild( path );
+    createSaveHoursBtn.appendChild(saveHoursBtnSymbol);
   document.getElementById('menu').appendChild(createSaveHoursBtn);
 }
 
