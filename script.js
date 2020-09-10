@@ -35,21 +35,24 @@ function createMenu() {
 function createSaveDATABtn() {
     const saveDATABtnContainer = (function createSaveDataBtnContainer() {
       const saveDATABtnContainer = document.createElement('div');
+        //aesthethics
         saveDATABtnContainer.style.border = "none";
-        saveDATABtnContainer.style.fontWeight = "bold";
-        saveDATABtnContainer.style.height = "100%";
         saveDATABtnContainer.style.borderLeft = '1px solid grey';
         saveDATABtnContainer.style.borderRight = '1px solid grey';
-        saveDATABtnContainer.style.marginLeft = '1rem';
-        saveDATABtnContainer.style.padding = '0 1.5rem';
+        saveDATABtnContainer.style.fontWeight = "bold";
         saveDATABtnContainer.style.textAlign = 'left';
         saveDATABtnContainer.style.color = "#fff";
+        //display
         saveDATABtnContainer.style.position = 'relative';
         saveDATABtnContainer.style.display = 'flex';
         saveDATABtnContainer.style.flexDirection = 'column';
         saveDATABtnContainer.style.alignItems = 'center';
         saveDATABtnContainer.style.justifyContent = 'center';
         saveDATABtnContainer.style.flexDirection = 'column';
+        saveDATABtnContainer.style.height = "100%";
+        saveDATABtnContainer.style.marginLeft = '1rem';
+        saveDATABtnContainer.style.padding = '0 1.5rem';
+
       return saveDATABtnContainer;
     })();
   const saveDATABtn = document.createElement('input');
@@ -57,11 +60,18 @@ function createSaveDATABtn() {
     saveDATABtn.setAttribute('value', 'SAVE \nDATA');
     saveDATABtn.style.padding = '0.25rem 1rem'
   const underLineGraphic = resourceCreateUnderLineGraphic();
+  const arrowGraphic = document.createElement('span');
+    arrowGraphic.style.borderTop = '1px solid #fff';
+    arrowGraphic.style.borderRadius = '25%';
+    arrowGraphic.style.height = '3rem';
+    arrowGraphic.style.width = '7.5rem';
+    arrowGraphic.style.position = 'absolute';
   const saveIcon = resourceCreateSaveIcon();
-
+  //appends
   saveDATABtnContainer.appendChild(saveDATABtn);
   saveDATABtnContainer.appendChild(saveIcon);
   saveDATABtnContainer.appendChild(underLineGraphic);
+  saveDATABtnContainer.appendChild(arrowGraphic);
   document.getElementById('menu').appendChild(saveDATABtnContainer);
 
   saveDATABtnContainer.onclick = (function() {
