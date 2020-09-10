@@ -112,11 +112,6 @@ const fillDataBtn = document.createElement('input');
     fillDataBtn.style.marginLeft = '1rem';
     fillDataBtn.style.border = 'none';
 
-
-
-    fillDataBtn.style.padding = '0.25rem 0.5rem'
-
-
 const fillIcon = resourceCreateFillIcon();
   fillDataBtnContainer.appendChild(fillDataBtn);
   fillDataBtnContainer.appendChild(fillIcon);
