@@ -22,16 +22,19 @@ function createMenu() {
     title.style.fontWeight = 'bold';
     title.style.fontSize = '1.5rem'
     title.style.letterSpacing = '0.1rem';
-
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
   createSaveHoursBtn();
 }
 function createSaveHoursBtn() {
-  const saveAllHoursToTxtBtn = document.createElement('div');
-  saveAllHoursToTxtBtn.innerText = 'Save Hours data';
-  saveAllHoursToTxtBtn.style.color = "#fff";
-  document.getElementById('menu').appendChild(saveAllHoursToTxtBtn);
+  const createSaveHoursBtn = document.createElement('input');
+      createSaveHoursBtn.style.border = "none";
+      createSaveHoursBtn.style.fontWeight = "bold";
+      createSaveHoursBtn.style.height = "30px";
+      createSaveHoursBtn.setAttribute('type', 'button');
+      createSaveHoursBtn.setAttribute('value', 'Save it!');
+      createSaveHoursBtn.style.color = "#fff";
+  document.getElementById('menu').appendChild(createSaveHoursBtn);
 }
 
 function createWeeksContainer(monthNum) {
