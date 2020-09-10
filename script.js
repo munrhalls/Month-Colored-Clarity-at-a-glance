@@ -58,10 +58,14 @@ function createSaveDATABtn() {
       saveDATABtn.setAttribute('value', 'SAVE \nDATA');
       saveDATABtn.style.padding = '0.25rem 1rem'
   
-  const underLineGraphic = document.createElement('span');
+  function resourceCreateUnderLineGraphic() {
+    const underLineGraphic = document.createElement('span');
     underLineGraphic.style.borderTop = '1px solid #fff';
     underLineGraphic.style.width = '7.5rem';
     underLineGraphic.style.borderRadius = '50%'
+    return underLineGraphic;
+  }
+  const underLineGraphic = resourceCreateUnderLineGraphic();
 
 
   const saveIcon = resourceCreateSaveIcon();
