@@ -30,22 +30,25 @@ function createMenu() {
   createSaveDATABtn();
 }
 function createSaveDATABtn() {
-    const saveDATABtnContainer = document.createElement('div');
-      saveDATABtnContainer.style.border = "none";
-      saveDATABtnContainer.style.fontWeight = "bold";
-      saveDATABtnContainer.style.height = "100%";
-      saveDATABtnContainer.style.borderLeft = '1px solid grey';
-      saveDATABtnContainer.style.borderRight = '1px solid grey';
-      saveDATABtnContainer.style.marginLeft = '1rem';
-      saveDATABtnContainer.style.padding = '0 1.5rem';
-      saveDATABtnContainer.style.textAlign = 'left';
-      saveDATABtnContainer.style.color = "#fff";
-      saveDATABtnContainer.style.position = 'relative';
-      saveDATABtnContainer.style.display = 'flex';
-      saveDATABtnContainer.style.flexDirection = 'column';
-      saveDATABtnContainer.style.alignItems = 'center';
-      saveDATABtnContainer.style.justifyContent = 'center';
-      saveDATABtnContainer.style.flexDirection = 'column';
+    const saveDATABtnContainer = (function createSaveDataBtnContainer() {
+      const saveDATABtnContainer = document.createElement('div');
+        saveDATABtnContainer.style.border = "none";
+        saveDATABtnContainer.style.fontWeight = "bold";
+        saveDATABtnContainer.style.height = "100%";
+        saveDATABtnContainer.style.borderLeft = '1px solid grey';
+        saveDATABtnContainer.style.borderRight = '1px solid grey';
+        saveDATABtnContainer.style.marginLeft = '1rem';
+        saveDATABtnContainer.style.padding = '0 1.5rem';
+        saveDATABtnContainer.style.textAlign = 'left';
+        saveDATABtnContainer.style.color = "#fff";
+        saveDATABtnContainer.style.position = 'relative';
+        saveDATABtnContainer.style.display = 'flex';
+        saveDATABtnContainer.style.flexDirection = 'column';
+        saveDATABtnContainer.style.alignItems = 'center';
+        saveDATABtnContainer.style.justifyContent = 'center';
+        saveDATABtnContainer.style.flexDirection = 'column';
+      return saveDATABtnContainer;
+    })()
 
   const saveDATABtn = document.createElement('input');
       saveDATABtn.setAttribute('type', 'button');
@@ -64,7 +67,7 @@ function createSaveDATABtn() {
   saveDATABtnContainer.onclick = (function() {
     console.log('ok')
   })
-}
+} 
 
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
@@ -410,6 +413,7 @@ function createMonths(monthNum) {
   createWeek(3, monthNum);
   createWeek(4, monthNum);
 }
+
 // RESOURCES (graphics and so on)
 function createSaveIcon() {
   const saveHoursBtnSymbol = document.createElementNS("http://www.w3.org/2000/svg", "svg");
