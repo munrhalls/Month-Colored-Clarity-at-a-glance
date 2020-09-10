@@ -30,21 +30,27 @@ function createMenu() {
   createSaveDATABtn();
 }
 function createSaveDATABtn() {
-  const createSaveDATABtn = document.createElement('input');
-      createSaveDATABtn.style.border = "none";
-      createSaveDATABtn.style.fontWeight = "bold";
-      createSaveDATABtn.style.height = "100%";
-      createSaveDATABtn.style.borderLeft = '1px solid grey';
-      createSaveDATABtn.style.borderRight = '1px solid grey';
-      createSaveDATABtn.style.marginLeft = '1rem';
-      createSaveDATABtn.style.padding = '0 1.5rem';
-      createSaveDATABtn.style.textAlign = 'left';
-      createSaveDATABtn.style.color = "#fff";
-      createSaveDATABtn.style.position = 'relative';
-      createSaveDATABtn.style.display = 'block';
+    const saveDATABtnContainer = document.createElement('div');
+      saveDATABtnContainer.style.border = "none";
+      saveDATABtnContainer.style.fontWeight = "bold";
+      saveDATABtnContainer.style.height = "100%";
+      saveDATABtnContainer.style.borderLeft = '1px solid grey';
+      saveDATABtnContainer.style.borderRight = '1px solid grey';
+      saveDATABtnContainer.style.marginLeft = '1rem';
+      saveDATABtnContainer.style.padding = '0 1.5rem';
+      saveDATABtnContainer.style.textAlign = 'left';
+      saveDATABtnContainer.style.color = "#fff";
+      saveDATABtnContainer.style.position = 'relative';
+      saveDATABtnContainer.style.display = 'flex';
+      saveDATABtnContainer.style.flexDirection = 'column';
+      saveDATABtnContainer.style.alignItems = 'center';
+      saveDATABtnContainer.style.justifyContent = 'center';
+      saveDATABtnContainer.style.flexDirection = 'column';
 
-      createSaveDATABtn.setAttribute('type', 'button');
-      createSaveDATABtn.setAttribute('value', 'SAVE \n DATA');
+  const saveDATABtn = document.createElement('input');
+      saveDATABtn.setAttribute('type', 'button');
+      saveDATABtn.setAttribute('value', 'SAVE \nDATA');
+      saveDATABtn.style.padding = '0.15rem 1rem'
 
   const saveHoursBtnSymbol = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     saveHoursBtnSymbol.setAttributeNS(null, 'height', '24');
@@ -60,16 +66,20 @@ function createSaveDATABtn() {
     path3.setAttribute('d', 'm12 19c-.128 0-.256-.049-.354-.146l-2.5-2.5c-.195-.195-.195-.512 0-.707s.512-.195.707 0l2.147 2.146 2.146-2.146c.195-.195.512-.195.707 0s.195.512 0 .707l-2.5 2.5c-.097.097-.225.146-.353.146z');
     var path4 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path4.setAttribute('d', 'm15.5 22h-7c-.827 0-1.5-.673-1.5-1.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276.225.5.5.5h7c.275 0 .5-.224.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .827-.673 1.5-1.5 1.5z');
-    var div = document.createElement('div');
-    div.appendChild(saveHoursBtnSymbol);
+
     saveHoursBtnSymbol.appendChild(path);
     saveHoursBtnSymbol.appendChild(path2);
     saveHoursBtnSymbol.appendChild(path3);
     saveHoursBtnSymbol.appendChild(path4);
+    saveHoursBtnSymbol.style.marginTop = '0.5rem'
 
-    createSaveDATABtn.appendChild(div);
-  // document.getElementById('menu').appendChild(saveHoursBtnSymbol);
-  document.getElementById('menu').appendChild(createSaveDATABtn);
+    saveDATABtnContainer.appendChild(saveDATABtn);
+    saveDATABtnContainer.appendChild(saveHoursBtnSymbol);
+  document.getElementById('menu').appendChild(saveDATABtnContainer);
+
+  saveDATABtnContainer.onclick = (function() {
+    console.log('ok')
+  })
 }
 
 function createWeeksContainer(monthNum) {
