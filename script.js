@@ -10,6 +10,7 @@ window.addEventListener('load', function () {
 function createMenu() {
   const menu = document.createElement('div');
   menu.setAttribute('id', 'menu');  
+  menu.style.position = 'relative';
   const title = document.createElement('div');
     menu.style.color = '#fff';
     menu.style.height = '6rem';
@@ -26,27 +27,31 @@ function createMenu() {
     title.style.letterSpacing = '0.1rem';
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
-  createSaveHoursBtn();
+  createSaveDATABtn();
 }
-function createSaveHoursBtn() {
-  const createSaveHoursBtn = document.createElement('input');
-      createSaveHoursBtn.style.border = "none";
-      createSaveHoursBtn.style.fontWeight = "bold";
-      createSaveHoursBtn.style.height = "100%";
-      createSaveHoursBtn.style.borderLeft = '1px solid grey';
-      createSaveHoursBtn.style.borderRight = '1px solid grey';
-      createSaveHoursBtn.style.marginLeft = '1rem';
-      createSaveHoursBtn.style.padding = '0 1.5rem';
-      createSaveHoursBtn.setAttribute('type', 'button');
-      createSaveHoursBtn.setAttribute('value', 'SAVE \n DATA');
-      createSaveHoursBtn.style.textAlign = 'left';
-      createSaveHoursBtn.style.color = "#fff";
+function createSaveDATABtn() {
+  const createSaveDATABtn = document.createElement('input');
+      createSaveDATABtn.style.border = "none";
+      createSaveDATABtn.style.fontWeight = "bold";
+      createSaveDATABtn.style.height = "100%";
+      createSaveDATABtn.style.borderLeft = '1px solid grey';
+      createSaveDATABtn.style.borderRight = '1px solid grey';
+      createSaveDATABtn.style.marginLeft = '1rem';
+      createSaveDATABtn.style.padding = '0 1.5rem';
+      createSaveDATABtn.style.textAlign = 'left';
+      createSaveDATABtn.style.color = "#fff";
+      createSaveDATABtn.style.position = 'relative';
+      createSaveDATABtn.style.display = 'block';
+
+      createSaveDATABtn.setAttribute('type', 'button');
+      createSaveDATABtn.setAttribute('value', 'SAVE \n DATA');
 
   const saveHoursBtnSymbol = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     saveHoursBtnSymbol.setAttributeNS(null, 'height', '24');
     saveHoursBtnSymbol.setAttributeNS(null, 'width', '24');
-    saveHoursBtnSymbol.setAttributeNS(null, 'enableBackground', 'new 0 0 24 24');
+    // saveHoursBtnSymbol.setAttributeNS(null, 'enableBackground', 'new 0 0 24 24');
     saveHoursBtnSymbol.setAttributeNS(null, 'viewBox', '0 0 24 24');
+    saveHoursBtnSymbol.style.fill = '#fff';
     var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', 'm21.5 20h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.827 0 1.5-.673 1.5-1.5v-11c0-.827-.673-1.5-1.5-1.5h-11.5c-.133 0-.26-.053-.354-.146l-1.853-1.854h-5.293c-.827 0-1.5.673-1.5 1.5v13c0 .827.673 1.5 1.5 1.5h2c.276 0 .5.224.5.5s-.224.5-.5.5h-2c-1.379 0-2.5-1.122-2.5-2.5v-13c0-1.378 1.121-2.5 2.5-2.5h5.5c.133 0 .26.053.354.146l1.853 1.854h11.293c1.379 0 2.5 1.122 2.5 2.5v11c0 1.378-1.121 2.5-2.5 2.5z');
     var path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -55,14 +60,16 @@ function createSaveHoursBtn() {
     path3.setAttribute('d', 'm12 19c-.128 0-.256-.049-.354-.146l-2.5-2.5c-.195-.195-.195-.512 0-.707s.512-.195.707 0l2.147 2.146 2.146-2.146c.195-.195.512-.195.707 0s.195.512 0 .707l-2.5 2.5c-.097.097-.225.146-.353.146z');
     var path4 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path4.setAttribute('d', 'm15.5 22h-7c-.827 0-1.5-.673-1.5-1.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276.225.5.5.5h7c.275 0 .5-.224.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .827-.673 1.5-1.5 1.5z');
-
+    var div = document.createElement('div');
+    div.appendChild(saveHoursBtnSymbol);
     saveHoursBtnSymbol.appendChild(path);
     saveHoursBtnSymbol.appendChild(path2);
     saveHoursBtnSymbol.appendChild(path3);
     saveHoursBtnSymbol.appendChild(path4);
-    // createSaveHoursBtn.appendChild(saveHoursBtnSymbol);
-    document.getElementById('root').appendChild(saveHoursBtnSymbol);
-  document.getElementById('menu').appendChild(createSaveHoursBtn);
+
+    createSaveDATABtn.appendChild(div);
+  // document.getElementById('menu').appendChild(saveHoursBtnSymbol);
+  document.getElementById('menu').appendChild(createSaveDATABtn);
 }
 
 function createWeeksContainer(monthNum) {
