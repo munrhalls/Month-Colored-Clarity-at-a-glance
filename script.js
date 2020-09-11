@@ -112,10 +112,6 @@ function createFillDataBtn() {
 const fillDataBtn = document.createElement('input');
     fillDataBtn.setAttribute('type', 'button');
     fillDataBtn.setAttribute('value', 'FILL DATA');
-    fillDataBtn.style.marginTop = 'auto';
-    fillDataBtn.style.marginBottom = '0.4rem';
-    fillDataBtn.style.marginRight = 'auto';
-    fillDataBtn.style.marginLeft = '1rem';
     fillDataBtn.style.border = 'none';
 const chartIcon = resourceCreateChartIcon();
 
