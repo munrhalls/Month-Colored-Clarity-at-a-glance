@@ -109,7 +109,6 @@ function createFillDataBtn() {
       fillDataBtnContainer.style.justifyContent = 'space-around';
     return fillDataBtnContainer;
   })()
-
 const fillDataBtn = document.createElement('input');
     fillDataBtn.setAttribute('type', 'button');
     fillDataBtn.setAttribute('value', 'FILL DATA');
@@ -118,13 +117,16 @@ const fillDataBtn = document.createElement('input');
     fillDataBtn.style.marginRight = 'auto';
     fillDataBtn.style.marginLeft = '1rem';
     fillDataBtn.style.border = 'none';
-
 const chartIcon = resourceCreateChartIcon();
-  fillDataBtnContainer.appendChild(fillDataBtn);
+const fillIcon = resourceFillChartIcon();
   fillDataBtnContainer.appendChild(chartIcon);
+  fillDataBtnContainer.appendChild(fillIcon);
+  fillDataBtnContainer.appendChild(fillDataBtn);
+
+
 document.getElementById('menu').appendChild(fillDataBtnContainer);
 
-const
+
 fillDataBtnContainer.onclick = (function() {
   console.log('ok')
 });
