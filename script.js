@@ -118,14 +118,18 @@ const fillDataBtn = document.createElement('input');
     fillDataBtn.style.marginLeft = '1rem';
     fillDataBtn.style.border = 'none';
 const chartIcon = resourceCreateChartIcon();
+
 const fillIcon = resourceCreateFillIcon();
-  fillDataBtnContainer.appendChild(chartIcon);
-  fillDataBtnContainer.appendChild(fillIcon);
-  fillDataBtnContainer.appendChild(fillDataBtn);
+const column = document.createElement('div');
+  column.style.display = 'flex';
+  column.style.flexDirection = 'column';
+  column.style.alignItems = 'center';
+  column.appendChild(fillIcon)
+  column.appendChild(fillDataBtn)
 
-
+fillDataBtnContainer.appendChild(column);
+fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
-
 
 fillDataBtnContainer.onclick = (function() {
   console.log('ok')
@@ -528,19 +532,12 @@ function resourceCreateFillIcon() {
   fillIcon.setAttributeNS(null, 'viewBox', '0 0 100 100');
   fillIcon.setAttributeNS(null, 'x', '0px');
   fillIcon.setAttributeNS(null, 'y', '0px');
-  fillIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 100 100');
-  fillIcon.setAttributeNS(null, 'viewBox', '0 0 100 100');
-  fillIcon.setAttributeNS(null, 'x', '0px');
-  fillIcon.setAttributeNS(null, 'y', '0px');
-  fillIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 100 100');
-  fillIcon.setAttributeNS(null, 'viewBox', '0 0 100 100');
   // fillIcon.setAttributeNS(null, 'xml:space', 'preserve');  
   fillIcon.style.fill = '#fff';
-  fillIcon.style.marginTop = '0.5rem';
-  fillIcon.style.height = '6rem';
-  fillIcon.style.width = '6rem';
-  fillIcon.style.alignSelf = 'flex-end';
-  fillIcon.style.justifySelf = 'flex-end';
+  fillIcon.style.height = '3.75rem';
+  fillIcon.style.width = '3.75rem';
+  fillIcon.style.alignSelf = 'center';
+  fillIcon.style.justifySelf = 'center';
 
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', 'M28.215,32.394 C27.1130386,32.9344423 26.1973331,33.7913059 25.585,34.855 C25.563,34.897 25.542,34.939 25.521,34.981 C25.68,34.994 25.84,35 26,35 C30.963,35 35,29.168 35,22 C35,14.832 30.963,9 26,9 C21.037,9 17,14.832 17,22 C16.9598717,25.0644868 17.7717122,28.0798944 19.345,30.71 C19.394,30.656 19.45,30.605 19.5,30.552 C19.726,30.309 19.96,30.071 20.2,29.835 C20.29,29.748 20.378,29.662 20.47,29.576 C20.58,29.4726667 20.6913333,29.3703333 20.804,29.269 C19.578892,27.0448437 18.9569688,24.5388795 19,22 C19,15.42 22.619,11 26,11 C29.381,11 33,15.42 33,22 C33.0015429,22.6630805 32.9591165,23.3255336 32.873,23.983 L32.873,23.999 C32.6568842,26.1533604 31.9177978,28.2223218 30.72,30.026 C30.558,30.26 30.3883333,30.4836667 30.211,30.697 C30.1825396,30.7322977 30.1518077,30.7657019 30.119,30.797 C29.5851536,31.4391215 28.9402325,31.9800558 28.215,32.394 Z');
