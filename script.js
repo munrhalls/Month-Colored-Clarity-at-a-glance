@@ -120,9 +120,24 @@ const fillDataBtn = document.createElement('input');
     fillDataBtn.setAttribute('value', 'FILLS DATA');
     fillDataBtn.style.border = 'none';
 const chartIcon = resourceCreateChartIcon();
-
+  chartIcon.style.fill = '#fff';
+  chartIcon.style.marginTop = '0.5rem';
+  chartIcon.style.height = '6rem';
+  chartIcon.style.width = '6rem';
+  chartIcon.style.alignSelf = 'flex-end';
+  chartIcon.style.justifySelf = 'flex-end';
 const fillIcon = resourceCreateFillIcon();
+  fillIcon.style.fill = '#fff';
+  fillIcon.style.height = '3.75rem';
+  fillIcon.style.width = '3.75rem';
+  fillIcon.style.alignSelf = 'center';
+  fillIcon.style.justifySelf = 'center';
+  fillIcon.style.position = 'absolute';
+  fillIcon.style.top = '2rem';
+  fillIcon.style.right = '0';
+  fillIcon.style.position = 'absolute';
 const column1 = document.createElement('div');
+  column1.style.position = 'relative';
   column1.style.height = '100%';
   column1.style.display = 'flex';
   column1.style.flexDirection = 'column';
@@ -134,12 +149,9 @@ const column2 = document.createElement('div');
   column2.style.alignItems = 'center';
 
 column1.appendChild(dropTextFileBtn)
-column2.appendChild(fillIcon)
-column2.appendChild(fillDataBtn)
-column2.appendChild(fillIcon)
-column2.appendChild(fillDataBtn)
+column1.appendChild(fillIcon)
+column1.appendChild(fillDataBtn)
 
-fillDataBtnContainer.appendChild(column1);
 fillDataBtnContainer.appendChild(column1);
 fillDataBtnContainer.appendChild(column2);
 fillDataBtnContainer.appendChild(chartIcon);
@@ -526,12 +538,6 @@ function resourceCreateChartIcon() {
   chartIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 100 100');
   chartIcon.setAttributeNS(null, 'viewBox', '0 0 100 100');
   // chartIcon.setAttributeNS(null, 'xml:space', 'preserve');  
-  chartIcon.style.fill = '#fff';
-  chartIcon.style.marginTop = '0.5rem';
-  chartIcon.style.height = '6rem';
-  chartIcon.style.width = '6rem';
-  chartIcon.style.alignSelf = 'flex-end';
-  chartIcon.style.justifySelf = 'flex-end';
 
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', 'M48,71h4v20c0,1.1-0.9,2-2,2s-2-0.9-2-2V71z M32.07,90.47c-0.29,1.07,0.34,2.17,1.4,2.46C33.65,92.98,33.83,93,34,93c0.88,0,1.69-0.58,1.93-1.47L41.53,71h-4.15L32.07,90.47z M62.62,71h-4.15l5.6,20.53C64.31,92.42,65.12,93,66,93c0.17,0,0.35-0.02,0.53-0.07c1.06-0.29,1.69-1.39,1.4-2.46L62.62,71z M80,7H20c-1.65,0-3,1.35-3,3c0,1.65,1.35,3,3,3h60c1.65,0,3-1.35,3-3C83,8.35,81.65,7,80,7z M23,17h54v48c0,1.1-0.9,2-2,2H25c-1.1,0-2-0.9-2-2V17z M32.59,47.41l4,4C36.98,51.8,37.49,52,38,52s1.02-0.2,1.41-0.59L48,42.83l4.59,4.58C52.98,47.8,53.49,48,54,48s1.02-0.2,1.41-0.59l7-7L64,38.83V44c0,1.1,0.9,2,2,2s2-0.9,2-2V34c0-0.13-0.01-0.26-0.04-0.39c-0.01-0.06-0.03-0.12-0.05-0.17c-0.02-0.07-0.04-0.14-0.06-0.2c-0.03-0.07-0.07-0.13-0.1-0.2c-0.03-0.05-0.05-0.1-0.09-0.15c-0.07-0.11-0.15-0.21-0.25-0.3c-0.09-0.1-0.19-0.18-0.3-0.25c-0.05-0.04-0.1-0.06-0.15-0.08c-0.06-0.04-0.13-0.08-0.2-0.11c-0.06-0.02-0.13-0.04-0.2-0.06c-0.05-0.02-0.11-0.04-0.17-0.05C66.26,32.01,66.13,32,66,32H56c-1.1,0-2,0.9-2,2c0,1.1,0.9,2,2,2h5.17l-1.58,1.59L54,43.17l-4.59-4.58c-0.78-0.79-2.04-0.79-2.82,0L38,47.17l-2.59-2.58c-0.78-0.79-2.04-0.79-2.82,0C31.8,45.37,31.8,46.63,32.59,47.41z');
@@ -547,11 +553,11 @@ function resourceCreateFillIcon() {
   fillIcon.setAttributeNS(null, 'x', '0px');
   fillIcon.setAttributeNS(null, 'y', '0px');
   // fillIcon.setAttributeNS(null, 'xml:space', 'preserve');  
-  fillIcon.style.fill = '#fff';
-  fillIcon.style.height = '3.75rem';
-  fillIcon.style.width = '3.75rem';
-  fillIcon.style.alignSelf = 'center';
-  fillIcon.style.justifySelf = 'center';
+
+
+
+
+
 
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', 'M28.215,32.394 C27.1130386,32.9344423 26.1973331,33.7913059 25.585,34.855 C25.563,34.897 25.542,34.939 25.521,34.981 C25.68,34.994 25.84,35 26,35 C30.963,35 35,29.168 35,22 C35,14.832 30.963,9 26,9 C21.037,9 17,14.832 17,22 C16.9598717,25.0644868 17.7717122,28.0798944 19.345,30.71 C19.394,30.656 19.45,30.605 19.5,30.552 C19.726,30.309 19.96,30.071 20.2,29.835 C20.29,29.748 20.378,29.662 20.47,29.576 C20.58,29.4726667 20.6913333,29.3703333 20.804,29.269 C19.578892,27.0448437 18.9569688,24.5388795 19,22 C19,15.42 22.619,11 26,11 C29.381,11 33,15.42 33,22 C33.0015429,22.6630805 32.9591165,23.3255336 32.873,23.983 L32.873,23.999 C32.6568842,26.1533604 31.9177978,28.2223218 30.72,30.026 C30.558,30.26 30.3883333,30.4836667 30.211,30.697 C30.1825396,30.7322977 30.1518077,30.7657019 30.119,30.797 C29.5851536,31.4391215 28.9402325,31.9800558 28.215,32.394 Z');
