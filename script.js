@@ -60,14 +60,7 @@ function createSaveDATABtn() {
     saveDATABtn.setAttribute('value', 'SAVE \nDATA');
     saveDATABtn.style.padding = '0.25rem 1rem'
   const underLineGraphic = resourceCreateUnderLineGraphic();
-  const arrowGraphic = document.createElement('span');
-    arrowGraphic.style.borderTop = '3px solid #fff';
-    arrowGraphic.style.borderRadius = '50%';
-    arrowGraphic.style.height = '3.25rem';
-    arrowGraphic.style.width = '6.5rem';
-    arrowGraphic.style.position = 'absolute';
-    arrowGraphic.style.left = 'calc(100% - 5rem)';
-    arrowGraphic.style.bottom = '0'
+  const arrowGraphic = resourceCreateArrowGraphic();
 
   const saveIcon = resourceCreateSaveIcon();
   //appends
@@ -530,6 +523,17 @@ function resourceCreateUnderLineGraphic() {
   underLineGraphic.style.width = '7.5rem';
   underLineGraphic.style.borderRadius = '50%'
   return underLineGraphic;
+}
+function resourceCreateArrowGraphic() {
+  const arrowGraphic = document.createElement('span');
+    arrowGraphic.style.borderTop = '3px solid #fff';
+    arrowGraphic.style.borderRadius = '50%';
+    arrowGraphic.style.height = '3.25rem';
+    arrowGraphic.style.width = '6.5rem';
+    arrowGraphic.style.position = 'absolute';
+    arrowGraphic.style.left = 'calc(100% - 5rem)';
+    arrowGraphic.style.bottom = '0';
+  return arrowGraphic;
 }
 function createCopyrightNote() {
   const copyrightNote = document.createElement('div');
