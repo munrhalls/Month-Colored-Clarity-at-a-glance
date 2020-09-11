@@ -72,9 +72,9 @@ function createSaveTextFileBtn() {
 
   const saveIcon = resourceCreateSaveIcon();
     saveIcon.style.position = 'absolute';
-    saveIcon.style.bottom = '0.15rem';
+    saveIcon.style.bottom = '0.75rem';
     saveIcon.style.left = '50%';
-    saveIcon.style.marginLeft = 'calc(-25% - 12px)';
+    saveIcon.style.marginLeft = 'calc(-12.5% + 6px)'
 
     saveIcon.style.fill = '#fff';
     saveIcon.style.alignSelf = 'center';
