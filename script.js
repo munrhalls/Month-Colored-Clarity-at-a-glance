@@ -94,14 +94,13 @@ function createSaveDATABtn() {
 function createFillDataBtn() {
   const fillDataBtnContainer = (function createFillDataContainer() {
     const fillDataBtnContainer = document.createElement('div');
-      fillDataBtnContainer.style.border = "none";
+      fillDataBtnContainer.style.color = "#fff";
+      fillDataBtnContainer.style.textAlign = 'left';
+      fillDataBtnContainer.style.borderRight = '1px solid grey';
       fillDataBtnContainer.style.fontWeight = "bold";
       fillDataBtnContainer.style.height = "100%";
       fillDataBtnContainer.style.width = "15rem";
-      fillDataBtnContainer.style.borderRight = '1px solid grey';
       fillDataBtnContainer.style.padding = '0 1rem 0 0';
-      fillDataBtnContainer.style.textAlign = 'left';
-      fillDataBtnContainer.style.color = "#fff";
       fillDataBtnContainer.style.position = 'relative';
       fillDataBtnContainer.style.display = 'flex';
       fillDataBtnContainer.style.flexDirection = 'row';
