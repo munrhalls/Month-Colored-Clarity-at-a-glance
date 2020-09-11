@@ -45,15 +45,6 @@ function createSaveTextFileBtn() {
         // display
         SaveTextFileBtnContainer.style.position = 'relative';
         SaveTextFileBtnContainer.style.width = '9rem';
-        // SaveTextFileBtnContainer.style.position = 'relative';
-        // SaveTextFileBtnContainer.style.display = 'flex';
-        // SaveTextFileBtnContainer.style.flexDirection = 'column';
-        // SaveTextFileBtnContainer.style.alignItems = 'center';
-        // SaveTextFileBtnContainer.style.justifyContent = 'center';
-        // SaveTextFileBtnContainer.style.flexDirection = 'column';
-        // SaveTextFileBtnContainer.style.height = "100%";
-        // SaveTextFileBtnContainer.style.marginLeft = '1rem';
-        SaveTextFileBtnContainer.style.padding = '0 1.5rem';
 
       return SaveTextFileBtnContainer;
     })();
@@ -70,6 +61,18 @@ function createSaveTextFileBtn() {
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
 
+  const saveHoursText = document.createElement('div');
+    saveHoursText.innerText = 'TO KEEP HOURS DATA';
+    saveHoursText.style.width = '100%';   
+    saveHoursText.style.position = 'absolute';
+    saveHoursText.style.bottom = '0.75rem';
+    //text
+    saveHoursText.style.fontSize = '0.6rem';   
+    saveHoursText.style.fontWeight = 'lighter';
+    saveHoursText.style.letterSpacing = '0.1rem';
+    saveHoursText.style.textAlign = 'center';
+
+
   const saveIcon = resourceCreateSaveIcon();
     saveIcon.style.position = 'absolute';
     saveIcon.style.bottom = '1rem';
@@ -79,6 +82,7 @@ function createSaveTextFileBtn() {
   //appends
   SaveTextFileBtnContainer.appendChild(SaveTextFileBtn);
   SaveTextFileBtnContainer.appendChild(saveIcon);
+  SaveTextFileBtnContainer.appendChild(saveHoursText);
   SaveTextFileBtnContainer.appendChild(underLineGraphic);
   SaveTextFileBtnContainer.appendChild(arrowGraphic);
   document.getElementById('menu').appendChild(SaveTextFileBtnContainer);
@@ -130,18 +134,14 @@ const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
     dropTextFileBtn.style.padding = '0.25rem 1rem'; 
     dropTextFileBtn.style.marginLeft = '0.5rem'; 
-
 const fillDataBtn = document.createElement('div');
     fillDataBtn.innerText = 'TO FILL HOURS DATA';
     fillDataBtn.style.fontSize = '0.75rem';
     fillDataBtn.style.position = 'absolute';
     fillDataBtn.style.bottom = '0';
     fillDataBtn.style.position = 'absolute';
-
-
     fillDataBtn.style.letterSpacing = '0.1rem';
     fillDataBtn.style.justifySelf = 'flex-end';
-
     fillDataBtn.style.fontWeight = 'lighter';
 const chartIcon = resourceCreateChartIcon();
   chartIcon.style.fill = '#fff';
@@ -602,9 +602,14 @@ function resourceCreateFillIcon() {
 }
 function resourceCreateUnderLineGraphic() {
   const underLineGraphic = document.createElement('span');
-  underLineGraphic.style.borderTop = '1px solid #fff';
-  underLineGraphic.style.width = '7.5rem';
-  underLineGraphic.style.borderRadius = '50%'
+    //display
+    underLineGraphic.style.width = '90%'  
+    underLineGraphic.style.position = 'absolute';
+    underLineGraphic.style.bottom = '0.25rem';
+    underLineGraphic.style.left = '5%';
+    // aesthetic
+    underLineGraphic.style.borderTop = '1px solid #fff';
+    underLineGraphic.style.borderRadius = '50%'
   return underLineGraphic;
 }
 function resourceCreateArrowGraphic() {
