@@ -60,6 +60,7 @@ function createSaveTextFileBtn() {
   const SaveTextFileBtn = document.createElement('input');
     SaveTextFileBtn.style.width = '6rem';
     SaveTextFileBtn.style.position = 'absolute';
+    SaveTextFileBtn.style.top = '0.75rem';
     SaveTextFileBtn.style.left = '50%';
     SaveTextFileBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
     SaveTextFileBtn.style.padding = '0.25rem 1rem';
