@@ -110,21 +110,37 @@ function createFillDataBtn() {
       fillDataBtnContainer.style.justifyContent = 'space-around';
     return fillDataBtnContainer;
   })()
+const dropTextFileBtn = document.createElement('input');
+  dropTextFileBtn.setAttribute('type', 'button');
+  dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
+  dropTextFileBtn.style.border = 'none';
 const fillDataBtn = document.createElement('input');
     fillDataBtn.setAttribute('type', 'button');
-    fillDataBtn.setAttribute('value', 'FILL DATA');
+    fillDataBtn.setAttribute('value', 'FILLS DATA');
     fillDataBtn.style.border = 'none';
 const chartIcon = resourceCreateChartIcon();
 
 const fillIcon = resourceCreateFillIcon();
-const column = document.createElement('div');
-  column.style.display = 'flex';
-  column.style.flexDirection = 'column';
-  column.style.alignItems = 'center';
-  column.appendChild(fillIcon)
-  column.appendChild(fillDataBtn)
+const column1 = document.createElement('div');
+  column1.style.height = '100%';
+  column1.style.display = 'flex';
+  column1.style.flexDirection = 'column';
+  column1.style.alignItems = 'flex-start';
 
-fillDataBtnContainer.appendChild(column);
+const column2 = document.createElement('div');
+  column2.style.display = 'flex';
+  column2.style.flexDirection = 'column';
+  column2.style.alignItems = 'center';
+
+column1.appendChild(dropTextFileBtn)
+column2.appendChild(fillIcon)
+column2.appendChild(fillDataBtn)
+column2.appendChild(fillIcon)
+column2.appendChild(fillDataBtn)
+
+fillDataBtnContainer.appendChild(column1);
+fillDataBtnContainer.appendChild(column1);
+fillDataBtnContainer.appendChild(column2);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
 
@@ -571,7 +587,8 @@ function resourceCreateArrowGraphic() {
     arrowGraphic.style.width = '6.5rem';
     arrowGraphic.style.position = 'absolute';
     arrowGraphic.style.left = 'calc(100% - 5rem)';
-    arrowGraphic.style.bottom = '0';
+    arrowGraphic.style.bottom = '1rem';
+    arrowGraphic.style.transform = 'rotate(-30deg)';
   return arrowGraphic;
 }
 function createCopyrightNote() {
