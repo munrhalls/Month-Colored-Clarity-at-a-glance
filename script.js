@@ -119,7 +119,7 @@ const fillDataBtn = document.createElement('input');
     fillDataBtn.style.marginLeft = '1rem';
     fillDataBtn.style.border = 'none';
 
-const fillIcon = resourceCreateFillIcon();
+const fillIcon = resourceCreateChartIcon();
   fillDataBtnContainer.appendChild(fillDataBtn);
   fillDataBtnContainer.appendChild(fillIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
@@ -498,7 +498,7 @@ function resourceCreateSaveIcon() {
   saveIcon.appendChild(path4);
   return saveIcon;
 }
-function resourceCreateFillIcon() {
+function resourceCreateChartIcon() {
   const fillIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   fillIcon.setAttributeNS(null, 'x', '0px');
   fillIcon.setAttributeNS(null, 'y', '0px');
