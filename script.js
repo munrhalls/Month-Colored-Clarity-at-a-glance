@@ -117,10 +117,11 @@ const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.setAttribute('type', 'button');
     dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
     dropTextFileBtn.style.padding = '0.25rem 1rem'; 
-const fillDataBtn = document.createElement('input');
-    fillDataBtn.setAttribute('type', 'button');
-    fillDataBtn.setAttribute('value', 'fills hours data');
-    fillDataBtn.style.border = 'none';
+const fillDataBtn = document.createElement('span');
+    fillDataBtn.innerText = 'fills hours data';
+    fillDataBtn.innerText = 'fills hours data';
+    fillDataBtn.style.fontWeight = 'lighter';
+
     fillDataBtn.style.alignSelf = 'flex-end'; 
 const chartIcon = resourceCreateChartIcon();
   chartIcon.style.fill = '#fff';
@@ -139,6 +140,8 @@ const fillIcon = resourceCreateFillIcon();
   fillIcon.style.top = '2.5rem';
   fillIcon.style.marginLeft = '2rem';
 
+const underLineGraphic = resourceCreateUnderLineGraphic();
+
 const column1 = document.createElement('div');
   column1.style.position = 'relative';
   column1.style.height = '100%';
@@ -154,7 +157,8 @@ const column2 = document.createElement('div');
 
 column1.appendChild(dropTextFileBtn)
 column1.appendChild(fillIcon)
-column1.appendChild(fillDataBtn)
+column1.appendChild(fillDataBtn);
+column1.appendChild(underLineGraphic);
 
 fillDataBtnContainer.appendChild(column1);
 fillDataBtnContainer.appendChild(column2);
