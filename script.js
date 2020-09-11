@@ -43,11 +43,13 @@ function createSaveTextFileBtn() {
         SaveTextFileBtnContainer.style.textAlign = 'left';
         SaveTextFileBtnContainer.style.color = "#fff";
         // display
+        SaveTextFileBtnContainer.style.position = 'relative';
+        SaveTextFileBtnContainer.style.width = '9rem';
         // SaveTextFileBtnContainer.style.position = 'relative';
-        SaveTextFileBtnContainer.style.display = 'flex';
-        SaveTextFileBtnContainer.style.flexDirection = 'column';
+        // SaveTextFileBtnContainer.style.display = 'flex';
+        // SaveTextFileBtnContainer.style.flexDirection = 'column';
         // SaveTextFileBtnContainer.style.alignItems = 'center';
-        SaveTextFileBtnContainer.style.justifyContent = 'center';
+        // SaveTextFileBtnContainer.style.justifyContent = 'center';
         // SaveTextFileBtnContainer.style.flexDirection = 'column';
         // SaveTextFileBtnContainer.style.height = "100%";
         // SaveTextFileBtnContainer.style.marginLeft = '1rem';
@@ -56,9 +58,14 @@ function createSaveTextFileBtn() {
       return SaveTextFileBtnContainer;
     })();
   const SaveTextFileBtn = document.createElement('input');
+    SaveTextFileBtn.style.width = '6rem';
+    SaveTextFileBtn.style.position = 'absolute';
+    SaveTextFileBtn.style.left = '50%';
+    SaveTextFileBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
+    SaveTextFileBtn.style.padding = '0.25rem 1rem';
     SaveTextFileBtn.setAttribute('type', 'button');
     SaveTextFileBtn.setAttribute('value', 'SAVE \nTEXT FILE');
-    SaveTextFileBtn.style.padding = '0.25rem 1rem';
+
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
 
