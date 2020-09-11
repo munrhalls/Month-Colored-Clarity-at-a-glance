@@ -136,8 +136,9 @@ const fillIcon = resourceCreateFillIcon();
   fillIcon.style.justifySelf = 'center';
   fillIcon.style.position = 'absolute';
   fillIcon.style.top = '2.5rem';
-  fillIcon.style.right = '-1rem';
-  fillIcon.style.transform = 'rotate(-10deg)';
+  fillIcon.style.marginLeft = '2rem';
+
+  fillIcon.style.transform = 'rotateX(1deg)';
 
 const column1 = document.createElement('div');
   column1.style.position = 'relative';
