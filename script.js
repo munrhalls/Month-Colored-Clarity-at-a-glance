@@ -119,8 +119,9 @@ const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.style.padding = '0.25rem 1rem'; 
 const fillDataBtn = document.createElement('input');
     fillDataBtn.setAttribute('type', 'button');
-    fillDataBtn.setAttribute('value', 'FILLS DATA');
+    fillDataBtn.setAttribute('value', 'fills hours data');
     fillDataBtn.style.border = 'none';
+    fillDataBtn.style.alignSelf = 'flex-end'; 
 const chartIcon = resourceCreateChartIcon();
   chartIcon.style.fill = '#fff';
   chartIcon.style.marginTop = '0.5rem';
@@ -138,14 +139,13 @@ const fillIcon = resourceCreateFillIcon();
   fillIcon.style.top = '2.5rem';
   fillIcon.style.marginLeft = '2rem';
 
-  fillIcon.style.transform = 'rotateX(1deg)';
-
 const column1 = document.createElement('div');
   column1.style.position = 'relative';
   column1.style.height = '100%';
   column1.style.display = 'flex';
   column1.style.flexDirection = 'column';
   column1.style.alignItems = 'flex-start';
+  column1.style.justifyContent = 'space-around';
 
 const column2 = document.createElement('div');
   column2.style.display = 'flex';
