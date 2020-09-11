@@ -28,49 +28,49 @@ function createMenu() {
     title.style.letterSpacing = '0.1rem';
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
-  createSaveDATABtn();
+  createSaveTextFileBtn();
   createFillDataBtn();
 
 }
-function createSaveDATABtn() {
-    const saveDATABtnContainer = (function createSaveDataBtnContainer() {
-      const saveDATABtnContainer = document.createElement('div');
+function createSaveTextFileBtn() {
+    const SaveTextFileBtnContainer = (function createSaveTextFileBtnContainer() {
+      const SaveTextFileBtnContainer = document.createElement('div');
         // aesthethics
-        saveDATABtnContainer.style.border = "none";
-        saveDATABtnContainer.style.borderLeft = '1px solid grey';
-        saveDATABtnContainer.style.borderRight = '1px solid grey';
-        saveDATABtnContainer.style.fontWeight = "bold";
-        saveDATABtnContainer.style.textAlign = 'left';
-        saveDATABtnContainer.style.color = "#fff";
+        SaveTextFileBtnContainer.style.border = "none";
+        SaveTextFileBtnContainer.style.borderLeft = '1px solid grey';
+        SaveTextFileBtnContainer.style.borderRight = '1px solid grey';
+        SaveTextFileBtnContainer.style.fontWeight = "bold";
+        SaveTextFileBtnContainer.style.textAlign = 'left';
+        SaveTextFileBtnContainer.style.color = "#fff";
         // display
-        saveDATABtnContainer.style.position = 'relative';
-        saveDATABtnContainer.style.display = 'flex';
-        saveDATABtnContainer.style.flexDirection = 'column';
-        saveDATABtnContainer.style.alignItems = 'center';
-        saveDATABtnContainer.style.justifyContent = 'center';
-        saveDATABtnContainer.style.flexDirection = 'column';
-        saveDATABtnContainer.style.height = "100%";
-        saveDATABtnContainer.style.marginLeft = '1rem';
-        saveDATABtnContainer.style.padding = '0 1.5rem';
+        SaveTextFileBtnContainer.style.position = 'relative';
+        SaveTextFileBtnContainer.style.display = 'flex';
+        SaveTextFileBtnContainer.style.flexDirection = 'column';
+        SaveTextFileBtnContainer.style.alignItems = 'center';
+        SaveTextFileBtnContainer.style.justifyContent = 'center';
+        SaveTextFileBtnContainer.style.flexDirection = 'column';
+        SaveTextFileBtnContainer.style.height = "100%";
+        SaveTextFileBtnContainer.style.marginLeft = '1rem';
+        SaveTextFileBtnContainer.style.padding = '0 1.5rem';
 
-      return saveDATABtnContainer;
+      return SaveTextFileBtnContainer;
     })();
-  const saveDATABtn = document.createElement('input');
-    saveDATABtn.setAttribute('type', 'button');
-    saveDATABtn.setAttribute('value', 'SAVE \nTEXT FILE');
-    saveDATABtn.style.padding = '0.25rem 1rem'
+  const SaveTextFileBtn = document.createElement('input');
+    SaveTextFileBtn.setAttribute('type', 'button');
+    SaveTextFileBtn.setAttribute('value', 'SAVE \nTEXT FILE');
+    SaveTextFileBtn.style.padding = '0.25rem 1rem'
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
 
   const saveIcon = resourceCreateSaveIcon();
   //appends
-  saveDATABtnContainer.appendChild(saveDATABtn);
-  saveDATABtnContainer.appendChild(saveIcon);
-  saveDATABtnContainer.appendChild(underLineGraphic);
-  saveDATABtnContainer.appendChild(arrowGraphic);
-  document.getElementById('menu').appendChild(saveDATABtnContainer);
+  SaveTextFileBtnContainer.appendChild(SaveTextFileBtn);
+  SaveTextFileBtnContainer.appendChild(saveIcon);
+  SaveTextFileBtnContainer.appendChild(underLineGraphic);
+  SaveTextFileBtnContainer.appendChild(arrowGraphic);
+  document.getElementById('menu').appendChild(SaveTextFileBtnContainer);
 
-  saveDATABtnContainer.onclick = (function() {
+  SaveTextFileBtnContainer.onclick = (function() {
     function createTextFile(filename, data) {
       var blob = new Blob([data], {type: 'text'});
       if(window.navigator.msSaveOrOpenBlob) {
@@ -113,7 +113,8 @@ function createFillDataBtn() {
 const dropTextFileBtn = document.createElement('input');
   dropTextFileBtn.setAttribute('type', 'button');
   dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
-  dropTextFileBtn.style.border = 'none';
+  dropTextFileBtn.style.padding = '0.25rem 1rem'
+  dropTextFileBtn.style.border = '1px solid grey';
 const fillDataBtn = document.createElement('input');
     fillDataBtn.setAttribute('type', 'button');
     fillDataBtn.setAttribute('value', 'FILLS DATA');
