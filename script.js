@@ -61,11 +61,14 @@ function createSaveDATABtn() {
     saveDATABtn.style.padding = '0.25rem 1rem'
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = document.createElement('span');
-    arrowGraphic.style.borderTop = '1px solid #fff';
-    arrowGraphic.style.borderRadius = '25%';
-    arrowGraphic.style.height = '3rem';
-    arrowGraphic.style.width = '7.5rem';
+    arrowGraphic.style.borderTop = '3px solid #fff';
+    arrowGraphic.style.borderRadius = '50%';
+    arrowGraphic.style.height = '3.25rem';
+    arrowGraphic.style.width = '6.5rem';
     arrowGraphic.style.position = 'absolute';
+    arrowGraphic.style.left = 'calc(100% - 5rem)';
+    arrowGraphic.style.bottom = '0'
+
   const saveIcon = resourceCreateSaveIcon();
   //appends
   saveDATABtnContainer.appendChild(saveDATABtn);
