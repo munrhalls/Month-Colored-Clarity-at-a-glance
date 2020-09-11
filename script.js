@@ -58,7 +58,7 @@ function createSaveTextFileBtn() {
   const SaveTextFileBtn = document.createElement('input');
     SaveTextFileBtn.setAttribute('type', 'button');
     SaveTextFileBtn.setAttribute('value', 'SAVE \nTEXT FILE');
-    SaveTextFileBtn.style.padding = '0.25rem 1rem'
+    SaveTextFileBtn.style.padding = '0.25rem 1rem';
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
 
@@ -109,12 +109,12 @@ function createFillDataBtn() {
       fillDataBtnContainer.style.alignItems = 'center';
       fillDataBtnContainer.style.justifyContent = 'space-around';
     return fillDataBtnContainer;
-  })()
+  })();
+
 const dropTextFileBtn = document.createElement('input');
-  dropTextFileBtn.setAttribute('type', 'button');
-  dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
-  dropTextFileBtn.style.padding = '0.25rem 1rem'
-  dropTextFileBtn.style.border = '1px solid grey';
+    dropTextFileBtn.setAttribute('type', 'button');
+    dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
+    dropTextFileBtn.style.padding = '0.25rem 1rem'; 
 const fillDataBtn = document.createElement('input');
     fillDataBtn.setAttribute('type', 'button');
     fillDataBtn.setAttribute('value', 'FILLS DATA');
