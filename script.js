@@ -118,7 +118,7 @@ const fillDataBtn = document.createElement('input');
     fillDataBtn.style.marginLeft = '1rem';
     fillDataBtn.style.border = 'none';
 const chartIcon = resourceCreateChartIcon();
-const fillIcon = resourceFillChartIcon();
+const fillIcon = resourceCreateFillIcon();
   fillDataBtnContainer.appendChild(chartIcon);
   fillDataBtnContainer.appendChild(fillIcon);
   fillDataBtnContainer.appendChild(fillDataBtn);
@@ -520,8 +520,16 @@ function resourceCreateChartIcon() {
   chartIcon.appendChild(path);
   return chartIcon; 
 }
-function resourceFillChartIcon() {
+function resourceCreateFillIcon() {
   const fillIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  fillIcon.setAttributeNS(null, 'width', '512');
+  fillIcon.setAttributeNS(null, 'height', '512');
+  fillIcon.setAttributeNS(null, 'viewBox', '0 0 56 58');
+  fillIcon.setAttributeNS(null, 'viewBox', '0 0 100 100');
+  fillIcon.setAttributeNS(null, 'x', '0px');
+  fillIcon.setAttributeNS(null, 'y', '0px');
+  fillIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 100 100');
+  fillIcon.setAttributeNS(null, 'viewBox', '0 0 100 100');
   fillIcon.setAttributeNS(null, 'x', '0px');
   fillIcon.setAttributeNS(null, 'y', '0px');
   fillIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 100 100');
