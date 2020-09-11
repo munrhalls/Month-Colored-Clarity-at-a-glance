@@ -63,6 +63,8 @@ function createSaveTextFileBtn() {
   const arrowGraphic = resourceCreateArrowGraphic();
 
   const saveIcon = resourceCreateSaveIcon();
+    saveIcon.style.fill = '#fff';
+    saveIcon.style.marginTop = '0.5rem'
   //appends
   SaveTextFileBtnContainer.appendChild(SaveTextFileBtn);
   SaveTextFileBtnContainer.appendChild(saveIcon);
@@ -128,14 +130,15 @@ const chartIcon = resourceCreateChartIcon();
   chartIcon.style.justifySelf = 'flex-end';
 const fillIcon = resourceCreateFillIcon();
   fillIcon.style.fill = '#fff';
-  fillIcon.style.height = '3.75rem';
-  fillIcon.style.width = '3.75rem';
+  fillIcon.style.height = '2.5rem';
+  fillIcon.style.width = '2.5rem';
   fillIcon.style.alignSelf = 'center';
   fillIcon.style.justifySelf = 'center';
   fillIcon.style.position = 'absolute';
-  fillIcon.style.top = '2rem';
-  fillIcon.style.right = '0';
-  fillIcon.style.position = 'absolute';
+  fillIcon.style.top = '2.5rem';
+  fillIcon.style.right = '-1rem';
+  fillIcon.style.transform = 'rotate(-10deg)';
+
 const column1 = document.createElement('div');
   column1.style.position = 'relative';
   column1.style.height = '100%';
@@ -513,9 +516,6 @@ function resourceCreateSaveIcon() {
     saveIcon.setAttributeNS(null, 'width', '24');
     // saveIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 24 24');
     saveIcon.setAttributeNS(null, 'viewBox', '0 0 24 24');
-    saveIcon.style.fill = '#fff';
-    saveIcon.style.marginTop = '0.5rem'
-
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', 'm21.5 20h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.827 0 1.5-.673 1.5-1.5v-11c0-.827-.673-1.5-1.5-1.5h-11.5c-.133 0-.26-.053-.354-.146l-1.853-1.854h-5.293c-.827 0-1.5.673-1.5 1.5v13c0 .827.673 1.5 1.5 1.5h2c.276 0 .5.224.5.5s-.224.5-.5.5h-2c-1.379 0-2.5-1.122-2.5-2.5v-13c0-1.378 1.121-2.5 2.5-2.5h5.5c.133 0 .26.053.354.146l1.853 1.854h11.293c1.379 0 2.5 1.122 2.5 2.5v11c0 1.378-1.121 2.5-2.5 2.5z');
   const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -548,8 +548,7 @@ function resourceCreateFillIcon() {
   const fillIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   fillIcon.setAttributeNS(null, 'width', '512');
   fillIcon.setAttributeNS(null, 'height', '512');
-  fillIcon.setAttributeNS(null, 'viewBox', '0 0 56 58');
-  fillIcon.setAttributeNS(null, 'viewBox', '0 0 100 100');
+  fillIcon.setAttributeNS(null, 'viewBox', '0 0 72 68');
   fillIcon.setAttributeNS(null, 'x', '0px');
   fillIcon.setAttributeNS(null, 'y', '0px');
   // fillIcon.setAttributeNS(null, 'xml:space', 'preserve');  
