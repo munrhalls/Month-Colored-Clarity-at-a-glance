@@ -43,14 +43,14 @@ function createSaveTextFileBtn() {
         SaveTextFileBtnContainer.style.textAlign = 'left';
         SaveTextFileBtnContainer.style.color = "#fff";
         // display
-        SaveTextFileBtnContainer.style.position = 'relative';
+        // SaveTextFileBtnContainer.style.position = 'relative';
         SaveTextFileBtnContainer.style.display = 'flex';
         SaveTextFileBtnContainer.style.flexDirection = 'column';
-        SaveTextFileBtnContainer.style.alignItems = 'center';
+        // SaveTextFileBtnContainer.style.alignItems = 'center';
         SaveTextFileBtnContainer.style.justifyContent = 'center';
-        SaveTextFileBtnContainer.style.flexDirection = 'column';
-        SaveTextFileBtnContainer.style.height = "100%";
-        SaveTextFileBtnContainer.style.marginLeft = '1rem';
+        // SaveTextFileBtnContainer.style.flexDirection = 'column';
+        // SaveTextFileBtnContainer.style.height = "100%";
+        // SaveTextFileBtnContainer.style.marginLeft = '1rem';
         SaveTextFileBtnContainer.style.padding = '0 1.5rem';
 
       return SaveTextFileBtnContainer;
@@ -64,7 +64,8 @@ function createSaveTextFileBtn() {
 
   const saveIcon = resourceCreateSaveIcon();
     saveIcon.style.fill = '#fff';
-    saveIcon.style.marginTop = '0.5rem'
+    saveIcon.style.marginTop = '0.5rem';
+    saveIcon.style.alignSelf = 'center';
   //appends
   SaveTextFileBtnContainer.appendChild(SaveTextFileBtn);
   SaveTextFileBtnContainer.appendChild(saveIcon);
@@ -103,13 +104,14 @@ function createFillDataBtn() {
       fillDataBtnContainer.style.fontWeight = "bold";
       // display
       fillDataBtnContainer.style.height = "100%";
-      fillDataBtnContainer.style.width = "15rem";
-      fillDataBtnContainer.style.padding = '0 1rem 0 0';
+      fillDataBtnContainer.style.width = "18rem";
+      fillDataBtnContainer.style.padding = '0 1rem 0 1rem';
       fillDataBtnContainer.style.position = 'relative';
       fillDataBtnContainer.style.display = 'flex';
       fillDataBtnContainer.style.flexDirection = 'row';
       fillDataBtnContainer.style.alignItems = 'center';
       fillDataBtnContainer.style.justifyContent = 'space-around';
+      fillDataBtnContainer.style.padding = '0 1.5rem';
     return fillDataBtnContainer;
   })();
 
@@ -117,12 +119,20 @@ const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.setAttribute('type', 'button');
     dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
     dropTextFileBtn.style.padding = '0.25rem 1rem'; 
-const fillDataBtn = document.createElement('span');
-    fillDataBtn.innerText = 'fills hours data';
-    fillDataBtn.innerText = 'fills hours data';
-    fillDataBtn.style.fontWeight = 'lighter';
+    dropTextFileBtn.style.marginLeft = '0.5rem'; 
 
-    fillDataBtn.style.alignSelf = 'flex-end'; 
+const fillDataBtn = document.createElement('div');
+    fillDataBtn.innerText = 'TO FILL HOURS DATA';
+    fillDataBtn.style.fontSize = '0.75rem';
+    fillDataBtn.style.position = 'absolute';
+    fillDataBtn.style.bottom = '0';
+    fillDataBtn.style.position = 'absolute';
+
+
+    fillDataBtn.style.letterSpacing = '0.1rem';
+    fillDataBtn.style.justifySelf = 'flex-end';
+
+    fillDataBtn.style.fontWeight = 'lighter';
 const chartIcon = resourceCreateChartIcon();
   chartIcon.style.fill = '#fff';
   chartIcon.style.marginTop = '0.5rem';
@@ -139,9 +149,7 @@ const fillIcon = resourceCreateFillIcon();
   fillIcon.style.position = 'absolute';
   fillIcon.style.top = '2.5rem';
   fillIcon.style.marginLeft = '2rem';
-
 const underLineGraphic = resourceCreateUnderLineGraphic();
-
 const column1 = document.createElement('div');
   column1.style.position = 'relative';
   column1.style.height = '100%';
@@ -149,11 +157,10 @@ const column1 = document.createElement('div');
   column1.style.flexDirection = 'column';
   column1.style.alignItems = 'flex-start';
   column1.style.justifyContent = 'space-around';
-
-const column2 = document.createElement('div');
-  column2.style.display = 'flex';
-  column2.style.flexDirection = 'column';
-  column2.style.alignItems = 'center';
+// const column2 = document.createElement('div');
+//   column2.style.display = 'flex';
+//   column2.style.flexDirection = 'column';
+//   column2.style.alignItems = 'center';
 
 column1.appendChild(dropTextFileBtn)
 column1.appendChild(fillIcon)
@@ -161,7 +168,7 @@ column1.appendChild(fillDataBtn);
 column1.appendChild(underLineGraphic);
 
 fillDataBtnContainer.appendChild(column1);
-fillDataBtnContainer.appendChild(column2);
+// fillDataBtnContainer.appendChild(column2);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
 
