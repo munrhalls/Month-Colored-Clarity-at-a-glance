@@ -35,14 +35,14 @@ function createMenu() {
 function createSaveDATABtn() {
     const saveDATABtnContainer = (function createSaveDataBtnContainer() {
       const saveDATABtnContainer = document.createElement('div');
-        //aesthethics
+        // aesthethics
         saveDATABtnContainer.style.border = "none";
         saveDATABtnContainer.style.borderLeft = '1px solid grey';
         saveDATABtnContainer.style.borderRight = '1px solid grey';
         saveDATABtnContainer.style.fontWeight = "bold";
         saveDATABtnContainer.style.textAlign = 'left';
         saveDATABtnContainer.style.color = "#fff";
-        //display
+        // display
         saveDATABtnContainer.style.position = 'relative';
         saveDATABtnContainer.style.display = 'flex';
         saveDATABtnContainer.style.flexDirection = 'column';
@@ -57,7 +57,7 @@ function createSaveDATABtn() {
     })();
   const saveDATABtn = document.createElement('input');
     saveDATABtn.setAttribute('type', 'button');
-    saveDATABtn.setAttribute('value', 'SAVE \nDATA');
+    saveDATABtn.setAttribute('value', 'SAVE \nTEXT FILE');
     saveDATABtn.style.padding = '0.25rem 1rem'
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
@@ -94,10 +94,12 @@ function createSaveDATABtn() {
 function createFillDataBtn() {
   const fillDataBtnContainer = (function createFillDataContainer() {
     const fillDataBtnContainer = document.createElement('div');
+      // aesthethics
       fillDataBtnContainer.style.color = "#fff";
       fillDataBtnContainer.style.textAlign = 'left';
       fillDataBtnContainer.style.borderRight = '1px solid grey';
       fillDataBtnContainer.style.fontWeight = "bold";
+      // display
       fillDataBtnContainer.style.height = "100%";
       fillDataBtnContainer.style.width = "15rem";
       fillDataBtnContainer.style.padding = '0 1rem 0 0';
