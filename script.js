@@ -14,7 +14,7 @@ function createMenu() {
   menu.style.position = 'relative';
   const title = document.createElement('div');
     menu.style.color = '#fff';
-    menu.style.height = '6rem';
+    menu.style.height = '9rem';
     menu.style.borderBottom = '1px solid gray';
     menu.style.backgroundColor = '#000';
     menu.style.display = 'flex';
@@ -71,8 +71,12 @@ function createSaveTextFileBtn() {
   const arrowGraphic = resourceCreateArrowGraphic();
 
   const saveIcon = resourceCreateSaveIcon();
+    saveIcon.style.position = 'absolute';
+    saveIcon.style.bottom = '0.15rem';
+    saveIcon.style.left = '50%';
+    saveIcon.style.marginLeft = 'calc(-25% - 12px)';
+
     saveIcon.style.fill = '#fff';
-    saveIcon.style.marginTop = '0.5rem';
     saveIcon.style.alignSelf = 'center';
   //appends
   SaveTextFileBtnContainer.appendChild(SaveTextFileBtn);
