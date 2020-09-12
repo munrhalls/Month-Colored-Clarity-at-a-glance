@@ -65,7 +65,7 @@ function createSaveTextFileBtn() {
     saveHoursText.innerText = 'TO KEEP HOURS DATA';
     saveHoursText.style.width = '100%';   
     saveHoursText.style.position = 'absolute';
-    saveHoursText.style.bottom = '0.75rem';
+    saveHoursText.style.bottom = '0.6rem';
     //text
     saveHoursText.style.fontSize = '0.6rem';   
     saveHoursText.style.fontWeight = 'lighter';
