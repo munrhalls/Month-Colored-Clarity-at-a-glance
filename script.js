@@ -11,6 +11,7 @@ window.addEventListener('load', function () {
 
   const VALUES_MenuSharedCSS = {
     space_TopTo1stElement: '1.5rem',
+    space_BottomTo1stElement: '0.25rem',
   }
 
 
@@ -614,7 +615,7 @@ function resourceCreateUnderLineGraphic() {
     //display
     underLineGraphic.style.width = '90%'  
     underLineGraphic.style.position = 'absolute';
-    underLineGraphic.style.bottom = '0.25rem';
+    underLineGraphic.style.bottom = VALUES_MenuSharedCSS['space_BottomTo1stElement']
     underLineGraphic.style.left = '5%';
     // aesthetic
     underLineGraphic.style.borderTop = '1px solid #fff';
