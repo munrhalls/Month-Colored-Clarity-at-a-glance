@@ -67,7 +67,6 @@ function createSaveTextFileBtn() {
     SaveTextFileBtn.style.padding = '0.3rem 1rem';
     SaveTextFileBtn.style.fontWeight = 'bold';
     SaveTextFileBtn.style.fontSize = '0.9rem';
-
     SaveTextFileBtn.setAttribute('type', 'button');
     SaveTextFileBtn.setAttribute('value', 'SAVE \nTEXT FILE');
   const underLineGraphic = resourceCreateUnderLineGraphic();
@@ -97,6 +96,9 @@ function createSaveTextFileBtn() {
   document.getElementById('menu').appendChild(SaveTextFileBtnContainer);
 
   SaveTextFileBtnContainer.onclick = (function() {
+    // the only data it needs = hour ticks numbers 
+    // loop that = fill each day /w corresponding hour ticks amount
+    const hourElems = document.getElementsByClassName('hour');
     function createTextFile(filename, data) {
       var blob = new Blob([data], {type: 'text'});
       if(window.navigator.msSaveOrOpenBlob) {
@@ -114,7 +116,7 @@ function createSaveTextFileBtn() {
     // (!!!!!!!!!!!!!!) ADD DEBOUNCER FUNC 
     // (!!!!!!!!!!!!!!) ADD DEBOUNCER FUNC 
     console.log('REMEMBER TO ADD DEBOUNCER FUNC LATER');
-    createTextFile('Metrics: Deep work hours. Per day, week, month.');
+    createTextFile('Metrics: Deep work hours. Per day, week, month.', 'data blah blah blah');
   });
 } 
 function createFillDataBtn() {
