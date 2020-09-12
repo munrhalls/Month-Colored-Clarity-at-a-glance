@@ -12,6 +12,7 @@ window.addEventListener('load', function () {
   const VALUES_MenuSharedCSS = {
     space_TopTo1stElement: '1.5rem',
     space_BottomTo1stElement: '0.25rem',
+    width_menuSmallerBlock: '9rem',
   }
 
 
@@ -52,7 +53,7 @@ function createSaveTextFileBtn() {
         SaveTextFileBtnContainer.style.color = "#fff";
         // display
         SaveTextFileBtnContainer.style.position = 'relative';
-        SaveTextFileBtnContainer.style.width = '9rem';
+        SaveTextFileBtnContainer.style.width = VALUES_MenuSharedCSS['width_menuSmallerBlock'];
 
       return SaveTextFileBtnContainer;
     })();
@@ -121,17 +122,13 @@ function createFillDataBtn() {
     const fillDataBtnContainer = document.createElement('div');
       // aesthethics
       fillDataBtnContainer.style.color = "#fff";
-      fillDataBtnContainer.style.textAlign = 'left';
+      // fillDataBtnContainer.style.textAlign = 'left';
       fillDataBtnContainer.style.borderRight = '1px solid grey';
       fillDataBtnContainer.style.fontWeight = "bold";
       // display
       fillDataBtnContainer.style.height = "100%";
       fillDataBtnContainer.style.width = "18rem";
       fillDataBtnContainer.style.position = 'relative';
-      fillDataBtnContainer.style.display = 'flex';
-      fillDataBtnContainer.style.flexDirection = 'row';
-      fillDataBtnContainer.style.alignItems = 'center';
-      fillDataBtnContainer.style.justifyContent = 'space-around';
     return fillDataBtnContainer;
   })();
 
@@ -147,38 +144,23 @@ const fillDataBtn = document.createElement('div');
     fillDataBtn.style.fontSize = '0.75rem';
     fillDataBtn.style.position = 'absolute';
     fillDataBtn.style.bottom = '0';
-    fillDataBtn.style.position = 'absolute';
     fillDataBtn.style.letterSpacing = '0.1rem';
-    fillDataBtn.style.justifySelf = 'flex-end';
     fillDataBtn.style.fontWeight = 'lighter';
 const chartIcon = resourceCreateChartIcon();
   chartIcon.style.fill = '#fff';
-  chartIcon.style.marginTop = '0.5rem';
+  chartIcon.style.position = 'absolute';
   chartIcon.style.height = '6rem';
   chartIcon.style.width = '6rem';
-  chartIcon.style.alignSelf = 'flex-end';
-  chartIcon.style.justifySelf = 'flex-end';
+
 const fillIcon = resourceCreateFillIcon();
   fillIcon.style.fill = '#fff';
   fillIcon.style.height = '2.5rem';
   fillIcon.style.width = '2.5rem';
-  fillIcon.style.alignSelf = 'center';
-  fillIcon.style.justifySelf = 'center';
   fillIcon.style.position = 'absolute';
-  fillIcon.style.top = '2.5rem';
-  fillIcon.style.marginLeft = '2rem';
 const underLineGraphic = resourceCreateUnderLineGraphic();
 const column1 = document.createElement('div');
   column1.style.position = 'relative';
   column1.style.height = '100%';
-  column1.style.display = 'flex';
-  column1.style.flexDirection = 'column';
-  column1.style.alignItems = 'flex-start';
-  column1.style.justifyContent = 'space-around';
-// const column2 = document.createElement('div');
-//   column2.style.display = 'flex';
-//   column2.style.flexDirection = 'column';
-//   column2.style.alignItems = 'center';
 
 column1.appendChild(dropTextFileBtn)
 column1.appendChild(fillIcon)
