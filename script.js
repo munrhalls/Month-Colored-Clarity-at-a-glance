@@ -147,6 +147,7 @@ const fillHoursText = document.createElement('div');
     fillHoursText.style.fontWeight = 'lighter';
     fillHoursText.style.letterSpacing = '0.1rem';
     fillHoursText.style.textAlign = 'center';
+const arrowGraphic = resourceCreateArrowGraphic();
 const chartIcon = resourceCreateChartIcon();
   chartIcon.style.fill = '#fff';
   chartIcon.style.position = 'absolute';
@@ -156,12 +157,12 @@ const chartIcon = resourceCreateChartIcon();
   chartIcon.style.width = '6rem';
 const fillIcon = resourceCreateFillIcon();
   fillIcon.style.position = 'absolute';
-  fillIcon.style.top = '4.44rem';
-  fillIcon.style.left = '5.95rem';
+  fillIcon.style.top = '4.46rem';
+  fillIcon.style.left = '6.1rem';
   fillIcon.style.fill = '#fff';
   fillIcon.style.height = '2.75rem';
   fillIcon.style.width = '2.75rem';
-  fillIcon.style.transform = 'scale(-1,1) rotate(-18deg)';
+  fillIcon.style.transform = 'scale(-1,1) rotate(-12deg)';
 
 const underLineGraphic = resourceCreateUnderLineGraphic();
 const column1 = document.createElement('div');
@@ -175,6 +176,7 @@ column1.appendChild(underLineGraphic);
 
 fillDataBtnContainer.appendChild(column1);
 // fillDataBtnContainer.appendChild(column2);
+fillDataBtnContainer.appendChild(arrowGraphic);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
 
