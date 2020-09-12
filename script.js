@@ -9,8 +9,8 @@ window.addEventListener('load', function () {
 });
 
 
-  const menuStoreSharedCSSVals = {
-    topToFirstEl: '1.5rem',
+  const VALUES_MenuSharedCSS = {
+    space_TopTo1stElement: '1.5rem',
   }
 
 
@@ -56,9 +56,9 @@ function createSaveTextFileBtn() {
       return SaveTextFileBtnContainer;
     })();
   const SaveTextFileBtn = document.createElement('input');
-    SaveTextFileBtn.style.width = '6rem'; 
     SaveTextFileBtn.style.position = 'absolute';
-    SaveTextFileBtn.style.top = menuStoreSharedCSSVals['topToFirstEl'];
+    SaveTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
+    SaveTextFileBtn.style.width = '6rem'; 
     SaveTextFileBtn.style.left = '50%';
     SaveTextFileBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
     SaveTextFileBtn.style.padding = '0.25rem 1rem';
@@ -140,10 +140,8 @@ const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.setAttribute('type', 'button');
     dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
     dropTextFileBtn.style.padding = '0.25rem 1rem'; 
-    // fillDataBtn.style.position = 'absolute';
-    // fillDataBtn.style.top = 'absolute';
-    // fillDataBtn.style.position = 'absolute';
-    // fillDataBtn.style.position = 'absolute';
+    dropTextFileBtn.style.position = 'absolute';
+    dropTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
 
 const fillDataBtn = document.createElement('div');
     fillDataBtn.innerText = 'TO FILL HOURS DATA';
