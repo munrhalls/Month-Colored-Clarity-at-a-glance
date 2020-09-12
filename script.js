@@ -153,7 +153,7 @@ const arrowGraphic = resourceCreateArrowGraphic();
 const chartIcon = resourceCreateChartIcon();
   chartIcon.style.fill = '#fff';
   chartIcon.style.position = 'absolute';
-  chartIcon.style.top = '0';
+  chartIcon.style.top = '0.75rem';
   chartIcon.style.right = '1rem';
   chartIcon.style.height = '6rem';
   chartIcon.style.width = '6rem';
@@ -558,7 +558,7 @@ function resourceCreateChartIcon() {
   chartIcon.setAttributeNS(null, 'x', '0px');
   chartIcon.setAttributeNS(null, 'y', '0px');
   chartIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 100 100');
-  chartIcon.setAttributeNS(null, 'viewBox', '0 0 100 100');
+  chartIcon.setAttributeNS(null, 'viewBox', '0 6 100 100');
   // chartIcon.setAttributeNS(null, 'xml:space', 'preserve');  
 
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
