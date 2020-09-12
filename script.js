@@ -161,10 +161,7 @@ const fillIcon = resourceCreateFillIcon();
   fillIcon.style.fill = '#fff';
   fillIcon.style.height = '2.75rem';
   fillIcon.style.width = '2.75rem';
-  fillIcon.style.transform = 'scale(-1,1) rotate(-25deg)';
-
-
-
+  fillIcon.style.transform = 'scale(-1,1) rotate(-18deg)';
 
 const underLineGraphic = resourceCreateUnderLineGraphic();
 const column1 = document.createElement('div');
