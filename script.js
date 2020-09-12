@@ -139,7 +139,8 @@ function createFillDataBtn() {
   })();
 
 const dropTextFileBtn = document.createElement('input');
-    dropTextFileBtn.setAttribute('type', 'button');
+    dropTextFileBtn.setAttribute('type', 'file');
+    dropTextFileBtn.setAttribute('accept', 'text/plain');
     dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
     dropTextFileBtn.style.padding = '0.3rem 1rem'; 
     dropTextFileBtn.style.position = 'absolute';
@@ -193,11 +194,15 @@ fillDataBtnContainer.appendChild(column1);
 fillDataBtnContainer.appendChild(arrowGraphic);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
-
+var text = '';
 fillDataBtnContainer.onclick = (function() {
-  console.log('ok')
+  const reader = new FileReader(); 
+    text = reader.readAsText(file);
 });
+console.log(text);
 } 
+
+
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
   weeksContainer.className = 'weeksContainer';
