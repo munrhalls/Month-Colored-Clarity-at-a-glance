@@ -97,20 +97,19 @@ function createSaveTextFileBtn() {
 
   SaveTextFileBtnContainer.onclick = (function() {
     // the only data it needs = hour ticks numbers 
-    // loop that = fill each day /w corresponding hour ticks amount
-    // TARGET
     const days = document.getElementsByClassName('day');
     const hourNums = [];
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < days.length; i++) {
       hourNums.push(days[i].getElementsByClassName('hour').length);
     }
-    console.log(hourNums)
+    const hourNumsStr = hourNums.join(',');
+    
     function createTextFile(filename, data) {
       var blob = new Blob([data], {type: 'text'});
       if(window.navigator.msSaveOrOpenBlob) {
           window.navigator.msSaveBlob(blob, filename);
       }
-      else{
+      else {
           var elem = window.document.createElement('a');
           elem.href = window.URL.createObjectURL(blob);
           elem.download = filename;        
@@ -120,9 +119,8 @@ function createSaveTextFileBtn() {
       }
     }
     // (!!!!!!!!!!!!!!) ADD DEBOUNCER FUNC 
-    // (!!!!!!!!!!!!!!) ADD DEBOUNCER FUNC 
     console.log('REMEMBER TO ADD DEBOUNCER FUNC LATER');
-    createTextFile('Metrics: Deep work hours. Per day, week, month.', 'data blah blah blah');
+    createTextFile('Metrics: Deep work hours. Per day, week, month.', hourNumsStr);
   });
 } 
 function createFillDataBtn() {
