@@ -142,7 +142,6 @@ const fillHoursText = document.createElement('div');
     fillHoursText.innerText = 'TO FILL HOURS DATA';
     fillHoursText.style.fontSize = '0.75rem';
     fillHoursText.style.position = 'absolute';
-    fillHoursText.style.bottom = '0';
     fillHoursText.style.letterSpacing = '0.1rem';
     fillHoursText.style.fontWeight = 'lighter';
 const chartIcon = resourceCreateChartIcon();
