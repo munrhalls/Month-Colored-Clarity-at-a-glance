@@ -10,9 +10,10 @@ window.addEventListener('load', function () {
 
 
   const VALUES_MenuSharedCSS = {
+    height_menuWhole: '9rem',
+    width_menuSmallerBlock: '9rem',
     space_TopTo1stElement: '1.5rem',
     space_BottomTo1stElement: '0.25rem',
-    width_menuSmallerBlock: '9rem',
   }
 
 
@@ -22,7 +23,7 @@ function createMenu() {
   menu.style.position = 'relative';
   const title = document.createElement('div');
     menu.style.color = '#fff';
-    menu.style.height = '9rem';
+    menu.style.height = VALUES_MenuSharedCSS['height_menuWhole'],
     menu.style.borderBottom = '1px solid gray';
     menu.style.backgroundColor = '#000';
     menu.style.display = 'flex';
@@ -158,6 +159,11 @@ const fillIcon = resourceCreateFillIcon();
   fillIcon.style.height = '2.5rem';
   fillIcon.style.width = '2.5rem';
   fillIcon.style.position = 'absolute';
+  fillIcon.style.transform = 'rotate(-30deg)';
+  fillIcon.style.top = 'absolute';
+  fillIcon.style.top = 'absolute';
+
+
 const underLineGraphic = resourceCreateUnderLineGraphic();
 const column1 = document.createElement('div');
   column1.style.position = 'relative';
