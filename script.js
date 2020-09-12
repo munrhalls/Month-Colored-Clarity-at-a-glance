@@ -127,13 +127,11 @@ function createFillDataBtn() {
       // display
       fillDataBtnContainer.style.height = "100%";
       fillDataBtnContainer.style.width = "18rem";
-      fillDataBtnContainer.style.padding = '0 1rem 0 1rem';
       fillDataBtnContainer.style.position = 'relative';
       fillDataBtnContainer.style.display = 'flex';
       fillDataBtnContainer.style.flexDirection = 'row';
       fillDataBtnContainer.style.alignItems = 'center';
       fillDataBtnContainer.style.justifyContent = 'space-around';
-      fillDataBtnContainer.style.padding = '0 1.5rem';
     return fillDataBtnContainer;
   })();
 
