@@ -138,20 +138,19 @@ const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.style.padding = '0.25rem 1rem'; 
     dropTextFileBtn.style.position = 'absolute';
     dropTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
-
-const fillDataBtn = document.createElement('div');
-    fillDataBtn.innerText = 'TO FILL HOURS DATA';
-    fillDataBtn.style.fontSize = '0.75rem';
-    fillDataBtn.style.position = 'absolute';
-    fillDataBtn.style.bottom = '0';
-    fillDataBtn.style.letterSpacing = '0.1rem';
-    fillDataBtn.style.fontWeight = 'lighter';
+const fillHoursText = document.createElement('div');
+    fillHoursText.innerText = 'TO FILL HOURS DATA';
+    fillHoursText.style.fontSize = '0.75rem';
+    fillHoursText.style.position = 'absolute';
+    fillHoursText.style.bottom = '0';
+    fillHoursText.style.letterSpacing = '0.1rem';
+    fillHoursText.style.fontWeight = 'lighter';
 const chartIcon = resourceCreateChartIcon();
   chartIcon.style.fill = '#fff';
   chartIcon.style.position = 'absolute';
+  chartIcon.style.top = '0';
   chartIcon.style.height = '6rem';
   chartIcon.style.width = '6rem';
-
 const fillIcon = resourceCreateFillIcon();
   fillIcon.style.fill = '#fff';
   fillIcon.style.height = '2.5rem';
@@ -164,7 +163,7 @@ const column1 = document.createElement('div');
 
 column1.appendChild(dropTextFileBtn)
 column1.appendChild(fillIcon)
-column1.appendChild(fillDataBtn);
+column1.appendChild(fillHoursText);
 column1.appendChild(underLineGraphic);
 
 fillDataBtnContainer.appendChild(column1);
