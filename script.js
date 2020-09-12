@@ -9,7 +9,7 @@ window.addEventListener('load', function () {
 });
 
 
-  function menuSharedCSS_topTo1stElement() {
+  function menuStoreSharedCSSVals() {
     return '1.5rem';
   }
 
@@ -58,7 +58,7 @@ function createSaveTextFileBtn() {
   const SaveTextFileBtn = document.createElement('input');
     SaveTextFileBtn.style.width = '6rem'; 
     SaveTextFileBtn.style.position = 'absolute';
-    SaveTextFileBtn.style.top = menuSharedCSS_topTo1stElement();
+    SaveTextFileBtn.style.top = menuStoreSharedCSSVals();
     SaveTextFileBtn.style.left = '50%';
     SaveTextFileBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
     SaveTextFileBtn.style.padding = '0.25rem 1rem';
