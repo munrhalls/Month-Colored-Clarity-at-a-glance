@@ -149,6 +149,7 @@ const chartIcon = resourceCreateChartIcon();
   chartIcon.style.fill = '#fff';
   chartIcon.style.position = 'absolute';
   chartIcon.style.top = '0';
+  chartIcon.style.right = '1rem';
   chartIcon.style.height = '6rem';
   chartIcon.style.width = '6rem';
 const fillIcon = resourceCreateFillIcon();
