@@ -133,6 +133,7 @@ const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
     dropTextFileBtn.style.padding = '0.25rem 1rem'; 
     dropTextFileBtn.style.position = 'absolute';
+    dropTextFileBtn.style.left = '1.5rem';
     dropTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
 const fillHoursText = document.createElement('div');
     //display
