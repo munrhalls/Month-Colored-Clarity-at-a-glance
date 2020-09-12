@@ -66,10 +66,8 @@ function createSaveTextFileBtn() {
     SaveTextFileBtn.style.padding = '0.25rem 1rem';
     SaveTextFileBtn.setAttribute('type', 'button');
     SaveTextFileBtn.setAttribute('value', 'SAVE \nTEXT FILE');
-
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
-
   const saveHoursText = document.createElement('div');
     saveHoursText.innerText = 'TO KEEP HOURS DATA';
     saveHoursText.style.width = '100%';   
@@ -80,12 +78,10 @@ function createSaveTextFileBtn() {
     saveHoursText.style.fontWeight = 'lighter';
     saveHoursText.style.letterSpacing = '0.1rem';
     saveHoursText.style.textAlign = 'center';
-
   const saveIcon = resourceCreateSaveIcon();
     saveIcon.style.position = 'absolute';
     saveIcon.style.bottom = '1.66rem';
     saveIcon.style.left = '50%';
-
     saveIcon.style.marginLeft = 'calc(-12.5% + 6px)'
     saveIcon.style.fill = '#fff';
   //appends
@@ -139,11 +135,16 @@ const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.style.position = 'absolute';
     dropTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
 const fillHoursText = document.createElement('div');
+    //display
     fillHoursText.innerText = 'TO FILL HOURS DATA';
-    fillHoursText.style.fontSize = '0.75rem';
+    fillHoursText.style.width = '100%';   
     fillHoursText.style.position = 'absolute';
-    fillHoursText.style.letterSpacing = '0.1rem';
+    fillHoursText.style.bottom = '0.6rem';
+    //text
+    fillHoursText.style.fontSize = '0.6rem';   
     fillHoursText.style.fontWeight = 'lighter';
+    fillHoursText.style.letterSpacing = '0.1rem';
+    fillHoursText.style.textAlign = 'center';
 const chartIcon = resourceCreateChartIcon();
   chartIcon.style.fill = '#fff';
   chartIcon.style.position = 'absolute';
