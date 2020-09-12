@@ -8,6 +8,12 @@ window.addEventListener('load', function () {
   createCopyrightNote2();
 });
 
+
+  function menuSharedCSS_topTo1stElement() {
+    return '1.5rem';
+  }
+
+
 function createMenu() {
   const menu = document.createElement('div');
   menu.setAttribute('id', 'menu');  
@@ -30,9 +36,10 @@ function createMenu() {
   document.getElementById('root').appendChild(menu);
   createSaveTextFileBtn();
   createFillDataBtn();
-
 }
 function createSaveTextFileBtn() {
+
+  // components
     const SaveTextFileBtnContainer = (function createSaveTextFileBtnContainer() {
       const SaveTextFileBtnContainer = document.createElement('div');
         // aesthethics
@@ -51,7 +58,7 @@ function createSaveTextFileBtn() {
   const SaveTextFileBtn = document.createElement('input');
     SaveTextFileBtn.style.width = '6rem'; 
     SaveTextFileBtn.style.position = 'absolute';
-    SaveTextFileBtn.style.top = '1.5rem';
+    SaveTextFileBtn.style.top = menuSharedCSS_topTo1stElement();
     SaveTextFileBtn.style.left = '50%';
     SaveTextFileBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
     SaveTextFileBtn.style.padding = '0.25rem 1rem';
@@ -72,11 +79,11 @@ function createSaveTextFileBtn() {
     saveHoursText.style.letterSpacing = '0.1rem';
     saveHoursText.style.textAlign = 'center';
 
-
   const saveIcon = resourceCreateSaveIcon();
     saveIcon.style.position = 'absolute';
     saveIcon.style.bottom = '1.66rem';
     saveIcon.style.left = '50%';
+
     saveIcon.style.marginLeft = 'calc(-12.5% + 6px)'
     saveIcon.style.fill = '#fff';
   //appends
@@ -133,7 +140,11 @@ const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.setAttribute('type', 'button');
     dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
     dropTextFileBtn.style.padding = '0.25rem 1rem'; 
-    dropTextFileBtn.style.marginLeft = '0.5rem'; 
+    // fillDataBtn.style.position = 'absolute';
+    // fillDataBtn.style.top = 'absolute';
+    // fillDataBtn.style.position = 'absolute';
+    // fillDataBtn.style.position = 'absolute';
+
 const fillDataBtn = document.createElement('div');
     fillDataBtn.innerText = 'TO FILL HOURS DATA';
     fillDataBtn.style.fontSize = '0.75rem';
