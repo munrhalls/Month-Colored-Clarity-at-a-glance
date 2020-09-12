@@ -140,6 +140,7 @@ function createFillDataBtn() {
 const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.setAttribute('type', 'button');
     dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
+    dropTextFileBtn.style.padding = '0.25rem 1rem'; 
     dropTextFileBtn.style.position = 'absolute';
     dropTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
 
