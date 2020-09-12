@@ -98,7 +98,9 @@ function createSaveTextFileBtn() {
   SaveTextFileBtnContainer.onclick = (function() {
     // the only data it needs = hour ticks numbers 
     // loop that = fill each day /w corresponding hour ticks amount
+    // TARGET
     const hourElems = document.getElementsByClassName('hour');
+    console.log(hourElems);
     function createTextFile(filename, data) {
       var blob = new Blob([data], {type: 'text'});
       if(window.navigator.msSaveOrOpenBlob) {
