@@ -64,7 +64,10 @@ function createSaveTextFileBtn() {
     SaveTextFileBtn.style.width = '6rem'; 
     SaveTextFileBtn.style.left = '50%';
     SaveTextFileBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
-    SaveTextFileBtn.style.padding = '0.25rem 1rem';
+    SaveTextFileBtn.style.padding = '0.3rem 1rem';
+    SaveTextFileBtn.style.fontWeight = 'bold';
+    SaveTextFileBtn.style.fontSize = '0.9rem';
+
     SaveTextFileBtn.setAttribute('type', 'button');
     SaveTextFileBtn.setAttribute('value', 'SAVE \nTEXT FILE');
   const underLineGraphic = resourceCreateUnderLineGraphic();
@@ -132,9 +135,12 @@ function createFillDataBtn() {
 const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.setAttribute('type', 'button');
     dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
-    dropTextFileBtn.style.padding = '0.25rem 1rem'; 
+    dropTextFileBtn.style.padding = '0.3rem 1rem'; 
     dropTextFileBtn.style.position = 'absolute';
     dropTextFileBtn.style.left = '1.5rem';
+    dropTextFileBtn.style.fontWeight = 'bold';
+    dropTextFileBtn.style.fontSize = '0.9rem';
+
     dropTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
 const fillHoursText = document.createElement('div');
     //display
