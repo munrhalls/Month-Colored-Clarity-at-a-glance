@@ -155,13 +155,15 @@ const chartIcon = resourceCreateChartIcon();
   chartIcon.style.height = '6rem';
   chartIcon.style.width = '6rem';
 const fillIcon = resourceCreateFillIcon();
-  fillIcon.style.fill = '#fff';
-  fillIcon.style.height = '2.5rem';
-  fillIcon.style.width = '2.5rem';
   fillIcon.style.position = 'absolute';
-  fillIcon.style.transform = 'rotate(-30deg)';
-  fillIcon.style.top = 'absolute';
-  fillIcon.style.top = 'absolute';
+  fillIcon.style.top = '4.44rem';
+  fillIcon.style.left = '5.95rem';
+  fillIcon.style.fill = '#fff';
+  fillIcon.style.height = '2.75rem';
+  fillIcon.style.width = '2.75rem';
+  fillIcon.style.transform = 'scale(-1,1) rotate(-25deg)';
+
+
 
 
 const underLineGraphic = resourceCreateUnderLineGraphic();
