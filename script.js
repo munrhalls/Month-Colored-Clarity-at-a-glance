@@ -139,16 +139,18 @@ function createFillDataBtn() {
   })();
 
 const dropTextFileBtn = document.createElement('input');
-    dropTextFileBtn.setAttribute('type', 'file');
-    dropTextFileBtn.setAttribute('accept', 'text/plain');
-    dropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
-    dropTextFileBtn.style.padding = '0.3rem 1rem'; 
-    dropTextFileBtn.style.position = 'absolute';
-    dropTextFileBtn.style.left = '1.5rem';
-    dropTextFileBtn.style.fontWeight = 'bold';
-    dropTextFileBtn.style.fontSize = '0.9rem';
+  dropTextFileBtn.setAttribute('type', 'file');
+  dropTextFileBtn.setAttribute('accept', 'text/plain');
+const labelDropTextFileBtn = document.createElement('label');
+  labelDropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
+  labelDropTextFileBtn.style.padding = '0.3rem 1rem'; 
+  labelDropTextFileBtn.style.position = 'absolute';
+  labelDropTextFileBtn.style.left = '1.5rem';
+  labelDropTextFileBtn.style.fontWeight = 'bold';
+  labelDropTextFileBtn.style.fontSize = '0.9rem';
+  labelDropTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
 
-    dropTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
+
 const fillHoursText = document.createElement('div');
     //display
     fillHoursText.innerText = 'TO FILL HOURS DATA';
@@ -184,7 +186,8 @@ const column1 = document.createElement('div');
   column1.style.position = 'relative';
   column1.style.height = '100%';
 
-column1.appendChild(dropTextFileBtn)
+column1.appendChild(dropTextFileBtn);
+column1.appendChild(labelDropTextFileBtn);
 column1.appendChild(fillIcon)
 column1.appendChild(fillHoursText);
 column1.appendChild(underLineGraphic);
@@ -195,8 +198,10 @@ fillDataBtnContainer.appendChild(arrowGraphic);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
 var text = '';
-fillDataBtnContainer.onclick = (function() {
+
+fillDataBtnContainer.onclick = (function(e) {
   const reader = new FileReader(); 
+    var file = e.target.result;
     text = reader.readAsText(file);
 });
 console.log(text);
