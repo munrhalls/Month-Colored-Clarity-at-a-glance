@@ -213,7 +213,12 @@ document.getElementById('menu').appendChild(fillDataBtnContainer);
 dropTextFileBtn.addEventListener("change", handleFiles, false);
 function handleFiles() {
   const fileList = this.files; /* now you can work with the file list */
-  console.log(fileList)
+  const textFile = fileList[0];
+  const reader = new FileReader();
+  reader.onload = (function() { 
+    console.log('zxczxczxci')
+  })();
+  console.log(reader)
 }
 } 
 
