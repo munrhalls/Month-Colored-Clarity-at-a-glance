@@ -153,7 +153,7 @@ const dropTextFileBtn = document.createElement('input');
   dropTextFileBtn.style.position = 'absolute';
 
 const labelDropTextFileBtn = document.createElement('label');
-labelDropTextFileBtn.for = 'dropTextFileBtn';
+  labelDropTextFileBtn.setAttribute('for', 'dropTextFileBtn');
   labelDropTextFileBtn.innerText = 'DROP \nTEXT FILE';
   labelDropTextFileBtn.style.padding = '0.3rem 1rem'; 
   labelDropTextFileBtn.style.border = '2px solid #fff';
@@ -206,18 +206,17 @@ column1.appendChild(fillHoursText);
 column1.appendChild(underLineGraphic);
 
 fillDataBtnContainer.appendChild(column1);
-// fillDataBtnContainer.appendChild(column2);
 fillDataBtnContainer.appendChild(arrowGraphic);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
 var text = '';
 
 fillDataBtnContainer.onclick = (function(e) {
-  const reader = new FileReader(); 
-    var file = e.target.result;
-    text = reader.readAsText(file);
+  console.log(e.target.file);
+  // const reader = new FileReader(); 
+  //   var file = e.target.result;
+  //   text = reader.readAsText(file);
 });
-console.log(text);
 } 
 
 
