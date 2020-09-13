@@ -124,6 +124,9 @@ function createSaveTextFileBtn() {
     createTextFile('Metrics: Deep work hours. Per day, week, month.', hourNumsStr);
   });
 } 
+function fillHoursData(textFile) {
+  console.log(textFile)
+}
 function createFillDataBtn() {
   const fillDataBtnContainer = (function createFillDataContainer() {
     const fillDataBtnContainer = document.createElement('div');
@@ -144,13 +147,14 @@ const dropTextFileBtn = document.createElement('input');
   dropTextFileBtn.setAttribute('accept', 'text/plain');
   dropTextFileBtn.id = 'dropTextFileBtn';
   dropTextFileBtn.name = 'dropTextFileBtn';
+  
   dropTextFileBtn.onchange = (function() {
-    console.log(this.files[0])
     let file = this.files[0];
     let reader = new FileReader();
     reader.readAsText(file);
     reader.onload = function() {
-      console.log(reader.result);
+      const hoursTextFile = reader.result;
+      fillHoursData(hoursTextFile)
     };
   });
 
