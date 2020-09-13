@@ -149,6 +149,10 @@ const dropTextFileBtn = document.createElement('input');
 const labelDropTextFileBtn = document.createElement('label');
   labelDropTextFileBtn.innerText = 'DROP \nTEXT FILE';
   labelDropTextFileBtn.style.padding = '0.3rem 1rem'; 
+  labelDropTextFileBtn.style.border = '1px solid #fff';
+  labelDropTextFileBtn.style.textAlign = 'center';
+
+
   labelDropTextFileBtn.style.position = 'absolute';
   labelDropTextFileBtn.style.left = '1.5rem';
   labelDropTextFileBtn.style.fontWeight = 'bold';
