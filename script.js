@@ -141,15 +141,19 @@ function createFillDataBtn() {
 const dropTextFileBtn = document.createElement('input');
   dropTextFileBtn.setAttribute('type', 'file');
   dropTextFileBtn.setAttribute('accept', 'text/plain');
+  dropTextFileBtn.style.width = '0.1px';
+	dropTextFileBtn.style.height = '0.1px';
+	dropTextFileBtn.style.opacity = '0';
+	dropTextFileBtn.style.overflow = 'hidden';
+	dropTextFileBtn.style.position = 'absolute';
 const labelDropTextFileBtn = document.createElement('label');
-  labelDropTextFileBtn.setAttribute('value', 'DROP \nTEXT FILE');
+  labelDropTextFileBtn.innerText = 'DROP \nTEXT FILE';
   labelDropTextFileBtn.style.padding = '0.3rem 1rem'; 
   labelDropTextFileBtn.style.position = 'absolute';
   labelDropTextFileBtn.style.left = '1.5rem';
   labelDropTextFileBtn.style.fontWeight = 'bold';
   labelDropTextFileBtn.style.fontSize = '0.9rem';
   labelDropTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
-
 
 const fillHoursText = document.createElement('div');
     //display
