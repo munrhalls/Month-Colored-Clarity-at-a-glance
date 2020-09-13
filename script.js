@@ -67,6 +67,7 @@ function createSaveTextFileBtn() {
     SaveTextFileBtn.style.padding = '0.3rem 1rem';
     SaveTextFileBtn.style.fontWeight = 'bold';
     SaveTextFileBtn.style.fontSize = '0.9rem';
+    SaveTextFileBtn.style.border = '2px solid #fff';
     SaveTextFileBtn.setAttribute('type', 'button');
     SaveTextFileBtn.setAttribute('value', 'SAVE \nTEXT FILE');
   const underLineGraphic = resourceCreateUnderLineGraphic();
@@ -149,7 +150,7 @@ const dropTextFileBtn = document.createElement('input');
 const labelDropTextFileBtn = document.createElement('label');
   labelDropTextFileBtn.innerText = 'DROP \nTEXT FILE';
   labelDropTextFileBtn.style.padding = '0.3rem 1rem'; 
-  labelDropTextFileBtn.style.border = '1px solid #fff';
+  labelDropTextFileBtn.style.border = '2px solid #fff';
   labelDropTextFileBtn.style.textAlign = 'center';
 
 
