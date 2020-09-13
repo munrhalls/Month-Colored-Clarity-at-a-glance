@@ -142,18 +142,22 @@ function createFillDataBtn() {
 const dropTextFileBtn = document.createElement('input');
   dropTextFileBtn.setAttribute('type', 'file');
   dropTextFileBtn.setAttribute('accept', 'text/plain');
+  dropTextFileBtn.id = 'dropTextFileBtn';
+  dropTextFileBtn.name = 'dropTextFileBtn';
+
+
   dropTextFileBtn.style.width = '0.1px';
 	dropTextFileBtn.style.height = '0.1px';
 	dropTextFileBtn.style.opacity = '0';
 	dropTextFileBtn.style.overflow = 'hidden';
-	dropTextFileBtn.style.position = 'absolute';
+  dropTextFileBtn.style.position = 'absolute';
+
 const labelDropTextFileBtn = document.createElement('label');
+labelDropTextFileBtn.for = 'dropTextFileBtn';
   labelDropTextFileBtn.innerText = 'DROP \nTEXT FILE';
   labelDropTextFileBtn.style.padding = '0.3rem 1rem'; 
   labelDropTextFileBtn.style.border = '2px solid #fff';
   labelDropTextFileBtn.style.textAlign = 'center';
-
-
   labelDropTextFileBtn.style.position = 'absolute';
   labelDropTextFileBtn.style.left = '1.5rem';
   labelDropTextFileBtn.style.fontWeight = 'bold';
