@@ -144,6 +144,16 @@ const dropTextFileBtn = document.createElement('input');
   dropTextFileBtn.setAttribute('accept', 'text/plain');
   dropTextFileBtn.id = 'dropTextFileBtn';
   dropTextFileBtn.name = 'dropTextFileBtn';
+  dropTextFileBtn.onchange = (function() {
+    console.log(this.files[0])
+    let file = this.files[0];
+    let reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = function() {
+      console.log(reader.result);
+    };
+  });
+
 
 
   dropTextFileBtn.style.width = '0.1px';
@@ -209,17 +219,6 @@ fillDataBtnContainer.appendChild(column1);
 fillDataBtnContainer.appendChild(arrowGraphic);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
-
-dropTextFileBtn.addEventListener("change", handleFiles, false);
-function handleFiles() {
-  const fileList = this.files; /* now you can work with the file list */
-  const textFile = fileList[0];
-  const reader = new FileReader();
-  reader.onload = (function() { 
-    console.log('zxczxczxci')
-  })();
-  console.log(reader)
-}
 } 
 
 
