@@ -209,14 +209,12 @@ fillDataBtnContainer.appendChild(column1);
 fillDataBtnContainer.appendChild(arrowGraphic);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
-var text = '';
 
-fillDataBtnContainer.onclick = (function(e) {
-  console.log(e.target.file);
-  // const reader = new FileReader(); 
-  //   var file = e.target.result;
-  //   text = reader.readAsText(file);
-});
+dropTextFileBtn.addEventListener("change", handleFiles, false);
+function handleFiles() {
+  const fileList = this.files; /* now you can work with the file list */
+  console.log(fileList)
+}
 } 
 
 
