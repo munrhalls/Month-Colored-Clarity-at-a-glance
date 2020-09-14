@@ -322,28 +322,13 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     hours.appendChild(title);
     document.getElementsByClassName('monthContainer')[monthNum].appendChild(hours);
 };
-function createHourTick() {
-  hourCountDATA++;
-    ///////////////////////////////////////////
-  var parent = addBtn.parentNode;
-
-  var svgDiv = document.createElement('div');
-  svgDiv.className = "hour";
-  svgDiv.style.backgroundColor = "#000071";
-  svgDiv.style.padding = "7px 0";
-  svgDiv.style.border = "1px solid darkblue";
-  svgDiv.style.position = 'relative';
-  //deep work hour count- visual representer
-  var hourCount = document.createElement('div');
-  ///////////////////////////////////////////
-
-  hourCount.innerText = hourCountDATA;
-  hourCount.style.color = "#000";
-  hourCount.style.fontWeight = "bold";
-  hourCount.style.fontSize = '1.25rem';
-  hourCount.style.position = 'absolute';
-  hourCount.style.left = '15px';
-  svgDiv.appendChild(hourCount);
+function createHourTick(num) {
+  var hour = document.createElement('div');
+  hour.className = "hour";
+  hour.style.backgroundColor = "#000071";
+  hour.style.padding = "7px 0";
+  hour.style.border = "1px solid darkblue";
+  hour.style.position = 'relative';
   // deep work hour count - visual representer
   var svg = document. createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("width", "100%");
@@ -356,10 +341,19 @@ function createHourTick() {
     tick.style.scale = "0.14";
     tick.style.x = "50%";
     svg.appendChild(tick);
-    svgDiv.appendChild(svg);
-    ///////////////////////////////////////////
-    parent.appendChild(svgDiv);
+    hour.appendChild(svg);
+    return hour;
 };
+function appendNumToHour(num, hour) {
+  var hourCount = document.createElement('div');
+  hourCount.innerText = num;
+  hourCount.style.color = "#000";
+  hourCount.style.fontWeight = "bold";
+  hourCount.style.fontSize = '1.25rem';
+  hourCount.style.position = 'absolute';
+  hourCount.style.left = '15px';
+  hour.appendChild(hourCount);
+}
 function createBtns(dayContainer) {
   var addBtn = document.createElement('input');
       addBtn.style.marginLeft = "auto";
@@ -374,13 +368,12 @@ function createBtns(dayContainer) {
       addBtn.setAttribute('type', 'button');
       addBtn.setAttribute('value', '+');
       //4. COUNT HOURS WITH CLOSURE VAR
-      var hourCountDATA = 0;
+      var hoursCount = 0;
       // 5. (REPRESENT TICKS DATA) - CREATE HOURS TICKS ON BTN CLICK
       addBtn.onclick = function addHourTick(){
-          ///////////////////////////////////////////
-        hourCountDATA++;
-          ///////////////////////////////////////////
-
+        hoursCount++;
+        const hourTick = createHourTick(hoursCount);
+        
         var parent = addBtn.parentNode;
 
         var svgDiv = document.createElement('div');
@@ -393,7 +386,6 @@ function createBtns(dayContainer) {
         var hourCount = document.createElement('div');
         ///////////////////////////////////////////
 
-        hourCount.innerText = hourCountDATA;
         hourCount.style.color = "#000";
         hourCount.style.fontWeight = "bold";
         hourCount.style.fontSize = '1.25rem';
