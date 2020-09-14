@@ -28,9 +28,10 @@ function createMenu() {
     menu.style.display = 'flex';
 
     title.innerText = 'Metrics - Deep Work hours';
+    title.textAlign = 'center';
     title.style.display = 'flex';
     title.style.alignItems = 'center';
-    title.style.paddingLeft = '3rem';
+    title.style.padding = '0 3rem';
     title.style.fontWeight = 'bold';
     title.style.fontSize = '1.5rem'
     title.style.letterSpacing = '0.1rem';
