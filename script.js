@@ -103,7 +103,8 @@ function saveHoursAsTextFile() {
    for (let i = 0; i < days.length; i++) {
      hourNums.push(days[i].getElementsByClassName('hour').length);
    }
-   const hourNumsStr = hourNums.join(',');    
+   const hourNumsStr = hourNums.join(','); 
+      
    function createTextFile(filename, data) {
      var blob = new Blob([data], {type: 'text'});
      if(window.navigator.msSaveOrOpenBlob) {
@@ -112,7 +113,7 @@ function saveHoursAsTextFile() {
      else {
          var elem = window.document.createElement('a');
          elem.href = window.URL.createObjectURL(blob);
-         elem.download = filename;        
+         elem.download = filename + '.txt';        
          document.body.appendChild(elem);
          elem.click();        
          document.body.removeChild(elem);
@@ -144,6 +145,7 @@ const dropTextFileBtn = document.createElement('input');
   
   dropTextFileBtn.onchange = (function() {
     let file = this.files[0];
+    console.log(this.files);
     let reader = new FileReader();
     reader.readAsText(file);
     reader.onload = function() {
