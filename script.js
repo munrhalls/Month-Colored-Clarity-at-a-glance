@@ -8,15 +8,14 @@ window.addEventListener('load', function () {
   createCopyrightNote2();
 });
 
-
+// values //  values //  //  values  //  values  //  values  //  values  //  values  //  values  //  values  //  values  //
   const VALUES_MenuSharedCSS = {
     height_menuWhole: '9rem',
     width_menuSmallerBlock: '9rem',
     space_TopTo1stElement: '1.5rem',
     space_BottomTo1stElement: '0.25rem',
   }
-
-
+//top menu // top menu //  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  //
 function createMenu() {
   const menu = document.createElement('div');
   menu.setAttribute('id', 'menu');  
@@ -224,6 +223,51 @@ fillDataBtnContainer.appendChild(arrowGraphic);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
 } 
+function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
+  //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
+  var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+  var CSV = 'sep=,' + '\r\n\n';
+  //This condition will generate the Label/Header
+  if (ShowLabel) {
+      var row = "";
+      //This loop will extract the label from 1st index of on array
+      for (var index in arrData[0]) {
+          //Now convert each value to string and comma-seprated
+          row += index + ',';
+      }
+      row = row.slice(0, -1);
+      //append Label row with line break
+      CSV += row + '\r\n';
+  }
+  //1st loop is to extract each row
+  for (var i = 0; i < arrData.length; i++) {
+      var row = "";
+      //2nd loop will extract each column and convert it in string comma-seprated
+      for (var index in arrData[i]) {
+          row += '"' + arrData[i][index] + '",';
+      }
+      row.slice(0, row.length - 1);
+      //add a line break after each row
+      CSV += row + '\r\n';
+  }
+  if (CSV == '') {        
+      alert("Invalid data");
+      return;
+  }   
+  //Generate a file name
+  var fileName = "MyReport_";
+  fileName += ReportTitle.replace(/ /g,"_");   
+  //Initialize file format: csv or xls
+  var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+  var link = document.createElement("a");    
+  link.href = uri;
+  link.style = "visibility:hidden";
+  link.download = fileName + ".csv";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+//main // main // main // main // main // main // main // main // main // main // main // main // main // main // main // main // main 
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
   weeksContainer.className = 'weeksContainer';
@@ -321,168 +365,21 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     title.style.left = "1.25rem";
     hours.appendChild(title);
     document.getElementsByClassName('monthContainer')[monthNum].appendChild(hours);
-};
-function createHourTick() {
-  var hour = document.createElement('div');
-  hour.className = "hour";
-  hour.style.backgroundColor = "#000071";
-  hour.style.padding = "7px 0";
-  hour.style.border = "1px solid darkblue";
-  hour.style.position = 'relative';
-  // deep work hour count - visual representer
-  var svg = document. createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("width", "100%");
-    svg.setAttribute("height", "28");
-    svg.setAttribute("width", "28");
-    svg.setAttribute('display', 'block');
-    svg.style.margin = "auto";
-  var tick = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    tick.setAttributeNS(null, 'd', 'M95.833,0C42.991,0,0,42.99,0,95.833s42.991,95.834,95.833,95.834s95.833-42.991,95.833-95.834S148.676,0,95.833,0z   M150.862,79.646l-60.207,60.207c-2.56,2.56-5.963,3.969-9.583,3.969c-3.62,0-7.023-1.409-9.583-3.969l-30.685-30.685  c-2.56-2.56-3.97-5.963-3.97-9.583c0-3.621,1.41-7.024,3.97-9.584c2.559-2.56,5.962-3.97,9.583-3.97c3.62,0,7.024,1.41,9.583,3.971  l21.101,21.1l50.623-50.623c2.56-2.56,5.963-3.969,9.583-3.969c3.62,0,7.023,1.409,9.583,3.969  C156.146,65.765,156.146,74.362,150.862,79.646z');
-    tick.style.scale = "0.14";
-    tick.style.x = "50%";
-    svg.appendChild(tick);
-    hour.appendChild(svg);
-    return hour;
-};
-function appendNumToHour(num, hour) {
-  var numEl = document.createElement('div');
-  numEl.style.color = '#000';
-  numEl.style.fontWeight = "bold";
-  numEl.style.fontSize = '1.6rem';
-  numEl.style.position = 'absolute';
-  numEl.style.left = '15px';
-  numEl.style.top = '0.1rem';
-  numEl.innerText = num;
-  hour.appendChild(numEl);
-}
-function createAddBtn() {
-  const addBtn = document.createElement('input');
-    addBtn.style.marginLeft = "auto";
-    addBtn.style.backgroundColor = "#000";
-    addBtn.style.color = "#000071";
-    addBtn.style.border = "none";
-    addBtn.style.fontWeight = "bold";
-    addBtn.style.display = "inline-block";
-    addBtn.style.height = "30px";
-    addBtn.style.width = "100%";
-    addBtn.style.maxWidth = "50%";
-    addBtn.setAttribute('type', 'button');
-    addBtn.setAttribute('value', '+');
-    return addBtn;
-}
-function createSubstractBtn() {
-  var substractBtn = document.createElement('input');
-  substractBtn.style.marginLeft = "auto";
-  substractBtn.style.backgroundColor = "#000";
-  substractBtn.style.border = "none";
-  substractBtn.style.color = 'rgb(225, 116, 0)';
-  substractBtn.style.fontWeight = "bold";
-  substractBtn.style.display = "inline-block";
-  substractBtn.style.height = "30px";
-  substractBtn.style.width = "100%";
-  substractBtn.style.maxWidth = "50%";
-  substractBtn.setAttribute('type', 'button');
-  substractBtn.setAttribute('value', '-');
-  return substractBtn;
-}
-function deleteHourEl(day) {
-  if (day.getElementsByClassName('hour').length) {
-    day.removeChild(day.getElementsByClassName('hour')[day.getElementsByClassName('hour').length - 1]);  
-  }
-}
+}; 
+function createMonths(monthNum) {
+  var monthContainer = document.createElement('div');
+  monthContainer.classList.add('month');
+  monthContainer.classList.add('monthContainer');
+  monthContainer.style.display = 'flex';
+  document.getElementById('root').appendChild(monthContainer);
 
-function createBtns(dayContainer) {
-  const addBtn = createAddBtn();
-  //count day's hours - closure var
-  var hourNum = 0;
-
-  // (represent hours) - add btn click -> add hour element
-  addBtn.onclick = function addHour(){
-    hourNum++;
-    const hour = createHourTick();
-    appendNumToHour(hourNum, hour);
-    const parent = addBtn.parentNode;
-    parent.appendChild(hour);
-  };  
-
-  //(represent hours) - substract btn click -> substract hour element
-  const substractBtn = createSubstractBtn();
-  substractBtn.onclick = function substractHour(){
-    if (hourNum > 0) {
-      hourNum--;
-    }
-    const day = substractBtn.parentNode;
-    deleteHourEl(day);
-  };
-  dayContainer.appendChild(addBtn);
-  dayContainer.appendChild(substractBtn);
-}
-
-function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
-  //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
-  var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
-  var CSV = 'sep=,' + '\r\n\n';
-  //This condition will generate the Label/Header
-  if (ShowLabel) {
-      var row = "";
-      //This loop will extract the label from 1st index of on array
-      for (var index in arrData[0]) {
-          //Now convert each value to string and comma-seprated
-          row += index + ',';
-      }
-      row = row.slice(0, -1);
-      //append Label row with line break
-      CSV += row + '\r\n';
-  }
-  //1st loop is to extract each row
-  for (var i = 0; i < arrData.length; i++) {
-      var row = "";
-      //2nd loop will extract each column and convert it in string comma-seprated
-      for (var index in arrData[i]) {
-          row += '"' + arrData[i][index] + '",';
-      }
-      row.slice(0, row.length - 1);
-      //add a line break after each row
-      CSV += row + '\r\n';
-  }
-  if (CSV == '') {        
-      alert("Invalid data");
-      return;
-  }   
-  //Generate a file name
-  var fileName = "MyReport_";
-  fileName += ReportTitle.replace(/ /g,"_");   
-  //Initialize file format: csv or xls
-  var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
-  var link = document.createElement("a");    
-  link.href = uri;
-  link.style = "visibility:hidden";
-  link.download = fileName + ".csv";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-function createDays(week) {
-  // 2. CREATE DAYS DIVS
-  var daysDATA = ['Monday', 'Tuesday', 'Wendesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-  //create: container divs -> corresponding divs: 1) day's title divs, 2) day's deep work hour ticks
-  daysDATA.forEach(function(el){
-    //day's column to add deep work hour ticks into
-    var day = document.createElement('div');
-      day.innerText = el;
-      //style
-      day.style.width = "142px";
-      day.style.textAlign = "center";
-      day.style.border = '1px solid gray'; day.style.padding = '3px 30px'; 
-    var dayContainer = document.createElement('div');
-      dayContainer.classList.add('day');
-      dayContainer.classList.add(el);
-      dayContainer.appendChild(day);
-      dayContainer.style.display = 'inline-block'; 
-      week.appendChild(dayContainer);
-      createBtns(dayContainer);
-  });
+  var monthNamesDATA = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  createSidewaysTitle(monthNamesDATA[monthNum], monthNum);
+  createWeeksContainer(monthNum);
+  createWeek(1, monthNum);
+  createWeek(2, monthNum);
+  createWeek(3, monthNum);
+  createWeek(4, monthNum);
 }
 function createWeek(weekNum, monthNum) {
   // 1. CREATE WEEK DIV
@@ -574,22 +471,124 @@ function createWeek(weekNum, monthNum) {
   document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
   createDays(week);
 }
-function createMonths(monthNum) {
-  var monthContainer = document.createElement('div');
-  monthContainer.classList.add('month');
-  monthContainer.classList.add('monthContainer');
-  monthContainer.style.display = 'flex';
-  document.getElementById('root').appendChild(monthContainer);
+function createDays(week) {
+  // 2. CREATE DAYS DIVS
+  var daysDATA = ['Monday', 'Tuesday', 'Wendesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-  var monthNamesDATA = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  createSidewaysTitle(monthNamesDATA[monthNum], monthNum);
-  createWeeksContainer(monthNum);
-  createWeek(1, monthNum);
-  createWeek(2, monthNum);
-  createWeek(3, monthNum);
-  createWeek(4, monthNum);
+  //create: container divs -> corresponding divs: 1) day's title divs, 2) day's deep work hour ticks
+  daysDATA.forEach(function(el){
+    //day's column to add deep work hour ticks into
+    var day = document.createElement('div');
+      day.innerText = el;
+      //style
+      day.style.width = "142px";
+      day.style.textAlign = "center";
+      day.style.border = '1px solid gray'; day.style.padding = '3px 30px'; 
+    var dayContainer = document.createElement('div');
+      dayContainer.classList.add('day');
+      dayContainer.classList.add(el);
+      dayContainer.appendChild(day);
+      dayContainer.style.display = 'inline-block'; 
+      week.appendChild(dayContainer);
+      createBtns(dayContainer);
+  });
 }
-// RESOURCES (graphics and so on) 
+// feature - add/substract hours in a day //  feature - add/substract hours in a day //  feature - add/substract hours in a day //  
+function createBtns(dayContainer) {
+  const addBtn = createAddBtn();
+  //count day's hours - closure var
+  var hourNum = 0;
+
+  // (represent hours) - add btn click -> add hour element
+  addBtn.onclick = function addHour(){
+    hourNum++;
+    const hour = createHourTick();
+    appendNumToHour(hourNum, hour);
+    const parent = addBtn.parentNode;
+    parent.appendChild(hour);
+  };  
+
+  //(represent hours) - substract btn click -> substract hour element
+  const substractBtn = createSubstractBtn();
+  substractBtn.onclick = function substractHour(){
+    if (hourNum > 0) {
+      hourNum--;
+    }
+    const day = substractBtn.parentNode;
+    deleteHourEl(day);
+  };
+  dayContainer.appendChild(addBtn);
+  dayContainer.appendChild(substractBtn);
+}
+function createAddBtn() {
+  const addBtn = document.createElement('input');
+    addBtn.style.marginLeft = "auto";
+    addBtn.style.backgroundColor = "#000";
+    addBtn.style.color = "#000071";
+    addBtn.style.border = "none";
+    addBtn.style.fontWeight = "bold";
+    addBtn.style.display = "inline-block";
+    addBtn.style.height = "30px";
+    addBtn.style.width = "100%";
+    addBtn.style.maxWidth = "50%";
+    addBtn.setAttribute('type', 'button');
+    addBtn.setAttribute('value', '+');
+    return addBtn;
+}
+function createSubstractBtn() {
+  var substractBtn = document.createElement('input');
+  substractBtn.style.marginLeft = "auto";
+  substractBtn.style.backgroundColor = "#000";
+  substractBtn.style.border = "none";
+  substractBtn.style.color = 'rgb(225, 116, 0)';
+  substractBtn.style.fontWeight = "bold";
+  substractBtn.style.display = "inline-block";
+  substractBtn.style.height = "30px";
+  substractBtn.style.width = "100%";
+  substractBtn.style.maxWidth = "50%";
+  substractBtn.setAttribute('type', 'button');
+  substractBtn.setAttribute('value', '-');
+  return substractBtn;
+}
+function createHourTick() {
+  var hour = document.createElement('div');
+  hour.className = "hour";
+  hour.style.backgroundColor = "#000071";
+  hour.style.padding = "7px 0";
+  hour.style.border = "1px solid darkblue";
+  hour.style.position = 'relative';
+  // deep work hour count - visual representer
+  var svg = document. createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", "100%");
+    svg.setAttribute("height", "28");
+    svg.setAttribute("width", "28");
+    svg.setAttribute('display', 'block');
+    svg.style.margin = "auto";
+  var tick = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    tick.setAttributeNS(null, 'd', 'M95.833,0C42.991,0,0,42.99,0,95.833s42.991,95.834,95.833,95.834s95.833-42.991,95.833-95.834S148.676,0,95.833,0z   M150.862,79.646l-60.207,60.207c-2.56,2.56-5.963,3.969-9.583,3.969c-3.62,0-7.023-1.409-9.583-3.969l-30.685-30.685  c-2.56-2.56-3.97-5.963-3.97-9.583c0-3.621,1.41-7.024,3.97-9.584c2.559-2.56,5.962-3.97,9.583-3.97c3.62,0,7.024,1.41,9.583,3.971  l21.101,21.1l50.623-50.623c2.56-2.56,5.963-3.969,9.583-3.969c3.62,0,7.023,1.409,9.583,3.969  C156.146,65.765,156.146,74.362,150.862,79.646z');
+    tick.style.scale = "0.14";
+    tick.style.x = "50%";
+    svg.appendChild(tick);
+    hour.appendChild(svg);
+    return hour;
+};
+function appendNumToHour(num, hour) {
+  var numEl = document.createElement('div');
+  numEl.style.color = '#000';
+  numEl.style.fontWeight = "bold";
+  numEl.style.fontSize = '1.6rem';
+  numEl.style.position = 'absolute';
+  numEl.style.left = '15px';
+  numEl.style.top = '0.1rem';
+  numEl.innerText = num;
+  hour.appendChild(numEl);
+}
+function deleteHourEl(day) {
+  if (day.getElementsByClassName('hour').length) {
+    day.removeChild(day.getElementsByClassName('hour')[day.getElementsByClassName('hour').length - 1]);  
+  }
+}
+// RESOURCES (graphics and so on) //  RESOURCES (graphics and so on) //  RESOURCES (graphics and so on) //  
 function resourceCreateSaveIcon() {
   const saveIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     saveIcon.setAttributeNS(null, 'height', '24');
