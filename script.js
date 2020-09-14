@@ -123,9 +123,6 @@ function createSaveTextFileBtn() {
     createTextFile('Metrics: Deep work hours. Per day, week, month.', hourNumsStr);
   });
 } 
-function fillHoursData(textFile) {
-  console.log(textFile)
-}
 function createFillDataBtn() {
   const fillDataBtnContainer = (function createFillDataContainer() {
     const fillDataBtnContainer = document.createElement('div');
@@ -223,6 +220,20 @@ fillDataBtnContainer.appendChild(arrowGraphic);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
 } 
+function fillHoursData(textFile) {
+  const days = document.getElementsByClassName('day');
+  let hoursArr = textFile.split(',');
+  
+  for (let i = 0; i < days.length; i++) {
+    const day = days[i];
+    const hoursNum = hoursArr[i];
+    for (let j = 0; j < hoursNum; j++) {
+      const hour = createHourTick();
+      day.appendChild(hour);
+      console.log(hoursNum)
+    }
+  }
+}
 function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
   var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
