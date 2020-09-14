@@ -396,8 +396,8 @@ function createBtns(dayContainer) {
         substractBtn.setAttribute('value', '-');
       //7. (REPRESENT TICKS DATA) - SUBSTRACT HOURS TICKS ON BTN CLICK
       substractBtn.onclick = (function(){
-        if (hourCountDATA > 0) {
-          hourCountDATA--;
+        if (hourNum > 0) {
+          hourNum--;
         }
         var parent = substractBtn.parentNode;
         if (parent.getElementsByClassName('hour').length) {
