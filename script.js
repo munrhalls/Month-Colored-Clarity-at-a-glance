@@ -368,11 +368,9 @@ function createBtns(dayContainer) {
       addBtn.style.maxWidth = "50%";
       addBtn.setAttribute('type', 'button');
       addBtn.setAttribute('value', '+');
-
-
-      //4. COUNT HOURS WITH CLOSURE VAR
+      //COUNT DAY'S HOURS WITH CLOSURE VAR
       var hourNum = 0;
-      // 5. (REPRESENT TICKS DATA) - CREATE HOURS TICKS ON BTN CLICK
+      // (REPRESENT HOURS DATA) - ADD HOUR TICK EL ON BTN CLICK
       addBtn.onclick = function addHourTick(){
         hourNum++;
         const hour = createHourTick();
@@ -381,7 +379,7 @@ function createBtns(dayContainer) {
         parent.appendChild(hour);
       };
       dayContainer.appendChild(addBtn);
-      //6. APPEND SUBSTRACT HOURS BUTTON TO EACH DAY 
+      // (REPRESENT HOURS DATA) - SUBSTRACT HOUR TICK EL ON BTN CLICK
       var substractBtn = document.createElement('input');
         substractBtn.style.marginLeft = "auto";
         substractBtn.style.backgroundColor = "#000";
