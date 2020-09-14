@@ -322,7 +322,7 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     hours.appendChild(title);
     document.getElementsByClassName('monthContainer')[monthNum].appendChild(hours);
 };
-function createHourTick(num) {
+function createHourTick() {
   var hour = document.createElement('div');
   hour.className = "hour";
   hour.style.backgroundColor = "#000071";
@@ -353,6 +353,7 @@ function appendNumToHour(num, hour) {
   hourCount.style.position = 'absolute';
   hourCount.style.left = '15px';
   hour.appendChild(hourCount);
+  return hour;
 }
 function createBtns(dayContainer) {
   var addBtn = document.createElement('input');
@@ -368,11 +369,12 @@ function createBtns(dayContainer) {
       addBtn.setAttribute('type', 'button');
       addBtn.setAttribute('value', '+');
       //4. COUNT HOURS WITH CLOSURE VAR
-      var hoursCount = 0;
+      var hoursNum = 0;
       // 5. (REPRESENT TICKS DATA) - CREATE HOURS TICKS ON BTN CLICK
       addBtn.onclick = function addHourTick(){
-        hoursCount++;
-        const hourTick = createHourTick(hoursCount);
+        hoursNum++;
+        const hour = createHourTick(hoursNum);
+        appendNumToHour(hour, hoursNum);
         
         var parent = addBtn.parentNode;
 
