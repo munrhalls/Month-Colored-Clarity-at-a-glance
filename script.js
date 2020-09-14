@@ -375,8 +375,8 @@ function createBtns(dayContainer) {
       // 5. (REPRESENT TICKS DATA) - CREATE HOURS TICKS ON BTN CLICK
       addBtn.onclick = function addHourTick(){
         hourNum++;
-        const hour = createHourTick(hourNum);
-        appendNumToHour(hour, hourNum);
+        const hour = createHourTick();
+        appendNumToHour(hourNum, hour);
         
         var parent = addBtn.parentNode;
 
