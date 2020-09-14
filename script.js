@@ -227,10 +227,10 @@ function fillHoursData(textFile) {
   for (let i = 0; i < days.length; i++) {
     const day = days[i];
     const hoursNum = hoursArr[i];
-    for (let j = 0; j < hoursNum; j++) {
+    for (let j = 1; j <= hoursNum; j++) {
       const hour = createHourTick();
+      appendNumToHour(j, hour);
       day.appendChild(hour);
-      console.log(hoursNum)
     }
   }
 }
