@@ -15,7 +15,7 @@ window.addEventListener('load', function () {
     space_TopTo1stElement: '1.5rem',
     space_BottomTo1stElement: '0.25rem',
   }
-//top menu // top menu //  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  //
+// top menu // top menu //  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  //
 function createMenu() {
   const menu = document.createElement('div');
   menu.setAttribute('id', 'menu');  
@@ -218,6 +218,7 @@ fillDataBtnContainer.appendChild(arrowGraphic);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
 } 
+// feature - fill work hours per day from text file // feature - fill work hours per day from text file // 
 function fillHoursData(textFile) {
   const days = document.getElementsByClassName('day');
   let hoursArr = textFile.split(',');
@@ -236,6 +237,7 @@ function appendHour(hoursNum, day) {
   appendNumToHour(hoursNum, hour);
   day.appendChild(hour);
 }
+// feature - fill excel file from work hours data
 function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
   var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
