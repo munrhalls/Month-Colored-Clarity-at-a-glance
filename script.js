@@ -368,13 +368,15 @@ function createBtns(dayContainer) {
       addBtn.style.maxWidth = "50%";
       addBtn.setAttribute('type', 'button');
       addBtn.setAttribute('value', '+');
+
+
       //4. COUNT HOURS WITH CLOSURE VAR
-      var hoursNum = 0;
+      var hourNum = 0;
       // 5. (REPRESENT TICKS DATA) - CREATE HOURS TICKS ON BTN CLICK
       addBtn.onclick = function addHourTick(){
-        hoursNum++;
-        const hour = createHourTick(hoursNum);
-        appendNumToHour(hour, hoursNum);
+        hourNum++;
+        const hour = createHourTick(hourNum);
+        appendNumToHour(hour, hourNum);
         
         var parent = addBtn.parentNode;
 
