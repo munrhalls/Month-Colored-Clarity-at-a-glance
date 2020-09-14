@@ -34,11 +34,14 @@ function createMenu() {
     title.style.padding = '0 3rem';
     title.style.fontWeight = 'bold';
     title.style.fontSize = '1.5rem'
+    title.style.fontFamily = 'consolas';
     title.style.letterSpacing = '0.1rem';
+  const saveToExcelBtn = createSaveToExcelBtn();
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
   createSaveTextFileBtn();
   createFillDataBtn();
+  menu.appendChild(saveToExcelBtn);
 }
 function createSaveTextFileBtn() {
   // components
@@ -249,6 +252,62 @@ function appendHour(hoursNum, day) {
   day.appendChild(hour);
 }
 // feature - fill excel file from work hours data
+function createSaveToExcelBtn() {
+  var saveToExcelBtn = document.createElement('input');
+    saveToExcelBtn.style.marginLeft = "auto";
+    saveToExcelBtn.style.backgroundColor = "#000";
+    saveToExcelBtn.style.color = "#fff";
+    saveToExcelBtn.style.border = "none";
+    saveToExcelBtn.style.fontWeight = "bold";
+    saveToExcelBtn.style.height = "30px";
+    saveToExcelBtn.setAttribute('type', 'button');
+    saveToExcelBtn.setAttribute('value', 'Save to Excel');
+    saveToExcelBtn.onclick = saveToExcel;
+    return saveToExcelBtn;
+}
+function saveToExcel() {
+  var month = document.getElementsByClassName('month')[0];
+  var monthNamesDATA = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var weeks = month.getElementsByClassName('week'); 
+
+  for (var i = 0; i < weeks.length; i++) {
+    var weekObj = {};
+    weekObj[monthNamesDATA[0]] = 'Week' + (i + 1);
+    var week = weeks[i];
+    var days = week.getElementsByClassName('day');
+
+    for (var j = 0; j < days.length; j++) {
+      var day = days[j];
+      var hours = day.getElementsByClassName('hour');
+    }
+    monthData.push(weekObj)
+
+  }
+  var totalDeepWorkHours = document.getElementsByClassName('hour').length;
+  
+  JSONToCSVConvertor([
+    {'January': 'Week 1',
+      'Monday': 8,
+      'Tuesday': 0,
+      'Wendesday': 0,
+      'Thursday': 0,
+      'Friday': 0,
+      'Saturday': 0,
+      'Sunday': 0,
+    },
+    {'January': 'Week 2',
+    'Monday': 10,
+    'Tuesday': 0,
+    'Wendesday': 0,
+    'Thursday': 0,
+    'Friday': 0,
+    'Saturday': 0,
+    'Sunday': 0,
+    },
+    {'Total': totalDeepWorkHours,
+    },
+  ], 'ReportTitle', 'ShowLabel');
+};
 function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
   var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
@@ -321,63 +380,7 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     hours.style.textAlign = "center";
     hours.style.paddingRight = '6rem';
     //CREATE SAVE TO EXCEL BUTTON
-    var saveToExcelBtn = document.createElement('input');
-      saveToExcelBtn.style.marginLeft = "auto";
-      saveToExcelBtn.style.backgroundColor = "#000";
-      saveToExcelBtn.style.color = "#fff";
-      saveToExcelBtn.style.border = "none";
-      saveToExcelBtn.style.fontWeight = "bold";
-      saveToExcelBtn.style.height = "30px";
-      saveToExcelBtn.style.width = "100%";
-      saveToExcelBtn.setAttribute('type', 'button');
-      saveToExcelBtn.setAttribute('value', 'Save to Excel');
-      hours.appendChild(saveToExcelBtn);
-    //ACQUIRE DEEP WORK HOURS TO DAY TO WEEK TO MONTH DATA
     var monthData = [];
-    saveToExcelBtn.onclick = (function() {
-
-      var month = document.getElementsByClassName('month')[0];
-      var monthNamesDATA = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-      var weeks = month.getElementsByClassName('week'); 
-
-      for (var i = 0; i < weeks.length; i++) {
-        var weekObj = {};
-        weekObj[monthNamesDATA[0]] = 'Week' + (i + 1);
-        var week = weeks[i];
-        var days = week.getElementsByClassName('day');
-
-        for (var j = 0; j < days.length; j++) {
-          var day = days[j];
-          var hours = day.getElementsByClassName('hour');
-        }
-        monthData.push(weekObj)
-
-      }
-      var totalDeepWorkHours = document.getElementsByClassName('hour').length;
-      
-    JSONToCSVConvertor([
-      {'January': 'Week 1',
-       'Monday': 8,
-       'Tuesday': 0,
-       'Wendesday': 0,
-       'Thursday': 0,
-       'Friday': 0,
-       'Saturday': 0,
-       'Sunday': 0,
-      },
-      {'January': 'Week 2',
-      'Monday': 10,
-      'Tuesday': 0,
-      'Wendesday': 0,
-      'Thursday': 0,
-      'Friday': 0,
-      'Saturday': 0,
-      'Sunday': 0,
-      },
-      {'Total': totalDeepWorkHours,
-      },
-    ], 'ReportTitle', 'ShowLabel');
-    });
     //title
     var title = document.createElement('div');
     title.innerText = sidewaysTitle;
