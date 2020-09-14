@@ -157,8 +157,6 @@ const dropTextFileBtn = document.createElement('input');
     };
   });
 
-
-
   dropTextFileBtn.style.width = '0.1px';
 	dropTextFileBtn.style.height = '0.1px';
 	dropTextFileBtn.style.opacity = '0';
@@ -229,7 +227,14 @@ function fillHoursData(textFile) {
   let hoursArr = textFile.split(',');
   
   for (let i = 0; i < days.length; i++) {
+    // clear & append on each day -> saves the need to otherwise loop all days 2nd time
+    clearHoursFromTheDay(days[i]);
     appendHoursToDay(hoursArr[i], days[i]);
+  }
+}
+function clearHoursFromTheDay(day) {
+  for (let r = day.getElementsByClassName('hour').length - 1; r >= 0; r--) {
+    day.getElementsByClassName('hour')[r].remove();
   }
 }
 function appendHoursToDay(hoursNum, day) {
