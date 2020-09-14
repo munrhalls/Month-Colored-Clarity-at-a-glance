@@ -355,6 +355,21 @@ function appendNumToHour(num, hour) {
   numEl.innerText = num;
   hour.appendChild(numEl);
 }
+function createAddBtn() {
+  const addBtn = document.createElement('input');
+    addBtn.style.marginLeft = "auto";
+    addBtn.style.backgroundColor = "#000";
+    addBtn.style.color = "#000071";
+    addBtn.style.border = "none";
+    addBtn.style.fontWeight = "bold";
+    addBtn.style.display = "inline-block";
+    addBtn.style.height = "30px";
+    addBtn.style.width = "100%";
+    addBtn.style.maxWidth = "50%";
+    addBtn.setAttribute('type', 'button');
+    addBtn.setAttribute('value', '+');
+    return addBtn;
+}
 function createSubstractBtn() {
   var substractBtn = document.createElement('input');
   substractBtn.style.marginLeft = "auto";
@@ -375,41 +390,34 @@ function deleteHourEl(day) {
     day.removeChild(day.getElementsByClassName('hour')[day.getElementsByClassName('hour').length - 1]);  
   }
 }
+
 function createBtns(dayContainer) {
-  var addBtn = document.createElement('input');
-      addBtn.style.marginLeft = "auto";
-      addBtn.style.backgroundColor = "#000";
-      addBtn.style.color = "#000071";
-      addBtn.style.border = "none";
-      addBtn.style.fontWeight = "bold";
-      addBtn.style.display = "inline-block";
-      addBtn.style.height = "30px";
-      addBtn.style.width = "100%";
-      addBtn.style.maxWidth = "50%";
-      addBtn.setAttribute('type', 'button');
-      addBtn.setAttribute('value', '+');
-      //COUNT DAY'S HOURS WITH CLOSURE VAR
-      var hourNum = 0;
-      // (REPRESENT HOURS) - ADD HOUR ON BTN CLICK
-      addBtn.onclick = function addHour(){
-        hourNum++;
-        const hour = createHourTick();
-        appendNumToHour(hourNum, hour);
-        var parent = addBtn.parentNode;
-        parent.appendChild(hour);
-      };
-      dayContainer.appendChild(addBtn);
-      //(REPRESENT HOURS) - SUBSTRACT HOUR ON BTN CLICK
-      const substractBtn = createSubstractBtn();
-      substractBtn.onclick = function substractHour(){
-        if (hourNum > 0) {
-          hourNum--;
-        }
-        var day = substractBtn.parentNode;
-        deleteHourEl(day);
-      };
-        dayContainer.appendChild(substractBtn);
+  const addBtn = createAddBtn();
+  //count day's hours - closure var
+  var hourNum = 0;
+
+  // (represent hours) - add btn click -> add hour element
+  addBtn.onclick = function addHour(){
+    hourNum++;
+    const hour = createHourTick();
+    appendNumToHour(hourNum, hour);
+    const parent = addBtn.parentNode;
+    parent.appendChild(hour);
+  };  
+
+  //(represent hours) - substract btn click -> substract hour element
+  const substractBtn = createSubstractBtn();
+  substractBtn.onclick = function substractHour(){
+    if (hourNum > 0) {
+      hourNum--;
+    }
+    const day = substractBtn.parentNode;
+    deleteHourEl(day);
+  };
+  dayContainer.appendChild(addBtn);
+  dayContainer.appendChild(substractBtn);
 }
+
 function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
   var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
