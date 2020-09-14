@@ -370,6 +370,11 @@ function createSubstractBtn() {
   substractBtn.setAttribute('value', '-');
   return substractBtn;
 }
+function deleteHourEl(day) {
+  if (day.getElementsByClassName('hour').length) {
+    day.removeChild(day.getElementsByClassName('hour')[day.getElementsByClassName('hour').length - 1]);  
+  }
+}
 function createBtns(dayContainer) {
   var addBtn = document.createElement('input');
       addBtn.style.marginLeft = "auto";
@@ -400,10 +405,8 @@ function createBtns(dayContainer) {
         if (hourNum > 0) {
           hourNum--;
         }
-        var parent = substractBtn.parentNode;
-        if (parent.getElementsByClassName('hour').length) {
-          parent.removeChild(parent.getElementsByClassName('hour')[parent.getElementsByClassName('hour').length - 1]);  
-        }
+        var day = substractBtn.parentNode;
+        deleteHourEl(day);
       };
         dayContainer.appendChild(substractBtn);
 }
