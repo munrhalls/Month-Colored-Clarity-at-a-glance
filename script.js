@@ -355,6 +355,21 @@ function appendNumToHour(num, hour) {
   numEl.innerText = num;
   hour.appendChild(numEl);
 }
+function createSubstractBtn() {
+  var substractBtn = document.createElement('input');
+  substractBtn.style.marginLeft = "auto";
+  substractBtn.style.backgroundColor = "#000";
+  substractBtn.style.border = "none";
+  substractBtn.style.color = 'rgb(225, 116, 0)';
+  substractBtn.style.fontWeight = "bold";
+  substractBtn.style.display = "inline-block";
+  substractBtn.style.height = "30px";
+  substractBtn.style.width = "100%";
+  substractBtn.style.maxWidth = "50%";
+  substractBtn.setAttribute('type', 'button');
+  substractBtn.setAttribute('value', '-');
+  return substractBtn;
+}
 function createBtns(dayContainer) {
   var addBtn = document.createElement('input');
       addBtn.style.marginLeft = "auto";
@@ -370,8 +385,8 @@ function createBtns(dayContainer) {
       addBtn.setAttribute('value', '+');
       //COUNT DAY'S HOURS WITH CLOSURE VAR
       var hourNum = 0;
-      // (REPRESENT HOURS DATA) - ADD HOUR TICK EL ON BTN CLICK
-      addBtn.onclick = function addHourTick(){
+      // (REPRESENT HOURS) - ADD HOUR ON BTN CLICK
+      addBtn.onclick = function addHour(){
         hourNum++;
         const hour = createHourTick();
         appendNumToHour(hourNum, hour);
@@ -379,21 +394,9 @@ function createBtns(dayContainer) {
         parent.appendChild(hour);
       };
       dayContainer.appendChild(addBtn);
-      // (REPRESENT HOURS DATA) - SUBSTRACT HOUR TICK EL ON BTN CLICK
-      var substractBtn = document.createElement('input');
-        substractBtn.style.marginLeft = "auto";
-        substractBtn.style.backgroundColor = "#000";
-        substractBtn.style.border = "none";
-        substractBtn.style.color = 'rgb(225, 116, 0)';
-        substractBtn.style.fontWeight = "bold";
-        substractBtn.style.display = "inline-block";
-        substractBtn.style.height = "30px";
-        substractBtn.style.width = "100%";
-        substractBtn.style.maxWidth = "50%";
-        substractBtn.setAttribute('type', 'button');
-        substractBtn.setAttribute('value', '-');
-      //7. (REPRESENT TICKS DATA) - SUBSTRACT HOURS TICKS ON BTN CLICK
-      substractBtn.onclick = (function(){
+      //(REPRESENT HOURS) - SUBSTRACT HOUR ON BTN CLICK
+      const substractBtn = createSubstractBtn();
+      substractBtn.onclick = function substractHour(){
         if (hourNum > 0) {
           hourNum--;
         }
@@ -401,7 +404,7 @@ function createBtns(dayContainer) {
         if (parent.getElementsByClassName('hour').length) {
           parent.removeChild(parent.getElementsByClassName('hour')[parent.getElementsByClassName('hour').length - 1]);  
         }
-      });
+      };
         dayContainer.appendChild(substractBtn);
 }
 function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
