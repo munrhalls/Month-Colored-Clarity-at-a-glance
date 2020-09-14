@@ -102,8 +102,7 @@ function createSaveTextFileBtn() {
     for (let i = 0; i < days.length; i++) {
       hourNums.push(days[i].getElementsByClassName('hour').length);
     }
-    const hourNumsStr = hourNums.join(',');
-    
+    const hourNumsStr = hourNums.join(',');    
     function createTextFile(filename, data) {
       var blob = new Blob([data], {type: 'text'});
       if(window.navigator.msSaveOrOpenBlob) {
@@ -118,7 +117,6 @@ function createSaveTextFileBtn() {
           document.body.removeChild(elem);
       }
     }
-    // (!!!!!!!!!!!!!!) ADD DEBOUNCER FUNC 
     console.log('REMEMBER TO ADD DEBOUNCER FUNC LATER');
     createTextFile('Metrics: Deep work hours. Per day, week, month.', hourNumsStr);
   });
@@ -225,14 +223,18 @@ function fillHoursData(textFile) {
   let hoursArr = textFile.split(',');
   
   for (let i = 0; i < days.length; i++) {
-    const day = days[i];
-    const hoursNum = hoursArr[i];
-    for (let j = 1; j <= hoursNum; j++) {
-      const hour = createHourTick();
-      appendNumToHour(j, hour);
-      day.appendChild(hour);
-    }
+    appendHoursToDay(hoursArr[i], days[i]);
   }
+}
+function appendHoursToDay(hoursNum, day) {
+  for (let j = 1; j <= hoursNum; j++) {
+    appendHour(j, day);
+  }
+}
+function appendHour(hoursNum, day) {
+  const hour = createHourTick();
+  appendNumToHour(hoursNum, hour);
+  day.appendChild(hour);
 }
 function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
