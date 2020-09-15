@@ -267,19 +267,51 @@ function createSaveToExcelBtn() {
     }
     return saveToExcelBtn;
 }
-function getCsvDaysInRow() {
+function saveToExcel(fileName) {
+  const CSV = getCSV();
+  //Initialize file format: csv or xls
+  const uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+  const link = document.createElement("a");    
+  link.href = uri;
+  link.style = "visibility:hidden";
+  link.download = fileName + ".csv";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+function getCSV() {
+  var CSV = 'sep=,' + '\r\n\n';
+  const months = document.getElementsByClassName('month');
+  const monthNames = getMonthNames();
+  for (let i = 0; i < months.length & i < 12; i++) {
+    CSV += monthNames[i];
+    CSV += getCsvRow();
+    CSV += ',' + getCSVDayNamesRow();
+    CSV += getCsvRow();
+    CSV += getCSVMonthHours(months[i]);
+  }
+  return CSV;
+}
+function getCSVMonthHours(month) {
+  const weeks = month.getElementsByClassName('week');
+  var monthHours = '';
+  for (let i = 0; i < weeks.length; i++) {
+    var weekHours = getWeekHours(weeks[i]);
+    monthHours += weekHours;
+    monthHours += getCsvRow();
+  }
+  return monthHours;
+}
+function getCSVDayNamesRow() {
   const daysDATA = dataGetDays();
   let days = '';
   daysDATA.forEach(function(day) {
-    days += getCsvDay(day);
+    days += getCSVDay(day);
   });
   return days;
 }
-function getCsvDay(day) {
+function getCSVDay(day) {
  return day + ',';
-}
-function getCsvRow() {
-  return '\r\n';
 }
 
 function getWeekLabel(num) {
@@ -298,41 +330,11 @@ function getWeekHours(week) {
 function getDayHours(day) {
   return day.getElementsByClassName('hour').length + ',';
 }
-function getMonthHours(month) {
-  const weeks = month.getElementsByClassName('week');
-  var monthHours = '';
-  for (let i = 0; i < weeks.length; i++) {
-    var weekHours = getWeekHours(weeks[i]);
-    monthHours += weekHours;
-    monthHours += getCsvRow();
-  }
-  return monthHours;
+
+function getCsvRow() {
+  return '\r\n';
 }
-function getCSV() {
-  var CSV = 'sep=,' + '\r\n\n';
-  const months = document.getElementsByClassName('month');
-  const monthNames = getMonthNames();
-  for (let i = 0; i < months.length & i < 12; i++) {
-    CSV += monthNames[i];
-    CSV += getCsvRow();
-    CSV += ',' + getCsvDaysInRow();
-    CSV += getCsvRow();
-    CSV += getMonthHours(months[i]);
-  }
-  return CSV;
-}
-function saveToExcel(fileName) {
-  const CSV = getCSV();
-  //Initialize file format: csv or xls
-  const uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
-  const link = document.createElement("a");    
-  link.href = uri;
-  link.style = "visibility:hidden";
-  link.download = fileName + ".csv";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
+
 //main // main // main // main // main // main // main // main // main // main // main // main // main // main // main // main // main 
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
