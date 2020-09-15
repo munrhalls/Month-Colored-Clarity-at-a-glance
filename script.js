@@ -263,11 +263,11 @@ function createSaveToExcelBtn() {
     saveToExcelBtn.setAttribute('type', 'button');
     saveToExcelBtn.setAttribute('value', 'Save to Excel');
     saveToExcelBtn.onclick = function() {
-      saveToExcel('Metrics Deep Work Hours per Day/Week/Month');
+      saveToExcelFile('Metrics Deep Work Hours per Day/Week/Month');
     }
     return saveToExcelBtn;
 }
-function saveToExcel(fileName) {
+function saveToExcelFile(fileName) {
   const CSV = getCSV();
   //Initialize file format: csv or xls
   const uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
@@ -296,7 +296,7 @@ function getCSVMonthHours(month) {
   const weeks = month.getElementsByClassName('week');
   var monthHours = '';
   for (let i = 0; i < weeks.length; i++) {
-    var weekHours = getWeekHours(weeks[i]);
+    var weekHours = getCSVWeekHours(weeks[i]);
     monthHours += weekHours;
     monthHours += getCsvRow();
   }
@@ -313,13 +313,12 @@ function getCSVDayNamesRow() {
 function getCSVDay(day) {
  return day + ',';
 }
-
-function getWeekLabel(num) {
+function getCSVWeekLabel(num) {
   return 'Week ' + num + ',';
 }
-function getWeekHours(week) {
+function getCSVWeekHours(week) {
   var hours = '';
-  hours += getWeekLabel(week.classList[1]); 
+  hours += getCSVWeekLabel(week.classList[1]); 
 
   const days = week.getElementsByClassName('day');
   for (let i = 0; i < days.length; i++) {
@@ -330,7 +329,6 @@ function getWeekHours(week) {
 function getDayHours(day) {
   return day.getElementsByClassName('hour').length + ',';
 }
-
 function getCsvRow() {
   return '\r\n';
 }
