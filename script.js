@@ -312,22 +312,9 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
   // var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
   var CSV = 'sep=,' + '\r\n\n';
-  var row = "";
-  CSV+= 'January';
-  CSV += '\r\n';
-  row += '"' + 'ok?' + '",';
-  CSV += row;
-
-  CSV+= 'February';
-  CSV += '\r\n';
-  row += '"' + 'ok?' + '",';
-  CSV += row;
-
-
-  CSV+= 'March';
-  CSV += '\r\n';
-  row += '"' + 'ok?' + '",';
-  CSV += row;
+  CSV += 'January,';
+  CSV+= 'February,';
+  CSV+= 'March,';
 
 
 
