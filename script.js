@@ -313,9 +313,24 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   // var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
   var CSV = 'sep=,' + '\r\n\n';
   CSV += 'January,';
-  CSV+= 'February,';
-  CSV+= 'March,';
+  CSV += 'Monday,';
+  CSV += 'Tuesday,';
+  CSV += 'Wendesday,';
+  CSV += 'Thursday,';
+  CSV += 'Friday,';
+  CSV += 'Saturday,';
+  CSV += 'Sunday,';
 
+  CSV += '\r\n';
+  CSV += 'Week 1,';
+  CSV += '\r\n';
+  CSV += 'Week 2,';
+  CSV += '\r\n';
+  CSV += 'Week 3,';
+  CSV += '\r\n';
+  CSV += 'Week 4,';
+  CSV += '\r\n';
+  CSV += 'February,';
 
 
 
