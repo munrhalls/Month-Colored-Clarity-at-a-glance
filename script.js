@@ -267,13 +267,13 @@ function createSaveToExcelBtn() {
 }
 function saveToExcel() {
   var month = document.getElementsByClassName('month')[0];
-  var monthNamesDATA = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var monthsLIST = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   var weeks = month.getElementsByClassName('week'); 
   const monthData = [];
 
   for (var i = 0; i < weeks.length; i++) {
     var weekObj = {};
-    weekObj[monthNamesDATA[0]] = 'Week' + (i + 1);
+    weekObj[monthsLIST[0]] = 'Week' + (i + 1);
     var week = weeks[i];
     var days = week.getElementsByClassName('day');
 
@@ -308,27 +308,28 @@ function saveToExcel() {
     },
   ], 'ReportTitle', 'ShowLabel');
 };
-function getCsvFormatRowDAYS() {
+function getCsvDaysInRow() {
   const daysDATA = dataGetDays();
   let days = '';
   daysDATA.forEach(function(day) {
-    days += getCsvDayLabel(day);
+    days += getCsvDay(day);
   });
   return days;
 }
-function getCsvDayLabel(day) {
+function getCsvDay(day) {
  return day + ',';
 }
 function getCsvRow() {
   return '\r\n';
 }
 function getWeek() {
-
+  return 'Week'; 
 }
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
+
   CSV += 'January,';
-  CSV += getCsvFormatRowDAYS();
+  CSV += getCsvDaysInRow();
   CSV += getCsvRow();
   CSV += 'Week 1,';
   CSV += '0,';
@@ -400,15 +401,17 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     hours.appendChild(title);
     document.getElementsByClassName('monthContainer')[monthNum].appendChild(hours);
 }; 
+function getMonthsLIST() {
+  return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+}
 function createMonths(monthNum) {
   var monthContainer = document.createElement('div');
   monthContainer.classList.add('month');
   monthContainer.classList.add('monthContainer');
   monthContainer.style.display = 'flex';
   document.getElementById('root').appendChild(monthContainer);
-
-  var monthNamesDATA = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  createSidewaysTitle(monthNamesDATA[monthNum], monthNum);
+  const monthsLIST = getMonthsLIST();
+  createSidewaysTitle(monthsLIST[monthNum], monthNum);
   createWeeksContainer(monthNum);
   createWeek(1, monthNum);
   createWeek(2, monthNum);
