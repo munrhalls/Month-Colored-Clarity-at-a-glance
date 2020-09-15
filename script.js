@@ -362,14 +362,6 @@ function getCSV() {
   return CSV;
 }
 
-
-
-
-
-
-
-
-
 function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
   // var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
@@ -430,17 +422,18 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     hours.appendChild(title);
     document.getElementsByClassName('monthContainer')[monthNum].appendChild(hours);
 }; 
-function getMonthsLIST() {
+function getMonthNames() {
   return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 }
 function createMonths(monthNum) {
+  const monthNames = getMonthNames();
   var monthContainer = document.createElement('div');
   monthContainer.classList.add('month');
   monthContainer.classList.add('monthContainer');
+  monthContainer.classList.add([monthNames[monthNum]]);
   monthContainer.style.display = 'flex';
   document.getElementById('root').appendChild(monthContainer);
-  const monthsLIST = getMonthsLIST();
-  createSidewaysTitle(monthsLIST[monthNum], monthNum);
+  createSidewaysTitle(monthNames[monthNum], monthNum);
   createWeeksContainer(monthNum);
   createWeek(1, monthNum);
   createWeek(2, monthNum);
