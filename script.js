@@ -311,17 +311,11 @@ function saveToExcel() {
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
   const daysDATA = dataGetDays();
-  daysDATA.forEach(function(el) {
-    console.log(el)
-  })
   CSV += 'January,';
-  CSV += 'Monday,';
-  CSV += 'Tuesday,';
-  CSV += 'Wendesday,';
-  CSV += 'Thursday,';
-  CSV += 'Friday,';
-  CSV += 'Saturday,';
-  CSV += 'Sunday,';
+  daysDATA.forEach(function(day) {
+    CSV += day + ',';
+  });
+
   CSV += '\r\n';
   CSV += 'Week 1,';
   CSV += '0,';
