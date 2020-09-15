@@ -308,13 +308,22 @@ function saveToExcel() {
     },
   ], 'ReportTitle', 'ShowLabel');
 };
+function getCsvFormatRowDAYS() {
+  const daysDATA = dataGetDays();
+
+  let days = '';
+  daysDATA.forEach(function(day) {
+    days += getCsvFormatDay(day);
+  });
+  return days;
+}
+function getCsvFormatDay(day) {
+ return day + ',';
+}
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
-  const daysDATA = dataGetDays();
   CSV += 'January,';
-  daysDATA.forEach(function(day) {
-    CSV += day + ',';
-  });
+  CSV += getCsvFormatRowDAYS();
 
   CSV += '\r\n';
   CSV += 'Week 1,';
