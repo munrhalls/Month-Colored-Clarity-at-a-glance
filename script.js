@@ -322,11 +322,15 @@ function getCsvDay(day) {
 function getCsvRow() {
   return '\r\n';
 }
-function getWeek() {
-  return 'Week'; 
+function getWeekHours(week) {
+
+}
+function getDayHours(day) {
+  return day.getElementsByClassName('hour').length;
 }
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
+  const weeks = document.getElementsByClassName('week');
 
   CSV += 'January,';
   CSV += getCsvDaysInRow();
