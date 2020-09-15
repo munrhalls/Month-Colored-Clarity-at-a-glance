@@ -37,7 +37,7 @@ function createMenu() {
     title.style.fontFamily = 'consolas';
     title.style.letterSpacing = '0.1rem';
   const saveToExcelBtn = createSaveToExcelBtn();
-  menu.appendChild(title);
+  menu.appendChild(title);  
   document.getElementById('root').appendChild(menu);
   createSaveTextFileBtn();
   createFillDataBtn();
@@ -262,31 +262,11 @@ function createSaveToExcelBtn() {
     saveToExcelBtn.style.height = "30px";
     saveToExcelBtn.setAttribute('type', 'button');
     saveToExcelBtn.setAttribute('value', 'Save to Excel');
-    saveToExcelBtn.onclick = saveToExcel;
+    saveToExcelBtn.onclick = function() {
+      saveToExcel('Metrics Deep Work Hours per Day/Week/Month');
+    }
     return saveToExcelBtn;
 }
-function saveToExcel() {
-  var month = document.getElementsByClassName('month')[0];
-  var monthsLIST = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  var weeks = month.getElementsByClassName('week'); 
-  const monthData = [];
-
-  for (var i = 0; i < weeks.length; i++) {
-    var weekObj = {};
-    weekObj[monthsLIST[0]] = 'Week' + (i + 1);
-    var week = weeks[i];
-    var days = week.getElementsByClassName('day');
-
-    for (var j = 0; j < days.length; j++) {
-      var day = days[j];
-      var hours = day.getElementsByClassName('hour');
-    }
-    monthData.push(weekObj)
-  }
-  var totalDeepWorkHours = document.getElementsByClassName('hour').length;
-
-  JSONToCSVConvertor('ReportTitle', 'ShowLabel');
-};
 function getCsvDaysInRow() {
   const daysDATA = dataGetDays();
   let days = '';
@@ -341,10 +321,7 @@ function getCSV() {
   }
   return CSV;
 }
-
-function JSONToCSVConvertor(ReportTitle, ShowLabel) {
-  //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
-  // var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+function saveToExcel(ReportTitle) {
   const CSV = getCSV();
   console.log(CSV);
   //Generate a file name
