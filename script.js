@@ -314,12 +314,25 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   var CSV = 'sep=,' + '\r\n\n';
   var row = "";
   CSV+= 'January';
-  row.slice(0, -1);
-  CSV += row + '\r\n';
+  CSV += '\r\n';
+  row += '"' + 'ok?' + '",';
+  CSV += row;
+
   CSV+= 'February';
-  CSV += row + '\r\n';
+  CSV += '\r\n';
+  row += '"' + 'ok?' + '",';
+  CSV += row;
+
+
   CSV+= 'March';
-  CSV += row + '\r\n';
+  CSV += '\r\n';
+  row += '"' + 'ok?' + '",';
+  CSV += row;
+
+
+
+
+  console.log(CSV)
 
 
 
