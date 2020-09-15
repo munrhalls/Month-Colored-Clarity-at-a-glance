@@ -322,9 +322,16 @@ function getCsvDay(day) {
 function getCsvRow() {
   return '\r\n';
 }
+function getWeeks() {
+  return document.getElementsByClassName('week');
+}
+function getWeekLabel(num) {
+  return 'Week ' + num + ',';
+}
 function getWeekHours(week) {
   const days = week.getElementsByClassName('day');
   var hours = '';
+  hours += getWeekLabel(week.classList[1]); 
   for (let i = 0; i < days.length; i++) {
     hours += getDayHours(days[i]);
   }
@@ -335,20 +342,26 @@ function getDayHours(day) {
 }
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
-  var week = document.getElementsByClassName('week')[0];
-  const weekHours = getWeekHours(week);
-  console.log(weekHours);
-  CSV += 'January,';
-  CSV += getCsvDaysInRow();
-  CSV += getCsvRow();
-  CSV += 'Week 1,';
-  CSV += '0,';
-  CSV += '0,';
-  CSV += '0,';
-  CSV += '0,';
-  CSV += '0,';
-  CSV += '0,';
-  CSV += '0,';
+  const weeks = getWeeks();
+  for (let i = 0; i < weeks.length; i++) {
+    var weekHours = getWeekHours(weeks[i]);
+    CSV += weekHours;
+    CSV += getCsvRow();
+  }
+
+
+
+  // CSV += 'January,';
+  // CSV += getCsvDaysInRow();
+  // CSV += getCsvRow();
+  // CSV += 'Week 1,';
+  // CSV += '0,';
+  // CSV += '0,';
+  // CSV += '0,';
+  // CSV += '0,';
+  // CSV += '0,';
+  // CSV += '0,';
+  // CSV += '0,';
   return CSV;
 }
 function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
