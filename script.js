@@ -321,12 +321,8 @@ function getCSV() {
   }
   return CSV;
 }
-function saveToExcel(ReportTitle) {
+function saveToExcel(fileName) {
   const CSV = getCSV();
-  console.log(CSV);
-  //Generate a file name
-  var fileName = "MyReport_";
-  fileName += ReportTitle.replace(/ /g,"_");  
   //Initialize file format: csv or xls
   const uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
   const link = document.createElement("a");    
