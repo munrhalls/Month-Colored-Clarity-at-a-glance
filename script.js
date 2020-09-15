@@ -353,12 +353,10 @@ function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
   const months = document.getElementsByClassName('month');
   for (let i = 0; i < months.length; i++) {
-    CSV += getCsvDaysInRow();
+    CSV += ',' + getCsvDaysInRow();
     CSV += getCsvRow();
     CSV += getMonthHours(months[i]);
   }
-
-
   return CSV;
 }
 
