@@ -323,15 +323,21 @@ function getCsvRow() {
   return '\r\n';
 }
 function getWeekHours(week) {
-
+  const days = week.getElementsByClassName('day');
+  var hours = '';
+  for (let i = 0; i < days.length; i++) {
+    hours += getDayHours(days[i]);
+  }
+  return hours;
 }
 function getDayHours(day) {
-  return day.getElementsByClassName('hour').length;
+  return day.getElementsByClassName('hour').length + ',';
 }
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
-  const weeks = document.getElementsByClassName('week');
-
+  var week = document.getElementsByClassName('week')[0];
+  const weekHours = getWeekHours(week);
+  console.log(weekHours);
   CSV += 'January,';
   CSV += getCsvDaysInRow();
   CSV += getCsvRow();
