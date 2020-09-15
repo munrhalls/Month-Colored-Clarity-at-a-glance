@@ -285,28 +285,7 @@ function saveToExcel() {
   }
   var totalDeepWorkHours = document.getElementsByClassName('hour').length;
 
-  JSONToCSVConvertor([
-    {'January': 'Week 1',
-      'Monday': 8,
-      'Tuesday': 0,
-      'Wendesday': 0,
-      'Thursday': 0,
-      'Friday': 0,
-      'Saturday': 0,
-      'Sunday': 0,
-    },
-    {'January': 'Week 2',
-    'Monday': 10,
-    'Tuesday': 0,
-    'Wendesday': 0,
-    'Thursday': 0,
-    'Friday': 0,
-    'Saturday': 0,
-    'Sunday': 0,
-    },
-    {'Total': totalDeepWorkHours,
-    },
-  ], 'ReportTitle', 'ShowLabel');
+  JSONToCSVConvertor('ReportTitle', 'ShowLabel');
 };
 function getCsvDaysInRow() {
   const daysDATA = dataGetDays();
@@ -363,18 +342,17 @@ function getCSV() {
   return CSV;
 }
 
-function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
+function JSONToCSVConvertor(ReportTitle, ShowLabel) {
   //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
   // var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
-  var CSV = getCSV();
-
+  const CSV = getCSV();
   console.log(CSV);
   //Generate a file name
   var fileName = "MyReport_";
-  fileName += ReportTitle.replace(/ /g,"_");   
+  fileName += ReportTitle.replace(/ /g,"_");  
   //Initialize file format: csv or xls
-  var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
-  var link = document.createElement("a");    
+  const uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+  const link = document.createElement("a");    
   link.href = uri;
   link.style = "visibility:hidden";
   link.download = fileName + ".csv";
