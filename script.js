@@ -312,15 +312,18 @@ function getCsvFormatRowDAYS() {
   const daysDATA = dataGetDays();
   let days = '';
   daysDATA.forEach(function(day) {
-    days += getCsvFormatDay(day);
+    days += getCsvDayLabel(day);
   });
   return days;
 }
-function getCsvFormatDay(day) {
+function getCsvDayLabel(day) {
  return day + ',';
 }
 function getCsvRow() {
   return '\r\n';
+}
+function getWeek() {
+
 }
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
