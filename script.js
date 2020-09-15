@@ -342,7 +342,6 @@ function getDayHours(day) {
 function getMonthHours(month) {
   const weeks = month.getElementsByClassName('week');
   var monthHours = '';
-  // monthHours += getCsvDaysInRow();
   for (let i = 0; i < weeks.length; i++) {
     var weekHours = getWeekHours(weeks[i]);
     monthHours += weekHours;
@@ -354,6 +353,8 @@ function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
   const months = document.getElementsByClassName('month');
   for (let i = 0; i < months.length; i++) {
+    CSV += getCsvDaysInRow();
+    CSV += getCsvRow();
     CSV += getMonthHours(months[i]);
   }
 
