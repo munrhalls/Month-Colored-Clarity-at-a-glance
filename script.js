@@ -310,6 +310,7 @@ function saveToExcel() {
 };
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
+  
   CSV += 'January,';
   CSV += 'Monday,';
   CSV += 'Tuesday,';
@@ -494,10 +495,13 @@ function createWeek(weekNum, monthNum) {
   document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
   createDays(week);
 }
+function dataGetDays() {
+  var daysDATA = ['Monday', 'Tuesday', 'Wendesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  return daysDATA;
+}
 function createDays(week) {
   // 2. CREATE DAYS DIVS
-  var daysDATA = ['Monday', 'Tuesday', 'Wendesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
+  const daysDATA = dataGetDays();
   //create: container divs -> corresponding divs: 1) day's title divs, 2) day's deep work hour ticks
   daysDATA.forEach(function(el){
     //day's column to add deep work hour ticks into
