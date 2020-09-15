@@ -322,16 +322,15 @@ function getCsvDay(day) {
 function getCsvRow() {
   return '\r\n';
 }
-function getWeeks() {
-  return document.getElementsByClassName('week');
-}
+
 function getWeekLabel(num) {
   return 'Week ' + num + ',';
 }
 function getWeekHours(week) {
-  const days = week.getElementsByClassName('day');
   var hours = '';
   hours += getWeekLabel(week.classList[1]); 
+
+  const days = week.getElementsByClassName('day');
   for (let i = 0; i < days.length; i++) {
     hours += getDayHours(days[i]);
   }
@@ -340,30 +339,34 @@ function getWeekHours(week) {
 function getDayHours(day) {
   return day.getElementsByClassName('hour').length + ',';
 }
-function getCSV() {
-  var CSV = 'sep=,' + '\r\n\n';
-  const weeks = getWeeks();
+function getMonthHours(month) {
+  const weeks = month.getElementsByClassName('week');
+  var monthHours = '';
+  // monthHours += getCsvDaysInRow();
   for (let i = 0; i < weeks.length; i++) {
     var weekHours = getWeekHours(weeks[i]);
-    CSV += weekHours;
-    CSV += getCsvRow();
+    monthHours += weekHours;
+    monthHours += getCsvRow();
   }
+  return monthHours;
+}
+function getCSV() {
+  var CSV = 'sep=,' + '\r\n\n';
+  const months = document.getElementsByClassName('month');
+  CSV += getMonthHours(months[0]);
 
 
-
-  // CSV += 'January,';
-  // CSV += getCsvDaysInRow();
-  // CSV += getCsvRow();
-  // CSV += 'Week 1,';
-  // CSV += '0,';
-  // CSV += '0,';
-  // CSV += '0,';
-  // CSV += '0,';
-  // CSV += '0,';
-  // CSV += '0,';
-  // CSV += '0,';
   return CSV;
 }
+
+
+
+
+
+
+
+
+
 function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
   // var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
