@@ -225,7 +225,7 @@ fillDataBtnContainer.appendChild(arrowGraphic);
 fillDataBtnContainer.appendChild(chartIcon);
 document.getElementById('menu').appendChild(fillDataBtnContainer);
 } 
-// feature - fill work hours per day from text file // feature - fill work hours per day from text file // 
+// feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
 function fillHoursData(textFile) {
   const days = document.getElementsByClassName('day');
   let hoursArr = textFile.split(',');
@@ -251,7 +251,7 @@ function appendHour(hoursNum, day) {
   appendNumToHour(hoursNum, hour);
   day.appendChild(hour);
 }
-// feature - fill excel file from work hours data
+// feature - fill EXCEL file from work hours data
 function createSaveToExcelBtn() {
   var saveToExcelBtn = document.createElement('input');
     saveToExcelBtn.style.marginLeft = "auto";
@@ -310,7 +310,10 @@ function saveToExcel() {
 };
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
-  
+  const daysDATA = dataGetDays();
+  daysDATA.forEach(function(el) {
+    console.log(el)
+  })
   CSV += 'January,';
   CSV += 'Monday,';
   CSV += 'Tuesday,';
@@ -320,12 +323,6 @@ function getCSV() {
   CSV += 'Saturday,';
   CSV += 'Sunday,';
   CSV += '\r\n';
-  return CSV;
-}
-function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
-  //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
-  // var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
-  var CSV = getCSV();
   CSV += 'Week 1,';
   CSV += '0,';
   CSV += '0,';
@@ -334,6 +331,12 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   CSV += '0,';
   CSV += '0,';
   CSV += '0,';
+  return CSV;
+}
+function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
+  //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
+  // var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+  var CSV = getCSV();
 
   console.log(CSV);
   //Generate a file name
