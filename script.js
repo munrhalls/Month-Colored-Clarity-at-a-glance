@@ -310,7 +310,6 @@ function saveToExcel() {
 };
 function getCsvFormatRowDAYS() {
   const daysDATA = dataGetDays();
-
   let days = '';
   daysDATA.forEach(function(day) {
     days += getCsvFormatDay(day);
@@ -320,12 +319,14 @@ function getCsvFormatRowDAYS() {
 function getCsvFormatDay(day) {
  return day + ',';
 }
+function getCsvRow() {
+  return '\r\n';
+}
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
   CSV += 'January,';
   CSV += getCsvFormatRowDAYS();
-
-  CSV += '\r\n';
+  CSV += getCsvRow();
   CSV += 'Week 1,';
   CSV += '0,';
   CSV += '0,';
