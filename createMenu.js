@@ -3,7 +3,7 @@ import {resourceCreateArrowGraphic,
   resourceCreateFillIcon,
   resourceCreateSaveIcon, 
   resourceCreateUnderLineGraphic} from './createResourceFunctions.js';
-import VALUES_CSS from './VALUES_CSS.js';
+import VALUES_CSS from './VALUES/VALUES_CSS.js';
 import createSaveToExcelBtn from './createButtons/createSaveToExcelBtn.js';
 import createSaveTextFileBtn from './createButtons/createSaveTextFileBtn.js';
 

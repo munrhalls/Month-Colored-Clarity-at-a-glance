@@ -1,4 +1,4 @@
-import VALUES_CSS from './../VALUES_CSS.js'
+import VALUES_CSS from './../VALUES/VALUES_CSS.js'
 import {resourceCreateUnderLineGraphic, resourceCreateArrowGraphic, resourceCreateSaveIcon} from './../createResourceFunctions.js';
 
 function createSaveTextFileBtn(){

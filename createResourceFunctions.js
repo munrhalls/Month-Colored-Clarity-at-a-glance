@@ -1,4 +1,4 @@
-import VALUES_CSS from './VALUES_CSS.js';
+import VALUES_CSS from './VALUES/VALUES_CSS.js';
 
 function resourceCreateArrowGraphic() {
   const arrowGraphic = document.createElement('span');

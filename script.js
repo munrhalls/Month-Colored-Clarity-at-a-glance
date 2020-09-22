@@ -1,6 +1,5 @@
 import createMenu from './createMenu.js'; 
-import VALUES_monthNames from './VALUES_monthNames.js';
-import VALUES_dayNames from './VALUES_monthNames.js';
+import {VALUES_dayNames, VALUES_monthNames} from './VALUES/VALUES.js';
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
@@ -83,14 +82,13 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
     document.getElementsByClassName('monthContainer')[monthNum].appendChild(hours);
 }; 
 function createMonths(monthNum) {
-  const monthNames = VALUES_monthNames();
   var monthContainer = document.createElement('div');
   monthContainer.classList.add('month');
   monthContainer.classList.add('monthContainer');
-  monthContainer.classList.add([monthNames[monthNum]]);
+  monthContainer.classList.add([VALUES_monthNames[monthNum]]);
   monthContainer.style.display = 'flex';
   document.getElementById('root').appendChild(monthContainer);
-  createSidewaysTitle(monthNames[monthNum], monthNum);
+  createSidewaysTitle(VALUES_monthNames[monthNum], monthNum);
   createWeeksContainer(monthNum);
   createWeek(1, monthNum);
   createWeek(2, monthNum);
@@ -188,13 +186,11 @@ function createWeek(weekNum, monthNum) {
   createDays(week);
 }
 function createDays(week) {
-  // 2. CREATE DAYS DIVS
-  const daysDATA = VALUES_dayNames();
   //create: container divs -> corresponding divs: 1) day's title divs, 2) day's deep work hour ticks
-  daysDATA.forEach(function(el){
+  VALUES_dayNames.forEach(function(el){
     //day's column to add deep work hour ticks into
     var day = document.createElement('div');
-      day.innerText = el;
+      day.innerText = el; 
       //style
       day.style.width = "142px";
       day.style.textAlign = "center";

@@ -1,5 +1,4 @@
-import VALUES_monthNames from "../VALUES_monthNames.js";
-import VALUES_dayNames from "../VALUES_dayNames.js";
+import {VALUES_dayNames, VALUES_monthNames} from "../VALUES/VALUES.js";
 
 // feature - fill EXCEL file from work hours data
 function createSaveToExcelBtn() {
