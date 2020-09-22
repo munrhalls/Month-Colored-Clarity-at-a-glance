@@ -95,7 +95,7 @@ function saveHoursAsTextFile() {
    console.log('REMEMBER TO ADD DEBOUNCER FUNC LATER');
    createTextFile('Metrics: Deep work hours. Per day, week, month.', hourNumsStr);
  }
- function createTextFile(filename, data) {
+function createTextFile(filename, data) {
   var blob = new Blob([data], {type: 'text'});
   if(window.navigator.msSaveOrOpenBlob) {
       window.navigator.msSaveBlob(blob, filename);
@@ -109,7 +109,7 @@ function saveHoursAsTextFile() {
       document.body.removeChild(elem);
   }
 }
- function getHoursPerDayNumsStr() {
+function getHoursPerDayNumsStr() {
   const days = document.getElementsByClassName('day');
   const hourNums = [];
   for (let i = 0; i < days.length; i++) {
