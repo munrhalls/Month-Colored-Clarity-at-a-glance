@@ -4,7 +4,7 @@ import {resourceCreateArrowGraphic,
   resourceCreateSaveIcon, 
   resourceCreateUnderLineGraphic} from './createResourceFunctions.js';
 import VALUES_CSS from './VALUES_CSS.js';
-import exportSaveToExcelBtn from './createButtons.js';
+import createSaveToExcelBtn from './createButtons.js';
 
 function createMenu() {
   const menu = document.createElement('div');
@@ -26,7 +26,7 @@ function createMenu() {
     title.style.fontSize = '1.5rem'
     title.style.fontFamily = 'consolas';
     title.style.letterSpacing = '0.1rem';
-  const saveToExcelBtn = exportSaveToExcelBtn();
+  const saveToExcelBtn = createSaveToExcelBtn();
   menu.appendChild(title);  
   document.getElementById('root').appendChild(menu);
   createSaveTextFileBtn();

@@ -1,5 +1,9 @@
+import VALUES_monthNames from "./VALUES_monthNames.js";
+import VALUES_dayNames from "./VALUES_dayNames.js";
+
+
 // feature - fill EXCEL file from work hours data
-function exportSaveToExcelBtn() {
+function createSaveToExcelBtn() {
   function createSaveToExcelBtn() {
     var saveToExcelBtn = document.createElement('input');
       saveToExcelBtn.style.marginLeft = "auto";
@@ -30,7 +34,7 @@ function exportSaveToExcelBtn() {
   function getCSV() {
     var CSV = 'sep=,' + '\r\n\n';
     const months = document.getElementsByClassName('month');
-    const monthNames = getMonthNames();
+    const monthNames = VALUES_monthNames();
     for (let i = 0; i < months.length & i < 12; i++) {
       CSV += monthNames[i];
       CSV += getCsvRow();
@@ -51,9 +55,9 @@ function exportSaveToExcelBtn() {
     return monthHours;
   }
   function getCSVDayNamesRow() {
-    const daysDATA = dataGetDays();
+    const dayNames = VALUES_dayNames();
     let days = '';
-    daysDATA.forEach(function(day) {
+    dayNames.forEach(function(day) {
       days += getCSVDay(day);
     });
     return days;
@@ -83,4 +87,4 @@ function exportSaveToExcelBtn() {
   const saveToExcelBtn = createSaveToExcelBtn();
   return saveToExcelBtn;
 }
-export default exportSaveToExcelBtn;
+export default createSaveToExcelBtn;
