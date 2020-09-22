@@ -1,3 +1,7 @@
+import resourceCreateUnderLineGraphic from './resourceCreateUnderLineGraphic.js';
+import VALUES_CSS from './VALUES_CSS.js';
+
+
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
     createMenu();
@@ -9,12 +13,6 @@ window.addEventListener('load', function () {
 });
 
 // values //  values //  //  values  //  values  //  values  //  values  //  values  //  values  //  values  //  values  //
-  const VALUES_MenuSharedCSS = {
-    height_menuWhole: '9rem',
-    width_menuSmallerBlock: '9rem',
-    space_TopTo1stElement: '1.5rem',
-    space_BottomTo1stElement: '0.25rem',
-  }
 // top menu // top menu //  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  //
 function createMenu() {
   const menu = document.createElement('div');
@@ -22,7 +20,7 @@ function createMenu() {
   menu.style.position = 'relative';
   const title = document.createElement('div');
     menu.style.color = '#fff';
-    menu.style.height = VALUES_MenuSharedCSS['height_menuWhole'],
+    menu.style.height = VALUES_CSS['height_menuWhole'],
     menu.style.borderBottom = '1px solid gray';
     menu.style.backgroundColor = '#000';
     menu.style.display = 'flex';
@@ -56,13 +54,13 @@ function createSaveTextFileBtn() {
         SaveTextFileBtnContainer.style.color = "#fff";
         // display
         SaveTextFileBtnContainer.style.position = 'relative';
-        SaveTextFileBtnContainer.style.width = VALUES_MenuSharedCSS['width_menuSmallerBlock'];
+        SaveTextFileBtnContainer.style.width = VALUES_CSS['width_menuSmallerBlock'];
 
       return SaveTextFileBtnContainer;
     })();
   const SaveTextFileBtn = document.createElement('input');
     SaveTextFileBtn.style.position = 'absolute';
-    SaveTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
+    SaveTextFileBtn.style.top = VALUES_CSS['space_TopTo1stElement'];
     SaveTextFileBtn.style.width = '6rem'; 
     SaveTextFileBtn.style.left = '50%';
     SaveTextFileBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
@@ -177,7 +175,7 @@ const labelDropTextFileBtn = document.createElement('label');
   labelDropTextFileBtn.style.left = '1.5rem';
   labelDropTextFileBtn.style.fontWeight = 'bold';
   labelDropTextFileBtn.style.fontSize = '0.9rem';
-  labelDropTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
+  labelDropTextFileBtn.style.top = VALUES_CSS['space_TopTo1stElement'];
 
 const fillHoursText = document.createElement('div');
     //display
@@ -670,18 +668,6 @@ function resourceCreateFillIcon() {
   fillIcon.appendChild(circle);
   fillIcon.appendChild(path4);
   return fillIcon; 
-}
-function resourceCreateUnderLineGraphic() {
-  const underLineGraphic = document.createElement('span');
-    //display
-    underLineGraphic.style.width = '90%'  
-    underLineGraphic.style.position = 'absolute';
-    underLineGraphic.style.bottom = VALUES_MenuSharedCSS['space_BottomTo1stElement']
-    underLineGraphic.style.left = '5%';
-    // aesthetic
-    underLineGraphic.style.borderTop = '1px solid #fff';
-    underLineGraphic.style.borderRadius = '50%'
-  return underLineGraphic;
 }
 function resourceCreateArrowGraphic() {
   const arrowGraphic = document.createElement('span');
