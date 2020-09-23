@@ -10,8 +10,9 @@ function createDropTextFileBtn() {
     dropTextFileBtn.name = 'dropTextFileBtn';
     return dropTextFileBtn;
 }
-function createFillHoursBtn() {
-  function createFillHoursBtn() {
+
+function createButton_FillHoursFromText() {
+  function createButton_FillHoursFromText() {
     const fillHoursBtn = document.createElement('div');
       // aesthethics
       fillHoursBtn.style.color = "#fff";
@@ -100,8 +101,8 @@ function createFillHoursBtn() {
   fillHoursBtn.appendChild(chartIcon);
   document.getElementById('menu').appendChild(fillHoursBtn);
   } 
-  const fillHoursBtn = createFillHoursBtn();
+  const fillHoursBtn = createButton_FillHoursFromText();
   return fillHoursBtn;
 }
 
-export default createFillHoursBtn;
+export default createButton_FillHoursFromText;
