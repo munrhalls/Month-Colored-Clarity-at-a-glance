@@ -5,7 +5,7 @@ import {resourceCreateArrowGraphic,
   resourceCreateUnderLineGraphic} from './createResourceFunctions.js';
 import VALUES_CSS from './VALUES/VALUES_CSS.js';
 import createSaveToExcelBtn from './createButtons/createSaveToExcelBtn.js';
-import createSaveTextFileBtn from './createButtons/createSaveTextFileBtn.js';
+import createButton_saveToTextFile from './createButtons/createButton_saveToTextFile.js';
 import createFillDataBtn from './createButtons/createFillHoursBtn.js';
 
 function createMenu() {
@@ -31,7 +31,7 @@ function createMenu() {
   const saveToExcelBtn = createSaveToExcelBtn();
   menu.appendChild(title);  
   document.getElementById('root').appendChild(menu);
-  createSaveTextFileBtn();
+  createButton_saveToTextFile();
   createFillDataBtn();
   menu.appendChild(saveToExcelBtn);
 }
