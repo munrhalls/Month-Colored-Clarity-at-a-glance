@@ -1,6 +1,15 @@
 import {resourceCreateArrowGraphic, resourceCreateChartIcon, resourceCreateFillIcon, resourceCreateUnderLineGraphic} from './../createResourceFunctions.js';
 import VALUES_CSS from './../VALUES/VALUES_CSS.js';
 
+
+function createDropTextFileBtn() {
+  const dropTextFileBtn = document.createElement('input');
+    dropTextFileBtn.setAttribute('type', 'file');
+    dropTextFileBtn.setAttribute('accept', 'text/plain');
+    dropTextFileBtn.id = 'dropTextFileBtn';
+    dropTextFileBtn.name = 'dropTextFileBtn';
+    return dropTextFileBtn;
+}
 function createFillHoursBtn() {
   function createFillHoursBtn() {
     const fillHoursBtn = document.createElement('div');
@@ -14,12 +23,7 @@ function createFillHoursBtn() {
       fillHoursBtn.style.width = "18rem";
       fillHoursBtn.style.position = 'relative';
 
-  
-  const dropTextFileBtn = document.createElement('input');
-    dropTextFileBtn.setAttribute('type', 'file');
-    dropTextFileBtn.setAttribute('accept', 'text/plain');
-    dropTextFileBtn.id = 'dropTextFileBtn';
-    dropTextFileBtn.name = 'dropTextFileBtn';
+    const dropTextFileBtn = createDropTextFileBtn();
     
     dropTextFileBtn.onchange = (function() {
       let file = this.files[0];
