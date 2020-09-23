@@ -1,6 +1,6 @@
 import VALUES_CSS from '../VALUES/VALUES_CSS.js'
 import { resourceCreateUnderLineGraphic, resourceCreateArrowGraphic, resourceCreateSaveIcon } from '../createResourceFunctions.js';
-import saveToTextFile from './../createFunctionality/saveToTextFile.js';
+import {saveToTextFile} from './../createFunctionality/saveToTextFile.js';
 
 function createContainer() {
   const container = document.createElement('div');

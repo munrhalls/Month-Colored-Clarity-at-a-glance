@@ -28,4 +28,4 @@ function getHoursPerDayNumsStr() {
   return hourNumsStr;
 }
 
-export default { saveToTextFile, createTextFile, getHoursPerDayNumsStr }
+export { saveToTextFile, createTextFile, getHoursPerDayNumsStr }
