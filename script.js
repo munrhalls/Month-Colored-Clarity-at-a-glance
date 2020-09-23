@@ -237,7 +237,7 @@ function createSubstractBtn() {
 }
 
  // feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
- function fillHoursData(textFile) {
+function fillHoursFromText(textFile) {
   const days = document.getElementsByClassName('day');
   let hoursArr = textFile.split(',');
   

@@ -1,6 +1,6 @@
-import {resourceCreateArrowGraphic, resourceCreateChartIcon, resourceCreateFillIcon, resourceCreateUnderLineGraphic} from './../createResourceFunctions.js';
-import VALUES_CSS from './../VALUES/VALUES_CSS.js';
-
+import {resourceCreateArrowGraphic, resourceCreateChartIcon, resourceCreateFillIcon, resourceCreateUnderLineGraphic} from '../createResourceFunctions.js';
+import VALUES_CSS from '../VALUES/VALUES_CSS.js';
+import {fillHoursFromText} from './../createFunctionality/fillHoursFromText.js';
 
 function createDropTextFileBtn() {
   const dropTextFileBtn = document.createElement('input');
@@ -33,7 +33,7 @@ function createButton_FillHoursFromText() {
       reader.readAsText(file);
       reader.onload = function() {
         const hoursTextFile = reader.result;
-        fillHoursData(hoursTextFile)
+        fillHoursFromText(hoursTextFile)
       };
     });
   
