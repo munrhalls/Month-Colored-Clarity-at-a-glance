@@ -1,10 +1,8 @@
 import VALUES_CSS from './../VALUES/VALUES_CSS.js'
 import {resourceCreateUnderLineGraphic, resourceCreateArrowGraphic, resourceCreateSaveIcon} from './../createResourceFunctions.js';
 
-function createSaveTextFileBtn(){
-  function createSaveTextFileBtn() {
-    // components
-    const container = document.createElement('div');
+function createContainer() {
+  const container = document.createElement('div');
       // aesthethics
       container.style.border = "none";
       container.style.borderLeft = '1px solid grey';
@@ -15,6 +13,12 @@ function createSaveTextFileBtn(){
       // display
       container.style.position = 'relative';
       container.style.width = VALUES_CSS['width_menuSmallerBlock'];
+  return container;
+}
+function createSaveTextFileBtn(){
+  function createSaveTextFileBtn() {
+    // components
+    const container = createContainer();
 
     const SaveTextFileBtn = document.createElement('input');
       SaveTextFileBtn.style.position = 'absolute';
