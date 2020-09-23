@@ -4,17 +4,17 @@ import {resourceCreateUnderLineGraphic, resourceCreateArrowGraphic, resourceCrea
 function createSaveTextFileBtn(){
   function createSaveTextFileBtn() {
     // components
-    const SaveTextFileBtnContainer = document.createElement('div');
+    const container = document.createElement('div');
       // aesthethics
-      SaveTextFileBtnContainer.style.border = "none";
-      SaveTextFileBtnContainer.style.borderLeft = '1px solid grey';
-      SaveTextFileBtnContainer.style.borderRight = '1px solid grey';
-      SaveTextFileBtnContainer.style.fontWeight = "bold";
-      SaveTextFileBtnContainer.style.textAlign = 'left';
-      SaveTextFileBtnContainer.style.color = "#fff";
+      container.style.border = "none";
+      container.style.borderLeft = '1px solid grey';
+      container.style.borderRight = '1px solid grey';
+      container.style.fontWeight = "bold";
+      container.style.textAlign = 'left';
+      container.style.color = "#fff";
       // display
-      SaveTextFileBtnContainer.style.position = 'relative';
-      SaveTextFileBtnContainer.style.width = VALUES_CSS['width_menuSmallerBlock'];
+      container.style.position = 'relative';
+      container.style.width = VALUES_CSS['width_menuSmallerBlock'];
 
     const SaveTextFileBtn = document.createElement('input');
       SaveTextFileBtn.style.position = 'absolute';
@@ -47,14 +47,14 @@ function createSaveTextFileBtn(){
       saveIcon.style.marginLeft = 'calc(-12.5% + 6px)'
       saveIcon.style.fill = '#fff';
     //appends
-    SaveTextFileBtnContainer.appendChild(SaveTextFileBtn);
-    SaveTextFileBtnContainer.appendChild(saveIcon);
-    SaveTextFileBtnContainer.appendChild(saveHoursText);
-    SaveTextFileBtnContainer.appendChild(underLineGraphic);
-    SaveTextFileBtnContainer.appendChild(arrowGraphic);
-    document.getElementById('menu').appendChild(SaveTextFileBtnContainer);
+    container.appendChild(SaveTextFileBtn);
+    container.appendChild(saveIcon);
+    container.appendChild(saveHoursText);
+    container.appendChild(underLineGraphic);
+    container.appendChild(arrowGraphic);
+    document.getElementById('menu').appendChild(container);
   
-    SaveTextFileBtnContainer.onclick = saveHoursAsTextFile;
+    container.onclick = saveHoursAsTextFile;
   }
   function saveHoursAsTextFile() {
     // the only data it needs = hour ticks numbers 
