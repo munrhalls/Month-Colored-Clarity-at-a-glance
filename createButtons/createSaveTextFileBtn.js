@@ -4,21 +4,18 @@ import {resourceCreateUnderLineGraphic, resourceCreateArrowGraphic, resourceCrea
 function createSaveTextFileBtn(){
   function createSaveTextFileBtn() {
     // components
-      const SaveTextFileBtnContainer = (function createSaveTextFileBtnContainer() {
-        const SaveTextFileBtnContainer = document.createElement('div');
-          // aesthethics
-          SaveTextFileBtnContainer.style.border = "none";
-          SaveTextFileBtnContainer.style.borderLeft = '1px solid grey';
-          SaveTextFileBtnContainer.style.borderRight = '1px solid grey';
-          SaveTextFileBtnContainer.style.fontWeight = "bold";
-          SaveTextFileBtnContainer.style.textAlign = 'left';
-          SaveTextFileBtnContainer.style.color = "#fff";
-          // display
-          SaveTextFileBtnContainer.style.position = 'relative';
-          SaveTextFileBtnContainer.style.width = VALUES_CSS['width_menuSmallerBlock'];
-  
-        return SaveTextFileBtnContainer;
-      })();
+    const SaveTextFileBtnContainer = document.createElement('div');
+      // aesthethics
+      SaveTextFileBtnContainer.style.border = "none";
+      SaveTextFileBtnContainer.style.borderLeft = '1px solid grey';
+      SaveTextFileBtnContainer.style.borderRight = '1px solid grey';
+      SaveTextFileBtnContainer.style.fontWeight = "bold";
+      SaveTextFileBtnContainer.style.textAlign = 'left';
+      SaveTextFileBtnContainer.style.color = "#fff";
+      // display
+      SaveTextFileBtnContainer.style.position = 'relative';
+      SaveTextFileBtnContainer.style.width = VALUES_CSS['width_menuSmallerBlock'];
+
     const SaveTextFileBtn = document.createElement('input');
       SaveTextFileBtn.style.position = 'absolute';
       SaveTextFileBtn.style.top = VALUES_CSS['space_TopTo1stElement'];
