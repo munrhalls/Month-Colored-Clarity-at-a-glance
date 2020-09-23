@@ -1,9 +1,9 @@
 import {resourceCreateArrowGraphic, resourceCreateChartIcon, resourceCreateFillIcon, resourceCreateUnderLineGraphic} from './../createResourceFunctions.js';
 import VALUES_CSS from './../VALUES/VALUES_CSS.js';
 
-function createFillDataBtn() {
-  function createFillDataBtn() {
-    const fillDataBtnContainer = (function createFillDataContainer() {
+function createFillHoursBtn() {
+  function createFillHoursBtn() {
+    const fillDataBtnContainer = (function createFillHoursContainer() {
       const fillDataBtnContainer = document.createElement('div');
         // aesthethics
         fillDataBtnContainer.style.color = "#fff";
@@ -98,6 +98,11 @@ function createFillDataBtn() {
   fillDataBtnContainer.appendChild(chartIcon);
   document.getElementById('menu').appendChild(fillDataBtnContainer);
   } 
+
+
+
+
+
   // feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
   function fillHoursData(textFile) {
     const days = document.getElementsByClassName('day');
@@ -124,8 +129,13 @@ function createFillDataBtn() {
     appendNumToHour(hoursNum, hour);
     day.appendChild(hour);
   }
-  const fillHoursBtn = createFillDataBtn();
+
+
+
+
+
+  const fillHoursBtn = createFillHoursBtn();
   return fillHoursBtn;
 }
 
-export default createFillDataBtn;
+export default createFillHoursBtn;

@@ -175,11 +175,11 @@ function createDays(week) {
       dayContainer.appendChild(day);
       dayContainer.style.display = 'inline-block'; 
       week.appendChild(dayContainer);
-      createAddSubsrctHourButtons(dayContainer);
+      createAddSubsrctHourBtns(dayContainer);
   });
 }
 // feature - add/substract hours in a day //  feature - add/substract hours in a day //  feature - add/substract hours in a day //  
-function createAddSubsrctHourButtons(dayContainer) {
+function createAddSubsrctHourBtns(dayContainer) {
   const addBtn = createAddBtn();
   //count day's hours - closure var
   var hourNum = 0;
@@ -235,6 +235,8 @@ function createSubstractBtn() {
   substractBtn.setAttribute('value', '-');
   return substractBtn;
 }
+
+
 function createHourTick() {
   var hour = document.createElement('div');
   hour.className = "hour";
@@ -273,7 +275,6 @@ function deleteHourEl(day) {
     day.removeChild(day.getElementsByClassName('hour')[day.getElementsByClassName('hour').length - 1]);  
   }
 }
-
 
 function createCopyrightNote() {
   const copyrightNote = document.createElement('div');
