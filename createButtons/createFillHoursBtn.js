@@ -3,19 +3,17 @@ import VALUES_CSS from './../VALUES/VALUES_CSS.js';
 
 function createFillHoursBtn() {
   function createFillHoursBtn() {
-    const fillHoursBtn = (function createFillHoursContainer() {
-      const fillHoursBtn = document.createElement('div');
-        // aesthethics
-        fillHoursBtn.style.color = "#fff";
-        // fillHoursBtn.style.textAlign = 'left';
-        fillHoursBtn.style.borderRight = '1px solid grey';
-        fillHoursBtn.style.fontWeight = "bold";
-        // display
-        fillHoursBtn.style.height = "100%";
-        fillHoursBtn.style.width = "18rem";
-        fillHoursBtn.style.position = 'relative';
-      return fillHoursBtn;
-    })();
+    const fillHoursBtn = document.createElement('div');
+      // aesthethics
+      fillHoursBtn.style.color = "#fff";
+      // fillHoursBtn.style.textAlign = 'left';
+      fillHoursBtn.style.borderRight = '1px solid grey';
+      fillHoursBtn.style.fontWeight = "bold";
+      // display
+      fillHoursBtn.style.height = "100%";
+      fillHoursBtn.style.width = "18rem";
+      fillHoursBtn.style.position = 'relative';
+
   
   const dropTextFileBtn = document.createElement('input');
     dropTextFileBtn.setAttribute('type', 'file');
