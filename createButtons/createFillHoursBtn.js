@@ -3,18 +3,18 @@ import VALUES_CSS from './../VALUES/VALUES_CSS.js';
 
 function createFillHoursBtn() {
   function createFillHoursBtn() {
-    const fillDataBtnContainer = (function createFillHoursContainer() {
-      const fillDataBtnContainer = document.createElement('div');
+    const fillHoursBtn = (function createFillHoursContainer() {
+      const fillHoursBtn = document.createElement('div');
         // aesthethics
-        fillDataBtnContainer.style.color = "#fff";
-        // fillDataBtnContainer.style.textAlign = 'left';
-        fillDataBtnContainer.style.borderRight = '1px solid grey';
-        fillDataBtnContainer.style.fontWeight = "bold";
+        fillHoursBtn.style.color = "#fff";
+        // fillHoursBtn.style.textAlign = 'left';
+        fillHoursBtn.style.borderRight = '1px solid grey';
+        fillHoursBtn.style.fontWeight = "bold";
         // display
-        fillDataBtnContainer.style.height = "100%";
-        fillDataBtnContainer.style.width = "18rem";
-        fillDataBtnContainer.style.position = 'relative';
-      return fillDataBtnContainer;
+        fillHoursBtn.style.height = "100%";
+        fillHoursBtn.style.width = "18rem";
+        fillHoursBtn.style.position = 'relative';
+      return fillHoursBtn;
     })();
   
   const dropTextFileBtn = document.createElement('input');
@@ -93,47 +93,11 @@ function createFillHoursBtn() {
   column1.appendChild(fillHoursText);
   column1.appendChild(underLineGraphic);
   
-  fillDataBtnContainer.appendChild(column1);
-  fillDataBtnContainer.appendChild(arrowGraphic);
-  fillDataBtnContainer.appendChild(chartIcon);
-  document.getElementById('menu').appendChild(fillDataBtnContainer);
+  fillHoursBtn.appendChild(column1);
+  fillHoursBtn.appendChild(arrowGraphic);
+  fillHoursBtn.appendChild(chartIcon);
+  document.getElementById('menu').appendChild(fillHoursBtn);
   } 
-
-
-
-
-
-  // feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
-  function fillHoursData(textFile) {
-    const days = document.getElementsByClassName('day');
-    let hoursArr = textFile.split(',');
-    
-    for (let i = 0; i < days.length; i++) {
-      // clear & append on each day -> saves the need to otherwise loop all days 2nd time
-      clearHoursFromTheDay(days[i]);
-      appendHoursToDay(hoursArr[i], days[i]);
-    }
-  }
-  function clearHoursFromTheDay(day) {
-    for (let r = day.getElementsByClassName('hour').length - 1; r >= 0; r--) {
-      day.getElementsByClassName('hour')[r].remove();
-    }
-  }
-  function appendHoursToDay(hoursNum, day) {
-    for (let j = 1; j <= hoursNum; j++) {
-      appendHour(j, day);
-    }
-  }
-  function appendHour(hoursNum, day) {
-    const hour = createHourTick();
-    appendNumToHour(hoursNum, hour);
-    day.appendChild(hour);
-  }
-
-
-
-
-
   const fillHoursBtn = createFillHoursBtn();
   return fillHoursBtn;
 }
