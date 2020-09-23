@@ -15,12 +15,8 @@ function createContainer() {
       container.style.width = VALUES_CSS['width_menuSmallerBlock'];
   return container;
 }
-function createSaveTextFileBtn(){
-  function createSaveTextFileBtn() {
-    // components
-    const container = createContainer();
-
-    const SaveTextFileBtn = document.createElement('input');
+function createBtnRENAME() {
+  const SaveTextFileBtn = document.createElement('input');
       SaveTextFileBtn.style.position = 'absolute';
       SaveTextFileBtn.style.top = VALUES_CSS['space_TopTo1stElement'];
       SaveTextFileBtn.style.width = '6rem'; 
@@ -32,38 +28,50 @@ function createSaveTextFileBtn(){
       SaveTextFileBtn.style.border = '2px solid #fff';
       SaveTextFileBtn.setAttribute('type', 'button');
       SaveTextFileBtn.setAttribute('value', 'SAVE \nTEXT FILE');
-    const underLineGraphic = resourceCreateUnderLineGraphic();
-    const arrowGraphic = resourceCreateArrowGraphic();
-    const saveHoursText = document.createElement('div');
-      saveHoursText.innerText = 'TO KEEP HOURS DATA';
-      saveHoursText.style.width = '100%';   
-      saveHoursText.style.position = 'absolute';
-      saveHoursText.style.bottom = '0.6rem';
-      //text
-      saveHoursText.style.fontSize = '0.6rem';   
-      saveHoursText.style.fontWeight = 'lighter';
-      saveHoursText.style.letterSpacing = '0.1rem';
-      saveHoursText.style.textAlign = 'center';
-    const saveIcon = resourceCreateSaveIcon();
-      saveIcon.style.position = 'absolute';
+    return SaveTextFileBtn;
+}
+function createSaveHoursText() {
+  const saveHoursText = document.createElement('div');
+  saveHoursText.innerText = 'TO KEEP HOURS DATA';
+  saveHoursText.style.width = '100%';   
+  saveHoursText.style.position = 'absolute';
+  saveHoursText.style.bottom = '0.6rem';
+  //text
+  saveHoursText.style.fontSize = '0.6rem';   
+  saveHoursText.style.fontWeight = 'lighter';
+  saveHoursText.style.letterSpacing = '0.1rem';
+  saveHoursText.style.textAlign = 'center';
+  return saveHoursText;
+}
+function styleSaveIcon(saveIcon) {
+  saveIcon.style.position = 'absolute';
       saveIcon.style.bottom = '1.66rem';
       saveIcon.style.left = '50%';
       saveIcon.style.marginLeft = 'calc(-12.5% + 6px)'
       saveIcon.style.fill = '#fff';
-    //appends
+  return saveIcon;
+}
+function createSaveTextFileBtn(){
+  function createSaveTextFileBtn() {
+    const container = createContainer();
+    const SaveTextFileBtn = createBtnRENAME();
+    const underLineGraphic = resourceCreateUnderLineGraphic();
+    const arrowGraphic = resourceCreateArrowGraphic();
+    const saveHoursText = createSaveHoursText();
+    const saveIcon = resourceCreateSaveIcon();
+    styleSaveIcon(saveIcon);
     container.appendChild(SaveTextFileBtn);
     container.appendChild(saveIcon);
     container.appendChild(saveHoursText);
     container.appendChild(underLineGraphic);
     container.appendChild(arrowGraphic);
     document.getElementById('menu').appendChild(container);
-  
     container.onclick = saveHoursAsTextFile;
   }
   function saveHoursAsTextFile() {
     // the only data it needs = hour ticks numbers 
     const hourNumsStr = getHoursPerDayNumsStr();
-     console.log('REMEMBER TO ADD DEBOUNCER FUNC LATER');
+     console.log('Debouncer, add. Reminder.');
      createTextFile('Metrics: Deep work hours. Per day, week, month.', hourNumsStr);
    }
   function createTextFile(filename, data) {
