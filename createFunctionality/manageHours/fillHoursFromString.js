@@ -3,6 +3,7 @@ import appendManyHoursToDay from './appendManyHoursToDay.js';
 
 // feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
 function fillHoursFromText(string) {
+  
   const days = document.getElementsByClassName('day');
   let hoursArr = string.split(',');
 
