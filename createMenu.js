@@ -6,7 +6,7 @@ import {resourceCreateArrowGraphic,
 import VALUES_CSS from './VALUES/VALUES_CSS.js';
 import createSaveToExcelBtn from './createButtons/createSaveToExcelBtn.js';
 import createButton_saveToTextFile from './createButtons/createButton_saveToTextFile.js';
-import createButton_FillHoursFromText from './createButtons/createButton_FillHoursFromText.js';
+import createButton_FillHoursFromText from './createButtons/fillHoursFromTextBtn/fillHoursFromTextBtn.js';
 
 function createMenu() {
   const menu = document.createElement('div');

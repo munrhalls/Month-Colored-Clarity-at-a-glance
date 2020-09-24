@@ -1,5 +1,5 @@
-import manageHours from './manageHours.js';
-// manageHours('function')(args) instead of direct imports, what for? 
+import clearAllHoursFromDay from './clearAllHoursFromDay.js';
+import appendManyHoursToDay from './appendManyHoursToDay.js';
 
 // feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
 function fillHoursFromText(textFile) {
@@ -7,10 +7,10 @@ function fillHoursFromText(textFile) {
   let hoursArr = textFile.split(',');
 
   for (let i = 0; i < days.length; i++) {
-    manageHours('clearAllHoursFromDay')(days[i]);
-    manageHours('appendManyHoursToDay')(hoursArr[i], days[i]);
+    clearAllHoursFromDay(days[i]);
+    appendManyHoursToDay(hoursArr[i], days[i]);
   }
   // clear & append on each day, what for? saves the need to otherwise loop all days 2nd time
 }
 
-export { fillHoursFromText }
+export default fillHoursFromText;
