@@ -2,9 +2,9 @@ import clearAllHoursFromDay from './clearAllHoursFromDay.js';
 import appendManyHoursToDay from './appendManyHoursToDay.js';
 
 // feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
-function fillHoursFromText(textFile) {
+function fillHoursFromText(string) {
   const days = document.getElementsByClassName('day');
-  let hoursArr = textFile.split(',');
+  let hoursArr = string.split(',');
 
   for (let i = 0; i < days.length; i++) {
     clearAllHoursFromDay(days[i]);

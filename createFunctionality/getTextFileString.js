@@ -3,10 +3,10 @@ function getTextFileString() {
   console.log(this.files);
   let reader = new FileReader();
   reader.readAsText(file);
+
   reader.onload = function () {
+    console.log(reader.result)
     return reader.result;
-    // manageHours
-    // fillHoursFromText(hoursTextFile)
   };
 };
 

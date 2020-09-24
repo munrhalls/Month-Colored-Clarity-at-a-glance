@@ -3,6 +3,7 @@ import { resourceCreateArrowGraphic, resourceCreateChartIcon, resourceCreateFill
 const arrowGraphic = resourceCreateArrowGraphic();
   arrowGraphic.style.bottom = '1.5rem';
   arrowGraphic.style.left = '9rem';
+
 const chartIcon = resourceCreateChartIcon();
   chartIcon.style.fill = '#fff';
   chartIcon.style.position = 'absolute';
@@ -10,6 +11,7 @@ const chartIcon = resourceCreateChartIcon();
   chartIcon.style.right = '1.5rem';
   chartIcon.style.height = '6rem';
   chartIcon.style.width = '6rem';
+
 const fillIcon = resourceCreateFillIcon();
   fillIcon.style.position = 'absolute';
   fillIcon.style.top = '4.46rem';
@@ -18,6 +20,7 @@ const fillIcon = resourceCreateFillIcon();
   fillIcon.style.height = '2.75rem';
   fillIcon.style.width = '2.75rem';
   fillIcon.style.transform = 'scale(-1,1) rotate(-12deg)';
+  
 const underLineGraphic = resourceCreateUnderLineGraphic();
 
 export { arrowGraphic, chartIcon, fillIcon, underLineGraphic };
