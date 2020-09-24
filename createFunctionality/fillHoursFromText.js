@@ -5,18 +5,16 @@ function fillHoursFromText(textFile) {
   var test  = manageHours('manageHours_createTickGraphic');
   console.log(test());
 
-
-
   const days = document.getElementsByClassName('day');
   let hoursArr = textFile.split(',');
 
   for (let i = 0; i < days.length; i++) {
     // clear & append on each day -> saves the need to otherwise loop all days 2nd time
-    clearHoursFromTheDay(days[i]);
+    const manageHours_clearAllHoursFromDay = manageHours('manageHours_clearAllHoursFromDay');
+    manageHours_clearAllHoursFromDay(days[i]);
     appendHoursToDay(hoursArr[i], days[i]);
   }
 }
-
 function clearHoursFromTheDay(day) {
   for (let r = day.getElementsByClassName('hour').length - 1; r >= 0; r--) {
     day.getElementsByClassName('hour')[r].remove();

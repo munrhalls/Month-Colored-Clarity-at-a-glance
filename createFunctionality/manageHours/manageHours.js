@@ -6,7 +6,6 @@ import manageHours_clearAllHoursFromDay from "./manageHours_clearAllHoursFromDay
 import manageHours_createHourElement from "./manageHours_createHourElement.js";
 import manageHours_createTickGraphic from "./manageHours_createTickGraphic.js";
 
-
 function manageHours(name) {
   const functions = {
     manageHours_appendManyHoursToDay: manageHours_appendManyHoursToDay,
