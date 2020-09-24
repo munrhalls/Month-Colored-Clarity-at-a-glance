@@ -175,11 +175,11 @@ function createDays(week) {
       dayContainer.appendChild(day);
       dayContainer.style.display = 'inline-block'; 
       week.appendChild(dayContainer);
-      createAddSubsrctHourBtns(dayContainer);
+      createAddSubstrctHourBtns(dayContainer);
   });
 }
 // feature - add/substract hours in a day //  feature - add/substract hours in a day //  feature - add/substract hours in a day //  
-function createAddSubsrctHourBtns(dayContainer) {
+function createAddSubstrctHourBtns(dayContainer) {
   const addBtn = createAddBtn();
   //count day's hours - closure var
   var hourNum = 0;

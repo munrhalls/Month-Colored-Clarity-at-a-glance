@@ -1,6 +1,6 @@
 import {resourceCreateArrowGraphic, resourceCreateChartIcon, resourceCreateFillIcon, resourceCreateUnderLineGraphic} from '../createResourceFunctions.js';
-import VALUES_CSS from '../VALUES/VALUES_CSS.js';
 import {fillHoursFromText} from './../createFunctionality/fillHoursFromText.js';
+import VALUES_CSS from '../VALUES/VALUES_CSS.js';
 
 function createDropTextFileBtn() {
   const dropTextFileBtn = document.createElement('input');
