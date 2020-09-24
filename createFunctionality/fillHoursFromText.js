@@ -8,8 +8,8 @@ function fillHoursFromText(textFile) {
   let hoursArr = textFile.split(',');
 
   for (let i = 0; i < days.length; i++) {
-    const clearAllHoursFromDay = manageHours('manageHours_clearAllHoursFromDay');
-    const appendManyHoursToDay = manageHours('manageHours_appendManyHoursToDay');
+    const clearAllHoursFromDay = manageHours('clearAllHoursFromDay');
+    const appendManyHoursToDay = manageHours('appendManyHoursToDay');
     clearAllHoursFromDay(days[i]);
     appendManyHoursToDay(hoursArr[i], days[i]);
   }

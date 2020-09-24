@@ -1,4 +1,4 @@
-function manageHours_appendNumberToSingleHour(num, hour) {
+function appendNumberToSingleHour(num, hour) {
   var numEl = document.createElement('div');
   numEl.style.color = '#000';
   numEl.style.fontWeight = "bold";
@@ -10,4 +10,4 @@ function manageHours_appendNumberToSingleHour(num, hour) {
   hour.appendChild(numEl);
 }
 
-export default manageHours_appendNumberToSingleHour;
+export default appendNumberToSingleHour;

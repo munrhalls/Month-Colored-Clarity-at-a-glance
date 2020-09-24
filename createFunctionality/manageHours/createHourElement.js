@@ -1,7 +1,7 @@
-import manageHours_createTickGraphic from './manageHours_createTickGraphic.js';
+import createTickGraphic from './createTickGraphic.js';
 
-function manageHours_createHourElement() {
-  const tickGraphic = manageHours_createTickGraphic();
+function createHourElement() {
+  const tickGraphic = createTickGraphic();
   const hour = document.createElement('div');
   hour.className = "hour";
   hour.style.backgroundColor = "#000071";
@@ -12,4 +12,4 @@ function manageHours_createHourElement() {
   return hour;
 };
 
-export default manageHours_createHourElement;
+export default createHourElement;
