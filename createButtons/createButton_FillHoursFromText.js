@@ -1,5 +1,5 @@
 import {resourceCreateArrowGraphic, resourceCreateChartIcon, resourceCreateFillIcon, resourceCreateUnderLineGraphic} from '../createResourceFunctions.js';
-import {fillHoursFromText} from './../createFunctionality/fillHoursFromText.js';
+import {fillHoursFromText} from '../createFunctionality/manageHours/fillHoursFromText.js';
 import VALUES_CSS from '../VALUES/VALUES_CSS.js';
 
 function createDropTextFileBtn() {
