@@ -1,6 +1,6 @@
-// CURRENTLY UNUSED IDEA. I'm leaving it here for now, I'll want to test it later.
-// Maybe, it can prove to be simpler and more practical for certain requirements. 
-// Or help find something that's simpler.
+// (!!!) CURRENTLY UNUSED. I'm leaving it here for now. Will want to test it later.
+// Prolly not but maybe it's simpler/more practical for some scenarios.
+
 
 // Code blocks uniform transport system
 import appendManyHoursToDay from "./appendManyHoursToDay.js";

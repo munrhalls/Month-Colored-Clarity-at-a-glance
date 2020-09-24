@@ -1,4 +1,3 @@
-import createTickGraphic from './createTickGraphic.js';
 import appendNumberToSingleHour from './appendNumberToSingleHour.js';
 import createHourElement from './createHourElement.js';
 

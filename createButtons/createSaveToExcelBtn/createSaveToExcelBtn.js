@@ -1,4 +1,7 @@
-import {VALUES_dayNames, VALUES_monthNames} from "../VALUES/VALUES.js";
+import {VALUES_dayNames, VALUES_monthNames} from "../../VALUES/VALUES.js";
+
+import getCsvRow from "./getCsvRow.js";
+
 
 // feature - fill EXCEL file from work hours data
 function createSaveToExcelBtn() {
@@ -78,9 +81,6 @@ function createSaveToExcelBtn() {
   }
   function getDayHours(day) {
     return day.getElementsByClassName('hour').length + ',';
-  }
-  function getCsvRow() {
-    return '\r\n';
   }
   const saveToExcelBtn = createSaveToExcelBtn();
   return saveToExcelBtn;
