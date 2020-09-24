@@ -1,5 +1,12 @@
+import manageHours from './manageHours/manageHours.js';
+
 // feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
 function fillHoursFromText(textFile) {
+  var test  = manageHours('manageHours_createTickGraphic');
+  console.log(test());
+
+
+
   const days = document.getElementsByClassName('day');
   let hoursArr = textFile.split(',');
 
@@ -9,6 +16,7 @@ function fillHoursFromText(textFile) {
     appendHoursToDay(hoursArr[i], days[i]);
   }
 }
+
 function clearHoursFromTheDay(day) {
   for (let r = day.getElementsByClassName('hour').length - 1; r >= 0; r--) {
     day.getElementsByClassName('hour')[r].remove();

@@ -1,5 +1,6 @@
 // deep work hour count - visual representer
-const tickGraphic = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+function createTickGraphic() {
+  const tickGraphic = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("width", "100%");
   svg.setAttribute("height", "28");
   svg.setAttribute("width", "28");
@@ -10,5 +11,8 @@ const tick = document.createElementNS('http://www.w3.org/2000/svg', 'path');
   tick.style.scale = "0.14";
   tick.style.x = "50%";
   tickGraphic.appendChild(tick);
+  return tickGraphic;
+}
 
-export default tickGraphic;
+
+export default createTickGraphic;
