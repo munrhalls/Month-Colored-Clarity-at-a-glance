@@ -10,10 +10,10 @@ import manageHours_createTickGraphic from "./manageHours_createTickGraphic.js";
 function manageHours(name) {
   const functions = {
     manageHours_appendManyHoursToDay: manageHours_appendManyHoursToDay,
-    manageHours_appendNumberToSingleHour: manageHours_appendManyHoursToDay,
-    manageHours_AppendSingleHourToDay: manageHours_appendManyHoursToDay,
-    manageHours_clearAllHoursFromDay: manageHours_appendManyHoursToDay,
-    manageHours_createHourElement: manageHours_appendManyHoursToDay,
+    manageHours_appendNumberToSingleHour: manageHours_appendNumberToSingleHour,
+    manageHours_AppendSingleHourToDay: manageHours_AppendSingleHourToDay,
+    manageHours_clearAllHoursFromDay: manageHours_clearAllHoursFromDay,
+    manageHours_createHourElement: manageHours_createHourElement,
     manageHours_createTickGraphic: manageHours_createTickGraphic
   }
   return functions[name];
