@@ -3,9 +3,9 @@ import getCsvRow from './getCsvRow.js';
 
 function getCSVMonthHours(month) {
   const weeks = month.getElementsByClassName('week');
-  var monthHours = '';
+  let monthHours = '';
   for (let i = 0; i < weeks.length; i++) {
-    var weekHours = getCSVWeekHours(weeks[i]);
+    let weekHours = getCSVWeekHours(weeks[i]);
     monthHours += weekHours;
     monthHours += getCsvRow();
   }

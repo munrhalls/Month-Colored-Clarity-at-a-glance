@@ -7,9 +7,9 @@ function saveToExcelFile(fileName) {
     link.href = uri;
     link.style = "visibility:hidden";
     link.download = fileName + ".csv";
-    document.body.appendChild(link);
+  document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link);
+  document.body.removeChild(link);
 }
 
 export default saveToExcelFile;
