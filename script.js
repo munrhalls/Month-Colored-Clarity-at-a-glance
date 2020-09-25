@@ -3,18 +3,15 @@ import createDays from './createDays.js';
 import createMenu from './createMenu/createMenu.js'; 
 import createMonthContainers from './createMonthContainers.js'
 import appendSingleHourToDay from './appendSingleHourToDay.js';
-import appendSingleHourToDay from './appendSingleHourToDay.js';
 import appendNumberToSingleHour from '../../createHourElement/appendNumberToSingleHour.js'
 import createHourElement from '../../createHourElement / createHourElement.js';
 import clearAllHoursFromDay from '../appendAndClearHours/clearAllHoursFromDay.js'
 import appendManyHoursToDay from '../appendAndClearHours/appendManyHoursToDay.js';
 import fillHoursFromString from './fillHoursFromString.js';
 import getCSVWeekHours from './getCSVWeekHours.js';
-import getCsvRow from './getCsvRow.js';
 import { VALUES_monthNames } from './../VALUES/VALUES.js';
 import getCSVMonthHours from './getCSVMonthHours.js';
 import getCSVDayNamesRow from './getCSVDayNamesRow.js';
-import getCsvRow from './getCsvRow.js';
 import getFullCSV from "./getFullCSV.js";
 import createTextFile from './createTextFile.js';
 import getStrOfHoursPerDayNums from './getStrOfHoursPerDayNums.js';
@@ -25,7 +22,6 @@ import createDropTextFileButton from './createDropTextFileButton.js'
 import createBottomLabel from './createBottomLabel.js';
 import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './icons.js';
 import fillHoursFromTextFile from '../../createFunctionality/fillHoursFromTextFile/fillHoursFromTextFile.js'
-import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from '../../createResources/resources.js';
 import createAddHourTrigger from './createTriggerAddHour.js';
 import createSubstractHourTrigger from './createTriggerSubstractHour.js';
 import saveToExcelFile from "../../createFunctionality/saveToExcel/saveToExcelFile.js";
@@ -34,23 +30,11 @@ import container from './createContainer.js'
 import saveTextToFileBtn from './createSaveToTextFileButton.js'
 import bottomText from './createBottomText.js'
 import styleSaveIcon from './styleSaveIcon.js'
-import { underLineGraphic, arrowGraphic, saveIcon } from '../../createResources/resources.js';
 import createTickGraphic from './createTickGraphic.js';
 import createTitle from './createTitle.js';
 import saveToExcelBtn from '../createFunctionalityTriggers/createTriggerSaveToExcel/createTriggerSaveToExcelBtn.js';
 import saveToTextFileTrigger from '../createFunctionalityTriggers/createTriggerSaveToTextFile/createTriggerSaveToTextFile.js';
 import createFillHoursFromTextFileTrigger from '../createFunctionalityTriggers/createTriggerFillHoursFromText/createTriggerFillHoursFromTextFile.js';
-import arrowGraphic from './arrowGraphic.js';
-import chartIcon from './chartIcon.js';
-import fillIcon from './fillIcon.js';
-import saveIcon from './saveIcon.js';
-import underLineGraphic from './underLineGraphic.js';
-
-
-
-
-
-
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
@@ -174,7 +158,6 @@ function createCopyrightNote2() {
 // export default createMenu from './createMenu/createMenu.js'; 
 // export default { VALUES_dayNames, VALUES_monthNames } from './VALUES/VALUES.;
 // export default createMonthContainers from './createMonthContainers.;
-// export default appendSingleHourToDay from './appendSingleHourToDay.js';
 
 // export default appendSingleHourToDay from './appendSingleHourToDay.js';
 
