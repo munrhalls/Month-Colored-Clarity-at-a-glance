@@ -11,17 +11,6 @@ window.addEventListener('load', function () {
   createCopyrightNote();
   createCopyrightNote2();
 });
- // feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
-// function clearHoursFromTheDay(day) {
-//   for (let r = day.getElementsByClassName('hour').length - 1; r >= 0; r--) {
-//     day.getElementsByClassName('hour')[r].remove();
-//   }
-// }
-// function appendHoursToDay(hoursNum, day) {
-//   for (let j = 1; j <= hoursNum; j++) {
-//     appendHour(j, day);
-//   }
-// }
 function appendHour(hoursNum, day) {
   const hour = createHourTick();
   appendNumToHour(hoursNum, hour);

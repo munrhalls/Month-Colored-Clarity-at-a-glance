@@ -1,11 +1,11 @@
-import addHourTrigger from './addHourTrigger.js';
-import substractHourTrigger from './addHourTrigger.js';
+import createAddHourTrigger from './createAddHourTrigger.js';
+import createSubstractHourTrigger from './createSubstractHourTrigger.js';
 
 function appendAddAndSubstractHourTriggers(dayContainer) {
-  //count day's hours - closure var
+  //closure - count day's hours
   var hourNum = 0;
-
-  // (represent hours) - add btn click -> add hour element
+  
+  const addHourTrigger = createAddHourTrigger();
   addHourTrigger.onclick = function addHour(){
     hourNum++;
     const hour = createHourTick();
@@ -14,7 +14,7 @@ function appendAddAndSubstractHourTriggers(dayContainer) {
     parent.appendChild(hour);
   };  
 
-  //(represent hours) - substract btn click -> substract hour element
+  const substractHourTrigger = createSubstractHourTrigger(); 
   substractHourTrigger.onclick = function substractHour(){
     if (hourNum > 0) {
       hourNum--;
@@ -24,6 +24,7 @@ function appendAddAndSubstractHourTriggers(dayContainer) {
   };
   dayContainer.appendChild(addHourTrigger);
   dayContainer.appendChild(substractHourTrigger);
+  console.log(dayContainer);
 }
 
 export default appendAddAndSubstractHourTriggers;
