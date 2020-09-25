@@ -1,4 +1,4 @@
-import fillHoursFromTextFile from './../../createFunctionality/manageHours/fillHoursFromTextFile.js'
+import fillHoursFromTextFile from '../../functionality/manageHours/fillHoursFromTextFile.js'
 
 const dropTextFileBtn = document.createElement('input');
   dropTextFileBtn.setAttribute('type', 'file');

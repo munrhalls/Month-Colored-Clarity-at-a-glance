@@ -1,4 +1,4 @@
-import getFullCSV from "../../createFunctionality/saveToExcel/getFullCSV.js";
+import getFullCSV from "./getFullCSV.js";
 
 function saveToExcelFile(fileName) {
   const CSV = getFullCSV();
