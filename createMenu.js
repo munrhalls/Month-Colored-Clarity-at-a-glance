@@ -1,10 +1,5 @@
-import {resourceCreateArrowGraphic,
-  resourceCreateChartIcon,
-  resourceCreateFillIcon,
-  resourceCreateSaveIcon, 
-  resourceCreateUnderLineGraphic} from './createResourceFunctions.js';
 import VALUES_CSS from './VALUES/VALUES_CSS.js';
-import createSaveToExcelBtn from './createButtons/createSaveToExcelBtn/createSaveToExcelBtn.js';
+import saveToExcelBtn from './createButtons/createSaveToExcelBtn/saveToExcelBtn.js';
 import createButton_saveToTextFile from './createButtons/createButton_saveToTextFile.js';
 import createButton_FillHoursFromText from './createButtons/fillHoursFromTextBtn/fillHoursFromTextBtn.js';
 
@@ -28,7 +23,6 @@ function createMenu() {
     title.style.fontSize = '1.5rem'
     title.style.fontFamily = 'consolas';
     title.style.letterSpacing = '0.1rem';
-  const saveToExcelBtn = createSaveToExcelBtn();
   menu.appendChild(title);  
   document.getElementById('root').appendChild(menu);
   createButton_saveToTextFile();

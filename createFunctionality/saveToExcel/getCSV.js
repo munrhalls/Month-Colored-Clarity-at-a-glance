@@ -1,7 +1,4 @@
-import { VALUES_monthNames, VALUES_dayNames} from "../../VALUES/VALUES.js";
-import getCSVRow from './getCSVRow.js';
-import getCSVDayNamesRow from "./getCSVDayNamesRow.js";
-import getCSVMonthHours from "./getCSVMonthHours.js";
+import { VALUES_monthNames, VALUES_dayNames } from "../../VALUES/VALUES.js";
 
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
@@ -9,45 +6,13 @@ function getCSV() {
   const monthNames = VALUES_monthNames;
   for (let i = 0; i < months.length & i < 12; i++) {
     CSV += monthNames[i];
-    CSV += getCSVRow();
+    CSV += getCsvRow();
     CSV += ',' + getCSVDayNamesRow();
-    CSV += getCSVRow();
+    CSV += getCsvRow();
     CSV += getCSVMonthHours(months[i]);
   }
   return CSV;
 }
-function getCSVWeekLabel(num) {
-  return 'Week ' + num + ',';
-}
-function getCSVWeekHours(week) {
-  var hours = '';
-  hours += getCSVWeekLabel(week.classList[1]); 
-
-  const days = week.getElementsByClassName('day');
-  for (let i = 0; i < days.length; i++) {
-    hours += getDayHours(days[i]);
-  }
-  return hours;
-}
-function getDayHours(day) {
-  return day.getElementsByClassName('hour').length + ',';
-}
-
-function getCsvRow() {
-  return '\r\n';
-}
-
-function getCSVWeekHours(week) {
-  var hours = '';
-  hours += getCSVWeekLabel(week.classList[1]); 
-
-  const days = week.getElementsByClassName('day');
-  for (let i = 0; i < days.length; i++) {
-    hours += getDayHours(days[i]);
-  }
-  return hours;
-}
-
 function getCSVMonthHours(month) {
   const weeks = month.getElementsByClassName('week');
   var monthHours = '';
@@ -58,7 +23,6 @@ function getCSVMonthHours(month) {
   }
   return monthHours;
 }
-
 function getCSVDayNamesRow() {
   const dayNames = VALUES_dayNames;
   let days = '';
@@ -69,19 +33,25 @@ function getCSVDayNamesRow() {
 }
 function getCSVDay(day) {
   return day + ',';
- }
-
-
-
- function getCSVDayNamesRow() {
-  const dayNames = VALUES_dayNames;
-  let days = '';
-  dayNames.forEach(function (day) {
-    days += getCSVDay(day);
-  });
-  return days;
 }
+function getCSVWeekLabel(num) {
+  return 'Week ' + num + ',';
+}
+function getCSVWeekHours(week) {
+  var hours = '';
+  hours += getCSVWeekLabel(week.classList[1]);
 
-
+  const days = week.getElementsByClassName('day');
+  for (let i = 0; i < days.length; i++) {
+    hours += getDayHours(days[i]);
+  }
+  return hours;
+}
+function getDayHours(day) {
+  return day.getElementsByClassName('hour').length + ',';
+}
+function getCsvRow() {
+  return '\r\n';
+}
 
 export default getCSV;
