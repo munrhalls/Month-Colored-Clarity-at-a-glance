@@ -1,5 +1,5 @@
-import clearAllHoursFromDay from './clearAllHoursFromDay.js';
-import appendManyHoursToDay from './appendManyHoursToDay.js';
+import clearAllHoursFromDay from '../addAndDeleteHours/clearAllHoursFromDay.js';
+import appendManyHoursToDay from '../addAndDeleteHours/appendManyHoursToDay.js';
 
 // feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
 function fillHoursFromText(string) {

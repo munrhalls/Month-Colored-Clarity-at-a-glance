@@ -4,11 +4,11 @@
 
 // Code blocks uniform transport system
 import appendManyHoursToDay from "./appendManyHoursToDay.js";
-import appendNumberToSingleHour from "./appendNumberToSingleHour.js";
+import appendNumberToSingleHour from "./appendNumberToSingleHour.js.js";
 import appendSingleHourToDay from "./appendSingleHourToDay.js";
 import clearAllHoursFromDay from "./clearAllHoursFromDay.js";
-import createHourElement from "./createHourElement.js";
-import createTickGraphic from "./createTickGraphic.js";
+import createHourElement from "./createHourElement.js.js";
+import createTickGraphic from "./createTickGraphic.js.js";
 
 function manageHours(name) {
   const functions = {
