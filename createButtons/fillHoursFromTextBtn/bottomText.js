@@ -9,4 +9,5 @@ const fillHoursText = document.createElement('div');
   fillHoursText.style.fontWeight = 'lighter';
   fillHoursText.style.letterSpacing = '0.1rem';
   fillHoursText.style.textAlign = 'center';
+  
 export default fillHoursText;
