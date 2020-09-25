@@ -1,17 +1,17 @@
 import saveToExcelFile from "../../createFunctionality/saveToExcel/saveToExcelFile.js";
 
 // Feature - fill EXCEL file from work hours data
-const saveToExcelBtn = document.createElement('input');
-  saveToExcelBtn.style.marginLeft = "auto";
-  saveToExcelBtn.style.backgroundColor = "#000";
-  saveToExcelBtn.style.color = "#fff";
-  saveToExcelBtn.style.border = "none";
-  saveToExcelBtn.style.fontWeight = "bold";
-  saveToExcelBtn.style.height = "30px";
-  saveToExcelBtn.setAttribute('type', 'button');
-  saveToExcelBtn.setAttribute('value', 'Save to Excel');
-  saveToExcelBtn.onclick = function () {
+const saveToExcelTrigger = document.createElement('input');
+  saveToExcelTrigger.style.marginLeft = "auto";
+  saveToExcelTrigger.style.backgroundColor = "#000";
+  saveToExcelTrigger.style.color = "#fff";
+  saveToExcelTrigger.style.border = "none";
+  saveToExcelTrigger.style.fontWeight = "bold";
+  saveToExcelTrigger.style.height = "30px";
+  saveToExcelTrigger.setAttribute('type', 'button');
+  saveToExcelTrigger.setAttribute('value', 'Save to Excel');
+  saveToExcelTrigger.onclick = function () {
     saveToExcelFile('Metrics Deep Work Hours per Day/Week/Month');
   }
 
-export default saveToExcelBtn;
+export default saveToExcelTrigger;
