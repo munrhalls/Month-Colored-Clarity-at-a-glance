@@ -2,10 +2,10 @@ import appendAddAndSubstractHourTriggers from './createFunctionalityTriggers/cre
 import createDays from './createDays.js';
 import createMenu from './createMenu/createMenu.js'; 
 import createMonthContainers from './createMonthContainers.js'
-import appendSingleHourToDay from './appendSingleHourToDay.js';
-import appendNumberToSingleHour from '../../createHourElement/appendNumberToSingleHour.js'
-import createHourElement from '../../createHourElement / createHourElement.js';
-import clearAllHoursFromDay from '../appendAndClearHours/clearAllHoursFromDay.js'
+import appendSingleHourToDay from './createFunctionality/appendAndClearHours/appendSingleHourToDay.js';
+import appendNumberToSingleHour from './createFunctionality/appendAndClearHours/createHourElement/appendNumberToSingleHour.js'
+import createHourElement from '../../createHourElement/createHourElement.js';
+import clearAllHoursFromDay from './createFunctionality/appendAndClearHours/clearAllHoursFromDay.js'
 import appendManyHoursToDay from '../appendAndClearHours/appendManyHoursToDay.js';
 import fillHoursFromString from './fillHoursFromString.js';
 import getCSVWeekHours from './getCSVWeekHours.js';
@@ -147,114 +147,3 @@ function createCopyrightNote2() {
   copyrightNote2.style.textAlign = 'center';
   document.getElementById('root').appendChild(copyrightNote2);
 }
-
-
-
-
-// export default appendAddAndSubstractHourTriggers from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/appendTriggersAddAndSubstractHour.js';
-
-// export default createDays from './createDays.js';
-
-// export default createMenu from './createMenu/createMenu.js'; 
-// export default { VALUES_dayNames, VALUES_monthNames } from './VALUES/VALUES.;
-// export default createMonthContainers from './createMonthContainers.;
-
-// export default appendSingleHourToDay from './appendSingleHourToDay.js';
-
-// export default appendNumberToSingleHour from '../../createHourElement/appendNumberToSingleHour.;
-// export default createHourElement from '../../createHourElement / createHourElement.js';
-
-// export default clearAllHoursFromDay from '../appendAndClearHours/clearAllHoursFromDay.;
-// export default appendManyHoursToDay from '../appendAndClearHours/appendManyHoursToDay.js';
-
-// export default fillHoursFromString from './fillHoursFromString.js';
-
-// export default { VALUES_dayNames } from "../../VALUES/VALUES.js";
-
-// export default getCSVWeekHours from './getCSVWeekHours.;
-
-// export default getCsvRow from './getCsvRow.js';
-
-// export default { VALUES_monthNames } from "../../VALUES/VALUES.;
-
-// export default getCSVMonthHours from './getCSVMonthHours.;
-
-// export default getCSVDayNamesRow from './getCSVDayNamesRow.;
-
-// export default getCsvRow from './getCsvRow.js';
-
-// export default getFullCSV from "./getFullCSV.js";
-
-// export default createTextFile from './createTextFile.;
-
-// export default getStrOfHoursPerDayNums from './getStrOfHoursPerDayNums.js';
-
-// export default VALUES_CSS from '../../VALUES/VALUES_CSS.js';
-
-// export default createContainer from './createContainer.
-
-// export default createColumn from './createColumn.
-
-// export default createDropTextFileLabel from './createDropTextFileLabel.
-
-// export default createDropTextFileButton from './createDropTextFileButton.
-
-// export default createBottomLabel from './createBottomLabel.js';
-
-// export default { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './icons.js';
-
-// export default fillHoursFromTextFile from '../../createFunctionality/fillHoursFromTextFile/fillHoursFromTextFile.js'
-
-// export default { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from '../../createResources/resources.js';
-
-// export default createAddHourTrigger from './createTriggerAddHour.js';
-
-// export default createSubstractHourTrigger from './createTriggerSubstractHour.js';
-
-// export default saveToExcelFile from "../../createFunctionality/saveToExcel/saveToExcelFile.js";
-
-// export default VALUES_CSS from '../../VALUES/VALUES_CSS.js'
-
-// export default VALUES_CSS from '../../VALUES/VALUES_CSS.js'
-
-// export default saveToTextFile from '../../createFunctionality/saveToText/saveToTextFile.
-
-// export default container from './createContainer
-
-// export default saveTextToFileBtn from './createSaveToTextFileButton
-
-// export default bottomText from './createBottomText
-
-// export default styleSaveIcon from './styleSaveIcon.js'
-
-// export default { underLineGraphic, arrowGraphic, saveIcon } from '../../createResources/resources.js';
-
-// export default createTickGraphic from './createTickGraphic.js';
-
-// export default createTitle from './createTitle.js';
-
-// export default VALUES_CSS from '../VALUES/VALUES_CSS.js';
-
-// export default saveToExcelBtn from '../createFunctionalityTriggers/createTriggerSaveToExcel/createTriggerSaveToExcelBtn.js';
-
-// export default saveToTextFileTrigger from '../createFunctionalityTriggers/createTriggerSaveToTextFile/createTriggerSaveToTextFile.js';
-
-// export default createFillHoursFromTextFileTrigger from '../createFunctionalityTriggers/createTriggerFillHoursFromText/createTriggerFillHoursFromTextFile.js';
-
-// export default arrowGraphic from './arrowGraphic.js';
-
-// export default chartIcon from './chartIcon.js';
-
-// export default fillIcon from './fillIcon.js';
-
-// export default saveIcon from './saveIcon.js';
-
-// export default underLineGraphic from './underLineGraphic.js';
-
-// export default VALUES_CSS from '../VALUES/VALUES_CSS.js';
-
-// export default VALUES_CSS from './VALUES_CSS.js';
-
-// export default VALUES_dayNames from './VALUES_dayNames.js';
-
-// export default VALUES_monthNames from './VALUES_monthNames.js';
