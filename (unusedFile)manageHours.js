@@ -3,10 +3,10 @@
 
 
 // Code blocks uniform transport system
-import appendManyHoursToDay from "./appendManyHoursToDay.js";
+import appendManyHoursToDay from "./functionality/addAndDeleteHours/appendManyHoursToDay.js";
 import appendNumberToSingleHour from "./appendNumberToSingleHour.js.js";
-import appendSingleHourToDay from "./appendSingleHourToDay.js";
-import clearAllHoursFromDay from "./clearAllHoursFromDay.js";
+import appendSingleHourToDay from "./functionality/addAndDeleteHours/appendSingleHourToDay.js";
+import clearAllHoursFromDay from "./functionality/addAndDeleteHours/clearAllHoursFromDay.js";
 import createHourElement from "./createHourElement.js.js";
 import createTickGraphic from "./createTickGraphic.js.js";
 

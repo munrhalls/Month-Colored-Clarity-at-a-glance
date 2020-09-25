@@ -1,6 +1,6 @@
 import VALUES_CSS from '../VALUES/VALUES_CSS.js'
 import { resourceCreateUnderLineGraphic, resourceCreateArrowGraphic, resourceCreateSaveIcon } from '../createResourceFunctions.js';
-import {saveToTextFile} from '../functionality/saveToTextFile.js';
+import saveToTextFile from '../functionality/saveToTextFile/saveToTextFile.js';
 
 function createContainer() {
   const container = document.createElement('div');
@@ -53,20 +53,20 @@ function styleSaveIcon(saveIcon) {
   return saveIcon;
 }
 function createButton_saveToTextFile() {
-    const container = createContainer();
-    const SaveTextFileBtn = createBtnRENAME();
-    const underLineGraphic = resourceCreateUnderLineGraphic();
-    const arrowGraphic = resourceCreateArrowGraphic();
-    const saveHoursText = createSaveHoursText();
-    const saveIcon = resourceCreateSaveIcon();
-    styleSaveIcon(saveIcon);
-    container.appendChild(SaveTextFileBtn);
-    container.appendChild(saveIcon);
-    container.appendChild(saveHoursText);
-    container.appendChild(underLineGraphic);
-    container.appendChild(arrowGraphic);
-    document.getElementById('menu').appendChild(container);
-    container.onclick = saveToTextFile;
-  }
+  const container = createContainer();
+  const SaveTextFileBtn = createBtnRENAME();
+  const underLineGraphic = resourceCreateUnderLineGraphic();
+  const arrowGraphic = resourceCreateArrowGraphic();
+  const saveHoursText = createSaveHoursText();
+  const saveIcon = resourceCreateSaveIcon();
+  styleSaveIcon(saveIcon);
+  container.appendChild(SaveTextFileBtn);
+  container.appendChild(saveIcon);
+  container.appendChild(saveHoursText);
+  container.appendChild(underLineGraphic);
+  container.appendChild(arrowGraphic);
+  document.getElementById('menu').appendChild(container);
+  container.onclick = saveToTextFile;
+}
 
-  export default createButton_saveToTextFile;
+export default createButton_saveToTextFile;
