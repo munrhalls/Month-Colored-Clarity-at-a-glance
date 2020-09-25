@@ -1,3 +1,5 @@
+import VALUES_dayNames from './../script.js'; 
+
 import createTitle from './createTitle.js';
 import VALUES_CSS from '../VALUES/VALUES_CSS.js';
 import saveToExcelBtn from '../createFunctionalityTriggers/createTriggerSaveToExcel/createTriggerSaveToExcelBtn.js';
@@ -5,6 +7,7 @@ import saveToTextFileTrigger from '../createFunctionalityTriggers/createTriggerS
 import createFillHoursFromTextFileTrigger from '../createFunctionalityTriggers/createTriggerFillHoursFromText/createTriggerFillHoursFromTextFile.js';
 
 function createMenu() {
+  console.log(VALUES_dayNames)
   const menu = document.createElement('div');
   menu.setAttribute('id', 'menu');  
   menu.style.position = 'relative';

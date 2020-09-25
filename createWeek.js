@@ -1,4 +1,4 @@
-import createDays from './createDays.js';
+import createDays from './script.js';
 
 function createWeek(weekNum, monthNum) {
   // 1. CREATE WEEK DIV
