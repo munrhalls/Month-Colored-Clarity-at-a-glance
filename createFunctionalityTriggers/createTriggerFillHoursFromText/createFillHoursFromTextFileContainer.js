@@ -5,7 +5,7 @@ import createDropTextFileButton from './createDropTextFileButton.js';
 import createBottomLabel from './createBottomLabel.js';
 import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './icons.js';
 
-function createFillHoursFromTextFileTrigger() {
+function createTriggerFillHoursFromTextFile() {
   const column = createColumn();
   const container = createContainer();
   const dropTextFileButton = createDropTextFileButton();
@@ -25,4 +25,4 @@ function createFillHoursFromTextFileTrigger() {
   return container;
 }
 
-export default createFillHoursFromTextFileTrigger;
+export default createTriggerFillHoursFromTextFile;

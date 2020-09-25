@@ -3,6 +3,7 @@ function createDropTextFileLabel() {
   const dropTextFileLabel = document.createElement('label');
   dropTextFileLabel.setAttribute('for', 'dropTextFileInput');
   dropTextFileLabel.innerText = 'DROP \nTEXT FILE';
+  
   dropTextFileLabel.style.padding = '0.3rem 1rem';
   dropTextFileLabel.style.border = '2px solid #fff';
   dropTextFileLabel.style.textAlign = 'center';
