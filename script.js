@@ -10,7 +10,6 @@ window.addEventListener('load', function () {
   createCopyrightNote();
   createCopyrightNote2();
 });
-
 // values //  values //  //  values  //  values  //  values  //  values  //  values  //  values  //  values  //  values  //
 // top menu // top menu //  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  //
 
@@ -235,9 +234,7 @@ function createSubstractBtn() {
   substractBtn.setAttribute('value', '-');
   return substractBtn;
 }
-
  // feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
-
 function clearHoursFromTheDay(day) {
   for (let r = day.getElementsByClassName('hour').length - 1; r >= 0; r--) {
     day.getElementsByClassName('hour')[r].remove();
@@ -291,7 +288,6 @@ function deleteHourEl(day) {
     day.removeChild(day.getElementsByClassName('hour')[day.getElementsByClassName('hour').length - 1]);  
   }
 }
-
 function createCopyrightNote() {
   const copyrightNote = document.createElement('div');
   copyrightNote.classList.add('copyright');
