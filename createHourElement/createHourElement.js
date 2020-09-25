@@ -1,4 +1,4 @@
-import createTickGraphic from './createTickGraphic.js';
+import createTickGraphic from './script.js';
 
 function createHourElement() {
   const tickGraphic = createTickGraphic();

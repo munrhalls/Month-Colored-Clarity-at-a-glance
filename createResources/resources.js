@@ -1,8 +1,8 @@
-import arrowGraphic from './arrowGraphic.js';
-import chartIcon from './chartIcon.js';
-import fillIcon from './fillIcon.js';
-import saveIcon from './saveIcon.js';
-import underLineGraphic from './underLineGraphic.js';
+import arrowGraphic from './script.js';
+import chartIcon from './script.js';
+import fillIcon from './script.js';
+import saveIcon from './script.js';
+import underLineGraphic from './script.js';
 
 export {
   arrowGraphic,

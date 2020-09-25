@@ -1,4 +1,4 @@
-import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from '../../createResources/resources.js';
+import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './script.js';
 
 arrowGraphic.style.bottom = '1.5rem';
 arrowGraphic.style.left = '9rem';

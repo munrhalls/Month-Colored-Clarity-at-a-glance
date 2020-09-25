@@ -1,7 +1,7 @@
-import { VALUES_monthNames } from "../../VALUES/VALUES.js";
-import getCSVMonthHours from './getCSVMonthHours.js';
-import getCSVDayNamesRow from './getCSVDayNamesRow.js';
-import getCsvRow from './getCsvRow.js';
+import { VALUES_monthNames } from './script.js';
+import getCSVMonthHours from './script.js';
+import getCSVDayNamesRow from './script.js';
+import getCsvRow from './script.js';
 
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';

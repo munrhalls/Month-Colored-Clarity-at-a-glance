@@ -3,12 +3,12 @@
 
 
 // Code blocks uniform transport system
-import appendManyHoursToDay from "./functionality/addAndDeleteHours/appendManyHoursToDay.js";
-import appendNumberToSingleHour from "./appendNumberToSingleHour.js.js";
-import appendSingleHourToDay from "./functionality/addAndDeleteHours/appendSingleHourToDay.js";
-import clearAllHoursFromDay from "./functionality/addAndDeleteHours/clearAllHoursFromDay.js";
-import createHourElement from "./createHourElement.js.js";
-import createTickGraphic from "./createTickGraphic.js.js";
+import appendManyHoursToDay from  './script.js';
+import appendNumberToSingleHour from  './script.js';
+import appendSingleHourToDay from  './script.js';
+import clearAllHoursFromDay from  './script.js';
+import createHourElement from  './script.js';
+import createTickGraphic from  './script.js';
 
 function manageHours(name) {
   const functions = {

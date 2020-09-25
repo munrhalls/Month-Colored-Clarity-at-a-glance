@@ -1,9 +1,8 @@
-import saveToTextFile from '../../createFunctionality/saveToTextFile/saveToTextFile.js';
-import container from './createContainer.js'
-import saveTextToFileBtn from './createSaveToTextFileButton.js'
-import bottomText from './createBottomText.js'
-import styleSaveIcon from './styleSaveIcon.js'
-import { underLineGraphic, arrowGraphic, saveIcon } from '../../createResources/resources.js';
+import saveToTextFile from './script.js';
+import container from './script.js';
+import saveTextToFileBtn from './script.js';
+import bottomText from './script.js';import styleSaveIcon from './script.js';
+import { underLineGraphic, arrowGraphic, saveIcon } from './script.js';
 
 const saveToTextFileTrigger = container;
   styleSaveIcon(saveIcon);

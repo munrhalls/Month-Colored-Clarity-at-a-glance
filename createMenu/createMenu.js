@@ -1,10 +1,8 @@
-import VALUES_dayNames from './../script.js'; 
-
-import createTitle from './createTitle.js';
-import VALUES_CSS from '../VALUES/VALUES_CSS.js';
-import saveToExcelBtn from '../createFunctionalityTriggers/createTriggerSaveToExcel/createTriggerSaveToExcelBtn.js';
-import saveToTextFileTrigger from '../createFunctionalityTriggers/createTriggerSaveToTextFile/createTriggerSaveToTextFile.js';
-import createFillHoursFromTextFileTrigger from '../createFunctionalityTriggers/createTriggerFillHoursFromText/createTriggerFillHoursFromTextFile.js';
+import VALUES_dayNames from './script.js';
+import createTitle from './script.js';
+import VALUES_CSS from './script.js';import saveToExcelBtn from './script.js';
+import saveToTextFileTrigger from './script.js';
+import createFillHoursFromTextFileTrigger from './script.js';
 
 function createMenu() {
   console.log(VALUES_dayNames)

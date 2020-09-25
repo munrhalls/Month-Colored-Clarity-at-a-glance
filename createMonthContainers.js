@@ -1,9 +1,3 @@
-import {VALUES_dayNames, VALUES_monthNames} from './VALUES/VALUES.js';
-import createSidewaysTitle from './createSidewaysTitle.js';
-import createWeeksContainer from './createWeeksContainer.js';
-import createWeek from './createWeek.js';
-
-
 function createMonthContainers(monthNum) {
   var monthContainer = document.createElement('div');
   monthContainer.classList.add('month');

@@ -1,4 +1,4 @@
-import VALUES_CSS from '../../VALUES/VALUES_CSS.js'
+import VALUES_CSS from './script.js';
 
 const saveToTextFileButton = document.createElement('input');
   saveToTextFileButton.style.position = 'absolute';

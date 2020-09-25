@@ -1,5 +1,5 @@
-import appendNumberToSingleHour from '../../createHourElement/appendNumberToSingleHour.js';
-import createHourElement from '../../createHourElement/createHourElement.js';
+import appendNumberToSingleHour from './script.js';
+import createHourElement from './script.js';
 
 function appendSingleHourToDay(numberOfTheHour, day) {
   const hour = createHourElement();

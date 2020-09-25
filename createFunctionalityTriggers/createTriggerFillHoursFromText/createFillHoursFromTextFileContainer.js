@@ -1,9 +1,9 @@
-import createContainer from './createContainer.js';
-import createColumn from './createColumn.js';
-import createDropTextFileLabel from './createDropTextFileLabel.js';
-import createDropTextFileButton from './createDropTextFileButton.js';
-import createBottomLabel from './createBottomLabel.js';
-import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './icons.js';
+import createContainer from './script.js';
+import createColumn from './script.js';
+import createDropTextFileLabel from './script.js';
+import createDropTextFileButton from './script.js';
+import createBottomLabel from './script.js';
+import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './script.js';
 
 function createTriggerFillHoursFromTextFile() {
   const column = createColumn();

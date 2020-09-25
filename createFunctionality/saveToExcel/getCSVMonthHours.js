@@ -1,5 +1,5 @@
-import getCSVWeekHours from './getCSVWeekHours.js';
-import getCsvRow from './getCsvRow.js';
+import getCSVWeekHours from './script.js';
+import getCsvRow from './script.js';
 
 function getCSVMonthHours(month) {
   const weeks = month.getElementsByClassName('week');
