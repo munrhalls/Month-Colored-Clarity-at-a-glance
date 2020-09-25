@@ -1,5 +1,6 @@
 import { VALUES_monthNames, VALUES_dayNames } from "../../VALUES/VALUES.js";
 
+
 function getCSV() {
   var CSV = 'sep=,' + '\r\n\n';
   const months = document.getElementsByClassName('month');
@@ -10,6 +11,7 @@ function getCSV() {
     CSV += ',' + getCSVDayNamesRow();
     CSV += getCsvRow();
     CSV += getCSVMonthHours(months[i]);
+    CSV += getCsvRow();
   }
   return CSV;
 }
