@@ -1,11 +1,11 @@
-import saveToTextFile from '../../functionality/saveToTextFile/saveToTextFile.js';
+import saveToTextFile from '../../createFunctionality/saveToTextFile/saveToTextFile.js';
 import container from './container.js'
-import saveTextToFileBtn from './saveToTextFileBtn.js'
+import saveTextToFileBtn from './saveToTextFileInput.js'
 import bottomText from './bottomText.js'
 import styleSaveIcon from './styleSaveIcon.js'
 import { underLineGraphic, arrowGraphic, saveIcon } from '../../createResources/resources.js';
 
-function createButton_saveToTextFile() {
+function saveToTextFileBtn() {
   styleSaveIcon(saveIcon);
   container.appendChild(saveIcon);
   container.appendChild(bottomText);
@@ -17,4 +17,4 @@ function createButton_saveToTextFile() {
   container.onclick = saveToTextFile;
 }
 
-export default createButton_saveToTextFile;
+export default saveToTextFileBtn;

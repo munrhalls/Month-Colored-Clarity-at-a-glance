@@ -1,4 +1,4 @@
-import saveToExcelFile from "../../functionality/saveToExcel/saveToExcelFile.js";
+import saveToExcelFile from "../../createFunctionality/saveToExcel/saveToExcelFile.js";
 
 // Feature - fill EXCEL file from work hours data
 const saveToExcelBtn = document.createElement('input');

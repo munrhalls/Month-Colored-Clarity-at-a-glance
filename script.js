@@ -1,4 +1,4 @@
-import createMenu from './createMenu.js'; 
+import createMenu from './createMenu/createMenu.js'; 
 import {VALUES_dayNames, VALUES_monthNames} from './VALUES/VALUES.js';
 
 window.addEventListener('load', function () {
