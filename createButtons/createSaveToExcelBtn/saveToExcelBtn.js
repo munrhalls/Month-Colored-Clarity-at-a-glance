@@ -1,6 +1,6 @@
 import saveToExcelFile from "../../functionality/saveToExcel/saveToExcelFile.js";
 
-// feature - fill EXCEL file from work hours data
+// Feature - fill EXCEL file from work hours data
 const saveToExcelBtn = document.createElement('input');
   saveToExcelBtn.style.marginLeft = "auto";
   saveToExcelBtn.style.backgroundColor = "#000";

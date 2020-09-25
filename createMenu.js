@@ -1,6 +1,6 @@
 import VALUES_CSS from './VALUES/VALUES_CSS.js';
 import saveToExcelBtn from './createButtons/createSaveToExcelBtn/saveToExcelBtn.js';
-import createButton_saveToTextFile from './createButtons/createButton_saveToTextFile.js';
+import createButton_saveToTextFile from './createButtons/saveToTextFile/createButton_saveToTextFile.js';
 import createButton_FillHoursFromText from './createButtons/fillHoursFromTextBtn/fillHoursFromTextBtn.js';
 
 function createMenu() {
