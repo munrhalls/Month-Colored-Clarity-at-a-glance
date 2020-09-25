@@ -1,6 +1,6 @@
 import VALUES_CSS from '../../VALUES/VALUES_CSS.js';
-
-const dropTextFileLabel = document.createElement('label');
+function createDropTextFileLabel() {
+  const dropTextFileLabel = document.createElement('label');
   dropTextFileLabel.setAttribute('for', 'dropTextFileInput');
   dropTextFileLabel.innerText = 'DROP \nTEXT FILE';
   dropTextFileLabel.style.padding = '0.3rem 1rem';
@@ -11,5 +11,8 @@ const dropTextFileLabel = document.createElement('label');
   dropTextFileLabel.style.fontWeight = 'bold';
   dropTextFileLabel.style.fontSize = '0.9rem';
   dropTextFileLabel.style.top = VALUES_CSS['space_TopTo1stElement'];
+  return dropTextFileLabel
+}
 
-export default dropTextFileLabel;
+
+export default createDropTextFileLabel;

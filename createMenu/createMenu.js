@@ -2,7 +2,7 @@ import title from './title.js';
 import VALUES_CSS from '../VALUES/VALUES_CSS.js';
 import saveToExcelBtn from '../createFunctionalityTriggers/createSaveToExcelTrigger/saveToExcelBtn.js';
 import saveToTextFileTrigger from '../createFunctionalityTriggers/createSaveToTextFileTrigger/saveToTextFileTrigger.js';
-import fillHoursFromTextTrigger from '../createFunctionalityTriggers/createFillHoursFromTextTrigger/fillHoursFromTextFileTrigger.js';
+import createFillHoursFromTextFileTrigger from '../createFunctionalityTriggers/createFillHoursFromTextTrigger/createFillHoursFromTextFileTrigger.js';
 
 function createMenu() {
   const menu = document.createElement('div');
@@ -14,6 +14,7 @@ function createMenu() {
   menu.style.backgroundColor = '#000';
   menu.style.display = 'flex';
 
+  const fillHoursFromTextTrigger = createFillHoursFromTextFileTrigger();
   menu.appendChild(title);  
   document.getElementById('root').appendChild(menu);
   menu.appendChild(saveToTextFileTrigger);

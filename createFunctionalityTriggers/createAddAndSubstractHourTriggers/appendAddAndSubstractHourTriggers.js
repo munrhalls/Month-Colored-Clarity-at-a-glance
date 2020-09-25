@@ -1,7 +1,7 @@
 import createAddHourTrigger from './createAddHourTrigger.js';
 import createSubstractHourTrigger from './createSubstractHourTrigger.js';
 
-function appendAddAndSubstractHourTriggers(dayContainer) {
+function appendAddAndSubstractHourTriggers(container) {
   //closure - count day's hours
   var hourNum = 0;
   
@@ -22,9 +22,9 @@ function appendAddAndSubstractHourTriggers(dayContainer) {
     const day = substractHourTrigger.parentNode;
     deleteHourEl(day);
   };
-  dayContainer.appendChild(addHourTrigger);
-  dayContainer.appendChild(substractHourTrigger);
-  console.log(dayContainer);
+  container.appendChild(addHourTrigger);
+  container.appendChild(substractHourTrigger);
+  console.log(container);
 }
 
 export default appendAddAndSubstractHourTriggers;
