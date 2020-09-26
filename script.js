@@ -1,40 +1,39 @@
-import appendAddAndSubstractHourTriggers from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/appendTriggersAddAndSubstractHour.js';
+// import appendAddAndSubstractHourTriggers from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/appendTriggersAddAndSubstractHour.js';
 import createDays from './createDays.js';
-import createMenu from './createMenu/createMenu.js'; 
-import createMonthContainers from './createMonthContainers.js'
-import appendSingleHourToDay from './createFunctionality/appendAndClearHours/appendSingleHourToDay.js';
-import appendNumberToSingleHour from './createFunctionality/appendAndClearHours/createHourElement/appendNumberToSingleHour.js'
-import createHourElement from '../../createHourElement/createHourElement.js';
-import clearAllHoursFromDay from './createFunctionality/appendAndClearHours/clearAllHoursFromDay.js'
-import appendManyHoursToDay from '../appendAndClearHours/appendManyHoursToDay.js';
-import fillHoursFromString from './fillHoursFromString.js';
-import getCSVWeekHours from './getCSVWeekHours.js';
+import createMonthContainers from './createMonthContainers.js';
+// import appendSingleHourToDay from './createFunctionality/appendAndClearHours/appendSingleHourToDay.js';
+import appendNumberToSingleHour from './createHourElement/appendNumberToSingleHour.js';
+import createHourElement from './createHourElement/createHourElement.js';
+import clearAllHoursFromDay from './createFunctionality/appendAndClearHours/clearAllHoursFromDay.js';
+import appendManyHoursToDay from './createFunctionality/appendAndClearHours/appendManyHoursToDay.js';
+import fillHoursFromString from './createFunctionality/fillHoursFromTextFile/fillHoursFromString.js';
+import getCSVWeekHours from './createFunctionality/saveToExcel/getCSVWeekHours.js';
 import { VALUES_monthNames } from './../VALUES/VALUES.js';
-import getCSVMonthHours from './getCSVMonthHours.js';
-import getCSVDayNamesRow from './getCSVDayNamesRow.js';
-import getFullCSV from "./getFullCSV.js";
-import createTextFile from './createTextFile.js';
-import getStrOfHoursPerDayNums from './getStrOfHoursPerDayNums.js';
-import createContainer from './createContainer.js'
-import createColumn from './createColumn.js'
-import createDropTextFileLabel from './createDropTextFileLabel.js'
-import createDropTextFileButton from './createDropTextFileButton.js'
-import createBottomLabel from './createBottomLabel.js';
-import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './icons.js';
-import fillHoursFromTextFile from '../../createFunctionality/fillHoursFromTextFile/fillHoursFromTextFile.js'
-import createAddHourTrigger from './createTriggerAddHour.js';
-import createSubstractHourTrigger from './createTriggerSubstractHour.js';
-import saveToExcelFile from "../../createFunctionality/saveToExcel/saveToExcelFile.js";
-import saveToTextFile from '../../createFunctionality/saveToText/saveToTextFile.js'
-import container from './createContainer.js'
-import saveTextToFileBtn from './createSaveToTextFileButton.js'
-import bottomText from './createBottomText.js'
-import styleSaveIcon from './styleSaveIcon.js'
-import createTickGraphic from './createTickGraphic.js';
-import createTitle from './createTitle.js';
-import saveToExcelBtn from '../createFunctionalityTriggers/createTriggerSaveToExcel/createTriggerSaveToExcelBtn.js';
-import saveToTextFileTrigger from '../createFunctionalityTriggers/createTriggerSaveToTextFile/createTriggerSaveToTextFile.js';
-import createFillHoursFromTextFileTrigger from '../createFunctionalityTriggers/createTriggerFillHoursFromText/createTriggerFillHoursFromTextFile.js';
+import getCSVMonthHours from './createFunctionality/saveToExcel/getCSVMonthHours.js';
+import getCSVDayNamesRow from './createFunctionality/saveToExcel/getCSVDayNamesRow.js';
+import getFullCSV from "./createFunctionality/saveToExcel/getFullCSV.js";
+import createTextFile from './createFunctionality/saveToTextFile/createTextFile.js';
+import getStrOfHoursPerDayNums from './createFunctionality/saveToTextFile/getStrOfHoursPerDayNums.js';
+import createContainer from './createFunctionalityTriggers/createTriggerFillHoursFromText/createContainer.js';
+import createColumn from './createFunctionalityTriggers/createTriggerFillHoursFromText/createColumn.js';
+import createDropTextFileLabel from './createFunctionalityTriggers/createTriggerFillHoursFromText/createDropTextFileLabel.js';
+import createTriggerDropTextFileButton from './createFunctionalityTriggers/createTriggerFillHoursFromText/createTriggerDropTextFileButton.js';
+import createBottomLabel from './createFunctionalityTriggers/createTriggerFillHoursFromText/createBottomLabel.js';
+import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './createResources/resources.js';
+import fillHoursFromTextFile from './createFunctionality/fillHoursFromTextFile/fillHoursFromTextFile.js';
+// import createAddHourTrigger from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/createTriggerAddHour.js';
+// import createSubstractHourTrigger from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/createTriggerSubstractHour.js';
+import saveToExcelFile from "./createFunctionality/saveToExcel/saveToExcelFile.js";
+import saveToTextFile from './createFunctionality/saveToTextFile/saveToTextFile.js';
+import container from './createFunctionalityTriggers//createTriggerSaveToTextFile/createContainer.js';
+import saveTextToFileBtn from './createFunctionalityTriggers//createTriggerSaveToTextFile/createSaveToTextFileButton.js';
+import bottomText from './createFunctionalityTriggers//createTriggerSaveToTextFile/createBottomText.js';
+import styleSaveIcon from './createFunctionalityTriggers//createTriggerSaveToTextFile/styleSaveIcon.js';
+import createTickGraphic from './createHourElement/createTickGraphic.js';
+import createMenu from './createMenu/createMenu.js';
+import createTitle from './createMenu/createTitle.js';
+import saveToExcelBtn from './createFunctionalityTriggers/createTriggerSaveToExcel/createTriggerSaveToExcelBtn.js';
+import createTriggerSaveToTextFileContainer from './createFunctionalityTriggers/createTriggerSaveToTextFile/createTriggerSaveToTextFileContainer.js';
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
@@ -147,3 +146,5 @@ function createCopyrightNote2() {
   copyrightNote2.style.textAlign = 'center';
   document.getElementById('root').appendChild(copyrightNote2);
 }
+
+export {appendNumberToSingleHour}

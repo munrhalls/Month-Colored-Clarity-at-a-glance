@@ -1,6 +1,6 @@
 import fillHoursFromTextFile from './script.js';
 
-function createDropTextFileButton() {
+function createTriggerDropTextFileButton() {
   const dropTextFileButton = document.createElement('input');
   dropTextFileButton.setAttribute('type', 'file');
   dropTextFileButton.setAttribute('accept', 'text/plain');
@@ -18,4 +18,4 @@ function createDropTextFileButton() {
   return dropTextFileButton;
 }
 
-export default createDropTextFileButton;
+export default createTriggerDropTextFileButton;
