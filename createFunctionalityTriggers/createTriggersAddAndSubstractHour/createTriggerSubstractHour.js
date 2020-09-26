@@ -1,4 +1,4 @@
-function substractHourTrigger() {
+function createTriggerSubstractHour() {
   const substractHourTrigger = document.createElement('input');
   substractHourTrigger.style.marginLeft = "auto";
   substractHourTrigger.style.backgroundColor = "#000";
@@ -14,5 +14,5 @@ function substractHourTrigger() {
   return substractHourTrigger
 }
 
-export { substractHourTrigger };
+export { createTriggerSubstractHour };
 
