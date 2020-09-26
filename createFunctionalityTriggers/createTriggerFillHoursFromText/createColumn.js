@@ -5,4 +5,4 @@ function createColumn() {
   return column;
 }
 
-export default createColumn;
+export { createColumn };

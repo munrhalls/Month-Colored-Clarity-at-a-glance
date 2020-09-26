@@ -13,4 +13,4 @@ function createMonthContainers(monthNum) {
   createWeek(4, monthNum);
 }
 
-export default createMonthContainers;
+export { createMonthContainers };

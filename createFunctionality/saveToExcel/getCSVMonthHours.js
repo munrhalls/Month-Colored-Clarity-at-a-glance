@@ -12,4 +12,4 @@ function getCSVMonthHours(month) {
   return monthHours;
 }
 
-export default getCSVMonthHours;
+export { getCSVMonthHours };

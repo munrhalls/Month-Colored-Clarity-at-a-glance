@@ -14,5 +14,5 @@ function substractHourTrigger() {
   return substractHourTrigger
 }
 
-export default substractHourTrigger;
+export { substractHourTrigger };
 

@@ -37,7 +37,7 @@ import {createTriggerSaveToTextFileContainer} from './createFunctionalityTrigger
 
 import {exportToScript } from './EXPORTTOSCRIPT/EXPORTTOSCRIPT.js';
 import {exportToScript__2 } from './EXPORTTOSCRIPT/EXPORTTOSCRIPT__2.js';
-import {thenImportA{ndRun} } from './THENIMPORTF{ROMSCRIPT}.js';
+import {thenImportAndRun} } from './THENIMPORTANDRUN.js';
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');

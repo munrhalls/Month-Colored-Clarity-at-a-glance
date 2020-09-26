@@ -12,4 +12,4 @@ function createBottomLabel() {
   return bottomLabel;
 }
 
-export default createBottomLabel;
+export { createBottomLabel };

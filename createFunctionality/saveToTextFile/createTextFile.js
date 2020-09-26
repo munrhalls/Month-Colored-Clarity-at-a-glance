@@ -13,4 +13,4 @@ function createTextFile(filename, data) {
   }
 }
 
-export default createTextFile;
+export { createTextFile };

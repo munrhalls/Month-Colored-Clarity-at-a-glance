@@ -12,4 +12,4 @@ function createTitle() {
   return title;
 }
 
-export default createTitle;
+export { createTitle };

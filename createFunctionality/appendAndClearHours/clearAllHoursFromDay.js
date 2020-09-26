@@ -4,4 +4,4 @@ function clearAllHoursFromDay(day) {
   }
 }
 
-export default clearAllHoursFromDay;
+export { clearAllHoursFromDay };

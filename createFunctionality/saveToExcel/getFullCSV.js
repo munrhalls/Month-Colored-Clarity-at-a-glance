@@ -18,4 +18,4 @@ function getCSV() {
   return CSV;
 }
 
-export default getCSV;
+export { getCSV };

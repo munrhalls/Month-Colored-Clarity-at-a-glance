@@ -16,4 +16,4 @@ saveIcon.appendChild(path2);
 saveIcon.appendChild(path3);
 saveIcon.appendChild(path4);
 
-export default saveIcon;
+export { saveIcon };

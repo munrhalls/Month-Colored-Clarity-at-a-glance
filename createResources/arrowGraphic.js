@@ -8,4 +8,4 @@ arrowGraphic.style.left = 'calc(100% - 4.75rem)';
 arrowGraphic.style.bottom = '3rem';
 arrowGraphic.style.transform = 'rotate(-30deg)';
 
-export default arrowGraphic;
+export { arrowGraphic };

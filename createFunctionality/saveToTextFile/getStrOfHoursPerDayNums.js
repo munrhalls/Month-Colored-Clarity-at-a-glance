@@ -8,4 +8,4 @@ function getStrOfHoursPerDayNums() {
   return hourNumsStr;
 }
 
-export default getStrOfHoursPerDayNums;
+export { getStrOfHoursPerDayNums };

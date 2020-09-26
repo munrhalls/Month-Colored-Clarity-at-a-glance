@@ -24,4 +24,4 @@ fillIcon.appendChild(path3);
 fillIcon.appendChild(circle);
 fillIcon.appendChild(path4);
 
-export default fillIcon;
+export { fillIcon };

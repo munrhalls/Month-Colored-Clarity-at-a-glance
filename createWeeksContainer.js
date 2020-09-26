@@ -10,4 +10,4 @@ function createWeeksContainer(monthNum) {
   document.getElementsByClassName('monthContainer')[monthNum].appendChild(weeksContainer);
 }
 
-export default createWeeksContainer;
+export { createWeeksContainer };

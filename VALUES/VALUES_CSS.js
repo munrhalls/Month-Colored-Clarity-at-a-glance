@@ -5,4 +5,4 @@ const VALUES_CSS = {
   space_BottomTo1stElement: '0.25rem',
 }
 
-export default VALUES_CSS;
+export { VALUES_CSS };

@@ -7,4 +7,4 @@ function styleSaveIcon(saveIcon) {
   return saveIcon;
 }
 
-export default styleSaveIcon;
+export { styleSaveIcon };

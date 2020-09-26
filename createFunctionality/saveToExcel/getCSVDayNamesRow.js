@@ -10,4 +10,4 @@ function getCSVDayNamesRow() {
   return days;
 }
 
-export default getCSVDayNamesRow
+export { getCSVDayNamesRow };

@@ -8,4 +8,4 @@ function saveToTextFile() {
   createTextFile('Metrics: Deep work hours. Per day, week, month.', hourNumsStr);
 }
 
-export default saveToTextFile;
+export { saveToTextFile };

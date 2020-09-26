@@ -1,5 +1,5 @@
 function createAddHourTrigger() {
-const addHourTrigger = document.createElement('input');
+  const addHourTrigger = document.createElement('input');
   addHourTrigger.style.marginLeft = "auto";
   addHourTrigger.style.backgroundColor = "#000";
   addHourTrigger.style.color = "#000071";
@@ -15,4 +15,4 @@ const addHourTrigger = document.createElement('input');
 }
 
 
-export default createAddHourTrigger;
+export { createAddHourTrigger };

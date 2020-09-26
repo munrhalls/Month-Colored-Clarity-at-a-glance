@@ -10,4 +10,4 @@ function createContainer() {
   return container;
 }
 
-  export default createContainer;
+export { createContainer };
