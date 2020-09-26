@@ -1,4 +1,4 @@
-import { fillHoursFromString } from './script.js';
+import { fillHoursFromString } from './../../script.js';
 
 function fillHoursFromTextFile() {
   const file = this.files[0];

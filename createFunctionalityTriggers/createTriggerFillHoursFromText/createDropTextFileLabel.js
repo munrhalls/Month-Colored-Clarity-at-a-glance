@@ -1,4 +1,5 @@
-import VALUES_CSS from './script.js';
+import { VALUES_CSS } from './../../script.js';
+
 function createDropTextFileLabel() {
   const dropTextFileLabel = document.createElement('label');
   dropTextFileLabel.setAttribute('for', 'dropTextFileInput');

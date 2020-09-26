@@ -1,4 +1,4 @@
-import { VALUES_dayNames } from './script.js';
+import { VALUES_dayNames } from '../../script.js';
 
 function getCSVDayNamesRow() {
   function getCSVDay(day) { return day + ','; }

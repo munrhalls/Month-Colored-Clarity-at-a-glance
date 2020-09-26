@@ -1,9 +1,9 @@
-import { VALUES_monthNames } from './script.js';
-import { getCSVMonthHours } from './script.js';
-import { getCSVDayNamesRow } from './script.js';
-import { getCsvRow } from './script.js';
+import { VALUES_monthNames } from '../../script.js';
+import { getCSVMonthHours } from '../../script.js';
+import { getCSVDayNamesRow } from '../../script.js';
+import { getCsvRow } from '../../script.js';
 
-function getCSV() {
+function getFullCSV() {
   var CSV = 'sep=,' + '\r\n\n';
   const months = document.getElementsByClassName('month');
   const monthNames = VALUES_monthNames;
@@ -18,4 +18,4 @@ function getCSV() {
   return CSV;
 }
 
-export { getCSV };
+export { getFullCSV };

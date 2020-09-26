@@ -1,4 +1,4 @@
-import { VALUES_CSS } from './script.js';
+import { VALUES_CSS } from './../script.js';
 
 const underLineGraphic = document.createElement('span');
 //display

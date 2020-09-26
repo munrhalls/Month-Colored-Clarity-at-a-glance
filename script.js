@@ -1,26 +1,32 @@
 import { appendTriggersAddAndSubstractHour } from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/appendTriggersAddAndSubstractHour.js';
-// import { createDays } from './createDays.js';
-// import { createMonthContainers } from './createMonthContainers.js';
-// import { appendSingleHourToDay } from './createFunctionality/appendAndClearHours/appendSingleHourToDay.js';
-// import { appendNumberToSingleHour } from './createHourElement/appendNumberToSingleHour.js';
-// import { createHourElement } from './createHourElement/createHourElement.js';
-// import { clearAllHoursFromDay } from './createFunctionality/appendAndClearHours/clearAllHoursFromDay.js';
-// import { appendManyHoursToDay } from './createFunctionality/appendAndClearHours/appendManyHoursToDay.js';
-// import { fillHoursFromString } from './createFunctionality/fillHoursFromTextFile/fillHoursFromString.js';
-// import { getCSVWeekHours } from './createFunctionality/saveToExcel/getCSVWeekHours.js';
-// import { VALUES_monthNames } from './../VALUES/VALUES.js';
-// import { getCSVMonthHours } from './createFunctionality/saveToExcel/getCSVMonthHours.js';
-// import { getCSVDayNamesRow } from './createFunctionality/saveToExcel/getCSVDayNamesRow.js';
-// import { getFullCSV } from "./createFunctionality/saveToExcel/getFullCSV.js";
-// import { createTextFile } from './createFunctionality/saveToTextFile/createTextFile.js';
-// import { getStrOfHoursPerDayNums } from './createFunctionality/saveToTextFile/getStrOfHoursPerDayNums.js';
-// import { createContainer } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createContainer.js';
-// import { createColumn } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createColumn.js';
-// import { createDropTextFileLabel } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createDropTextFileLabel.js';
-// import { createTriggerDropTextFileButton } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createTriggerDropTextFileButton.js';
-// import { createBottomLabel } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createBottomLabel.js';
-// import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './createResources/resources.js';
-// import { fillHoursFromTextFile } from './createFunctionality/fillHoursFromTextFile/fillHoursFromTextFile.js';
+import { VALUES_monthNames, VALUES_dayNames, VALUES_CSS } from './VALUES/VALUES.js';
+import { createDays } from './createDays.js';
+import { createMonthContainers } from './createMonthContainers.js';
+import { appendSingleHourToDay } from './createFunctionality/appendAndClearHours/appendSingleHourToDay.js';
+import { appendNumberToSingleHour } from './createHourElement/appendNumberToSingleHour.js';
+import { createHourElement } from './createHourElement/createHourElement.js';
+import { clearAllHoursFromDay } from './createFunctionality/appendAndClearHours/clearAllHoursFromDay.js';
+import { appendManyHoursToDay } from './createFunctionality/appendAndClearHours/appendManyHoursToDay.js';
+import { fillHoursFromString } from './createFunctionality/fillHoursFromTextFile/fillHoursFromString.js';
+import { getCSVWeekHours } from './createFunctionality/saveToExcel/getCSVWeekHours.js';
+import { getCSVMonthHours } from './createFunctionality/saveToExcel/getCSVMonthHours.js';
+import { getCSVDayNamesRow } from './createFunctionality/saveToExcel/getCSVDayNamesRow.js';
+import { getFullCSV } from "./createFunctionality/saveToExcel/getFullCSV.js";
+import { createTextFile } from './createFunctionality/saveToTextFile/createTextFile.js';
+import { getStrOfHoursPerDayNums } from './createFunctionality/saveToTextFile/getStrOfHoursPerDayNums.js';
+import { createContainer } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createContainer.js';
+import { createColumn } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createColumn.js';
+import { createDropTextFileLabel } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createDropTextFileLabel.js';
+import { createTriggerDropTextFileButton } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createTriggerDropTextFileButton.js';
+import { createBottomLabel } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createBottomLabel.js';
+// import { arrowGraphic, chartIcon, fillIcon, saveIcon, underLineGraphic } from './createResources/resources.js';
+import { arrowGraphic } from './createResources';
+import { chartIcon } from './createResources.js';
+import { fillIcon } from './createResources.js';
+import { saveIcon } from './createResources.js';
+import { underLineGraphic } from './createResources.js';
+import { fillHoursFromTextFile } from './createFunctionality/fillHoursFromTextFile/fillHoursFromTextFile.js';
+import { getCsvRow } from './createFunctionality/saveToExcel/getCSVRow.js';
 import { createTriggerAddHour } from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/createTriggerAddHour.js';
 import { createTriggerSubstractHour } from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/createTriggerSubstractHour.js';
 // import { saveToExcelFile } from "./createFunctionality/saveToExcel/saveToExcelFile.js";
@@ -29,7 +35,7 @@ import { createTriggerSubstractHour } from './createFunctionalityTriggers/create
 // import { saveTextToFileBtn } from './createFunctionalityTriggers//createTriggerSaveToTextFile/createSaveToTextFileButton.js';
 // import { bottomText } from './createFunctionalityTriggers//createTriggerSaveToTextFile/createBottomText.js';
 // import { styleSaveIcon } from './createFunctionalityTriggers//createTriggerSaveToTextFile/styleSaveIcon.js';
-// import { createTickGraphic } from './createHourElement/createTickGraphic.js';
+import { createTickGraphic } from './createHourElement/createTickGraphic.js';
 // import { createMenu } from './createMenu/createMenu.js';
 // import { createTitle } from './createMenu/createTitle.js';
 // import { saveToExcelBtn } from './createFunctionalityTriggers/createTriggerSaveToExcel/createTriggerSaveToExcelBtn.js';
@@ -157,30 +163,40 @@ import { createTriggerSubstractHour } from './createFunctionalityTriggers/create
 // }
 
 
+export { VALUES_monthNames, VALUES_dayNames, VALUES_CSS }
+
+export { arrowGraphic } from './createResources';
+export { chartIcon } from './createResources.js';
+export { fillIcon } from './createResources.js';
+export { saveIcon } from './createResources.js';
+export { underLineGraphic } from './createResources.js';
+
+
 export { appendTriggersAddAndSubstractHour }
 // export { appendTriggersAddAndSubstractHour }
 // export { appendTriggersAddAndSubstractHour }
 
 // export { createDays }
 // export { createMonthContainers }
-// export { appendSingleHourToDay }
-// export { appendNumberToSingleHour }
-// export { createHourElement }
-// export { clearAllHoursFromDay }
-// export { appendManyHoursToDay }
-// export { fillHoursFromString }
-// export { getCSVWeekHours }
-// export { getCSVMonthHours }
-// export { getCSVDayNamesRow }
-// export { getFullCSV }
-// export { createTextFile }
-// export { getStrOfHoursPerDayNums }
-// export { createContainer }
-// export { createColumn }
-// export { createDropTextFileLabel }
-// export { createTriggerDropTextFileButton }
-// export { createBottomLabel }
-// export { fillHoursFromTextFile }
+export { appendSingleHourToDay }
+export { appendNumberToSingleHour }
+export { createHourElement }
+export { clearAllHoursFromDay }
+export { appendManyHoursToDay }
+export { fillHoursFromString }
+export { getCSVWeekHours }
+export { getCsvRow }
+export { getCSVMonthHours }
+export { getCSVDayNamesRow }
+export { getFullCSV }
+export { createTextFile }
+export { getStrOfHoursPerDayNums }
+export { createContainer }
+export { createColumn }
+export { createDropTextFileLabel }
+export { createTriggerDropTextFileButton }
+export { createBottomLabel }
+export { fillHoursFromTextFile }
 export { createTriggerAddHour }
 export { createTriggerSubstractHour }
 // export { saveToExcelFile }
@@ -189,7 +205,7 @@ export { createTriggerSubstractHour }
 // export { saveTextToFileBtn }
 // export { bottomText }
 // export { styleSaveIcon }
-// export { createTickGraphic }
+export { createTickGraphic }
 // export { createMenu }
 // export { createTitle }
 // export { saveToExcelBtn }

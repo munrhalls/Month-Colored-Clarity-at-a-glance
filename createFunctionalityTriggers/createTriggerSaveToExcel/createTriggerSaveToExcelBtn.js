@@ -1,4 +1,4 @@
-import { saveToExcelFile } from './script.js';
+import { saveToExcelFile } from '../../script.js';
 
 // Feature - fill EXCEL file from work hours data
 const saveToExcelTrigger = document.createElement('input');

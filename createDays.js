@@ -1,5 +1,5 @@
 import { VALUES_dayNames } from './script.js';
-import { appendAddAndSubstractHourTriggers } from './script.js';
+import { appendTriggersAddAndSubstractHour } from './script.js';
 
 function createDays(week) {
   //create: container divs -> corresponding divs: 1) day's title divs, 2) day's deep work hour ticks
@@ -17,7 +17,7 @@ function createDays(week) {
     dayContainer.appendChild(day);
     dayContainer.style.display = 'inline-block';
     week.appendChild(dayContainer);
-    appendAddAndSubstractHourTriggers(dayContainer);
+    appendTriggersAddAndSubstractHour(dayContainer);
   });
 }
 

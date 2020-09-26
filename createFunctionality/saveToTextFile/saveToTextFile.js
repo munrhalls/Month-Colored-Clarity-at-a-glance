@@ -1,5 +1,5 @@
-import { createTextFile } from './script.js';
-import { getStrOfHoursPerDayNums } from './script.js';
+import { createTextFile } from '../../script.js';
+import { getStrOfHoursPerDayNums } from '../../script.js';
 
 function saveToTextFile() {
   // the only data it needs = hour ticks numbers 
