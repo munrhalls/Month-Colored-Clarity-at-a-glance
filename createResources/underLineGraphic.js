@@ -1,4 +1,4 @@
-import VALUES_CSS from './script.js';
+import { VALUES_CSS } from './script.js';
 
 const underLineGraphic = document.createElement('span');
 //display
@@ -10,4 +10,4 @@ underLineGraphic.style.left = '5%';
 underLineGraphic.style.borderTop = '1px solid #fff';
 underLineGraphic.style.borderRadius = '50%'
 
-export default underLineGraphic;
+export { underLineGraphic };

@@ -1,0 +1,209 @@
+# Query: import
+# ContextLines: 1
+
+110 results - 30 files
+
+(unusedFile)manageHours.js:
+   5  // // Code blocks uniform transport system
+   6: // import {appendManyHoursToDay} from  './script.js';
+   7: // import {appendNumberToSingleHour} from  './script.js';
+   8: // import {appendSingleHourToDay} from  './script.js';
+   9: // import {clearAllHoursFromDay} from  './script.js';
+  10: // import {createHourElement} from  './script.js';
+  11: // import {createTickGraphic} from  './script.js';
+  12  
+
+createDays.js:
+  1: import {VALUES_dayNames} from './script.js';
+  2: import {appendAddAndSubstractHourTriggers} from './script.js';
+  3  
+
+createWeek.js:
+  1: import {createDays} from './script.js';
+  2  
+
+script.js:
+   1: import {appendTriggersAddAndSubstractHour} from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/appendTriggersAddAndSubstractHour.js';
+   2: import {createDays} from './createDays.js';
+   3: import {createMonthContainers} from './createMonthContainers.js';
+   4: import {appendSingleHourToDay} from './createFunctionality/appendAndClearHours/appendSingleHourToDay.js';
+   5: import {appendNumberToSingleHour} from './createHourElement/appendNumberToSingleHour.js';
+   6: import {createHourElement} from './createHourElement/createHourElement.js';
+   7: import {clearAllHoursFromDay} from './createFunctionality/appendAndClearHours/clearAllHoursFromDay.js';
+   8: import {appendManyHoursToDay} from './createFunctionality/appendAndClearHours/appendManyHoursToDay.js';
+   9: import {fillHoursFromString} from './createFunctionality/fillHoursFromTextFile/fillHoursFromString.js';
+  10: import {getCSVWeekHours} from './createFunctionality/saveToExcel/getCSVWeekHours.js';
+  11: import { VALUES_monthNames } from './../VALUES/VALUES.js';
+  12: import {getCSVMonthHours} from './createFunctionality/saveToExcel/getCSVMonthHours.js';
+  13: import {getCSVDayNamesRow} from './createFunctionality/saveToExcel/getCSVDayNamesRow.js';
+  14: import {getFullCSV} from "./createFunctionality/saveToExcel/getFullCSV.js";
+  15: import {createTextFile} from './createFunctionality/saveToTextFile/createTextFile.js';
+  16: import {getStrOfHoursPerDayNums} from './createFunctionality/saveToTextFile/getStrOfHoursPerDayNums.js';
+  17: import {createContainer} from './createFunctionalityTriggers/createTriggerFillHoursFromText/createContainer.js';
+  18: import {createColumn} from './createFunctionalityTriggers/createTriggerFillHoursFromText/createColumn.js';
+  19: import {createDropTextFileLabel} from './createFunctionalityTriggers/createTriggerFillHoursFromText/createDropTextFileLabel.js';
+  20: import {createTriggerDropTextFileButton} from './createFunctionalityTriggers/createTriggerFillHoursFromText/createTriggerDropTextFileButton.js';
+  21: import {createBottomLabel} from './createFunctionalityTriggers/createTriggerFillHoursFromText/createBottomLabel.js';
+  22: import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './createResources/resources.js';
+  23: import {fillHoursFromTextFile} from './createFunctionality/fillHoursFromTextFile/fillHoursFromTextFile.js';
+  24: import {createAddHourTrigger} from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/createTriggerAddHour.js';
+  25: import {createSubstractHourTrigger} from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/createTriggerSubstractHour.js';
+  26: import {saveToExcelFile} from "./createFunctionality/saveToExcel/saveToExcelFile.js";
+  27: import {saveToTextFile} from './createFunctionality/saveToTextFile/saveToTextFile.js';
+  28: import {container} from './createFunctionalityTriggers//createTriggerSaveToTextFile/createContainer.js';
+  29: import {saveTextToFileBtn} from './createFunctionalityTriggers//createTriggerSaveToTextFile/createSaveToTextFileButton.js';
+  30: import {bottomText} from './createFunctionalityTriggers//createTriggerSaveToTextFile/createBottomText.js';
+  31: import {styleSaveIcon} from './createFunctionalityTriggers//createTriggerSaveToTextFile/styleSaveIcon.js';
+  32: import {createTickGraphic} from './createHourElement/createTickGraphic.js';
+  33: import {createMenu} from './createMenu/createMenu.js';
+  34: import {createTitle} from './createMenu/createTitle.js';
+  35: import {saveToExcelBtn} from './createFunctionalityTriggers/createTriggerSaveToExcel/createTriggerSaveToExcelBtn.js';
+  36: import {createTriggerSaveToTextFileContainer} from './createFunctionalityTriggers/createTriggerSaveToTextFile/createTriggerSaveToTextFileContainer.js';
+  37  
+  38: import { exportToScript } from './EXPORTTOSCRIPT/EXPORTTOSCRIPT.js';
+  39: import { exportToScript__2 } from './EXPORTTOSCRIPT/EXPORTTOSCRIPT__2.js';
+  40: import { thenImportAndRun } from './THENIMPORTFROMSCRIPT.js';
+  41  
+
+  43    console.log('This function is executed once the page is fully loaded');
+  44:   thenImportAndRun();
+  45    // createMenu();
+
+THENIMPORTFROMSCRIPT.js:
+  1: import { exportToScript } from './script.js';
+  2: import { exportToScript__2 } from './script.js';
+  3  
+  4: function thenImportAndRun() {
+  5    exportToScript();
+
+  8  
+  9: export { thenImportAndRun };
+
+createFunctionality\appendAndClearHours\appendManyHoursToDay.js:
+  1: import {appendSingleHourToDay} from './script.js';
+  2  
+
+createFunctionality\appendAndClearHours\appendSingleHourToDay.js:
+  1: import {appendNumberToSingleHour} from './script.js';
+  2: import {createHourElement} from './script.js';
+  3  
+
+createFunctionality\fillHoursFromTextFile\fillHoursFromString.js:
+  1: import {clearAllHoursFromDay} from './script.js';
+  2: import {appendManyHoursToDay} from './script.js';
+  3  
+
+createFunctionality\fillHoursFromTextFile\fillHoursFromTextFile.js:
+  1: import {fillHoursFromString} from './script.js';
+  2  
+
+createFunctionality\saveToExcel\getCSVDayNamesRow.js:
+  1: import { VALUES_dayNames } from './script.js';
+  2  
+
+createFunctionality\saveToExcel\getCSVMonthHours.js:
+  1: import {getCSVWeekHours} from './script.js';
+  2: import {getCsvRow} from './script.js';
+  3  
+
+createFunctionality\saveToExcel\getFullCSV.js:
+  1: import { VALUES_monthNames } from './script.js';
+  2: import {getCSVMonthHours} from './script.js';
+  3: import {getCSVDayNamesRow} from './script.js';
+  4: import {getCsvRow} from './script.js';
+  5  
+
+createFunctionality\saveToExcel\saveToExcelFile.js:
+  1: import {getFullCSV} from './script.js';
+  2  
+
+createFunctionality\saveToTextFile\saveToTextFile.js:
+  1: import {createTextFile} from './script.js';
+  2: import {getStrOfHoursPerDayNums} from './script.js';
+  3  
+
+createFunctionalityTriggers\createTriggerFillHoursFromText\createDropTextFileLabel.js:
+  1: import {VALUES_CSS} from './script.js';
+  2  function createDropTextFileLabel() {
+
+createFunctionalityTriggers\createTriggerFillHoursFromText\createFillHoursFromTextFileContainer.js:
+  1: import {createContainer} from './script.js';
+  2: import {createColumn} from './script.js';
+  3: import {createDropTextFileLabel} from './script.js';
+  4: import {createTriggerDropTextFileButton} from './script.js';
+  5: import {createBottomLabel} from './script.js';
+  6: import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './script.js';
+  7  
+
+createFunctionalityTriggers\createTriggerFillHoursFromText\createTriggerDropTextFileButton.js:
+  1: import {fillHoursFromTextFile} from './script.js';
+  2  
+
+createFunctionalityTriggers\createTriggerFillHoursFromText\icons.js:
+  1: import { arrowGraphic, chartIcon, fillIcon, underLineGraphic } from './script.js';
+  2  
+
+createFunctionalityTriggers\createTriggersAddAndSubstractHour\appendTriggersAddAndSubstractHour.js:
+  1: import {createTriggerAddHour} from './script.js';
+  2: import {createTriggerSubstractHour} from './script.js';
+  3  
+
+createFunctionalityTriggers\createTriggerSaveToExcel\createTriggerSaveToExcelBtn.js:
+  1: import {saveToExcelFile} from './script.js';
+  2  
+
+createFunctionalityTriggers\createTriggerSaveToTextFile\createContainer.js:
+  1: import {VALUES_CSS} from './script.js';
+  2  
+
+createFunctionalityTriggers\createTriggerSaveToTextFile\createSaveToTextFileButton.js:
+  1: import {VALUES_CSS} from './script.js';
+  2  
+
+createFunctionalityTriggers\createTriggerSaveToTextFile\createTriggerSaveToTextFileContainer.js:
+  1: import {saveToTextFile} from './script.js';
+  2: import {container} from './script.js';
+  3: import {saveTextToFileBtn} from './script.js';
+  4: import {bottomText} from './script.js';import {styleSaveIcon} from './script.js';
+  5: import { underLineGraphic, arrowGraphic, saveIcon } from './script.js';
+  6  
+
+createHourElement\createHourElement.js:
+  1: import {createTickGraphic} from './script.js';
+  2  
+
+createMenu\createMenu.js:
+  1: import {VALUES_dayNames} from './script.js';
+  2: import {createTitle} from './script.js';
+  3: import {VALUES_CSS} from './script.js';import {saveToExcelBtn} from './script.js';
+  4: import {saveToTextFileTrigger} from './script.js';
+  5: import {createTriggerSaveToTextFileContainer} from './script.js';
+  6  
+
+createResources\resources.js:
+  1: import {arrowGraphic} from './script.js';
+  2: import {chartIcon} from './script.js';
+  3: import {fillIcon} from './script.js';
+  4: import {saveIcon} from './script.js';
+  5: import {underLineGraphic} from './script.js';
+  6  
+
+createResources\underLineGraphic.js:
+  1: import {VALUES_CSS} from './script.js';
+  2  
+
+EXPORTTOSCRIPT\EXPORTTOSCRIPT__2.js:
+  1  function exportToScript__2() {
+  2:   console.log("FILE 2 EXPORT IMPORT {EXPORT} AGAIN IMPORT {AGAIN} THEN RUN")
+  3  }
+
+EXPORTTOSCRIPT\EXPORTTOSCRIPT.js:
+  1  function exportToScript() {
+  2:   console.log("EXPORT TO SCRIPT JS - THEN FROM SCRIPT JS TO IMPORT {JS} - PROOF OF CONCEPT")
+  3  }
+
+VALUES\VALUES.js:
+  1: import {VALUES_CSS} from './script.js';
+  2: import {VALUES_dayNames} from './script.js';
+  3: import {VALUES_monthNames} from './script.js';
+  4  
