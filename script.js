@@ -19,27 +19,26 @@ import { createColumn } from './createFunctionalityTriggers/createTriggerFillHou
 import { createDropTextFileLabel } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createDropTextFileLabel.js';
 import { createTriggerDropTextFileButton } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createTriggerDropTextFileButton.js';
 import { createBottomLabel } from './createFunctionalityTriggers/createTriggerFillHoursFromText/createBottomLabel.js';
-// import { arrowGraphic, chartIcon, fillIcon, saveIcon, underLineGraphic } from './createResources/resources.js';
-import { arrowGraphic } from './createResources';
-import { chartIcon } from './createResources.js';
-import { fillIcon } from './createResources.js';
-import { saveIcon } from './createResources.js';
-import { underLineGraphic } from './createResources.js';
+import { arrowGraphic } from './createResources/arrowGraphic.js';
+import { chartIcon } from './createResources/chartIcon.js';
+import { fillIcon } from './createResources/fillIcon.js';
+import { saveIcon } from './createResources/saveIcon.js';
+import { underLineGraphic } from './createResources/underLineGraphic.js';
 import { fillHoursFromTextFile } from './createFunctionality/fillHoursFromTextFile/fillHoursFromTextFile.js';
 import { getCsvRow } from './createFunctionality/saveToExcel/getCSVRow.js';
 import { createTriggerAddHour } from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/createTriggerAddHour.js';
 import { createTriggerSubstractHour } from './createFunctionalityTriggers/createTriggersAddAndSubstractHour/createTriggerSubstractHour.js';
-// import { saveToExcelFile } from "./createFunctionality/saveToExcel/saveToExcelFile.js";
-// import { saveToTextFile } from './createFunctionality/saveToTextFile/saveToTextFile.js';
-// import { container } from './createFunctionalityTriggers//createTriggerSaveToTextFile/createContainer.js';
-// import { saveTextToFileBtn } from './createFunctionalityTriggers//createTriggerSaveToTextFile/createSaveToTextFileButton.js';
-// import { bottomText } from './createFunctionalityTriggers//createTriggerSaveToTextFile/createBottomText.js';
-// import { styleSaveIcon } from './createFunctionalityTriggers//createTriggerSaveToTextFile/styleSaveIcon.js';
+import { saveToExcelFile } from "./createFunctionality/saveToExcel/saveToExcelFile.js";
+import { saveToTextFile } from './createFunctionality/saveToTextFile/saveToTextFile.js';
+import { container } from './createFunctionalityTriggers//createTriggerSaveToTextFile/createContainer.js';
+import { saveTextToFileBtn } from './createFunctionalityTriggers//createTriggerSaveToTextFile/createSaveToTextFileButton.js';
+import { bottomText } from './createFunctionalityTriggers//createTriggerSaveToTextFile/createBottomText.js';
+import { styleSaveIcon } from './createFunctionalityTriggers//createTriggerSaveToTextFile/styleSaveIcon.js';
 import { createTickGraphic } from './createHourElement/createTickGraphic.js';
-// import { createMenu } from './createMenu/createMenu.js';
-// import { createTitle } from './createMenu/createTitle.js';
-// import { saveToExcelBtn } from './createFunctionalityTriggers/createTriggerSaveToExcel/createTriggerSaveToExcelBtn.js';
-// import { createTriggerSaveToTextFileContainer } from './createFunctionalityTriggers/createTriggerSaveToTextFile/createTriggerSaveToTextFileContainer.js';
+import { createMenu } from './createMenu/createMenu.js';
+import { createTitle } from './createMenu/createTitle.js';
+import { saveToExcelBtn } from './createFunctionalityTriggers/createTriggerSaveToExcel/createTriggerSaveToExcelBtn.js';
+import { createTriggerSaveToTextFileContainer } from './createFunctionalityTriggers/createTriggerSaveToTextFile/createTriggerSaveToTextFileContainer.js';
 
 // import { exportToScript } from './EXPORTTOSCRIPT/EXPORTTOSCRIPT.js';
 // import { exportToScript__2 } from './EXPORTTOSCRIPT/EXPORTTOSCRIPT__2.js';
@@ -162,22 +161,15 @@ import { createTickGraphic } from './createHourElement/createTickGraphic.js';
 //   document.getElementById('root').appendChild(copyrightNote2);
 // }
 
-
 export { VALUES_monthNames, VALUES_dayNames, VALUES_CSS }
-
-export { arrowGraphic } from './createResources';
-export { chartIcon } from './createResources.js';
-export { fillIcon } from './createResources.js';
-export { saveIcon } from './createResources.js';
-export { underLineGraphic } from './createResources.js';
-
-
+export { arrowGraphic }
+export { chartIcon } 
+export { fillIcon } 
+export { saveIcon } 
+export { underLineGraphic } 
 export { appendTriggersAddAndSubstractHour }
-// export { appendTriggersAddAndSubstractHour }
-// export { appendTriggersAddAndSubstractHour }
-
-// export { createDays }
-// export { createMonthContainers }
+export { createDays }
+export { createMonthContainers }
 export { appendSingleHourToDay }
 export { appendNumberToSingleHour }
 export { createHourElement }
@@ -199,14 +191,14 @@ export { createBottomLabel }
 export { fillHoursFromTextFile }
 export { createTriggerAddHour }
 export { createTriggerSubstractHour }
-// export { saveToExcelFile }
-// export { saveToTextFile }
-// export { container }
-// export { saveTextToFileBtn }
-// export { bottomText }
-// export { styleSaveIcon }
+export { saveToExcelFile }
+export { saveToTextFile }
+export { container }
+export { saveTextToFileBtn }
+export { bottomText }
+export { styleSaveIcon }
 export { createTickGraphic }
-// export { createMenu }
-// export { createTitle }
-// export { saveToExcelBtn }
-// export { createTriggerSaveToTextFileContainer }
+export { createMenu }
+export { createTitle }
+export { saveToExcelBtn }
+export { createTriggerSaveToTextFileContainer }

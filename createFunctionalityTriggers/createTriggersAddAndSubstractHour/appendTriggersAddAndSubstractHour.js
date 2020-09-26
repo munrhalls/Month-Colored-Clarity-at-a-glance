@@ -1,5 +1,5 @@
-import { createTriggerAddHour } from '../../script.js';
-import { createTriggerSubstractHour } from '../../script.js';
+import { createTriggerAddHour } from './../../script.js';
+import { createTriggerSubstractHour } from './../../script.js';
 
 function appendTriggersAddAndSubstractHour(container) {
   //closure - count day's hours
