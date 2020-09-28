@@ -1,7 +1,5 @@
-import { getFullCSV } from './../../script.js';
-
 function saveToExcelFile(fileName) {
-  const CSV = getFullCSV();
+  const CSV = getCSV();
   const uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
   const link = document.createElement("a");
   link.href = uri;
@@ -13,4 +11,4 @@ function saveToExcelFile(fileName) {
   document.body.removeChild(link);
 }
 
-export { saveToExcelFile };
+export default saveToExcelFile;
