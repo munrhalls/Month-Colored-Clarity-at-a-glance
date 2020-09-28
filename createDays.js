@@ -2,6 +2,27 @@ import { VALUES_dayNames } from './script.js';
 import { appendTriggersAddAndSubstractHour } from './script.js';
 
 function createDays(week) {
+  function appendBtn() {
+      //closure - count day's hours
+  var hourNum = 0;
+
+  const addHourTrigger = createTriggerAddHour();
+  addHourTrigger.onclick =  hourAdd(hourNum);
+
+
+  const substractHourTrigger = createTriggerSubstractHour();
+  substractHourTrigger.onclick = function substractHour() {
+    if (hourNum > 0) {
+      hourNum--;
+    }
+    const day = substractHourTrigger.parentNode;
+    deleteHourEl(day);
+  };
+  container.appendChild(addHourTrigger);
+  container.appendChild(substractHourTrigger);
+  console.log(container);
+  }
+
   //create: container divs -> corresponding divs: 1) day's title divs, 2) day's deep work hour ticks
   VALUES_dayNames.forEach(function (el) {
     //day's column to add deep work hour ticks into
@@ -17,7 +38,11 @@ function createDays(week) {
     dayContainer.appendChild(day);
     dayContainer.style.display = 'inline-block';
     week.appendChild(dayContainer);
-    appendTriggersAddAndSubstractHour(dayContainer);
+
+
+    append(dayContainer);
+
+
   });
 }
 

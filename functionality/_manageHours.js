@@ -1,4 +1,24 @@
 function _manageHours() {
+  function hourAdd(hourNum) {
+    hourNum++;
+    const hour = createHourTick();
+    appendNumToHour(hourNum, hour);
+    const parent = btnHourAdd.parentNode;
+    parent.appendChild(hour);
+  };
+  function hourSubstract(hourNum) {
+    if (hourNum > 0) {
+      hourNum--;
+    }
+    const day = btnHourSubstract.parentNode;
+    deleteHourEl(day);
+  }
+  
+  function deleteHourElement(day) {
+    if (day.getElementsByClassName('hour').length) {
+      day.removeChild(day.getElementsByClassName('hour')[day.getElementsByClassName('hour').length - 1]);
+    }
+  }
   function appendManyHoursToDay(numberOfHours, day) {
     for (let j = 1; j <= numberOfHours; j++) {
       appendSingleHourToDay(j, day);
