@@ -1,5 +1,5 @@
-function saveToTextFile() {
-  function createTextFile(filename, data) {
+function textFileFillHours() {
+  function textFileCreate(filename, data) {
     var blob = new Blob([data], { type: 'text' });
     if (window.navigator.msSaveOrOpenBlob) {
       window.navigator.msSaveBlob(blob, filename);
@@ -14,23 +14,23 @@ function saveToTextFile() {
     }
   }
 
-  function getStrOfHoursPerDayNums() {
+  function stringHoursPerDayGet() {
     const days = document.getElementsByClassName('day');
     const hourNums = [];
     for (let i = 0; i < days.length; i++) {
       hourNums.push(days[i].getElementsByClassName('hour').length);
     }
-    const hourNumsStr = hourNums.join(',');
-    return hourNumsStr;
+    const strHoursPerDay = hourNums.join(',');
+    return strHoursPerDay;
   }
 
-  function outputTextFile() {
+  function textFileServeOutput() {
     // the only data it needs = hour ticks numbers 
-    const hourNumsStr = getStrOfHoursPerDayNums();
+    const strHoursPerDay = stringHoursPerDayGet();
     console.log('Debouncer, add. Reminder.');
-    createTextFile('Metrics: Deep work hours. Per day, week, month.', hourNumsStr);
+    textFileCreate('Metrics: Deep work hours. Per day, week, month.', strHoursPerDay);
   }
-  outputTextFile();
+  textFileServeOutput();
 }
 
-export default saveToTextFile;
+export default textFileFillHours;

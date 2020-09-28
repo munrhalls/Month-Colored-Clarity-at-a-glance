@@ -1,4 +1,4 @@
-function saveToExcelFile(fileName) {
+function excelFileSaveTo(fileName) {
   const CSV = getCSV();
   const uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
   const link = document.createElement("a");
@@ -11,4 +11,4 @@ function saveToExcelFile(fileName) {
   document.body.removeChild(link);
 }
 
-export default saveToExcelFile;
+export default excelFileSaveTo;

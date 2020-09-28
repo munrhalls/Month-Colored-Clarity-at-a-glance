@@ -2,7 +2,7 @@ import { fillHoursFromTextFile } from './../functionality/fillHoursFromTextFile.
 import { VALUES_CSS } from '../script.js';
 
 function createBtnFillHoursFromTextFile() {
-  // CONTAINER
+  // CONTAINER - BOX with graphics, styling, descriptor around the btn
   function createBottomLabel() {
     const bottomLabel = document.createElement('div');
     bottomLabel.innerText = 'TO FILL HOURS DATA';
@@ -33,7 +33,7 @@ function createBtnFillHoursFromTextFile() {
     container.style.fontWeight = "bold";
     return container;
   }
-  // BUTTON - DROP TEXT FILE 
+  // BUTTON - DROP TEXT FILE
   function createDropTextFileLabel() {
     const dropTextFileLabel = document.createElement('label');
     dropTextFileLabel.setAttribute('for', 'dropTextFileInput');
