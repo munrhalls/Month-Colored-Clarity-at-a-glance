@@ -1,12 +1,18 @@
-import { VALUES_dayNames } from './../script.js';
-import { createTitle } from './../script.js';
-import { VALUES_CSS } from './../script.js';
-import { saveToExcelTrigger } from './../script.js';
-import { saveToTextFileTrigger } from './../script.js';
-import { createTriggerSaveToTextFileContainer } from './../script.js';
-
 function createMenu() {
-  console.log(VALUES_dayNames)
+  function createTitle() {
+    const title = document.createElement('div');
+    title.innerText = 'Metrics - Deep Work hours';
+    title.textAlign = 'center';
+    title.style.display = 'flex';
+    title.style.alignItems = 'center';
+    title.style.padding = '0 3rem';
+    title.style.fontWeight = 'bold';
+    title.style.fontSize = '1.5rem'
+    title.style.fontFamily = 'consolas';
+    title.style.letterSpacing = '0.1rem';
+    return title;
+  }
+
   const menu = document.createElement('div');
   menu.setAttribute('id', 'menu');
   menu.style.position = 'relative';
@@ -24,4 +30,4 @@ function createMenu() {
   menu.appendChild(fillHoursFromTextTrigger);
   menu.appendChild(saveToExcelBtn);
 }
-export { createMenu };
+export default createMenu;
