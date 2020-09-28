@@ -1,9 +1,8 @@
-import { manageHours } from './createFunctionality/_manageHours.js';
+import _manageHours from './functionality/_manageHours.js';
 
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  thenImportAndRun();
   createMenu();
   for (var i = 0; i < 12; i++) {
     createMonthContainers(i);
@@ -11,9 +10,6 @@ window.addEventListener('load', function () {
   createCopyrightNote();
   createCopyrightNote2();
 });
-export { exportToScript };
-export { exportToScript__2 };
-
 
 function appendHour(hoursNum, day) {
   const hour = createHourTick();

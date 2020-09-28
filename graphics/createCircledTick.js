@@ -1,5 +1,4 @@
-// deep work hour count - visual representer
-function createTickGraphic() {
+function createCircledTick() {
   const tickGraphic = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   tickGraphic.setAttribute("width", "100%");
   tickGraphic.setAttribute("height", "28");
@@ -14,4 +13,4 @@ function createTickGraphic() {
   return tickGraphic;
 }
 
-export { createTickGraphic };
+export default createCircledTick;

@@ -1,4 +1,4 @@
-function manageHours() {
+function _manageHours() {
   function appendManyHoursToDay(numberOfHours, day) {
     for (let j = 1; j <= numberOfHours; j++) {
       appendSingleHourToDay(j, day);
@@ -18,5 +18,5 @@ function manageHours() {
   }
 }
 
-export default manageHours;
+export default _manageHours;
 
