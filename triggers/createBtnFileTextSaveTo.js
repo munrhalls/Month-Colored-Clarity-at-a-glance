@@ -3,7 +3,6 @@ import createGraphic from './../graphics/createGraphic.js';
 import createIcon from './../graphics/createIcon.js';
 import { values_CSS } from './../values/values.js';
 
-
 function createBtnFileTextSaveTo() {
   function createBottomText() {
     const bottomText = document.createElement('div');
@@ -31,20 +30,20 @@ function createBtnFileTextSaveTo() {
     container.style.color = "#fff";
     return container;
   }
-  function createBtnFileTextSaveTo() {
-    const btnFileTextSaveTo = document.createElement('input');
-    btnFileTextSaveTo.style.position = 'absolute';
-    btnFileTextSaveTo.style.top = values_CSS['space_TopTo1stElement'];
-    btnFileTextSaveTo.style.width = '6rem';
-    btnFileTextSaveTo.style.left = '50%';
-    btnFileTextSaveTo.style.marginLeft = 'calc(-25% - 0.75rem)';
-    btnFileTextSaveTo.style.padding = '0.3rem 1rem';
-    btnFileTextSaveTo.style.fontWeight = 'bold';
-    btnFileTextSaveTo.style.fontSize = '0.9rem';
-    btnFileTextSaveTo.style.border = '2px solid #fff';
-    btnFileTextSaveTo.setAttribute('type', 'button');
-    btnFileTextSaveTo.setAttribute('value', 'SAVE \nTEXT FILE');
-    return btnFileTextSaveTo;
+  function createBtn() {
+    const button = document.createElement('input');
+    button.style.position = 'absolute';
+    button.style.top = values_CSS['space_TopTo1stElement'];
+    button.style.width = '6rem';
+    button.style.left = '50%';
+    button.style.marginLeft = 'calc(-25% - 0.75rem)';
+    button.style.padding = '0.3rem 1rem';
+    button.style.fontWeight = 'bold';
+    button.style.fontSize = '0.9rem';
+    button.style.border = '2px solid #fff';
+    button.setAttribute('type', 'button');
+    button.setAttribute('value', 'SAVE \nTEXT FILE');
+    return button;
   }
   function createIconSave() {
     const iconSave = createIcon('save');
@@ -56,19 +55,20 @@ function createBtnFileTextSaveTo() {
     return iconSave;
   }
   function assemble() {
-    const container = createContainer();
     const bottomText = createBottomText();
     const underline = createGraphic('underline');
     const arrow = createGraphic('arrow');
-    const btnFileTextSaveTo = createBtnFileTextSaveTo();
+    const button = createBtn();
     const iconSave = createIconSave();
+    const container = createContainer();
 
     container.appendChild(iconSave);
     container.appendChild(bottomText);
     container.appendChild(underline);
     container.appendChild(arrow);
-    container.appendChild(btnFileTextSaveTo);
+    container.appendChild(button);
     container.onclick = fileTextSaveTo;
+    return container;
   }
   const btnFileTextSaveTo = assemble();
   return btnFileTextSaveTo;

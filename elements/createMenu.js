@@ -32,9 +32,10 @@ function createMenu() {
   const btnFileExcelSaveTo = createBtnFileExcelSaveTo();
 
   menu.appendChild(title);
-  document.getElementById('root').appendChild(menu);
+  
   menu.appendChild(btnFileTextSaveTo);
   menu.appendChild(btnFileExcelSaveTo);
   menu.appendChild(btnFileTextFillHoursFromIt);
 }
+
 export default createMenu;
