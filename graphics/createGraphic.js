@@ -1,17 +1,17 @@
 import { values_CSS } from './../values/values.js';
 
-function createGraphic() {
+function createGraphic(name) {
   function arrow() {
-    const arrowGraphic = document.createElement('span');
-    arrowGraphic.style.borderTop = '3px solid #fff';
-    arrowGraphic.style.borderRadius = '50%';
-    arrowGraphic.style.height = '3.25rem';
-    arrowGraphic.style.width = '6.5rem';
-    arrowGraphic.style.position = 'absolute';
-    arrowGraphic.style.left = 'calc(100% - 4.75rem)';
-    arrowGraphic.style.bottom = '3rem';
-    arrowGraphic.style.transform = 'rotate(-30deg)';
-    return arrowGraphic;
+    const arrow = document.createElement('span');
+    arrow.style.borderTop = '3px solid #fff';
+    arrow.style.borderRadius = '50%';
+    arrow.style.height = '3.25rem';
+    arrow.style.width = '6.5rem';
+    arrow.style.position = 'absolute';
+    arrow.style.left = 'calc(100% - 4.75rem)';
+    arrow.style.bottom = '3rem';
+    arrow.style.transform = 'rotate(-30deg)';
+    return arrow;
   }
   function circledTick() {
     const circledTick = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -27,18 +27,26 @@ function createGraphic() {
     circledTick.appendChild(tick);
     return circledTick;
   }
-  function underLineGraphic() {
-    const underLineGraphic = document.createElement('span');
+  function underline() {
+    const underline = document.createElement('span');
     //display
-    underLineGraphic.style.width = '90%'
-    underLineGraphic.style.position = 'absolute';
-    underLineGraphic.style.bottom = VALUES_CSS['space_BottomTo1stElement']
-    underLineGraphic.style.left = '5%';
+    underline.style.width = '90%'
+    underline.style.position = 'absolute';
+    underline.style.bottom = VALUES_CSS['space_BottomTo1stElement']
+    underline.style.left = '5%';
     // aesthetic
-    underLineGraphic.style.borderTop = '1px solid #fff';
-    underLineGraphic.style.borderRadius = '50%'
-    return underLineGraphic;
+    underline.style.borderTop = '1px solid #fff';
+    underline.style.borderRadius = '50%'
+    return underline;
   }
+  const createFunctions = {
+    arrow: arrow, 
+    circledTick: circledTick,
+    underline: underline,
+  }
+
+  const graphic = createFunctions[name]();
+  return graphic;
 }
 
 export default createGraphic;

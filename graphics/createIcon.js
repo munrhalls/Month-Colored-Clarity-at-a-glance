@@ -1,5 +1,5 @@
-function createIcon() {
-  function createIconChart() {
+function createIcon(name) {
+  function chart() {
     const iconChart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     iconChart.setAttributeNS(null, 'x', '0px');
     iconChart.setAttributeNS(null, 'y', '0px');
@@ -12,7 +12,7 @@ function createIcon() {
     iconChart.appendChild(path);
     return iconChart;
   }
-  function createIconFill() {
+  function fill() {
     const iconFill = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     iconFill.setAttributeNS(null, 'width', '512');
     iconFill.setAttributeNS(null, 'height', '512');
@@ -40,7 +40,7 @@ function createIcon() {
     iconFill.appendChild(path4);
     return iconFill;
   }
-  function createIconSave() {
+  function save() {
     const iconSave = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     iconSave.setAttributeNS(null, 'height', '24');
     iconSave.setAttributeNS(null, 'width', '24');
@@ -60,6 +60,14 @@ function createIcon() {
     iconSave.appendChild(path4);
     return iconSave;
   } 
+  const createFunctions = {
+    chart: chart, 
+    fill: fill,
+    save: save,
+  }
+
+  const icon = createFunctions[name]();
+  return icon;
 }
 
 export default createIcon;

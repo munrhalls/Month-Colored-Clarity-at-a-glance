@@ -74,34 +74,40 @@ function createBtnFillHoursFromTextFile() {
     const dropTextFileButton = createDropTextFileBtn();
     const dropTextFileLabel = createDropTextFileLabel();
     const bottomLabel = createBottomLabel();
-    const arrowGraphic = createGraphic();
-    arrowGraphic.style.bottom = '1.5rem';
-    arrowGraphic.style.left = '9rem';
+    const arrow = createGraphic('arrow');
+    arrow.style.bottom = '1.5rem';
+    arrow.style.left = '9rem';
 
-    chartIcon.style.fill = '#fff';
-    chartIcon.style.position = 'absolute';
-    chartIcon.style.top = '0.75rem';
-    chartIcon.style.right = '1.5rem';
-    chartIcon.style.height = '6rem';
-    chartIcon.style.width = '6rem';
+    const underline = createGraphic('underline');
 
-    fillIcon.style.position = 'absolute';
-    fillIcon.style.top = '4.46rem';
-    fillIcon.style.left = '6.1rem';
-    fillIcon.style.fill = '#fff';
-    fillIcon.style.height = '2.75rem';
-    fillIcon.style.width = '2.75rem';
-    fillIcon.style.transform = 'scale(-1,1) rotate(-12deg)';
+    const chart = createIcon('chart');
+    chart.style.fill = '#fff';
+    chart.style.position = 'absolute';
+    chart.style.top = '0.75rem';
+    chart.style.right = '1.5rem';
+    chart.style.height = '6rem';
+    chart.style.width = '6rem';
+
+    const fill = createIcon('fill');
+
+    fill.style.position = 'absolute';
+    fill.style.top = '4.46rem';
+    fill.style.left = '6.1rem';
+    fill.style.fill = '#fff';
+    fill.style.height = '2.75rem';
+    fill.style.width = '2.75rem';
+    fill.style.transform = 'scale(-1,1) rotate(-12deg)';
 
     column.appendChild(dropTextFileButton);
     column.appendChild(dropTextFileLabel);
-    column.appendChild(fillIcon)
+
+    column.appendChild(fill)
     column.appendChild(bottomLabel);
-    column.appendChild(underLineGraphic);
+    column.appendChild(underline);
 
     container.appendChild(column);
-    container.appendChild(arrowGraphic);
-    container.appendChild(chartIcon);
+    container.appendChild(arrow);
+    container.appendChild(chart);
 
     return container;
   }
