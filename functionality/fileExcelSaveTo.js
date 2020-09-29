@@ -1,7 +1,7 @@
-import './CSVgetFormat.js';
+import './CSVformatGet.js';
 
 function excelFileSaveTo(fileName) {
-  const CSV = CSVgetFormat();
+  const CSV = CSVformatGet();
   const uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
   const link = document.createElement("a");
   link.href = uri;
