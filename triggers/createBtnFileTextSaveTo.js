@@ -1,6 +1,8 @@
 import fileTextSaveTo from './../functionality/fileTextSaveTo.js';
 import createGraphic from './../graphics/createGraphic.js';
 import createIcon from './../graphics/createIcon.js';
+import values_CSS from './../values/values.js';
+
 
 function createBtnFileTextSaveTo() {
   function createBottomText() {
@@ -19,7 +21,7 @@ function createBtnFileTextSaveTo() {
   function createContainer() {
     const container = document.createElement('div');
     container.style.position = 'relative';
-    container.style.width = VALUES_CSS['width_menuSmallerBlock'];
+    container.style.width = values_CSS['width_menuSmallerBlock'];
 
     container.style.border = "none";
     container.style.borderLeft = '1px solid grey';
@@ -32,7 +34,7 @@ function createBtnFileTextSaveTo() {
   function createBtnFileTextSaveTo() {
     const btnFileTextSaveTo = document.createElement('input');
     btnFileTextSaveTo.style.position = 'absolute';
-    btnFileTextSaveTo.style.top = VALUES_CSS['space_TopTo1stElement'];
+    btnFileTextSaveTo.style.top = values_CSS['space_TopTo1stElement'];
     btnFileTextSaveTo.style.width = '6rem';
     btnFileTextSaveTo.style.left = '50%';
     btnFileTextSaveTo.style.marginLeft = 'calc(-25% - 0.75rem)';
