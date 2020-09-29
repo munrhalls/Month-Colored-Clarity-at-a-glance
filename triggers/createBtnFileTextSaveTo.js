@@ -58,8 +58,8 @@ function createBtnFileTextSaveTo() {
   function assemble() {
     const container = createContainer();
     const bottomText = createBottomText();
-    const underline = createGraphic(underline);
-    const arrow = createGraphic(arrow);
+    const underline = createGraphic('underline');
+    const arrow = createGraphic('arrow');
     const btnFileTextSaveTo = createBtnFileTextSaveTo();
     const iconSave = createIconSave();
 
