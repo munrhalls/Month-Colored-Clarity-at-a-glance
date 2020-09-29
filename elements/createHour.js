@@ -10,6 +10,7 @@ function createHour() {
     numEl.innerText = num;
     hour.appendChild(numEl);
   }
+  
   function createHour() {
     var hour = document.createElement('div');
     hour.className = "hour";

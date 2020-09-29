@@ -11,10 +11,10 @@ function _manageHours() {
       hourNum--;
     }
     const day = btnHourSubstract.parentNode;
-    deleteHourEl(day);
+    deleteElementHour(day);
   }
   
-  function deleteHourElement(day) {
+  function deleteElementHour(day) {
     if (day.getElementsByClassName('hour').length) {
       day.removeChild(day.getElementsByClassName('hour')[day.getElementsByClassName('hour').length - 1]);
     }
