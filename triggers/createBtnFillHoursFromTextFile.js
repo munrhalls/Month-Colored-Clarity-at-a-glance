@@ -1,4 +1,4 @@
-import { fillHoursFromTextFile } from '../functionality/textFileFillHours.js';
+import textFileFillHours from '../functionality/textFileFillHours.js';
 import { VALUES_CSS } from '../script.js';
 
 function createBtnFillHoursFromTextFile() {
@@ -105,6 +105,5 @@ function createBtnFillHoursFromTextFile() {
   const btnFillHoursFromTextFile = assemble();
   return btnFillHoursFromTextFile;
 }
-function createBtnFillHoursFromTextFile;
 
-export default createTriggerFillHoursFromTextFile;
+export default createBtnFillHoursFromTextFile;

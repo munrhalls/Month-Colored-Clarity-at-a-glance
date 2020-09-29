@@ -1,4 +1,4 @@
-function CSVgetFormat() {
+function CSVformatGet() {
   function CSVGetRow() { return '\r\n'; }
 
   function CSVGetDayNamesRow() {
@@ -54,4 +54,4 @@ function CSVgetFormat() {
   getFullCSV();
 }
 
-export default CSVgetFormat;
+export default CSVformatGet;

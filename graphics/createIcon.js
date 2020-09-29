@@ -1,12 +1,25 @@
 function createIcon() {
-  function createFillIcon() {
-    const fillIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    fillIcon.setAttributeNS(null, 'width', '512');
-    fillIcon.setAttributeNS(null, 'height', '512');
-    fillIcon.setAttributeNS(null, 'viewBox', '0 0 72 68');
-    fillIcon.setAttributeNS(null, 'x', '0px');
-    fillIcon.setAttributeNS(null, 'y', '0px');
-    // fillIcon.setAttributeNS(null, 'xml:space', 'preserve');  
+  function createIconChart() {
+    const iconChart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    iconChart.setAttributeNS(null, 'x', '0px');
+    iconChart.setAttributeNS(null, 'y', '0px');
+    iconChart.setAttributeNS(null, 'enableBackground', 'new 0 0 100 100');
+    iconChart.setAttributeNS(null, 'viewBox', '-17 6 100 100');
+    // iconChart.setAttributeNS(null, 'xml:space', 'preserve');  
+  
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M48,71h4v20c0,1.1-0.9,2-2,2s-2-0.9-2-2V71z M32.07,90.47c-0.29,1.07,0.34,2.17,1.4,2.46C33.65,92.98,33.83,93,34,93c0.88,0,1.69-0.58,1.93-1.47L41.53,71h-4.15L32.07,90.47z M62.62,71h-4.15l5.6,20.53C64.31,92.42,65.12,93,66,93c0.17,0,0.35-0.02,0.53-0.07c1.06-0.29,1.69-1.39,1.4-2.46L62.62,71z M80,7H20c-1.65,0-3,1.35-3,3c0,1.65,1.35,3,3,3h60c1.65,0,3-1.35,3-3C83,8.35,81.65,7,80,7z M23,17h54v48c0,1.1-0.9,2-2,2H25c-1.1,0-2-0.9-2-2V17z M32.59,47.41l4,4C36.98,51.8,37.49,52,38,52s1.02-0.2,1.41-0.59L48,42.83l4.59,4.58C52.98,47.8,53.49,48,54,48s1.02-0.2,1.41-0.59l7-7L64,38.83V44c0,1.1,0.9,2,2,2s2-0.9,2-2V34c0-0.13-0.01-0.26-0.04-0.39c-0.01-0.06-0.03-0.12-0.05-0.17c-0.02-0.07-0.04-0.14-0.06-0.2c-0.03-0.07-0.07-0.13-0.1-0.2c-0.03-0.05-0.05-0.1-0.09-0.15c-0.07-0.11-0.15-0.21-0.25-0.3c-0.09-0.1-0.19-0.18-0.3-0.25c-0.05-0.04-0.1-0.06-0.15-0.08c-0.06-0.04-0.13-0.08-0.2-0.11c-0.06-0.02-0.13-0.04-0.2-0.06c-0.05-0.02-0.11-0.04-0.17-0.05C66.26,32.01,66.13,32,66,32H56c-1.1,0-2,0.9-2,2c0,1.1,0.9,2,2,2h5.17l-1.58,1.59L54,43.17l-4.59-4.58c-0.78-0.79-2.04-0.79-2.82,0L38,47.17l-2.59-2.58c-0.78-0.79-2.04-0.79-2.82,0C31.8,45.37,31.8,46.63,32.59,47.41z');
+    iconChart.appendChild(path);
+    return iconChart;
+  }
+  function createIconFill() {
+    const iconFill = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    iconFill.setAttributeNS(null, 'width', '512');
+    iconFill.setAttributeNS(null, 'height', '512');
+    iconFill.setAttributeNS(null, 'viewBox', '0 0 72 68');
+    iconFill.setAttributeNS(null, 'x', '0px');
+    iconFill.setAttributeNS(null, 'y', '0px');
+    // iconFill.setAttributeNS(null, 'xml:space', 'preserve');  
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', 'M28.215,32.394 C27.1130386,32.9344423 26.1973331,33.7913059 25.585,34.855 C25.563,34.897 25.542,34.939 25.521,34.981 C25.68,34.994 25.84,35 26,35 C30.963,35 35,29.168 35,22 C35,14.832 30.963,9 26,9 C21.037,9 17,14.832 17,22 C16.9598717,25.0644868 17.7717122,28.0798944 19.345,30.71 C19.394,30.656 19.45,30.605 19.5,30.552 C19.726,30.309 19.96,30.071 20.2,29.835 C20.29,29.748 20.378,29.662 20.47,29.576 C20.58,29.4726667 20.6913333,29.3703333 20.804,29.269 C19.578892,27.0448437 18.9569688,24.5388795 19,22 C19,15.42 22.619,11 26,11 C29.381,11 33,15.42 33,22 C33.0015429,22.6630805 32.9591165,23.3255336 32.873,23.983 L32.873,23.999 C32.6568842,26.1533604 31.9177978,28.2223218 30.72,30.026 C30.558,30.26 30.3883333,30.4836667 30.211,30.697 C30.1825396,30.7322977 30.1518077,30.7657019 30.119,30.797 C29.5851536,31.4391215 28.9402325,31.9800558 28.215,32.394 Z');
     const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -20,19 +33,19 @@ function createIcon() {
     circle.setAttributeNS(null, 'fill', '#fff');
     const path4 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path4.setAttribute('d', 'M19,58 C30.2,58 38,54.574 38,51.5 C38,48.974 32.351,45.918 23.169,45.175 C23.172039,45.7486922 23.2466145,46.319766 23.391,46.875 C23.6366056,47.8721039 24.3561241,48.6850663 25.316,49.05 C25.8406705,49.224522 26.124522,49.7913295 25.95,50.316 C25.775478,50.8406705 25.2086705,51.124522 24.684,50.95 C23.0856382,50.3807309 21.8769051,49.0511996 21.462,47.406 C21.0346929,45.2077147 21.1095566,42.9412949 21.681,40.776 L21.767,40.316 C22.0599438,38.6229434 22.5243337,36.9640732 23.153,35.365 C23.359,34.858 23.579,34.377 23.81,33.935 C24.5984115,32.5192982 25.7946126,31.3736212 27.243,30.647 C27.78632,30.3304587 28.2661231,29.9157596 28.658,29.424 C28.6762968,29.4027057 28.6956547,29.3823465 28.716,29.363 L28.727,29.351 L28.739,29.339 C28.908,29.129 29.051,28.884 29.203,28.65 C29.303,28.493 29.422,28.35 29.516,28.186 C29.7214349,27.8107575 29.9031251,27.4229959 30.06,27.025 C30.085,26.964 30.118,26.912 30.141,26.85 C30.164,26.788 30.177,26.725 30.199,26.666 C27.515688,27.3871518 24.9884092,28.597059 22.744,30.235 C21.7545022,31.0478299 20.8526093,31.9617884 20.053,32.962 C18.8599554,34.4416559 17.9924075,36.1563067 17.507,37.994 C17.292,38.817 17.133,39.651 16.965,40.535 C16.7423191,41.8630506 16.4258607,43.1736627 16.018,44.457 L16.018,44.464 C15.7645872,45.2283578 15.4310665,45.9637792 15.023,46.658 C13.9545476,48.6927862 11.8628328,49.9842994 9.565,50.028 C9.34150624,50.028366 9.11816388,50.0163476 8.896,49.992 C8.34713304,49.9332668 7.94966644,49.4409096 8.008,48.892 C8.03307936,48.627092 8.16395331,48.3834992 8.3710001,48.216356 C8.57804689,48.0492127 8.84376056,47.9726512 9.108,48.004 C10.8531462,48.129949 12.5042238,47.1992486 13.3,45.641 C13.366,45.53 13.42,45.407 13.482,45.292 C5.007,46.22 0,49.087 0,51.5 C0,54.574 7.8,58 19,58 Z M5.143,52.485 C5.4267125,52.0128664 6.03880533,51.8590607 6.512,52.141 C6.56,52.169 11.384,54.951 19.89,54.006 C20.438971,53.9452487 20.9332487,54.341029 20.994,54.89 C21.0547513,55.438971 20.658971,55.9332487 20.11,55.994 C18.8691906,56.1333487 17.6216091,56.2037902 16.373,56.205 C9.49,56.205 5.673,53.968 5.485,53.857 C5.01177029,53.5725154 4.8586697,52.9583224 5.143,52.485 Z');
-    fillIcon.appendChild(path);
-    fillIcon.appendChild(path2);
-    fillIcon.appendChild(path3);
-    fillIcon.appendChild(circle);
-    fillIcon.appendChild(path4);
-    return fillIcon;
+    iconFill.appendChild(path);
+    iconFill.appendChild(path2);
+    iconFill.appendChild(path3);
+    iconFill.appendChild(circle);
+    iconFill.appendChild(path4);
+    return iconFill;
   }
-  function createSaveIcon() {
-    const saveIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    saveIcon.setAttributeNS(null, 'height', '24');
-    saveIcon.setAttributeNS(null, 'width', '24');
-    // saveIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 24 24');
-    saveIcon.setAttributeNS(null, 'viewBox', '0 0 24 24');
+  function createIconSave() {
+    const iconSave = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    iconSave.setAttributeNS(null, 'height', '24');
+    iconSave.setAttributeNS(null, 'width', '24');
+    // iconSave.setAttributeNS(null, 'enableBackground', 'new 0 0 24 24');
+    iconSave.setAttributeNS(null, 'viewBox', '0 0 24 24');
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('d', 'm21.5 20h-2c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h2c.827 0 1.5-.673 1.5-1.5v-11c0-.827-.673-1.5-1.5-1.5h-11.5c-.133 0-.26-.053-.354-.146l-1.853-1.854h-5.293c-.827 0-1.5.673-1.5 1.5v13c0 .827.673 1.5 1.5 1.5h2c.276 0 .5.224.5.5s-.224.5-.5.5h-2c-1.379 0-2.5-1.122-2.5-2.5v-13c0-1.378 1.121-2.5 2.5-2.5h5.5c.133 0 .26.053.354.146l1.853 1.854h11.293c1.379 0 2.5 1.122 2.5 2.5v11c0 1.378-1.121 2.5-2.5 2.5z');
     const path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -41,11 +54,11 @@ function createIcon() {
     path3.setAttribute('d', 'm12 19c-.128 0-.256-.049-.354-.146l-2.5-2.5c-.195-.195-.195-.512 0-.707s.512-.195.707 0l2.147 2.146 2.146-2.146c.195-.195.512-.195.707 0s.195.512 0 .707l-2.5 2.5c-.097.097-.225.146-.353.146z');
     const path4 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path4.setAttribute('d', 'm15.5 22h-7c-.827 0-1.5-.673-1.5-1.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .276.225.5.5.5h7c.275 0 .5-.224.5-.5v-2c0-.276.224-.5.5-.5s.5.224.5.5v2c0 .827-.673 1.5-1.5 1.5z');
-    saveIcon.appendChild(path);
-    saveIcon.appendChild(path2);
-    saveIcon.appendChild(path3);
-    saveIcon.appendChild(path4);
-    return saveIcon;
+    iconSave.appendChild(path);
+    iconSave.appendChild(path2);
+    iconSave.appendChild(path3);
+    iconSave.appendChild(path4);
+    return iconSave;
   } 
 }
 
