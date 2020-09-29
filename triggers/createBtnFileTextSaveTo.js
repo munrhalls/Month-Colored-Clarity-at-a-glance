@@ -2,7 +2,6 @@ import fileTextSaveTo from './functionality/fileTextSaveTo.js';
 import createGraphic from './../graphics/createGraphic.js';
 import createIcon from './../graphics/createIcon.js';
 
-
 function createBtnFileTextSaveTo() {
   function createBottomText() {
     const bottomText = document.createElement('div');
