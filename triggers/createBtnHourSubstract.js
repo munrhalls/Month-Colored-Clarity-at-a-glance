@@ -1,14 +1,5 @@
 function createBtnHourSubstract() {
   const btnHourSubstract = document.createElement('input');
-
-  btnHourSubstract.onclick = function substractHour() {
-    if (hourNum > 0) {
-      hourNum--;
-    }
-    const day = btnHourSubstract.parentNode;
-    deleteHourEl(day);
-  }
-
   btnHourSubstract.style.marginLeft = "auto";
   btnHourSubstract.style.backgroundColor = "#000";
   btnHourSubstract.style.border = "none";
@@ -20,9 +11,7 @@ function createBtnHourSubstract() {
   btnHourSubstract.style.maxWidth = "50%";
   btnHourSubstract.setAttribute('type', 'button');
   btnHourSubstract.setAttribute('value', '-');
-  
   return btnHourSubstract
 }
-
 export default createBtnHourSubstract;
 

@@ -1,14 +1,7 @@
+import './../functionality/hourAdd.js';
+
 function createBtnHourAdd() {
   const btnHourAdd = document.createElement('input');
-
-  btnHourAdd.onclick = function addHour() {
-    hourNum++;
-    const hour = createHourTick();
-    appendNumToHour(hourNum, hour);
-    const parent = btnHourAdd.parentNode;
-    parent.appendChild(hour);
-  };
-
   btnHourAdd.style.marginLeft = "auto";
   btnHourAdd.style.backgroundColor = "#000";
   btnHourAdd.style.color = "#000071";

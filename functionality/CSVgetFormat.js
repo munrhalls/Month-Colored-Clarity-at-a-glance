@@ -1,33 +1,33 @@
-function getCSV() {
-  function getCsvRow() { return '\r\n'; }
+function CSVgetFormat() {
+  function CSVGetRow() { return '\r\n'; }
 
-  function getCSVDayNamesRow() {
-    function getCSVDay(day) { return day + ','; }
+  function CSVGetDayNamesRow() {
+    function CSVGetDay(day) { return day + ','; }
 
     let days = '';
     VALUES_dayNames.forEach(function (day) {
-      days += getCSVDay(day);
+      days += CSVGetDay(day);
     });
     return days;
   }
 
-  function getCSVMonthHours(month) {
+  function CSVGetMonthHours(month) {
     const weeks = month.getElementsByClassName('week');
     let monthHours = '';
     for (let i = 0; i < weeks.length; i++) {
-      let weekHours = getCSVWeekHours(weeks[i]);
+      let weekHours = CSVGetWeekHours(weeks[i]);
       monthHours += weekHours;
-      monthHours += getCsvRow();
+      monthHours += CSVGetRow();
     }
     return monthHours;
   }
 
-  function getCSVWeekHours(week) {
+  function CSVGetWeekHours(week) {
     function getDayHours(day) { return day.getElementsByClassName('hour').length + ','; }
-    function getCSVWeekLabel(num) { return 'Week ' + num + ','; }
+    function CSVGetWeekLabel(num) { return 'Week ' + num + ','; }
 
     let hours = '';
-    hours += getCSVWeekLabel(week.classList[1]);
+    hours += CSVGetWeekLabel(week.classList[1]);
 
     const days = week.getElementsByClassName('day');
     for (let i = 0; i < days.length; i++) {
@@ -42,11 +42,11 @@ function getCSV() {
     const monthNames = VALUES_monthNames;
     for (let i = 0; i < months.length & i < 12; i++) {
       CSV += monthNames[i];
-      CSV += getCsvRow();
-      CSV += ',' + getCSVDayNamesRow();
-      CSV += getCsvRow();
-      CSV += getCSVMonthHours(months[i]);
-      CSV += getCsvRow();
+      CSV += CSVGetRow();
+      CSV += ',' + CSVGetDayNamesRow();
+      CSV += CSVGetRow();
+      CSV += CSVGetMonthHours(months[i]);
+      CSV += CSVGetRow();
     }
     return CSV;
   }
@@ -54,4 +54,4 @@ function getCSV() {
   getFullCSV();
 }
 
-export default getCSV;
+export default CSVgetFormat;

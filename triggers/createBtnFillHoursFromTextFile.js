@@ -1,4 +1,4 @@
-import { fillHoursFromTextFile } from './../functionality/fillHoursFromTextFile.js';
+import { fillHoursFromTextFile } from '../functionality/textFileFillHours.js';
 import { VALUES_CSS } from '../script.js';
 
 function createBtnFillHoursFromTextFile() {
