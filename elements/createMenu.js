@@ -28,7 +28,7 @@ function createMenu() {
 
   const title = createTitle();
   const btnFileTextFillHoursFromIt = createBtnFileTextFillHoursFromIt();
-  const btnFileTextSaveTo = createbtnFileTextSaveTo();
+  const btnFileTextSaveTo = createBtnFileTextSaveTo();
   const btnFileExcelSaveTo = createBtnFileExcelSaveTo();
 
   menu.appendChild(title);
