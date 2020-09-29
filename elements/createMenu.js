@@ -1,7 +1,7 @@
 import { values_CSS } from './../values/values.js';
 import createBtnFileTextFillHoursFromIt from './../triggers/createBtnFileTextFillHoursFromIt.js';
-import createbtnFileTextSaveTo from './../triggers/createbtnFileTextSaveTo.js';
-import createbtnFileExcelSaveTo from './../triggers/createbtnFileExcelSaveTo.js';
+import createBtnFileTextSaveTo from './../triggers/createBtnFileTextSaveTo.js';
+import createBtnFileExcelSaveTo from './../triggers/createBtnFileExcelSaveTo.js';
 
 function createMenu() {
   function createTitle() {
@@ -29,7 +29,7 @@ function createMenu() {
   const title = createTitle();
   const btnFileTextFillHoursFromIt = createBtnFileTextFillHoursFromIt();
   const btnFileTextSaveTo = createbtnFileTextSaveTo();
-  const btnFileExcelSaveTo = createbtnFileExcelSaveTo();
+  const btnFileExcelSaveTo = createBtnFileExcelSaveTo();
 
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
