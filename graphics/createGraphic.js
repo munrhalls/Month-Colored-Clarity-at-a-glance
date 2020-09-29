@@ -1,4 +1,4 @@
-import { values_CSS } from './values/values.js';
+import { values_CSS } from './../values/values.js';
 
 function createGraphic() {
   function arrow() {

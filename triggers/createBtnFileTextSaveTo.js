@@ -1,4 +1,7 @@
 import fileTextSaveTo from './functionality/fileTextSaveTo.js';
+import createGraphic from './../graphics/createGraphic.js';
+import createIcon from './../graphics/createIcon.js';
+
 
 function createBtnFileTextSaveTo() {
   function createBottomText() {
@@ -42,7 +45,8 @@ function createBtnFileTextSaveTo() {
     btnFileTextSaveTo.setAttribute('value', 'SAVE \nTEXT FILE');
     return btnFileTextSaveTo;
   }
-  function createIconSave(iconSave) {
+  function createIconSave() {
+    const iconSave = createIcon();
     iconSave.style.position = 'absolute';
     iconSave.style.bottom = '1.66rem';
     iconSave.style.left = '50%';
@@ -53,10 +57,10 @@ function createBtnFileTextSaveTo() {
   function assemble() {
     const container = createContainer();
     const bottomText = createBottomText();
-    const underLineGraphic = createGraphicUnderline();
-    const arrowGraphic = createGraphicArrow();
+    const underLineGraphic = createGraphic();
+    const arrowGraphic = createGraphic();
     const btnFileTextSaveTo = createBtnFileTextSaveTo();
-    createIconSave(iconSave);
+    createIconSave();
 
     container.appendChild(iconSave);
     container.appendChild(bottomText);
