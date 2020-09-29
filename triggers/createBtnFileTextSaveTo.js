@@ -1,4 +1,4 @@
-import fileTextSaveTo from './functionality/fileTextSaveTo.js';
+import fileTextSaveTo from './../functionality/fileTextSaveTo.js';
 import createGraphic from './../graphics/createGraphic.js';
 import createIcon from './../graphics/createIcon.js';
 

@@ -1,5 +1,7 @@
 import { values_CSS } from './../values/values.js';
 import createBtnFileTextFillHoursFromIt from './../triggers/createBtnFileTextFillHoursFromIt.js';
+import createbtnFileTextSaveTo from './../triggers/createbtnFileTextSaveTo.js';
+import createbtnFileExcelSaveTo from './../triggers/createbtnFileExcelSaveTo.js';
 
 function createMenu() {
   function createTitle() {
@@ -15,7 +17,6 @@ function createMenu() {
     title.style.letterSpacing = '0.1rem';
     return title;
   }
-
   const menu = document.createElement('div');
   menu.setAttribute('id', 'menu');
   menu.style.position = 'relative';
@@ -24,13 +25,16 @@ function createMenu() {
     menu.style.borderBottom = '1px solid gray';
   menu.style.backgroundColor = '#000';
   menu.style.display = 'flex';
-  const title = createTitle();
 
+  const title = createTitle();
   const btnFileTextFillHoursFromIt = createBtnFileTextFillHoursFromIt();
+  const btnFileTextSaveTo = createbtnFileTextSaveTo();
+  const btnFileExcelSaveTo = createbtnFileExcelSaveTo();
+
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
-  menu.appendChild(saveToTextFileTrigger);
-  menu.appendChild(fillHoursFromTextTrigger);
-  menu.appendChild(saveToExcelBtn);
+  menu.appendChild(btnFileTextSaveTo);
+  menu.appendChild(btnFileExcelSaveTo);
+  menu.appendChild(btnFileTextFillHoursFromIt);
 }
 export default createMenu;
