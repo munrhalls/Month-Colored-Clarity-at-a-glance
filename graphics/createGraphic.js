@@ -1,7 +1,7 @@
-import { VALUES_CSS } from '../script.js';
+import { values_CSS } from './values/values.js';
 
 function createGraphic() {
-  function createGraphicArrow() {
+  function arrow() {
     const arrowGraphic = document.createElement('span');
     arrowGraphic.style.borderTop = '3px solid #fff';
     arrowGraphic.style.borderRadius = '50%';
@@ -13,7 +13,7 @@ function createGraphic() {
     arrowGraphic.style.transform = 'rotate(-30deg)';
     return arrowGraphic;
   }
-  function createCircledTick() {
+  function circledTick() {
     const circledTick = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     circledTick.setAttribute("width", "100%");
     circledTick.setAttribute("height", "28");
@@ -27,7 +27,7 @@ function createGraphic() {
     circledTick.appendChild(tick);
     return circledTick;
   }
-  function createUnderLineGraphic() {
+  function underLineGraphic() {
     const underLineGraphic = document.createElement('span');
     //display
     underLineGraphic.style.width = '90%'

@@ -8,13 +8,10 @@
 // - whole app, eacy assembly of code blocks, each code block - easy to scale, expand, build upon
 // end
 
-import _manageHours from './functionality/_manageHours.js';
+import assembleCodeBlocks from './elements/assembleCodeBlocks.js';
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  createMenu();
   assembleCodeBlocks();
-  createCopyrightNote();
-  createCopyrightNote2();
 });
 

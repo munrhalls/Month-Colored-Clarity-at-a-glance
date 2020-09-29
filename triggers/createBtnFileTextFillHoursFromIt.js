@@ -1,5 +1,7 @@
-import textFileFillHours from '../functionality/textFileFillHours.js';
-import { VALUES_CSS } from '../script.js';
+import { values_CSS } from './../values/values.js';
+import createGraphic from './../graphics/createGraphic.js';
+import createIcon from './../graphics/createIcon.js';
+
 
 function createBtnFillHoursFromTextFile() {
   // CONTAINER - BOX with graphics, styling, descriptor around the btn
@@ -46,7 +48,7 @@ function createBtnFillHoursFromTextFile() {
     dropTextFileLabel.style.left = '1.5rem';
     dropTextFileLabel.style.fontWeight = 'bold';
     dropTextFileLabel.style.fontSize = '0.9rem';
-    dropTextFileLabel.style.top = VALUES_CSS['space_TopTo1stElement'];
+    dropTextFileLabel.style.top = values_CSS['space_TopTo1stElement'];
     return dropTextFileLabel
   }
   function createDropTextFileBtn() {
@@ -72,6 +74,7 @@ function createBtnFillHoursFromTextFile() {
     const dropTextFileButton = createDropTextFileBtn();
     const dropTextFileLabel = createDropTextFileLabel();
     const bottomLabel = createBottomLabel();
+    const arrowGraphic = createGraphic();
     arrowGraphic.style.bottom = '1.5rem';
     arrowGraphic.style.left = '9rem';
 

@@ -1,3 +1,6 @@
+import { values_CSS } from './../values/values.js';
+import createBtnFileTextFillHoursFromIt from './../triggers/createBtnFileTextFillHoursFromIt.js';
+
 function createMenu() {
   function createTitle() {
     const title = document.createElement('div');
@@ -17,13 +20,13 @@ function createMenu() {
   menu.setAttribute('id', 'menu');
   menu.style.position = 'relative';
   menu.style.color = '#fff';
-  menu.style.height = VALUES_CSS['height_menuWhole'],
+  menu.style.height = values_CSS['height_menuWhole'],
     menu.style.borderBottom = '1px solid gray';
   menu.style.backgroundColor = '#000';
   menu.style.display = 'flex';
   const title = createTitle();
 
-  const fillHoursFromTextTrigger = createTriggerSaveToTextFileContainer();
+  const btnFileTextFillHoursFromIt = createBtnFileTextFillHoursFromIt();
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
   menu.appendChild(saveToTextFileTrigger);
