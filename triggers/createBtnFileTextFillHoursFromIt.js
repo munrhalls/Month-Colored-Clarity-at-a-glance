@@ -1,9 +1,9 @@
 import { values_CSS } from './../values/values.js';
 import createGraphic from './../graphics/createGraphic.js';
 import createIcon from './../graphics/createIcon.js';
+import textFileFillHours from './../functionality/textFileFillHours.js';
 
-
-function createBtnFillHoursFromTextFile() {
+function createBtnFileTextFillHoursFromIt() {
   // CONTAINER - BOX with graphics, styling, descriptor around the btn
   function createBottomLabel() {
     const bottomLabel = document.createElement('div');
@@ -35,10 +35,10 @@ function createBtnFillHoursFromTextFile() {
     container.style.fontWeight = "bold";
     return container;
   }
-  // BUTTON - DROP TEXT FILE
+  // btn - drop text file
   function createDropTextFileLabel() {
     const dropTextFileLabel = document.createElement('label');
-    dropTextFileLabel.setAttribute('for', 'dropTextFileInput');
+    dropTextFileLabel.setAttribute('for', 'btnDropTextFile');
     dropTextFileLabel.innerText = 'DROP \nTEXT FILE';
 
     dropTextFileLabel.style.padding = '0.3rem 1rem';
@@ -55,8 +55,8 @@ function createBtnFillHoursFromTextFile() {
     const dropTextFileButton = document.createElement('input');
     dropTextFileButton.setAttribute('type', 'file');
     dropTextFileButton.setAttribute('accept', 'text/plain');
-    dropTextFileButton.id = 'dropTextFileButton';
-    dropTextFileButton.name = 'dropTextFileButton';
+    dropTextFileButton.id = 'btnDropTextFile';
+    dropTextFileButton.name = 'btnDropTextFile';
 
     dropTextFileButton.style.width = '0.1px';
     dropTextFileButton.style.height = '0.1px';
@@ -64,7 +64,7 @@ function createBtnFillHoursFromTextFile() {
     dropTextFileButton.style.overflow = 'hidden';
     dropTextFileButton.style.position = 'absolute';
     dropTextFileButton.onchange = (function () {
-      fillHoursFromTextFile.call(this);
+      textFileFillHours.call(this);
     });
     return dropTextFileButton;
   }
@@ -115,4 +115,4 @@ function createBtnFillHoursFromTextFile() {
   return btnFillHoursFromTextFile;
 }
 
-export default createBtnFillHoursFromTextFile;
+export default createBtnFileTextFillHoursFromIt;
