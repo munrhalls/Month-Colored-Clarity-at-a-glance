@@ -1,4 +1,4 @@
-import './../functionality/hourAdd.js';
+import './../functionality/_manageHours.js';
 
 function createBtnHourAdd() {
   const btnHourAdd = document.createElement('input');
@@ -15,6 +15,5 @@ function createBtnHourAdd() {
   btnHourAdd.setAttribute('value', '+');
   return btnHourAdd;
 }
-
 
 export default createBtnHourAdd;

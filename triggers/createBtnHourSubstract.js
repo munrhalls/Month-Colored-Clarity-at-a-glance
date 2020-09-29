@@ -1,3 +1,5 @@
+import './../functionality/_manageHours.js';
+
 function createBtnHourSubstract() {
   const btnHourSubstract = document.createElement('input');
   btnHourSubstract.style.marginLeft = "auto";

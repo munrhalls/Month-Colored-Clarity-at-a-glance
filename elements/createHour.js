@@ -1,4 +1,4 @@
-function createHourElement() {
+function createHour() {
   function appendNumberToSingleHour(num, hour) {
     let numEl = document.createElement('div');
     numEl.style.color = '#000';
@@ -45,4 +45,4 @@ function createHourElement() {
   return hour;
 };
 
-export default createHourElement;
+export default createHour;
