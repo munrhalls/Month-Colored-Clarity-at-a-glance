@@ -1,4 +1,4 @@
-import './CSVformatGet.js';
+import CSVformatGet from './CSVformatGet.js';
 
 function excelFileSaveTo(fileName) {
   const CSV = CSVformatGet();
