@@ -1,3 +1,5 @@
+import { values_dayNames, values_monthNames } from './../values/values.js';
+
 function CSVformatGet() {
   function CSVGetRow() { return '\r\n'; }
 
@@ -5,7 +7,7 @@ function CSVformatGet() {
     function CSVGetDay(day) { return day + ','; }
 
     let days = '';
-    VALUES_dayNames.forEach(function (day) {
+    values_dayNames.forEach(function (day) {
       days += CSVGetDay(day);
     });
     return days;
@@ -39,7 +41,7 @@ function CSVformatGet() {
   function getFullCSV() {
     var CSV = 'sep=,' + '\r\n\n';
     const months = document.getElementsByClassName('month');
-    const monthNames = VALUES_monthNames;
+    const monthNames = values_monthNames;
     for (let i = 0; i < months.length & i < 12; i++) {
       CSV += monthNames[i];
       CSV += CSVGetRow();
