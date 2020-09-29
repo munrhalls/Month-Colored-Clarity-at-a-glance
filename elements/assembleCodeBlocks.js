@@ -1,14 +1,14 @@
 import createMenu from './createMenu.js';
 
 function assembleCodeBlocks() {
+  const menu = createMenu();
   for (var i = 0; i < 12; i++) {
-    createMenu();
-    
     // createMonth(i);
-
-    // createCopyrightNote();
-    // createCopyrightNote2();
   }
+  // createCopyrightNote();
+  // createCopyrightNote2();
+  const DOMRoot = document.getElementById('root');
+  DOMRoot.appendChild(menu);
 }
 
 export default assembleCodeBlocks;

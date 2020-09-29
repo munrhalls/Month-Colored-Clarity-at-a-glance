@@ -36,9 +36,10 @@ function createMenu() {
     const menu = createContainer();
   
     menu.appendChild(title);
+    // 1) save to text file btn -> 2) drop text file btn -> 3) save to excel
     menu.appendChild(btnFileTextSaveTo);
-    menu.appendChild(btnFileExcelSaveTo);
     menu.appendChild(btnFileTextFillHoursFromIt);
+    menu.appendChild(btnFileExcelSaveTo);
     return menu;
   }
   const menu = assemble();
