@@ -32,7 +32,7 @@ function createGraphic(name) {
     //display
     underline.style.width = '90%'
     underline.style.position = 'absolute';
-    underline.style.bottom = VALUES_CSS['space_BottomTo1stElement']
+    underline.style.bottom = values_CSS['space_BottomTo1stElement']
     underline.style.left = '5%';
     // aesthetic
     underline.style.borderTop = '1px solid #fff';
