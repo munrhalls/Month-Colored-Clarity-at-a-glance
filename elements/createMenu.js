@@ -17,25 +17,32 @@ function createMenu() {
     title.style.letterSpacing = '0.1rem';
     return title;
   }
-  const menu = document.createElement('div');
-  menu.setAttribute('id', 'menu');
-  menu.style.position = 'relative';
-  menu.style.color = '#fff';
-  menu.style.height = values_CSS['height_menuWhole'],
-    menu.style.borderBottom = '1px solid gray';
-  menu.style.backgroundColor = '#000';
-  menu.style.display = 'flex';
-
-  const title = createTitle();
-  const btnFileTextFillHoursFromIt = createBtnFileTextFillHoursFromIt();
-  const btnFileTextSaveTo = createBtnFileTextSaveTo();
-  const btnFileExcelSaveTo = createBtnFileExcelSaveTo();
-
-  menu.appendChild(title);
+  function createContainer() {
+    const container = document.createElement('div');
+    container.setAttribute('id', 'menu');
+    container.style.position = 'relative';
+    container.style.color = '#fff';
+    container.style.height = values_CSS['height_menuWhole'],
+    container.style.borderBottom = '1px solid gray';
+    container.style.backgroundColor = '#000';
+    container.style.display = 'flex';
+    return container;
+  }
+  function assemble() {
+    const title = createTitle();
+    const btnFileTextFillHoursFromIt = createBtnFileTextFillHoursFromIt();
+    const btnFileTextSaveTo = createBtnFileTextSaveTo();
+    const btnFileExcelSaveTo = createBtnFileExcelSaveTo();
+    const menu = createContainer();
   
-  menu.appendChild(btnFileTextSaveTo);
-  menu.appendChild(btnFileExcelSaveTo);
-  menu.appendChild(btnFileTextFillHoursFromIt);
+    menu.appendChild(title);
+    menu.appendChild(btnFileTextSaveTo);
+    menu.appendChild(btnFileExcelSaveTo);
+    menu.appendChild(btnFileTextFillHoursFromIt);
+    return menu;
+  }
+  const menu = assemble();
+  return menu;
 }
 
 export default createMenu;
