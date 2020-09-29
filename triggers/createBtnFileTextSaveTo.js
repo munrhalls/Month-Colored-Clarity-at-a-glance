@@ -47,7 +47,7 @@ function createBtnFileTextSaveTo() {
     return btnFileTextSaveTo;
   }
   function createIconSave() {
-    const iconSave = createIcon();
+    const iconSave = createIcon('save');
     iconSave.style.position = 'absolute';
     iconSave.style.bottom = '1.66rem';
     iconSave.style.left = '50%';
@@ -58,15 +58,15 @@ function createBtnFileTextSaveTo() {
   function assemble() {
     const container = createContainer();
     const bottomText = createBottomText();
-    const underLineGraphic = createGraphic();
-    const arrowGraphic = createGraphic();
+    const underline = createGraphic(underline);
+    const arrow = createGraphic(arrow);
     const btnFileTextSaveTo = createBtnFileTextSaveTo();
-    createIconSave();
+    const iconSave = createIconSave();
 
     container.appendChild(iconSave);
     container.appendChild(bottomText);
-    container.appendChild(underLineGraphic);
-    container.appendChild(arrowGraphic);
+    container.appendChild(underline);
+    container.appendChild(arrow);
     container.appendChild(btnFileTextSaveTo);
     container.onclick = fileTextSaveTo;
   }
