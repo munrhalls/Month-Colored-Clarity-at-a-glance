@@ -76,10 +76,19 @@ function createWeek(weekNum) {
     week.appendChild(weekName);
     week.appendChild(btnNavRight);
     week.appendChild(btnNavLeft);
-
   }
   const week = assemble();
   return week;
+}
+
+function createContainer(monthNum) {
+  const weeksContainer = document.createElement('div');
+  weeksContainer.className = 'weeksContainer';
+  weeksContainer.style.display = 'flex';
+  weeksContainer.style.flex = '12';
+  weeksContainer.style.overflow = 'auto';
+  weeksContainer.style.whiteSpace = 'nowrap';
+  return weeksContainer;
 }
 
 export default createWeek;

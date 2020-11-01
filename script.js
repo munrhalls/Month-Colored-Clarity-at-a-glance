@@ -8,10 +8,10 @@
 // - whole app, eacy assembly of code blocks, each code block - easy to scale, expand, build upon
 // end
 
-import assembleCodeBlocks from './elements/assembleCodeBlocks.js';
+import dominoAssembleCodeBlocks from './elements/dominoAssembleCodeBlocks.js';
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  assembleCodeBlocks();
+  dominoAssembleCodeBlocks();
 });
 

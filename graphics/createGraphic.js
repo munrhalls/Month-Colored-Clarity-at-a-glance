@@ -29,12 +29,10 @@ function createGraphic(name) {
   }
   function underline() {
     const underline = document.createElement('span');
-    //display
     underline.style.width = '90%'
     underline.style.position = 'absolute';
     underline.style.bottom = values_CSS['space_BottomTo1stElement']
     underline.style.left = '5%';
-    // aesthetic
     underline.style.borderTop = '1px solid #fff';
     underline.style.borderRadius = '50%'
     return underline;
