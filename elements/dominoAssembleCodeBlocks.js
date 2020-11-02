@@ -3,13 +3,12 @@ import createMonths from './createMonths.js';
 
 function dominoAssembleCodeBlocks() {
   const menu = createMenu();
-  createMonths();
-
-
+  const month = createMonths();
+  console.log(month)
 
   const DOMRoot = document.getElementById('root');
   DOMRoot.appendChild(menu);
-  // DOMRoot.appendChild(month);
+  DOMRoot.appendChild(month);
 }
 
 export default dominoAssembleCodeBlocks;
