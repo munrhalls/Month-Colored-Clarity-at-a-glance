@@ -1,4 +1,4 @@
-function createMonths() {
+function createMonth() {
   // 01 [mon, tue, wen..]
   function getDaysInMonth(month, year) {
     var date = new Date(year, month, 1);
@@ -16,30 +16,31 @@ function createMonths() {
   function getDays() {
     return getDaysInMonth(getMonthNum(), 2020);
   }
-  function styleDaysTable(daysTable) {
-    daysTable.style.display = 'inline-block';
+  function styledaysRow(daysRow) {
+    daysRow.style.display = 'inline-block';
   }
   function styleDayCol(dayCol) {
     dayCol.style.display = 'inline-block';
+    dayCol.style.border = '1px solid #000000';
   }
-  function createDaysTable() {
+  function createdaysRow() {
     var days = getDays();
-    var daysTable = document.createElement('div');
-    styleDaysTable(daysTable);
+    var daysRow = document.createElement('div');
+    styledaysRow(daysRow);
     days.forEach(function (day) {
       var dayCol = document.createElement('dayCol');
       dayCol.innerText = day;
       styleDayCol(dayCol);
-      daysTable.appendChild(dayCol);
+      daysRow.appendChild(dayCol);
     });
-    return daysTable;
+    return daysRow;
   }
   function assemble() {
-    var daysTable = createDaysTable();
-    return daysTable;
+    var daysRow = createdaysRow();
+    return daysRow;
   }
   const month = assemble();
   return month;
 }
 
-export default createMonths;
+export default createMonth;

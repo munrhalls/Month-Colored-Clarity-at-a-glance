@@ -1,10 +1,9 @@
 import createMenu from './createMenu.js';
-import createMonths from './createMonths.js';
+import createMonth from './createMonth.js';
 
 function dominoAssembleCodeBlocks() {
   const menu = createMenu();
-  const month = createMonths();
-  console.log(month)
+  const month = createMonth();
 
   const DOMRoot = document.getElementById('root');
   DOMRoot.appendChild(menu);
