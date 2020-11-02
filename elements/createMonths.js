@@ -16,13 +16,21 @@ function createMonths() {
   function getDays() {
     return getDaysInMonth(getMonthNum(), 2020);
   }
+  function styleDaysTable(daysTable) {
+    daysTable.style.display = 'inline-block';
+  }
+  function styleDayCol(dayCol) {
+    dayCol.style.display = 'inline-block';
+  }
   function createDaysTable() {
     var days = getDays();
     var daysTable = document.createElement('div');
+    styleDaysTable(daysTable);
     days.forEach(function (day) {
-      var div = document.createElement('div');
-      div.innerText = day;
-      daysTable.appendChild(div);
+      var dayCol = document.createElement('dayCol');
+      dayCol.innerText = day;
+      styleDayCol(dayCol);
+      daysTable.appendChild(dayCol);
     });
     return daysTable;
   }
