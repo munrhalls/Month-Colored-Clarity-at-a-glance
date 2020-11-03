@@ -87,7 +87,6 @@ function createMonth() {
   }
   function createNthWeek(week) {
     var nthWeek = document.createElement('div');
-
     var dayNum = 1;
     week.forEach(function (day) {
       var dayCol = createDayCol(day, dayNum);
@@ -97,7 +96,7 @@ function createMonth() {
     styleNthWeek(nthWeek);
     return nthWeek;
   }
-  function createWeeksRow() {
+  function createWeeks() {
     var weeks = getWeeks();
     var weeksRow = document.createElement('div');
     weeks.forEach(function (week) {
@@ -108,9 +107,9 @@ function createMonth() {
   }
 
   function assemble() {
-    var weeksRow = createWeeksRow();
-    console.log(weeksRow)
-    return weeksRow;
+    var weeks = createWeeks();
+    console.log(weeks)
+    return weeks;
   }
   const month = assemble();
   return month;
