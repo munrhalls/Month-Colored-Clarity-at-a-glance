@@ -31,10 +31,9 @@ function createMonth() {
   }
   function styleDayCol(dayCol) {
     dayCol.classList.add('dayCol');
-    dayCol.style.display = 'block';
-    dayCol.style.flex = '1';
-    dayCol.style.flexDirection = 'column';
+    dayCol.style.display = 'inline-block';
     dayCol.style.height = '60vh';
+    dayCol.style.minWidth = '3rem';
     dayCol.style.border = '1px solid #000000';
   }
   function styleBtnHourAdd(btnHourAdd){
@@ -80,7 +79,7 @@ function createMonth() {
     return dayCol;
   }
   function styleNthWeek(nthWeek) {
-    nthWeek.style.display = 'block';
+    nthWeek.style.display = 'inline-block';
     nthWeek.style.border = '1px solid #000000';
     nthWeek.classList.add('week');
     nthWeek.style.maxWidth = '40%';
@@ -105,10 +104,8 @@ function createMonth() {
     });
     return weeksRow;
   }
-
   function assemble() {
     var weeks = createWeeks();
-    console.log(weeks)
     return weeks;
   }
   const month = assemble();
