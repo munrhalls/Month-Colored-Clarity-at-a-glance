@@ -15,11 +15,11 @@ function createBtnHourSubstract() {
   btnHourSubstract.setAttribute('value', '-');
 
   btnHourSubstract.onclick = function(e) {
-    var target = e.target.parentNode;
-    console.log(target)
-    if (target.hasChildNodes) {
-      var hour = target.childNodes[target.childNodes.length - 1];
-      target.removeChild(hour);
+    var parentNode = e.target.parentNode;
+    var hoursContainer = parentNode.getElementsByClassName('hours')[0]
+    if (hoursContainer.getElementsByClassName('hour').length > 0) {
+      var hour = hoursContainer.getElementsByClassName('hour')[hoursContainer.getElementsByClassName('hour').length - 1];
+      hoursContainer.removeChild(hour);
     }
   }
   return btnHourSubstract
