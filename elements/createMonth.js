@@ -16,7 +16,7 @@ function createMonth() {
     }
     return days;
   }
-  function createWeeksRow() {
+  function getWeeks() {
     var days = getDaysInMonth(getMonthNum(), 2020);
     var weeks = [];
     var week = [];
@@ -27,11 +27,20 @@ function createMonth() {
         week = [];
       }
     });
-    console.log(weeks)
+    return weeks;
   }
-  function styleDayCol(dayCol) {
-    dayCol.style.display = 'inline-block';
-    dayCol.style.border = '1px solid #000000';
+  function createWeeksRow() {
+    var weeks = getWeeks();
+    var weeksRow = document.createElement('div');
+    weeks.forEach(function(week){
+      var weekRow = document.createElement('div');
+      week.forEach(function(day) {
+        var dayCol = createDayCol(day);
+        weekRow.appendChild(dayCol);
+      });
+      weeksRow.appendChild(weekRow);
+    });    
+    return weeksRow;
   }
   function createDayCol(day) {
     var dayCol = document.createElement('dayCol');
@@ -43,8 +52,13 @@ function createMonth() {
     dayCol.appendChild(btnHourSubstract);
     return dayCol;
   }
+  function styleDayCol(dayCol) {
+    dayCol.style.display = 'inline-block';
+    dayCol.style.border = '1px solid #000000';
+  }
   function assemble() {
     var weeksRow = createWeeksRow();
+    console.log(weeksRow)
     return weeksRow;
   }
   const month = assemble();

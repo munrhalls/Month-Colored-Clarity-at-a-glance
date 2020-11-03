@@ -8,7 +8,7 @@ function dominoAssembleCodeBlocks() {
 
   const DOMRoot = document.getElementById('root');
   DOMRoot.appendChild(menu);
-  // DOMRoot.appendChild(month);
+  DOMRoot.appendChild(month);
 }
 
 export default dominoAssembleCodeBlocks;
