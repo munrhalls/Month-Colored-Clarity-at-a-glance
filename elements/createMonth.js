@@ -53,6 +53,7 @@ function createMonth() {
 
     var dayTitle = document.createElement('div');
     var dayHours = document.createElement('div');
+    dayHours.classList.add('hours');
     dayHours.style.flex = '10';
     dayTitle.innerText = day;
 

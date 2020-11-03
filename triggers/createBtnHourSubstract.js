@@ -15,7 +15,12 @@ function createBtnHourSubstract() {
   btnHourSubstract.setAttribute('value', '-');
 
   btnHourSubstract.onclick = function(e) {
-    console.log(e)
+    var target = e.target.parentNode;
+    console.log(target)
+    if (target.hasChildNodes) {
+      var hour = target.childNodes[target.childNodes.length - 1];
+      target.removeChild(hour);
+    }
   }
   return btnHourSubstract
 }
