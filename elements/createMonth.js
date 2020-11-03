@@ -3,6 +3,7 @@ import createBtnHourSubstract from './../triggers/createBtnHourSubstract.js';
 
 function createMonth() {
   // 01 [mon, tue, wen..]
+  //data blocks
   function getMonthNum() {
     var date = new Date();
     return (date.getMonth())
@@ -29,6 +30,7 @@ function createMonth() {
     });
     return weeks;
   }
+  //element blocks
   function createWeeksRow() {
     var weeks = getWeeks();
     var weeksRow = document.createElement('div');
@@ -38,8 +40,9 @@ function createMonth() {
         var dayCol = createDayCol(day);
         weekRow.appendChild(dayCol);
       });
+      styleWeekRow(weekRow)
       weeksRow.appendChild(weekRow);
-    });    
+    });
     return weeksRow;
   }
   function createDayCol(day) {
@@ -52,9 +55,14 @@ function createMonth() {
     dayCol.appendChild(btnHourSubstract);
     return dayCol;
   }
+  //style blocks
   function styleDayCol(dayCol) {
     dayCol.style.display = 'inline-block';
     dayCol.style.border = '1px solid #000000';
+  }
+  function styleWeekRow(weekRow) {
+    weekRow.style.display = 'inline-block';
+    weekRow.style.border = '1px solid #000000';
   }
   function assemble() {
     var weeksRow = createWeeksRow();
