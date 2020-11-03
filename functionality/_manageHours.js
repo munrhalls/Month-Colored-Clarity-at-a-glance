@@ -1,7 +1,10 @@
 import createHour from './../elements/createHour.js';
 function manageHours_(funcName) {
-  function hourAdd() {
-    const hour = createHour();
+  function hourAdd(e) {
+    debugger
+    var hour = createHour();
+    var target = e.target.previousSibling;
+    target.appendChild(hour);
   }
   function hourSubstract(hourNum) {
     if (hourNum > 0) {
@@ -32,7 +35,7 @@ function manageHours_(funcName) {
     appendManyHoursToDay: appendManyHoursToDay,
     clearAllHoursFromDay: clearAllHoursFromDay
   }
-  var func = functions[funcName]();
+  var func = functions[funcName];
   return func;
 }
 
