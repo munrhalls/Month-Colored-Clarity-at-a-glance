@@ -13,6 +13,10 @@ function createBtnHourSubstract() {
   btnHourSubstract.style.maxWidth = "50%";
   btnHourSubstract.setAttribute('type', 'button');
   btnHourSubstract.setAttribute('value', '-');
+
+  btnHourSubstract.onclick = function(e) {
+    console.log(e)
+  }
   return btnHourSubstract
 }
 export default createBtnHourSubstract;

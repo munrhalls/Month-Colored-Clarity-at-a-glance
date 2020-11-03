@@ -40,29 +40,36 @@ function createMonth() {
         var dayCol = createDayCol(day);
         weekRow.appendChild(dayCol);
       });
-      styleWeekRow(weekRow)
+      weekRow.style.display = 'inline-block';
+      weekRow.style.border = '1px solid #000000';
       weeksRow.appendChild(weekRow);
     });
     return weeksRow;
   }
   function createDayCol(day) {
-    var dayCol = document.createElement('dayCol');
-    dayCol.innerText = day;
-    styleDayCol(dayCol);
+    var dayCol = document.createElement('div');
+    var dayTitle = document.createElement('div');
+    dayTitle.innerText = day;
+
     var btnHourAdd = createBtnHourAdd();
+    btnHourAdd.style.display = 'block';
+    btnHourAdd.style.width = '100%';
+    btnHourAdd.style.maxWidth = '100%';
+    btnHourAdd.style.padding = '0';
+    btnHourAdd.style.margin = '0';
+
     var btnHourSubstract = createBtnHourSubstract();
+    btnHourSubstract.style.display = 'block';
+    btnHourSubstract.style.maxWidth = '100%';
+    btnHourSubstract.style.padding = '0';
+    btnHourSubstract.style.margin = '0';
+
+    dayCol.style.display = 'inline-block';
+    dayCol.style.border = '1px solid #000000';
+    dayCol.appendChild(dayTitle);
     dayCol.appendChild(btnHourAdd);
     dayCol.appendChild(btnHourSubstract);
     return dayCol;
-  }
-  //style blocks
-  function styleDayCol(dayCol) {
-    dayCol.style.display = 'inline-block';
-    dayCol.style.border = '1px solid #000000';
-  }
-  function styleWeekRow(weekRow) {
-    weekRow.style.display = 'inline-block';
-    weekRow.style.border = '1px solid #000000';
   }
   function assemble() {
     var weeksRow = createWeeksRow();

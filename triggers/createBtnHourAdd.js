@@ -1,4 +1,5 @@
 import './../functionality/_manageHours.js';
+import _manageHours from './../functionality/_manageHours.js';
 
 function createBtnHourAdd() {
   const btnHourAdd = document.createElement('input');
@@ -13,6 +14,12 @@ function createBtnHourAdd() {
   btnHourAdd.style.maxWidth = "50%";
   btnHourAdd.setAttribute('type', 'button');
   btnHourAdd.setAttribute('value', '+');
+
+  btnHourAdd.onclick = function(e) {
+    console.log(e)
+    let hourAdd = _manageHours['hourAdd'];
+    hourAdd(1);
+  }
   return btnHourAdd;
 }
 
