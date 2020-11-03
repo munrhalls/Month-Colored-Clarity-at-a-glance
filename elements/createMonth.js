@@ -49,6 +49,7 @@ function createMonth() {
     var dayCol = document.createElement('div');
     dayCol.style.display = 'flex';
     dayCol.style.flexDirection = 'column';
+    dayCol.style.height = '60vh';
 
     var dayTitle = document.createElement('div');
     var dayHours = document.createElement('div');

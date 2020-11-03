@@ -18,9 +18,9 @@ function createBtnHourAdd() {
   btnHourAdd.setAttribute('value', '+');
 
   btnHourAdd.onclick = function(e) {
+    console.log(e)
     var hour = createHour();
     var target = e.target.previousSibling;
-    console.log(target)
     target.appendChild(hour);
   }
   return btnHourAdd;
