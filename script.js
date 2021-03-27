@@ -27,7 +27,7 @@ function createMenu() {
     menu.style.backgroundColor = '#000';
     menu.style.display = 'flex';
 
-    title.innerText = 'Metrics - Deep Work hours';
+    title.innerText = 'Log hours - deep work';
     title.textAlign = 'center';
     title.style.display = 'flex';
     title.style.alignItems = 'center';
