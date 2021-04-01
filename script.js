@@ -75,55 +75,82 @@ function createAboutPage() {
   aboutBtn.style.color = '#fff';
   aboutBtn.setAttribute('type', 'button');
   aboutBtn.setAttribute('value', 'ABOUT PAGE');
-  aboutBtn.onclick = function(){
-    const body = document.getElementsByTagName('body')[0];
-    const aboutModal = document.createElement('div');
-    aboutModal.style.position = 'fixed';
-    aboutModal.style.left = '0';
-    aboutModal.style.right = '0';
-    aboutModal.style.top = '0';
-    aboutModal.style.bottom = '0';
-    aboutModal.style.background = 'black';
-    aboutModal.style.width = "100vw";
-    aboutModal.style.height = "100vh";
-    aboutModal.style.zIndex = '1000000000';
-    
-    aboutModal.style.display = 'flex';
-    aboutModal.style.justifyContent = 'center';
-    
-    const textContainer = document.createElement('div');
-    textContainer.innerText = 'ABOUT PAGE';
-    textContainer.style.padding = '3rem';
-    textContainer.style.fontSize = '3rem';
-    textContainer.style.color = "white";
-    
-    function createParagraph(container, message, marginTop, fontSize, bold) {
-      const paragraph = document.createElement('div');
-      paragraph.innerText = message;
-      paragraph.style.padding = '1rem 0';
-      paragraph.style.marginTop = marginTop || 0;
-      paragraph.style.color = "white";
-      paragraph.style.fontSize = fontSize || '1.5rem';
-      paragraph.style.fontWeight = bold || 'light';
-      container.appendChild(paragraph);
+
+  aboutBtn.onclick = function () {
+    function createAboutModal() {
+      const body = document.getElementsByTagName('body')[0];
+      const aboutModal = document.createElement('div');
+      aboutModal.style.position = 'fixed';
+      aboutModal.style.left = '0';
+      aboutModal.style.right = '0';
+      aboutModal.style.top = '0';
+      aboutModal.style.bottom = '0';
+      aboutModal.style.background = 'black';
+      aboutModal.style.width = "100vw";
+      aboutModal.style.height = "100vh";
+      aboutModal.style.zIndex = '1000000000';
+      // D I S P L A Y
+      aboutModal.style.display = 'flex';
+      aboutModal.style.alignItems = 'center';
+      aboutModal.style.flexDirection = 'column';
+      aboutModal.style.justifyContent = 'center';
+
+      const textContainer = document.createElement('div');
+      textContainer.innerText = 'ABOUT PAGE';
+      textContainer.style.padding = '3rem';
+      textContainer.style.fontSize = '6rem';
+      textContainer.style.color = "white";
+      textContainer.style.position = 'relative';
+      function createCloseBtn() {
+        const closeBtn = document.createElement('div');
+        closeBtn.innerText = 'CLOSE X';
+        closeBtn.style.textAlign = 'right';
+        closeBtn.style.fontSize = '4.5rem';
+        // closeBtn.style.fontWeight = 'bold';
+        closeBtn.style.color = 'white';
+        closeBtn.style.position = 'absolute';
+        closeBtn.style.top = '3rem';
+        closeBtn.style.right = '6rem';
+        closeBtn.style.cursor = 'pointer';
+        closeBtn.style.border = '3px solid white';
+        closeBtn.style.padding= '1rem 2.5rem';
+        closeBtn.onclick = function () {
+          const body = document.getElementsByTagName('body')[0];
+          const aboutModal = document.getElementById('aboutModal');
+          body.removeChild(aboutModal);
+        }
+        textContainer.appendChild(closeBtn);
+      }
+      createCloseBtn();
+      function createParagraph(container, message, marginTop, fontSize, bold) {
+        const paragraph = document.createElement('div');
+        paragraph.innerText = message;
+        paragraph.style.padding = '1rem 0';
+        paragraph.style.marginTop = marginTop || 0;
+        paragraph.style.color = "white";
+        paragraph.style.fontSize = fontSize || '1.5rem';
+        paragraph.style.fontWeight = bold || 'light';
+        container.appendChild(paragraph);
+      }
+      createParagraph(textContainer, 'This is a TOOL to LOG HOURS OF DEEP WORK.', '1rem');
+      createParagraph(textContainer, 'NO DATABASE REQUIREMENT.');
+      createParagraph(textContainer, 'All hour logs data is managed by via simple textfile.');
+      createParagraph(textContainer, 'Literally just that. Windows notepad file. Word file. Any file ending with ".txt"');
+      createParagraph(textContainer, '');
+      createParagraph(textContainer, '30 SECONDS TUTORIAL (LITERALLY):', '1.5rem', '2rem', 'bold');
+      createParagraph(textContainer, '1. Add hours worked by CLICKING +/- BUTTONS in given day\'s column.');
+      createParagraph(textContainer, '2. Click "SAVE TO TEXT FILE" button, in the top menu.');
+      createParagraph(textContainer, '3. Prompt will appear, asking to open or save text file. Choose "Save file." and save it to desktop or wherever you can find it easily. \n (The file is automatically named "DEEP WORK HOURS LOG.txt", with time and date.)');
+      createParagraph(textContainer, '4. Close the page. You\'ll see all the hours data disappeared.');
+      createParagraph(textContainer, '5. Re-open the page. Click DROP TEXT FILE. Prompt will appear, allowing you to browse files. Find the text file. Click it. Press enter or click ok. ALL YOUR LOGGED HOURS DATA RE-APPEARS!');
+
+      aboutModal.appendChild(textContainer);
+      aboutModal.id = 'aboutModal';
+      body.appendChild(aboutModal);
+      console.log(aboutModal);
     }
-    createParagraph(textContainer, 'This is a TOOL to LOG HOURS OF DEEP WORK.', '1rem');
-    createParagraph(textContainer, 'NO DATABASE REQUIREMENT.');
-    createParagraph(textContainer, 'All hour logs data is managed by via simple textfile.');
-    createParagraph(textContainer, 'Literally just that. Windows notepad file. Word file. Any file ending with ".txt"');
-    createParagraph(textContainer, '');
-    createParagraph(textContainer, '30 SECONDS TUTORIAL (LITERALLY):', '1.5rem', '2rem', 'bold');
-    createParagraph(textContainer, '1. Add hours worked by CLICKING +/- BUTTONS in given day\'s column.');
-    createParagraph(textContainer, '2. Click "SAVE TO TEXT FILE" button, in the top menu.');
-    createParagraph(textContainer, '3. Prompt will appear, asking to open or save text file. Choose "Save file." and save it to desktop or wherever you can find it easily. \n (The file is automatically named "DEEP WORK HOURS LOG.txt", with time and date.)');
-    createParagraph(textContainer, '4. Close the page. You\'ll see all the hours data disappeared.');
-    createParagraph(textContainer, '5. Re-open the page. Click DROP TEXT FILE. Prompt will appear, allowing you to browse files. Find the text file. Click it. Press enter or click ok. ALL YOUR LOGGED HOURS DATA RE-APPEARS!');
+    createAboutModal();
 
-
-
-    aboutModal.appendChild(textContainer);
-    body.appendChild(aboutModal);
-    console.log(aboutModal);
   }
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
