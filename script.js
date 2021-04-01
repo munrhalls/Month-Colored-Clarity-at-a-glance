@@ -64,13 +64,16 @@ function createAboutPage() {
   const aboutBtn = document.createElement('input');
   aboutBtn.style.position = 'absolute';
   aboutBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
-  aboutBtn.style.width = '6rem';
-  aboutBtn.style.left = '50%';
-  aboutBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
-  aboutBtn.style.padding = '0.3rem 1rem';
+  aboutBtn.style.width = '75%';
+  aboutBtn.style.left = '12.5%';
+  // aboutBtn.style.marginLeft = '-30%'
+  aboutBtn.style.padding = '1rem 1rem';
   aboutBtn.style.fontWeight = 'bold';
   aboutBtn.style.fontSize = '0.9rem';
   aboutBtn.style.border = '2px solid #fff';
+  aboutBtn.style.background = 'transparent';
+  aboutBtn.style.color = '#fff';
+
   aboutBtn.setAttribute('type', 'button');
   aboutBtn.setAttribute('value', 'ABOUT PAGE');
   const underLineGraphic = resourceCreateUnderLineGraphic();
