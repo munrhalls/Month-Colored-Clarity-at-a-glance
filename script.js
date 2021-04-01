@@ -73,9 +73,23 @@ function createAboutPage() {
   aboutBtn.style.border = '2px solid #fff';
   aboutBtn.style.background = 'transparent';
   aboutBtn.style.color = '#fff';
-
   aboutBtn.setAttribute('type', 'button');
   aboutBtn.setAttribute('value', 'ABOUT PAGE');
+  aboutBtn.onclick = function(){
+    const body = document.getElementsByTagName('body')[0];
+    const aboutModal = document.createElement('div');
+    aboutModal.style.position = 'fixed';
+    aboutModal.style.left = '0';
+    aboutModal.style.right = '0';
+    aboutModal.style.top = '0';
+    aboutModal.style.bottom = '0';
+    aboutModal.style.background = 'black';
+    aboutModal.style.width = "100vw";
+    aboutModal.style.height = "100vh";
+    aboutModal.style.zIndex = '1000000000';
+    body.appendChild(aboutModal);
+    console.log(aboutModal);
+  }
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
   const aboutBtnText = document.createElement('div');
