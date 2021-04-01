@@ -39,8 +39,8 @@ function createMenu() {
   const saveToExcelBtn = createSaveToExcelBtn();
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
-  createSaveTextFileBtn();
   createAboutPage();
+  createSaveTextFileBtn();
   createFillDataBtn();
   menu.appendChild(saveToExcelBtn);
 }
@@ -57,26 +57,26 @@ function createAboutPage() {
     aboutBtnContainer.style.color = "#fff";
     // display
     aboutBtnContainer.style.position = 'relative';
-    aboutBtnContainer.style.width = VALUES_MenuSharedCSS['width_menuSmallerBlock'];
+    aboutBtnContainer.style.width = '12rem'
 
     return aboutBtnContainer;
   })();
-  const SaveTextFileBtn = document.createElement('input');
-  SaveTextFileBtn.style.position = 'absolute';
-  SaveTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
-  SaveTextFileBtn.style.width = '6rem';
-  SaveTextFileBtn.style.left = '50%';
-  SaveTextFileBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
-  SaveTextFileBtn.style.padding = '0.3rem 1rem';
-  SaveTextFileBtn.style.fontWeight = 'bold';
-  SaveTextFileBtn.style.fontSize = '0.9rem';
-  SaveTextFileBtn.style.border = '2px solid #fff';
-  SaveTextFileBtn.setAttribute('type', 'button');
-  SaveTextFileBtn.setAttribute('value', 'SAVE \nTEXT FILE');
+  const aboutBtn = document.createElement('input');
+  aboutBtn.style.position = 'absolute';
+  aboutBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
+  aboutBtn.style.width = '6rem';
+  aboutBtn.style.left = '50%';
+  aboutBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
+  aboutBtn.style.padding = '0.3rem 1rem';
+  aboutBtn.style.fontWeight = 'bold';
+  aboutBtn.style.fontSize = '0.9rem';
+  aboutBtn.style.border = '2px solid #fff';
+  aboutBtn.setAttribute('type', 'button');
+  aboutBtn.setAttribute('value', 'ABOUT PAGE');
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
   const saveHoursText = document.createElement('div');
-  saveHoursText.innerText = 'TO KEEP HOURS DATA';
+  saveHoursText.innerText = 'WHAT IS THIS THING?';
   saveHoursText.style.width = '100%';
   saveHoursText.style.position = 'absolute';
   saveHoursText.style.bottom = '0.6rem';
@@ -92,11 +92,11 @@ function createAboutPage() {
   saveIcon.style.marginLeft = 'calc(-12.5% + 6px)'
   saveIcon.style.fill = '#fff';
   //appends
-  aboutBtnContainer.appendChild(SaveTextFileBtn);
+  aboutBtnContainer.appendChild(aboutBtn);
   aboutBtnContainer.appendChild(saveIcon);
   aboutBtnContainer.appendChild(saveHoursText);
   aboutBtnContainer.appendChild(underLineGraphic);
-  aboutBtnContainer.appendChild(arrowGraphic);
+  // aboutBtnContainer.appendChild(arrowGraphic);
   document.getElementById('menu').appendChild(aboutBtnContainer);
 }
 function createSaveTextFileBtn() {
