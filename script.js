@@ -46,20 +46,20 @@ function createMenu() {
 }
 function createAboutPage() {
   // components
-  const SaveTextFileBtnContainer = (function createAboutPageContainer() {
-    const SaveTextFileBtnContainer = document.createElement('div');
+  const aboutBtnContainer = (function createAboutPageContainer() {
+    const aboutBtnContainer = document.createElement('div');
     // aesthethics
-    SaveTextFileBtnContainer.style.border = "none";
-    SaveTextFileBtnContainer.style.borderLeft = '1px solid grey';
-    SaveTextFileBtnContainer.style.borderRight = '1px solid grey';
-    SaveTextFileBtnContainer.style.fontWeight = "bold";
-    SaveTextFileBtnContainer.style.textAlign = 'left';
-    SaveTextFileBtnContainer.style.color = "#fff";
+    aboutBtnContainer.style.border = "none";
+    aboutBtnContainer.style.borderLeft = '1px solid grey';
+    aboutBtnContainer.style.borderRight = '1px solid grey';
+    aboutBtnContainer.style.fontWeight = "bold";
+    aboutBtnContainer.style.textAlign = 'left';
+    aboutBtnContainer.style.color = "#fff";
     // display
-    SaveTextFileBtnContainer.style.position = 'relative';
-    SaveTextFileBtnContainer.style.width = VALUES_MenuSharedCSS['width_menuSmallerBlock'];
+    aboutBtnContainer.style.position = 'relative';
+    aboutBtnContainer.style.width = VALUES_MenuSharedCSS['width_menuSmallerBlock'];
 
-    return SaveTextFileBtnContainer;
+    return aboutBtnContainer;
   })();
   const SaveTextFileBtn = document.createElement('input');
   SaveTextFileBtn.style.position = 'absolute';
@@ -92,12 +92,12 @@ function createAboutPage() {
   saveIcon.style.marginLeft = 'calc(-12.5% + 6px)'
   saveIcon.style.fill = '#fff';
   //appends
-  SaveTextFileBtnContainer.appendChild(SaveTextFileBtn);
-  SaveTextFileBtnContainer.appendChild(saveIcon);
-  SaveTextFileBtnContainer.appendChild(saveHoursText);
-  SaveTextFileBtnContainer.appendChild(underLineGraphic);
-  SaveTextFileBtnContainer.appendChild(arrowGraphic);
-  document.getElementById('menu').appendChild(SaveTextFileBtnContainer);
+  aboutBtnContainer.appendChild(SaveTextFileBtn);
+  aboutBtnContainer.appendChild(saveIcon);
+  aboutBtnContainer.appendChild(saveHoursText);
+  aboutBtnContainer.appendChild(underLineGraphic);
+  aboutBtnContainer.appendChild(arrowGraphic);
+  document.getElementById('menu').appendChild(aboutBtnContainer);
 }
 function createSaveTextFileBtn() {
   // components
