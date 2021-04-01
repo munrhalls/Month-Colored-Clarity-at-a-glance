@@ -132,17 +132,18 @@ function createAboutPage() {
         paragraph.style.fontWeight = bold || 'light';
         container.appendChild(paragraph);
       }
-      createParagraph(textContainer, 'This is a TOOL to LOG HOURS OF DEEP WORK.', '1rem');
-      createParagraph(textContainer, 'NO DATABASE REQUIREMENT.');
-      createParagraph(textContainer, 'All hour logs data is managed by via simple textfile.');
-      createParagraph(textContainer, 'Literally just that. Windows notepad file. Word file. Any file ending with ".txt"');
-      createParagraph(textContainer, '');
-      createParagraph(textContainer, '30 SECONDS TUTORIAL (LITERALLY):', '1.5rem', '2rem', 'bold');
+      createParagraph(textContainer, '- This is a TOOL to LOG HOURS OF DEEP WORK.', '1rem');
+      createParagraph(textContainer, '- NO DATABASE REQUIREMENT.');
+      createParagraph(textContainer, '- All hour logs data is managed by via simple textfile.');
+      createParagraph(textContainer, '- Literally just that. Windows notepad file. Word file. Any file ending with ".txt"');
+      // createParagraph(textContainer, '');
+      createParagraph(textContainer, '30 SECONDS TUTORIAL:', '1.5rem', '2rem', 'bold');
       createParagraph(textContainer, '1. Add hours worked by CLICKING +/- BUTTONS in given day\'s column.');
       createParagraph(textContainer, '2. Click "SAVE TO TEXT FILE" button, in the top menu.');
-      createParagraph(textContainer, '3. Prompt will appear, asking to open or save text file. Choose "Save file." and save it to desktop or wherever you can find it easily. \n (The file is automatically named "DEEP WORK HOURS LOG.txt", with time and date.)');
+      createParagraph(textContainer, '3. Prompt will appear. Choose "Save file." Save it to desktop or wherever you can find it easily. \n (The file is a text file with hours data formatted into text format, and nothing more. It is automatically named "DEEP WORK HOURS LOG.txt", with time and date. You don\'t even need to ever open it.)');
       createParagraph(textContainer, '4. Close the page. You\'ll see all the hours data disappeared.');
-      createParagraph(textContainer, '5. Re-open the page. Click DROP TEXT FILE. Prompt will appear, allowing you to browse files. Find the text file. Click it. Press enter or click ok. ALL YOUR LOGGED HOURS DATA RE-APPEARS!');
+      createParagraph(textContainer, '5. Re-open the page. Click DROP TEXT FILE. Prompt will appear, allowing you to browse files. Find the text file. Click it. Press enter or click ok. ALL THE LOGGED HOURS DATA RE-APPEARS!');
+      createParagraph(textContainer, 'This is a solution where saving and persisting the data is achieved with no database or outside server requirements. It\'s just using a text file to store and update the logs data. User saves the data into a text file via 1 button click. User updates the data by dropping the text file via 1 button click. This is why the app is simple and doesn\'t have to require any of the account creation, email, passwords, logging in, etc.');
 
       aboutModal.appendChild(textContainer);
       aboutModal.id = 'aboutModal';
@@ -156,6 +157,7 @@ function createAboutPage() {
   const arrowGraphic = resourceCreateArrowGraphic();
   const aboutBtnText = document.createElement('div');
   aboutBtnText.innerText = 'WHAT IS THIS THING?';
+  aboutBtnText.style.color = 'yellow';
   aboutBtnText.style.width = '100%';
   aboutBtnText.style.position = 'absolute';
   aboutBtnText.style.bottom = '0.6rem';
@@ -815,6 +817,7 @@ function resourceCreateSaveIcon() {
 function resourceCreateQuestionIcon() {
   const questionIcon = document.createElement('span');
   questionIcon.innerText = '?';
+  questionIcon.style.color = 'yellow';
   questionIcon.style.fontSize = '1.75rem';
   questionIcon.style.fontWeight = 'bold';
   return questionIcon;
