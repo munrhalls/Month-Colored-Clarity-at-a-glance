@@ -78,26 +78,27 @@ function createAboutPage() {
   aboutBtn.setAttribute('value', 'ABOUT PAGE');
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
-  const saveHoursText = document.createElement('div');
-  saveHoursText.innerText = 'WHAT IS THIS THING?';
-  saveHoursText.style.width = '100%';
-  saveHoursText.style.position = 'absolute';
-  saveHoursText.style.bottom = '0.6rem';
+  const aboutBtnText = document.createElement('div');
+  aboutBtnText.innerText = 'WHAT IS THIS THING?';
+  aboutBtnText.style.width = '100%';
+  aboutBtnText.style.position = 'absolute';
+  aboutBtnText.style.bottom = '0.6rem';
   //text
-  saveHoursText.style.fontSize = '0.6rem';
-  saveHoursText.style.fontWeight = 'lighter';
-  saveHoursText.style.letterSpacing = '0.1rem';
-  saveHoursText.style.textAlign = 'center';
-  const saveIcon = resourceCreateSaveIcon();
-  saveIcon.style.position = 'absolute';
-  saveIcon.style.bottom = '1.66rem';
-  saveIcon.style.left = '50%';
-  saveIcon.style.marginLeft = 'calc(-12.5% + 6px)'
-  saveIcon.style.fill = '#fff';
+  aboutBtnText.style.fontSize = '0.6rem';
+  aboutBtnText.style.fontWeight = 'lighter';
+  aboutBtnText.style.letterSpacing = '0.1rem';
+  aboutBtnText.style.textAlign = 'center';
+  const questionIcon = resourceCreateQuestionIcon();
+  questionIcon.style.position = 'absolute';
+  questionIcon.style.bottom = '1.66rem';
+  questionIcon.style.width = '1.75rem';
+  questionIcon.style.left = '50%';
+  questionIcon.style.marginLeft = 'calc(-12.5% + 1rem)'
+  questionIcon.style.fill = '#fff';
   //appends
   aboutBtnContainer.appendChild(aboutBtn);
-  aboutBtnContainer.appendChild(saveIcon);
-  aboutBtnContainer.appendChild(saveHoursText);
+  aboutBtnContainer.appendChild(questionIcon);
+  aboutBtnContainer.appendChild(aboutBtnText);
   aboutBtnContainer.appendChild(underLineGraphic);
   // aboutBtnContainer.appendChild(arrowGraphic);
   document.getElementById('menu').appendChild(aboutBtnContainer);
@@ -734,6 +735,14 @@ function resourceCreateSaveIcon() {
   saveIcon.appendChild(path3);
   saveIcon.appendChild(path4);
   return saveIcon;
+}
+function resourceCreateQuestionIcon() {
+  const questionIcon = document.createElement('span');
+  questionIcon.innerText = '?';
+  questionIcon.style.fontSize = '1.75rem';
+  questionIcon.style.fontWeight = 'bold';
+  return questionIcon;
+
 }
 function resourceCreateChartIcon() {
   const chartIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
