@@ -88,8 +88,12 @@ function createAboutPage() {
     aboutModal.style.height = "100vh";
     aboutModal.style.zIndex = '1000000000';
     
+    aboutModal.style.display = 'flex';
+    aboutModal.style.justifyContent = 'center';
+
     const text = document.createElement('div');
     text.innerText = 'ABOUT PAGE';
+    text.style.padding = '3rem';
     text.style.color = "white";
     aboutModal.appendChild(text);
     body.appendChild(aboutModal);
