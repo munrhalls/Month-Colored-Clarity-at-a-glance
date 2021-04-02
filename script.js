@@ -157,7 +157,7 @@ function createAboutPage() {
   const arrowGraphic = resourceCreateArrowGraphic();
   const aboutBtnText = document.createElement('div');
   aboutBtnText.innerText = 'WHAT IS THIS THING?';
-  aboutBtnText.style.color = 'yellow';
+  aboutBtnText.style.color = 'white';
   aboutBtnText.style.width = '100%';
   aboutBtnText.style.position = 'absolute';
   aboutBtnText.style.bottom = '0.6rem';
@@ -817,7 +817,7 @@ function resourceCreateSaveIcon() {
 function resourceCreateQuestionIcon() {
   const questionIcon = document.createElement('span');
   questionIcon.innerText = '?';
-  questionIcon.style.color = 'yellow';
+  questionIcon.style.color = 'white';
   questionIcon.style.fontSize = '1.75rem';
   questionIcon.style.fontWeight = 'bold';
   return questionIcon;
