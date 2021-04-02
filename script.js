@@ -556,7 +556,7 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
   title.style.position = "absolute";
   title.style.marginLeft = 'calc(-200% + 60px)';
   title.style.transform = 'rotate(-90deg)';
-  title.style.color = "#000071";
+  title.style.color = "white";
   title.style.fontSize = '60px';
   title.style.width = '400%';
   title.style.top = 'calc(50% - 40px)';
