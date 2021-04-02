@@ -215,23 +215,23 @@ function createDisplayOptionsPage() {
   btn.setAttribute('value', 'MENU');
 
   btn.onclick = function () {
-    function createAboutModal() {
+    function createModal() {
       const body = document.getElementsByTagName('body')[0];
-      const aboutModal = document.createElement('div');
-      aboutModal.style.position = 'fixed';
-      aboutModal.style.left = '0';
-      aboutModal.style.right = '0';
-      aboutModal.style.top = '0';
-      aboutModal.style.bottom = '0';
-      aboutModal.style.background = 'black';
-      aboutModal.style.width = "100vw";
-      aboutModal.style.height = "100vh";
-      aboutModal.style.zIndex = '1000000000';
+      const modal = document.createElement('div');
+      modal.style.position = 'fixed';
+      modal.style.left = '0';
+      modal.style.right = '0';
+      modal.style.top = '0';
+      modal.style.bottom = '0';
+      modal.style.background = 'black';
+      modal.style.width = "100vw";
+      modal.style.height = "100vh";
+      modal.style.zIndex = '1000000000';
       // D I S P L A Y
-      aboutModal.style.display = 'flex';
-      aboutModal.style.alignItems = 'center';
-      aboutModal.style.flexDirection = 'column';
-      aboutModal.style.justifyContent = 'center';
+      modal.style.display = 'flex';
+      modal.style.alignItems = 'center';
+      modal.style.flexDirection = 'column';
+      modal.style.justifyContent = 'center';
 
       const textContainer = document.createElement('div');
       textContainer.innerText = 'ABOUT PAGE';
@@ -254,8 +254,8 @@ function createDisplayOptionsPage() {
         closeBtn.style.padding= '1rem 2.5rem';
         closeBtn.onclick = function () {
           const body = document.getElementsByTagName('body')[0];
-          const aboutModal = document.getElementById('aboutModal');
-          body.removeChild(aboutModal);
+          const modal = document.getElementById('modal');
+          body.removeChild(modal);
         }
         textContainer.appendChild(closeBtn);
       }
@@ -270,26 +270,12 @@ function createDisplayOptionsPage() {
         paragraph.style.fontWeight = bold || 'light';
         container.appendChild(paragraph);
       }
-      createParagraph(textContainer, '- This is a TOOL to LOG HOURS OF DEEP WORK.', '1rem');
-      createParagraph(textContainer, '- NO DATABASE REQUIREMENT.');
-      createParagraph(textContainer, '- All hour logs data is managed by via simple textfile.');
-      createParagraph(textContainer, '- Literally just that. Windows notepad file. Word file. Any file ending with ".txt"');
-      // createParagraph(textContainer, '');
-      createParagraph(textContainer, '30 SECONDS TUTORIAL:', '1.5rem', '2rem', 'bold');
-      createParagraph(textContainer, '1. Add hours worked by CLICKING +/- BUTTONS in given day\'s column.');
-      createParagraph(textContainer, '2. Click "SAVE TO TEXT FILE" button, in the top menu.');
-      createParagraph(textContainer, '3. Prompt will appear. Choose "Save file." Save it to desktop or wherever you can find it easily. \n (The file is a text file with hours data formatted into text format, and nothing more. It is automatically named "DEEP WORK HOURS LOG.txt", with time and date. You don\'t even need to ever open it.)');
-      createParagraph(textContainer, '4. Close the page. You\'ll see all the hours data disappeared.');
-      createParagraph(textContainer, '5. Re-open the page. Click DROP TEXT FILE. Prompt will appear, allowing you to browse files. Find the text file. Click it. Press enter or click ok. ALL THE LOGGED HOURS DATA RE-APPEARS!');
-      createParagraph(textContainer, 'This is a solution where saving and persisting the data is achieved with no database or outside server requirements. It\'s just using a text file to store and update the logs data. User saves the data into a text file via 1 button click. User updates the data by dropping the text file via 1 button click. This is why the app is simple and doesn\'t have to require any of the account creation, email, passwords, logging in, etc.');
-
-      aboutModal.appendChild(textContainer);
-      aboutModal.id = 'aboutModal';
-      body.appendChild(aboutModal);
-      console.log(aboutModal);
+      modal.appendChild(textContainer);
+      modal.id = 'modal';
+      body.appendChild(modal);
+      console.log(modal);
     }
-    createAboutModal();
-
+    createModal();
   }
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
