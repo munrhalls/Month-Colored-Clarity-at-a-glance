@@ -212,7 +212,7 @@ function createDisplayOptionsPage() {
   aboutBtn.style.background = 'transparent';
   aboutBtn.style.color = '#fff';
   aboutBtn.setAttribute('type', 'button');
-  aboutBtn.setAttribute('value', 'ABOUT PAGE');
+  aboutBtn.setAttribute('value', 'DISPLAY \n OPTIONS');
 
   aboutBtn.onclick = function () {
     function createAboutModal() {
@@ -294,7 +294,7 @@ function createDisplayOptionsPage() {
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
   const aboutBtnText = document.createElement('div');
-  aboutBtnText.innerText = 'WHAT IS THIS THING?';
+  aboutBtnText.innerText = 'CUSTOMIZE THE VIEW';
   aboutBtnText.style.color = 'white';
   aboutBtnText.style.width = '100%';
   aboutBtnText.style.position = 'absolute';
@@ -313,7 +313,7 @@ function createDisplayOptionsPage() {
   questionIcon.style.fill = '#fff';
   //appends
   aboutBtnContainer.appendChild(aboutBtn);
-  aboutBtnContainer.appendChild(questionIcon);
+  // aboutBtnContainer.appendChild(questionIcon);
   aboutBtnContainer.appendChild(aboutBtnText);
   aboutBtnContainer.appendChild(underLineGraphic);
   // aboutBtnContainer.appendChild(arrowGraphic);
