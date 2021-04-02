@@ -184,37 +184,37 @@ function createAboutPage() {
 }
 function createDisplayOptionsPage() {
   // components
-  const aboutBtnContainer = (function createAboutPageContainer() {
-    const aboutBtnContainer = document.createElement('div');
+  const btnContainer = (function createAboutPageContainer() {
+    const btnContainer = document.createElement('div');
     // aesthethics
-    aboutBtnContainer.style.border = "none";
-    aboutBtnContainer.style.borderLeft = '1px solid grey';
-    aboutBtnContainer.style.borderRight = '1px solid grey';
-    aboutBtnContainer.style.fontWeight = "bold";
-    aboutBtnContainer.style.textAlign = 'left';
-    aboutBtnContainer.style.color = "#fff";
+    btnContainer.style.border = "none";
+    btnContainer.style.borderLeft = '1px solid grey';
+    btnContainer.style.borderRight = '1px solid grey';
+    btnContainer.style.fontWeight = "bold";
+    btnContainer.style.textAlign = 'left';
+    btnContainer.style.color = "#fff";
     // display
-    aboutBtnContainer.style.position = 'relative';
-    aboutBtnContainer.style.width = '12rem'
+    btnContainer.style.position = 'relative';
+    btnContainer.style.width = '12rem'
 
-    return aboutBtnContainer;
+    return btnContainer;
   })();
-  const aboutBtn = document.createElement('input');
-  aboutBtn.style.position = 'absolute';
-  aboutBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
-  aboutBtn.style.width = '75%';
-  aboutBtn.style.left = '12.5%';
-  // aboutBtn.style.marginLeft = '-30%'
-  aboutBtn.style.padding = '1rem 1rem';
-  aboutBtn.style.fontWeight = 'bold';
-  aboutBtn.style.fontSize = '0.9rem';
-  aboutBtn.style.border = '2px solid #fff';
-  aboutBtn.style.background = 'transparent';
-  aboutBtn.style.color = '#fff';
-  aboutBtn.setAttribute('type', 'button');
-  aboutBtn.setAttribute('value', 'DISPLAY \n OPTIONS');
+  const btn = document.createElement('input');
+  btn.style.position = 'absolute';
+  btn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
+  btn.style.width = '75%';
+  btn.style.left = '12.5%';
+  // btn.style.marginLeft = '-30%'
+  btn.style.padding = '1rem 1rem';
+  btn.style.fontWeight = 'bold';
+  btn.style.fontSize = '0.9rem';
+  btn.style.border = '2px solid #fff';
+  btn.style.background = 'transparent';
+  btn.style.color = '#fff';
+  btn.setAttribute('type', 'button');
+  btn.setAttribute('value', 'MENU');
 
-  aboutBtn.onclick = function () {
+  btn.onclick = function () {
     function createAboutModal() {
       const body = document.getElementsByTagName('body')[0];
       const aboutModal = document.createElement('div');
@@ -293,17 +293,17 @@ function createDisplayOptionsPage() {
   }
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
-  const aboutBtnText = document.createElement('div');
-  aboutBtnText.innerText = 'CUSTOMIZE THE VIEW';
-  aboutBtnText.style.color = 'white';
-  aboutBtnText.style.width = '100%';
-  aboutBtnText.style.position = 'absolute';
-  aboutBtnText.style.bottom = '0.6rem';
+  const btnText = document.createElement('div');
+  btnText.innerText = 'CUSTOMIZE THE VIEW';
+  btnText.style.color = 'white';
+  btnText.style.width = '100%';
+  btnText.style.position = 'absolute';
+  btnText.style.bottom = '0.6rem';
   //text
-  aboutBtnText.style.fontSize = '0.6rem';
-  aboutBtnText.style.fontWeight = 'lighter';
-  aboutBtnText.style.letterSpacing = '0.1rem';
-  aboutBtnText.style.textAlign = 'center';
+  btnText.style.fontSize = '0.6rem';
+  btnText.style.fontWeight = 'lighter';
+  btnText.style.letterSpacing = '0.1rem';
+  btnText.style.textAlign = 'center';
   const questionIcon = resourceCreateQuestionIcon();
   questionIcon.style.position = 'absolute';
   questionIcon.style.bottom = '1.66rem';
@@ -312,12 +312,12 @@ function createDisplayOptionsPage() {
   questionIcon.style.marginLeft = 'calc(-12.5% + 1rem)'
   questionIcon.style.fill = '#fff';
   //appends
-  aboutBtnContainer.appendChild(aboutBtn);
-  // aboutBtnContainer.appendChild(questionIcon);
-  aboutBtnContainer.appendChild(aboutBtnText);
-  aboutBtnContainer.appendChild(underLineGraphic);
-  // aboutBtnContainer.appendChild(arrowGraphic);
-  document.getElementById('menu').appendChild(aboutBtnContainer);
+  btnContainer.appendChild(btn);
+  btnContainer.appendChild(questionIcon);
+  btnContainer.appendChild(btnText);
+  btnContainer.appendChild(underLineGraphic);
+  // btnContainer.appendChild(arrowGraphic);
+  document.getElementById('menu').appendChild(btnContainer);
 }
 function createSaveTextFileBtn() {
   // components
