@@ -40,11 +40,149 @@ function createMenu() {
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
   createAboutPage();
+  createDisplayOptionsPage();
   createSaveTextFileBtn();
   createFillDataBtn();
   menu.appendChild(saveToExcelBtn);
 }
 function createAboutPage() {
+  // components
+  const aboutBtnContainer = (function createAboutPageContainer() {
+    const aboutBtnContainer = document.createElement('div');
+    // aesthethics
+    aboutBtnContainer.style.border = "none";
+    aboutBtnContainer.style.borderLeft = '1px solid grey';
+    aboutBtnContainer.style.borderRight = '1px solid grey';
+    aboutBtnContainer.style.fontWeight = "bold";
+    aboutBtnContainer.style.textAlign = 'left';
+    aboutBtnContainer.style.color = "#fff";
+    // display
+    aboutBtnContainer.style.position = 'relative';
+    aboutBtnContainer.style.width = '12rem'
+
+    return aboutBtnContainer;
+  })();
+  const aboutBtn = document.createElement('input');
+  aboutBtn.style.position = 'absolute';
+  aboutBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
+  aboutBtn.style.width = '75%';
+  aboutBtn.style.left = '12.5%';
+  // aboutBtn.style.marginLeft = '-30%'
+  aboutBtn.style.padding = '1rem 1rem';
+  aboutBtn.style.fontWeight = 'bold';
+  aboutBtn.style.fontSize = '0.9rem';
+  aboutBtn.style.border = '2px solid #fff';
+  aboutBtn.style.background = 'transparent';
+  aboutBtn.style.color = '#fff';
+  aboutBtn.setAttribute('type', 'button');
+  aboutBtn.setAttribute('value', 'ABOUT PAGE');
+
+  aboutBtn.onclick = function () {
+    function createAboutModal() {
+      const body = document.getElementsByTagName('body')[0];
+      const aboutModal = document.createElement('div');
+      aboutModal.style.position = 'fixed';
+      aboutModal.style.left = '0';
+      aboutModal.style.right = '0';
+      aboutModal.style.top = '0';
+      aboutModal.style.bottom = '0';
+      aboutModal.style.background = 'black';
+      aboutModal.style.width = "100vw";
+      aboutModal.style.height = "100vh";
+      aboutModal.style.zIndex = '1000000000';
+      // D I S P L A Y
+      aboutModal.style.display = 'flex';
+      aboutModal.style.alignItems = 'center';
+      aboutModal.style.flexDirection = 'column';
+      aboutModal.style.justifyContent = 'center';
+
+      const textContainer = document.createElement('div');
+      textContainer.innerText = 'ABOUT PAGE';
+      textContainer.style.padding = '3rem';
+      textContainer.style.fontSize = '6rem';
+      textContainer.style.color = "white";
+      textContainer.style.position = 'relative';
+      function createCloseBtn() {
+        const closeBtn = document.createElement('div');
+        closeBtn.innerText = 'CLOSE X';
+        closeBtn.style.textAlign = 'right';
+        closeBtn.style.fontSize = '4.5rem';
+        // closeBtn.style.fontWeight = 'bold';
+        closeBtn.style.color = 'white';
+        closeBtn.style.position = 'absolute';
+        closeBtn.style.top = '3rem';
+        closeBtn.style.right = '6rem';
+        closeBtn.style.cursor = 'pointer';
+        closeBtn.style.border = '3px solid white';
+        closeBtn.style.padding= '1rem 2.5rem';
+        closeBtn.onclick = function () {
+          const body = document.getElementsByTagName('body')[0];
+          const aboutModal = document.getElementById('aboutModal');
+          body.removeChild(aboutModal);
+        }
+        textContainer.appendChild(closeBtn);
+      }
+      createCloseBtn();
+      function createParagraph(container, message, marginTop, fontSize, bold) {
+        const paragraph = document.createElement('div');
+        paragraph.innerText = message;
+        paragraph.style.padding = '1rem 0';
+        paragraph.style.marginTop = marginTop || 0;
+        paragraph.style.color = "white";
+        paragraph.style.fontSize = fontSize || '1.5rem';
+        paragraph.style.fontWeight = bold || 'light';
+        container.appendChild(paragraph);
+      }
+      createParagraph(textContainer, '- This is a TOOL to LOG HOURS OF DEEP WORK.', '1rem');
+      createParagraph(textContainer, '- NO DATABASE REQUIREMENT.');
+      createParagraph(textContainer, '- All hour logs data is managed by via simple textfile.');
+      createParagraph(textContainer, '- Literally just that. Windows notepad file. Word file. Any file ending with ".txt"');
+      // createParagraph(textContainer, '');
+      createParagraph(textContainer, '30 SECONDS TUTORIAL:', '1.5rem', '2rem', 'bold');
+      createParagraph(textContainer, '1. Add hours worked by CLICKING +/- BUTTONS in given day\'s column.');
+      createParagraph(textContainer, '2. Click "SAVE TO TEXT FILE" button, in the top menu.');
+      createParagraph(textContainer, '3. Prompt will appear. Choose "Save file." Save it to desktop or wherever you can find it easily. \n (The file is a text file with hours data formatted into text format, and nothing more. It is automatically named "DEEP WORK HOURS LOG.txt", with time and date. You don\'t even need to ever open it.)');
+      createParagraph(textContainer, '4. Close the page. You\'ll see all the hours data disappeared.');
+      createParagraph(textContainer, '5. Re-open the page. Click DROP TEXT FILE. Prompt will appear, allowing you to browse files. Find the text file. Click it. Press enter or click ok. ALL THE LOGGED HOURS DATA RE-APPEARS!');
+      createParagraph(textContainer, 'This is a solution where saving and persisting the data is achieved with no database or outside server requirements. It\'s just using a text file to store and update the logs data. User saves the data into a text file via 1 button click. User updates the data by dropping the text file via 1 button click. This is why the app is simple and doesn\'t have to require any of the account creation, email, passwords, logging in, etc.');
+
+      aboutModal.appendChild(textContainer);
+      aboutModal.id = 'aboutModal';
+      body.appendChild(aboutModal);
+      console.log(aboutModal);
+    }
+    createAboutModal();
+
+  }
+  const underLineGraphic = resourceCreateUnderLineGraphic();
+  const arrowGraphic = resourceCreateArrowGraphic();
+  const aboutBtnText = document.createElement('div');
+  aboutBtnText.innerText = 'WHAT IS THIS THING?';
+  aboutBtnText.style.color = 'white';
+  aboutBtnText.style.width = '100%';
+  aboutBtnText.style.position = 'absolute';
+  aboutBtnText.style.bottom = '0.6rem';
+  //text
+  aboutBtnText.style.fontSize = '0.6rem';
+  aboutBtnText.style.fontWeight = 'lighter';
+  aboutBtnText.style.letterSpacing = '0.1rem';
+  aboutBtnText.style.textAlign = 'center';
+  const questionIcon = resourceCreateQuestionIcon();
+  questionIcon.style.position = 'absolute';
+  questionIcon.style.bottom = '1.66rem';
+  questionIcon.style.width = '1.75rem';
+  questionIcon.style.left = '50%';
+  questionIcon.style.marginLeft = 'calc(-12.5% + 1rem)'
+  questionIcon.style.fill = '#fff';
+  //appends
+  aboutBtnContainer.appendChild(aboutBtn);
+  aboutBtnContainer.appendChild(questionIcon);
+  aboutBtnContainer.appendChild(aboutBtnText);
+  aboutBtnContainer.appendChild(underLineGraphic);
+  // aboutBtnContainer.appendChild(arrowGraphic);
+  document.getElementById('menu').appendChild(aboutBtnContainer);
+}
+function createDisplayOptionsPage() {
   // components
   const aboutBtnContainer = (function createAboutPageContainer() {
     const aboutBtnContainer = document.createElement('div');
