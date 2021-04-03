@@ -6,15 +6,17 @@ window.addEventListener('load', function () {
   const month = new Date(year, 0, 0);
   const day = new Date(year, 0, 1)
   createMenu();
-  const yearMonthsWeeksDaysDATA = [];
+  let calendar = {};
+  calendar.months = [];
+
   for (let i = 0; i < 12; i++) {
     const month = new Date(year, i, 1);
-    const monthDATA = [];
-    const numOfDays = month.getDate();
+    // const monthDATA = [];
+    // const numOfDays = month.getDate();
     const monthName = month.toLocaleDateString('en-EN', { month: 'long' });
-    yearMonthsWeeksDaysDATA.push(monthName);
+    calendar.months.push(month);
   }
-  console.log(yearMonthsWeeksDaysDATA);
+  console.log(calendar);
 
   // const getDaysInMonth = (month, year) => (new Array(31)).fill('').map((v, i) => new Date(year, month - 1, i + 1)).filter(v => v.getMonth() === month - 1);
   // const days = getDaysInMonth(1, 2021);
