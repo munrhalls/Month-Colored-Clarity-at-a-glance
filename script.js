@@ -9,14 +9,16 @@ window.addEventListener('load', function () {
   for (let i = 0; i < 12; i++) {
     const month = new Date(year, i, 0);
     const numOfDays = month.getDate();
-    console.log(month)
-    for (let j = 0; j < numOfDays; j++) {
-      
+    // console.log(month)
+    for (let j = 1; j < numOfDays; j++) {
+      const day = new Date(year, i, j);
+      const options = { weekday: 'long' };
+      const dayName = day.toLocaleDateString('en-EN', options);
+      const month = new Date(year, i, 1);
+      console.log(dayName);
+      console.log(month);
     }
   }
-  const options = { weekday: 'long' };
-  const dayName = day.toLocaleDateString('en-EN', options);
-
 
   createMenu();
   for (var i = 0; i < 12; i++) {
