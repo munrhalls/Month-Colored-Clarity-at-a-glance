@@ -22,7 +22,7 @@ window.addEventListener('load', function () {
 
   createMenu();
   for (var i = 0; i < 12; i++) {
-    createMonths(i);
+    createMonth(i);
   }
   createCopyrightNote();
   createCopyrightNote2();
@@ -706,7 +706,7 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
 function getMonthNames() {
   return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 }
-function createMonths(monthNum) {
+function createMonth(monthNum) {
   const monthNames = getMonthNames();
   var monthContainer = document.createElement('div');
   monthContainer.classList.add('month');
@@ -749,8 +749,7 @@ function createWeek(weekNum, monthNum) {
   monthTitle.style.top = 'calc(50% - 0.75rem)';
   monthTitle.style.right = 'calc(100% - 14.75rem)';
   week.appendChild(monthTitle);
-  //CREATE NAVIGATIONAL BUTTONS BELOW THE WEEK - TO SCROLL HORIZONTALLY ON CLICK
-  // (!!! !!! !!!) TO REFACTOR - ABSTRACT BUTTONS CREATION TO DISTINCT FUNCTION THAT ISN'T COUPLED WITH CREATE WEEK FUNC IN ANY WAY
+
   if (weekNum <= 3) {
     //create btn
     var navBtnRight = document.createElement('input');
