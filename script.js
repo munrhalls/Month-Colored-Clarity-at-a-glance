@@ -5,25 +5,60 @@ window.addEventListener('load', function () {
   const year = date.getFullYear();
   const month = new Date(year, 0, 0);
   const day = new Date(year, 0, 1)
-
-  for (let i = 0; i < 12; i++) {
-    const month = new Date(year, i, 0);
-    const numOfDays = month.getDate();
-    // console.log(month)
-    for (let j = 1; j < numOfDays; j++) {
-      const day = new Date(year, i, j);
-      const options = { weekday: 'long' };
-      const dayName = day.toLocaleDateString('en-EN', options);
-      const month = new Date(year, i, 1);
-      console.log(dayName);
-      console.log(month);
-    }
-  }
-
   createMenu();
-  for (var i = 0; i < 12; i++) {
-    createMonth(i);
+  const yearMonthsWeeksDaysDATA = [];
+  for (let i = 0; i < 12; i++) {
+    const month = new Date(year, i, 1);
+    const monthDATA = [];
+    const numOfDays = month.getDate();
+    const monthName = month.toLocaleDateString('en-EN', { month: 'long' });
+    yearMonthsWeeksDaysDATA.push(monthName);
   }
+  console.log(yearMonthsWeeksDaysDATA);
+
+  // const getDaysInMonth = (month, year) => (new Array(31)).fill('').map((v, i) => new Date(year, month - 1, i + 1)).filter(v => v.getMonth() === month - 1);
+  // const days = getDaysInMonth(1, 2021);
+  // console.log(days)
+  // const yearDATA = [];
+  // for (let i = 0; i < 12; i++) {
+  //   const month = new Date(year, i, 1);
+  //   const monthDATA = [];
+  //   const numOfDays = month.getDate();
+  //   const weeksDATA = [];
+  //   for (let j = 0; j < numOfDays; j++) {
+  //     let weekNum = 1;
+  //     const day = new Date(year, i, j);
+  //     const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
+  //     // weeksDATA.push(dayName);
+  //     if (dayName === 'Sunday') {
+  //       weekNum++;
+  //       let weekName = 'WEEK ' + weekNum;
+  //       weeksDATA.push(weekName);
+  //     }
+  //   }
+  //   monthDATA.push(weeksDATA);
+  //   // for (let j = 1; j <= numOfDays; j++) {
+  //   //   const day = new Date(year, i, j);
+  //   //   const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
+  //   //   const monthNames = getMonthNames();
+  //   //   // var monthContainer = document.createElement('div');
+  //   //   // monthContainer.classList.add('month');
+  //   //   // monthContainer.classList.add('monthContainer');
+  //   //   // monthContainer.classList.add([monthNames[i]]);
+  //   //   // monthContainer.style.display = 'flex';
+  //   //   // document.getElementById('root').appendChild(monthContainer);
+  //   //   // createSidewaysTitle(monthNames[i], i);
+  //   //   // // createWeeksContainer(i);
+  //   //   // // createWeek(1, i);
+  //   //   // // createDay(dayName);
+  //   //   monthDATA.push(dayName);
+  //   // }
+  //   monthDATA.push(month.getMonth());
+  //   yearDATA.push(monthDATA);
+  // }
+  // console.log(yearDATA);
+
+
   createCopyrightNote();
   createCopyrightNote2();
 });
@@ -33,6 +68,21 @@ const VALUES_MenuSharedCSS = {
   width_menuSmallerBlock: '9rem',
   space_TopTo1stElement: '1.5rem',
   space_BottomTo1stElement: '0.25rem',
+}
+function createMonth(monthNum) {
+  const monthNames = getMonthNames();
+  var monthContainer = document.createElement('div');
+  monthContainer.classList.add('month');
+  monthContainer.classList.add('monthContainer');
+  monthContainer.classList.add([monthNames[monthNum]]);
+  monthContainer.style.display = 'flex';
+  document.getElementById('root').appendChild(monthContainer);
+  createSidewaysTitle(monthNames[monthNum], monthNum);
+  createWeeksContainer(monthNum);
+  createWeek(1, monthNum);
+  createWeek(2, monthNum);
+  createWeek(3, monthNum);
+  createWeek(4, monthNum);
 }
 function createMenu() {
   const menu = document.createElement('div');
@@ -706,21 +756,6 @@ function createSidewaysTitle(sidewaysTitle, monthNum) {
 function getMonthNames() {
   return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 }
-function createMonth(monthNum) {
-  const monthNames = getMonthNames();
-  var monthContainer = document.createElement('div');
-  monthContainer.classList.add('month');
-  monthContainer.classList.add('monthContainer');
-  monthContainer.classList.add([monthNames[monthNum]]);
-  monthContainer.style.display = 'flex';
-  document.getElementById('root').appendChild(monthContainer);
-  createSidewaysTitle(monthNames[monthNum], monthNum);
-  createWeeksContainer(monthNum);
-  createWeek(1, monthNum);
-  createWeek(2, monthNum);
-  createWeek(3, monthNum);
-  createWeek(4, monthNum);
-}
 function createWeek(weekNum, monthNum) {
   // 1. CREATE WEEK DIV
   var week = document.createElement('div');
@@ -813,25 +848,28 @@ function dataGetDays() {
   var daysDATA = ['Monday', 'Tuesday', 'Wendesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   return daysDATA;
 }
+function createDay(dayDATA) {
+  //day's column to add deep work hour ticks into
+  var day = document.createElement('div');
+  day.innerText = dayDATA;
+  //style
+  day.style.width = "142px";
+  day.style.textAlign = "center";
+  day.style.border = '1px solid gray'; day.style.padding = '3px 30px';
+  var dayContainer = document.createElement('div');
+  dayContainer.classList.add('day');
+  dayContainer.classList.add(dayDATA);
+  dayContainer.appendChild(day);
+  dayContainer.style.display = 'inline-block';
+  week.appendChild(dayContainer);
+  createBtns(dayContainer);
+}
 function createDays(week) {
   // 2. CREATE DAYS DIVS
   const daysDATA = dataGetDays();
   //create: container divs -> corresponding divs: 1) day's title divs, 2) day's deep work hour ticks
-  daysDATA.forEach(function (el) {
-    //day's column to add deep work hour ticks into
-    var day = document.createElement('div');
-    day.innerText = el;
-    //style
-    day.style.width = "142px";
-    day.style.textAlign = "center";
-    day.style.border = '1px solid gray'; day.style.padding = '3px 30px';
-    var dayContainer = document.createElement('div');
-    dayContainer.classList.add('day');
-    dayContainer.classList.add(el);
-    dayContainer.appendChild(day);
-    dayContainer.style.display = 'inline-block';
-    week.appendChild(dayContainer);
-    createBtns(dayContainer);
+  daysDATA.forEach(function (dayDATA) {
+    createDay(dayDATA);
   });
 }
 function createBtns(dayContainer) {
