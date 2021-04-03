@@ -1,5 +1,23 @@
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
+
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = new Date(year, 0, 0);
+  const day = new Date(year, 0, 1)
+
+  for (let i = 0; i < 12; i++) {
+    const month = new Date(year, i, 0);
+    const numOfDays = month.getDate();
+    console.log(month)
+    for (let j = 0; j < numOfDays; j++) {
+      
+    }
+  }
+  const options = { weekday: 'long' };
+  const dayName = day.toLocaleDateString('en-EN', options);
+
+
   createMenu();
   for (var i = 0; i < 12; i++) {
     createMonths(i);
@@ -8,14 +26,12 @@ window.addEventListener('load', function () {
   createCopyrightNote2();
 });
 
-// values //  values //  //  values  //  values  //  values  //  values  //  values  //  values  //  values  //  values  //
 const VALUES_MenuSharedCSS = {
   height_menuWhole: '9rem',
   width_menuSmallerBlock: '9rem',
   space_TopTo1stElement: '1.5rem',
   space_BottomTo1stElement: '0.25rem',
 }
-// top menu // top menu //  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  // top menu  //
 function createMenu() {
   const menu = document.createElement('div');
   menu.setAttribute('id', 'menu');
@@ -114,7 +130,7 @@ function createAboutPage() {
         closeBtn.style.right = '6rem';
         closeBtn.style.cursor = 'pointer';
         closeBtn.style.border = '3px solid white';
-        closeBtn.style.padding= '1rem 2.5rem';
+        closeBtn.style.padding = '1rem 2.5rem';
         closeBtn.onclick = function () {
           const body = document.getElementsByTagName('body')[0];
           const aboutModal = document.getElementById('aboutModal');
@@ -251,7 +267,7 @@ function createDisplayOptionsPage() {
         closeBtn.style.right = '6rem';
         closeBtn.style.cursor = 'pointer';
         closeBtn.style.border = '3px solid white';
-        closeBtn.style.padding= '1rem 2.5rem';
+        closeBtn.style.padding = '1rem 2.5rem';
         closeBtn.onclick = function () {
           const body = document.getElementsByTagName('body')[0];
           const modal = document.getElementById('modal');
@@ -487,7 +503,6 @@ function createFillDataBtn() {
   fillDataBtnContainer.appendChild(chartIcon);
   document.getElementById('menu').appendChild(fillDataBtnContainer);
 }
-// feature - fill work hours per day from TEXT FILE // feature - fill work hours per day from text file // 
 function fillHoursData(textFile) {
   const days = document.getElementsByClassName('day');
   let hoursArr = textFile.split(',');
@@ -513,7 +528,6 @@ function appendHour(hoursNum, day) {
   appendNumToHour(hoursNum, hour);
   day.appendChild(hour);
 }
-// feature - fill EXCEL file from work hours data
 function createSaveToExcelBtn() {
   var saveToExcelBtn = document.createElement('input');
   saveToExcelBtn.style.marginLeft = "auto";
@@ -647,7 +661,6 @@ function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
   link.click();
   document.body.removeChild(link);
 }
-//main // main // main // main // main // main // main // main // main // main // main // main // main // main // main // main // main 
 function createWeeksContainer(monthNum) {
   var weeksContainer = document.createElement('div');
   weeksContainer.className = 'weeksContainer';
@@ -792,7 +805,6 @@ function createWeek(weekNum, monthNum) {
       });
     });
   }
-
   document.getElementsByClassName('weeksContainer')[monthNum].appendChild(week);
   createDays(week);
 }
@@ -821,7 +833,6 @@ function createDays(week) {
     createBtns(dayContainer);
   });
 }
-// feature - add/substract hours in a day //  feature - add/substract hours in a day //  feature - add/substract hours in a day //  
 function createBtns(dayContainer) {
   const addBtn = createAddBtn();
   //count day's hours - closure var
@@ -916,7 +927,6 @@ function deleteHourEl(day) {
     day.removeChild(day.getElementsByClassName('hour')[day.getElementsByClassName('hour').length - 1]);
   }
 }
-// RESOURCES (graphics and so on) //  RESOURCES (graphics and so on) //  RESOURCES (graphics and so on) //  
 function resourceCreateSaveIcon() {
   const saveIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   saveIcon.setAttributeNS(null, 'height', '24');
