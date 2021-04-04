@@ -18,7 +18,13 @@ window.addEventListener('load', function () {
       const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
       weeksByCommaString += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
     }
-    console.log(weeksByCommaString)
+    // 1. split weeksByComma by comma into array of 4-5 strings
+    const weeks = weeksByCommaString.split(',');
+    weeks.forEach(function(week){
+      const weekInDays = week.split(' ');
+      monthDATA.push(weekInDays);
+    })
+    // console.log(weeksByCommaString)
     yearDATA.push(monthDATA);
   }
   console.log(yearDATA);
@@ -41,7 +47,7 @@ function createMonth(monthNum) {
   monthContainer.classList.add([monthNames[monthNum]]);
   monthContainer.style.display = 'flex';
   document.getElementById('root').appendChild(monthContainer);
-  createSidewaysTitle(monthNames[monthNum], monthNum);
+  // createSidewaysTitle(monthNames[monthNum], monthNum);
   createWeeksContainer(monthNum);
   createWeek(1, monthNum);
   createWeek(2, monthNum);
@@ -421,6 +427,7 @@ function getHoursPerDayNumsStr() {
     hourNums.push(days[i].getElementsByClassName('hour').length);
   }
   const hourNumsStr = hourNums.join(',');
+  console.log(hourNumsStr)
   return hourNumsStr;
 }
 function createFillDataBtn() {
@@ -522,6 +529,7 @@ function createFillDataBtn() {
 function fillHoursData(textFile) {
   const days = document.getElementsByClassName('day');
   let hoursArr = textFile.split(',');
+  console.log(hoursArr)
 
   for (let i = 0; i < days.length; i++) {
     // clear & append on each day -> saves the need to otherwise loop all days 2nd time
