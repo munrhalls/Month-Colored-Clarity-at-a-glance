@@ -6,60 +6,24 @@ window.addEventListener('load', function () {
   const month = new Date(year, 0, 0);
   const day = new Date(year, 0, 1)
   createMenu();
-  let calendar = {};
-  calendar.months = [];
 
-  for (let i = 0; i < 12; i++) {
-    const month = new Date(year, i, 1);
-    // const monthDATA = [];
-    // const numOfDays = month.getDate();
-    const monthName = month.toLocaleDateString('en-EN', { month: 'long' });
-    calendar.months.push(month);
+  const yearDATA = [];
+  for (let i = 1; i < 12; i++) {
+    const month = new Date(year, i, 0);
+    var monthDATA = new Array();
+    const numOfDays = month.getDate();
+    console.log(numOfDays)
+    // console.log(i);
+    for (let j = 0; j < numOfDays; j++) {
+      // console.log(j);
+      const day = new Date(year, i, j);
+      const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
+      monthDATA.push(dayName);
+    }
+    yearDATA.push(monthDATA);
   }
-  console.log(calendar);
 
-  // const getDaysInMonth = (month, year) => (new Array(31)).fill('').map((v, i) => new Date(year, month - 1, i + 1)).filter(v => v.getMonth() === month - 1);
-  // const days = getDaysInMonth(1, 2021);
-  // console.log(days)
-  // const yearDATA = [];
-  // for (let i = 0; i < 12; i++) {
-  //   const month = new Date(year, i, 1);
-  //   const monthDATA = [];
-  //   const numOfDays = month.getDate();
-  //   const weeksDATA = [];
-  //   for (let j = 0; j < numOfDays; j++) {
-  //     let weekNum = 1;
-  //     const day = new Date(year, i, j);
-  //     const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
-  //     // weeksDATA.push(dayName);
-  //     if (dayName === 'Sunday') {
-  //       weekNum++;
-  //       let weekName = 'WEEK ' + weekNum;
-  //       weeksDATA.push(weekName);
-  //     }
-  //   }
-  //   monthDATA.push(weeksDATA);
-  //   // for (let j = 1; j <= numOfDays; j++) {
-  //   //   const day = new Date(year, i, j);
-  //   //   const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
-  //   //   const monthNames = getMonthNames();
-  //   //   // var monthContainer = document.createElement('div');
-  //   //   // monthContainer.classList.add('month');
-  //   //   // monthContainer.classList.add('monthContainer');
-  //   //   // monthContainer.classList.add([monthNames[i]]);
-  //   //   // monthContainer.style.display = 'flex';
-  //   //   // document.getElementById('root').appendChild(monthContainer);
-  //   //   // createSidewaysTitle(monthNames[i], i);
-  //   //   // // createWeeksContainer(i);
-  //   //   // // createWeek(1, i);
-  //   //   // // createDay(dayName);
-  //   //   monthDATA.push(dayName);
-  //   // }
-  //   monthDATA.push(month.getMonth());
-  //   yearDATA.push(monthDATA);
-  // }
   // console.log(yearDATA);
-
 
   createCopyrightNote();
   createCopyrightNote2();
