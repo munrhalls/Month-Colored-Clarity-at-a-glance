@@ -10,17 +10,17 @@ window.addEventListener('load', function () {
   const yearDATA = [];
   for (let i = 1; i <= 12; i++) {
     const month = new Date(year, i, 0);
-    var monthDATA = new Array();
+    let monthDATA = new Array();
     const numDaysInMonth = month.getDate();
-    console.log(month)
+    let weeksByCommaString = '';
     for (let j = 1; j <= numDaysInMonth; j++) {
       const day = new Date(year, i - 1, j);
       const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
-      monthDATA.push(dayName);
+      weeksByCommaString += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
     }
+    console.log(weeksByCommaString)
     yearDATA.push(monthDATA);
   }
-
   console.log(yearDATA);
 
   createCopyrightNote();
