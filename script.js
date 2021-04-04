@@ -8,22 +8,20 @@ window.addEventListener('load', function () {
   createMenu();
 
   const yearDATA = [];
-  for (let i = 1; i < 12; i++) {
+  for (let i = 1; i <= 12; i++) {
     const month = new Date(year, i, 0);
     var monthDATA = new Array();
-    const numOfDays = month.getDate();
-    console.log(numOfDays)
-    // console.log(i);
-    for (let j = 0; j < numOfDays; j++) {
-      // console.log(j);
-      const day = new Date(year, i, j);
+    const numDaysInMonth = month.getDate();
+    console.log(month)
+    for (let j = 1; j <= numDaysInMonth; j++) {
+      const day = new Date(year, i - 1, j);
       const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
       monthDATA.push(dayName);
     }
     yearDATA.push(monthDATA);
   }
 
-  // console.log(yearDATA);
+  console.log(yearDATA);
 
   createCopyrightNote();
   createCopyrightNote2();
