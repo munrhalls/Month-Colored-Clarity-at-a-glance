@@ -9,22 +9,26 @@ window.addEventListener('load', function () {
 
   const yearDATA = [];
   for (let i = 1; i <= 12; i++) {
+    // on each loop:
+    // 1. get number of days in a month.
     const month = new Date(year, i, 0);
     let monthDATA = new Array();
     const numDaysInMonth = month.getDate();
+    
+    // 2. get weeks with proper days as string, mark each week by comma
     let weeksByCommaString = '';
     for (let j = 1; j <= numDaysInMonth; j++) {
       const day = new Date(year, i - 1, j);
       const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
       weeksByCommaString += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
     }
-    // 1. split weeksByComma by comma into array of 4-5 strings
+    // 3. gather weeks from the string, as arrays of days, push each into month array
     const weeks = weeksByCommaString.split(',');
     weeks.forEach(function(week){
       const weekInDays = week.split(' ');
       monthDATA.push(weekInDays);
     })
-    // console.log(weeksByCommaString)
+    // 4. push month array, filled with month's week arrays with days inside, into year array
     yearDATA.push(monthDATA);
   }
   console.log(yearDATA);
