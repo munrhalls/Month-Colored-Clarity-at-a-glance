@@ -44,7 +44,12 @@ function createHoursLog() {
     let month = yearDATA[i];
     console.log(month.monthName)
     for (let j = 0; j < month.length; j++) {
-      console.log(month[j].weekName);
+      let week = month[j];
+      console.log(week.weekName);
+      for (let y = 0; y < week.length; y++) {
+        let day = week[y];
+        console.log(day);
+      }
     }
   }
 }
