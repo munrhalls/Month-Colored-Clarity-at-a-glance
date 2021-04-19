@@ -54,6 +54,7 @@ function createHoursLog() {
       // WEEKS LEVEL
       let weekEl = document.createElement('div');
       weekEl.innerText = week.weekName;
+      weekEl.style.display = 'flex';
       monthEl.appendChild(weekEl)
       console.log(week.weekName)
       for (let y = 0; y < week.length; y++) {
