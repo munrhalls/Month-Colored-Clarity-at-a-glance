@@ -62,9 +62,13 @@ function createHoursLog() {
       weekContainerEl.style.display = 'flex';
       for (let y = 0; y < week.length; y++) {
         let day = week[y];
+        day = day.substring(0, 3);
         // DAYS LEVEL
         let dayEl = document.createElement('div');
         dayEl.innerText = day;
+        dayEl.style.height = '60vh';
+        dayEl.style.width = '3rem';
+        dayEl.style.borderLeft = '1px solid #000';
         weekContainerEl.appendChild(dayEl);
         console.log(day);
       }
