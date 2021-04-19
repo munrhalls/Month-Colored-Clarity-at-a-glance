@@ -1,20 +1,13 @@
-window.addEventListener('load', function () {
-  console.log('This function is executed once the page is fully loaded');
-
-  const date = new Date();
+const date = new Date();
   const year = date.getFullYear();
-  const month = new Date(year, 0, 0);
-  const day = new Date(year, 0, 1)
-  createMenu();
-
   const yearDATA = [];
   for (let i = 1; i <= 12; i++) {
-    // on each loop:
+    // Each loop equals:
     // 1. get number of days in a month.
     const month = new Date(year, i, 0);
     let monthDATA = new Array();
+    monthDATA.monthName = month.toLocaleString('default', { month: 'long' });
     const numDaysInMonth = month.getDate();
-    
     // 2. get weeks with proper days as string, mark each week by comma
     let weeksByCommaString = '';
     for (let j = 1; j <= numDaysInMonth; j++) {
@@ -24,6 +17,7 @@ window.addEventListener('load', function () {
     }
     // 3. gather weeks from the string, as arrays of days, push each into month array
     const weeks = weeksByCommaString.split(',');
+    weeks.pop();
     weeks.forEach(function(week){
       const weekInDays = week.split(' ');
       monthDATA.push(weekInDays);
@@ -31,11 +25,32 @@ window.addEventListener('load', function () {
     // 4. push month array, filled with month's week arrays with days inside, into year array
     yearDATA.push(monthDATA);
   }
-  console.log(yearDATA);
+  // console.log(yearDATA)
+  
+
+window.addEventListener('load', function () {
+  console.log('This function is executed once the page is fully loaded');
+  createMenu();
+  createHoursLog();
 
   createCopyrightNote();
   createCopyrightNote2();
 });
+function createHoursLog() {
+  for (let i = 0; i < yearDATA.length; i++) {
+    let month = yearDATA[i];
+    console.log(month.monthName)
+  }
+}
+
+
+
+
+
+
+
+
+
 
 const VALUES_MenuSharedCSS = {
   height_menuWhole: '9rem',
@@ -82,6 +97,7 @@ function createMenu() {
   menu.appendChild(title);
   document.getElementById('root').appendChild(menu);
   createAboutPage();
+  createAboutModal();
   createDisplayOptionsPage();
   createSaveTextFileBtn();
   createFillDataBtn();
@@ -120,81 +136,8 @@ function createAboutPage() {
   aboutBtn.setAttribute('value', 'ABOUT PAGE');
 
   aboutBtn.onclick = function () {
-    function createAboutModal() {
-      const body = document.getElementsByTagName('body')[0];
-      const aboutModal = document.createElement('div');
-      aboutModal.style.position = 'fixed';
-      aboutModal.style.left = '0';
-      aboutModal.style.right = '0';
-      aboutModal.style.top = '0';
-      aboutModal.style.bottom = '0';
-      aboutModal.style.background = 'black';
-      aboutModal.style.width = "100vw";
-      aboutModal.style.height = "100vh";
-      aboutModal.style.zIndex = '1000000000';
-      // D I S P L A Y
-      aboutModal.style.display = 'flex';
-      aboutModal.style.alignItems = 'center';
-      aboutModal.style.flexDirection = 'column';
-      aboutModal.style.justifyContent = 'center';
-
-      const textContainer = document.createElement('div');
-      textContainer.innerText = 'ABOUT PAGE';
-      textContainer.style.padding = '3rem';
-      textContainer.style.fontSize = '6rem';
-      textContainer.style.color = "white";
-      textContainer.style.position = 'relative';
-      function createCloseBtn() {
-        const closeBtn = document.createElement('div');
-        closeBtn.innerText = 'CLOSE X';
-        closeBtn.style.textAlign = 'right';
-        closeBtn.style.fontSize = '4.5rem';
-        // closeBtn.style.fontWeight = 'bold';
-        closeBtn.style.color = 'white';
-        closeBtn.style.position = 'absolute';
-        closeBtn.style.top = '3rem';
-        closeBtn.style.right = '6rem';
-        closeBtn.style.cursor = 'pointer';
-        closeBtn.style.border = '3px solid white';
-        closeBtn.style.padding = '1rem 2.5rem';
-        closeBtn.onclick = function () {
-          const body = document.getElementsByTagName('body')[0];
-          const aboutModal = document.getElementById('aboutModal');
-          body.removeChild(aboutModal);
-        }
-        textContainer.appendChild(closeBtn);
-      }
-      createCloseBtn();
-      function createParagraph(container, message, marginTop, fontSize, bold) {
-        const paragraph = document.createElement('div');
-        paragraph.innerText = message;
-        paragraph.style.padding = '1rem 0';
-        paragraph.style.marginTop = marginTop || 0;
-        paragraph.style.color = "white";
-        paragraph.style.fontSize = fontSize || '1.5rem';
-        paragraph.style.fontWeight = bold || 'light';
-        container.appendChild(paragraph);
-      }
-      createParagraph(textContainer, '- This is a TOOL to LOG HOURS OF DEEP WORK.', '1rem');
-      createParagraph(textContainer, '- NO DATABASE REQUIREMENT.');
-      createParagraph(textContainer, '- All hour logs data is managed by via simple textfile.');
-      createParagraph(textContainer, '- Literally just that. Windows notepad file. Word file. Any file ending with ".txt"');
-      // createParagraph(textContainer, '');
-      createParagraph(textContainer, '30 SECONDS TUTORIAL:', '1.5rem', '2rem', 'bold');
-      createParagraph(textContainer, '1. Add hours worked by CLICKING +/- BUTTONS in given day\'s column.');
-      createParagraph(textContainer, '2. Click "SAVE TO TEXT FILE" button, in the top menu.');
-      createParagraph(textContainer, '3. Prompt will appear. Choose "Save file." Save it to desktop or wherever you can find it easily. \n (The file is a text file with hours data formatted into text format, and nothing more. It is automatically named "DEEP WORK HOURS LOG.txt", with time and date. You don\'t even need to ever open it.)');
-      createParagraph(textContainer, '4. Close the page. You\'ll see all the hours data disappeared.');
-      createParagraph(textContainer, '5. Re-open the page. Click DROP TEXT FILE. Prompt will appear, allowing you to browse files. Find the text file. Click it. Press enter or click ok. ALL THE LOGGED HOURS DATA RE-APPEARS!');
-      createParagraph(textContainer, 'This is a solution where saving and persisting the data is achieved with no database or outside server requirements. It\'s just using a text file to store and update the logs data. User saves the data into a text file via 1 button click. User updates the data by dropping the text file via 1 button click. This is why the app is simple and doesn\'t have to require any of the account creation, email, passwords, logging in, etc.');
-
-      aboutModal.appendChild(textContainer);
-      aboutModal.id = 'aboutModal';
-      body.appendChild(aboutModal);
-      console.log(aboutModal);
-    }
-    createAboutModal();
-
+    const aboutModal = document.getElementById('aboutModal');
+    aboutModal.style.visibility = 'visible';
   }
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
@@ -223,6 +166,81 @@ function createAboutPage() {
   aboutBtnContainer.appendChild(underLineGraphic);
   // aboutBtnContainer.appendChild(arrowGraphic);
   document.getElementById('menu').appendChild(aboutBtnContainer);
+}
+function createAboutModal() {
+  const body = document.getElementsByTagName('body')[0];
+  const aboutModal = document.createElement('div');
+  aboutModal.style.visibility = 'hidden';
+  aboutModal.style.position = 'fixed';
+  aboutModal.style.left = '0';
+  aboutModal.style.right = '0';
+  aboutModal.style.top = '0';
+  aboutModal.style.bottom = '0';
+  aboutModal.style.background = 'black';
+  aboutModal.style.width = "100vw";
+  aboutModal.style.height = "100vh";
+  aboutModal.style.zIndex = '1000000000';
+  // D I S P L A Y
+  aboutModal.style.display = 'flex';
+  aboutModal.style.alignItems = 'center';
+  aboutModal.style.flexDirection = 'column';
+  aboutModal.style.justifyContent = 'center';
+
+  const textContainer = document.createElement('div');
+  textContainer.innerText = 'ABOUT PAGE';
+  textContainer.style.padding = '3rem';
+  textContainer.style.fontSize = '6rem';
+  textContainer.style.color = "white";
+  textContainer.style.position = 'relative';
+  function createCloseBtn() {
+    const closeBtn = document.createElement('div');
+    closeBtn.innerText = 'CLOSE X';
+    closeBtn.style.textAlign = 'right';
+    closeBtn.style.fontSize = '4.5rem';
+    // closeBtn.style.fontWeight = 'bold';
+    closeBtn.style.color = 'white';
+    closeBtn.style.position = 'absolute';
+    closeBtn.style.top = '3rem';
+    closeBtn.style.right = '6rem';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.border = '3px solid white';
+    closeBtn.style.padding = '1rem 2.5rem';
+    closeBtn.onclick = function () {
+      const body = document.getElementsByTagName('body')[0];
+      const aboutModal = document.getElementById('aboutModal');
+      // body.removeChild(aboutModal);
+      aboutModal.style.visibility = 'hidden';
+    }
+    textContainer.appendChild(closeBtn);
+  }
+  createCloseBtn();
+  function createParagraph(container, message, marginTop, fontSize, bold) {
+    const paragraph = document.createElement('div');
+    paragraph.innerText = message;
+    paragraph.style.padding = '1rem 0';
+    paragraph.style.marginTop = marginTop || 0;
+    paragraph.style.color = "white";
+    paragraph.style.fontSize = fontSize || '1.5rem';
+    paragraph.style.fontWeight = bold || 'light';
+    container.appendChild(paragraph);
+  }
+  createParagraph(textContainer, '- This is a TOOL to LOG HOURS OF DEEP WORK.', '1rem');
+  createParagraph(textContainer, '- NO DATABASE REQUIREMENT.');
+  createParagraph(textContainer, '- All hour logs data is managed by via simple textfile.');
+  createParagraph(textContainer, '- Literally just that. Windows notepad file. Word file. Any file ending with ".txt"');
+  // createParagraph(textContainer, '');
+  createParagraph(textContainer, '30 SECONDS TUTORIAL:', '1.5rem', '2rem', 'bold');
+  createParagraph(textContainer, '1. Add hours worked by CLICKING +/- BUTTONS in given day\'s column.');
+  createParagraph(textContainer, '2. Click "SAVE TO TEXT FILE" button, in the top menu.');
+  createParagraph(textContainer, '3. Prompt will appear. Choose "Save file." Save it to desktop or wherever you can find it easily. \n (The file is a text file with hours data formatted into text format, and nothing more. It is automatically named "DEEP WORK HOURS LOG.txt", with time and date. You don\'t even need to ever open it.)');
+  createParagraph(textContainer, '4. Close the page. You\'ll see all the hours data disappeared.');
+  createParagraph(textContainer, '5. Re-open the page. Click DROP TEXT FILE. Prompt will appear, allowing you to browse files. Find the text file. Click it. Press enter or click ok. ALL THE LOGGED HOURS DATA RE-APPEARS!');
+  createParagraph(textContainer, 'This is a solution where saving and persisting the data is achieved with no database or outside server requirements. It\'s just using a text file to store and update the logs data. User saves the data into a text file via 1 button click. User updates the data by dropping the text file via 1 button click. This is why the app is simple and doesn\'t have to require any of the account creation, email, passwords, logging in, etc.');
+
+  aboutModal.appendChild(textContainer);
+  aboutModal.id = 'aboutModal';
+  body.appendChild(aboutModal);
+  console.log(aboutModal);
 }
 function createDisplayOptionsPage() {
   // components
