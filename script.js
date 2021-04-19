@@ -18,9 +18,12 @@ const date = new Date();
     // 3. gather weeks from the string, as arrays of days, push each into month array
     const weeks = weeksByCommaString.split(',');
     weeks.pop();
+    let count = 1;
     weeks.forEach(function(week){
       const weekInDays = week.split(' ');
+      weekInDays.weekName = 'Week ' + count; 
       monthDATA.push(weekInDays);
+      count++;
     })
     // 4. push month array, filled with month's week arrays with days inside, into year array
     yearDATA.push(monthDATA);
@@ -40,6 +43,9 @@ function createHoursLog() {
   for (let i = 0; i < yearDATA.length; i++) {
     let month = yearDATA[i];
     console.log(month.monthName)
+    for (let j = 0; j < month.length; j++) {
+      console.log(month[j].weekName);
+    }
   }
 }
 
