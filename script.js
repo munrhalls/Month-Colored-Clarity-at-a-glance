@@ -41,20 +41,30 @@ window.addEventListener('load', function () {
 });
 
 function createHoursLog() {
+  let root = document.getElementById('root');
   for (let i = 0; i < yearDATA.length; i++) {
     let month = yearDATA[i];
     // MONTHS LEVEL
+    let monthEl = document.createElement('div');
+    monthEl.innerText = 'MONTH';
     console.log(month.monthName)
     for (let j = 0; j < month.length; j++) {
       let week = month[j];
       // WEEKS LEVEL
-      console.log(week.weekName);
+      let weekEl = document.createElement('div');
+      weekEl.innerText = 'WEEK'
+      monthEl.appendChild(weekEl)
+      console.log(week.weekName)
       for (let y = 0; y < week.length; y++) {
         let day = week[y];
         // DAYS LEVEL
+        let dayEl = document.createElement('div');
+        dayEl.innerText = 'DAY'
+        weekEl.appendChild(dayEl)
         console.log(day);
       }
     }
+    root.appendChild(monthEl);
   }
 }
 
