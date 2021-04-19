@@ -39,15 +39,19 @@ window.addEventListener('load', function () {
   createCopyrightNote();
   createCopyrightNote2();
 });
+
 function createHoursLog() {
   for (let i = 0; i < yearDATA.length; i++) {
     let month = yearDATA[i];
+    // MONTHS LEVEL
     console.log(month.monthName)
     for (let j = 0; j < month.length; j++) {
       let week = month[j];
+      // WEEKS LEVEL
       console.log(week.weekName);
       for (let y = 0; y < week.length; y++) {
         let day = week[y];
+        // DAYS LEVEL
         console.log(day);
       }
     }
