@@ -46,20 +46,20 @@ function createHoursLog() {
     let month = yearDATA[i];
     // MONTHS LEVEL
     let monthEl = document.createElement('div');
-    monthEl.innerText = 'MONTH';
+    monthEl.innerText = month.monthName;
     console.log(month.monthName)
     for (let j = 0; j < month.length; j++) {
       let week = month[j];
       // WEEKS LEVEL
       let weekEl = document.createElement('div');
-      weekEl.innerText = 'WEEK'
+      weekEl.innerText = week.weekName;
       monthEl.appendChild(weekEl)
       console.log(week.weekName)
       for (let y = 0; y < week.length; y++) {
         let day = week[y];
         // DAYS LEVEL
         let dayEl = document.createElement('div');
-        dayEl.innerText = 'DAY'
+        dayEl.innerText = day;
         weekEl.appendChild(dayEl)
         console.log(day);
       }
