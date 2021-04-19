@@ -54,17 +54,19 @@ function createHoursLog() {
       // WEEKS LEVEL
       let weekEl = document.createElement('div');
       weekEl.innerText = week.weekName;
-      weekEl.style.display = 'flex';
       monthEl.appendChild(weekEl)
       console.log(week.weekName)
+      let containerEl = document.createElement('div');
+      containerEl.style.display = 'flex';
       for (let y = 0; y < week.length; y++) {
         let day = week[y];
         // DAYS LEVEL
         let dayEl = document.createElement('div');
         dayEl.innerText = day;
-        weekEl.appendChild(dayEl)
+        containerEl.appendChild(dayEl);
         console.log(day);
       }
+      weekEl.appendChild(containerEl);
     }
     root.appendChild(monthEl);
   }
