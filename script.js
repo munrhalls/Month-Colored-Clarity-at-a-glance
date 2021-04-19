@@ -47,6 +47,7 @@ function createHoursLog() {
     // MONTHS LEVEL
     let monthEl = document.createElement('div');
     monthEl.innerText = month.monthName;
+    monthEl.style.display = 'flex';
     console.log(month.monthName)
     for (let j = 0; j < month.length; j++) {
       let week = month[j];
