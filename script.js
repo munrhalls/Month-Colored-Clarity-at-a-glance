@@ -75,6 +75,8 @@ function createHoursLog() {
         day = day.substring(0, 3);
         // DAYS LEVEL
         let dayEl = document.createElement('div');
+        let count = 0;
+        console.log(count)
         dayEl.className = 'day';
         dayEl.innerText = day;
         dayEl.style.height = '60vh';
@@ -89,7 +91,8 @@ function createHoursLog() {
         addHourBtn.onclick = function() {
           let hourTick = resourceCreateHourTick();
           hourTick.className = 'hour';
-          dayEl.appendChild(hourTick)
+          dayEl.appendChild(hourTick);
+          count++;
         }
         addHourBtn.style.height = '1.75rem';
         addHourBtn.style.fontSize = '1.5rem';
@@ -101,10 +104,12 @@ function createHoursLog() {
         let minusHourBtn = document.createElement('div');
         minusHourBtn.innerText = '-';
         minusHourBtn.onclick = function() {
-          let hourTicks = dayEl.getElementsByClassName('hourTick');
-          if (hourTicks && hourTicks.length) {
-            let hourTick = hourTicks[hourTicks.length - 1];
-            dayEl.removeChild(hourTick);
+          let hours = dayEl.getElementsByClassName('hour');
+          if (hours && hours.length) {
+            let hour = hours[hours.length - 1];
+            dayEl.removeChild(hour);
+            count--;
+            console.log(count)
           }
         }
         minusHourBtn.style.height = '1.75rem';
@@ -114,6 +119,7 @@ function createHoursLog() {
         minusHourBtn.style.background = '#000';
         minusHourBtn.style.textAlign = 'center';
         minusHourBtn.style.cursor = 'pointer';
+        
 
         dayEl.appendChild(addHourBtn)
         dayEl.appendChild(minusHourBtn)
