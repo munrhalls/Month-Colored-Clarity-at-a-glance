@@ -58,12 +58,13 @@ function createHoursLog() {
     for (let j = 0; j < monthDATA.length; j++) {
       let weekDATA = monthDATA[j];
       // WEEKS LEVEL
-      let weekEl = document.createElement('div');
-      weekEl.innerText = weekDATA.weekName;
-      monthContainerEl.appendChild(weekEl)
-      console.log(weekDATA.weekName)
       let weekContainerEl = document.createElement('div');
-      weekContainerEl.style.display = 'flex';
+      weekContainerEl.innerText = weekDATA.weekName;
+      weekContainerEl.style.textAlign = 'center';
+      monthContainerEl.appendChild(weekContainerEl)
+      console.log(weekDATA.weekName)
+      let daysContainerEl = document.createElement('div');
+      daysContainerEl.style.display = 'flex';
       for (let y = 0; y < weekDATA.length; y++) {
         let day = weekDATA[y];
         day = day.substring(0, 3);
@@ -108,10 +109,10 @@ function createHoursLog() {
         dayEl.appendChild(addHourBtn)
         dayEl.appendChild(minusHourBtn)
 
-        weekContainerEl.appendChild(dayEl);
+        daysContainerEl.appendChild(dayEl);
         console.log(day);
       }
-      weekEl.appendChild(weekContainerEl);
+      weekContainerEl.appendChild(daysContainerEl);
     }
     root.appendChild(monthTitleEl);
     root.appendChild(monthContainerEl);
