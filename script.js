@@ -43,25 +43,25 @@ window.addEventListener('load', function () {
 function createHoursLog() {
   let root = document.getElementById('root');
   for (let i = 0; i < yearDATA.length; i++) {
-    let month = yearDATA[i];
+    let monthDATA = yearDATA[i];
     // MONTHS LEVEL
     let monthEl = document.createElement('div');
-    monthEl.innerText = month.monthName;
+    monthEl.innerText = monthDATA.monthName;
     monthEl.style.display = 'flex';
-    console.log(month.monthName)
+    console.log(monthDATA.monthName)
     let monthContainerEl = document.createElement('div');
     monthContainerEl.style.display = 'flex';
-    for (let j = 0; j < month.length; j++) {
-      let week = month[j];
+    for (let j = 0; j < monthDATA.length; j++) {
+      let weekDATA = monthDATA[j];
       // WEEKS LEVEL
       let weekEl = document.createElement('div');
-      weekEl.innerText = week.weekName;
+      weekEl.innerText = weekDATA.weekName;
       monthContainerEl.appendChild(weekEl)
-      console.log(week.weekName)
+      console.log(weekDATA.weekName)
       let weekContainerEl = document.createElement('div');
       weekContainerEl.style.display = 'flex';
-      for (let y = 0; y < week.length; y++) {
-        let day = week[y];
+      for (let y = 0; y < weekDATA.length; y++) {
+        let day = weekDATA[y];
         day = day.substring(0, 3);
         // DAYS LEVEL
         let dayEl = document.createElement('div');
@@ -83,6 +83,7 @@ function createHoursLog() {
         addHourBtn.style.color = '#fff';
         addHourBtn.style.background = '#000';
         addHourBtn.style.textAlign = 'center';
+        addHourBtn.style.cursor = 'pointer';
 
         let minusHourBtn = document.createElement('div');
         minusHourBtn.innerText = '-';
@@ -99,6 +100,8 @@ function createHoursLog() {
         minusHourBtn.style.color = '#fff';
         minusHourBtn.style.background = '#000';
         minusHourBtn.style.textAlign = 'center';
+        minusHourBtn.style.cursor = 'pointer';
+
         let hourTick = resourceCreateHourTick();
         dayEl.appendChild(addHourBtn)
         dayEl.appendChild(minusHourBtn)
@@ -168,7 +171,7 @@ function createMenu() {
   document.getElementById('root').appendChild(menu);
   createAboutPage();
   createAboutModal();
-  createDisplayOptionsPage();
+  // createDisplayOptionsPage();
   createSaveTextFileBtn();
   createFillDataBtn();
   menu.appendChild(saveToExcelBtn);
