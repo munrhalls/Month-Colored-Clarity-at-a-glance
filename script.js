@@ -59,7 +59,10 @@ function createHoursLog() {
       let weekDATA = monthDATA[j];
       // WEEKS LEVEL
       let weekContainerEl = document.createElement('div');
-      weekContainerEl.innerText = weekDATA.weekName;
+      let weekTitleEl = document.createElement('div');
+      weekTitleEl.innerText = weekDATA.weekName;
+      weekTitleEl.style.paddingBottom = '0.5rem'
+      weekContainerEl.appendChild(weekTitleEl);
       weekContainerEl.style.textAlign = 'center';
       monthContainerEl.appendChild(weekContainerEl)
       console.log(weekDATA.weekName)
