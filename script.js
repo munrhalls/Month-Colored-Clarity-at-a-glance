@@ -73,17 +73,22 @@ function createHoursLog() {
         let addHourBtn = document.createElement('div');
         addHourBtn.innerText = '+';
         addHourBtn.onclick = function() {
-          alert('hey')
+          let hourTick = resourceCreateHourTick();
+          hourTick.className = 'hourTick';
+          dayEl.appendChild(hourTick)
         }
         let minusHourBtn = document.createElement('div');
         minusHourBtn.innerText = '-';
         minusHourBtn.onclick = function() {
-          
+          let hourTicks = dayEl.getElementsByClassName('hourTick');
+          if (hourTicks && hourTicks.length) {
+            let hourTick = hourTicks[hourTicks.length - 1];
+            dayEl.removeChild(hourTick);
+          }
         }
         let hourTick = resourceCreateHourTick();
         dayEl.appendChild(addHourBtn)
         dayEl.appendChild(minusHourBtn)
-        dayEl.appendChild(hourTick)
 
         weekContainerEl.appendChild(dayEl);
         console.log(day);
