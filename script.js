@@ -45,9 +45,10 @@ function createHoursLog() {
   for (let i = 0; i < yearDATA.length; i++) {
     let monthDATA = yearDATA[i];
     // MONTHS LEVEL
-    let monthEl = document.createElement('div');
-    monthEl.innerText = monthDATA.monthName;
-    monthEl.style.display = 'flex';
+    let monthTitleEl = document.createElement('div');
+    monthTitleEl.innerText = monthDATA.monthName;
+    monthTitleEl.style.display = 'flex';
+    monthTitleEl.style.textAlign = 'center';
     console.log(monthDATA.monthName)
     let monthContainerEl = document.createElement('div');
     monthContainerEl.style.display = 'flex';
@@ -69,7 +70,7 @@ function createHoursLog() {
         dayEl.style.height = '60vh';
         dayEl.style.width = '3rem';
         dayEl.style.borderLeft = '1px solid #000';
-
+        // INSIDE DAY LEVEL
         let addHourBtn = document.createElement('div');
         addHourBtn.innerText = '+';
         addHourBtn.onclick = function() {
@@ -84,7 +85,6 @@ function createHoursLog() {
         addHourBtn.style.background = '#000';
         addHourBtn.style.textAlign = 'center';
         addHourBtn.style.cursor = 'pointer';
-
         let minusHourBtn = document.createElement('div');
         minusHourBtn.innerText = '-';
         minusHourBtn.onclick = function() {
@@ -102,7 +102,6 @@ function createHoursLog() {
         minusHourBtn.style.textAlign = 'center';
         minusHourBtn.style.cursor = 'pointer';
 
-        let hourTick = resourceCreateHourTick();
         dayEl.appendChild(addHourBtn)
         dayEl.appendChild(minusHourBtn)
 
@@ -111,8 +110,8 @@ function createHoursLog() {
       }
       weekEl.appendChild(weekContainerEl);
     }
-    monthEl.appendChild(monthContainerEl);
-    root.appendChild(monthEl);
+    root.appendChild(monthTitleEl);
+    root.appendChild(monthContainerEl);
   }
 }
 
