@@ -47,7 +47,10 @@ function createHoursLog() {
     // MONTHS LEVEL
     let monthTitleEl = document.createElement('div');
     monthTitleEl.innerText = monthDATA.monthName;
-    monthTitleEl.style.display = 'flex';
+    monthTitleEl.style.textAlign = 'center';
+    monthTitleEl.style.fontSize = '1.75rem';
+    monthTitleEl.style.padding = '1.75rem';
+
     monthTitleEl.style.textAlign = 'center';
     console.log(monthDATA.monthName)
     let monthContainerEl = document.createElement('div');
