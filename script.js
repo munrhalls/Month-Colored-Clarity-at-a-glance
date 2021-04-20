@@ -125,9 +125,9 @@ function createHoursLog() {
     root.appendChild(monthContainerEl);
   }
 }
-
-document.addEventListener(onmousedown, function(){
-  console.log('click')
+const root = document.getElementById('root');
+root.addEventListener('mousedown', function(e){
+  console.log('click');
 });
 
 
