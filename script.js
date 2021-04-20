@@ -126,8 +126,15 @@ function createHoursLog() {
   }
 }
 const root = document.getElementById('root');
+
 root.addEventListener('mousedown', function(e){
-  console.log('click');
+  if (e !== 'mouseup') {
+    console.log('hold')
+  }
+});
+root.addEventListener('mouseup', function(e){
+  console.log(e)
+  // console.log('click');
 });
 
 
