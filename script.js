@@ -50,9 +50,7 @@ function createHoursLog() {
     monthTitleEl.style.textAlign = 'center';
     monthTitleEl.style.fontSize = '1.75rem';
     monthTitleEl.style.padding = '1.75rem';
-
     monthTitleEl.style.textAlign = 'center';
-    console.log(monthDATA.monthName)
     let monthContainerEl = document.createElement('div');
     monthContainerEl.style.display = 'flex';
     monthContainerEl.style.flexWrap = 'wrap';
@@ -67,7 +65,6 @@ function createHoursLog() {
       weekContainerEl.appendChild(weekTitleEl);
       weekContainerEl.style.textAlign = 'center';
       monthContainerEl.appendChild(weekContainerEl)
-      console.log(weekDATA.weekName)
       let daysContainerEl = document.createElement('div');
       daysContainerEl.style.display = 'flex';
       for (let y = 0; y < weekDATA.length; y++) {
@@ -75,8 +72,8 @@ function createHoursLog() {
         day = day.substring(0, 3);
         // DAYS LEVEL
         let dayEl = document.createElement('div');
+        // closure
         let count = 0;
-        console.log(count)
         dayEl.className = 'day';
         dayEl.innerText = day;
         dayEl.style.height = '60vh';
@@ -109,7 +106,6 @@ function createHoursLog() {
             let hour = hours[hours.length - 1];
             dayEl.removeChild(hour);
             count--;
-            console.log(count)
           }
         }
         minusHourBtn.style.height = '1.75rem';
@@ -119,13 +115,9 @@ function createHoursLog() {
         minusHourBtn.style.background = '#000';
         minusHourBtn.style.textAlign = 'center';
         minusHourBtn.style.cursor = 'pointer';
-        
-
-        dayEl.appendChild(addHourBtn)
-        dayEl.appendChild(minusHourBtn)
-
+        dayEl.appendChild(addHourBtn);
+        dayEl.appendChild(minusHourBtn);
         daysContainerEl.appendChild(dayEl);
-        console.log(day);
       }
       weekContainerEl.appendChild(daysContainerEl);
     }
@@ -134,6 +126,9 @@ function createHoursLog() {
   }
 }
 
+document.addEventListener(onmousedown, function(){
+  console.log('click')
+});
 
 
 
