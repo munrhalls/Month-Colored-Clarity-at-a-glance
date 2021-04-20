@@ -77,6 +77,13 @@ function createHoursLog() {
           hourTick.className = 'hourTick';
           dayEl.appendChild(hourTick)
         }
+        addHourBtn.style.height = '1.75rem';
+        addHourBtn.style.fontSize = '1.5rem';
+        addHourBtn.style.textAlign = 'center';
+        addHourBtn.style.color = '#fff';
+        addHourBtn.style.background = '#000';
+        addHourBtn.style.textAlign = 'center';
+
         let minusHourBtn = document.createElement('div');
         minusHourBtn.innerText = '-';
         minusHourBtn.onclick = function() {
@@ -86,6 +93,12 @@ function createHoursLog() {
             dayEl.removeChild(hourTick);
           }
         }
+        minusHourBtn.style.height = '1.75rem';
+        minusHourBtn.style.fontSize = '1.5rem';
+        minusHourBtn.style.textAlign = 'center';
+        minusHourBtn.style.color = '#fff';
+        minusHourBtn.style.background = '#000';
+        minusHourBtn.style.textAlign = 'center';
         let hourTick = resourceCreateHourTick();
         dayEl.appendChild(addHourBtn)
         dayEl.appendChild(minusHourBtn)
