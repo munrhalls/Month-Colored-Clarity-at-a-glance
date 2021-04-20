@@ -55,6 +55,7 @@ function createHoursLog() {
     console.log(monthDATA.monthName)
     let monthContainerEl = document.createElement('div');
     monthContainerEl.style.display = 'flex';
+    monthContainerEl.style.flexWrap= 'wrap';
     for (let j = 0; j < monthDATA.length; j++) {
       let weekDATA = monthDATA[j];
       // WEEKS LEVEL
