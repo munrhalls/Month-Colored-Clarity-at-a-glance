@@ -74,6 +74,7 @@ function createHoursLog() {
         day = day.substring(0, 3);
         // DAYS LEVEL
         let dayEl = document.createElement('div');
+        dayEl.className = 'day';
         dayEl.innerText = day;
         dayEl.style.height = '60vh';
         dayEl.style.width = '3rem';
@@ -86,7 +87,7 @@ function createHoursLog() {
         addHourBtn.innerText = '+';
         addHourBtn.onclick = function() {
           let hourTick = resourceCreateHourTick();
-          hourTick.className = 'hourTick';
+          hourTick.className = 'hour';
           dayEl.appendChild(hourTick)
         }
         addHourBtn.style.height = '1.75rem';
@@ -653,8 +654,8 @@ function appendHoursToDay(hoursNum, day) {
   }
 }
 function appendHour(hoursNum, day) {
-  const hour = createHourTick();
-  appendNumToHour(hoursNum, hour);
+  const hour = resourceCreateHourTick();
+  // appendNumToHour(hoursNum, hour);
   day.appendChild(hour);
 }
 function createSaveToExcelBtn() {
