@@ -77,6 +77,9 @@ function createHoursLog() {
         dayEl.style.height = '60vh';
         dayEl.style.width = '3rem';
         dayEl.style.borderLeft = '1px solid #000';
+        if (y + 1 == weekDATA.length) {
+          dayEl.style.borderRight = '1px solid #000';
+        } 
         // INSIDE DAY LEVEL
         let addHourBtn = document.createElement('div');
         addHourBtn.innerText = '+';
