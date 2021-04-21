@@ -87,6 +87,7 @@ function createHoursLog() {
         addHourBtn.innerText = '+';
         let hoursContainerEl = document.createElement('div');
         hoursContainerEl.className = 'hoursContainer';
+        dayEl.appendChild(hoursContainerEl);
         let sumEl = document.createElement('div');
         sumEl.innerText = count;
         sumEl.style.background = '#000000';
@@ -98,10 +99,10 @@ function createHoursLog() {
         addHourBtn.onclick = function() {
           let hourTick = resourceCreateHourTick();
           hourTick.className = 'hour';
-          dayEl.appendChild(hourTick);
+          hoursContainerEl.appendChild(hourTick);
           dayEl.appendChild(sumEl);
-          count++;
-          sumEl.innerText = count;
+          let hours = dayEl.getElementsByClassName('hour');
+          sumEl.innerText = hours.length;
         }
         addHourBtn.style.height = '1.75rem';
         addHourBtn.style.fontSize = '1.5rem';
@@ -116,9 +117,8 @@ function createHoursLog() {
           let hours = dayEl.getElementsByClassName('hour');
           if (hours && hours.length) {
             let hour = hours[hours.length - 1];
-            dayEl.removeChild(hour);
-            count--;
-            sumEl.innerText = count;
+            hoursContainerEl.removeChild(hour);
+            sumEl.innerText = hours.length;
           }
         }
         minusHourBtn.style.height = '1.75rem';
