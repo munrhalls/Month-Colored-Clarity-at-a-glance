@@ -92,7 +92,7 @@ function createHoursLog() {
         sumEl.style.background = '#000000';
         sumEl.style.color = '#ffffff';
         sumEl.style.height = '2.75rem';
-        sumEl.style.fontSize = '2.25rem  '
+        sumEl.style.fontSize = '2.25rem';
 
       
         addHourBtn.onclick = function() {
@@ -118,6 +118,7 @@ function createHoursLog() {
             let hour = hours[hours.length - 1];
             dayEl.removeChild(hour);
             count--;
+            sumEl.innerText = count;
           }
         }
         minusHourBtn.style.height = '1.75rem';
