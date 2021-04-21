@@ -53,7 +53,7 @@ function createHoursLog() {
     monthTitleEl.style.textAlign = 'center';
     let monthContainerEl = document.createElement('div');
     monthContainerEl.style.display = 'flex';
-    monthContainerEl.style.flexWrap = 'wrap';
+    monthContainerEl.style.flexWrap = 'no-wrap';
     monthContainerEl.style.justifyContent = 'center';
     for (let j = 0; j < monthDATA.length; j++) {
       let weekDATA = monthDATA[j];
@@ -129,12 +129,26 @@ const root = document.getElementById('root');
 
 root.addEventListener('mousedown', function(e){
   if (e !== 'mouseup') {
-    console.log('hold')
+    let canvas = document.createElement('canvas');
+    root.appendChild(canvas);
+    canvas.style.border = '1px solid black';
+    canvas.style.width = '560px';
+    canvas.style.height = '360px';
+    let context = canvas.getContext('2d');
+    console.log(context)
+    context.beginPath();
+    context.strokeStyle = 'black';
+    context.lineWidth = 1;
+    context.moveTo(e.offsetY, e.offsetX);
+    context.lineTo(0, 0);
+    context.stroke();
+    context.closePath(); 
   }
 });
 root.addEventListener('mouseup', function(e){
   console.log(e)
-  // console.log('click');
+  let y = e.clientY;
+  let x = e.clientX;  
 });
 
 
