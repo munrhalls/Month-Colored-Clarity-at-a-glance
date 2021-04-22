@@ -41,6 +41,7 @@ window.addEventListener('load', function () {
 
   const root = document.getElementById('root');
   root.style.minHeight = '100vh';
+  root.style.userSelect = 'none';
   root.markingHoursEvent = false;
   root.style.position = 'relative';
   root.addEventListener('mousedown', function (e) {
