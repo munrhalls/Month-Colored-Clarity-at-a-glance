@@ -94,13 +94,12 @@ function createHoursLog() {
         sumEl.style.color = '#ffffff';
         sumEl.style.height = '2.75rem';
         sumEl.style.fontSize = '2.25rem';
-
-      
+        let hours = dayEl.getElementsByClassName('hour');
+        sumEl.innerText = hours.length;
         addHourBtn.onclick = function() {
           let hourTick = resourceCreateHourTick();
           hourTick.className = 'hour';
           hoursContainerEl.appendChild(hourTick);
-          dayEl.appendChild(sumEl);
           let hours = dayEl.getElementsByClassName('hour');
           sumEl.innerText = hours.length;
         }
@@ -131,6 +130,8 @@ function createHoursLog() {
         dayEl.appendChild(addHourBtn);
         dayEl.appendChild(minusHourBtn);
         dayEl.appendChild(hoursContainerEl);
+        dayEl.appendChild(sumEl);
+
         daysContainerEl.appendChild(dayEl);
       }
       weekContainerEl.appendChild(daysContainerEl);
