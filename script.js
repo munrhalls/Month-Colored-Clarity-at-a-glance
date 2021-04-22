@@ -39,6 +39,7 @@ window.addEventListener('load', function () {
   createCopyrightNote();
   createCopyrightNote2();
 
+  // select area with mouse drag
   const root = document.getElementById('root');
   root.style.minHeight = '100vh';
   root.style.userSelect = 'none';
@@ -52,6 +53,12 @@ window.addEventListener('load', function () {
     markerEl.style.height = '1px';
     markerEl.style.width = '1px';
     markerEl.style.border = '1px solid #000000';
+    markerEl.style.borderRadius = '50%';
+    let colors = ['blue', 'green', 'purple', 'grey', 'orange', 'yellow', 'red'];
+    let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
+    let projectColor = colors[rndNum];
+    markerEl.style.background = projectColor;
+    markerEl.style.opacity = '70%';
     markerEl.style.position = 'absolute';
     let y = e.pageY.toString() + 'px';
     let x = e.pageX.toString() + 'px';

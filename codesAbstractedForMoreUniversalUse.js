@@ -1,6 +1,8 @@
 // this guy enables a circle that expands from the cursor location upon dragging, for area selection and marking purposes  
+// select area with mouse drag
 const root = document.getElementById('root');
 root.style.minHeight = '100vh';
+root.style.userSelect = 'none';
 root.markingHoursEvent = false;
 root.style.position = 'relative';
 root.addEventListener('mousedown', function (e) {
@@ -30,6 +32,12 @@ root.addEventListener('mousemove', function (e) {
     let heightUpdateX = Math.abs(e.pageX - prevCursorX) + 'px';
     markerEl.style.height = heightUpdateY;
     markerEl.style.width = heightUpdateX;
+    if (e.pageY - parseInt((markerEl.y).split('px')[0]) < 0) {
+      markerEl.style.top = e.pageY + 'px';
+    }
+    if (e.pageX - parseInt((markerEl.x).split('px')[0]) < 0) {
+      markerEl.style.left = e.pageX + 'px';
+    }
     console.log('check if an hourtick is inside coordinates (math, < than)');
     console.log('pre-mark hour ticks inside');
     console.log('erase mark or set mark, depending on confirmation');
@@ -37,5 +45,7 @@ root.addEventListener('mousemove', function (e) {
 });
 root.addEventListener('mouseup', function (e) {
   root.markingHoursEvent = false;
+  let markerEl = document.getElementById('markerEl');
+  markerEl.remove();
   console.log('delete div');
 });
