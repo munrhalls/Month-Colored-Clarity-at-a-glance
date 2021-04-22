@@ -38,6 +38,35 @@ window.addEventListener('load', function () {
 
   createCopyrightNote();
   createCopyrightNote2();
+
+
+  const root = document.getElementById('root');
+  root.markingHoursEvent = false;
+  root.style.position = 'relative';
+  root.addEventListener('mousedown', function (e) {
+    root.markingHoursEvent = true;
+    console.log('create div');
+    let markerEl = document.createElement('div');
+    markerEl.style.height = '100px';
+    markerEl.style.width = '100px';
+    markerEl.style.border = '10px solid #000000';
+    markerEl.style.position = 'absolute';
+    markerEl.style.top = e.clientY.toString();
+    markerEl.style.left = e.clientX.toString();
+    root.appendChild(markerEl)
+  });
+  root.addEventListener('mouseover', function (e) {
+    if (root.markingHoursEvent) {
+      console.log('re-draw div');
+      console.log('check if an hourtick is inside coordinates (math, < than)');
+      console.log('pre-mark hour ticks inside');
+      console.log('erase mark or set mark, depending on confirmation');
+    }
+  });
+  root.addEventListener('mouseup', function (e) {
+    root.markingHoursEvent = false;
+    console.log('delete div');
+  });
 });
 
 function createHoursLog() {
@@ -139,25 +168,7 @@ function createHoursLog() {
     root.appendChild(monthContainerEl);
   }
 }
-const root = document.getElementById('root');
-root.eventMarkingHours = false;
-root.addEventListener('mousedown', function (e) {
-  root.eventMarkingHours = true;
-  console.log('create div');
-});
-root.addEventListener('mouseover', function (e) {
-  if (root.eventMarkingHours) {
-    console.log('delete div');
-    console.log('re-draw div');
-    console.log('check if an hourtick is inside coordinates (math, < than)');
-    console.log('pre-mark hour ticks inside');
-    console.log('erase mark or set mark, depending on confirmation');
-  }
-});
-root.addEventListener('mouseup', function (e) {
-  root.eventMarkingHours = false;
-  console.log('delete div');
-});
+
 
 
 
