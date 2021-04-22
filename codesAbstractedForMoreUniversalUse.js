@@ -1,5 +1,6 @@
 // this guy enables a circle that expands from the cursor location upon dragging, for area selection and marking purposes  
 // select area with mouse drag
+// + add random semi-transparent color to the selection
 const root = document.getElementById('root');
 root.style.minHeight = '100vh';
 root.style.userSelect = 'none';
@@ -13,6 +14,12 @@ root.addEventListener('mousedown', function (e) {
   markerEl.style.height = '1px';
   markerEl.style.width = '1px';
   markerEl.style.border = '1px solid #000000';
+  markerEl.style.borderRadius = '50%';
+  let colors = ['blue', 'green', 'purple', 'grey', 'orange', 'yellow', 'red'];
+  let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
+  let projectColor = colors[rndNum];
+  markerEl.style.background = projectColor;
+  markerEl.style.opacity = '70%';
   markerEl.style.position = 'absolute';
   let y = e.pageY.toString() + 'px';
   let x = e.pageX.toString() + 'px';
