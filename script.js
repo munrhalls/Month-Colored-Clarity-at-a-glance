@@ -89,13 +89,13 @@ function createHoursLog() {
         hoursContainerEl.className = 'hoursContainerEl';
         dayEl.appendChild(hoursContainerEl);
         let sumEl = document.createElement('div');
-        sumEl.innerText = count;
+        sumEl.className = 'sumEl';
+        let hours = dayEl.getElementsByClassName('hourEl');
+        sumEl.innerText = hours.length;
         sumEl.style.background = '#000000';
         sumEl.style.color = '#ffffff';
         sumEl.style.height = '2.75rem';
         sumEl.style.fontSize = '2.25rem';
-        let hours = dayEl.getElementsByClassName('hourEl');
-        sumEl.innerText = hours.length;
         addHourBtn.onclick = function() {
           let hourTick = resourceCreateHourTick();
           hourTick.className = 'hourEl';
@@ -688,11 +688,14 @@ function clearHoursFromTheDay(day) {
 }
 function appendHoursToDay(hoursNum, day) {
   for (let j = 1; j <= hoursNum; j++) {
-    appendHour(j, day);
+    appendHour(hoursNum, day);
   }
+  let sumEl = day.getElementsByClassName('sumEl')[0];
+  sumEl.innerText = day.getElementsByClassName('hourEl').length;
 }
 function appendHour(hoursNum, day) {
   const hour = resourceCreateHourTick();
+  hour.className = 'hourEl';
   // appendNumToHour(hoursNum, hour);
   let hoursContainerEl = day.getElementsByClassName('hoursContainerEl')[0];
   hoursContainerEl.appendChild(hour);
