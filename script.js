@@ -71,6 +71,12 @@ window.addEventListener('load', function () {
       let heightUpdateX = Math.abs(e.pageX - prevCursorX) + 'px';
       markerEl.style.height = heightUpdateY;
       markerEl.style.width = heightUpdateX;
+      if (e.pageY - parseInt((markerEl.y).split('px')[0]) < 0) {
+        markerEl.style.top = e.pageY + 'px';
+      }
+      if (e.pageX - parseInt((markerEl.x).split('px')[0]) < 0) {
+        markerEl.style.left = e.pageX + 'px';
+      }
       console.log('check if an hourtick is inside coordinates (math, < than)');
       console.log('pre-mark hour ticks inside');
       console.log('erase mark or set mark, depending on confirmation');
