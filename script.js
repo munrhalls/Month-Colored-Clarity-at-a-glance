@@ -51,7 +51,7 @@ window.addEventListener('load', function () {
     // console.log('create div');
     let markerEl = document.createElement('div');
     markerEl.id = 'markerEl';
-    markerEl.onclick = function(e) {
+    markerEl.onclick = function (e) {
       console.log(e)
     }
 
@@ -97,7 +97,15 @@ window.addEventListener('load', function () {
   root.addEventListener('mouseup', function (e) {
     root.markingHoursEvent = false;
     let markerEl = document.getElementById('markerEl');
-    markerEl.click();
+    let boundingRect = markerEl.getBoundingClientRect();
+    if (document.getElementsByClassName('hourEl').length) {
+      let hourEl = document.getElementsByClassName('hourEl')[0];
+      let height = hourEl.clientHeight;
+      let verticalDistance = Math.abs(boundingRect.top - boundingRect.bottom);
+      for (let i = 0; i < verticalDistance; i += height) {
+        console.log(height)
+      }
+    }
     markerEl.remove();
   });
 });
@@ -162,10 +170,13 @@ function createHoursLog() {
           let hourTick = resourceCreateHourTick();
           hourTick.className = 'hourEl';
           hoursContainerEl.appendChild(hourTick);
+          // coords
           let boundingRect = hourTick.getBoundingClientRect();
-          hourTick.y = boundingRect.top;
-          hourTick.x = boundingRect.left;
-          alert(hourTick.y);
+          let y = boundingRect.top;
+          let x = boundingRect.left;
+          hourTick.id = y + ',' + x;
+          console.log(hourTick.id);
+          // -> ctrl f ".onclick" or "markerEl" -> find mouseup, the markerEl event
           let hours = dayEl.getElementsByClassName('hourEl');
           sumEl.innerText = hours.length;
         }
