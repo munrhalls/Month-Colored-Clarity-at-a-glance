@@ -96,7 +96,7 @@ function createHoursLog() {
         sumEl.style.color = '#ffffff';
         sumEl.style.height = '2.75rem';
         sumEl.style.fontSize = '2.25rem';
-        addHourBtn.onclick = function() {
+        addHourBtn.onclick = function () {
           let hourTick = resourceCreateHourTick();
           hourTick.className = 'hourEl';
           hoursContainerEl.appendChild(hourTick);
@@ -112,7 +112,7 @@ function createHoursLog() {
         addHourBtn.style.cursor = 'pointer';
         let minusHourBtn = document.createElement('div');
         minusHourBtn.innerText = '-';
-        minusHourBtn.onclick = function() {
+        minusHourBtn.onclick = function () {
           let hours = dayEl.getElementsByClassName('hourEl');
           if (hours && hours.length) {
             let hour = hours[hours.length - 1];
@@ -140,31 +140,24 @@ function createHoursLog() {
   }
 }
 const root = document.getElementById('root');
-
-root.addEventListener('mousedown', function(e){
-  if (e !== 'mouseup') {
-    let canvas = document.createElement('canvas');
-    root.appendChild(canvas);
-    canvas.style.border = '1px solid black';
-    canvas.style.width = '560px';
-    canvas.style.height = '360px';
-    let context = canvas.getContext('2d');
-    console.log(context)
-    context.beginPath();
-    context.strokeStyle = 'black';
-    context.lineWidth = 1;
-    context.moveTo(e.offsetY, e.offsetX);
-    context.lineTo(0, 0);
-    context.stroke();
-    context.closePath(); 
+root.eventMarkingHours = false;
+root.addEventListener('mousedown', function (e) {
+  root.eventMarkingHours = true;
+  console.log('create div');
+});
+root.addEventListener('mouseover', function (e) {
+  if (root.eventMarkingHours) {
+    console.log('delete div');
+    console.log('re-draw div');
+    console.log('check if an hourtick is inside coordinates (math, < than)');
+    console.log('pre-mark hour ticks inside');
+    console.log('erase mark or set mark, depending on confirmation');
   }
 });
-root.addEventListener('mouseup', function(e){
-  console.log(e)
-  let y = e.clientY;
-  let x = e.clientX;  
+root.addEventListener('mouseup', function (e) {
+  root.eventMarkingHours = false;
+  console.log('delete div');
 });
-
 
 
 
