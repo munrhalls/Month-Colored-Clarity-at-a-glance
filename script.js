@@ -55,7 +55,7 @@ window.addEventListener('load', function () {
     markerEl.style.left = e.clientX.toString();
     root.appendChild(markerEl)
   });
-  root.addEventListener('mouseover', function (e) {
+  root.addEventListener('mousemove', function (e) {
     if (root.markingHoursEvent) {
       console.log('re-draw div');
       console.log('check if an hourtick is inside coordinates (math, < than)');
