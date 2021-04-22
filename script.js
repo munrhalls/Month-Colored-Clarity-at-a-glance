@@ -40,6 +40,7 @@ window.addEventListener('load', function () {
   createCopyrightNote2();
 
   // select area with mouse drag
+  // (idk what's the Big O of that, so it's prolly rly expensive)
   const root = document.getElementById('root');
   root.style.minHeight = '100vh';
   root.style.userSelect = 'none';
@@ -50,10 +51,14 @@ window.addEventListener('load', function () {
     // console.log('create div');
     let markerEl = document.createElement('div');
     markerEl.id = 'markerEl';
+    markerEl.onclick = function(e) {
+      console.log(e)
+    }
+
     markerEl.style.height = '1px';
     markerEl.style.width = '1px';
     markerEl.style.border = '1px solid #000000';
-    markerEl.style.borderRadius = '50%';
+    // markerEl.style.borderRadius = '50%';
     let colors = ['blue', 'green', 'purple', 'grey', 'orange', 'yellow', 'red'];
     let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
     let projectColor = colors[rndNum];
@@ -92,8 +97,8 @@ window.addEventListener('load', function () {
   root.addEventListener('mouseup', function (e) {
     root.markingHoursEvent = false;
     let markerEl = document.getElementById('markerEl');
+    markerEl.click();
     markerEl.remove();
-    // console.log('delete div');
   });
 });
 
@@ -157,6 +162,10 @@ function createHoursLog() {
           let hourTick = resourceCreateHourTick();
           hourTick.className = 'hourEl';
           hoursContainerEl.appendChild(hourTick);
+          let boundingRect = hourTick.getBoundingClientRect();
+          hourTick.y = boundingRect.top;
+          hourTick.x = boundingRect.left;
+          alert(hourTick.y);
           let hours = dayEl.getElementsByClassName('hourEl');
           sumEl.innerText = hours.length;
         }
