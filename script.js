@@ -33,26 +33,29 @@ for (let i = 1; i <= 12; i++) {
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  createMenu();
-  createHoursLog();
+  // createMenu();
+  // createHoursLog();
 
-  createCopyrightNote();
-  createCopyrightNote2();
-
+  // createCopyrightNote();
+  // createCopyrightNote2();
 
   const root = document.getElementById('root');
+  root.style.minHeight = '100vh';
   root.markingHoursEvent = false;
   root.style.position = 'relative';
   root.addEventListener('mousedown', function (e) {
     root.markingHoursEvent = true;
     console.log('create div');
     let markerEl = document.createElement('div');
+    markerEl.id = 'markerEl';
     markerEl.style.height = '100px';
     markerEl.style.width = '100px';
     markerEl.style.border = '10px solid #000000';
     markerEl.style.position = 'absolute';
-    markerEl.style.top = e.clientY.toString();
-    markerEl.style.left = e.clientX.toString();
+    let y = e.offsetY.toString() + 'px';
+    let x = e.offsetX.toString() + 'px';
+    markerEl.style.top = y;
+    markerEl.style.left = x;
     root.appendChild(markerEl)
   });
   root.addEventListener('mousemove', function (e) {
@@ -168,14 +171,6 @@ function createHoursLog() {
     root.appendChild(monthContainerEl);
   }
 }
-
-
-
-
-
-
-
-
 
 const VALUES_MenuSharedCSS = {
   height_menuWhole: '9rem',
