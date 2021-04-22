@@ -48,19 +48,28 @@ window.addEventListener('load', function () {
     console.log('create div');
     let markerEl = document.createElement('div');
     markerEl.id = 'markerEl';
-    markerEl.style.height = '100px';
-    markerEl.style.width = '100px';
-    markerEl.style.border = '10px solid #000000';
+    markerEl.style.height = '1px';
+    markerEl.style.width = '1px';
+    markerEl.style.border = '1px solid #000000';
     markerEl.style.position = 'absolute';
     let y = e.pageY.toString() + 'px';
     let x = e.pageX.toString() + 'px';
     markerEl.style.top = y;
     markerEl.style.left = x;
+    markerEl.y = y;
+    markerEl.x = x;
     root.appendChild(markerEl)
   });
   root.addEventListener('mousemove', function (e) {
     if (root.markingHoursEvent) {
       console.log('re-draw div');
+      let markerEl = document.getElementById('markerEl');
+      let prevCursorY = parseInt((markerEl.y).split('px')[0]);
+      let prevCursorX = parseInt((markerEl.x).split('px')[0]);
+      let heightUpdateY = Math.abs(e.pageY - prevCursorY) + 'px';
+      let heightUpdateX = Math.abs(e.pageX - prevCursorX) + 'px';
+      markerEl.style.height = heightUpdateY;
+      markerEl.style.width = heightUpdateX;
       console.log('check if an hourtick is inside coordinates (math, < than)');
       console.log('pre-mark hour ticks inside');
       console.log('erase mark or set mark, depending on confirmation');
