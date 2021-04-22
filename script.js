@@ -86,7 +86,7 @@ function createHoursLog() {
         let addHourBtn = document.createElement('div');
         addHourBtn.innerText = '+';
         let hoursContainerEl = document.createElement('div');
-        hoursContainerEl.className = 'hoursContainer';
+        hoursContainerEl.className = 'hoursContainerEl';
         dayEl.appendChild(hoursContainerEl);
         let sumEl = document.createElement('div');
         sumEl.innerText = count;
@@ -94,13 +94,13 @@ function createHoursLog() {
         sumEl.style.color = '#ffffff';
         sumEl.style.height = '2.75rem';
         sumEl.style.fontSize = '2.25rem';
-        let hours = dayEl.getElementsByClassName('hour');
+        let hours = dayEl.getElementsByClassName('hourEl');
         sumEl.innerText = hours.length;
         addHourBtn.onclick = function() {
           let hourTick = resourceCreateHourTick();
-          hourTick.className = 'hour';
+          hourTick.className = 'hourEl';
           hoursContainerEl.appendChild(hourTick);
-          let hours = dayEl.getElementsByClassName('hour');
+          let hours = dayEl.getElementsByClassName('hourEl');
           sumEl.innerText = hours.length;
         }
         addHourBtn.style.height = '1.75rem';
@@ -113,7 +113,7 @@ function createHoursLog() {
         let minusHourBtn = document.createElement('div');
         minusHourBtn.innerText = '-';
         minusHourBtn.onclick = function() {
-          let hours = dayEl.getElementsByClassName('hour');
+          let hours = dayEl.getElementsByClassName('hourEl');
           if (hours && hours.length) {
             let hour = hours[hours.length - 1];
             hoursContainerEl.removeChild(hour);
@@ -131,7 +131,6 @@ function createHoursLog() {
         dayEl.appendChild(minusHourBtn);
         dayEl.appendChild(hoursContainerEl);
         dayEl.appendChild(sumEl);
-
         daysContainerEl.appendChild(dayEl);
       }
       weekContainerEl.appendChild(daysContainerEl);
@@ -568,7 +567,7 @@ function getHoursPerDayNumsStr() {
   const days = document.getElementsByClassName('day');
   const hourNums = [];
   for (let i = 0; i < days.length; i++) {
-    hourNums.push(days[i].getElementsByClassName('hour').length);
+    hourNums.push(days[i].getElementsByClassName('hourEl').length);
   }
   const hourNumsStr = hourNums.join(',');
   console.log(hourNumsStr)
@@ -682,8 +681,9 @@ function fillHoursData(textFile) {
   }
 }
 function clearHoursFromTheDay(day) {
-  for (let r = day.getElementsByClassName('hour').length - 1; r >= 0; r--) {
-    day.getElementsByClassName('hour')[r].remove();
+  for (let r = day.getElementsByClassName('hourEl').length - 1; r >= 0; r--) {
+    let hoursContainerEl = day.getElementsByClassName('hoursContainerEl')[0];
+    hoursContainerEl.getElementsByClassName('hourEl')[r].remove();
   }
 }
 function appendHoursToDay(hoursNum, day) {
@@ -694,7 +694,8 @@ function appendHoursToDay(hoursNum, day) {
 function appendHour(hoursNum, day) {
   const hour = resourceCreateHourTick();
   // appendNumToHour(hoursNum, hour);
-  day.appendChild(hour);
+  let hoursContainerEl = day.getElementsByClassName('hoursContainerEl')[0];
+  hoursContainerEl.appendChild(hour);
 }
 function createSaveToExcelBtn() {
   var saveToExcelBtn = document.createElement('input');
@@ -723,11 +724,11 @@ function saveToExcel() {
 
     for (var j = 0; j < days.length; j++) {
       var day = days[j];
-      var hours = day.getElementsByClassName('hour');
+      var hours = day.getElementsByClassName('hourEl');
     }
     monthData.push(weekObj)
   }
-  var totalDeepWorkHours = document.getElementsByClassName('hour').length;
+  var totalDeepWorkHours = document.getElementsByClassName('hourEl').length;
 
   JSONToCSVConvertor([
     {
@@ -784,7 +785,7 @@ function getWeekHours(week) {
   return hours;
 }
 function getDayHours(day) {
-  return day.getElementsByClassName('hour').length + ',';
+  return day.getElementsByClassName('hourEl').length + ',';
 }
 function getMonthHours(month) {
   const weeks = month.getElementsByClassName('week');
@@ -1100,8 +1101,8 @@ function appendNumToHour(num, hour) {
   hour.appendChild(numEl);
 }
 function deleteHourEl(day) {
-  if (day.getElementsByClassName('hour').length) {
-    day.removeChild(day.getElementsByClassName('hour')[day.getElementsByClassName('hour').length - 1]);
+  if (day.getElementsByClassName('hourEl').length) {
+    day.removeChild(day.getElementsByClassName('hourEl')[day.getElementsByClassName('hourEl').length - 1]);
   }
 }
 function resourceCreateSaveIcon() {
