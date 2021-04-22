@@ -52,7 +52,7 @@ window.addEventListener('load', function () {
     let markerEl = document.createElement('div');
     markerEl.id = 'markerEl';
     markerEl.onclick = function (e) {
-      console.log(e)
+      // console.log(e)
     }
 
     markerEl.style.height = '1px';
@@ -99,12 +99,8 @@ window.addEventListener('load', function () {
     let markerEl = document.getElementById('markerEl');
     let boundingRect = markerEl.getBoundingClientRect();
     if (document.getElementsByClassName('hourEl').length) {
-      let hourEl = document.getElementsByClassName('hourEl')[0];
-      let height = hourEl.clientHeight;
-      let verticalDistance = Math.abs(boundingRect.top - boundingRect.bottom);
-      for (let i = 0; i < verticalDistance; i += height) {
-        console.log(height)
-      }
+
+
     }
     markerEl.remove();
   });
@@ -175,7 +171,6 @@ function createHoursLog() {
           let y = boundingRect.top;
           let x = boundingRect.left;
           hourTick.id = y + ',' + x;
-          console.log(hourTick.id);
           // -> ctrl f ".onclick" or "markerEl" -> find mouseup, the markerEl event
           let hours = dayEl.getElementsByClassName('hourEl');
           sumEl.innerText = hours.length;
@@ -405,7 +400,7 @@ function createAboutModal() {
   aboutModal.appendChild(textContainer);
   aboutModal.id = 'aboutModal';
   body.appendChild(aboutModal);
-  console.log(aboutModal);
+  // console.log(aboutModal);
 }
 function createDisplayOptionsPage() {
   // components
@@ -498,7 +493,7 @@ function createDisplayOptionsPage() {
       modal.appendChild(textContainer);
       modal.id = 'modal';
       body.appendChild(modal);
-      console.log(modal);
+      // console.log(modal);
     }
     createModal();
   }
