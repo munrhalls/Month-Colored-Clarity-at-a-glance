@@ -222,7 +222,7 @@ function createMenu() {
   // createDisplayOptionsPage();
   createSaveTextFileBtn();
   createFillDataBtn();
-  menu.appendChild(saveToExcelBtn);
+  // menu.appendChild(saveToExcelBtn);
 }
 function createAboutPage() {
   // components
