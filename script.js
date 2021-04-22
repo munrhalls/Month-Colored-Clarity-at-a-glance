@@ -33,11 +33,11 @@ for (let i = 1; i <= 12; i++) {
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  // createMenu();
-  // createHoursLog();
+  createMenu();
+  createHoursLog();
 
-  // createCopyrightNote();
-  // createCopyrightNote2();
+  createCopyrightNote();
+  createCopyrightNote2();
 
   const root = document.getElementById('root');
   root.style.minHeight = '100vh';
@@ -52,8 +52,8 @@ window.addEventListener('load', function () {
     markerEl.style.width = '100px';
     markerEl.style.border = '10px solid #000000';
     markerEl.style.position = 'absolute';
-    let y = e.offsetY.toString() + 'px';
-    let x = e.offsetX.toString() + 'px';
+    let y = e.pageY.toString() + 'px';
+    let x = e.pageX.toString() + 'px';
     markerEl.style.top = y;
     markerEl.style.left = x;
     root.appendChild(markerEl)
