@@ -77,6 +77,8 @@ window.addEventListener('load', function () {
   });
   root.addEventListener('mouseup', function (e) {
     root.markingHoursEvent = false;
+    let markerEl = document.getElementById('markerEl');
+    markerEl.remove();
     console.log('delete div');
   });
 });
