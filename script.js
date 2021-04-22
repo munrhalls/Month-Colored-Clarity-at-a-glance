@@ -47,7 +47,7 @@ window.addEventListener('load', function () {
   root.style.position = 'relative';
   root.addEventListener('mousedown', function (e) {
     root.markingHoursEvent = true;
-    console.log('create div');
+    // console.log('create div');
     let markerEl = document.createElement('div');
     markerEl.id = 'markerEl';
     markerEl.style.height = '1px';
@@ -70,7 +70,7 @@ window.addEventListener('load', function () {
   });
   root.addEventListener('mousemove', function (e) {
     if (root.markingHoursEvent) {
-      console.log('re-draw div');
+      // console.log('re-draw div');
       let markerEl = document.getElementById('markerEl');
       let prevCursorY = parseInt((markerEl.y).split('px')[0]);
       let prevCursorX = parseInt((markerEl.x).split('px')[0]);
@@ -84,16 +84,16 @@ window.addEventListener('load', function () {
       if (e.pageX - parseInt((markerEl.x).split('px')[0]) < 0) {
         markerEl.style.left = e.pageX + 'px';
       }
-      console.log('check if an hourtick is inside coordinates (math, < than)');
-      console.log('pre-mark hour ticks inside');
-      console.log('erase mark or set mark, depending on confirmation');
+      // console.log('check if an hourtick is inside coordinates (math, < than)');
+      // console.log('pre-mark hour ticks inside');
+      // console.log('erase mark or set mark, depending on confirmation');
     }
   });
   root.addEventListener('mouseup', function (e) {
     root.markingHoursEvent = false;
     let markerEl = document.getElementById('markerEl');
     markerEl.remove();
-    console.log('delete div');
+    // console.log('delete div');
   });
 });
 
