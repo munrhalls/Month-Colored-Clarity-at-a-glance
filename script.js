@@ -98,15 +98,16 @@ window.addEventListener('load', function () {
   root.addEventListener('mouseup', function (e) {
     root.markingHoursEvent = false;
     let markerEl = document.getElementById('markerEl');
-    let boundingRect = markerEl.getBoundingClientRect();
     let hourEls = document.getElementsByClassName('hourEl');
-    const event = new Event('requestCoords', {
-      bubbles: false,
-    });
-    event.markerEl = markerEl;
-    if (hourEls.length > 0) {
-      for (let i = 0; i < hourEls.length; i++) {
-        hourEls[i].dispatchEvent(event);
+    if (hourEls && hourEls.length) {
+      const event = new Event('requestCoords', {
+        bubbles: false,
+      });
+      event.markerEl = markerEl;
+      if (hourEls.length > 0) {
+        for (let i = 0; i < hourEls.length; i++) {
+          hourEls[i].dispatchEvent(event);
+        }
       }
     }
     markerEl.remove();
@@ -186,7 +187,8 @@ function createHoursLog() {
             console.log(e.markerEl)
             let markerEl = e.markerEl;
             console.log('if hour el top OR bot y is inside markerEl && hour el left OR right is inside markerEl, mark that element, otherwise do nothing');
-            
+
+
           }, false);
 
           // hourTick.id = y + ',' + x;
