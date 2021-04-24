@@ -100,7 +100,10 @@ window.addEventListener('load', function () {
     let markerEl = document.getElementById('markerEl');
     let boundingRect = markerEl.getBoundingClientRect();
     let hourEls = document.getElementsByClassName('hourEl');
-    const event = new Event('requestCoords');
+    const event = new Event('requestCoords', {
+      bubbles: false,
+    });
+    event.markerEl = markerEl;
     if (hourEls.length > 0) {
       for (let i = 0; i < hourEls.length; i++) {
         hourEls[i].dispatchEvent(event);
@@ -173,15 +176,20 @@ function createHoursLog() {
           hoursContainerEl.appendChild(hourTick);
           // coords
 
-          let boundingRect = hourTick.getBoundingClientRect();
-          let y = boundingRect.top;
-          let x = boundingRect.left;
-          console.log(hourTick.attributes)
+
           hourTick.addEventListener('requestCoords', function (e) {
             console.log(e.target)
+            let hourEl = e.target;
+            let boundingRect = hourTick.getBoundingClientRect();
+            let y = boundingRect.pageY;
+            let x = boundingRect.left;
+            console.log(e.markerEl)
+            let markerEl = e.markerEl;
+            console.log('if hour el top OR bot y is inside markerEl && hour el left OR right is inside markerEl, mark that element, otherwise do nothing');
+            
           }, false);
 
-          hourTick.id = y + ',' + x;
+          // hourTick.id = y + ',' + x;
           // -> ctrl f ".onclick" or "markerEl" -> find mouseup, the markerEl event
           let hours = dayEl.getElementsByClassName('hourEl');
           sumEl.innerText = hours.length;
