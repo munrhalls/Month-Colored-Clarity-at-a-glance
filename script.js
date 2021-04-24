@@ -179,10 +179,28 @@ function createHoursLog() {
 
 
           hourTick.addEventListener('requestCoords', function (e) {
-          }, false);
+            let hourEl = e.target;
+            let markerEl = e.markerEl;
+            let hRect = hourEl.getBoundingClientRect();
+            let mRect = markerEl.getBoundingClientRect();
+            let matchY = false;
+            let matchX = false;
+            let topNotAfterHourBottom = !(mRect.top > hRect.bottom); 
+            let BottomNotBeforeHourTop = !(mRect.bottom < hRect.top);
+            let leftNotAfterHourRight = !(mRect.left > hRect.right);
+            let rightNotBeforeHourLeft = !(mRect.right < hRect.left);
 
-          // hourTick.id = y + ',' + x;
-          // -> ctrl f ".onclick" or "markerEl" -> find mouseup, the markerEl event
+            if (topNotAfterHourBottom && BottomNotBeforeHourTop) {
+              matchY = true;
+            }
+            if (leftNotAfterHourRight && rightNotBeforeHourLeft) {
+              matchX = true;
+            }
+            let match = matchY && matchX;
+            console.log(match)
+
+
+          }, false);
           let hours = dayEl.getElementsByClassName('hourEl');
           sumEl.innerText = hours.length;
         }
