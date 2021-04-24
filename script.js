@@ -93,7 +93,6 @@ window.addEventListener('load', function () {
       // console.log('pre-mark hour ticks inside');
       // console.log('erase mark or set mark, depending on confirmation');
     }
-
     // Dispatch the event.
   });
   root.addEventListener('mouseup', function (e) {
@@ -101,9 +100,9 @@ window.addEventListener('load', function () {
     let markerEl = document.getElementById('markerEl');
     let boundingRect = markerEl.getBoundingClientRect();
     let hourEls = document.getElementsByClassName('hourEl');
-    if (hourEls && hourEls.length) {
-      const event = new Event('requestCoords');
-      for (let i = 0; i < hourEls.length - 1; i++) {
+    const event = new Event('requestCoords');
+    if (hourEls.length > 0) {
+      for (let i = 0; i < hourEls.length; i++) {
         hourEls[i].dispatchEvent(event);
       }
     }
@@ -180,10 +179,8 @@ function createHoursLog() {
           console.log(hourTick.attributes)
           hourTick.addEventListener('requestCoords', function (e) {
             console.log(e.target)
-          }, true);
-          // hourTick.onrequestcoords = function() {
-          //   console.log("coords")
-          // }
+          }, false);
+
           hourTick.id = y + ',' + x;
           // -> ctrl f ".onclick" or "markerEl" -> find mouseup, the markerEl event
           let hours = dayEl.getElementsByClassName('hourEl');
