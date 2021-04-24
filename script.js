@@ -63,6 +63,7 @@ window.addEventListener('load', function () {
     let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
     let projectColor = colors[rndNum];
     markerEl.style.background = projectColor;
+    markerEl.projectColor = projectColor;
     markerEl.style.opacity = '70%';
     markerEl.style.position = 'absolute';
     let y = e.pageY.toString() + 'px';
@@ -104,12 +105,11 @@ window.addEventListener('load', function () {
         bubbles: false,
       });
       event.markerEl = markerEl;
-      if (hourEls.length > 0) {
-        for (let i = 0; i < hourEls.length; i++) {
-          hourEls[i].dispatchEvent(event);
-        }
+      for (let i = 0; i < hourEls.length; i++) {
+        hourEls[i].dispatchEvent(event);
       }
     }
+    // Event listeners - ctrl f 'requestCoords'
     markerEl.remove();
   });
 });
@@ -185,11 +185,12 @@ function createHoursLog() {
             let mRect = markerEl.getBoundingClientRect();
             let matchY = false;
             let matchX = false;
-            let topNotAfterHourBottom = !(mRect.top > hRect.bottom); 
+            // Why? Negation leaves points subsets that cannot not intersect.
+            let topNotAfterHourBottom = !(mRect.top > hRect.bottom);
             let BottomNotBeforeHourTop = !(mRect.bottom < hRect.top);
             let leftNotAfterHourRight = !(mRect.left > hRect.right);
             let rightNotBeforeHourLeft = !(mRect.right < hRect.left);
-
+            // Check match.
             if (topNotAfterHourBottom && BottomNotBeforeHourTop) {
               matchY = true;
             }
@@ -197,7 +198,10 @@ function createHoursLog() {
               matchX = true;
             }
             let match = matchY && matchX;
-            console.log(match)
+            // Mark match.
+            if (match) {
+              hourEl.style.border = '3px solid ' + markerEl.projectColor;
+            }
 
 
           }, false);
