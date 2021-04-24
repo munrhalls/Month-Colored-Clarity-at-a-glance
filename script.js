@@ -181,13 +181,25 @@ function createHoursLog() {
           hourTick.addEventListener('requestCoords', function (e) {
             console.log(e.target)
             let hourEl = e.target;
-            let boundingRect = hourTick.getBoundingClientRect();
-            let y = boundingRect.pageY;
-            let x = boundingRect.left;
+            let bRectHourEl = hourTick.getBoundingClientRect();
             console.log(e.markerEl)
             let markerEl = e.markerEl;
+            let bRectMarkerEl = markerEl.getBoundingClientRect();
             console.log('if hour el top OR bot y is inside markerEl && hour el left OR right is inside markerEl, mark that element, otherwise do nothing');
-
+            console.log('get hourEl y')
+            console.log(bRectHourEl.top) 
+            console.log(bRectHourEl.bottom)
+            console.log('getMarkerEl y')
+            console.log(bRectMarkerEl.top) 
+            console.log(bRectMarkerEl.bottom)
+            if (bRectMarkerEl.top > bRectHourEl.top 
+             && bRectMarkerEl.top < bRectHourEl.bottom) {
+              console.log('top marker el y is matching')
+             } else if (bRectMarkerEl.bottom < bRectHourEl.bottom 
+              && bRectMarkerEl.bottom > bRectHourEl.top) {
+                console.log('bot marker el y is matching')
+                console.log('TESTED WORKS')
+              }
 
           }, false);
 
