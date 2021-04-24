@@ -185,21 +185,31 @@ function createHoursLog() {
             console.log(e.markerEl)
             let markerEl = e.markerEl;
             let bRectMarkerEl = markerEl.getBoundingClientRect();
-            console.log('if hour el top OR bot y is inside markerEl && hour el left OR right is inside markerEl, mark that element, otherwise do nothing');
-            console.log('get hourEl y')
-            console.log(bRectHourEl.top) 
-            console.log(bRectHourEl.bottom)
-            console.log('getMarkerEl y')
-            console.log(bRectMarkerEl.top) 
-            console.log(bRectMarkerEl.bottom)
-            if (bRectMarkerEl.top > bRectHourEl.top 
-             && bRectMarkerEl.top < bRectHourEl.bottom) {
-              console.log('top marker el y is matching')
-             } else if (bRectMarkerEl.bottom < bRectHourEl.bottom 
-              && bRectMarkerEl.bottom > bRectHourEl.top) {
-                console.log('bot marker el y is matching')
-                console.log('TESTED WORKS')
+            // console.log('hourEl y')
+            // console.log(bRectHourEl.top)
+            // console.log(bRectHourEl.bottom)
+            // console.log('MarkerEl y')
+            // console.log(bRectMarkerEl.top)
+            // console.log(bRectMarkerEl.bottom)
+            function markerYInsideHourY() {
+              // translate > to "under"
+              // marker Y top is INSIDE hour Y axis
+              if (bRectMarkerEl.top > bRectHourEl.top
+              && bRectMarkerEl.top < bRectHourEl.bottom) {
+                return true;
               }
+              // translate < to "above"
+              // marker Y bottom is inside hour Y axis
+              else if (bRectMarkerEl.bottom < bRectHourEl.bottom
+              && bRectMarkerEl.bottom > bRectHourEl.top) {
+                alert('hi')
+                return true;
+              } else {
+                return false;
+              }
+            }
+            let markerMatchesY = markerYInsideHourY();
+            console.log(markerMatchesY)
 
           }, false);
 
