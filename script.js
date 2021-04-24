@@ -170,14 +170,11 @@ function createHoursLog() {
         sumEl.style.color = '#ffffff';
         sumEl.style.height = '2.75rem';
         sumEl.style.fontSize = '2.25rem';
-        addHourBtn.onclick = function () {
-          // HOUR LEVEL
+        function handleMarkingProject() {
           let hourTick = resourceCreateHourTick();
           hourTick.className = 'hourEl';
           hoursContainerEl.appendChild(hourTick);
           // coords
-
-
           hourTick.addEventListener('requestCoords', function (e) {
             let hourEl = e.target;
             let markerEl = e.markerEl;
@@ -200,11 +197,15 @@ function createHoursLog() {
             let match = matchY && matchX;
             // Mark match.
             if (match) {
-              hourEl.style.border = '3px solid ' + markerEl.projectColor;
+              hourEl.style.background = markerEl.projectColor;
             }
 
 
           }, false);
+        }
+        addHourBtn.onclick = function () {
+          // HOUR LEVEL
+          handleMarkingProject();
           let hours = dayEl.getElementsByClassName('hourEl');
           sumEl.innerText = hours.length;
         }
