@@ -100,10 +100,12 @@ window.addEventListener('load', function () {
     root.markingHoursEvent = false;
     let markerEl = document.getElementById('markerEl');
     let boundingRect = markerEl.getBoundingClientRect();
-    if (document.getElementsByClassName('hourEl').length) {
+    let hourEls = document.getElementsByClassName('hourEl');
+    if (hourEls && hourEls.length) {
       const event = new Event('requestCoords');
-      root.dispatchEvent(event);
-      console.log(event);
+      for (let i = 0; i < hourEls.length - 1; i++) {
+        hourEls[i].dispatchEvent(event);
+      }
     }
     markerEl.remove();
   });
@@ -176,9 +178,12 @@ function createHoursLog() {
           let y = boundingRect.top;
           let x = boundingRect.left;
           console.log(hourTick.attributes)
-          hourTick.addEventListener('requestCoords', function () {
-            console.log('request coords');
+          hourTick.addEventListener('requestCoords', function (e) {
+            console.log(e.target)
           }, true);
+          // hourTick.onrequestcoords = function() {
+          //   console.log("coords")
+          // }
           hourTick.id = y + ',' + x;
           // -> ctrl f ".onclick" or "markerEl" -> find mouseup, the markerEl event
           let hours = dayEl.getElementsByClassName('hourEl');
