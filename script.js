@@ -93,14 +93,17 @@ window.addEventListener('load', function () {
       // console.log('pre-mark hour ticks inside');
       // console.log('erase mark or set mark, depending on confirmation');
     }
+
+    // Dispatch the event.
   });
   root.addEventListener('mouseup', function (e) {
     root.markingHoursEvent = false;
     let markerEl = document.getElementById('markerEl');
     let boundingRect = markerEl.getBoundingClientRect();
     if (document.getElementsByClassName('hourEl').length) {
-
-
+      const event = new Event('requestCoords');
+      root.dispatchEvent(event);
+      console.log(event);
     }
     markerEl.remove();
   });
@@ -163,13 +166,19 @@ function createHoursLog() {
         sumEl.style.height = '2.75rem';
         sumEl.style.fontSize = '2.25rem';
         addHourBtn.onclick = function () {
+          // HOUR LEVEL
           let hourTick = resourceCreateHourTick();
           hourTick.className = 'hourEl';
           hoursContainerEl.appendChild(hourTick);
           // coords
+
           let boundingRect = hourTick.getBoundingClientRect();
           let y = boundingRect.top;
           let x = boundingRect.left;
+          console.log(hourTick.attributes)
+          hourTick.addEventListener('requestCoords', function () {
+            console.log('request coords');
+          }, true);
           hourTick.id = y + ',' + x;
           // -> ctrl f ".onclick" or "markerEl" -> find mouseup, the markerEl event
           let hours = dayEl.getElementsByClassName('hourEl');
