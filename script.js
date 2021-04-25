@@ -33,10 +33,14 @@ for (let i = 1; i <= 12; i++) {
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
+  let root = document.getElementById('root');
+  let rootContent = document.createElement('rootContent');
+  rootContent.id = 'rootContent';
+  rootContent.style.display = 'flex';
+  root.appendChild(rootContent);
+
   createHoursLog();
   createMenu();
-  let root = document.getElementById('root');
-  root.style.display = 'flex';
 
 
   createCopyrightNote();
@@ -118,7 +122,7 @@ window.addEventListener('load', function () {
 });
 
 function createHoursLog() {
-  let root = document.getElementById('root');
+  let rootContent = document.getElementById('rootContent');
   let hourLog = document.createElement('hourLog');
   for (let i = 0; i < yearDATA.length; i++) {
     let monthDATA = yearDATA[i];
@@ -258,7 +262,7 @@ function createHoursLog() {
     }
     hourLog.appendChild(monthTitleEl);
     hourLog.appendChild(monthContainerEl);
-    root.appendChild(hourLog);
+    rootContent.appendChild(hourLog);
   }
 }
 
@@ -305,7 +309,7 @@ function createMenu() {
   title.style.letterSpacing = '0.1rem';
   const saveToExcelBtn = createSaveToExcelBtn();
   menu.appendChild(title);
-  document.getElementById('root').appendChild(menu);
+  document.getElementById('rootContent').appendChild(menu);
   createAboutPage();
   createAboutModal();
   // createDisplayOptionsPage();
