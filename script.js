@@ -110,6 +110,7 @@ window.addEventListener('load', function () {
       }
     }
     // Event listeners - ctrl f 'requestCoords'
+    console.log('mouse drag select');
     markerEl.remove();
   });
 });
@@ -198,9 +199,8 @@ function createHoursLog() {
             // Mark match.
             if (match) {
               hourEl.style.background = markerEl.projectColor;
+
             }
-
-
           }, false);
         }
         addHourBtn.onclick = function () {
