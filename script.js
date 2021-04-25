@@ -33,10 +33,10 @@ for (let i = 1; i <= 12; i++) {
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  let hoursLog = createHoursLog();
+  createHoursLog();
   createMenu();
   let root = document.getElementById('root');
-  root.appendChild(hoursLog);
+  root.style.display = 'flex';
 
 
   createCopyrightNote();
@@ -118,7 +118,8 @@ window.addEventListener('load', function () {
 });
 
 function createHoursLog() {
-  let hoursLog = document.createElement('hoursLog');
+  let root = document.getElementById('root');
+  let hourLog = document.createElement('hourLog');
   for (let i = 0; i < yearDATA.length; i++) {
     let monthDATA = yearDATA[i];
     // MONTHS LEVEL
@@ -255,10 +256,10 @@ function createHoursLog() {
       }
       weekContainerEl.appendChild(daysContainerEl);
     }
-    hoursLog.appendChild(monthTitleEl);
-    hoursLog.appendChild(monthContainerEl);
+    hourLog.appendChild(monthTitleEl);
+    hourLog.appendChild(monthContainerEl);
+    root.appendChild(hourLog);
   }
-  return hoursLog;
 }
 
 const VALUES_MenuSharedCSS = {
