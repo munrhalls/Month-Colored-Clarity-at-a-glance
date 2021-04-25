@@ -33,15 +33,17 @@ for (let i = 1; i <= 12; i++) {
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
+  let hoursLog = createHoursLog();
   createMenu();
-  createHoursLog();
+  let root = document.getElementById('root');
+  root.appendChild(hoursLog);
+
 
   createCopyrightNote();
   createCopyrightNote2();
 
   // select area with mouse drag
   // (idk what's the Big O of that, so it's prolly rly expensive)
-  const root = document.getElementById('root');
   root.style.minHeight = '100vh';
   root.style.userSelect = 'none';
   root.markingHoursEvent = false;
@@ -116,29 +118,33 @@ window.addEventListener('load', function () {
 });
 
 function createHoursLog() {
-  let root = document.getElementById('root');
+  let hoursLog = document.createElement('hoursLog');
   for (let i = 0; i < yearDATA.length; i++) {
     let monthDATA = yearDATA[i];
     // MONTHS LEVEL
     let monthTitleEl = document.createElement('div');
     monthTitleEl.innerText = monthDATA.monthName;
-    monthTitleEl.style.textAlign = 'center';
+    monthTitleEl.style.textAlign = 'left';
     monthTitleEl.style.fontSize = '1.75rem';
-    monthTitleEl.style.padding = '1.75rem';
-    monthTitleEl.style.textAlign = 'center';
+    monthTitleEl.style.padding = '0.25rem';
+    monthTitleEl.style.textAlign = 'left';
     let monthContainerEl = document.createElement('div');
     monthContainerEl.style.display = 'flex';
-    monthContainerEl.style.flexWrap = 'no-wrap';
-    monthContainerEl.style.justifyContent = 'center';
+    monthContainerEl.style.justifyContent = 'flex-start';
     for (let j = 0; j < monthDATA.length; j++) {
       let weekDATA = monthDATA[j];
       // WEEKS LEVEL
       let weekContainerEl = document.createElement('div');
+      weekContainerEl.style.display = 'flex';
+      weekContainerEl.style.height = '25rem';
       let weekTitleEl = document.createElement('div');
+      weekTitleEl.style.textAlign = 'center';
+      weekTitleEl.style.height = '25rem';
+      weekTitleEl.style.color = '#ffffff';
+      weekTitleEl.style.background = '#000000';
       weekTitleEl.innerText = weekDATA.weekName;
       weekTitleEl.style.paddingBottom = '0.5rem'
       weekContainerEl.appendChild(weekTitleEl);
-      weekContainerEl.style.textAlign = 'center';
       monthContainerEl.appendChild(weekContainerEl)
       let daysContainerEl = document.createElement('div');
       daysContainerEl.style.display = 'flex';
@@ -151,8 +157,7 @@ function createHoursLog() {
         let count = 0;
         dayEl.className = 'day';
         dayEl.innerText = day;
-        dayEl.style.height = '60vh';
-        dayEl.style.width = '3rem';
+        dayEl.style.width = '1.75rem';
         dayEl.style.borderLeft = '1px solid #000000';
         if (y + 1 == weekDATA.length) {
           dayEl.style.borderRight = '1px solid #000000';
@@ -169,8 +174,9 @@ function createHoursLog() {
         sumEl.innerText = hours.length;
         sumEl.style.background = '#000000';
         sumEl.style.color = '#ffffff';
-        sumEl.style.height = '2.75rem';
-        sumEl.style.fontSize = '2.25rem';
+        sumEl.style.textAlign = 'center';
+        sumEl.style.height = '1.75rem';
+        sumEl.style.fontSize = '1.5rem';
         function handleMarkingProject() {
           let hourTick = resourceCreateHourTick();
           hourTick.className = 'hourEl';
@@ -203,13 +209,18 @@ function createHoursLog() {
             }
           }, false);
         }
+        let btnsContainer = document.createElement('btnsContainer');
+        btnsContainer.className = 'btnsContainer';
+        btnsContainer.style.display = 'flex';
         addHourBtn.onclick = function () {
           // HOUR LEVEL
           handleMarkingProject();
           let hours = dayEl.getElementsByClassName('hourEl');
           sumEl.innerText = hours.length;
         }
-        addHourBtn.style.height = '1.75rem';
+        addHourBtn.style.height = '1.5rem';
+        addHourBtn.style.flex = '1';
+        // addHourBtn.style.display= 'inline-block';
         addHourBtn.style.fontSize = '1.5rem';
         addHourBtn.style.textAlign = 'center';
         addHourBtn.style.color = '#fff';
@@ -226,24 +237,28 @@ function createHoursLog() {
             sumEl.innerText = hours.length;
           }
         }
-        minusHourBtn.style.height = '1.75rem';
+        minusHourBtn.style.height = '1.5rem';
+        minusHourBtn.style.flex = '1';
+        // addHourBtn.style.display= 'inline-block';
         minusHourBtn.style.fontSize = '1.5rem';
         minusHourBtn.style.textAlign = 'center';
         minusHourBtn.style.color = '#fff';
         minusHourBtn.style.background = '#000';
         minusHourBtn.style.textAlign = 'center';
         minusHourBtn.style.cursor = 'pointer';
-        dayEl.appendChild(addHourBtn);
-        dayEl.appendChild(minusHourBtn);
+        btnsContainer.appendChild(addHourBtn);
+        btnsContainer.appendChild(minusHourBtn);
+        dayEl.appendChild(btnsContainer);
         dayEl.appendChild(hoursContainerEl);
         dayEl.appendChild(sumEl);
         daysContainerEl.appendChild(dayEl);
       }
       weekContainerEl.appendChild(daysContainerEl);
     }
-    root.appendChild(monthTitleEl);
-    root.appendChild(monthContainerEl);
+    hoursLog.appendChild(monthTitleEl);
+    hoursLog.appendChild(monthContainerEl);
   }
+  return hoursLog;
 }
 
 const VALUES_MenuSharedCSS = {
