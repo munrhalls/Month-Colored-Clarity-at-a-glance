@@ -288,22 +288,36 @@ function createMonth(monthNum) {
   createWeek(4, monthNum);
 }
 function createMenu() {
+  let width = '30rem';
+  let height = '100vh';
+  let color = '#000000';
   const menu = document.createElement('div');
+  menu.style.background = color;
+  menu.style.height = height;
+  menu.style.width = width;
   menu.id = 'menuEl';
-  menu.style.background = '#000000';
-  menu.style.height = '100vh';
-  menu.style.width = '30rem';
-  menu.style.display = 'flex';
+  let rowsNum = 4;
 
-  let slotsNum = 4;
-
-  for (let i = 0; i < slotsNum; i++) {
-    let slot = document.createElement('div');
-    slot.className = 'slot';
-    slot.style.width = '49%';
-    slot.style.border = '1px solid #ffffff';
-    slot.style.height = '6rem';
-    menu.appendChild(slot);
+  for (let i = 0; i < rowsNum; i++) {
+    let r_width = '100%';
+    let r_height = '9rem';
+    let row = document.createElement('div');
+    row.className = 'row';
+    row.style.width = r_width;
+    console.log(r_width)
+    row.style.height = r_height;
+    for (let j = 0; j < 2; j++) {
+      let s_width = '50%';
+      let s_height = r_height;
+      let slot = document.createElement('div');
+      slot.style.display = 'inline-block';
+      slot.style.height = s_height;
+      slot.style.width = s_width;
+      slot.style.border = '1px solid #ffffff';
+      slot.className = 'slot';
+      row.appendChild(slot);  
+    }
+    menu.appendChild(row);
   }
   document.getElementById('rootContent').appendChild(menu);
   
