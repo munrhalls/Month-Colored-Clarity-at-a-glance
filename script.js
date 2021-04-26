@@ -33,10 +33,36 @@ for (let i = 1; i <= 12; i++) {
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
+  let header_height = '3rem';
+  let header_bgColor = '#000000';
+  let header_color = '#ffffff';
+  let header_fontSize = '1.5rem';
+  let header_padding = '0.5rem';
   let root = document.getElementById('root');
   let rootContent = document.createElement('rootContent');
   rootContent.id = 'rootContent';
   rootContent.style.display = 'flex';
+  let rootHeader = document.createElement('rootHeader');
+  rootHeader.id = 'rootHeader';
+  rootHeader.style.display = 'flex';
+  rootHeader.style.height = header_height;
+  rootHeader.style.background = header_bgColor;
+  let headerTitle = document.createElement('div');
+  headerTitle.style.background = header_bgColor;
+  headerTitle.style.height = header_height;
+  headerTitle.style.color = '#ffffff';
+  headerTitle.innerText = 'Log Hours of Deep Work';
+  headerTitle.style.padding = header_padding
+  headerTitle.style.fontSize = header_fontSize;
+  headerTitle.style.borderRight = '1px solid #ffffff';
+  let aboutPage = document.createElement('div');
+  aboutPage.innerText = 'ABOUT';
+  aboutPage.style.color = header_color;
+  aboutPage.style.padding = header_padding;
+  aboutPage.style.fontSize = header_fontSize;
+  rootHeader.appendChild(headerTitle);
+  rootHeader.appendChild(aboutPage);
+  root.appendChild(rootHeader);
   root.appendChild(rootContent);
 
   createHoursLog();
@@ -297,9 +323,8 @@ function createMenu() {
   menu.style.width = width;
   menu.id = 'menuEl';
   let rowsNum = 4;
-
   for (let i = 0; i < rowsNum; i++) {
-    let r_width = '100%';
+    let r_width = width;
     let r_height = '9rem';
     let row = document.createElement('div');
     row.className = 'row';
@@ -307,13 +332,14 @@ function createMenu() {
     console.log(r_width)
     row.style.height = r_height;
     for (let j = 0; j < 2; j++) {
-      let s_width = '50%';
+      let s_width = parseInt(width)/2 + 'rem';
       let s_height = r_height;
+      let s_borderColor = '#ffffff';
       let slot = document.createElement('div');
       slot.style.display = 'inline-block';
       slot.style.height = s_height;
       slot.style.width = s_width;
-      slot.style.border = '1px solid #ffffff';
+      slot.style.border = '1px solid ' + s_borderColor;
       slot.className = 'slot';
       row.appendChild(slot);  
     }
