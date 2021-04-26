@@ -289,33 +289,52 @@ function createMonth(monthNum) {
 }
 function createMenu() {
   const menu = document.createElement('div');
-  menu.setAttribute('id', 'menu');
-  menu.style.position = 'relative';
-  const title = document.createElement('div');
-  menu.style.color = '#fff';
-  menu.style.height = VALUES_MenuSharedCSS['height_menuWhole'],
-    menu.style.borderBottom = '1px solid gray';
-  menu.style.backgroundColor = '#000';
+  menu.id = 'menuEl';
+  menu.style.background = '#000000';
+  menu.style.height = '100vh';
+  menu.style.width = '30rem';
   menu.style.display = 'flex';
 
-  title.innerText = 'Log hours - deep work';
-  title.textAlign = 'center';
-  title.style.display = 'flex';
-  title.style.alignItems = 'center';
-  title.style.padding = '0 3rem';
-  title.style.fontWeight = 'bold';
-  title.style.fontSize = '1.5rem'
-  title.style.fontFamily = 'consolas';
-  title.style.letterSpacing = '0.1rem';
-  const saveToExcelBtn = createSaveToExcelBtn();
-  menu.appendChild(title);
+  let slotsNum = 4;
+
+  for (let i = 0; i < slotsNum; i++) {
+    let slot = document.createElement('div');
+    slot.className = 'slot';
+    slot.style.width = '49%';
+    slot.style.border = '1px solid #ffffff';
+    slot.style.height = '6rem';
+    menu.appendChild(slot);
+  }
   document.getElementById('rootContent').appendChild(menu);
-  createAboutPage();
-  createAboutModal();
-  // createDisplayOptionsPage();
-  createSaveTextFileBtn();
-  createFillDataBtn();
-  // menu.appendChild(saveToExcelBtn);
+  
+
+  // menu.setAttribute('id', 'menu');
+  // menu.style.position = 'relative';
+  // const title = document.createElement('div');
+  // menu.style.color = '#fff';
+  // menu.style.height = '100vh';
+  //   menu.style.borderBottom = '1px solid gray';
+  // menu.style.backgroundColor = '#000';
+  // menu.style.display = 'flex';
+  // menu.style.flexDirection = 'column';
+
+  // title.innerText = 'Log hours - deep work';
+  // title.textAlign = 'center';
+  // title.style.display = 'flex';
+  // title.style.alignItems = 'center';
+  // title.style.padding = '0 3rem';
+  // title.style.fontWeight = 'bold';
+  // title.style.fontSize = '1.5rem'
+  // title.style.fontFamily = 'consolas';
+  // title.style.letterSpacing = '0.1rem';
+  // const saveToExcelBtn = createSaveToExcelBtn();
+  // menu.appendChild(title);
+  // // createAboutPage();
+  // // createAboutModal();
+  // // createDisplayOptionsPage();
+  // createSaveTextFileBtn();
+  // // createFillDataBtn();
+  // // menu.appendChild(saveToExcelBtn);
 }
 function createAboutPage() {
   // components
@@ -355,6 +374,12 @@ function createAboutPage() {
   }
   const underLineGraphic = resourceCreateUnderLineGraphic();
   const arrowGraphic = resourceCreateArrowGraphic();
+  arrowGraphic.style.height = '3.25rem';
+  arrowGraphic.style.width = '6.5rem';
+  arrowGraphic.style.position = 'absolute';
+  arrowGraphic.style.left = 'calc(100% - 4.75rem)';
+  arrowGraphic.style.bottom = '3rem';
+  arrowGraphic.style.transform = 'rotate(-30deg)';
   const aboutBtnText = document.createElement('div');
   aboutBtnText.innerText = 'WHAT IS THIS THING?';
   aboutBtnText.style.color = 'white';
@@ -591,17 +616,17 @@ function createSaveTextFileBtn() {
     SaveTextFileBtnContainer.style.textAlign = 'left';
     SaveTextFileBtnContainer.style.color = "#fff";
     // display
-    SaveTextFileBtnContainer.style.position = 'relative';
-    SaveTextFileBtnContainer.style.width = VALUES_MenuSharedCSS['width_menuSmallerBlock'];
+    // SaveTextFileBtnContainer.style.position = 'relative';
+    // SaveTextFileBtnContainer.style.width = VALUES_MenuSharedCSS['width_menuSmallerBlock'];
 
     return SaveTextFileBtnContainer;
   })();
   const SaveTextFileBtn = document.createElement('input');
-  SaveTextFileBtn.style.position = 'absolute';
-  SaveTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
-  SaveTextFileBtn.style.width = '6rem';
+  // SaveTextFileBtn.style.position = 'absolute';
+  // SaveTextFileBtn.style.top = VALUES_MenuSharedCSS['space_TopTo1stElement'];
+  // SaveTextFileBtn.style.width = '6rem';
   SaveTextFileBtn.style.left = '50%';
-  SaveTextFileBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
+  // SaveTextFileBtn.style.marginLeft = 'calc(-25% - 0.75rem)';
   SaveTextFileBtn.style.padding = '0.3rem 1rem';
   SaveTextFileBtn.style.fontWeight = 'bold';
   SaveTextFileBtn.style.fontSize = '0.9rem';
@@ -613,7 +638,7 @@ function createSaveTextFileBtn() {
   const saveHoursText = document.createElement('div');
   saveHoursText.innerText = 'TO KEEP HOURS DATA';
   saveHoursText.style.width = '100%';
-  saveHoursText.style.position = 'absolute';
+  // saveHoursText.style.position = 'absolute';
   saveHoursText.style.bottom = '0.6rem';
   //text
   saveHoursText.style.fontSize = '0.6rem';
@@ -621,10 +646,10 @@ function createSaveTextFileBtn() {
   saveHoursText.style.letterSpacing = '0.1rem';
   saveHoursText.style.textAlign = 'center';
   const saveIcon = resourceCreateSaveIcon();
-  saveIcon.style.position = 'absolute';
+  // saveIcon.style.position = 'absolute';
   saveIcon.style.bottom = '1.66rem';
   saveIcon.style.left = '50%';
-  saveIcon.style.marginLeft = 'calc(-12.5% + 6px)'
+  // saveIcon.style.marginLeft = 'calc(-12.5% + 6px)'
   saveIcon.style.fill = '#fff';
   //appends
   SaveTextFileBtnContainer.appendChild(SaveTextFileBtn);
@@ -1282,8 +1307,8 @@ function resourceCreateUnderLineGraphic() {
   const underLineGraphic = document.createElement('span');
   //display
   underLineGraphic.style.width = '90%'
-  underLineGraphic.style.position = 'absolute';
-  underLineGraphic.style.bottom = VALUES_MenuSharedCSS['space_BottomTo1stElement']
+  // underLineGraphic.style.position = 'absolute';
+  // underLineGraphic.style.bottom = VALUES_MenuSharedCSS['space_BottomTo1stElement']
   underLineGraphic.style.left = '5%';
   // aesthetic
   underLineGraphic.style.borderTop = '1px solid #fff';
@@ -1294,12 +1319,6 @@ function resourceCreateArrowGraphic() {
   const arrowGraphic = document.createElement('span');
   arrowGraphic.style.borderTop = '3px solid #fff';
   arrowGraphic.style.borderRadius = '50%';
-  arrowGraphic.style.height = '3.25rem';
-  arrowGraphic.style.width = '6.5rem';
-  arrowGraphic.style.position = 'absolute';
-  arrowGraphic.style.left = 'calc(100% - 4.75rem)';
-  arrowGraphic.style.bottom = '3rem';
-  arrowGraphic.style.transform = 'rotate(-30deg)';
   return arrowGraphic;
 }
 function createCopyrightNote() {
