@@ -51,7 +51,18 @@ window.addEventListener('load', function () {
   headerTitle.style.background = header_bgColor;
   headerTitle.style.height = header_height;
   headerTitle.style.color = '#ffffff';
-  headerTitle.innerText = 'Log Hours of Deep Work';
+  let spanOne = document.createElement('span');
+  spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per '; 
+  headerTitle.appendChild(spanOne);
+  let colors = ['blue', 'purple', 'green', 'grey', 'yellow', 'orange', 'red'];
+  let letters = ('project').split(''); 
+  for (let i = 0; i < letters.length; i++) {
+    let span = document.createElement('span');
+    span.innerText = letters[i].toUpperCase();
+    span.style.color = colors[i];
+    span.style.letterSpacing = '3px';
+    headerTitle.appendChild(span);
+  }
   headerTitle.style.padding = header_padding
   headerTitle.style.fontSize = header_fontSize;
   headerTitle.style.borderRight = '1px solid #ffffff';
