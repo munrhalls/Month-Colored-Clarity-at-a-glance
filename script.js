@@ -78,14 +78,15 @@ window.addEventListener('load', function () {
 
   let hourLog = createHoursLog();
 
-  let monthEls = hourLog.getElementsByClassName('month');
-  console.log(monthEls);
+  let HTMLCollection = hourLog.children;
 
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
     let length = HTMLCollection.length;
     console.log(length);
     for (let i = 0; i < length; i++) {
       let childEl = HTMLCollection[i];
+      
+      console.log(childEl);
       childEl.style.position = 'relative';
       // childEl.style.visibility = 'hidden';
       // add event sensors
@@ -124,9 +125,7 @@ window.addEventListener('load', function () {
       // 4/12 0,3333
       arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
       arrowSensorR.onclick = function(e) {
-        let container = e.target.parentElement.parentElement;
-        console.log(container);
-        container.style.visibility = 'hidden';
+        childEl.style.visibility = 'hidden';
       }
       sensorsContainer.appendChild(arrowSensorR);
       childEl.appendChild(sensorsContainer);
@@ -136,7 +135,7 @@ window.addEventListener('load', function () {
       // set new to visible
     }
   }
-  carouselify(monthEls, '-2rem', '7rem', 3);
+  carouselify(HTMLCollection, '0.5rem', '7rem', 3);
   rootContent.appendChild(hourLog);
   createMenu();
   createCopyrightNote();
@@ -219,20 +218,21 @@ window.addEventListener('load', function () {
 
 function createHoursLog() {
   // let rootContent = document.getElementById('rootContent');
-  let hourLog = document.createElement('hourLog');
+  let hourLog = document.createElement('div');
   for (let i = 0; i < yearDATA.length; i++) {
     let monthDATA = yearDATA[i];
     // MONTHS LEVEL
+    let monthContainer = document.createElement('div');
     let monthTitleEl = document.createElement('div');
     monthTitleEl.innerText = monthDATA.monthName;
     monthTitleEl.style.textAlign = 'left';
     monthTitleEl.style.fontSize = '1.75rem';
     monthTitleEl.style.padding = '0.25rem';
     monthTitleEl.style.textAlign = 'left';
-    let monthContainerEl = document.createElement('div');
-    monthContainerEl.className = 'month';
-    monthContainerEl.style.display = 'flex';
-    monthContainerEl.style.justifyContent = 'flex-start';
+    let monthDaysEl = document.createElement('div');
+    monthDaysEl.className = 'month';
+    monthDaysEl.style.display = 'flex';
+    monthDaysEl.style.justifyContent = 'flex-start';
     for (let j = 0; j < monthDATA.length; j++) {
       let weekDATA = monthDATA[j];
       // WEEKS LEVEL
@@ -247,7 +247,7 @@ function createHoursLog() {
       weekTitleEl.innerText = weekDATA.weekName;
       weekTitleEl.style.paddingBottom = '0.5rem'
       weekContainerEl.appendChild(weekTitleEl);
-      monthContainerEl.appendChild(weekContainerEl)
+      monthDaysEl.appendChild(weekContainerEl)
       let daysContainerEl = document.createElement('div');
       daysContainerEl.style.display = 'flex';
       for (let y = 0; y < weekDATA.length; y++) {
@@ -357,8 +357,9 @@ function createHoursLog() {
       }
       weekContainerEl.appendChild(daysContainerEl);
     }
-    hourLog.appendChild(monthTitleEl);
-    hourLog.appendChild(monthContainerEl);
+    monthContainer.appendChild(monthTitleEl);
+    monthContainer.appendChild(monthDaysEl);
+    hourLog.appendChild(monthContainer);
     // rootContent.appendChild(hourLog);
   }
   return hourLog;
