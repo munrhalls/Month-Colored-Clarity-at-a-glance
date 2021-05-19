@@ -87,9 +87,9 @@ window.addEventListener('load', function () {
       let arrowSensorL = document.createElement('div');
       arrowSensorL.style.height = '5px';
       arrowSensorL.style.width = '5px';
-      arrowSensorL.style.border = '5px solid black';
+      arrowSensorL.style.border = '12px solid black';
       arrowSensorL.style.borderLeft = '0px solid black';
-      arrowSensorL.style.borderBottom = '2px solid white';
+      arrowSensorL.style.borderBottom = '4px solid white';
       arrowSensorL.style.borderTop = '1px solid white';
       childEl.appendChild(arrowSensorL);
       let arrowSensorR = document.createElement('div');
