@@ -84,10 +84,12 @@ window.addEventListener('load', function () {
       let childEl = arrayEl.children[i];
       // childEl.style.visibility = 'hidden';
       // add event sensors
+      let arrowLength = 1.2;
+      let arrowLengthToRem = arrowLength + 'rem'; 
       let arrowSensorL = document.createElement('div');
       arrowSensorL.style.height = '5px';
       arrowSensorL.style.width = '5px';
-      arrowSensorL.style.border = '1.2rem solid black';
+      arrowSensorL.style.border = arrowLengthToRem + ' solid black';
       arrowSensorL.style.borderLeft = '0 solid black';
       arrowSensorL.style.borderBottom = '0.3333rem solid white';
       // 4/12 0,3333
@@ -103,7 +105,7 @@ window.addEventListener('load', function () {
       // 4/12 0,3333
       arrowSensorR.style.borderTop = '0.0833rem solid white';
       childEl.appendChild(arrowSensorR);
-      // on left n - 1
+      // on left n - 1`
       // on right n + 1
       // set current to hidden
       // set new to visible
