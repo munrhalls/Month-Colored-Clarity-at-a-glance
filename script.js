@@ -81,7 +81,19 @@ window.addEventListener('load', function () {
     let length = arrayEl.children && arrayEl.children.length;
     console.log(length);
     for (let i = 0; i < length; i++) {
-      console.log(arrayEl.children[i])
+      let childEl = arrayEl.children[i];
+      // childEl.style.visibility = 'hidden';
+      // add event sensors
+      let arrowSensorL = document.createElement('div');
+      arrowSensorL.style.height = '5px';
+      arrowSensorL.style.width = '5px';
+      arrowSensorL.style.border = '5px solid black';
+      childEl.appendChild(arrowSensorL);
+      let arrowSensorR = document.createElement('div');
+      // on left n - 1
+      // on right n + 1
+      // set current to hidden
+      // set new to visible
     }
   }
   carouselify(hourLog);
