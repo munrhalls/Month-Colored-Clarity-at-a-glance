@@ -87,10 +87,12 @@ window.addEventListener('load', function () {
       let arrowSensorL = document.createElement('div');
       arrowSensorL.style.height = '5px';
       arrowSensorL.style.width = '5px';
-      arrowSensorL.style.border = '12px solid black';
-      arrowSensorL.style.borderLeft = '0px solid black';
-      arrowSensorL.style.borderBottom = '4px solid white';
-      arrowSensorL.style.borderTop = '1px solid white';
+      arrowSensorL.style.border = '1.2rem solid black';
+      arrowSensorL.style.borderLeft = '0 solid black';
+      arrowSensorL.style.borderBottom = '0.3333rem solid white';
+      // 4/12 0,3333
+      arrowSensorL.style.borderTop = '0.0833rem solid white';
+      // 1/12 0,0833
       childEl.appendChild(arrowSensorL);
       let arrowSensorR = document.createElement('div');
       // on left n - 1
