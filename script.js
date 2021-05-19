@@ -85,10 +85,9 @@ window.addEventListener('load', function () {
     console.log(length);
     for (let i = 0; i < length; i++) {
       let childEl = HTMLCollection[i];
-      
       console.log(childEl);
       childEl.style.position = 'relative';
-      // childEl.style.visibility = 'hidden';
+      childEl.style.display = 'none';
       // add event sensors
       let sensorsContainer = document.createElement('div');
       sensorsContainer.style.position = 'absolute';
@@ -125,7 +124,11 @@ window.addEventListener('load', function () {
       // 4/12 0,3333
       arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
       arrowSensorR.onclick = function(e) {
-        childEl.style.visibility = 'hidden';
+        childEl.style.display = 'none';
+        let index = i + 1;
+        let nextEl = HTMLCollection[index];
+        nextEl.style.display = 'block';
+        console.log(nextEl);
       }
       sensorsContainer.appendChild(arrowSensorR);
       childEl.appendChild(sensorsContainer);
@@ -134,6 +137,7 @@ window.addEventListener('load', function () {
       // set current to hidden
       // set new to visible
     }
+    HTMLCollection[0].style.display = 'block';
   }
   carouselify(HTMLCollection, '0.5rem', '7rem', 3);
   rootContent.appendChild(hourLog);
