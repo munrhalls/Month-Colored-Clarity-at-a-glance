@@ -88,6 +88,8 @@ window.addEventListener('load', function () {
       let arrowLengthToRem = arrowLength + 'rem'; 
       let oneFourth = (arrowLength / 4) / arrowLength;
       let oneFourthToRem = oneFourth + 'rem';
+      let oneTwelth = (arrowLength / 12) / arrowLength;
+      let oneTwelthToRem = oneTwelth + 'rem';
       let arrowSensorL = document.createElement('div');
       arrowSensorL.style.height = '5px';
       arrowSensorL.style.width = '5px';
@@ -95,7 +97,7 @@ window.addEventListener('load', function () {
       arrowSensorL.style.borderLeft = '0 solid black';
       arrowSensorL.style.borderBottom = oneFourthToRem + ' solid white';
       // 4/12 0,3333
-      arrowSensorL.style.borderTop = '0.0833rem solid white';
+      arrowSensorL.style.borderTop = oneTwelthToRem + ' solid white';
       // 1/12 0,0833
       childEl.appendChild(arrowSensorL);
       let arrowSensorR = document.createElement('div');
