@@ -78,7 +78,11 @@ window.addEventListener('load', function () {
   
   let hourLog = createHoursLog();
   function carouselify(arrayEl) {
-    console.log(arrayEl.children && arrayEl.children.length);
+    let length = arrayEl.children && arrayEl.children.length;
+    console.log(length);
+    for (let i = 0; i < length; i++) {
+      console.log(arrayEl.children[i])
+    }
   }
   carouselify(hourLog);
   rootContent.appendChild(hourLog);
