@@ -86,12 +86,14 @@ window.addEventListener('load', function () {
       // add event sensors
       let arrowLength = 1.2;
       let arrowLengthToRem = arrowLength + 'rem'; 
+      let oneFourth = (arrowLength / 4) / arrowLength;
+      let oneFourthToRem = oneFourth + 'rem';
       let arrowSensorL = document.createElement('div');
       arrowSensorL.style.height = '5px';
       arrowSensorL.style.width = '5px';
       arrowSensorL.style.border = arrowLengthToRem + ' solid black';
       arrowSensorL.style.borderLeft = '0 solid black';
-      arrowSensorL.style.borderBottom = '0.3333rem solid white';
+      arrowSensorL.style.borderBottom = oneFourthToRem + ' solid white';
       // 4/12 0,3333
       arrowSensorL.style.borderTop = '0.0833rem solid white';
       // 1/12 0,0833
