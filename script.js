@@ -131,8 +131,8 @@ window.addEventListener('load', function () {
       // set new to visible
     }
   }
-  let arrTop = '-1.5rem';
-  let arrLeft = '6rem';
+  let arrTop = '-2rem';
+  let arrLeft = '7rem';
   let length = 3;
   carouselify(monthEls, arrTop, arrLeft, length);
   rootContent.appendChild(hourLog);
