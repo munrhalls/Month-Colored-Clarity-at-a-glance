@@ -49,10 +49,10 @@ window.addEventListener('load', function () {
   titleTitle.style.height = title_height;
   titleTitle.style.color = '#ffffff';
   let spanOne = document.createElement('span');
-  spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per '; 
+  spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
   titleTitle.appendChild(spanOne);
   let colors = ['blue', 'purple', 'green', 'grey', 'yellow', 'orange', 'red'];
-  let letters = ('project').split(''); 
+  let letters = ('project').split('');
   for (let i = 0; i < letters.length; i++) {
     let span = document.createElement('span');
     span.innerText = letters[i].toUpperCase();
@@ -75,21 +75,31 @@ window.addEventListener('load', function () {
   rootContent.id = 'rootContent';
   rootContent.style.display = 'flex';
   root.appendChild(rootContent);
-  
+
   let hourLog = createHoursLog();
-  function carouselify(arrayEl) {
-    let length = arrayEl.children && arrayEl.children.length;
+
+  let monthEls = hourLog.getElementsByClassName('month');
+  console.log(monthEls)
+  function carouselify(HTMLCollection) {
+    let length = HTMLCollection.length;
     console.log(length);
     for (let i = 0; i < length; i++) {
-      let childEl = arrayEl.children[i];
+      let childEl = HTMLCollection[i];
       // childEl.style.visibility = 'hidden';
       // add event sensors
+      let sensorsContainer = document.createElement('div');
+      sensorsContainer.style.display = 'flex';
+      // created an arrow of its own! (can re-use later);
       let arrowLength = 1.2;
       let oneFourth = (arrowLength / 4) / arrowLength;
       let oneTwelth = (arrowLength / 12) / arrowLength;
-      let arrowLengthToRem = arrowLength + 'rem'; 
+      let arrowLengthToRem = arrowLength + 'rem';
       let oneFourthToRem = oneFourth + 'rem';
       let oneTwelthToRem = oneTwelth + 'rem';
+      let sensorsContainerWidth = arrowLength * 2.5;
+      let sensorsContainerWidthToRem = sensorsContainerWidth + 'rem';
+      sensorsContainer.style.width = sensorsContainerWidthToRem;
+      sensorsContainer.style.justifyContent = 'space-between';
       let arrowSensorL = document.createElement('div');
       arrowSensorL.style.height = '5px';
       arrowSensorL.style.width = '5px';
@@ -99,7 +109,7 @@ window.addEventListener('load', function () {
       // 4/12 0,3333
       arrowSensorL.style.borderTop = oneTwelthToRem + ' solid white';
       // 1/12 0,0833
-      childEl.appendChild(arrowSensorL);
+      sensorsContainer.appendChild(arrowSensorL);
       let arrowSensorR = document.createElement('div');
       arrowSensorR.style.height = '5px';
       arrowSensorR.style.width = '5px';
@@ -108,14 +118,15 @@ window.addEventListener('load', function () {
       arrowSensorR.style.borderBottom = '0.3333rem solid white';
       // 4/12 0,3333
       arrowSensorR.style.borderTop = '0.0833rem solid white';
-      childEl.appendChild(arrowSensorR);
+      sensorsContainer.appendChild(arrowSensorR);
+      childEl.appendChild(sensorsContainer);
       // on left n - 1`
       // on right n + 1
       // set current to hidden
       // set new to visible
     }
   }
-  carouselify(hourLog);
+  carouselify(monthEls);
   rootContent.appendChild(hourLog);
   createMenu();
   createCopyrightNote();
@@ -209,6 +220,7 @@ function createHoursLog() {
     monthTitleEl.style.padding = '0.25rem';
     monthTitleEl.style.textAlign = 'left';
     let monthContainerEl = document.createElement('div');
+    monthContainerEl.className = 'month';
     monthContainerEl.style.display = 'flex';
     monthContainerEl.style.justifyContent = 'flex-start';
     for (let j = 0; j < monthDATA.length; j++) {
@@ -382,7 +394,7 @@ function createMenu() {
     console.log(r_width)
     row.style.height = r_height;
     for (let j = 0; j < 2; j++) {
-      let s_width = parseInt(width)/2 + 'rem';
+      let s_width = parseInt(width) / 2 + 'rem';
       let s_height = r_height;
       let s_borderColor = '#ffffff';
       let slot = document.createElement('div');
@@ -391,12 +403,12 @@ function createMenu() {
       slot.style.width = s_width;
       slot.style.border = '1px solid ' + s_borderColor;
       slot.className = 'slot';
-      row.appendChild(slot);  
+      row.appendChild(slot);
     }
     menu.appendChild(row);
   }
   document.getElementById('rootContent').appendChild(menu);
-  
+
 
   // menu.setAttribute('id', 'menu');
   // menu.style.position = 'relative';
