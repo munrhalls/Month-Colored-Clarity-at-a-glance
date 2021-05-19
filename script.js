@@ -105,33 +105,45 @@ window.addEventListener('load', function () {
       let sensorsContainerWidthToRem = sensorsContainerWidth + 'rem';
       sensorsContainer.style.width = sensorsContainerWidthToRem;
       sensorsContainer.style.justifyContent = 'space-between';
-      let arrowSensorL = document.createElement('div');
-      arrowSensorL.style.height = '5px';
-      arrowSensorL.style.width = '5px';
-      arrowSensorL.style.border = arrowLengthToRem + ' solid black';
-      arrowSensorL.style.borderLeft = '0 solid black';
-      arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
-      // 4/12 0,3333
-      arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
-      // 1/12 0,0833
-      sensorsContainer.appendChild(arrowSensorL);
-      let arrowSensorR = document.createElement('div');
-      arrowSensorR.style.height = '5px';
-      arrowSensorR.style.width = '5px';
-      arrowSensorR.style.border = arrowLengthToRem + ' solid black';
-      arrowSensorR.style.borderRight = '0 solid black';
-      arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
-      // 4/12 0,3333
-      arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
-      arrowSensorR.onclick = function(e) {
-        childEl.style.display = 'none';
-        let index = i + 1;
-        let nextEl = HTMLCollection[index];
-        nextEl.style.display = 'block';
-        console.log(nextEl);
+      if (i !== 0) {
+        let arrowSensorL = document.createElement('div');
+        arrowSensorL.style.height = '5px';
+        arrowSensorL.style.width = '5px';
+        arrowSensorL.style.border = arrowLengthToRem + ' solid black';
+        arrowSensorL.style.borderLeft = '0 solid black';
+        arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
+        // 4/12 0,3333
+        arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
+        // 1/12 0,0833
+        arrowSensorL.onclick = function (e) {
+          childEl.style.display = 'none';
+          let index = i - 1;
+          let prevEl = HTMLCollection[index];
+          prevEl.style.display = 'block';
+          console.log(prevEl);
+        }
+        sensorsContainer.appendChild(arrowSensorL);
       }
-      sensorsContainer.appendChild(arrowSensorR);
-      childEl.appendChild(sensorsContainer);
+      if (i < length - 1) {
+        let arrowSensorR = document.createElement('div');
+        arrowSensorR.style.height = '5px';
+        arrowSensorR.style.width = '5px';
+        arrowSensorR.style.border = arrowLengthToRem + ' solid black';
+        arrowSensorR.style.borderRight = '0 solid black';
+        arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
+        // 4/12 0,3333
+        arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
+        arrowSensorR.onclick = function (e) {
+          childEl.style.display = 'none';
+          let index = i + 1;
+          let nextEl = HTMLCollection[index];
+          nextEl.style.display = 'block';
+          console.log(nextEl);
+        }
+        sensorsContainer.appendChild(arrowSensorR);
+        childEl.appendChild(sensorsContainer);
+      }
+
       // on left n - 1`
       // on right n + 1
       // set current to hidden
