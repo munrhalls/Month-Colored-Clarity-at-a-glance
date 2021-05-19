@@ -79,18 +79,23 @@ window.addEventListener('load', function () {
   let hourLog = createHoursLog();
 
   let monthEls = hourLog.getElementsByClassName('month');
-  console.log(monthEls)
-  function carouselify(HTMLCollection) {
+  console.log(monthEls);
+
+  function carouselify(HTMLCollection, arrTop, arrLeft, size) {
     let length = HTMLCollection.length;
     console.log(length);
     for (let i = 0; i < length; i++) {
       let childEl = HTMLCollection[i];
+      childEl.style.position = 'relative';
       // childEl.style.visibility = 'hidden';
       // add event sensors
       let sensorsContainer = document.createElement('div');
+      sensorsContainer.style.position = 'absolute';
+      sensorsContainer.style.top = arrTop;
+      sensorsContainer.style.left = arrLeft;
       sensorsContainer.style.display = 'flex';
       // created an arrow of its own! (can re-use later);
-      let arrowLength = 1.2;
+      let arrowLength = size;
       let oneFourth = (arrowLength / 4) / arrowLength;
       let oneTwelth = (arrowLength / 12) / arrowLength;
       let arrowLengthToRem = arrowLength + 'rem';
@@ -113,11 +118,11 @@ window.addEventListener('load', function () {
       let arrowSensorR = document.createElement('div');
       arrowSensorR.style.height = '5px';
       arrowSensorR.style.width = '5px';
-      arrowSensorR.style.border = '1.2rem solid black';
+      arrowSensorR.style.border = arrowLengthToRem + ' solid black';
       arrowSensorR.style.borderRight = '0 solid black';
-      arrowSensorR.style.borderBottom = '0.3333rem solid white';
+      arrowSensorR.style.borderBottom = oneFourthToRem + ' solid white';
       // 4/12 0,3333
-      arrowSensorR.style.borderTop = '0.0833rem solid white';
+      arrowSensorR.style.borderTop = oneTwelthToRem + ' solid white';
       sensorsContainer.appendChild(arrowSensorR);
       childEl.appendChild(sensorsContainer);
       // on left n - 1`
@@ -126,7 +131,10 @@ window.addEventListener('load', function () {
       // set new to visible
     }
   }
-  carouselify(monthEls);
+  let arrTop = '-1.5rem';
+  let arrLeft = '6rem';
+  let size = 2.4;
+  carouselify(monthEls, arrTop, arrLeft, size);
   rootContent.appendChild(hourLog);
   createMenu();
   createCopyrightNote();
