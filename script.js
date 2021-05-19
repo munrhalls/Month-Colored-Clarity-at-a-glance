@@ -77,6 +77,10 @@ window.addEventListener('load', function () {
   root.appendChild(rootContent);
   
   let hourLog = createHoursLog();
+  function carouselify(arrayEl) {
+    console.log(arrayEl.children && arrayEl.children.length);
+  }
+  carouselify(hourLog);
   rootContent.appendChild(hourLog);
   createMenu();
   createCopyrightNote();
