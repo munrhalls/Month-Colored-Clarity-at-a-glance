@@ -96,11 +96,11 @@ window.addEventListener('load', function () {
       sensorsContainer.style.display = 'flex';
       // created an arrow of its own! (can re-use later);
       let arrowLength = size;
-      let oneFourth = (arrowLength / 4) / arrowLength;
-      let oneTwelth = (arrowLength / 12) / arrowLength;
+      let borderBottom = (arrowLength / 4) / arrowLength;
+      let borderTop = (arrowLength / 3) / arrowLength;
       let arrowLengthToRem = arrowLength + 'rem';
-      let oneFourthToRem = oneFourth + 'rem';
-      let oneTwelthToRem = oneTwelth + 'rem';
+      let borderBottomToRem = borderBottom + 'rem';
+      let borderTopToRem = borderTop + 'rem';
       let sensorsContainerWidth = arrowLength * 2.5;
       let sensorsContainerWidthToRem = sensorsContainerWidth + 'rem';
       sensorsContainer.style.width = sensorsContainerWidthToRem;
@@ -110,9 +110,9 @@ window.addEventListener('load', function () {
       arrowSensorL.style.width = '5px';
       arrowSensorL.style.border = arrowLengthToRem + ' solid black';
       arrowSensorL.style.borderLeft = '0 solid black';
-      arrowSensorL.style.borderBottom = oneFourthToRem + ' solid white';
+      arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
       // 4/12 0,3333
-      arrowSensorL.style.borderTop = oneTwelthToRem + ' solid white';
+      arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
       // 1/12 0,0833
       sensorsContainer.appendChild(arrowSensorL);
       let arrowSensorR = document.createElement('div');
@@ -120,9 +120,9 @@ window.addEventListener('load', function () {
       arrowSensorR.style.width = '5px';
       arrowSensorR.style.border = arrowLengthToRem + ' solid black';
       arrowSensorR.style.borderRight = '0 solid black';
-      arrowSensorR.style.borderBottom = oneFourthToRem + ' solid white';
+      arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
       // 4/12 0,3333
-      arrowSensorR.style.borderTop = oneTwelthToRem + ' solid white';
+      arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
       sensorsContainer.appendChild(arrowSensorR);
       childEl.appendChild(sensorsContainer);
       // on left n - 1`
@@ -133,8 +133,8 @@ window.addEventListener('load', function () {
   }
   let arrTop = '-1.5rem';
   let arrLeft = '6rem';
-  let size = 2.4;
-  carouselify(monthEls, arrTop, arrLeft, size);
+  let length = 2.4;
+  carouselify(monthEls, arrTop, arrLeft, length);
   rootContent.appendChild(hourLog);
   createMenu();
   createCopyrightNote();
