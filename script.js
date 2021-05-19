@@ -81,7 +81,7 @@ window.addEventListener('load', function () {
   let monthEls = hourLog.getElementsByClassName('month');
   console.log(monthEls);
 
-  function carouselify(HTMLCollection, arrTop, arrLeft, size) {
+  function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
     let length = HTMLCollection.length;
     console.log(length);
     for (let i = 0; i < length; i++) {
@@ -91,11 +91,11 @@ window.addEventListener('load', function () {
       // add event sensors
       let sensorsContainer = document.createElement('div');
       sensorsContainer.style.position = 'absolute';
-      sensorsContainer.style.top = arrTop;
-      sensorsContainer.style.left = arrLeft;
+      sensorsContainer.style.top = arrDistanceTop;
+      sensorsContainer.style.left = arrDistanceLeft;
       sensorsContainer.style.display = 'flex';
       // created an arrow of its own! (can re-use later);
-      let arrowLength = size;
+      let arrowLength = arrSize;
       let borderBottom = (arrowLength / 1.25) / arrowLength;
       let borderTop = (arrowLength / 1.25) / arrowLength;
       let arrowLengthToRem = arrowLength + 'rem';
@@ -123,6 +123,11 @@ window.addEventListener('load', function () {
       arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
       // 4/12 0,3333
       arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
+      arrowSensorR.onclick = function(e) {
+        let container = e.target.parentElement.parentElement;
+        console.log(container);
+        container.style.visibility = 'hidden';
+      }
       sensorsContainer.appendChild(arrowSensorR);
       childEl.appendChild(sensorsContainer);
       // on left n - 1`
@@ -131,10 +136,7 @@ window.addEventListener('load', function () {
       // set new to visible
     }
   }
-  let arrTop = '-2rem';
-  let arrLeft = '7rem';
-  let length = 3;
-  carouselify(monthEls, arrTop, arrLeft, length);
+  carouselify(monthEls, '-2rem', '7rem', 3);
   rootContent.appendChild(hourLog);
   createMenu();
   createCopyrightNote();
