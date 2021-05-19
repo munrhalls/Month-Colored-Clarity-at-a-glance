@@ -33,27 +33,24 @@ for (let i = 1; i <= 12; i++) {
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  let header_height = '3rem';
-  let header_bgColor = '#000000';
-  let header_color = '#ffffff';
-  let header_fontSize = '1.5rem';
-  let header_padding = '0.5rem';
+  let title_height = '3rem';
+  let title_bgColor = '#000000';
+  let title_color = '#ffffff';
+  let title_fontSize = '1.5rem';
+  let title_padding = '0.5rem';
   let root = document.getElementById('root');
-  let rootContent = document.createElement('rootContent');
-  rootContent.id = 'rootContent';
-  rootContent.style.display = 'flex';
-  let rootHeader = document.createElement('rootHeader');
-  rootHeader.id = 'rootHeader';
-  rootHeader.style.display = 'flex';
-  rootHeader.style.height = header_height;
-  rootHeader.style.background = header_bgColor;
-  let headerTitle = document.createElement('div');
-  headerTitle.style.background = header_bgColor;
-  headerTitle.style.height = header_height;
-  headerTitle.style.color = '#ffffff';
+  let rootTitle = document.createElement('rootTitle');
+  rootTitle.id = 'rootTitle';
+  rootTitle.style.display = 'flex';
+  rootTitle.style.height = title_height;
+  rootTitle.style.background = title_bgColor;
+  let titleTitle = document.createElement('div');
+  titleTitle.style.background = title_bgColor;
+  titleTitle.style.height = title_height;
+  titleTitle.style.color = '#ffffff';
   let spanOne = document.createElement('span');
   spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per '; 
-  headerTitle.appendChild(spanOne);
+  titleTitle.appendChild(spanOne);
   let colors = ['blue', 'purple', 'green', 'grey', 'yellow', 'orange', 'red'];
   let letters = ('project').split(''); 
   for (let i = 0; i < letters.length; i++) {
@@ -61,19 +58,22 @@ window.addEventListener('load', function () {
     span.innerText = letters[i].toUpperCase();
     span.style.color = colors[i];
     span.style.letterSpacing = '3px';
-    headerTitle.appendChild(span);
+    titleTitle.appendChild(span);
   }
-  headerTitle.style.padding = header_padding
-  headerTitle.style.fontSize = header_fontSize;
-  headerTitle.style.borderRight = '1px solid #ffffff';
+  titleTitle.style.padding = title_padding
+  titleTitle.style.fontSize = title_fontSize;
+  titleTitle.style.borderRight = '1px solid #ffffff';
   let aboutPage = document.createElement('div');
   aboutPage.innerText = 'ABOUT';
-  aboutPage.style.color = header_color;
-  aboutPage.style.padding = header_padding;
-  aboutPage.style.fontSize = header_fontSize;
-  rootHeader.appendChild(headerTitle);
-  rootHeader.appendChild(aboutPage);
-  root.appendChild(rootHeader);
+  aboutPage.style.color = title_color;
+  aboutPage.style.padding = title_padding;
+  aboutPage.style.fontSize = title_fontSize;
+  rootTitle.appendChild(titleTitle);
+  rootTitle.appendChild(aboutPage);
+  root.appendChild(rootTitle);
+  let rootContent = document.createElement('rootContent');
+  rootContent.id = 'rootContent';
+  rootContent.style.display = 'flex';
   root.appendChild(rootContent);
 
   createHoursLog();
