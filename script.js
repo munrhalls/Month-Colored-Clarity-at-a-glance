@@ -85,10 +85,10 @@ window.addEventListener('load', function () {
       // childEl.style.visibility = 'hidden';
       // add event sensors
       let arrowLength = 1.2;
-      let arrowLengthToRem = arrowLength + 'rem'; 
       let oneFourth = (arrowLength / 4) / arrowLength;
-      let oneFourthToRem = oneFourth + 'rem';
       let oneTwelth = (arrowLength / 12) / arrowLength;
+      let arrowLengthToRem = arrowLength + 'rem'; 
+      let oneFourthToRem = oneFourth + 'rem';
       let oneTwelthToRem = oneTwelth + 'rem';
       let arrowSensorL = document.createElement('div');
       arrowSensorL.style.height = '5px';
