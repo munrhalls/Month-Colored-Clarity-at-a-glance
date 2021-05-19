@@ -98,10 +98,11 @@ window.addEventListener('load', function () {
       arrowSensorR.style.height = '5px';
       arrowSensorR.style.width = '5px';
       arrowSensorR.style.border = '1.2rem solid black';
-      arrowSensorR.style.borderLeft = '0 solid black';
+      arrowSensorR.style.borderRight = '0 solid black';
       arrowSensorR.style.borderBottom = '0.3333rem solid white';
       // 4/12 0,3333
       arrowSensorR.style.borderTop = '0.0833rem solid white';
+      childEl.appendChild(arrowSensorR);
       // on left n - 1
       // on right n + 1
       // set current to hidden
