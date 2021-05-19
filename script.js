@@ -96,8 +96,8 @@ window.addEventListener('load', function () {
       sensorsContainer.style.display = 'flex';
       // created an arrow of its own! (can re-use later);
       let arrowLength = size;
-      let borderBottom = (arrowLength / 4) / arrowLength;
-      let borderTop = (arrowLength / 3) / arrowLength;
+      let borderBottom = (arrowLength / 1.25) / arrowLength;
+      let borderTop = (arrowLength / 1.25) / arrowLength;
       let arrowLengthToRem = arrowLength + 'rem';
       let borderBottomToRem = borderBottom + 'rem';
       let borderTopToRem = borderTop + 'rem';
@@ -133,7 +133,7 @@ window.addEventListener('load', function () {
   }
   let arrTop = '-1.5rem';
   let arrLeft = '6rem';
-  let length = 2.4;
+  let length = 3;
   carouselify(monthEls, arrTop, arrLeft, length);
   rootContent.appendChild(hourLog);
   createMenu();
