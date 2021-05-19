@@ -75,11 +75,10 @@ window.addEventListener('load', function () {
   rootContent.id = 'rootContent';
   rootContent.style.display = 'flex';
   root.appendChild(rootContent);
-
-  createHoursLog();
+  
+  let hourLog = createHoursLog();
+  rootContent.appendChild(hourLog);
   createMenu();
-
-
   createCopyrightNote();
   createCopyrightNote2();
 
@@ -159,7 +158,7 @@ window.addEventListener('load', function () {
 });
 
 function createHoursLog() {
-  let rootContent = document.getElementById('rootContent');
+  // let rootContent = document.getElementById('rootContent');
   let hourLog = document.createElement('hourLog');
   for (let i = 0; i < yearDATA.length; i++) {
     let monthDATA = yearDATA[i];
@@ -299,8 +298,9 @@ function createHoursLog() {
     }
     hourLog.appendChild(monthTitleEl);
     hourLog.appendChild(monthContainerEl);
-    rootContent.appendChild(hourLog);
+    // rootContent.appendChild(hourLog);
   }
+  return hourLog;
 }
 
 const VALUES_MenuSharedCSS = {
