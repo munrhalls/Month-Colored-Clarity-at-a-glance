@@ -58,18 +58,18 @@ window.addEventListener('load', function () {
     let containerVisuals = document.createElement('div');
     containerVisuals.id = 'containerVisuals';
     containerVisuals.style.width = 'calc(100% - ' + menuWidth + ')';
-    ///// CONTAINER TimeBlocks
-    let containerTimeBlocks = document.createElement('div');
-    containerTimeBlocks.id = 'containerTimeBlocks';
-    function createTimeBlocks() {
-      let timeBlocksVisuals = document.createElement('div');
-      timeBlocksVisuals.style.height = '45vh';
-      timeBlocksVisuals.style.width = '100%';
-      return timeBlocksVisuals;
+    ///// CONTAINER resultTimeBlocks
+    let containerresultTimeBlocks = document.createElement('div');
+    containerresultTimeBlocks.id = 'containerresultTimeBlocks';
+    function createresultTimeBlocks() {
+      let resultTimeBlocks = document.createElement('div');
+      resultTimeBlocks.style.height = '45vh';
+      resultTimeBlocks.style.width = '100%';
+      return resultTimeBlocks;
     }
-    let timeBlocks = createTimeBlocks();
-    containerTimeBlocks.appendChild(timeBlocks);
-    ///// CONTAINER TimeBlocks CONCLUDE
+    let resultTimeBlocks = createresultTimeBlocks();
+    containerresultTimeBlocks.appendChild(resultTimeBlocks);
+    ///// CONTAINER resultTimeBlocks CONCLUDE
     ///// CONTAINER Calendar
     let containerCalendar = document.createElement('div');
     containerCalendar.id = 'containerCalendar';
@@ -161,7 +161,7 @@ window.addEventListener('load', function () {
     calendar.appendChild(hourLog)
     containerCalendar.appendChild(calendar);
     ///// CONTAINER Calendar CONCLUDE
-    containerVisuals.appendChild(containerTimeBlocks);
+    containerVisuals.appendChild(containerresultTimeBlocks);
     containerVisuals.appendChild(containerCalendar);
     containerMain.appendChild(containerVisuals);
     //// CONTAINER VISUALS CONCLUDE
