@@ -101,17 +101,17 @@ window.addEventListener('load', function () {
         // position
         resultBlock.style.width = '12rem';
         resultBlock.style.height = '12rem';
-        resultBlock.style.background = color;
-        resultBlock.style.border = '2px solid ' + color;
+        resultBlock.style.background = 'black';
+        resultBlock.style.border = '1px solid black';
         
 
         let input = document.createElement('input');
         input.type = 'text';  
-        input.style.background = color;
-        input.style.border = '6px solid black';
+        input.style.background = 'black';
+        input.style.border = '2.5px solid ' + color;
         input.style.width = '100%';
         input.style.height = '100%';
-        input.style.color = 'black';
+        input.style.color = 'white'
         input.style.fontSize = '1.5rem';
         input.style.textAlign = 'center';
         input.style.zIndex = '3';
