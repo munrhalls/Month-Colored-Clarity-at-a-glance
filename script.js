@@ -2,7 +2,9 @@
 const topbarHeight = '4.5rem';
 const menuWidth = '18rem';
 const colors = ['blue', 'green', 'purple', 'grey', 'orange', 'yellow', 'red'];
+// resultTimeBlocks
 const resultCardOpacity = '0.61';
+const resultCardAddBtn = '8rem';
 
 const date = new Date();
 const year = date.getFullYear();
@@ -103,24 +105,30 @@ window.addEventListener('load', function () {
       function createCardWithAddBtn() {
         let cardWithAddBtn = document.createElement('div');
         cardWithAddBtn.style.display = 'flex';
-        cardWithAddBtn.style.justifyContent = 'center';
-        cardWithAddBtn.style.alignItems = 'center';
+        cardWithAddBtn.style.width = '100%';
         // flex
         let containerAddBtn = document.createElement('div');
         containerAddBtn.id = 'containerAddBtn';
-        containerAddBtn.id = 'containerAddBtn';
-        containerAddBtn.style.height = '100%';
-        containerAddBtn.style.width = '100%';
-
+        containerAddBtn.style.display = 'flex';
         containerAddBtn.style.justifyContent = 'center';
         containerAddBtn.style.alignItems = 'center';
+        containerAddBtn.style.height = '100%';
+        containerAddBtn.style.width = '100%';
+        // flex
+
         let addBtn = document.createElement('div');
         addBtn.style.background = 'black';
-        addBtn.style.fontSize = '12rem';
-        addBtn.style.width = '12rem';
+        addBtn.style.fontSize = resultCardAddBtn;
+        addBtn.style.fontWeight = 'bold';
+        addBtn.style.width = resultCardAddBtn;
         addBtn.style.color = 'white';
+        addBtn.style.borderRadius = '100%';
+        addBtn.style.opacity = '0.9';
         addBtn.innerText = '+';
         addBtn.style.textAlign = 'center';
+        addBtn.onclick = function(e) {
+          addResultCard();
+        }
         containerAddBtn.appendChild(addBtn);
         cardWithAddBtn.appendChild(containerAddBtn);
         return cardWithAddBtn;
