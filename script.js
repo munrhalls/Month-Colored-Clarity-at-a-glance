@@ -2,6 +2,7 @@
 const topbarHeight = '4.5rem';
 const menuWidth = '18rem';
 const colors = ['blue', 'green', 'purple', 'grey', 'orange', 'yellow', 'red'];
+const resultCardOpacity = '0.61';
 
 const date = new Date();
 const year = date.getFullYear();
@@ -86,6 +87,7 @@ window.addEventListener('load', function () {
       function addResultCard(color) {
         let resultCard = createResultCard();
         resultCard.style.background = color || 'darkblue';
+        resultCard.style.opacity = resultCardOpacity;
         containerResultCards.appendChild(resultCard);
       }
       addResultCard(colors[0]);
@@ -95,6 +97,7 @@ window.addEventListener('load', function () {
       containerCardWithAddBtn.id = 'containerCardWithAddBtn';
       containerCardWithAddBtn.style.display = 'flex';
       containerCardWithAddBtn.style.flex = '1';
+      // flex
       containerCardWithAddBtn.style.border = '1px solid black';
 
       function createCardWithAddBtn() {
@@ -102,6 +105,7 @@ window.addEventListener('load', function () {
         cardWithAddBtn.style.display = 'flex';
         cardWithAddBtn.style.justifyContent = 'center';
         cardWithAddBtn.style.alignItems = 'center';
+        // flex
         let containerAddBtn = document.createElement('div');
         containerAddBtn.id = 'containerAddBtn';
         containerAddBtn.id = 'containerAddBtn';
