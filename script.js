@@ -61,13 +61,13 @@ window.addEventListener('load', function () {
     ///// CONTAINER resultTimeBlocks
     let containerresultTimeBlocks = document.createElement('div');
     containerresultTimeBlocks.id = 'containerresultTimeBlocks';
-    function createresultTimeBlocks() {
+    function createResultTimeBlocks() {
       let resultTimeBlocks = document.createElement('div');
       resultTimeBlocks.style.height = '45vh';
       resultTimeBlocks.style.width = '100%';
       return resultTimeBlocks;
     }
-    let resultTimeBlocks = createresultTimeBlocks();
+    let resultTimeBlocks = createResultTimeBlocks();
     containerresultTimeBlocks.appendChild(resultTimeBlocks);
     ///// CONTAINER resultTimeBlocks CONCLUDE
     ///// CONTAINER Calendar
