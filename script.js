@@ -63,6 +63,7 @@ window.addEventListener('load', function () {
     containerResultTimeBlocks.id = 'containerResultTimeBlocks';
     function createResultTimeBlocks() {
       let resultTimeBlocks = document.createElement('div');
+      // resultTimeBlocks.style.display = 'flex';
       resultTimeBlocks.style.height = '45vh';
       resultTimeBlocks.style.width = '100%';
       let containerResultCards = document.createElement('div');
@@ -72,8 +73,8 @@ window.addEventListener('load', function () {
       function createResultCard() {
         let resultCard = document.createElement('div');
         resultCard.className = 'resultCard';
+        resultCard.style.flex = '1';
         resultCard.style.height = '100%';
-        resultCard.style.flex= '1';
         resultCard.style.border = '1px solid black';
         return resultCard;
       }
@@ -85,11 +86,18 @@ window.addEventListener('load', function () {
       addResultCard();
       addResultCard();
 
-      let containerAddResultCard = document.createElement('div');
-      containerAddResultCard.id = 'containerAddResultCard';
-      containerAddResultCard.style.border = '1px solid black';
+      let containerCardWithAddBtn = document.createElement('div');
+      containerCardWithAddBtn.id = 'containerCardWithAddBtn';
+      containerCardWithAddBtn.style.border = '1px solid black';
+      function createCardWithAddBtn() {
+        let cardWithAddBtn = document.createElement('div');
+        return cardWithAddBtn;
+      }
+      let cardWithAddBtn = createCardWithAddBtn();
+      containerCardWithAddBtn.appendChild(cardWithAddBtn);
+
       resultTimeBlocks.appendChild(containerResultCards);
-      resultTimeBlocks.appendChild(containerAddResultCard);
+      resultTimeBlocks.appendChild(containerCardWithAddBtn);
       
       return resultTimeBlocks;
     }
