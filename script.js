@@ -132,10 +132,22 @@ window.addEventListener('load', function () {
       HTMLCollection[0].style.display = 'block';
     }
     carouselify(hourLog.children, '0.5rem', '7rem', 3);
-    let timeBlocksVisuals = document.createElement('div');
+    function createTimeBlocksVisuals() {
+      let timeBlocksVisuals = document.createElement('div');
+      timeBlocksVisuals.style.height = '45vh';
+      timeBlocksVisuals.style.width = '100%';
+      return timeBlocksVisuals;
+    }
+    let timeBlocksVisuals = createTimeBlocksVisuals();
     timeBlocksVisuals.style.height = '45vh';
     timeBlocksVisuals.style.width = '100%';
-    let calendarVisuals = document.createElement('div');
+    function createCalendarVisuals() {
+      let calendarVisuals = document.createElement('div');
+      calendarVisuals.style.height = '45vh';
+      calendarVisuals.style.width = '100%';
+      return calendarVisuals;
+    }
+    let calendarVisuals = createCalendarVisuals();
     calendarVisuals.style.height = '45vh';
     calendarVisuals.style.width = '100%';
     calendarVisuals.appendChild(hourLog)
