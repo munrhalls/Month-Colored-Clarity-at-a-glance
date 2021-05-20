@@ -65,6 +65,20 @@ window.addEventListener('load', function () {
       let resultTimeBlocks = document.createElement('div');
       resultTimeBlocks.style.height = '45vh';
       resultTimeBlocks.style.width = '100%';
+      let containerResultCards = document.createElement('div');
+      function createResultCard() {
+        let resultCard = document.createElement('div');
+        return resultCard;
+      }
+      function addResultCard() {
+        let resultCard = createResultCard();
+        containerResultCards.appendChild(resultCard);
+      }
+      addResultCard();
+      let containerAddResultCard = document.createElement('div');
+      resultTimeBlocks.appendChild(containerResultCards);
+      resultTimeBlocks.appendChild(containerAddResultCard);
+      
       return resultTimeBlocks;
     }
     let resultTimeBlocks = createResultTimeBlocks();
