@@ -3,7 +3,7 @@ const topbarHeight = '4.5rem';
 const menuWidth = '18rem';
 const colors = ['blue', 'green', 'purple', 'grey', 'orange', 'yellow', 'red'];
 // resultTimeBlocks
-const resultCardOpacity = '0.61';
+const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
 
 const date = new Date();
@@ -91,10 +91,14 @@ window.addEventListener('load', function () {
         opacityDiv.style.width = '100%';
         opacityDiv.style.height = '100%';
         opacityDiv.style.background = color || 'darkblue';
-        opacityDiv.style.opacity = '0.61';
+        opacityDiv.style.opacity = resultCardOpacity;
         resultCard.appendChild(opacityDiv);
 
         let resultBlock = document.createElement('div');
+        resultBlock.style.position = 'relative';
+        resultBlock.style.top = '3rem';
+        resultBlock.style.left = '1rem';
+        // position
         resultBlock.style.width = '12rem';
         resultBlock.style.height = '12rem';
         resultBlock.style.background = color;
@@ -103,10 +107,21 @@ window.addEventListener('load', function () {
 
         let input = document.createElement('input');
         input.type = 'text';  
-        input.style.background = 'transparent';
-
+        input.style.background = color;
+        // input.style.border = '1px solid white';
         input.style.width = '100%';
         input.style.height = '100%';
+        input.style.color = 'black';
+        input.style.fontSize = '1.5rem';
+        input.style.textAlign = 'center';
+        input.style.zIndex = '3';
+        input.style.position = 'absolute';
+        input.placeholder = 'RESULT TITLE';
+        // input.style.top = '3rem';
+        // input.style.bottom = '3rem';
+        // input.style.left = '3rem';
+        // input.style.right = '3rem';
+
 
         
         resultBlock.appendChild(input);
