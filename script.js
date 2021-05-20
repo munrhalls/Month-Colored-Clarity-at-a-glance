@@ -78,18 +78,47 @@ window.addEventListener('load', function () {
       // flex
       containerResultCards.style.height = '100%'; 
 
-      function createResultCard() {
+      function createResultCard(color) {
         let resultCard = document.createElement('div');
         resultCard.className = 'resultCard';
         resultCard.style.flex = '1';
         resultCard.style.height = '100%';
         resultCard.style.border = '1px solid black';
+        // resultCard.style.background = color || 'darkblue';
+        resultCard.style.position = 'relative';
+        let opacityDiv = document.createElement('div');
+        opacityDiv.style.position = 'absolute';
+        opacityDiv.style.width = '100%';
+        opacityDiv.style.height = '100%';
+        opacityDiv.style.background = color || 'darkblue';
+        opacityDiv.style.opacity = '0.61';
+
+        resultCard.appendChild(opacityDiv);
+        let resultBlock = document.createElement('div');
+        resultBlock.style.width = '12rem';
+        resultBlock.style.height = '12rem';
+        resultBlock.style.opacity = '1';
+        let input = document.createElement('input');
+        input.type = 'text';  
+        input.style.background = 'transparent';
+        input.style.width = '100%';
+        input.style.height = '100%';
+        input.style.border = '5px solid ' + colors[0];
+        
+        resultBlock.appendChild(input);
+        resultBlock.style.innerText = 'RESULT';
+        function createTimeBlock() {
+          let timeBlock = document.createElement('div');
+          return timeBlock;
+        }
+        let timeBlock = createTimeBlock();
+
+        resultCard.appendChild(resultBlock);
         return resultCard;
       }
       function addResultCard(color) {
-        let resultCard = createResultCard();
-        resultCard.style.background = color || 'darkblue';
-        resultCard.style.opacity = resultCardOpacity;
+        let resultCard = createResultCard(color);
+        // resultCard.style.opacity = resultCardOpacity;
         containerResultCards.appendChild(resultCard);
       }
       addResultCard(colors[0]);
