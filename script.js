@@ -99,6 +99,26 @@ window.addEventListener('load', function () {
 
       function createCardWithAddBtn() {
         let cardWithAddBtn = document.createElement('div');
+        cardWithAddBtn.style.display = 'flex';
+        cardWithAddBtn.style.justifyContent = 'center';
+        cardWithAddBtn.style.alignItems = 'center';
+        let containerAddBtn = document.createElement('div');
+        containerAddBtn.id = 'containerAddBtn';
+        containerAddBtn.id = 'containerAddBtn';
+        containerAddBtn.style.height = '100%';
+        containerAddBtn.style.width = '100%';
+
+        containerAddBtn.style.justifyContent = 'center';
+        containerAddBtn.style.alignItems = 'center';
+        let addBtn = document.createElement('div');
+        addBtn.style.background = 'black';
+        addBtn.style.fontSize = '12rem';
+        addBtn.style.width = '12rem';
+        addBtn.style.color = 'white';
+        addBtn.innerText = '+';
+        addBtn.style.textAlign = 'center';
+        containerAddBtn.appendChild(addBtn);
+        cardWithAddBtn.appendChild(containerAddBtn);
         return cardWithAddBtn;
       }
       let cardWithAddBtn = createCardWithAddBtn();
