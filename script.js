@@ -84,26 +84,30 @@ window.addEventListener('load', function () {
         resultCard.style.flex = '1';
         resultCard.style.height = '100%';
         resultCard.style.border = '1px solid black';
-        // resultCard.style.background = color || 'darkblue';
         resultCard.style.position = 'relative';
+        // first result card bg, lightest
         let opacityDiv = document.createElement('div');
         opacityDiv.style.position = 'absolute';
         opacityDiv.style.width = '100%';
         opacityDiv.style.height = '100%';
         opacityDiv.style.background = color || 'darkblue';
         opacityDiv.style.opacity = '0.61';
-
         resultCard.appendChild(opacityDiv);
+
         let resultBlock = document.createElement('div');
         resultBlock.style.width = '12rem';
         resultBlock.style.height = '12rem';
-        resultBlock.style.opacity = '1';
+        resultBlock.style.background = color;
+        resultBlock.style.border = '2px solid ' + color;
+        
+
         let input = document.createElement('input');
         input.type = 'text';  
         input.style.background = 'transparent';
+
         input.style.width = '100%';
         input.style.height = '100%';
-        input.style.border = '5px solid ' + colors[0];
+
         
         resultBlock.appendChild(input);
         resultBlock.style.innerText = 'RESULT';
