@@ -66,8 +66,15 @@ window.addEventListener('load', function () {
       resultTimeBlocks.style.height = '45vh';
       resultTimeBlocks.style.width = '100%';
       let containerResultCards = document.createElement('div');
+      containerResultCards.id = 'containerResultCards'; 
+      containerResultCards.style.height = '100%'; 
+      containerResultCards.style.display = 'flex';
       function createResultCard() {
         let resultCard = document.createElement('div');
+        resultCard.className = 'resultCard';
+        resultCard.style.height = '100%';
+        resultCard.style.flex= '1';
+        resultCard.style.border = '1px solid black';
         return resultCard;
       }
       function addResultCard() {
@@ -75,7 +82,12 @@ window.addEventListener('load', function () {
         containerResultCards.appendChild(resultCard);
       }
       addResultCard();
+      addResultCard();
+      addResultCard();
+
       let containerAddResultCard = document.createElement('div');
+      containerAddResultCard.id = 'containerAddResultCard';
+      containerAddResultCard.style.border = '1px solid black';
       resultTimeBlocks.appendChild(containerResultCards);
       resultTimeBlocks.appendChild(containerAddResultCard);
       
