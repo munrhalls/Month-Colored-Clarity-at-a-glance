@@ -63,13 +63,15 @@ window.addEventListener('load', function () {
     containerResultTimeBlocks.id = 'containerResultTimeBlocks';
     function createResultTimeBlocks() {
       let resultTimeBlocks = document.createElement('div');
-      // resultTimeBlocks.style.display = 'flex';
+      resultTimeBlocks.style.display = 'flex';
       resultTimeBlocks.style.height = '45vh';
       resultTimeBlocks.style.width = '100%';
       let containerResultCards = document.createElement('div');
       containerResultCards.id = 'containerResultCards'; 
       containerResultCards.style.height = '100%'; 
       containerResultCards.style.display = 'flex';
+      containerResultCards.style.flex = '3';
+
       function createResultCard() {
         let resultCard = document.createElement('div');
         resultCard.className = 'resultCard';
@@ -80,15 +82,18 @@ window.addEventListener('load', function () {
       }
       function addResultCard() {
         let resultCard = createResultCard();
+        resultCard.style.background = 'blue';
         containerResultCards.appendChild(resultCard);
       }
       addResultCard();
       addResultCard();
       addResultCard();
-
       let containerCardWithAddBtn = document.createElement('div');
       containerCardWithAddBtn.id = 'containerCardWithAddBtn';
+      containerCardWithAddBtn.style.display = 'flex';
+      containerCardWithAddBtn.style.flex = '1';
       containerCardWithAddBtn.style.border = '1px solid black';
+
       function createCardWithAddBtn() {
         let cardWithAddBtn = document.createElement('div');
         return cardWithAddBtn;
@@ -104,6 +109,7 @@ window.addEventListener('load', function () {
     let resultTimeBlocks = createResultTimeBlocks();
     containerResultTimeBlocks.appendChild(resultTimeBlocks);
     ///// CONTAINER resultTimeBlocks CONCLUDE
+
     ///// CONTAINER Calendar
     let containerCalendar = document.createElement('div');
     containerCalendar.id = 'containerCalendar';
