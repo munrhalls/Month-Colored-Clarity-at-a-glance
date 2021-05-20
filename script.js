@@ -1,5 +1,5 @@
 // VALUES
-const topbarHeight = '3rem';
+const topbarHeight = '4.5rem';
 const menuWidth = '18rem';
 
 const date = new Date();
@@ -38,8 +38,10 @@ window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   // CONTAINER ROOT
   let containerRoot = document.getElementById('containerRoot');
+  containerRoot.id = 'containerRoot';
   /// CONTAINER TOPBAR
   let containerTopBar = document.createElement('div');
+  containerTopBar.id = 'containerTopBar';
   let topBar = createTopBar();
   containerTopBar.appendChild(topBar);
   containerRoot.appendChild(containerTopBar);
@@ -54,9 +56,33 @@ window.addEventListener('load', function () {
     //// CONTAINER VISUALS
     let main = document.createElement('div');
     let containerVisuals = document.createElement('div');
-    containerVisuals.style.height = '45vh';
-    containerVisuals.style.width = '100%';
-    let hourLog = createHoursLog();
+    containerVisuals.id =  'containerVisuals';
+    containerVisuals.style.width = 'calc(100% -' + menuWidth + ')';
+    ///// CONTAINER TimeBlocks
+    let containerTimeBlocks = document.createElement('div');
+    containerTimeBlocks.id =  'containerTimeBlocks';
+    function createTimeBlocks() {
+      let timeBlocksVisuals = document.createElement('div');
+      timeBlocksVisuals.style.height = '45vh';
+      timeBlocksVisuals.style.width = '100%';
+      return timeBlocksVisuals;
+    }
+    let timeBlocks = createTimeBlocks();
+    containerTimeBlocks.appendChild(timeBlocks);
+    ///// CONTAINER TimeBlocks CONCLUDE
+    ///// CONTAINER Calendar
+    let containerCalendar = document.createElement('div');
+    containerCalendar.id =  'containerCalendar';
+    function createCalendar() {
+      let calendar = document.createElement('div');
+      calendar.style.height = '45vh';
+      calendar.style.width = '100%';
+      return calendar;
+    }
+    let calendar = createCalendar();
+    // let et
+    containerCalendar.id = 'containerCalendar'; 
+     hourLog = createHoursLog();
     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
       let length = HTMLCollection.length;
       console.log(length);
@@ -132,31 +158,16 @@ window.addEventListener('load', function () {
       HTMLCollection[0].style.display = 'block';
     }
     carouselify(hourLog.children, '0.5rem', '7rem', 3);
-    function createTimeBlocksVisuals() {
-      let timeBlocksVisuals = document.createElement('div');
-      timeBlocksVisuals.style.height = '45vh';
-      timeBlocksVisuals.style.width = '100%';
-      return timeBlocksVisuals;
-    }
-    let timeBlocksVisuals = createTimeBlocksVisuals();
-    timeBlocksVisuals.style.height = '45vh';
-    timeBlocksVisuals.style.width = '100%';
-    function createCalendarVisuals() {
-      let calendarVisuals = document.createElement('div');
-      calendarVisuals.style.height = '45vh';
-      calendarVisuals.style.width = '100%';
-      return calendarVisuals;
-    }
-    let calendarVisuals = createCalendarVisuals();
-    calendarVisuals.style.height = '45vh';
-    calendarVisuals.style.width = '100%';
-    calendarVisuals.appendChild(hourLog)
-    containerVisuals.appendChild(timeBlocksVisuals);
-    containerVisuals.appendChild(calendarVisuals);
+    calendar.appendChild(hourLog)
+    containerCalendar.appendChild(calendar);
+    ///// CONTAINER Calendar CONCLUDE
+    containerVisuals.appendChild(containerTimeBlocks);
+    containerVisuals.appendChild(calendar);
     containerMain.appendChild(containerVisuals);
     //// CONTAINER VISUALS CONCLUDE
     //// CONTAINER MENU
     let containerMenu = document.createElement('div');
+    containerMenu.id =  'containerMenu';
     let menu = createMenu();
     containerMenu.appendChild(menu);
     containerMain.appendChild(containerMenu);
@@ -292,8 +303,9 @@ function createTopBar() {
   return topBar;
 }
 function createHoursLog() {
-  // let containerMain = document.getElementById('containerMain');
-  let hourLog = document.createElement('div');
+  // let containerMain = document.getElementById('containerMainet
+  // container.id  = let
+   hourLog = document.createElement('div');
   for (let i = 0; i < yearDATA.length; i++) {
     let monthDATA = yearDATA[i];
     // MONTHS LEVEL
@@ -482,17 +494,17 @@ function createMenu() {
     row.style.height = r_height;
     //// uncomment for cells
     // for (let j = 0; j < 2; j++) {
-      // let s_width = parseInt(width) / 2 + 'rem';
-      let s_width = parseInt(width)  + 'rem';
-      let s_height = r_height;
-      let s_borderColor = '#ffffff';
-      let slot = document.createElement('div');
-      slot.style.display = 'inline-block';
-      slot.style.height = s_height;
-      slot.style.width = s_width;
-      slot.style.border = '1px solid ' + s_borderColor;
-      slot.className = 'slot';
-      row.appendChild(slot);
+    // let s_width = parseInt(width) / 2 + 'rem';
+    let s_width = parseInt(width) + 'rem';
+    let s_height = r_height;
+    let s_borderColor = '#ffffff';
+    let slot = document.createElement('div');
+    slot.style.display = 'inline-block';
+    slot.style.height = s_height;
+    slot.style.width = s_width;
+    slot.style.border = '1px solid ' + s_borderColor;
+    slot.className = 'slot';
+    row.appendChild(slot);
     // }
     menu.appendChild(row);
   }
