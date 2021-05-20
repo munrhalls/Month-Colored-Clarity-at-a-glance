@@ -141,10 +141,10 @@ window.addEventListener('load', function () {
     containerMain.appendChild(containerVisuals);
     //// CONTAINER VISUALS CONCLUDE
     //// CONTAINER MENU
-    // let containerMenu = document.createElement('div');
-    // let menu = createMenu();
-    // containerMenu.appendChild(menu);
-    // containerMain.appendChild(containerMenu);
+    let containerMenu = document.createElement('div');
+    let menu = createMenu();
+    containerMenu.appendChild(menu);
+    containerMain.appendChild(containerMenu);
     return main;
     //// CONTAINER MENU CONCLUDE
   }
@@ -464,7 +464,8 @@ function createMenu() {
     row.style.width = r_width;
     console.log(r_width)
     row.style.height = r_height;
-    for (let j = 0; j < 2; j++) {
+    //// uncomment for cells
+    // for (let j = 0; j < 2; j++) {
       let s_width = parseInt(width) / 2 + 'rem';
       let s_height = r_height;
       let s_borderColor = '#ffffff';
@@ -475,7 +476,7 @@ function createMenu() {
       slot.style.border = '1px solid ' + s_borderColor;
       slot.className = 'slot';
       row.appendChild(slot);
-    }
+    // }
     menu.appendChild(row);
   }
   return menu;
