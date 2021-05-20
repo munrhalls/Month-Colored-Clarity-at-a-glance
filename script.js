@@ -108,7 +108,7 @@ window.addEventListener('load', function () {
         let input = document.createElement('input');
         input.type = 'text';  
         input.style.background = color;
-        // input.style.border = '1px solid white';
+        input.style.border = '6px solid black';
         input.style.width = '100%';
         input.style.height = '100%';
         input.style.color = 'black';
