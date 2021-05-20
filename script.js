@@ -56,11 +56,11 @@ window.addEventListener('load', function () {
     //// CONTAINER VISUALS
     let main = document.createElement('div');
     let containerVisuals = document.createElement('div');
-    containerVisuals.id =  'containerVisuals';
-    containerVisuals.style.width = 'calc(100% -' + menuWidth + ')';
+    containerVisuals.id = 'containerVisuals';
+    containerVisuals.style.width = 'calc(100% - ' + menuWidth + ')';
     ///// CONTAINER TimeBlocks
     let containerTimeBlocks = document.createElement('div');
-    containerTimeBlocks.id =  'containerTimeBlocks';
+    containerTimeBlocks.id = 'containerTimeBlocks';
     function createTimeBlocks() {
       let timeBlocksVisuals = document.createElement('div');
       timeBlocksVisuals.style.height = '45vh';
@@ -72,7 +72,8 @@ window.addEventListener('load', function () {
     ///// CONTAINER TimeBlocks CONCLUDE
     ///// CONTAINER Calendar
     let containerCalendar = document.createElement('div');
-    containerCalendar.id =  'containerCalendar';
+    containerCalendar.id = 'containerCalendar';
+
     function createCalendar() {
       let calendar = document.createElement('div');
       calendar.style.height = '45vh';
@@ -81,8 +82,7 @@ window.addEventListener('load', function () {
     }
     let calendar = createCalendar();
     // let et
-    containerCalendar.id = 'containerCalendar'; 
-     hourLog = createHoursLog();
+    hourLog = createHoursLog();
     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
       let length = HTMLCollection.length;
       console.log(length);
@@ -162,12 +162,12 @@ window.addEventListener('load', function () {
     containerCalendar.appendChild(calendar);
     ///// CONTAINER Calendar CONCLUDE
     containerVisuals.appendChild(containerTimeBlocks);
-    containerVisuals.appendChild(calendar);
+    containerVisuals.appendChild(containerCalendar);
     containerMain.appendChild(containerVisuals);
     //// CONTAINER VISUALS CONCLUDE
     //// CONTAINER MENU
     let containerMenu = document.createElement('div');
-    containerMenu.id =  'containerMenu';
+    containerMenu.id = 'containerMenu';
     let menu = createMenu();
     containerMenu.appendChild(menu);
     containerMain.appendChild(containerMenu);
@@ -305,7 +305,7 @@ function createTopBar() {
 function createHoursLog() {
   // let containerMain = document.getElementById('containerMainet
   // container.id  = let
-   hourLog = document.createElement('div');
+  hourLog = document.createElement('div');
   for (let i = 0; i < yearDATA.length; i++) {
     let monthDATA = yearDATA[i];
     // MONTHS LEVEL
