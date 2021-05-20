@@ -117,6 +117,7 @@ window.addEventListener('load', function () {
         input.style.zIndex = '3';
         input.style.position = 'absolute';
         input.placeholder = 'RESULT TITLE';
+        // A D D COMPLETION CRITERIA INPUTS BELOW
         // input.style.top = '3rem';
         // input.style.bottom = '3rem';
         // input.style.left = '3rem';
