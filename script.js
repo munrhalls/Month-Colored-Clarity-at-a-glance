@@ -33,55 +33,20 @@ for (let i = 1; i <= 12; i++) {
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  let title_height = '3rem';
-  let title_bgColor = '#000000';
-  let title_color = '#ffffff';
-  let title_fontSize = '1.5rem';
-  let title_padding = '0.5rem';
   // CONTAINER ROOT
   let containerRoot = document.getElementById('containerRoot');
-
-  // CONTAINER TOPBAR
+  /// CONTAINER TOPBAR
   let containerTopBar = document.createElement('div');
-  containerTopBar.id = 'containerTopBar';
-  containerTopBar.style.display = 'flex';
-  containerTopBar.style.height = title_height;
-  containerTopBar.style.background = title_bgColor;
-  let titleTitle = document.createElement('div');
-  titleTitle.style.background = title_bgColor;
-  titleTitle.style.height = title_height;
-  titleTitle.style.color = '#ffffff';
-  let spanOne = document.createElement('span');
-  spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
-  titleTitle.appendChild(spanOne);
-  let colors = ['blue', 'purple', 'green', 'grey', 'yellow', 'orange', 'red'];
-  let letters = ('project').split('');
-  for (let i = 0; i < letters.length; i++) {
-    let span = document.createElement('span');
-    span.innerText = letters[i].toUpperCase();
-    span.style.color = colors[i];
-    span.style.letterSpacing = '3px';
-    titleTitle.appendChild(span);
-  }
-  titleTitle.style.padding = title_padding
-  titleTitle.style.fontSize = title_fontSize;
-  titleTitle.style.borderRight = '1px solid #ffffff';
-  let aboutPage = document.createElement('div');
-  aboutPage.innerText = 'ABOUT';
-  aboutPage.style.color = title_color;
-  aboutPage.style.padding = title_padding;
-  aboutPage.style.fontSize = title_fontSize;
-  containerTopBar.appendChild(titleTitle);
-  containerTopBar.appendChild(aboutPage);
-  // CONTAINER TOPBAR CONCLUDE
-  containerRoot.appendChild(containerTopBar);
 
-  // CONTAINER MAIN
+  let topBar = createTopBar();
+  containerTopBar.appendChild(topBar);
+  /// CONTAINER TOPBAR CONCLUDE
+  containerRoot.appendChild(containerTopBar);
+  /// CONTAINER MAIN
   let containerMain = document.createElement('containerMain');
   containerMain.id = 'containerMain';
   containerMain.style.display = 'flex';
   containerRoot.appendChild(containerMain);
-
   //// CONTAINER VISUALS
   let containerVisuals = document.createElement('div');
   containerVisuals.style.height = '45vh';
@@ -173,18 +138,22 @@ window.addEventListener('load', function () {
   containerVisuals.appendChild(botHalf);
   containerMain.appendChild(containerVisuals);
   //// CONTAINER VISUALS CONCLUDE
-  //// CONTAINER BOTTOMBAR
+  //// CONTAINER MENU
+  let containerMenu = document.createElement('div');
+  let menu = createMenu();
+  containerMenu.appendChild(menu);
+  containerMain.appendChild(containerMenu);
+  //// CONTAINER MENU CONCLUDE
+  /// CONTAINER MAIN CONCLUDE
+  /// CONTAINER BOTTOMBAR
   let bottomBar = document.createElement('div');
   let copyrightNote = createCopyrightNote();
   let copyrightNote2 = createCopyrightNote2();
   bottomBar.appendChild(copyrightNote);
   bottomBar.appendChild(copyrightNote2);
+  /// CONTAINER BOTTOMBAR CONCLUDE
   containerRoot.appendChild(bottomBar);
-  
 
-  //// CONTAINER MENU
-  let menu = createMenu();
-  containerMain.appendChild(menu);
 
   // select area with mouse drag
   // (idk what's the Big O of that, so it's prolly rly expensive)
@@ -260,7 +229,45 @@ window.addEventListener('load', function () {
     markerEl.remove();
   });
 });
-
+function createTopBar() {
+  let title_height = '3rem';
+  let title_bgColor = '#000000';
+  let title_color = '#ffffff';
+  let title_fontSize = '1.5rem';
+  let title_padding = '0.5rem';
+  let topBar = document.createElement('div');
+  topBar.id = 'topBar';
+  topBar.style.display = 'flex';
+  topBar.style.height = title_height;
+  topBar.style.background = title_bgColor;
+  let titleTitle = document.createElement('div');
+  titleTitle.style.background = title_bgColor;
+  titleTitle.style.height = title_height;
+  titleTitle.style.color = '#ffffff';
+  let spanOne = document.createElement('span');
+  spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
+  titleTitle.appendChild(spanOne);
+  let colors = ['blue', 'purple', 'green', 'grey', 'yellow', 'orange', 'red'];
+  let letters = ('project').split('');
+  for (let i = 0; i < letters.length; i++) {
+    let span = document.createElement('span');
+    span.innerText = letters[i].toUpperCase();
+    span.style.color = colors[i];
+    span.style.letterSpacing = '3px';
+    titleTitle.appendChild(span);
+  }
+  titleTitle.style.padding = title_padding
+  titleTitle.style.fontSize = title_fontSize;
+  titleTitle.style.borderRight = '1px solid #ffffff';
+  let aboutPage = document.createElement('div');
+  aboutPage.innerText = 'ABOUT';
+  aboutPage.style.color = title_color;
+  aboutPage.style.padding = title_padding;
+  aboutPage.style.fontSize = title_fontSize;
+  topBar.appendChild(titleTitle);
+  topBar.appendChild(aboutPage);
+  return topBar;
+}
 function createHoursLog() {
   // let containerMain = document.getElementById('containerMain');
   let hourLog = document.createElement('div');
