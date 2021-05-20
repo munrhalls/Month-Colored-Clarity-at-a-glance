@@ -1,6 +1,7 @@
 // VALUES
 const topbarHeight = '4.5rem';
 const menuWidth = '18rem';
+const colors = ['blue', 'green', 'purple', 'grey', 'orange', 'yellow', 'red'];
 
 const date = new Date();
 const year = date.getFullYear();
@@ -64,13 +65,15 @@ window.addEventListener('load', function () {
     function createResultTimeBlocks() {
       let resultTimeBlocks = document.createElement('div');
       resultTimeBlocks.style.display = 'flex';
+      // flex
       resultTimeBlocks.style.height = '45vh';
       resultTimeBlocks.style.width = '100%';
       let containerResultCards = document.createElement('div');
       containerResultCards.id = 'containerResultCards'; 
-      containerResultCards.style.height = '100%'; 
-      containerResultCards.style.display = 'flex';
       containerResultCards.style.flex = '3';
+      containerResultCards.style.display = 'flex';
+      // flex
+      containerResultCards.style.height = '100%'; 
 
       function createResultCard() {
         let resultCard = document.createElement('div');
@@ -80,14 +83,14 @@ window.addEventListener('load', function () {
         resultCard.style.border = '1px solid black';
         return resultCard;
       }
-      function addResultCard() {
+      function addResultCard(color) {
         let resultCard = createResultCard();
-        resultCard.style.background = 'blue';
+        resultCard.style.background = color || 'darkblue';
         containerResultCards.appendChild(resultCard);
       }
-      addResultCard();
-      addResultCard();
-      addResultCard();
+      addResultCard(colors[0]);
+      addResultCard(colors[1]);
+      addResultCard(colors[2]);
       let containerCardWithAddBtn = document.createElement('div');
       containerCardWithAddBtn.id = 'containerCardWithAddBtn';
       containerCardWithAddBtn.style.display = 'flex';
@@ -256,7 +259,7 @@ window.addEventListener('load', function () {
     markerEl.style.width = '1px';
     markerEl.style.border = '1px solid #000000';
     // markerEl.style.borderRadius = '50%';
-    let colors = ['blue', 'green', 'purple', 'grey', 'orange', 'yellow', 'red'];
+    // let colors = ['blue', 'green', 'purple', 'grey', 'orange', 'yellow', 'red'];
     let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
     let projectColor = colors[rndNum];
     markerEl.style.background = projectColor;
@@ -329,7 +332,7 @@ function createTopBar() {
   let spanOne = document.createElement('span');
   spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
   titleTitle.appendChild(spanOne);
-  let colors = ['blue', 'purple', 'green', 'grey', 'yellow', 'orange', 'red'];
+  // let colors = ['blue', 'purple', 'green', 'grey', 'yellow', 'orange', 'red'];
   let letters = ('project').split('');
   for (let i = 0; i < letters.length; i++) {
     let span = document.createElement('span');
