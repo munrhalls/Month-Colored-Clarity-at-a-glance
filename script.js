@@ -38,12 +38,13 @@ window.addEventListener('load', function () {
   let title_color = '#ffffff';
   let title_fontSize = '1.5rem';
   let title_padding = '0.5rem';
-  let root = document.getElementById('root');
-  let rootTitle = document.createElement('rootTitle');
-  rootTitle.id = 'rootTitle';
-  rootTitle.style.display = 'flex';
-  rootTitle.style.height = title_height;
-  rootTitle.style.background = title_bgColor;
+  let containerRoot = document.getElementById('containerRoot');
+
+  let containerTopBar = document.createElement('div');
+  containerTopBar.id = 'containerTopBar';
+  containerTopBar.style.display = 'flex';
+  containerTopBar.style.height = title_height;
+  containerTopBar.style.background = title_bgColor;
   let titleTitle = document.createElement('div');
   titleTitle.style.background = title_bgColor;
   titleTitle.style.height = title_height;
@@ -68,18 +69,23 @@ window.addEventListener('load', function () {
   aboutPage.style.color = title_color;
   aboutPage.style.padding = title_padding;
   aboutPage.style.fontSize = title_fontSize;
-  rootTitle.appendChild(titleTitle);
-  rootTitle.appendChild(aboutPage);
-  root.appendChild(rootTitle);
-  let rootContent = document.createElement('rootContent');
-  rootContent.id = 'rootContent';
-  rootContent.style.display = 'flex';
-  root.appendChild(rootContent);
+  containerTopBar.appendChild(titleTitle);
+  containerTopBar.appendChild(aboutPage);
 
+
+
+  containerRoot.appendChild(containerTopBar);
+
+  let containerRootContent = document.createElement('containerRootContent');
+  containerRootContent.id = 'containerRootContent';
+  containerRootContent.style.display = 'flex';
+  containerRoot.appendChild(containerRootContent);
+
+  let resultContainer = document.createElement('div');
+  resultContainer.style.height = '45vh';
+  resultContainer.style.width = '100%';
+  containerRootContent.appendChild(resultContainer);
   let hourLog = createHoursLog();
-
-  let HTMLCollection = hourLog.children;
-
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
     let length = HTMLCollection.length;
     console.log(length);
@@ -154,20 +160,24 @@ window.addEventListener('load', function () {
     }
     HTMLCollection[0].style.display = 'block';
   }
-  carouselify(HTMLCollection, '0.5rem', '7rem', 3);
-  rootContent.appendChild(hourLog);
+  carouselify(hourLog.children, '0.5rem', '7rem', 3);
+  let div = document.createElement('div');
+  div.style.height = '45vh';
+  div.style.width = '100%';
+  resultContainer.appendChild(div);
+  resultContainer.appendChild(hourLog);
   createMenu();
   createCopyrightNote();
   createCopyrightNote2();
 
   // select area with mouse drag
   // (idk what's the Big O of that, so it's prolly rly expensive)
-  root.style.minHeight = '100vh';
-  root.style.userSelect = 'none';
-  root.markingHoursEvent = false;
-  root.style.position = 'relative';
-  root.addEventListener('mousedown', function (e) {
-    root.markingHoursEvent = true;
+  containerRoot.style.minHeight = '100vh';
+  containerRoot.style.userSelect = 'none';
+  containerRoot.markingHoursEvent = false;
+  containerRoot.style.position = 'relative';
+  containerRoot.addEventListener('mousedown', function (e) {
+    containerRoot.markingHoursEvent = true;
     // console.log('create div');
     let markerEl = document.createElement('div');
     markerEl.id = 'markerEl';
@@ -192,10 +202,10 @@ window.addEventListener('load', function () {
     markerEl.style.left = x;
     markerEl.y = y;
     markerEl.x = x;
-    root.appendChild(markerEl)
+    containerRoot.appendChild(markerEl)
   });
-  root.addEventListener('mousemove', function (e) {
-    if (root.markingHoursEvent) {
+  containerRoot.addEventListener('mousemove', function (e) {
+    if (containerRoot.markingHoursEvent) {
       // console.log('re-draw div');
       let markerEl = document.getElementById('markerEl');
       let prevCursorY = parseInt((markerEl.y).split('px')[0]);
@@ -216,8 +226,8 @@ window.addEventListener('load', function () {
     }
     // Dispatch the event.
   });
-  root.addEventListener('mouseup', function (e) {
-    root.markingHoursEvent = false;
+  containerRoot.addEventListener('mouseup', function (e) {
+    containerRoot.markingHoursEvent = false;
     let markerEl = document.getElementById('markerEl');
     let hourEls = document.getElementsByClassName('hourEl');
     if (hourEls && hourEls.length) {
@@ -236,7 +246,7 @@ window.addEventListener('load', function () {
 });
 
 function createHoursLog() {
-  // let rootContent = document.getElementById('rootContent');
+  // let containerRootContent = document.getElementById('containerRootContent');
   let hourLog = document.createElement('div');
   for (let i = 0; i < yearDATA.length; i++) {
     let monthDATA = yearDATA[i];
@@ -379,7 +389,7 @@ function createHoursLog() {
     monthContainer.appendChild(monthTitleEl);
     monthContainer.appendChild(monthDaysEl);
     hourLog.appendChild(monthContainer);
-    // rootContent.appendChild(hourLog);
+    // containerRootContent.appendChild(hourLog);
   }
   return hourLog;
 }
@@ -397,7 +407,7 @@ function createMonth(monthNum) {
   monthContainer.classList.add('monthContainer');
   monthContainer.classList.add([monthNames[monthNum]]);
   monthContainer.style.display = 'flex';
-  document.getElementById('root').appendChild(monthContainer);
+  document.getElementById('containerRoot').appendChild(monthContainer);
   // createSidewaysTitle(monthNames[monthNum], monthNum);
   createWeeksContainer(monthNum);
   createWeek(1, monthNum);
@@ -437,7 +447,7 @@ function createMenu() {
     }
     menu.appendChild(row);
   }
-  document.getElementById('rootContent').appendChild(menu);
+  document.getElementById('containerRootContent').appendChild(menu);
 
 
   // menu.setAttribute('id', 'menu');
@@ -1480,7 +1490,7 @@ function createCopyrightNote() {
   copyrightNote.style.color = '#fff';
   copyrightNote.style.fontSize = '10px'
   copyrightNote.style.textAlign = 'center';
-  document.getElementById('root').appendChild(copyrightNote);
+  document.getElementById('containerRoot').appendChild(copyrightNote);
 }
 function createCopyrightNote2() {
   const copyrightNote2 = document.createElement('div');
@@ -1510,5 +1520,5 @@ function createCopyrightNote2() {
   copyrightNote2.style.color = '#fff';
   copyrightNote2.style.fontSize = '10px'
   copyrightNote2.style.textAlign = 'center';
-  document.getElementById('root').appendChild(copyrightNote2);
+  document.getElementById('containerRoot').appendChild(copyrightNote2);
 }
