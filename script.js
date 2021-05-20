@@ -59,8 +59,8 @@ window.addEventListener('load', function () {
     containerVisuals.id = 'containerVisuals';
     containerVisuals.style.width = 'calc(100% - ' + menuWidth + ')';
     ///// CONTAINER resultTimeBlocks
-    let containerresultTimeBlocks = document.createElement('div');
-    containerresultTimeBlocks.id = 'containerresultTimeBlocks';
+    let containerResultTimeBlocks = document.createElement('div');
+    containerResultTimeBlocks.id = 'containerResultTimeBlocks';
     function createResultTimeBlocks() {
       let resultTimeBlocks = document.createElement('div');
       resultTimeBlocks.style.height = '45vh';
@@ -68,7 +68,7 @@ window.addEventListener('load', function () {
       return resultTimeBlocks;
     }
     let resultTimeBlocks = createResultTimeBlocks();
-    containerresultTimeBlocks.appendChild(resultTimeBlocks);
+    containerResultTimeBlocks.appendChild(resultTimeBlocks);
     ///// CONTAINER resultTimeBlocks CONCLUDE
     ///// CONTAINER Calendar
     let containerCalendar = document.createElement('div');
@@ -82,7 +82,7 @@ window.addEventListener('load', function () {
     }
     let calendar = createCalendar();
     // let et
-    hourLog = createHoursLog();
+    let hourLog = createHoursLog();
     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
       let length = HTMLCollection.length;
       console.log(length);
@@ -158,10 +158,13 @@ window.addEventListener('load', function () {
       HTMLCollection[0].style.display = 'block';
     }
     carouselify(hourLog.children, '0.5rem', '7rem', 3);
-    calendar.appendChild(hourLog)
+    let containerHourLog = document.createElement('div');
+    containerHourLog.id = 'containerHourLog';
+    containerHourLog.appendChild(hourLog);
+    calendar.appendChild(containerHourLog);
     containerCalendar.appendChild(calendar);
     ///// CONTAINER Calendar CONCLUDE
-    containerVisuals.appendChild(containerresultTimeBlocks);
+    containerVisuals.appendChild(containerResultTimeBlocks);
     containerVisuals.appendChild(containerCalendar);
     containerMain.appendChild(containerVisuals);
     //// CONTAINER VISUALS CONCLUDE
