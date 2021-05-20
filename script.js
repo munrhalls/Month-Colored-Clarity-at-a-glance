@@ -87,9 +87,12 @@ window.addEventListener('load', function () {
     ///// CONTAINER Calendar
     let containerCalendar = document.createElement('div');
     containerCalendar.id = 'containerCalendar';
+    containerCalendar.style.display = 'flex';
 
     function createCalendar() {
       let calendar = document.createElement('div');
+      calendar.style.display = 'flex';
+      calendar.style.flex = '1';
       calendar.style.height = '45vh';
       calendar.style.width = '100%';
       return calendar;
@@ -174,6 +177,8 @@ window.addEventListener('load', function () {
     carouselify(hourLog.children, '0.5rem', '7rem', 3);
     let containerHourLog = document.createElement('div');
     containerHourLog.id = 'containerHourLog';
+    containerHourLog.style.display = 'flex';
+    containerHourLog.style.flex = '1';
     containerHourLog.appendChild(hourLog);
     calendar.appendChild(containerHourLog);
     containerCalendar.appendChild(calendar);
@@ -323,10 +328,15 @@ function createHoursLog() {
   // let containerMain = document.getElementById('containerMainet
   // container.id  = let
   hourLog = document.createElement('div');
+  hourLog.style.display = 'flex';
+  hourLog.style.flex = '1';
   for (let i = 0; i < yearDATA.length; i++) {
     let monthDATA = yearDATA[i];
     // MONTHS LEVEL
-    let monthContainer = document.createElement('div');
+    let containerMonth = document.createElement('div');
+    containerMonth.id = 'containerMonth'; 
+    containerMonth.style.display = 'flex';
+    containerMonth.style.flex = '1';
     let monthTitleEl = document.createElement('div');
     monthTitleEl.innerText = monthDATA.monthName;
     monthTitleEl.style.textAlign = 'left';
@@ -336,12 +346,15 @@ function createHoursLog() {
     let monthDaysEl = document.createElement('div');
     monthDaysEl.className = 'month';
     monthDaysEl.style.display = 'flex';
+    monthDaysEl.style.flex = '1';
     monthDaysEl.style.justifyContent = 'flex-start';
     for (let j = 0; j < monthDATA.length; j++) {
       let weekDATA = monthDATA[j];
       // WEEKS LEVEL
       let weekContainerEl = document.createElement('div');
+      weekContainerEl.id = 'weekContainerEl';
       weekContainerEl.style.display = 'flex';
+      weekContainerEl.style.flex = '1';
       weekContainerEl.style.height = '25rem';
       let weekTitleEl = document.createElement('div');
       weekTitleEl.style.textAlign = 'center';
@@ -353,17 +366,20 @@ function createHoursLog() {
       weekContainerEl.appendChild(weekTitleEl);
       monthDaysEl.appendChild(weekContainerEl)
       let daysContainerEl = document.createElement('div');
+      daysContainerEl.id = 'daysContainerEl';
       daysContainerEl.style.display = 'flex';
+      daysContainerEl.style.flex = '1';
       for (let y = 0; y < weekDATA.length; y++) {
         let day = weekDATA[y];
         day = day.substring(0, 3);
         // DAYS LEVEL
         let dayEl = document.createElement('div');
+        dayEl.style.flex = '1';
         // closure
-        let count = 0;
+        // let count = 0;
         dayEl.className = 'day';
         dayEl.innerText = day;
-        dayEl.style.width = '1.75rem';
+        // dayEl.style.flex = '2';
         dayEl.style.borderLeft = '1px solid #000000';
         if (y + 1 == weekDATA.length) {
           dayEl.style.borderRight = '1px solid #000000';
@@ -461,9 +477,9 @@ function createHoursLog() {
       }
       weekContainerEl.appendChild(daysContainerEl);
     }
-    monthContainer.appendChild(monthTitleEl);
-    monthContainer.appendChild(monthDaysEl);
-    hourLog.appendChild(monthContainer);
+    containerMonth.appendChild(monthTitleEl);
+    containerMonth.appendChild(monthDaysEl);
+    hourLog.appendChild(containerMonth);
     // containerMain.appendChild(hourLog);
   }
   return hourLog;
@@ -477,10 +493,10 @@ const VALUES_MenuSharedCSS = {
 }
 function createMonth(monthNum) {
   const monthNames = getMonthNames();
-  var monthContainer = document.createElement('div');
-  monthContainer.classList.add('month');
-  monthContainer.classList.add('monthContainer');
-  monthContainer.classList.add([monthNames[monthNum]]);
+  var containerMonth = document.createElement('div');
+  containerMonth.classList.add('month');
+  containerMonth.classList.add('containerMonth');
+  containerMonth.classList.add([monthNames[monthNum]]);
   monthContainer.style.display = 'flex';
   document.getElementById('containerRoot').appendChild(monthContainer);
   // createSidewaysTitle(monthNames[monthNum], monthNum);
