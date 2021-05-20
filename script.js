@@ -38,8 +38,10 @@ window.addEventListener('load', function () {
   let title_color = '#ffffff';
   let title_fontSize = '1.5rem';
   let title_padding = '0.5rem';
+  // CONTAINER ROOT
   let containerRoot = document.getElementById('containerRoot');
 
+  // CONTAINER TOPBAR
   let containerTopBar = document.createElement('div');
   containerTopBar.id = 'containerTopBar';
   containerTopBar.style.display = 'flex';
@@ -71,20 +73,19 @@ window.addEventListener('load', function () {
   aboutPage.style.fontSize = title_fontSize;
   containerTopBar.appendChild(titleTitle);
   containerTopBar.appendChild(aboutPage);
-
-
-
+  // CONTAINER TOPBAR CONCLUDE
   containerRoot.appendChild(containerTopBar);
 
-  let containerRootContent = document.createElement('containerRootContent');
-  containerRootContent.id = 'containerRootContent';
-  containerRootContent.style.display = 'flex';
-  containerRoot.appendChild(containerRootContent);
-
-  let resultContainer = document.createElement('div');
-  resultContainer.style.height = '45vh';
-  resultContainer.style.width = '100%';
-  containerRootContent.appendChild(resultContainer);
+  // CONTAINER MAIN
+  let containerMain = document.createElement('containerMain');
+  containerMain.id = 'containerMain';
+  containerMain.style.display = 'flex';
+  containerRoot.appendChild(containerMain);
+  // CONTAINER VISUALS
+  let containerVisuals = document.createElement('div');
+  containerVisuals.style.height = '45vh';
+  containerVisuals.style.width = '100%';
+  containerMain.appendChild(containerVisuals);
   let hourLog = createHoursLog();
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
     let length = HTMLCollection.length;
@@ -161,11 +162,15 @@ window.addEventListener('load', function () {
     HTMLCollection[0].style.display = 'block';
   }
   carouselify(hourLog.children, '0.5rem', '7rem', 3);
-  let div = document.createElement('div');
-  div.style.height = '45vh';
-  div.style.width = '100%';
-  resultContainer.appendChild(div);
-  resultContainer.appendChild(hourLog);
+  let topHalf = document.createElement('div');
+  topHalf.style.height = '45vh';
+  topHalf.style.width = '100%';
+  let botHalf = document.createElement('div');
+  botHalf.style.height = '45vh';
+  botHalf.style.width = '100%';
+  botHalf.appendChild(hourLog)
+  containerVisuals.appendChild(topHalf);
+  containerVisuals.appendChild(botHalf);
   createMenu();
   createCopyrightNote();
   createCopyrightNote2();
@@ -246,7 +251,7 @@ window.addEventListener('load', function () {
 });
 
 function createHoursLog() {
-  // let containerRootContent = document.getElementById('containerRootContent');
+  // let containerMain = document.getElementById('containerMain');
   let hourLog = document.createElement('div');
   for (let i = 0; i < yearDATA.length; i++) {
     let monthDATA = yearDATA[i];
@@ -389,7 +394,7 @@ function createHoursLog() {
     monthContainer.appendChild(monthTitleEl);
     monthContainer.appendChild(monthDaysEl);
     hourLog.appendChild(monthContainer);
-    // containerRootContent.appendChild(hourLog);
+    // containerMain.appendChild(hourLog);
   }
   return hourLog;
 }
@@ -447,7 +452,7 @@ function createMenu() {
     }
     menu.appendChild(row);
   }
-  document.getElementById('containerRootContent').appendChild(menu);
+  document.getElementById('containerMain').appendChild(menu);
 
 
   // menu.setAttribute('id', 'menu');
