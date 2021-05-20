@@ -39,12 +39,14 @@ window.addEventListener('load', function () {
   let containerTopBar = document.createElement('div');
   let topBar = createTopBar();
   containerTopBar.appendChild(topBar);
-  /// CONTAINER TOPBAR CONCLUDE
   containerRoot.appendChild(containerTopBar);
+  /// CONTAINER TOPBAR CONCLUDE
+
   /// CONTAINER MAIN
-  let containerMain = document.createElement('containerMain');
+  let containerMain = document.createElement('div');
   containerMain.id = 'containerMain';
   containerMain.style.display = 'flex';
+  containerMain.style.height = '100vh';
   function createMain() {
     //// CONTAINER VISUALS
     let main = document.createElement('div');
@@ -157,8 +159,8 @@ window.addEventListener('load', function () {
   let copyrightNote2 = createCopyrightNote2();
   bottomBar.appendChild(copyrightNote);
   bottomBar.appendChild(copyrightNote2);
-  /// CONTAINER BOTTOMBAR CONCLUDE
   containerRoot.appendChild(bottomBar);
+  /// CONTAINER BOTTOMBAR CONCLUDE
 
 
   // select area with mouse drag
