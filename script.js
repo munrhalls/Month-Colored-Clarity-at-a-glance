@@ -1,3 +1,7 @@
+// VALUES
+const topbarHeight = '3rem';
+const menuWidth = '18rem';
+
 const date = new Date();
 const year = date.getFullYear();
 const yearDATA = [];
@@ -29,7 +33,6 @@ for (let i = 1; i <= 12; i++) {
   yearDATA.push(monthDATA);
 }
 // console.log(yearDATA)
-
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
@@ -129,15 +132,15 @@ window.addEventListener('load', function () {
       HTMLCollection[0].style.display = 'block';
     }
     carouselify(hourLog.children, '0.5rem', '7rem', 3);
-    let topHalf = document.createElement('div');
-    topHalf.style.height = '45vh';
-    topHalf.style.width = '100%';
-    let botHalf = document.createElement('div');
-    botHalf.style.height = '45vh';
-    botHalf.style.width = '100%';
-    botHalf.appendChild(hourLog)
-    containerVisuals.appendChild(topHalf);
-    containerVisuals.appendChild(botHalf);
+    let timeBlocksVisuals = document.createElement('div');
+    timeBlocksVisuals.style.height = '45vh';
+    timeBlocksVisuals.style.width = '100%';
+    let calendarVisuals = document.createElement('div');
+    calendarVisuals.style.height = '45vh';
+    calendarVisuals.style.width = '100%';
+    calendarVisuals.appendChild(hourLog)
+    containerVisuals.appendChild(timeBlocksVisuals);
+    containerVisuals.appendChild(calendarVisuals);
     containerMain.appendChild(containerVisuals);
     //// CONTAINER VISUALS CONCLUDE
     //// CONTAINER MENU
@@ -246,7 +249,7 @@ function createTopBar() {
   let topBar = document.createElement('div');
   topBar.id = 'topBar';
   topBar.style.display = 'flex';
-  topBar.style.height = title_height;
+  topBar.style.height = topbarHeight;
   topBar.style.background = title_bgColor;
   let titleTitle = document.createElement('div');
   titleTitle.style.background = title_bgColor;
@@ -447,7 +450,8 @@ function createMonth(monthNum) {
   createWeek(4, monthNum);
 }
 function createMenu() {
-  let width = '30rem';
+  // let width = '30rem';
+  let width = menuWidth;
   let height = '100vh';
   let color = '#000000';
   const menu = document.createElement('div');
@@ -466,7 +470,8 @@ function createMenu() {
     row.style.height = r_height;
     //// uncomment for cells
     // for (let j = 0; j < 2; j++) {
-      let s_width = parseInt(width) / 2 + 'rem';
+      // let s_width = parseInt(width) / 2 + 'rem';
+      let s_width = parseInt(width)  + 'rem';
       let s_height = r_height;
       let s_borderColor = '#ffffff';
       let slot = document.createElement('div');
