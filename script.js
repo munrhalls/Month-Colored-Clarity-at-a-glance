@@ -81,11 +81,11 @@ window.addEventListener('load', function () {
   containerMain.id = 'containerMain';
   containerMain.style.display = 'flex';
   containerRoot.appendChild(containerMain);
-  // CONTAINER VISUALS
+
+  //// CONTAINER VISUALS
   let containerVisuals = document.createElement('div');
   containerVisuals.style.height = '45vh';
   containerVisuals.style.width = '100%';
-  containerMain.appendChild(containerVisuals);
   let hourLog = createHoursLog();
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
     let length = HTMLCollection.length;
@@ -171,9 +171,14 @@ window.addEventListener('load', function () {
   botHalf.appendChild(hourLog)
   containerVisuals.appendChild(topHalf);
   containerVisuals.appendChild(botHalf);
-  createMenu();
-  createCopyrightNote();
-  createCopyrightNote2();
+  containerMain.appendChild(containerVisuals);
+
+  // createCopyrightNote();
+  // createCopyrightNote2();
+
+  //// CONTAINER MENU
+  let menu = createMenu();
+  containerMain.appendChild(menu);
 
   // select area with mouse drag
   // (idk what's the Big O of that, so it's prolly rly expensive)
@@ -452,9 +457,7 @@ function createMenu() {
     }
     menu.appendChild(row);
   }
-  document.getElementById('containerMain').appendChild(menu);
-
-
+  return menu;
   // menu.setAttribute('id', 'menu');
   // menu.style.position = 'relative';
   // const title = document.createElement('div');
