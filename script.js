@@ -172,9 +172,15 @@ window.addEventListener('load', function () {
   containerVisuals.appendChild(topHalf);
   containerVisuals.appendChild(botHalf);
   containerMain.appendChild(containerVisuals);
-
-  // createCopyrightNote();
-  // createCopyrightNote2();
+  //// CONTAINER VISUALS CONCLUDE
+  //// CONTAINER BOTTOMBAR
+  let bottomBar = document.createElement('div');
+  let copyrightNote = createCopyrightNote();
+  let copyrightNote2 = createCopyrightNote2();
+  bottomBar.appendChild(copyrightNote);
+  bottomBar.appendChild(copyrightNote2);
+  containerRoot.appendChild(bottomBar);
+  
 
   //// CONTAINER MENU
   let menu = createMenu();
@@ -1498,7 +1504,7 @@ function createCopyrightNote() {
   copyrightNote.style.color = '#fff';
   copyrightNote.style.fontSize = '10px'
   copyrightNote.style.textAlign = 'center';
-  document.getElementById('containerRoot').appendChild(copyrightNote);
+  return copyrightNote;
 }
 function createCopyrightNote2() {
   const copyrightNote2 = document.createElement('div');
@@ -1528,5 +1534,5 @@ function createCopyrightNote2() {
   copyrightNote2.style.color = '#fff';
   copyrightNote2.style.fontSize = '10px'
   copyrightNote2.style.textAlign = 'center';
-  document.getElementById('containerRoot').appendChild(copyrightNote2);
+  return copyrightNote2;
 }
