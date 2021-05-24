@@ -6,15 +6,7 @@ const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00'
 const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
 
-const boxes = [
-  'containerTopbar',
-  [
-    'containerTitle',
-    'containerAbout'
-  ],
-  'containerMain', 
-  'containerFooter'
-];
+
 
 const date = new Date();
 const year = date.getFullYear();
@@ -51,21 +43,35 @@ let containerRoot = document.getElementById('containerRoot');
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  // for (let i = 0; i < boxes.length; i++) {
-  //   let box = boxes[i];
+  // for (let i = 0; i < containers.length; i++) {
+  //   let box = containers[i];
   //   console.log(box[i]);
   // }
+  let containerRoot = document.getElementById('containerRoot');
+  const containers = [
+    'containerTopbar',
+    [
+      'containerTitle',
+      'containerAbout'
+    ],
+    'containerMain',
+    'containerFooter'
+  ];
 
-  function loopCntners(el) {
-    el.forEach(function (el) {
-      if (typeof el == 'object') {
-        loopCntners(el)
+ function createContainers() {
+    containers.forEach(function (container) {
+      let isNested = (typeof container == 'object')
+      if (isNested) {
+        console.log(container, 'nested')
       } else {
-        console.log(el)
+        console.log(container);
       }
-    })
+    });
   }
-  loopCntners(boxes);
+
+
+  createContainers();
+
   // CONTAINER ROOT
   // let containerRoot = document.getElementById('containerRoot');
   // containerRoot.id = 'containerRoot';
