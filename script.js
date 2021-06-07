@@ -47,6 +47,8 @@ let arr = [
   'two',
   'three',
   ['nestedFour', 'nestedFive'],
+  'six',
+  ['nestedSeven', 'nestedEight']
 ];
 
 function assembleElements(arr, container) {
