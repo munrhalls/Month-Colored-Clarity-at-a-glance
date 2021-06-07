@@ -1,6 +1,6 @@
 // VALUES
 const topbarHeight = '4.5rem';
-const menuWidth = '18rem';
+const rightBarWidth = '18rem';
 const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00', '#FF0000'];
 // resultTimeBlocks
 const resultCardOpacity = '0.81';
@@ -102,7 +102,7 @@ containerRightbar.appendChild(menu);
 
 function highlightScaffolding(el) {
   el.style.border = '1px solid black';
-  el.style.height = '1rem';
+  // el.style.height = '1rem';
   // el.style.width = '1rem';
 }
 
@@ -138,7 +138,7 @@ window.addEventListener('load', function () {
   //   let main = document.createElement('div');
   //   let containerVisuals = document.createElement('div');
   //   containerVisuals.id = 'containerVisuals';
-  //   containerVisuals.style.width = 'calc(100% - ' + menuWidth + ')';
+  //   containerVisuals.style.width = 'calc(100% - ' + rightBar + ')';
   //   ///// CONTAINER resultTimeBlocks
   //   let containerResultTimeBlocks = document.createElement('div');
   //   containerResultTimeBlocks.id = 'containerResultTimeBlocks';
@@ -695,17 +695,17 @@ function createMonth(monthNum) {
 }
 function createMenu() {
   // let width = '30rem';
-  let width = menuWidth;
+  // let width = rightBarWidth;
   let height = '100vh';
   let color = '#000000';
   const menu = document.createElement('div');
   menu.style.background = color;
   menu.style.height = height;
-  menu.style.width = width;
+  // menu.style.width = width;
   menu.id = 'menuEl';
   let rowsNum = 4;
   for (let i = 0; i < rowsNum; i++) {
-    let r_width = width;
+    let r_width = '100%';
     let r_height = '9rem';
     let row = document.createElement('div');
     row.className = 'row';
@@ -714,14 +714,14 @@ function createMenu() {
     row.style.height = r_height;
     //// uncomment for cells
     // for (let j = 0; j < 2; j++) {
-    // let s_width = parseInt(width) / 2 + 'rem';
-    let s_width = parseInt(width) + 'rem';
+    // let slot_width = parseInt(width) / 2 + 'rem';
+    // let slot_width = parseInt(width) + 'rem';
     let s_height = r_height;
     let s_borderColor = '#ffffff';
     let slot = document.createElement('div');
     slot.style.display = 'inline-block';
     slot.style.height = s_height;
-    slot.style.width = s_width;
+    slot.style.width = '100%';
     slot.style.border = '1px solid ' + s_borderColor;
     slot.className = 'slot';
     row.appendChild(slot);
