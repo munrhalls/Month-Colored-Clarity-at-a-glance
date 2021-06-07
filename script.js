@@ -61,12 +61,6 @@ let main = document.getElementById('main');
 //   ['nestedSeven', 'nestedEight']
 // ];
 
-let containersArr = [
-  'rootContainer',
-  ['topbar', 
-  'center', 
-  'footer'],
-];
 
 function assembleElements(arr, container) {
   arr.forEach(function (el, index) {
@@ -84,8 +78,26 @@ function assembleElements(arr, container) {
     }
   });
 }
-
+let containersArr = [
+  'containerRoot',
+  ['containerTopbar',
+    ['containerMenu'],
+    'containerCenter',
+    ['containerVisuals', 'containerRightbar'],
+    'containerFooter'],
+];
 assembleElements(containersArr, main);
+
+let containerCenter = document.getElementById('containerCenter');
+containerCenter.style.display = 'flex';
+let containerVisuals = document.getElementById('containerVisuals');
+containerVisuals.style.flex = '3';
+
+let containerRightbar = document.getElementById('containerRightbar');
+containerRightbar.style.flex = '1';
+let menu = createMenu();
+containerRightbar.appendChild(menu);
+
 
 
 function highlightScaffolding(el) {
@@ -365,7 +377,7 @@ window.addEventListener('load', function () {
   //   //// CONTAINER MENU
   //   let containerMenu = document.createElement('div');
   //   containerMenu.id = 'containerMenu';
-  //   let menu = createMenu();
+  // let menu = createMenu();
   //   containerMenu.appendChild(menu);
   //   containerMain.appendChild(containerMenu);
   //   return main;
