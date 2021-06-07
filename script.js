@@ -46,13 +46,23 @@ let arr = [
   'one',
   'two',
   'three',
-  ['nestedFour', 'nestedFive'],
+  ['nestedFour',
+    ['nestedNestedOne', 'nestedNestedTwo',
+      ['nestedNestedNestedOne',
+        [
+          'nestedNestedNestedNestedOne',
+          ['nestedNestedNestedNestedNestedOne'],
+          'nestedNestedNestedNestedTwo',
+          'nestedNestedNestedNestedThree'
+        ]
+      ]
+    ], 'nestedFive'],
   'six',
   ['nestedSeven', 'nestedEight']
 ];
 
 function assembleElements(arr, container) {
-  arr.forEach(function(el, index) {
+  arr.forEach(function (el, index) {
     if (typeof el == 'object') {
       let name = arr[index - 1] || container;
       let nestedContainer = document.getElementById(name);
