@@ -39,7 +39,31 @@ for (let i = 1; i <= 12; i++) {
   yearDATA.push(monthDATA);
 }
 // console.log(yearDATA)
-let containerRoot = document.getElementById('containerRoot');
+let main = document.getElementById('main');
+
+let arr = [
+  'one', 
+  'two',
+  'three'
+];
+
+function assembleElements(arr, container) {
+  for (i = 0; i < arr.length;i++) {
+    let div = document.createElement('div');
+    div.id = arr[i];
+    highlightScaffolding(div);
+    container.appendChild(div);
+  }
+}
+
+assembleElements(arr, main);
+
+
+function highlightScaffolding(el) {
+  el.style.border = '1px solid black';
+  el.style.height = '1rem';
+  // el.style.width = '1rem';
+}
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
@@ -47,30 +71,10 @@ window.addEventListener('load', function () {
   //   let box = containers[i];
   //   console.log(box[i]);
   // }
-  let containerRoot = document.getElementById('containerRoot');
-  const containers = [
-    'containerTopbar',
-    [
-      'containerTitle',
-      'containerAbout'
-    ],
-    'containerMain',
-    'containerFooter'
-  ];
-
- function createContainers() {
-    containers.forEach(function (container) {
-      let isNested = (typeof container == 'object')
-      if (isNested) {
-        console.log(container, 'nested')
-      } else {
-        console.log(container);
-      }
-    });
-  }
+  // let containerRoot = document.getElementById('containerRoot');
 
 
-  createContainers();
+  // createContainers(containers, containers[0]);
 
   // CONTAINER ROOT
   // let containerRoot = document.getElementById('containerRoot');
