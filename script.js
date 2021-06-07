@@ -42,23 +42,30 @@ for (let i = 1; i <= 12; i++) {
 let main = document.getElementById('main');
 
 // nested container = index - 1; thus, no two arrays are vertically adjacent!!!
-let arr = [
-  'one',
-  'two',
-  'three',
-  ['nestedFour',
-    ['nestedNestedOne', 'nestedNestedTwo',
-      ['nestedNestedNestedOne',
-        [
-          'nestedNestedNestedNestedOne',
-          ['nestedNestedNestedNestedNestedOne'],
-          'nestedNestedNestedNestedTwo',
-          'nestedNestedNestedNestedThree'
-        ]
-      ]
-    ], 'nestedFive'],
-  'six',
-  ['nestedSeven', 'nestedEight']
+// let arr = [
+//   'one',
+//   'two',
+//   'three',
+//   ['nestedFour',
+//     ['nestedNestedOne', 'nestedNestedTwo',
+//       ['nestedNestedNestedOne',
+//         [
+//           'nestedNestedNestedNestedOne',
+//           ['nestedNestedNestedNestedNestedOne'],
+//           'nestedNestedNestedNestedTwo',
+//           'nestedNestedNestedNestedThree'
+//         ]
+//       ]
+//     ], 'nestedFive'],
+//   'six',
+//   ['nestedSeven', 'nestedEight']
+// ];
+
+let containersArr = [
+  'rootContainer',
+  ['topbar', 
+  'center', 
+  'footer'],
 ];
 
 function assembleElements(arr, container) {
@@ -67,7 +74,6 @@ function assembleElements(arr, container) {
       let name = arr[index - 1] || container;
       let nestedContainer = document.getElementById(name);
       let nestedArr = el;
-      debugger;
       console.log(nestedArr);
       assembleElements(nestedArr, nestedContainer);
     } else {
@@ -79,7 +85,7 @@ function assembleElements(arr, container) {
   });
 }
 
-assembleElements(arr, main);
+assembleElements(containersArr, main);
 
 
 function highlightScaffolding(el) {
