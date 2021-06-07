@@ -42,18 +42,28 @@ for (let i = 1; i <= 12; i++) {
 let main = document.getElementById('main');
 
 let arr = [
-  'one', 
+  'one',
   'two',
-  'three'
+  'three',
+  ['nestedFour', 'nestedFive']
 ];
 
 function assembleElements(arr, container) {
-  for (i = 0; i < arr.length;i++) {
-    let div = document.createElement('div');
-    div.id = arr[i];
-    highlightScaffolding(div);
-    container.appendChild(div);
-  }
+  arr.forEach(function(el, index) {
+    if (typeof el == 'object') {
+      let name = arr[index - 1] || container;
+      let nestedContainer = document.getElementById(name);
+      let nestedArr = el;
+      debugger;
+      console.log(nestedArr);
+      assembleElements(nestedArr, nestedContainer);
+    } else {
+      let div = document.createElement('div');
+      div.id = el
+      highlightScaffolding(div);
+      container.appendChild(div);
+    }
+  });
 }
 
 assembleElements(arr, main);
