@@ -88,6 +88,10 @@ let containersArr = [
 ];
 assembleElements(containersArr, main);
 
+let containerTopbar = document.getElementById('containerTopbar');
+let topBar = createTopBar();
+containerTopbar.appendChild(topBar);
+
 let containerCenter = document.getElementById('containerCenter');
 containerCenter.style.display = 'flex';
 let containerVisuals = document.getElementById('containerVisuals');
