@@ -41,11 +41,12 @@ for (let i = 1; i <= 12; i++) {
 // console.log(yearDATA)
 let main = document.getElementById('main');
 
+// nested container = index - 1; thus, no two arrays are vertically adjacent!!!
 let arr = [
   'one',
   'two',
   'three',
-  ['nestedFour', 'nestedFive']
+  ['nestedFour', 'nestedFive'],
 ];
 
 function assembleElements(arr, container) {
