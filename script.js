@@ -84,7 +84,8 @@ let containersArr = [
     ['containerMenu'],
     'containerCenter',
     ['containerVisuals', 'containerRightbar'],
-    'containerFooter'],
+    'containerFooter'
+  ],
 ];
 assembleElements(containersArr, main);
 
@@ -94,8 +95,14 @@ containerTopbar.appendChild(topBar);
 
 let containerCenter = document.getElementById('containerCenter');
 containerCenter.style.display = 'flex';
+
 let containerVisuals = document.getElementById('containerVisuals');
 containerVisuals.style.flex = '3';
+// let visuals = createMain();
+// containerVisuals.appendChild(visuals);
+
+// let topBar = createTopBar();
+containerTopbar.appendChild(topBar);
 
 let containerRightbar = document.getElementById('containerRightbar');
 containerRightbar.style.flex = '1';
@@ -387,10 +394,10 @@ window.addEventListener('load', function () {
   //   return main;
   //   //// CONTAINER MENU CONCLUDE
   // }
-  // let main = createMain();
-  // containerMain.appendChild(main);
-  // containerRoot.appendChild(containerMain);
-  // /// CONTAINER MAIN CONCLUDE
+  let main = createMain();
+  containerMain.appendChild(main);
+  containerRoot.appendChild(containerMain);
+  /// CONTAINER MAIN CONCLUDE
 
   // /// CONTAINER BOTTOMBAR
   // let bottomBar = document.createElement('div');
