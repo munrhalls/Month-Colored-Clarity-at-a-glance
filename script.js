@@ -80,7 +80,8 @@ function assembleElements(arr, container) {
 }
 let containersArr = [
   'containerRoot',
-  ['containerTopbar',
+  [
+    'containerTopbar',
     ['containerMenu'],
     'containerCenter',
     ['containerVisuals', 'containerRightbar'],
@@ -92,18 +93,10 @@ assembleElements(containersArr, main);
 let containerTopbar = document.getElementById('containerTopbar');
 let topBar = createTopBar();
 containerTopbar.appendChild(topBar);
-
 let containerCenter = document.getElementById('containerCenter');
 containerCenter.style.display = 'flex';
-
 let containerVisuals = document.getElementById('containerVisuals');
 containerVisuals.style.flex = '3';
-// let visuals = createMain();
-// containerVisuals.appendChild(visuals);
-
-// let topBar = createTopBar();
-containerTopbar.appendChild(topBar);
-
 let containerRightbar = document.getElementById('containerRightbar');
 containerRightbar.style.flex = '1';
 let menu = createMenu();
@@ -119,369 +112,368 @@ function highlightScaffolding(el) {
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  // for (let i = 0; i < containers.length; i++) {
-  //   let box = containers[i];
-  //   console.log(box[i]);
-  // }
-  // let containerRoot = document.getElementById('containerRoot');
+    // for (let i = 0; i < containers.length; i++) {
+    //   let box = containers[i];
+    //   console.log(box[i]);
+    // }
+  let containerRoot = document.getElementById('containerRoot');
 
 
   // createContainers(containers, containers[0]);
 
   // CONTAINER ROOT
-  // let containerRoot = document.getElementById('containerRoot');
-  // containerRoot.id = 'containerRoot';
-  // /// CONTAINER TOPBAR
-  // let containerTopBar = document.createElement('div');
-  // containerTopBar.id = 'containerTopBar';
-  // let topBar = createTopBar();
-  // containerTopBar.appendChild(topBar);
-  // containerRoot.appendChild(containerTopBar);
-  // /// CONTAINER TOPBAR CONCLUDE
+  containerRoot.id = 'containerRoot';
+  /// CONTAINER TOPBAR
+  let containerTopBar = document.createElement('div');
+  containerTopBar.id = 'containerTopBar';
+  let topBar = createTopBar();
+  containerTopBar.appendChild(topBar);
+  containerRoot.appendChild(containerTopBar);
+  /// CONTAINER TOPBAR CONCLUDE
 
-  // /// CONTAINER MAIN
-  // let containerMain = document.createElement('div');
-  // containerMain.id = 'containerMain';
-  // containerMain.style.display = 'flex';
-  // containerMain.style.height = '100vh';
-  // function createMain() {
-  //   //// CONTAINER VISUALS
-  //   let main = document.createElement('div');
-  //   let containerVisuals = document.createElement('div');
-  //   containerVisuals.id = 'containerVisuals';
-  //   containerVisuals.style.width = 'calc(100% - ' + rightBar + ')';
-  //   ///// CONTAINER resultTimeBlocks
-  //   let containerResultTimeBlocks = document.createElement('div');
-  //   containerResultTimeBlocks.id = 'containerResultTimeBlocks';
-  //   function createResultTimeBlocks() {
-  //     let resultTimeBlocks = document.createElement('div');
-  //     resultTimeBlocks.style.display = 'flex';
-  //     // flex
-  //     resultTimeBlocks.style.height = '45vh';
-  //     resultTimeBlocks.style.width = '100%';
-  //     let containerResultCards = document.createElement('div');
-  //     containerResultCards.id = 'containerResultCards'; 
-  //     containerResultCards.style.flex = '3';
-  //     containerResultCards.style.display = 'flex';
-  //     // flex
-  //     containerResultCards.style.height = '100%'; 
+  /// CONTAINER MAIN
+  let containerMain = document.createElement('div');
+  containerMain.id = 'containerMain';
+  containerMain.style.display = 'flex';
+  containerMain.style.height = '100vh';
+  function createMain() {
+    //// CONTAINER VISUALS
+    let main = document.createElement('div');
+    let containerVisuals = document.createElement('div');
+    containerVisuals.id = 'containerVisuals';
+    containerVisuals.style.width = 'calc(100% - ' + rightBarWidth + ')';
+    ///// CONTAINER resultTimeBlocks
+    let containerResultTimeBlocks = document.createElement('div');
+    containerResultTimeBlocks.id = 'containerResultTimeBlocks';
+    function createResultTimeBlocks() {
+      let resultTimeBlocks = document.createElement('div');
+      resultTimeBlocks.style.display = 'flex';
+      // flex
+      resultTimeBlocks.style.height = '45vh';
+      resultTimeBlocks.style.width = '100%';
+      let containerResultCards = document.createElement('div');
+      containerResultCards.id = 'containerResultCards'; 
+      containerResultCards.style.flex = '3';
+      containerResultCards.style.display = 'flex';
+      // flex
+      containerResultCards.style.height = '100%'; 
 
-  //     function createResultCard(color) {
-  //       let resultCard = document.createElement('div');
-  //       resultCard.className = 'resultCard';
-  //       resultCard.style.flex = '1';
-  //       resultCard.style.height = '100%';
-  //       resultCard.style.border = '1px solid black';
-  //       resultCard.style.position = 'relative';
-  //       // first result card bg, lightest
-  //       let opacityDiv = document.createElement('div');
-  //       opacityDiv.style.position = 'absolute';
-  //       opacityDiv.style.width = '100%';
-  //       opacityDiv.style.height = '100%';
-  //       opacityDiv.style.background = color || 'darkblue';
-  //       opacityDiv.style.opacity = resultCardOpacity;
-  //       resultCard.appendChild(opacityDiv);
+      function createResultCard(color) {
+        let resultCard = document.createElement('div');
+        resultCard.className = 'resultCard';
+        resultCard.style.flex = '1';
+        resultCard.style.height = '100%';
+        resultCard.style.border = '1px solid black';
+        resultCard.style.position = 'relative';
+        // first result card bg, lightest
+        let opacityDiv = document.createElement('div');
+        opacityDiv.style.position = 'absolute';
+        opacityDiv.style.width = '100%';
+        opacityDiv.style.height = '100%';
+        opacityDiv.style.background = color || 'darkblue';
+        opacityDiv.style.opacity = resultCardOpacity;
+        resultCard.appendChild(opacityDiv);
 
-  //       let resultBlock = document.createElement('div');
-  //       resultBlock.style.position = 'relative';
-  //       resultBlock.style.top = '3rem';
-  //       resultBlock.style.left = '1rem';
-  //       // position
-  //       resultBlock.style.width = '12rem';
-  //       resultBlock.style.height = '12rem';
-  //       resultBlock.style.background = 'black';
-  //       resultBlock.style.border = '1px solid black';
-
-
-  //       let input = document.createElement('input');
-  //       input.type = 'text';  
-  //       input.style.background = 'black';
-  //       input.style.border = '2.5px solid ' + color;
-  //       input.style.width = '100%';
-  //       input.style.height = '100%';
-  //       input.style.color = 'white'
-  //       input.style.fontSize = '1.5rem';
-  //       input.style.textAlign = 'center';
-  //       input.style.zIndex = '3';
-  //       input.style.position = 'absolute';
-  //       input.placeholder = 'RESULT TITLE';
-  //       // A D D COMPLETION CRITERIA INPUTS BELOW
-  //       // input.style.top = '3rem';
-  //       // input.style.bottom = '3rem';
-  //       // input.style.left = '3rem';
-  //       // input.style.right = '3rem';
+        let resultBlock = document.createElement('div');
+        resultBlock.style.position = 'relative';
+        resultBlock.style.top = '3rem';
+        resultBlock.style.left = '1rem';
+        // position
+        resultBlock.style.width = '12rem';
+        resultBlock.style.height = '12rem';
+        resultBlock.style.background = 'black';
+        resultBlock.style.border = '1px solid black';
 
 
+        let input = document.createElement('input');
+        input.type = 'text';  
+        input.style.background = 'black';
+        input.style.border = '2.5px solid ' + color;
+        input.style.width = '100%';
+        input.style.height = '100%';
+        input.style.color = 'white'
+        input.style.fontSize = '1.5rem';
+        input.style.textAlign = 'center';
+        input.style.zIndex = '3';
+        input.style.position = 'absolute';
+        input.placeholder = 'RESULT TITLE';
+        // A D D COMPLETION CRITERIA INPUTS BELOW
+        // input.style.top = '3rem';
+        // input.style.bottom = '3rem';
+        // input.style.left = '3rem';
+        // input.style.right = '3rem';
 
-  //       resultBlock.appendChild(input);
-  //       resultBlock.style.innerText = 'RESULT';
-  //       function createTimeBlock() {
-  //         let timeBlock = document.createElement('div');
-  //         return timeBlock;
-  //       }
-  //       let timeBlock = createTimeBlock();
 
-  //       resultCard.appendChild(resultBlock);
-  //       return resultCard;
-  //     }
-  //     function addResultCard(color) {
-  //       let resultCard = createResultCard(color);
-  //       // resultCard.style.opacity = resultCardOpacity;
-  //       containerResultCards.appendChild(resultCard);
-  //     }
-  //     addResultCard(colors[0]);
-  //     addResultCard(colors[1]);
-  //     addResultCard(colors[2]);
-  //     let containerCardWithAddBtn = document.createElement('div');
-  //     containerCardWithAddBtn.id = 'containerCardWithAddBtn';
-  //     containerCardWithAddBtn.style.display = 'flex';
-  //     containerCardWithAddBtn.style.flex = '1';
-  //     // flex
-  //     containerCardWithAddBtn.style.border = '1px solid black';
 
-  //     function createCardWithAddBtn() {
-  //       let cardWithAddBtn = document.createElement('div');
-  //       cardWithAddBtn.style.display = 'flex';
-  //       cardWithAddBtn.style.width = '100%';
-  //       // flex
-  //       let containerAddBtn = document.createElement('div');
-  //       containerAddBtn.id = 'containerAddBtn';
-  //       containerAddBtn.style.display = 'flex';
-  //       containerAddBtn.style.justifyContent = 'center';
-  //       containerAddBtn.style.alignItems = 'center';
-  //       containerAddBtn.style.height = '100%';
-  //       containerAddBtn.style.width = '100%';
-  //       // flex
+        resultBlock.appendChild(input);
+        resultBlock.style.innerText = 'RESULT';
+        function createTimeBlock() {
+          let timeBlock = document.createElement('div');
+          return timeBlock;
+        }
+        let timeBlock = createTimeBlock();
 
-  //       let addBtn = document.createElement('div');
-  //       addBtn.style.background = 'black';
-  //       addBtn.style.fontSize = resultCardAddBtn;
-  //       addBtn.style.fontWeight = 'bold';
-  //       addBtn.style.width = resultCardAddBtn;
-  //       addBtn.style.color = 'white';
-  //       addBtn.style.borderRadius = '100%';
-  //       addBtn.style.opacity = '0.9';
-  //       addBtn.innerText = '+';
-  //       addBtn.style.textAlign = 'center';
-  //       addBtn.onclick = function(e) {
-  //         addResultCard();
-  //       }
-  //       containerAddBtn.appendChild(addBtn);
-  //       cardWithAddBtn.appendChild(containerAddBtn);
-  //       return cardWithAddBtn;
-  //     }
-  //     let cardWithAddBtn = createCardWithAddBtn();
-  //     containerCardWithAddBtn.appendChild(cardWithAddBtn);
+        resultCard.appendChild(resultBlock);
+        return resultCard;
+      }
+      function addResultCard(color) {
+        let resultCard = createResultCard(color);
+        // resultCard.style.opacity = resultCardOpacity;
+        containerResultCards.appendChild(resultCard);
+      }
+      addResultCard(colors[0]);
+      addResultCard(colors[1]);
+      addResultCard(colors[2]);
+      let containerCardWithAddBtn = document.createElement('div');
+      containerCardWithAddBtn.id = 'containerCardWithAddBtn';
+      containerCardWithAddBtn.style.display = 'flex';
+      containerCardWithAddBtn.style.flex = '1';
+      // flex
+      containerCardWithAddBtn.style.border = '1px solid black';
 
-  //     resultTimeBlocks.appendChild(containerResultCards);
-  //     resultTimeBlocks.appendChild(containerCardWithAddBtn);
+      function createCardWithAddBtn() {
+        let cardWithAddBtn = document.createElement('div');
+        cardWithAddBtn.style.display = 'flex';
+        cardWithAddBtn.style.width = '100%';
+        // flex
+        let containerAddBtn = document.createElement('div');
+        containerAddBtn.id = 'containerAddBtn';
+        containerAddBtn.style.display = 'flex';
+        containerAddBtn.style.justifyContent = 'center';
+        containerAddBtn.style.alignItems = 'center';
+        containerAddBtn.style.height = '100%';
+        containerAddBtn.style.width = '100%';
+        // flex
 
-  //     return resultTimeBlocks;
-  //   }
-  //   let resultTimeBlocks = createResultTimeBlocks();
-  //   containerResultTimeBlocks.appendChild(resultTimeBlocks);
-  //   ///// CONTAINER resultTimeBlocks CONCLUDE
+        let addBtn = document.createElement('div');
+        addBtn.style.background = 'black';
+        addBtn.style.fontSize = resultCardAddBtn;
+        addBtn.style.fontWeight = 'bold';
+        addBtn.style.width = resultCardAddBtn;
+        addBtn.style.color = 'white';
+        addBtn.style.borderRadius = '100%';
+        addBtn.style.opacity = '0.9';
+        addBtn.innerText = '+';
+        addBtn.style.textAlign = 'center';
+        addBtn.onclick = function(e) {
+          addResultCard();
+        }
+        containerAddBtn.appendChild(addBtn);
+        cardWithAddBtn.appendChild(containerAddBtn);
+        return cardWithAddBtn;
+      }
+      let cardWithAddBtn = createCardWithAddBtn();
+      containerCardWithAddBtn.appendChild(cardWithAddBtn);
 
-  //   ///// CONTAINER Calendar
-  //   let containerCalendar = document.createElement('div');
-  //   containerCalendar.id = 'containerCalendar';
-  //   containerCalendar.style.display = 'flex';
+      resultTimeBlocks.appendChild(containerResultCards);
+      resultTimeBlocks.appendChild(containerCardWithAddBtn);
 
-  //   function createCalendar() {
-  //     let calendar = document.createElement('div');
-  //     calendar.style.display = 'flex';
-  //     calendar.style.flex = '1';
-  //     calendar.style.height = '45vh';
-  //     calendar.style.width = '100%';
-  //     return calendar;
-  //   }
-  //   let calendar = createCalendar();
-  //   // let et
-  //   let hourLog = createHoursLog();
-  //   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
-  //     let length = HTMLCollection.length;
-  //     console.log(length);
-  //     for (let i = 0; i < length; i++) {
-  //       let childEl = HTMLCollection[i];
-  //       console.log(childEl);
-  //       childEl.style.position = 'relative';
-  //       childEl.style.display = 'none';
-  //       // add event sensors
-  //       let sensorsContainer = document.createElement('div');
-  //       sensorsContainer.style.position = 'absolute';
-  //       sensorsContainer.style.top = arrDistanceTop;
-  //       sensorsContainer.style.left = arrDistanceLeft;
-  //       sensorsContainer.style.display = 'flex';
-  //       // created an arrow of its own! (can re-use later);
-  //       let arrowLength = arrSize;
-  //       let borderBottom = (arrowLength / 1.25) / arrowLength;
-  //       let borderTop = (arrowLength / 1.25) / arrowLength;
-  //       let arrowLengthToRem = arrowLength + 'rem';
-  //       let borderBottomToRem = borderBottom + 'rem';
-  //       let borderTopToRem = borderTop + 'rem';
-  //       let sensorsContainerWidth = arrowLength * 2.5;
-  //       let sensorsContainerWidthToRem = sensorsContainerWidth + 'rem';
-  //       sensorsContainer.style.width = sensorsContainerWidthToRem;
-  //       sensorsContainer.style.justifyContent = 'space-between';
-  //       if (i !== 0) {
-  //         let arrowSensorL = document.createElement('div');
-  //         arrowSensorL.style.height = '5px';
-  //         arrowSensorL.style.width = '5px';
-  //         arrowSensorL.style.border = arrowLengthToRem + ' solid black';
-  //         arrowSensorL.style.borderLeft = '0 solid black';
-  //         arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
-  //         // 4/12 0,3333
-  //         arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
-  //         // 1/12 0,0833
-  //         arrowSensorL.onclick = function (e) {
-  //           childEl.style.display = 'none';
-  //           let index = i - 1;
-  //           let prevEl = HTMLCollection[index];
-  //           prevEl.style.display = 'block';
-  //           console.log(prevEl);
-  //         }
-  //         sensorsContainer.appendChild(arrowSensorL);
-  //       }
+      return resultTimeBlocks;
+    }
+    let resultTimeBlocks = createResultTimeBlocks();
+    containerResultTimeBlocks.appendChild(resultTimeBlocks);
+    ///// CONTAINER resultTimeBlocks CONCLUDE
 
-  //       let arrowSensorR = document.createElement('div');
-  //       arrowSensorR.style.height = '5px';
-  //       arrowSensorR.style.width = '5px';
-  //       arrowSensorR.style.border = arrowLengthToRem + ' solid black';
-  //       arrowSensorR.style.borderRight = '0 solid black';
-  //       arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
-  //       // 4/12 0,3333
-  //       arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
-  //       if (i + 1 < length) {
-  //         arrowSensorR.onclick = function (e) {
-  //           childEl.style.display = 'none';
-  //           let index = i + 1;
-  //           let nextEl = HTMLCollection[index];
-  //           nextEl.style.display = 'block';
-  //           console.log(nextEl);
-  //         }
-  //       } else {
-  //         arrowSensorR.style.display = 'none';
-  //       }
-  //       sensorsContainer.appendChild(arrowSensorR);
-  //       childEl.appendChild(sensorsContainer);
+    ///// CONTAINER Calendar
+    let containerCalendar = document.createElement('div');
+    containerCalendar.id = 'containerCalendar';
+    containerCalendar.style.display = 'flex';
 
-  //       // on left n - 1`
-  //       // on right n + 1
-  //       // set current to hidden
-  //       // set new to visible
-  //     }
-  //     HTMLCollection[0].style.display = 'block';
-  //   }
-  //   carouselify(hourLog.children, '0.5rem', '7rem', 3);
-  //   let containerHourLog = document.createElement('div');
-  //   containerHourLog.id = 'containerHourLog';
-  //   containerHourLog.style.display = 'flex';
-  //   containerHourLog.style.flex = '1';
-  //   containerHourLog.appendChild(hourLog);
-  //   calendar.appendChild(containerHourLog);
-  //   containerCalendar.appendChild(calendar);
-  //   ///// CONTAINER Calendar CONCLUDE
-  //   containerVisuals.appendChild(containerResultTimeBlocks);
-  //   containerVisuals.appendChild(containerCalendar);
-  //   containerMain.appendChild(containerVisuals);
-  //   //// CONTAINER VISUALS CONCLUDE
-  //   //// CONTAINER MENU
-  //   let containerMenu = document.createElement('div');
-  //   containerMenu.id = 'containerMenu';
-  // let menu = createMenu();
-  //   containerMenu.appendChild(menu);
-  //   containerMain.appendChild(containerMenu);
-  //   return main;
-  //   //// CONTAINER MENU CONCLUDE
-  // }
+    function createCalendar() {
+      let calendar = document.createElement('div');
+      calendar.style.display = 'flex';
+      calendar.style.flex = '1';
+      calendar.style.height = '45vh';
+      calendar.style.width = '100%';
+      return calendar;
+    }
+    let calendar = createCalendar();
+    // let et
+    let hourLog = createHoursLog();
+    function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
+      let length = HTMLCollection.length;
+      console.log(length);
+      for (let i = 0; i < length; i++) {
+        let childEl = HTMLCollection[i];
+        console.log(childEl);
+        childEl.style.position = 'relative';
+        childEl.style.display = 'none';
+        // add event sensors
+        let sensorsContainer = document.createElement('div');
+        sensorsContainer.style.position = 'absolute';
+        sensorsContainer.style.top = arrDistanceTop;
+        sensorsContainer.style.left = arrDistanceLeft;
+        sensorsContainer.style.display = 'flex';
+        // created an arrow of its own! (can re-use later);
+        let arrowLength = arrSize;
+        let borderBottom = (arrowLength / 1.25) / arrowLength;
+        let borderTop = (arrowLength / 1.25) / arrowLength;
+        let arrowLengthToRem = arrowLength + 'rem';
+        let borderBottomToRem = borderBottom + 'rem';
+        let borderTopToRem = borderTop + 'rem';
+        let sensorsContainerWidth = arrowLength * 2.5;
+        let sensorsContainerWidthToRem = sensorsContainerWidth + 'rem';
+        sensorsContainer.style.width = sensorsContainerWidthToRem;
+        sensorsContainer.style.justifyContent = 'space-between';
+        if (i !== 0) {
+          let arrowSensorL = document.createElement('div');
+          arrowSensorL.style.height = '5px';
+          arrowSensorL.style.width = '5px';
+          arrowSensorL.style.border = arrowLengthToRem + ' solid black';
+          arrowSensorL.style.borderLeft = '0 solid black';
+          arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
+          // 4/12 0,3333
+          arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
+          // 1/12 0,0833
+          arrowSensorL.onclick = function (e) {
+            childEl.style.display = 'none';
+            let index = i - 1;
+            let prevEl = HTMLCollection[index];
+            prevEl.style.display = 'block';
+            console.log(prevEl);
+          }
+          sensorsContainer.appendChild(arrowSensorL);
+        }
+
+        let arrowSensorR = document.createElement('div');
+        arrowSensorR.style.height = '5px';
+        arrowSensorR.style.width = '5px';
+        arrowSensorR.style.border = arrowLengthToRem + ' solid black';
+        arrowSensorR.style.borderRight = '0 solid black';
+        arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
+        // 4/12 0,3333
+        arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
+        if (i + 1 < length) {
+          arrowSensorR.onclick = function (e) {
+            childEl.style.display = 'none';
+            let index = i + 1;
+            let nextEl = HTMLCollection[index];
+            nextEl.style.display = 'block';
+            console.log(nextEl);
+          }
+        } else {
+          arrowSensorR.style.display = 'none';
+        }
+        sensorsContainer.appendChild(arrowSensorR);
+        childEl.appendChild(sensorsContainer);
+
+        // on left n - 1`
+        // on right n + 1
+        // set current to hidden
+        // set new to visible
+      }
+      HTMLCollection[0].style.display = 'block';
+    }
+    carouselify(hourLog.children, '0.5rem', '7rem', 3);
+    let containerHourLog = document.createElement('div');
+    containerHourLog.id = 'containerHourLog';
+    containerHourLog.style.display = 'flex';
+    containerHourLog.style.flex = '1';
+    containerHourLog.appendChild(hourLog);
+    calendar.appendChild(containerHourLog);
+    containerCalendar.appendChild(calendar);
+    ///// CONTAINER Calendar CONCLUDE
+    containerVisuals.appendChild(containerResultTimeBlocks);
+    containerVisuals.appendChild(containerCalendar);
+    containerMain.appendChild(containerVisuals);
+    //// CONTAINER VISUALS CONCLUDE
+    //// CONTAINER MENU
+    let containerMenu = document.createElement('div');
+    containerMenu.id = 'containerMenu';
+  let menu = createMenu();
+    containerMenu.appendChild(menu);
+    containerMain.appendChild(containerMenu);
+    return main;
+    //// CONTAINER MENU CONCLUDE
+  }
   let main = createMain();
   containerMain.appendChild(main);
   containerRoot.appendChild(containerMain);
-  /// CONTAINER MAIN CONCLUDE
+  // / CONTAINER MAIN CONCLUDE
 
-  // /// CONTAINER BOTTOMBAR
-  // let bottomBar = document.createElement('div');
-  // let copyrightNote = createCopyrightNote();
-  // let copyrightNote2 = createCopyrightNote2();
-  // bottomBar.appendChild(copyrightNote);
-  // bottomBar.appendChild(copyrightNote2);
-  // containerRoot.appendChild(bottomBar);
-  // /// CONTAINER BOTTOMBAR CONCLUDE
+  /// CONTAINER BOTTOMBAR
+  let bottomBar = document.createElement('div');
+  let copyrightNote = createCopyrightNote();
+  let copyrightNote2 = createCopyrightNote2();
+  bottomBar.appendChild(copyrightNote);
+  bottomBar.appendChild(copyrightNote2);
+  containerRoot.appendChild(bottomBar);
+  /// CONTAINER BOTTOMBAR CONCLUDE
 
 
-  // // select area with mouse drag
-  // // (idk what's the Big O of that, so it's prolly rly expensive)
-  // containerRoot.style.minHeight = '100vh';
-  // containerRoot.style.userSelect = 'none';
-  // containerRoot.markingHoursEvent = false;
-  // containerRoot.style.position = 'relative';
-  // containerRoot.addEventListener('mousedown', function (e) {
-  //   containerRoot.markingHoursEvent = true;
-  //   // console.log('create div');
-  //   let markerEl = document.createElement('div');
-  //   markerEl.id = 'markerEl';
-  //   markerEl.onclick = function (e) {
-  //     // console.log(e)
-  //   }
+  // select area with mouse drag
+  // (idk what's the Big O of that, so it's prolly rly expensive)
+  containerRoot.style.minHeight = '100vh';
+  containerRoot.style.userSelect = 'none';
+  containerRoot.markingHoursEvent = false;
+  containerRoot.style.position = 'relative';
+  containerRoot.addEventListener('mousedown', function (e) {
+    containerRoot.markingHoursEvent = true;
+    // console.log('create div');
+    let markerEl = document.createElement('div');
+    markerEl.id = 'markerEl';
+    markerEl.onclick = function (e) {
+      // console.log(e)
+    }
 
-  //   markerEl.style.height = '1px';
-  //   markerEl.style.width = '1px';
-  //   markerEl.style.border = '1px solid #000000';
-  //   // markerEl.style.borderRadius = '50%';
-  //   // let colors = ['blue', 'green', 'purple', 'grey', 'orange', 'yellow', 'red'];
-  //   let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
-  //   let projectColor = colors[rndNum];
-  //   markerEl.style.background = projectColor;
-  //   markerEl.projectColor = projectColor;
-  //   markerEl.style.opacity = '70%';
-  //   markerEl.style.position = 'absolute';
-  //   let y = e.pageY.toString() + 'px';
-  //   let x = e.pageX.toString() + 'px';
-  //   markerEl.style.top = y;
-  //   markerEl.style.left = x;
-  //   markerEl.y = y;
-  //   markerEl.x = x;
-  //   containerRoot.appendChild(markerEl)
-  // });
-  // containerRoot.addEventListener('mousemove', function (e) {
-  //   if (containerRoot.markingHoursEvent) {
-  //     // console.log('re-draw div');
-  //     let markerEl = document.getElementById('markerEl');
-  //     let prevCursorY = parseInt((markerEl.y).split('px')[0]);
-  //     let prevCursorX = parseInt((markerEl.x).split('px')[0]);
-  //     let heightUpdateY = Math.abs(e.pageY - prevCursorY) + 'px';
-  //     let heightUpdateX = Math.abs(e.pageX - prevCursorX) + 'px';
-  //     markerEl.style.height = heightUpdateY;
-  //     markerEl.style.width = heightUpdateX;
-  //     if (e.pageY - parseInt((markerEl.y).split('px')[0]) < 0) {
-  //       markerEl.style.top = e.pageY + 'px';
-  //     }
-  //     if (e.pageX - parseInt((markerEl.x).split('px')[0]) < 0) {
-  //       markerEl.style.left = e.pageX + 'px';
-  //     }
-  //     // console.log('check if an hourtick is inside coordinates (math, < than)');
-  //     // console.log('pre-mark hour ticks inside');
-  //     // console.log('erase mark or set mark, depending on confirmation');
-  //   }
-  //   // Dispatch the event.
-  // });
-  // containerRoot.addEventListener('mouseup', function (e) {
-  //   containerRoot.markingHoursEvent = false;
-  //   let markerEl = document.getElementById('markerEl');
-  //   let hourEls = document.getElementsByClassName('hourEl');
-  //   if (hourEls && hourEls.length) {
-  //     const event = new Event('requestCoords', {
-  //       bubbles: false,
-  //     });
-  //     event.markerEl = markerEl;
-  //     for (let i = 0; i < hourEls.length; i++) {
-  //       hourEls[i].dispatchEvent(event);
-  //     }
-  //   }
-  //   // Event listeners - ctrl f 'requestCoords'
-  //   console.log('mouse drag select');
-  //   markerEl.remove();
-  // });
+    markerEl.style.height = '1px';
+    markerEl.style.width = '1px';
+    markerEl.style.border = '1px solid #000000';
+    // markerEl.style.borderRadius = '50%';
+    // let colors = ['blue', 'green', 'purple', 'grey', 'orange', 'yellow', 'red'];
+    let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
+    let projectColor = colors[rndNum];
+    markerEl.style.background = projectColor;
+    markerEl.projectColor = projectColor;
+    markerEl.style.opacity = '70%';
+    markerEl.style.position = 'absolute';
+    let y = e.pageY.toString() + 'px';
+    let x = e.pageX.toString() + 'px';
+    markerEl.style.top = y;
+    markerEl.style.left = x;
+    markerEl.y = y;
+    markerEl.x = x;
+    containerRoot.appendChild(markerEl)
+  });
+  containerRoot.addEventListener('mousemove', function (e) {
+    if (containerRoot.markingHoursEvent) {
+      // console.log('re-draw div');
+      let markerEl = document.getElementById('markerEl');
+      let prevCursorY = parseInt((markerEl.y).split('px')[0]);
+      let prevCursorX = parseInt((markerEl.x).split('px')[0]);
+      let heightUpdateY = Math.abs(e.pageY - prevCursorY) + 'px';
+      let heightUpdateX = Math.abs(e.pageX - prevCursorX) + 'px';
+      markerEl.style.height = heightUpdateY;
+      markerEl.style.width = heightUpdateX;
+      if (e.pageY - parseInt((markerEl.y).split('px')[0]) < 0) {
+        markerEl.style.top = e.pageY + 'px';
+      }
+      if (e.pageX - parseInt((markerEl.x).split('px')[0]) < 0) {
+        markerEl.style.left = e.pageX + 'px';
+      }
+      // console.log('check if an hourtick is inside coordinates (math, < than)');
+      // console.log('pre-mark hour ticks inside');
+      // console.log('erase mark or set mark, depending on confirmation');
+    }
+    // Dispatch the event.
+  });
+  containerRoot.addEventListener('mouseup', function (e) {
+    containerRoot.markingHoursEvent = false;
+    let markerEl = document.getElementById('markerEl');
+    let hourEls = document.getElementsByClassName('hourEl');
+    if (hourEls && hourEls.length) {
+      const event = new Event('requestCoords', {
+        bubbles: false,
+      });
+      event.markerEl = markerEl;
+      for (let i = 0; i < hourEls.length; i++) {
+        hourEls[i].dispatchEvent(event);
+      }
+    }
+    // Event listeners - ctrl f 'requestCoords'
+    console.log('mouse drag select');
+    markerEl.remove();
+  });
 });
 function createTopBar() {
   let title_height = '3rem';
