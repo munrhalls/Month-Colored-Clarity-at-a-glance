@@ -111,26 +111,33 @@ window.addEventListener('load', function () {
   let containerTopbar = document.getElementById('containerTopbar');
   let topBar = createTopBar();
   containerTopbar.appendChild(topBar);
+
   let containerCenter = document.getElementById('containerCenter');
   containerCenter.style.display = 'flex';
   let center = createContainerMain();
   center.id = 'center';
   containerCenter.appendChild(center);
+  // center content
   let containerVisuals = document.getElementById('containerVisuals');
   containerVisuals.style.flex = '3';
-
   let containerCalendar = document.getElementById('containerCalendar');
+  containerCalendar.style.height = '45vh';
   let calendarCarousel = createCalendarCarousel();
+  calendarCarousel.style.height = '100%';
   containerCalendar.appendChild(calendarCarousel);
-  ///// CONTAINER Calendar
 
-
-
+  let containerRightbar = document.getElementById('containerRightbar');
+  containerRightbar.style.flex = '1';
+  let menu = createMenu();
+  containerRightbar.appendChild(menu);
+  let containerRoot = document.getElementById('containerRoot');
+  // center content conclude
   function createCalendarCarousel() {
     let calendarCarousel = document.createElement('div');
     calendarCarousel.id = 'calendarCarousel';
     calendarCarousel.style.display = 'flex';
-  
+    calendarCarousel.style.height = '100%';
+
     function createCalendar() {
       let calendar = document.createElement('div');
       calendar.style.display = 'flex';
@@ -142,6 +149,166 @@ window.addEventListener('load', function () {
     let calendar = createCalendar();
     // let et
     let hourLog = createHoursLog();
+    function createHoursLog() {
+      // let containerMain = document.getElementById('containerMainet
+      // container.id  = let
+      let hourLog = document.createElement('div');
+      hourLog.style.display = 'flex';
+      hourLog.style.flex = '1';
+      for (let i = 0; i < yearDATA.length; i++) {
+        let monthDATA = yearDATA[i];
+        // MONTHS LEVEL
+        let containerMonth = document.createElement('div');
+        containerMonth.id = 'containerMonth';
+        containerMonth.style.display = 'flex';
+        containerMonth.style.flex = '1';
+        let monthTitleEl = document.createElement('div');
+        monthTitleEl.innerText = monthDATA.monthName;
+        monthTitleEl.style.textAlign = 'left';
+        monthTitleEl.style.fontSize = '1.75rem';
+        monthTitleEl.style.padding = '0.25rem';
+        monthTitleEl.style.textAlign = 'left';
+        let monthDaysEl = document.createElement('div');
+        monthDaysEl.className = 'month';
+        monthDaysEl.style.display = 'flex';
+        monthDaysEl.style.flex = '1';
+        monthDaysEl.style.justifyContent = 'flex-start';
+        for (let j = 0; j < monthDATA.length; j++) {
+          let weekDATA = monthDATA[j];
+          // WEEKS LEVEL
+          let weekContainerEl = document.createElement('div');
+          weekContainerEl.id = 'weekContainerEl';
+          weekContainerEl.style.display = 'flex';
+          weekContainerEl.style.flex = '1';
+          weekContainerEl.style.height = '100%';
+          let weekTitleEl = document.createElement('div');
+          weekTitleEl.style.textAlign = 'center';
+          weekTitleEl.style.height = '100%';
+          weekTitleEl.style.color = '#ffffff';
+          weekTitleEl.style.background = '#000000';
+          weekTitleEl.innerText = weekDATA.weekName;
+          weekTitleEl.style.paddingBottom = '0.5rem'
+          weekContainerEl.appendChild(weekTitleEl);
+          monthDaysEl.appendChild(weekContainerEl)
+          let daysContainerEl = document.createElement('div');
+          daysContainerEl.id = 'daysContainerEl';
+          daysContainerEl.style.display = 'flex';
+          daysContainerEl.style.flex = '1';
+          for (let y = 0; y < weekDATA.length; y++) {
+            let day = weekDATA[y];
+            day = day.substring(0, 3);
+            // DAYS LEVEL
+            let dayEl = document.createElement('div');
+            dayEl.style.flex = '1';
+            // closure
+            // let count = 0;
+            dayEl.className = 'day';
+            dayEl.innerText = day;
+            // dayEl.style.flex = '2';
+            dayEl.style.borderLeft = '1px solid #000000';
+            if (y + 1 == weekDATA.length) {
+              dayEl.style.borderRight = '1px solid #000000';
+            }
+            // INSIDE DAY LEVEL
+            let addHourBtn = document.createElement('div');
+            addHourBtn.innerText = '+';
+            let hoursContainerEl = document.createElement('div');
+            hoursContainerEl.className = 'hoursContainerEl';
+            dayEl.appendChild(hoursContainerEl);
+            let sumEl = document.createElement('div');
+            sumEl.className = 'sumEl';
+            let hours = dayEl.getElementsByClassName('hourEl');
+            sumEl.innerText = hours.length;
+            sumEl.style.background = '#000000';
+            sumEl.style.color = '#ffffff';
+            sumEl.style.textAlign = 'center';
+            sumEl.style.height = '1.75rem';
+            sumEl.style.fontSize = '1.5rem';
+            function handleMarkingProject() {
+              let hourTick = resourceCreateHourTick();
+              hourTick.className = 'hourEl';
+              hoursContainerEl.appendChild(hourTick);
+              // coords
+              hourTick.addEventListener('requestCoords', function (e) {
+                let hourEl = e.target;
+                let markerEl = e.markerEl;
+                let hRect = hourEl.getBoundingClientRect();
+                let mRect = markerEl.getBoundingClientRect();
+                let matchY = false;
+                let matchX = false;
+                // Why? Negation leaves points subsets that cannot not intersect.
+                let topNotAfterHourBottom = !(mRect.top > hRect.bottom);
+                let BottomNotBeforeHourTop = !(mRect.bottom < hRect.top);
+                let leftNotAfterHourRight = !(mRect.left > hRect.right);
+                let rightNotBeforeHourLeft = !(mRect.right < hRect.left);
+                // Check match.
+                if (topNotAfterHourBottom && BottomNotBeforeHourTop) {
+                  matchY = true;
+                }
+                if (leftNotAfterHourRight && rightNotBeforeHourLeft) {
+                  matchX = true;
+                }
+                let match = matchY && matchX;
+                // Mark match.
+                if (match) {
+                  hourEl.style.background = markerEl.projectColor;
+
+                }
+              }, false);
+            }
+            let btnsContainer = document.createElement('btnsContainer');
+            btnsContainer.className = 'btnsContainer';
+            btnsContainer.style.display = 'flex';
+            addHourBtn.onclick = function () {
+              // HOUR LEVEL
+              handleMarkingProject();
+              let hours = dayEl.getElementsByClassName('hourEl');
+              sumEl.innerText = hours.length;
+            }
+            addHourBtn.style.height = '1.5rem';
+            addHourBtn.style.flex = '1';
+            // addHourBtn.style.display= 'inline-block';
+            addHourBtn.style.fontSize = '1.5rem';
+            addHourBtn.style.textAlign = 'center';
+            addHourBtn.style.color = '#fff';
+            addHourBtn.style.background = '#000';
+            addHourBtn.style.textAlign = 'center';
+            addHourBtn.style.cursor = 'pointer';
+            let minusHourBtn = document.createElement('div');
+            minusHourBtn.innerText = '-';
+            minusHourBtn.onclick = function () {
+              let hours = dayEl.getElementsByClassName('hourEl');
+              if (hours && hours.length) {
+                let hour = hours[hours.length - 1];
+                hoursContainerEl.removeChild(hour);
+                sumEl.innerText = hours.length;
+              }
+            }
+            minusHourBtn.style.height = '1.5rem';
+            minusHourBtn.style.flex = '1';
+            // addHourBtn.style.display= 'inline-block';
+            minusHourBtn.style.fontSize = '1.5rem';
+            minusHourBtn.style.textAlign = 'center';
+            minusHourBtn.style.color = '#fff';
+            minusHourBtn.style.background = '#000';
+            minusHourBtn.style.textAlign = 'center';
+            minusHourBtn.style.cursor = 'pointer';
+            btnsContainer.appendChild(addHourBtn);
+            btnsContainer.appendChild(minusHourBtn);
+            dayEl.appendChild(btnsContainer);
+            dayEl.appendChild(hoursContainerEl);
+            dayEl.appendChild(sumEl);
+            daysContainerEl.appendChild(dayEl);
+          }
+          weekContainerEl.appendChild(daysContainerEl);
+        }
+        containerMonth.appendChild(monthTitleEl);
+        containerMonth.appendChild(monthDaysEl);
+        hourLog.appendChild(containerMonth);
+        // containerMain.appendChild(hourLog);
+      }
+      return hourLog;
+    }
     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
       let length = HTMLCollection.length;
       console.log(length);
@@ -186,7 +353,7 @@ window.addEventListener('load', function () {
           }
           sensorsContainer.appendChild(arrowSensorL);
         }
-  
+
         let arrowSensorR = document.createElement('div');
         arrowSensorR.style.height = '5px';
         arrowSensorR.style.width = '5px';
@@ -208,7 +375,7 @@ window.addEventListener('load', function () {
         }
         sensorsContainer.appendChild(arrowSensorR);
         childEl.appendChild(sensorsContainer);
-  
+
         // on left n - 1`
         // on right n + 1
         // set current to hidden
@@ -226,20 +393,6 @@ window.addEventListener('load', function () {
     calendarCarousel.appendChild(calendar);
     return calendarCarousel;
   }
-
-
-
-
-  ///// CONTAINER Calendar CONCLUDE
-
-
-  let containerRightbar = document.getElementById('containerRightbar');
-  containerRightbar.style.flex = '1';
-  let menu = createMenu();
-  containerRightbar.appendChild(menu);
-  let containerRoot = document.getElementById('containerRoot');
-
-  
 
 
 
@@ -934,10 +1087,10 @@ function createHoursLog() {
       weekContainerEl.id = 'weekContainerEl';
       weekContainerEl.style.display = 'flex';
       weekContainerEl.style.flex = '1';
-      weekContainerEl.style.height = '25rem';
+      weekContainerEl.style.height = '100%';
       let weekTitleEl = document.createElement('div');
       weekTitleEl.style.textAlign = 'center';
-      weekTitleEl.style.height = '25rem';
+      weekTitleEl.style.height = '100%';
       weekTitleEl.style.color = '#ffffff';
       weekTitleEl.style.background = '#000000';
       weekTitleEl.innerText = weekDATA.weekName;
