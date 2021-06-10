@@ -80,6 +80,7 @@ window.addEventListener('load', function () {
         let div = document.createElement('div');
         div.id = el
         highlightScaffolding(div);
+        textMarkScaffolding(div, el);
         container.appendChild(div);
       }
     });
@@ -89,11 +90,13 @@ window.addEventListener('load', function () {
     // el.style.height = '1rem';
     // el.style.width = '1rem';
   }
+  function textMarkScaffolding(el, text) { 
+    el.innerText = text;
+  }
   let containersArr = [
     'containerRoot',
     [
       'containerTopbar',
-      ['containerMenu'],
       'containerCenter',
       ['containerVisuals',
         ['containerHourBlocks',
