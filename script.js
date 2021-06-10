@@ -5,6 +5,7 @@ const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00'
 // resultTimeBlocks
 const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
+// const calendarHeight = '45vh';
 
 
 
@@ -117,44 +118,38 @@ window.addEventListener('load', function () {
   let center = createContainerMain();
   center.id = 'center';
   containerCenter.appendChild(center);
-  // center content
+  // C E N T E R
+  // two rows: 1. time blocks, 2. calendar
   let containerVisuals = document.getElementById('containerVisuals');
   containerVisuals.style.flex = '3';
+  // calendar
   let containerCalendar = document.getElementById('containerCalendar');
   containerCalendar.style.height = '45vh';
   let calendarCarousel = createCalendarCarousel();
   calendarCarousel.style.height = '100%';
   containerCalendar.appendChild(calendarCarousel);
 
-  let containerRightbar = document.getElementById('containerRightbar');
-  containerRightbar.style.flex = '1';
-  let menu = createMenu();
-  containerRightbar.appendChild(menu);
-  let containerRoot = document.getElementById('containerRoot');
-  // center content conclude
+
   function createCalendarCarousel() {
     let calendarCarousel = document.createElement('div');
     calendarCarousel.id = 'calendarCarousel';
     calendarCarousel.style.display = 'flex';
     calendarCarousel.style.height = '100%';
 
-    function createCalendar() {
-      let calendar = document.createElement('div');
-      calendar.style.display = 'flex';
-      calendar.style.flex = '1';
-      calendar.style.height = '45vh';
-      calendar.style.width = '100%';
-      return calendar;
-    }
-    let calendar = createCalendar();
+    let calendar = document.createElement('div');
+    calendar.style.display = 'flex';
+    calendar.style.flex = '1';
+    calendar.style.height = '45vh';
+    calendar.style.width = '100%';
+
     // let et
-    let hourLog = createHoursLog();
     function createHoursLog() {
       // let containerMain = document.getElementById('containerMainet
       // container.id  = let
-      let hourLog = document.createElement('div');
-      hourLog.style.display = 'flex';
-      hourLog.style.flex = '1';
+      let containerYear = document.createElement('div');
+      containerYear.style.display = 'flex';
+      containerYear.style.flex = '1';
+      containerYear.style.height = '100%';
       for (let i = 0; i < yearDATA.length; i++) {
         let monthDATA = yearDATA[i];
         // MONTHS LEVEL
@@ -162,68 +157,70 @@ window.addEventListener('load', function () {
         containerMonth.id = 'containerMonth';
         containerMonth.style.display = 'flex';
         containerMonth.style.flex = '1';
-        let monthTitleEl = document.createElement('div');
-        monthTitleEl.innerText = monthDATA.monthName;
-        monthTitleEl.style.textAlign = 'left';
-        monthTitleEl.style.fontSize = '1.75rem';
-        monthTitleEl.style.padding = '0.25rem';
-        monthTitleEl.style.textAlign = 'left';
-        let monthDaysEl = document.createElement('div');
-        monthDaysEl.className = 'month';
-        monthDaysEl.style.display = 'flex';
-        monthDaysEl.style.flex = '1';
-        monthDaysEl.style.justifyContent = 'flex-start';
+        containerMonth.style.height = '100%';
+        let containerMonthTitle = document.createElement('div');
+        containerMonthTitle.innerText = monthDATA.monthName;
+        containerMonthTitle.style.textAlign = 'left';
+        containerMonthTitle.style.fontSize = '1.75rem';
+        containerMonthTitle.style.padding = '0.25rem';
+        containerMonthTitle.style.textAlign = 'left';
+        let containerMonthDays = document.createElement('div');
+        containerMonthDays.className = 'month';
+        containerMonthDays.style.display = 'flex';
+        containerMonthDays.style.flex = '1';
+        containerMonthDays.style.justifyContent = 'flex-start';
+        containerMonthDays.style.height = '100%';
         for (let j = 0; j < monthDATA.length; j++) {
           let weekDATA = monthDATA[j];
           // WEEKS LEVEL
-          let weekContainerEl = document.createElement('div');
-          weekContainerEl.id = 'weekContainerEl';
-          weekContainerEl.style.display = 'flex';
-          weekContainerEl.style.flex = '1';
-          weekContainerEl.style.height = '100%';
-          let weekTitleEl = document.createElement('div');
-          weekTitleEl.style.textAlign = 'center';
-          weekTitleEl.style.height = '100%';
-          weekTitleEl.style.color = '#ffffff';
-          weekTitleEl.style.background = '#000000';
-          weekTitleEl.innerText = weekDATA.weekName;
-          weekTitleEl.style.paddingBottom = '0.5rem'
-          weekContainerEl.appendChild(weekTitleEl);
-          monthDaysEl.appendChild(weekContainerEl)
-          let daysContainerEl = document.createElement('div');
-          daysContainerEl.id = 'daysContainerEl';
-          daysContainerEl.style.display = 'flex';
-          daysContainerEl.style.flex = '1';
+          let containerWeek = document.createElement('div');
+          containerWeek.id = 'containerWeek';
+          containerWeek.style.display = 'flex';
+          containerWeek.style.flex = '1';
+          containerWeek.style.height = '100%';
+          let containerWeekTitle = document.createElement('div');
+          containerWeekTitle.style.textAlign = 'center';
+          containerWeekTitle.style.height = '100%';
+          containerWeekTitle.style.color = '#ffffff';
+          containerWeekTitle.style.background = '#000000';
+          containerWeekTitle.innerText = weekDATA.weekName;
+          containerWeekTitle.style.paddingBottom = '0.5rem'
+          containerWeek.appendChild(containerWeekTitle);
+          containerMonthDays.appendChild(containerWeek)
+          let containerDayInterface = document.createElement('div');
+          containerDayInterface.id = 'containerDayInterface';
+          containerDayInterface.style.display = 'flex';
+          containerDayInterface.style.flex = '1';
           for (let y = 0; y < weekDATA.length; y++) {
-            let day = weekDATA[y];
-            day = day.substring(0, 3);
+            let dayName = weekDATA[y];
+            dayName = day.substring(0, 3);
             // DAYS LEVEL
-            let dayEl = document.createElement('div');
-            dayEl.style.flex = '1';
+            let containerDay = document.createElement('div');
+            containerDay.style.flex = '1';
             // closure
             // let count = 0;
-            dayEl.className = 'day';
-            dayEl.innerText = day;
-            // dayEl.style.flex = '2';
-            dayEl.style.borderLeft = '1px solid #000000';
+            containerDay.className = 'day';
+            containerDay.innerText = day;
+            // containerDay.style.flex = '2';
+            containerDay.style.borderLeft = '1px solid #000000';
             if (y + 1 == weekDATA.length) {
-              dayEl.style.borderRight = '1px solid #000000';
+              containerDay.style.borderRight = '1px solid #000000';
             }
             // INSIDE DAY LEVEL
-            let addHourBtn = document.createElement('div');
-            addHourBtn.innerText = '+';
+            let containerAddHourButton = document.createElement('div');
+            containerAddHourButton.innerText = '+';
             let hoursContainerEl = document.createElement('div');
             hoursContainerEl.className = 'hoursContainerEl';
-            dayEl.appendChild(hoursContainerEl);
-            let sumEl = document.createElement('div');
-            sumEl.className = 'sumEl';
-            let hours = dayEl.getElementsByClassName('hourEl');
-            sumEl.innerText = hours.length;
-            sumEl.style.background = '#000000';
-            sumEl.style.color = '#ffffff';
-            sumEl.style.textAlign = 'center';
-            sumEl.style.height = '1.75rem';
-            sumEl.style.fontSize = '1.5rem';
+            containerDay.appendChild(hoursContainerEl);
+            let containerSum = document.createElement('div');
+            containerSum.className = 'containerSum';
+            let hours = containerDay.getElementsByClassName('hourEl');
+            containerSum.innerText = hours.length;
+            containerSum.style.background = '#000000';
+            containerSum.style.color = '#ffffff';
+            containerSum.style.textAlign = 'center';
+            containerSum.style.height = '1.75rem';
+            containerSum.style.fontSize = '1.5rem';
             function handleMarkingProject() {
               let hourTick = resourceCreateHourTick();
               hourTick.className = 'hourEl';
@@ -256,58 +253,58 @@ window.addEventListener('load', function () {
                 }
               }, false);
             }
-            let btnsContainer = document.createElement('btnsContainer');
-            btnsContainer.className = 'btnsContainer';
-            btnsContainer.style.display = 'flex';
-            addHourBtn.onclick = function () {
+            let containerButtons = document.createElement('containerButtons');
+            containerButtons.className = 'containerButtons';
+            containerButtons.style.display = 'flex';
+            containerAddHourButton.onclick = function () {
               // HOUR LEVEL
               handleMarkingProject();
-              let hours = dayEl.getElementsByClassName('hourEl');
-              sumEl.innerText = hours.length;
+              let hours = containerDay.getElementsByClassName('hourEl');
+              containerSum.innerText = hours.length;
             }
-            addHourBtn.style.height = '1.5rem';
-            addHourBtn.style.flex = '1';
-            // addHourBtn.style.display= 'inline-block';
-            addHourBtn.style.fontSize = '1.5rem';
-            addHourBtn.style.textAlign = 'center';
-            addHourBtn.style.color = '#fff';
-            addHourBtn.style.background = '#000';
-            addHourBtn.style.textAlign = 'center';
-            addHourBtn.style.cursor = 'pointer';
-            let minusHourBtn = document.createElement('div');
-            minusHourBtn.innerText = '-';
-            minusHourBtn.onclick = function () {
-              let hours = dayEl.getElementsByClassName('hourEl');
+            containerAddHourButton.style.height = '1.5rem';
+            containerAddHourButton.style.flex = '1';
+            // containerAddHourButton.style.display= 'inline-block';
+            containerAddHourButton.style.fontSize = '1.5rem';
+            containerAddHourButton.style.textAlign = 'center';
+            containerAddHourButton.style.color = '#fff';
+            containerAddHourButton.style.background = '#000';
+            containerAddHourButton.style.textAlign = 'center';
+            containerAddHourButton.style.cursor = 'pointer';
+            let containerMinusHourButton = document.createElement('div');
+            containerMinusHourButton.innerText = '-';
+            containerMinusHourButton.onclick = function () {
+              let hours = containerDay.getElementsByClassName('hourEl');
               if (hours && hours.length) {
                 let hour = hours[hours.length - 1];
                 hoursContainerEl.removeChild(hour);
-                sumEl.innerText = hours.length;
+                containerSum.innerText = hours.length;
               }
             }
-            minusHourBtn.style.height = '1.5rem';
-            minusHourBtn.style.flex = '1';
-            // addHourBtn.style.display= 'inline-block';
-            minusHourBtn.style.fontSize = '1.5rem';
-            minusHourBtn.style.textAlign = 'center';
-            minusHourBtn.style.color = '#fff';
-            minusHourBtn.style.background = '#000';
-            minusHourBtn.style.textAlign = 'center';
-            minusHourBtn.style.cursor = 'pointer';
-            btnsContainer.appendChild(addHourBtn);
-            btnsContainer.appendChild(minusHourBtn);
-            dayEl.appendChild(btnsContainer);
-            dayEl.appendChild(hoursContainerEl);
-            dayEl.appendChild(sumEl);
-            daysContainerEl.appendChild(dayEl);
+            containerMinusHourButton.style.height = '1.5rem';
+            containerMinusHourButton.style.flex = '1';
+            // containerAddHourButton.style.display= 'inline-block';
+            containerMinusHourButton.style.fontSize = '1.5rem';
+            containerMinusHourButton.style.textAlign = 'center';
+            containerMinusHourButton.style.color = '#fff';
+            containerMinusHourButton.style.background = '#000';
+            containerMinusHourButton.style.textAlign = 'center';
+            containerMinusHourButton.style.cursor = 'pointer';
+            containerButtons.appendChild(containerAddHourButton);
+            containerButtons.appendChild(containerMinusHourButton);
+            containerDay.appendChild(containerButtons);
+            containerDay.appendChild(hoursContainerEl);
+            containerDay.appendChild(containerSum);
+            containerDayInterface.appendChild(containerDay);
           }
-          weekContainerEl.appendChild(daysContainerEl);
+          containerWeek.appendChild(containerDayInterface);
         }
         containerMonth.appendChild(monthTitleEl);
         containerMonth.appendChild(monthDaysEl);
-        hourLog.appendChild(containerMonth);
-        // containerMain.appendChild(hourLog);
+        year.appendChild(containerMonth);
+        // containerMain.appendChild(year);
       }
-      return hourLog;
+      return year;
     }
     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
       let length = HTMLCollection.length;
@@ -393,6 +390,28 @@ window.addEventListener('load', function () {
     calendarCarousel.appendChild(calendar);
     return calendarCarousel;
   }
+  // rightbar column - menu
+  let containerRightbar = document.getElementById('containerRightbar');
+  containerRightbar.style.flex = '1';
+  let menu = createMenu();
+  containerRightbar.appendChild(menu);
+  let containerRoot = document.getElementById('containerRoot');
+  // C E N T E R   C O N C L U D E
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1083,54 +1102,54 @@ function createHoursLog() {
     for (let j = 0; j < monthDATA.length; j++) {
       let weekDATA = monthDATA[j];
       // WEEKS LEVEL
-      let weekContainerEl = document.createElement('div');
-      weekContainerEl.id = 'weekContainerEl';
-      weekContainerEl.style.display = 'flex';
-      weekContainerEl.style.flex = '1';
-      weekContainerEl.style.height = '100%';
-      let weekTitleEl = document.createElement('div');
-      weekTitleEl.style.textAlign = 'center';
-      weekTitleEl.style.height = '100%';
-      weekTitleEl.style.color = '#ffffff';
-      weekTitleEl.style.background = '#000000';
-      weekTitleEl.innerText = weekDATA.weekName;
-      weekTitleEl.style.paddingBottom = '0.5rem'
-      weekContainerEl.appendChild(weekTitleEl);
-      monthDaysEl.appendChild(weekContainerEl)
-      let daysContainerEl = document.createElement('div');
-      daysContainerEl.id = 'daysContainerEl';
-      daysContainerEl.style.display = 'flex';
-      daysContainerEl.style.flex = '1';
+      let containerWeek = document.createElement('div');
+      containerWeek.id = 'containerWeek';
+      containerWeek.style.display = 'flex';
+      containerWeek.style.flex = '1';
+      containerWeek.style.height = '100%';
+      let containerWeekTitle = document.createElement('div');
+      containerWeekTitle.style.textAlign = 'center';
+      containerWeekTitle.style.height = '100%';
+      containerWeekTitle.style.color = '#ffffff';
+      containerWeekTitle.style.background = '#000000';
+      containerWeekTitle.innerText = weekDATA.weekName;
+      containerWeekTitle.style.paddingBottom = '0.5rem'
+      containerWeek.appendChild(containerWeekTitle);
+      monthDaysEl.appendChild(containerWeek)
+      let containerDayInterface = document.createElement('div');
+      containerDayInterface.id = 'containerDayInterface';
+      containerDayInterface.style.display = 'flex';
+      containerDayInterface.style.flex = '1';
       for (let y = 0; y < weekDATA.length; y++) {
         let day = weekDATA[y];
         day = day.substring(0, 3);
         // DAYS LEVEL
-        let dayEl = document.createElement('div');
-        dayEl.style.flex = '1';
+        let containerDay = document.createElement('div');
+        containerDay.style.flex = '1';
         // closure
         // let count = 0;
-        dayEl.className = 'day';
-        dayEl.innerText = day;
-        // dayEl.style.flex = '2';
-        dayEl.style.borderLeft = '1px solid #000000';
+        containerDay.className = 'day';
+        containerDay.innerText = day;
+        // containerDay.style.flex = '2';
+        containerDay.style.borderLeft = '1px solid #000000';
         if (y + 1 == weekDATA.length) {
-          dayEl.style.borderRight = '1px solid #000000';
+          containerDay.style.borderRight = '1px solid #000000';
         }
         // INSIDE DAY LEVEL
-        let addHourBtn = document.createElement('div');
-        addHourBtn.innerText = '+';
+        let containerAddHourButton = document.createElement('div');
+        containerAddHourButton.innerText = '+';
         let hoursContainerEl = document.createElement('div');
         hoursContainerEl.className = 'hoursContainerEl';
-        dayEl.appendChild(hoursContainerEl);
-        let sumEl = document.createElement('div');
-        sumEl.className = 'sumEl';
-        let hours = dayEl.getElementsByClassName('hourEl');
-        sumEl.innerText = hours.length;
-        sumEl.style.background = '#000000';
-        sumEl.style.color = '#ffffff';
-        sumEl.style.textAlign = 'center';
-        sumEl.style.height = '1.75rem';
-        sumEl.style.fontSize = '1.5rem';
+        containerDay.appendChild(hoursContainerEl);
+        let containerSum = document.createElement('div');
+        containerSum.className = 'containerSum';
+        let hours = containerDay.getElementsByClassName('hourEl');
+        containerSum.innerText = hours.length;
+        containerSum.style.background = '#000000';
+        containerSum.style.color = '#ffffff';
+        containerSum.style.textAlign = 'center';
+        containerSum.style.height = '1.75rem';
+        containerSum.style.fontSize = '1.5rem';
         function handleMarkingProject() {
           let hourTick = resourceCreateHourTick();
           hourTick.className = 'hourEl';
@@ -1163,51 +1182,51 @@ function createHoursLog() {
             }
           }, false);
         }
-        let btnsContainer = document.createElement('btnsContainer');
-        btnsContainer.className = 'btnsContainer';
-        btnsContainer.style.display = 'flex';
-        addHourBtn.onclick = function () {
+        let containerButtons = document.createElement('containerButtons');
+        containerButtons.className = 'containerButtons';
+        containerButtons.style.display = 'flex';
+        containerAddHourButton.onclick = function () {
           // HOUR LEVEL
           handleMarkingProject();
-          let hours = dayEl.getElementsByClassName('hourEl');
-          sumEl.innerText = hours.length;
+          let hours = containerDay.getElementsByClassName('hourEl');
+          containerSum.innerText = hours.length;
         }
-        addHourBtn.style.height = '1.5rem';
-        addHourBtn.style.flex = '1';
-        // addHourBtn.style.display= 'inline-block';
-        addHourBtn.style.fontSize = '1.5rem';
-        addHourBtn.style.textAlign = 'center';
-        addHourBtn.style.color = '#fff';
-        addHourBtn.style.background = '#000';
-        addHourBtn.style.textAlign = 'center';
-        addHourBtn.style.cursor = 'pointer';
-        let minusHourBtn = document.createElement('div');
-        minusHourBtn.innerText = '-';
-        minusHourBtn.onclick = function () {
-          let hours = dayEl.getElementsByClassName('hourEl');
+        containerAddHourButton.style.height = '1.5rem';
+        containerAddHourButton.style.flex = '1';
+        // containerAddHourButton.style.display= 'inline-block';
+        containerAddHourButton.style.fontSize = '1.5rem';
+        containerAddHourButton.style.textAlign = 'center';
+        containerAddHourButton.style.color = '#fff';
+        containerAddHourButton.style.background = '#000';
+        containerAddHourButton.style.textAlign = 'center';
+        containerAddHourButton.style.cursor = 'pointer';
+        let containerMinusHourButton = document.createElement('div');
+        containerMinusHourButton.innerText = '-';
+        containerMinusHourButton.onclick = function () {
+          let hours = containerDay.getElementsByClassName('hourEl');
           if (hours && hours.length) {
             let hour = hours[hours.length - 1];
             hoursContainerEl.removeChild(hour);
-            sumEl.innerText = hours.length;
+            containerSum.innerText = hours.length;
           }
         }
-        minusHourBtn.style.height = '1.5rem';
-        minusHourBtn.style.flex = '1';
-        // addHourBtn.style.display= 'inline-block';
-        minusHourBtn.style.fontSize = '1.5rem';
-        minusHourBtn.style.textAlign = 'center';
-        minusHourBtn.style.color = '#fff';
-        minusHourBtn.style.background = '#000';
-        minusHourBtn.style.textAlign = 'center';
-        minusHourBtn.style.cursor = 'pointer';
-        btnsContainer.appendChild(addHourBtn);
-        btnsContainer.appendChild(minusHourBtn);
-        dayEl.appendChild(btnsContainer);
-        dayEl.appendChild(hoursContainerEl);
-        dayEl.appendChild(sumEl);
-        daysContainerEl.appendChild(dayEl);
+        containerMinusHourButton.style.height = '1.5rem';
+        containerMinusHourButton.style.flex = '1';
+        // containerAddHourButton.style.display= 'inline-block';
+        containerMinusHourButton.style.fontSize = '1.5rem';
+        containerMinusHourButton.style.textAlign = 'center';
+        containerMinusHourButton.style.color = '#fff';
+        containerMinusHourButton.style.background = '#000';
+        containerMinusHourButton.style.textAlign = 'center';
+        containerMinusHourButton.style.cursor = 'pointer';
+        containerButtons.appendChild(containerAddHourButton);
+        containerButtons.appendChild(containerMinusHourButton);
+        containerDay.appendChild(containerButtons);
+        containerDay.appendChild(hoursContainerEl);
+        containerDay.appendChild(containerSum);
+        containerDayInterface.appendChild(containerDay);
       }
-      weekContainerEl.appendChild(daysContainerEl);
+      containerWeek.appendChild(containerDayInterface);
     }
     containerMonth.appendChild(monthTitleEl);
     containerMonth.appendChild(monthDaysEl);
@@ -1773,8 +1792,8 @@ function appendHoursToDay(hoursNum, day) {
   for (let j = 1; j <= hoursNum; j++) {
     appendHour(hoursNum, day);
   }
-  let sumEl = day.getElementsByClassName('sumEl')[0];
-  sumEl.innerText = day.getElementsByClassName('hourEl').length;
+  let containerSum = day.getElementsByClassName('containerSum')[0];
+  containerSum.innerText = day.getElementsByClassName('hourEl').length;
 }
 function appendHour(hoursNum, day) {
   const hour = resourceCreateHourTick();
