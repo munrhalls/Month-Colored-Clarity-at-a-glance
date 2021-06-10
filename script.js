@@ -113,7 +113,6 @@ window.addEventListener('load', function () {
   containerVisuals.style.flex = '3';
   function createVisuals() {
     // CONTAINER VISUALS
-      let main = document.createElement('div');
   
       let containerVisuals = document.createElement('div');
       containerVisuals.id = 'containerVisuals';
