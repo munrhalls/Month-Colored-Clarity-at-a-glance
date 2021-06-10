@@ -95,273 +95,280 @@ window.addEventListener('load', function () {
       'containerTopbar',
       ['containerMenu'],
       'containerCenter',
-      ['containerVisuals', 'containerRightbar'],
+      ['containerVisuals',
+        ['containerHourBlocks',
+          'containerCalendar'],
+        'containerRightbar'],
       'containerFooter'
     ],
   ];
   assembleElements(containersArr, main);
-  
+
   let containerTopbar = document.getElementById('containerTopbar');
   let topBar = createTopBar();
   containerTopbar.appendChild(topBar);
   let containerCenter = document.getElementById('containerCenter');
   containerCenter.style.display = 'flex';
   let center = createContainerMain();
-  center.id = 'center'; 
+  center.id = 'center';
   containerCenter.appendChild(center);
   let containerVisuals = document.getElementById('containerVisuals');
   containerVisuals.style.flex = '3';
-  function createVisuals() {
-    // CONTAINER VISUALS
-  
-      let containerVisuals = document.createElement('div');
-      containerVisuals.id = 'containerVisuals';
-      containerVisuals.style.width = 'calc(100% - ' + rightBarWidth + ')';
-      ///// CONTAINER resultTimeBlocks
-      let containerResultTimeBlocks = document.createElement('div');
-      containerResultTimeBlocks.id = 'containerResultTimeBlocks';
-      function createResultTimeBlocks() {
-        let resultTimeBlocks = document.createElement('div');
-        resultTimeBlocks.style.display = 'flex';
-        // flex
-        resultTimeBlocks.style.height = '45vh';
-        resultTimeBlocks.style.width = '100%';
-        let containerResultCards = document.createElement('div');
-        containerResultCards.id = 'containerResultCards';
-        containerResultCards.style.flex = '3';
-        containerResultCards.style.display = 'flex';
-        // flex
-        containerResultCards.style.height = '100%';
-  
-        function createResultCard(color) {
-          let resultCard = document.createElement('div');
-          resultCard.className = 'resultCard';
-          resultCard.style.flex = '1';
-          resultCard.style.height = '100%';
-          resultCard.style.border = '1px solid black';
-          resultCard.style.position = 'relative';
-          // first result card bg, lightest
-          let opacityDiv = document.createElement('div');
-          opacityDiv.style.position = 'absolute';
-          opacityDiv.style.width = '100%';
-          opacityDiv.style.height = '100%';
-          opacityDiv.style.background = color || 'darkblue';
-          opacityDiv.style.opacity = resultCardOpacity;
-          resultCard.appendChild(opacityDiv);
-  
-          let resultBlock = document.createElement('div');
-          resultBlock.style.position = 'relative';
-          resultBlock.style.top = '3rem';
-          resultBlock.style.left = '1rem';
-          // position
-          resultBlock.style.width = '12rem';
-          resultBlock.style.height = '12rem';
-          resultBlock.style.background = 'black';
-          resultBlock.style.border = '1px solid black';
-  
-  
-          let input = document.createElement('input');
-          input.type = 'text';
-          input.style.background = 'black';
-          input.style.border = '2.5px solid ' + color;
-          input.style.width = '100%';
-          input.style.height = '100%';
-          input.style.color = 'white'
-          input.style.fontSize = '1.5rem';
-          input.style.textAlign = 'center';
-          input.style.zIndex = '3';
-          input.style.position = 'absolute';
-          input.placeholder = 'RESULT TITLE';
-          // A D D COMPLETION CRITERIA INPUTS BELOW
-          // input.style.top = '3rem';
-          // input.style.bottom = '3rem';
-          // input.style.left = '3rem';
-          // input.style.right = '3rem';
-  
-  
-  
-          resultBlock.appendChild(input);
-          resultBlock.style.innerText = 'RESULT';
-          function createTimeBlock() {
-            let timeBlock = document.createElement('div');
-            return timeBlock;
-          }
-          let timeBlock = createTimeBlock();
-  
-          resultCard.appendChild(resultBlock);
-          return resultCard;
-        }
-        function addResultCard(color) {
-          let resultCard = createResultCard(color);
-          // resultCard.style.opacity = resultCardOpacity;
-          containerResultCards.appendChild(resultCard);
-        }
-        addResultCard(colors[0]);
-        addResultCard(colors[1]);
-        addResultCard(colors[2]);
-        let containerCardWithAddBtn = document.createElement('div');
-        containerCardWithAddBtn.id = 'containerCardWithAddBtn';
-        containerCardWithAddBtn.style.display = 'flex';
-        containerCardWithAddBtn.style.flex = '1';
-        // flex
-        containerCardWithAddBtn.style.border = '1px solid black';
-  
-        function createCardWithAddBtn() {
-          let cardWithAddBtn = document.createElement('div');
-          cardWithAddBtn.style.display = 'flex';
-          cardWithAddBtn.style.width = '100%';
-          // flex
-          let containerAddBtn = document.createElement('div');
-          containerAddBtn.id = 'containerAddBtn';
-          containerAddBtn.style.display = 'flex';
-          containerAddBtn.style.justifyContent = 'center';
-          containerAddBtn.style.alignItems = 'center';
-          containerAddBtn.style.height = '100%';
-          containerAddBtn.style.width = '100%';
-          // flex
-  
-          let addBtn = document.createElement('div');
-          addBtn.style.background = 'black';
-          addBtn.style.fontSize = resultCardAddBtn;
-          addBtn.style.fontWeight = 'bold';
-          addBtn.style.width = resultCardAddBtn;
-          addBtn.style.color = 'white';
-          addBtn.style.borderRadius = '100%';
-          addBtn.style.opacity = '0.9';
-          addBtn.innerText = '+';
-          addBtn.style.textAlign = 'center';
-          addBtn.onclick = function (e) {
-            addResultCard();
-          }
-          containerAddBtn.appendChild(addBtn);
-          cardWithAddBtn.appendChild(containerAddBtn);
-          return cardWithAddBtn;
-        }
-        let cardWithAddBtn = createCardWithAddBtn();
-        containerCardWithAddBtn.appendChild(cardWithAddBtn);
-  
-        resultTimeBlocks.appendChild(containerResultCards);
-        resultTimeBlocks.appendChild(containerCardWithAddBtn);
-  
-        return resultTimeBlocks;
-      }
-      let resultTimeBlocks = createResultTimeBlocks();
-      containerResultTimeBlocks.appendChild(resultTimeBlocks);
-      ///// CONTAINER resultTimeBlocks CONCLUDE
-  
-      ///// CONTAINER Calendar
-      let containerCalendar = document.createElement('div');
-      containerCalendar.id = 'containerCalendar';
-      containerCalendar.style.display = 'flex';
-  
-      function createCalendar() {
-        let calendar = document.createElement('div');
-        calendar.style.display = 'flex';
-        calendar.style.flex = '1';
-        calendar.style.height = '45vh';
-        calendar.style.width = '100%';
-        return calendar;
-      }
-      let calendar = createCalendar();
-      // let et
-      let hourLog = createHoursLog();
-      function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
-        let length = HTMLCollection.length;
-        console.log(length);
-        for (let i = 0; i < length; i++) {
-          let childEl = HTMLCollection[i];
-          console.log(childEl);
-          childEl.style.position = 'relative';
-          childEl.style.display = 'none';
-          // add event sensors
-          let sensorsContainer = document.createElement('div');
-          sensorsContainer.style.position = 'absolute';
-          sensorsContainer.style.top = arrDistanceTop;
-          sensorsContainer.style.left = arrDistanceLeft;
-          sensorsContainer.style.display = 'flex';
-          // created an arrow of its own! (can re-use later);
-          let arrowLength = arrSize;
-          let borderBottom = (arrowLength / 1.25) / arrowLength;
-          let borderTop = (arrowLength / 1.25) / arrowLength;
-          let arrowLengthToRem = arrowLength + 'rem';
-          let borderBottomToRem = borderBottom + 'rem';
-          let borderTopToRem = borderTop + 'rem';
-          let sensorsContainerWidth = arrowLength * 2.5;
-          let sensorsContainerWidthToRem = sensorsContainerWidth + 'rem';
-          sensorsContainer.style.width = sensorsContainerWidthToRem;
-          sensorsContainer.style.justifyContent = 'space-between';
-          if (i !== 0) {
-            let arrowSensorL = document.createElement('div');
-            arrowSensorL.style.height = '5px';
-            arrowSensorL.style.width = '5px';
-            arrowSensorL.style.border = arrowLengthToRem + ' solid black';
-            arrowSensorL.style.borderLeft = '0 solid black';
-            arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
-            // 4/12 0,3333
-            arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
-            // 1/12 0,0833
-            arrowSensorL.onclick = function (e) {
-              childEl.style.display = 'none';
-              let index = i - 1;
-              let prevEl = HTMLCollection[index];
-              prevEl.style.display = 'block';
-              console.log(prevEl);
-            }
-            sensorsContainer.appendChild(arrowSensorL);
-          }
-  
-          let arrowSensorR = document.createElement('div');
-          arrowSensorR.style.height = '5px';
-          arrowSensorR.style.width = '5px';
-          arrowSensorR.style.border = arrowLengthToRem + ' solid black';
-          arrowSensorR.style.borderRight = '0 solid black';
-          arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
-          // 4/12 0,3333
-          arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
-          if (i + 1 < length) {
-            arrowSensorR.onclick = function (e) {
-              childEl.style.display = 'none';
-              let index = i + 1;
-              let nextEl = HTMLCollection[index];
-              nextEl.style.display = 'block';
-              console.log(nextEl);
-            }
-          } else {
-            arrowSensorR.style.display = 'none';
-          }
-          sensorsContainer.appendChild(arrowSensorR);
-          childEl.appendChild(sensorsContainer);
-  
-          // on left n - 1`
-          // on right n + 1
-          // set current to hidden
-          // set new to visible
-        }
-        HTMLCollection[0].style.display = 'block';
-      }
-      carouselify(hourLog.children, '0.5rem', '7rem', 3);
-      let containerHourLog = document.createElement('div');
-      containerHourLog.id = 'containerHourLog';
-      containerHourLog.style.display = 'flex';
-      containerHourLog.style.flex = '1';
-      containerHourLog.appendChild(hourLog);
-      calendar.appendChild(containerHourLog);
-      containerCalendar.appendChild(calendar);
-      ///// CONTAINER Calendar CONCLUDE
-      containerVisuals.appendChild(containerResultTimeBlocks);
-      containerVisuals.appendChild(containerCalendar);
-      // containerMain.appendChild(containerVisuals);
-      //// CONTAINER VISUALS CONCLUDE
-      return containerVisuals;
-  }
-  let visuals = createVisuals();
-  containerVisuals.appendChild(visuals)
+
   let containerRightbar = document.getElementById('containerRightbar');
   containerRightbar.style.flex = '1';
   let menu = createMenu();
   containerRightbar.appendChild(menu);
   let containerRoot = document.getElementById('containerRoot');
 
+
+
+
+  // function createVisuals() {
+  //   // CONTAINER VISUALS
+
+  //     let containerVisuals = document.createElement('div');
+  //     containerVisuals.id = 'containerVisuals';
+  //     containerVisuals.style.width = 'calc(100% - ' + rightBarWidth + ')';
+  //     ///// CONTAINER resultTimeBlocks
+  //     let containerResultTimeBlocks = document.createElement('div');
+  //     containerResultTimeBlocks.id = 'containerResultTimeBlocks';
+  //     function createResultTimeBlocks() {
+  //       let resultTimeBlocks = document.createElement('div');
+  //       resultTimeBlocks.style.display = 'flex';
+  //       // flex
+  //       resultTimeBlocks.style.height = '45vh';
+  //       resultTimeBlocks.style.width = '100%';
+  //       let containerResultCards = document.createElement('div');
+  //       containerResultCards.id = 'containerResultCards';
+  //       containerResultCards.style.flex = '3';
+  //       containerResultCards.style.display = 'flex';
+  //       // flex
+  //       containerResultCards.style.height = '100%';
+
+  //       function createResultCard(color) {
+  //         let resultCard = document.createElement('div');
+  //         resultCard.className = 'resultCard';
+  //         resultCard.style.flex = '1';
+  //         resultCard.style.height = '100%';
+  //         resultCard.style.border = '1px solid black';
+  //         resultCard.style.position = 'relative';
+  //         // first result card bg, lightest
+  //         let opacityDiv = document.createElement('div');
+  //         opacityDiv.style.position = 'absolute';
+  //         opacityDiv.style.width = '100%';
+  //         opacityDiv.style.height = '100%';
+  //         opacityDiv.style.background = color || 'darkblue';
+  //         opacityDiv.style.opacity = resultCardOpacity;
+  //         resultCard.appendChild(opacityDiv);
+
+  //         let resultBlock = document.createElement('div');
+  //         resultBlock.style.position = 'relative';
+  //         resultBlock.style.top = '3rem';
+  //         resultBlock.style.left = '1rem';
+  //         // position
+  //         resultBlock.style.width = '12rem';
+  //         resultBlock.style.height = '12rem';
+  //         resultBlock.style.background = 'black';
+  //         resultBlock.style.border = '1px solid black';
+
+
+  //         let input = document.createElement('input');
+  //         input.type = 'text';
+  //         input.style.background = 'black';
+  //         input.style.border = '2.5px solid ' + color;
+  //         input.style.width = '100%';
+  //         input.style.height = '100%';
+  //         input.style.color = 'white'
+  //         input.style.fontSize = '1.5rem';
+  //         input.style.textAlign = 'center';
+  //         input.style.zIndex = '3';
+  //         input.style.position = 'absolute';
+  //         input.placeholder = 'RESULT TITLE';
+  //         // A D D COMPLETION CRITERIA INPUTS BELOW
+  //         // input.style.top = '3rem';
+  //         // input.style.bottom = '3rem';
+  //         // input.style.left = '3rem';
+  //         // input.style.right = '3rem';
+
+
+
+  //         resultBlock.appendChild(input);
+  //         resultBlock.style.innerText = 'RESULT';
+  //         function createTimeBlock() {
+  //           let timeBlock = document.createElement('div');
+  //           return timeBlock;
+  //         }
+  //         let timeBlock = createTimeBlock();
+
+  //         resultCard.appendChild(resultBlock);
+  //         return resultCard;
+  //       }
+  //       function addResultCard(color) {
+  //         let resultCard = createResultCard(color);
+  //         // resultCard.style.opacity = resultCardOpacity;
+  //         containerResultCards.appendChild(resultCard);
+  //       }
+  //       addResultCard(colors[0]);
+  //       addResultCard(colors[1]);
+  //       addResultCard(colors[2]);
+  //       let containerCardWithAddBtn = document.createElement('div');
+  //       containerCardWithAddBtn.id = 'containerCardWithAddBtn';
+  //       containerCardWithAddBtn.style.display = 'flex';
+  //       containerCardWithAddBtn.style.flex = '1';
+  //       // flex
+  //       containerCardWithAddBtn.style.border = '1px solid black';
+
+  //       function createCardWithAddBtn() {
+  //         let cardWithAddBtn = document.createElement('div');
+  //         cardWithAddBtn.style.display = 'flex';
+  //         cardWithAddBtn.style.width = '100%';
+  //         // flex
+  //         let containerAddBtn = document.createElement('div');
+  //         containerAddBtn.id = 'containerAddBtn';
+  //         containerAddBtn.style.display = 'flex';
+  //         containerAddBtn.style.justifyContent = 'center';
+  //         containerAddBtn.style.alignItems = 'center';
+  //         containerAddBtn.style.height = '100%';
+  //         containerAddBtn.style.width = '100%';
+  //         // flex
+
+  //         let addBtn = document.createElement('div');
+  //         addBtn.style.background = 'black';
+  //         addBtn.style.fontSize = resultCardAddBtn;
+  //         addBtn.style.fontWeight = 'bold';
+  //         addBtn.style.width = resultCardAddBtn;
+  //         addBtn.style.color = 'white';
+  //         addBtn.style.borderRadius = '100%';
+  //         addBtn.style.opacity = '0.9';
+  //         addBtn.innerText = '+';
+  //         addBtn.style.textAlign = 'center';
+  //         addBtn.onclick = function (e) {
+  //           addResultCard();
+  //         }
+  //         containerAddBtn.appendChild(addBtn);
+  //         cardWithAddBtn.appendChild(containerAddBtn);
+  //         return cardWithAddBtn;
+  //       }
+  //       let cardWithAddBtn = createCardWithAddBtn();
+  //       containerCardWithAddBtn.appendChild(cardWithAddBtn);
+
+  //       resultTimeBlocks.appendChild(containerResultCards);
+  //       resultTimeBlocks.appendChild(containerCardWithAddBtn);
+
+  //       return resultTimeBlocks;
+  //     }
+  //     let resultTimeBlocks = createResultTimeBlocks();
+  //     containerResultTimeBlocks.appendChild(resultTimeBlocks);
+  //     ///// CONTAINER resultTimeBlocks CONCLUDE
+
+  //     ///// CONTAINER Calendar
+  //     let containerCalendar = document.createElement('div');
+  //     containerCalendar.id = 'containerCalendar';
+  //     containerCalendar.style.display = 'flex';
+
+  //     function createCalendar() {
+  //       let calendar = document.createElement('div');
+  //       calendar.style.display = 'flex';
+  //       calendar.style.flex = '1';
+  //       calendar.style.height = '45vh';
+  //       calendar.style.width = '100%';
+  //       return calendar;
+  //     }
+  //     let calendar = createCalendar();
+  //     // let et
+  //     let hourLog = createHoursLog();
+  //     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
+  //       let length = HTMLCollection.length;
+  //       console.log(length);
+  //       for (let i = 0; i < length; i++) {
+  //         let childEl = HTMLCollection[i];
+  //         console.log(childEl);
+  //         childEl.style.position = 'relative';
+  //         childEl.style.display = 'none';
+  //         // add event sensors
+  //         let sensorsContainer = document.createElement('div');
+  //         sensorsContainer.style.position = 'absolute';
+  //         sensorsContainer.style.top = arrDistanceTop;
+  //         sensorsContainer.style.left = arrDistanceLeft;
+  //         sensorsContainer.style.display = 'flex';
+  //         // created an arrow of its own! (can re-use later);
+  //         let arrowLength = arrSize;
+  //         let borderBottom = (arrowLength / 1.25) / arrowLength;
+  //         let borderTop = (arrowLength / 1.25) / arrowLength;
+  //         let arrowLengthToRem = arrowLength + 'rem';
+  //         let borderBottomToRem = borderBottom + 'rem';
+  //         let borderTopToRem = borderTop + 'rem';
+  //         let sensorsContainerWidth = arrowLength * 2.5;
+  //         let sensorsContainerWidthToRem = sensorsContainerWidth + 'rem';
+  //         sensorsContainer.style.width = sensorsContainerWidthToRem;
+  //         sensorsContainer.style.justifyContent = 'space-between';
+  //         if (i !== 0) {
+  //           let arrowSensorL = document.createElement('div');
+  //           arrowSensorL.style.height = '5px';
+  //           arrowSensorL.style.width = '5px';
+  //           arrowSensorL.style.border = arrowLengthToRem + ' solid black';
+  //           arrowSensorL.style.borderLeft = '0 solid black';
+  //           arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
+  //           // 4/12 0,3333
+  //           arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
+  //           // 1/12 0,0833
+  //           arrowSensorL.onclick = function (e) {
+  //             childEl.style.display = 'none';
+  //             let index = i - 1;
+  //             let prevEl = HTMLCollection[index];
+  //             prevEl.style.display = 'block';
+  //             console.log(prevEl);
+  //           }
+  //           sensorsContainer.appendChild(arrowSensorL);
+  //         }
+
+  //         let arrowSensorR = document.createElement('div');
+  //         arrowSensorR.style.height = '5px';
+  //         arrowSensorR.style.width = '5px';
+  //         arrowSensorR.style.border = arrowLengthToRem + ' solid black';
+  //         arrowSensorR.style.borderRight = '0 solid black';
+  //         arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
+  //         // 4/12 0,3333
+  //         arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
+  //         if (i + 1 < length) {
+  //           arrowSensorR.onclick = function (e) {
+  //             childEl.style.display = 'none';
+  //             let index = i + 1;
+  //             let nextEl = HTMLCollection[index];
+  //             nextEl.style.display = 'block';
+  //             console.log(nextEl);
+  //           }
+  //         } else {
+  //           arrowSensorR.style.display = 'none';
+  //         }
+  //         sensorsContainer.appendChild(arrowSensorR);
+  //         childEl.appendChild(sensorsContainer);
+
+  //         // on left n - 1`
+  //         // on right n + 1
+  //         // set current to hidden
+  //         // set new to visible
+  //       }
+  //       HTMLCollection[0].style.display = 'block';
+  //     }
+  //     carouselify(hourLog.children, '0.5rem', '7rem', 3);
+  //     let containerHourLog = document.createElement('div');
+  //     containerHourLog.id = 'containerHourLog';
+  //     containerHourLog.style.display = 'flex';
+  //     containerHourLog.style.flex = '1';
+  //     containerHourLog.appendChild(hourLog);
+  //     calendar.appendChild(containerHourLog);
+  //     containerCalendar.appendChild(calendar);
+  //     ///// CONTAINER Calendar CONCLUDE
+  //     containerVisuals.appendChild(containerResultTimeBlocks);
+  //     containerVisuals.appendChild(containerCalendar);
+  //     // containerMain.appendChild(containerVisuals);
+  //     //// CONTAINER VISUALS CONCLUDE
+  //     return containerVisuals;
+  // }
+  // let visuals = createVisuals();
+  // containerVisuals.appendChild(visuals)
 
   // createContainers(containers, containers[0]);
 
@@ -648,7 +655,7 @@ window.addEventListener('load', function () {
     containerMain.id = 'containerMain';
     containerMain.style.display = 'flex';
     containerMain.style.height = '100vh';
- 
+
     let main = createMain();
     return containerMain;
     // / CONTAINER MAIN CONCLUDE
