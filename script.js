@@ -125,7 +125,7 @@ window.addEventListener('load', function () {
   }
 
   // CALENDAR
-  const containerCalendar = document.getElementById('containerCalendar');
+  const containerCalendar = document.getElementsByClassName('containerCalendar')[0];
   const calendarCarousel = createCalendarCarousel();
   containerCalendar.style.height = containerCalendarHeight;
   calendarCarousel.style.height = '100%';
@@ -397,11 +397,11 @@ window.addEventListener('load', function () {
   }
 
   // RIGHTBAR MENU
-  let containerRightbar = document.getElementById('containerRightbar');
+  let containerRightbar = document.getElementsByClassName('containerRightbar')[0];
   containerRightbar.style.flex = '1';
   let menu = createMenu();
   containerRightbar.appendChild(menu);
-  let containerRoot = document.getElementById('containerRoot');
+  let containerRoot = document.getElementsByClassName('containerRoot')[0];
 
 
   function createMain() {
