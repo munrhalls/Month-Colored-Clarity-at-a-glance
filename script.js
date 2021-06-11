@@ -47,6 +47,9 @@ let main = document.getElementById('app');
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
+  const timeAmpoule = ['titleBar', 'containerTime'];
+  const arrTimeAmpoules = ['containerTimeAmpoule', timeAmpoule, 'containerTimeAmpoule', timeAmpoule, 'containerTimeAmpoule', timeAmpoule];
+  // pattern is: '...' is a container title, [...] is nesting stuff inside that container
   const containersArr = [
     'containerRoot',
     [
@@ -54,6 +57,7 @@ window.addEventListener('load', function () {
       'containerCenter',
       ['containerVisuals',
         ['containerTimeBlocks',
+          arrTimeAmpoules,
           'containerCalendar'],
         'containerRightbar',
       ],
@@ -64,205 +68,61 @@ window.addEventListener('load', function () {
     arr.forEach(function (el, index) {
       if (typeof el == 'object') {
         let name = arr[index - 1] || container;
-        let nestedContainer = document.getElementById(name);
+        let nestedContainer = document.getElementsByClassName(name)[0];
         let nestedArr = el;
         console.log(nestedArr);
         assembleElements(nestedArr, nestedContainer);
       } else {
         let div = document.createElement('div');
-        div.id = el;
+        div.className = el;
         // comment / uncomment
         optional_borderify(div);
-        // optional_textMark(div, el);
+        optional_textMark(div, el);
         container.appendChild(div);
       }
     });
-  }
-  function optional_borderify(el) {
-    el.style.border = '1px solid black';
-  }
-  function optional_greyifyBg(el) {
-    el.style.background = 'grey';
-  }
-  function optional_textMark(el, text) {
-    let span = document.createElement('span');
-    span.style.position = 'absolute';
-    span.style.top = '1rem';
-    span.style.left = '1rem';
-    span.innerText = text;
-    span.style.color = 'blue';
-    span.style.letterSpacing = '1px';
-    span.style.fontSize = '2.5rem';
-
-    el.style.position = 'relative';
-    el.appendChild(span);
+    function optional_borderify(el) {
+      el.style.border = '1px solid black';
+    }
+    function optional_greyifyBg(el) {
+      el.style.background = 'grey';
+    }
+    function optional_textMark(el, text) {
+      let span = document.createElement('span');
+      // span.style.position = 'absolute';
+      span.style.top = '1rem';
+      span.style.left = '1rem';
+      span.innerText = text;
+      span.style.color = 'blue';
+      span.style.letterSpacing = '1px';
+      span.style.fontSize = '2.5rem';
+  
+      el.style.position = 'relative';
+      el.appendChild(span);
+    }
   }
   assembleElements(containersArr, main);
-
-  const containerTopbar = document.getElementById('containerTopbar');
+  const containerTopbar = document.getElementsByClassName('containerTopbar')[0];
   const topBar = createTopBar();
   containerTopbar.style.height = containerTopbarHeight;
   containerTopbar.appendChild(topBar);
 
-  const containerCenter = document.getElementById('containerCenter');
+  const containerCenter = document.getElementsByClassName('containerCenter')[0];
   containerCenter.style.display = 'flex';
 
-  const containerVisuals = document.getElementById('containerVisuals');
+  const containerVisuals = document.getElementsByClassName('containerVisuals')[0];
   containerVisuals.style.flex = '3';
 
   // HOUR BLOCKS
-  const containerTimeBlocks = document.getElementById('containerTimeBlocks');
+  const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
+  containerTimeBlocks.style.display = 'flex';
   const timeBlocks = createTimeBlocks();
   containerTimeBlocks.style.height = containerTimeBlocksHeight;
   containerTimeBlocks.appendChild(timeBlocks);
   function createTimeBlocks() {
     const timeBlocks = document.createElement('div');
-    timeBlocks.style.height = '100%';
-    timeBlocks.style.display = 'flex';
-    const colsNum = 3;
-
-    for (let i = 0; i < colsNum; i++) {
-      let timeAmpoule = document.createElement('div');
-      timeAmpoule.style.flex = '1';
-      timeAmpoule.style.border = '1px solid black';
-      timeBlocks.appendChild(timeAmpoule);
-    }
     return timeBlocks;
   }
-
-
-
-
-
-
-   // function createTimeBlocks() {
-  //   let resultTimeBlocks = document.createElement('div');
-  //   resultTimeBlocks.style.display = 'flex';
-  //   // flex
-  //   resultTimeBlocks.style.height = '100%';
-  //   resultTimeBlocks.style.width = '100%';
-    
-  //   let containerResultCards = document.createElement('div');
-  //   containerResultCards.id = 'containerResultCards';
-  //   containerResultCards.style.flex = '3';
-  //   containerResultCards.style.display = 'flex';
-  //   // flex
-  //   containerResultCards.style.height = '100%';
-
-  //   function createResultCard(color) {
-  //     let resultCard = document.createElement('div');
-  //     resultCard.className = 'resultCard';
-  //     resultCard.style.flex = '1';
-  //     resultCard.style.height = '100%';
-  //     resultCard.style.border = '1px solid black';
-  //     resultCard.style.position = 'relative';
-  //     // first result card bg, lightest
-  //     let opacityDiv = document.createElement('div');
-  //     opacityDiv.style.position = 'absolute';
-  //     opacityDiv.style.width = '100%';
-  //     opacityDiv.style.height = '100%';
-  //     opacityDiv.style.background = color || 'darkblue';
-  //     opacityDiv.style.opacity = resultCardOpacity;
-  //     resultCard.appendChild(opacityDiv);
-
-  //     let resultBlock = document.createElement('div');
-  //     resultBlock.style.position = 'relative';
-  //     resultBlock.style.top = '3rem';
-  //     resultBlock.style.left = '1rem';
-  //     // position
-  //     resultBlock.style.width = '12rem';
-  //     resultBlock.style.height = '12rem';
-  //     resultBlock.style.background = 'black';
-  //     resultBlock.style.border = '1px solid black';
-
-
-  //     let input = document.createElement('input');
-  //     input.type = 'text';
-  //     input.style.background = 'black';
-  //     input.style.border = '2.5px solid ' + color;
-  //     input.style.width = '100%';
-  //     input.style.height = '100%';
-  //     input.style.color = 'white'
-  //     input.style.fontSize = '1.5rem';
-  //     input.style.textAlign = 'center';
-  //     input.style.zIndex = '3';
-  //     input.style.position = 'absolute';
-  //     input.placeholder = 'RESULT TITLE';
-  //     // A D D COMPLETION CRITERIA INPUTS BELOW
-  //     // input.style.top = '3rem';
-  //     // input.style.bottom = '3rem';
-  //     // input.style.left = '3rem';
-  //     // input.style.right = '3rem';
-
-
-
-  //     resultBlock.appendChild(input);
-  //     resultBlock.style.innerText = 'RESULT';
-  //     function createTimeBlock() {
-  //       let timeBlock = document.createElement('div');
-  //       return timeBlock;
-  //     }
-  //     let timeBlock = createTimeBlock();
-
-  //     resultCard.appendChild(resultBlock);
-  //     return resultCard;
-  //   }
-  //   function addResultCard(color) {
-  //     let resultCard = createResultCard(color);
-  //     // resultCard.style.opacity = resultCardOpacity;
-  //     containerResultCards.appendChild(resultCard);
-  //   }
-  //   addResultCard(colors[0]);
-  //   addResultCard(colors[1]);
-  //   addResultCard(colors[2]);
-  //   let containerCardWithAddBtn = document.createElement('div');
-  //   containerCardWithAddBtn.id = 'containerCardWithAddBtn';
-  //   containerCardWithAddBtn.style.display = 'flex';
-  //   containerCardWithAddBtn.style.flex = '1';
-  //   // flex
-  //   containerCardWithAddBtn.style.border = '1px solid black';
-
-  //   function createCardWithAddBtn() {
-  //     let cardWithAddBtn = document.createElement('div');
-  //     cardWithAddBtn.style.display = 'flex';
-  //     cardWithAddBtn.style.width = '100%';
-  //     // flex
-  //     let containerAddBtn = document.createElement('div');
-  //     containerAddBtn.id = 'containerAddBtn';
-  //     containerAddBtn.style.display = 'flex';
-  //     containerAddBtn.style.justifyContent = 'center';
-  //     containerAddBtn.style.alignItems = 'center';
-  //     containerAddBtn.style.height = '100%';
-  //     containerAddBtn.style.width = '100%';
-  //     // flex
-
-  //     let addBtn = document.createElement('div');
-  //     addBtn.style.background = 'black';
-  //     addBtn.style.fontSize = resultCardAddBtn;
-  //     addBtn.style.fontWeight = 'bold';
-  //     addBtn.style.width = resultCardAddBtn;
-  //     addBtn.style.color = 'white';
-  //     addBtn.style.borderRadius = '100%';
-  //     addBtn.style.opacity = '0.9';
-  //     addBtn.innerText = '+';
-  //     addBtn.style.textAlign = 'center';
-  //     addBtn.onclick = function (e) {
-  //       addResultCard();
-  //     }
-  //     containerAddBtn.appendChild(addBtn);
-  //     cardWithAddBtn.appendChild(containerAddBtn);
-  //     return cardWithAddBtn;
-  //   }
-  //   let cardWithAddBtn = createCardWithAddBtn();
-  //   containerCardWithAddBtn.appendChild(cardWithAddBtn);
-
-  //   resultTimeBlocks.appendChild(containerResultCards);
-  //   resultTimeBlocks.appendChild(containerCardWithAddBtn);
-
-  //   return resultTimeBlocks;
-  // }
-
-
 
   // CALENDAR
   const containerCalendar = document.getElementById('containerCalendar');
@@ -542,167 +402,6 @@ window.addEventListener('load', function () {
   let menu = createMenu();
   containerRightbar.appendChild(menu);
   let containerRoot = document.getElementById('containerRoot');
-  // C E N T E R   C O N C L U D E
-
-
-
-
-
-
-
-
-  // function createVisuals() {
-  //   // CONTAINER VISUALS
-
-  //     let containerVisuals = document.createElement('div');
-  //     containerVisuals.id = 'containerVisuals';
-  //     containerVisuals.style.width = 'calc(100% - ' + rightBarWidth + ')';
-  ///// CONTAINER resultTimeBlocks
-
-
-
-    // let containerResultTimeBlocks = document.createElement('div');
-    // containerResultTimeBlocks.id = 'containerResultTimeBlocks';
-
-    // containerResultTimeBlocks.appendChild(resultTimeBlocks);
-
-  ///// CONTAINER resultTimeBlocks CONCLUDE
-
-  //     ///// CONTAINER Calendar
-  //     let containerCalendar = document.createElement('div');
-  //     containerCalendar.id = 'containerCalendar';
-  //     containerCalendar.style.display = 'flex';
-
-  //     function createCalendar() {
-  //       let calendar = document.createElement('div');
-  //       calendar.style.display = 'flex';
-  //       calendar.style.flex = '1';
-  //       calendar.style.height = '45vh';
-  //       calendar.style.width = '100%';
-  //       return calendar;
-  //     }
-  //     let calendar = createCalendar();
-  //     // let et
-  //     let year = createContainerYear();
-  //     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
-  //       let length = HTMLCollection.length;
-  //       console.log(length);
-  //       for (let i = 0; i < length; i++) {
-  //         let childEl = HTMLCollection[i];
-  //         console.log(childEl);
-  //         childEl.style.position = 'relative';
-  //         childEl.style.display = 'none';
-  //         // add event sensors
-  //         let sensorsContainer = document.createElement('div');
-  //         sensorsContainer.style.position = 'absolute';
-  //         sensorsContainer.style.top = arrDistanceTop;
-  //         sensorsContainer.style.left = arrDistanceLeft;
-  //         sensorsContainer.style.display = 'flex';
-  //         // created an arrow of its own! (can re-use later);
-  //         let arrowLength = arrSize;
-  //         let borderBottom = (arrowLength / 1.25) / arrowLength;
-  //         let borderTop = (arrowLength / 1.25) / arrowLength;
-  //         let arrowLengthToRem = arrowLength + 'rem';
-  //         let borderBottomToRem = borderBottom + 'rem';
-  //         let borderTopToRem = borderTop + 'rem';
-  //         let sensorsContainerWidth = arrowLength * 2.5;
-  //         let sensorsContainerWidthToRem = sensorsContainerWidth + 'rem';
-  //         sensorsContainer.style.width = sensorsContainerWidthToRem;
-  //         sensorsContainer.style.justifyContent = 'space-between';
-  //         if (i !== 0) {
-  //           let arrowSensorL = document.createElement('div');
-  //           arrowSensorL.style.height = '5px';
-  //           arrowSensorL.style.width = '5px';
-  //           arrowSensorL.style.border = arrowLengthToRem + ' solid black';
-  //           arrowSensorL.style.borderLeft = '0 solid black';
-  //           arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
-  //           // 4/12 0,3333
-  //           arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
-  //           // 1/12 0,0833
-  //           arrowSensorL.onclick = function (e) {
-  //             childEl.style.display = 'none';
-  //             let index = i - 1;
-  //             let prevEl = HTMLCollection[index];
-  //             prevEl.style.display = 'block';
-  //             console.log(prevEl);
-  //           }
-  //           sensorsContainer.appendChild(arrowSensorL);
-  //         }
-
-  //         let arrowSensorR = document.createElement('div');
-  //         arrowSensorR.style.height = '5px';
-  //         arrowSensorR.style.width = '5px';
-  //         arrowSensorR.style.border = arrowLengthToRem + ' solid black';
-  //         arrowSensorR.style.borderRight = '0 solid black';
-  //         arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
-  //         // 4/12 0,3333
-  //         arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
-  //         if (i + 1 < length) {
-  //           arrowSensorR.onclick = function (e) {
-  //             childEl.style.display = 'none';
-  //             let index = i + 1;
-  //             let nextEl = HTMLCollection[index];
-  //             nextEl.style.display = 'block';
-  //             console.log(nextEl);
-  //           }
-  //         } else {
-  //           arrowSensorR.style.display = 'none';
-  //         }
-  //         sensorsContainer.appendChild(arrowSensorR);
-  //         childEl.appendChild(sensorsContainer);
-
-  //         // on left n - 1`
-  //         // on right n + 1
-  //         // set current to hidden
-  //         // set new to visible
-  //       }
-  //       HTMLCollection[0].style.display = 'block';
-  //     }
-  //     carouselify(year.children, '0.5rem', '7rem', 3);
-  //     let containeryear = document.createElement('div');
-  //     containeryear.id = 'containeryear';
-  //     containeryear.style.display = 'flex';
-  //     containeryear.style.flex = '1';
-  //     containeryear.appendChild(year);
-  //     calendar.appendChild(containeryear);
-  //     containerCalendar.appendChild(calendar);
-  //     ///// CONTAINER Calendar CONCLUDE
-  //     containerVisuals.appendChild(containerResultTimeBlocks);
-  //     containerVisuals.appendChild(containerCalendar);
-  //     // containerMain.appendChild(containerVisuals);
-  //     //// CONTAINER VISUALS CONCLUDE
-  //     return containerVisuals;
-  // }
-  // let visuals = createVisuals();
-  // containerVisuals.appendChild(visuals)
-
-  // createContainers(containers, containers[0]);
-
-
-
-  // // CONTAINER ROOT
-  // containerRoot.id = 'containerRoot';
-  // /// CONTAINER TOPBAR
-  // let containerTopBar = document.createElement('div');
-  // containerTopBar.id = 'containerTopBar';
-  // // let topBar = createTopBar();
-  // containerTopBar.appendChild(topBar);
-  // containerRoot.appendChild(containerTopBar);
-  // /// CONTAINER TOPBAR CONCLUDE
-
-  /// CONTAINER MAIN
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   function createMain() {
@@ -971,7 +670,6 @@ window.addEventListener('load', function () {
   bottomBar.appendChild(copyrightNote2);
   containerRoot.appendChild(bottomBar);
   /// CONTAINER BOTTOMBAR CONCLUDE
-
 
   // select area with mouse drag
   // (idk what's the Big O of that, so it's prolly rly expensive)
