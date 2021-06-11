@@ -61,25 +61,19 @@ window.addEventListener('load', function () {
   }
   function contentifyTimeBlocks() {
     const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
-    const titleBars = containerTimeBlocks.getElementsByClassName('titleBar');
-    // for (let i = 0; i < titleBars.length; i++) {
-    //   const titleBar = titleBars[i];
-    //   const input = document.createElement('input');
-    //   input.style.type = 'text';
-    //   titleBar.appendChild(input);
-    // }
-    loop('titleBar', contentifyTitleBars);
-    function contentifyTitleBars(el) {
+    loop('titleBar', contentifyTitleBar);
+    function contentifyTitleBar(el) {
       el
       const input = document.createElement('input');
       input.style.type = 'text';
       el.appendChild(input);
     }
     const btnsAddTimeBlock = containerTimeBlocks.getElementsByClassName('btnAddTimeBlock');
-    for (let i = 0; i < btnsAddTimeBlock.length; i++) {
-      const btnAddTimeBlock = btnsAddTimeBlock[i];
-      btnAddTimeBlock.innerText = '+';
+    loop('btnAddTimeBlock', contentifyBtnAddTimeBlock);
+    function contentifyBtnAddTimeBlock(el) {
+      el.innerText = '+';
     }
+
   }
   function functionalizeTimeBlocks() {
 
