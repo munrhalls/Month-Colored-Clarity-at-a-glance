@@ -1,11 +1,17 @@
-// VALUES
-const topbarHeight = '4.5rem';
+// DATA VALUES
+const containerTopbarHeight = '3.5rem';
+const containerHourBlocksHeight = 'calc(50vh - ' + parseFloat(containerTopbarHeight) / 2 + 'rem)';
+const containerCalendarHeight = 'calc(50vh - ' + parseFloat(containerTopbarHeight) / 2 + 'rem)';
 const rightBarWidth = '18rem';
 const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00', '#FF0000'];
 // resultTimeBlocks
 const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
-// const calendarHeight = '45vh';
+const calendarHeight = '39vh';
+
+const calendarMonthTitlePadding = '0.25rem';
+const calendarMonthTitleFontSize = '1.75rem';
+const calendarMonthTitleHeight = '4.5rem';
 
 
 
@@ -121,6 +127,7 @@ window.addEventListener('load', function () {
   assembleElements(containersArr, main);
 
   let containerTopbar = document.getElementById('containerTopbar');
+  containerTopbar.style.height = containerTopbarHeight;
   let topBar = createTopBar();
   containerTopbar.appendChild(topBar);
 
@@ -131,10 +138,10 @@ window.addEventListener('load', function () {
   containerVisuals.style.flex = '3';
 
   let containerHourBlocks = document.getElementById('containerHourBlocks');
-  containerHourBlocks.style.height = '40vh';
+  containerHourBlocks.style.height = containerHourBlocksHeight;
 
   let containerCalendar = document.getElementById('containerCalendar');
-  containerCalendar.style.height = '40vh';
+  containerCalendar.style.height = containerCalendarHeight;
   let contentCalendarCarousel = contentCreateCalendarCarousel();
   contentCalendarCarousel.style.height = '100%';
   containerCalendar.appendChild(contentCalendarCarousel);
@@ -150,11 +157,15 @@ window.addEventListener('load', function () {
     let calendar = document.createElement('div');
     calendar.style.display = 'flex';
     calendar.style.flex = '1';
-    calendar.style.height = '45vh';
+    calendar.style.height = calendarHeight;
     calendar.style.width = '100%';
 
     function contentCreateYear() {
-      let year = document.createElement('div');
+      // const calendarMonthTitlePadding = '0.25rem';
+      // const calendarMonthTitleFontSize = '1.75rem';
+      // const calendarMonthTitleHeight = '4.5rem';
+
+      const year = document.createElement('div');
       year.style.display = 'flex';
       year.style.flex = '1';
       year.style.height = '100%';
@@ -170,15 +181,15 @@ window.addEventListener('load', function () {
         let monthTitle = document.createElement('div');
         monthTitle.innerText = monthDATA.monthName;
         monthTitle.style.textAlign = 'left';
-        monthTitle.style.fontSize = '1.75rem';
-        monthTitle.style.padding = '0.25rem';
-        monthTitle.style.textAlign = 'left';
+        monthTitle.style.fontSize = calendarMonthTitleFontSize;
+        monthTitle.style.padding = calendarMonthTitlePadding;
+        monthTitle.style.height = calendarMonthTitleHeight;
         let monthDays = document.createElement('div');
         monthDays.className = 'month';
         monthDays.style.display = 'flex';
         monthDays.style.flex = '1';
         monthDays.style.justifyContent = 'flex-start';
-        monthDays.style.height = '100%';
+        monthDays.style.height = 'calc(100% - ' + calendarMonthTitleHeight + ')';
 
         for (let j = 0; j < monthDATA.length; j++) {
           let weekDATA = monthDATA[j];
@@ -1041,8 +1052,8 @@ function createTopBar() {
   let topBar = document.createElement('div');
   topBar.id = 'topBar';
   topBar.style.display = 'flex';
-  topBar.style.height = topbarHeight;
   topBar.style.background = title_bgColor;
+  topBar.style.height = '100%';
   let titleTitle = document.createElement('div');
   titleTitle.style.background = title_bgColor;
   titleTitle.style.height = title_height;
