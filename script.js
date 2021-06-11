@@ -69,31 +69,9 @@ window.addEventListener('load', function () {
       if (typeof el == 'object') {
         let name = arr[index - 1] || container;
         let nestedContainers = document.getElementsByClassName(name);
-        let nestedContainer = nestedContainers[0];
-        let num = 0;
-        if (nestedContainers.length > 1) {
-          let isNumNotDetermined = true;
-          function checkChildrenAndSetContainer() {
-            console.log(nestedContainers.length, num)
-            if (num < nestedContainers.length) {
-              if (nestedContainers[num].children.length == 0) {
-                nestedContainer = nestedContainer[num];
-                isNumNotDetermined = false;
-              }  else {
-                num++;
-              }
-              if (isNumNotDetermined) {
-                checkChildrenAndSetContainer();
-              }
-            }
-          }
-          checkChildrenAndSetContainer();
-        }
-        if (nestedContainer.children.length > 0) {
-          
-        }
+        let nestedContainer = (nestedContainers.length > 1) ? 
+                              nestedContainers[nestedContainers.length - 1] : nestedContainers[0];
         let nestedArr = el;
-        console.log(nestedArr);
         assembleElements(nestedArr, nestedContainer);
       } else {
         let div = document.createElement('div');
@@ -119,7 +97,7 @@ window.addEventListener('load', function () {
       span.style.color = 'blue';
       span.style.letterSpacing = '1px';
       span.style.fontSize = '2.5rem';
-  
+
       el.style.position = 'relative';
       el.appendChild(span);
     }
