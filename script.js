@@ -69,32 +69,7 @@ let main = document.getElementById('app');
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  function assembleElements(arr, container) {
-    arr.forEach(function (el, index) {
-      if (typeof el == 'object') {
-        let name = arr[index - 1] || container;
-        let nestedContainer = document.getElementById(name);
-        let nestedArr = el;
-        console.log(nestedArr);
-        assembleElements(nestedArr, nestedContainer);
-      } else {
-        let div = document.createElement('div');
-        div.id = el
-        highlightScaffolding(div);
-        textMarkScaffolding(div, el);
-        container.appendChild(div);
-      }
-    });
-  }
-  function highlightScaffolding(el) {
-    el.style.border = '1px solid black';
-    // el.style.height = '1rem';
-    // el.style.width = '1rem';
-  }
-  function textMarkScaffolding(el, text) {
-    el.innerText = text;
-  }
-  let containersArr = [
+  const containersArr = [
     'containerRoot',
     [
       'containerTopbar',
@@ -107,6 +82,41 @@ window.addEventListener('load', function () {
       'containerFooter'
     ],
   ];
+  function assembleElements(arr, container) {
+    arr.forEach(function (el, index) {
+      if (typeof el == 'object') {
+        let name = arr[index - 1] || container;
+        let nestedContainer = document.getElementById(name);
+        let nestedArr = el;
+        console.log(nestedArr);
+        assembleElements(nestedArr, nestedContainer);
+      } else {
+        let div = document.createElement('div');
+        div.id = el
+        assembleHelper_borderify(div);
+        assembleHelper_textMark(div, el);
+        container.appendChild(div);
+      }
+    });
+  }
+  function assembleHelper_borderify(el) {
+    el.style.border = '1px solid black';
+    // el.style.height = '1rem';
+    // el.style.width = '1rem';
+  }
+  function assembleHelper_textMark(el, text) {
+    let span = document.createElement('span');
+    span.style.position = 'absolute';
+    span.style.top = '1rem';
+    span.style.left = '1rem';
+    span.innerText = text;
+    span.style.color = 'blue';
+    span.style.letterSpacing = '1px';
+    span.style.fontSize = '2.5rem';
+
+    el.style.position = 'relative';
+    el.appendChild(span);
+  }
   assembleElements(containersArr, main);
 
   let containerTopbar = document.getElementById('containerTopbar');
@@ -114,8 +124,7 @@ window.addEventListener('load', function () {
   containerTopbar.appendChild(topBar);
 
   let containerCenter = document.getElementById('containerCenter');
-  // C E N T E R
-  // two rows: 1. time blocks, 2. calendar
+  containerCenter.style.display = 'flex';
   let containerVisuals = document.getElementById('containerVisuals');
   containerVisuals.style.flex = '3';
   // calendar
@@ -831,7 +840,7 @@ window.addEventListener('load', function () {
 
 
 
-  
+
     function createCalendar() {
       let calendar = document.createElement('div');
       calendar.style.display = 'flex';
