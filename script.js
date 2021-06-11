@@ -67,6 +67,12 @@ window.addEventListener('load', function () {
       btnAddTimeBlock.innerText = '+';
     }
   }
+  function loop(className, modify) {
+    const elements = document.getElementsByClassName(className);
+    for (let i = 0; i < elements.length; i++) {
+      modify(elements[i]);
+    }
+  }
   function functionalizeTimeBlocks() {
 
   }
@@ -74,6 +80,25 @@ window.addEventListener('load', function () {
     const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
     containerTimeBlocks.style.display = 'flex';
     containerTimeBlocks.style.height = containerTimeBlocksHeight;
+    
+    loop('timeBlocks', modifyTimeBlocks);
+    function modifyTimeBlocks(el) {
+      el.style.height = '100%';
+      el.style.textAlign = 'center';
+    }
+
+    // for (let i = 0; i < timeBlocks.length; i++) {
+    //   const timeBlock = timeBlocks[i];
+    //   timeBlock.style.height = '100%';
+    //   timeBlock.style.textAlign = 'center';
+    // }
+
+    const btnsAddTimeBlock = containerTimeBlocks.getElementsByClassName('btnAddTimeBlock');
+    for (let i = 0; i < btnsAddTimeBlock.length; i++) {
+      const btnAddTimeBlock = btnsAddTimeBlock[i];
+      btnAddTimeBlock.style.width = '100%';
+      btnAddTimeBlock.style.textAlign = 'center';
+    }
   }
   const containersArr = [
     'containerRoot',
