@@ -23,8 +23,8 @@ for (let i = 1; i <= 12; i++) {
   let weeksByCommaString = '';
   for (let j = 1; j <= numDaysInMonth; j++) {
     const day = new Date(year, i - 1, j);
-    const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
-    weeksByCommaString += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
+    const contentDayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
+    weeksByCommaString += contentDayName === 'Sunday' ? contentDayName + ',' : contentDayName + ' ';
   }
   // 3. gather weeks from the string, as arrays of days, push each into month array
   const weeks = weeksByCommaString.split(',');
@@ -40,7 +40,7 @@ for (let i = 1; i <= 12; i++) {
   yearDATA.push(monthDATA);
 }
 // console.log(yearDATA)
-let main = document.getElementById('main');
+let main = document.getElementById('app');
 
 // nested container = index - 1; thus, no two arrays are vertically adjacent!!!
 // let arr = [
@@ -114,10 +114,6 @@ window.addEventListener('load', function () {
   containerTopbar.appendChild(topBar);
 
   let containerCenter = document.getElementById('containerCenter');
-  containerCenter.style.display = 'flex';
-  let center = createContainerMain();
-  center.id = 'center';
-  containerCenter.appendChild(center);
   // C E N T E R
   // two rows: 1. time blocks, 2. calendar
   let containerVisuals = document.getElementById('containerVisuals');
@@ -125,12 +121,11 @@ window.addEventListener('load', function () {
   // calendar
   let containerCalendar = document.getElementById('containerCalendar');
   containerCalendar.style.height = '45vh';
-  let calendarCarousel = createCalendarCarousel();
+  let calendarCarousel = contentCreateCalendarCarousel();
   calendarCarousel.style.height = '100%';
   containerCalendar.appendChild(calendarCarousel);
 
-
-  function createCalendarCarousel() {
+  function contentCreateCalendarCarousel() {
     let calendarCarousel = document.createElement('div');
     calendarCarousel.id = 'calendarCarousel';
     calendarCarousel.style.display = 'flex';
@@ -142,79 +137,78 @@ window.addEventListener('load', function () {
     calendar.style.height = '45vh';
     calendar.style.width = '100%';
 
-    // let et
-    function createHoursLog() {
+    function contentCreateYear() {
       // let containerMain = document.getElementById('containerMainet
       // container.id  = let
-      let containerYear = document.createElement('div');
-      containerYear.style.display = 'flex';
-      containerYear.style.flex = '1';
-      containerYear.style.height = '100%';
+      let contentYear = document.createElement('div');
+      contentYear.style.display = 'flex';
+      contentYear.style.flex = '1';
+      contentYear.style.height = '100%';
       for (let i = 0; i < yearDATA.length; i++) {
         let monthDATA = yearDATA[i];
         // MONTHS LEVEL
-        let containerMonth = document.createElement('div');
-        containerMonth.id = 'containerMonth';
-        containerMonth.style.display = 'flex';
-        containerMonth.style.flex = '1';
-        containerMonth.style.height = '100%';
-        let containerMonthTitle = document.createElement('div');
-        containerMonthTitle.innerText = monthDATA.monthName;
-        containerMonthTitle.style.textAlign = 'left';
-        containerMonthTitle.style.fontSize = '1.75rem';
-        containerMonthTitle.style.padding = '0.25rem';
-        containerMonthTitle.style.textAlign = 'left';
-        let containerMonthDays = document.createElement('div');
-        containerMonthDays.className = 'month';
-        containerMonthDays.style.display = 'flex';
-        containerMonthDays.style.flex = '1';
-        containerMonthDays.style.justifyContent = 'flex-start';
-        containerMonthDays.style.height = '100%';
+        let contentMonth = document.createElement('div');
+        contentMonth.id = 'contentMonth';
+        contentMonth.style.display = 'flex';
+        contentMonth.style.flex = '1';
+        contentMonth.style.height = '100%';
+        let contentMonthTitle = document.createElement('div');
+        contentMonthTitle.innerText = monthDATA.monthName;
+        contentMonthTitle.style.textAlign = 'left';
+        contentMonthTitle.style.fontSize = '1.75rem';
+        contentMonthTitle.style.padding = '0.25rem';
+        contentMonthTitle.style.textAlign = 'left';
+        let contentMonthDays = document.createElement('div');
+        contentMonthDays.className = 'month';
+        contentMonthDays.style.display = 'flex';
+        contentMonthDays.style.flex = '1';
+        contentMonthDays.style.justifyContent = 'flex-start';
+        contentMonthDays.style.height = '100%';
         for (let j = 0; j < monthDATA.length; j++) {
           let weekDATA = monthDATA[j];
           // WEEKS LEVEL
-          let containerWeek = document.createElement('div');
-          containerWeek.id = 'containerWeek';
-          containerWeek.style.display = 'flex';
-          containerWeek.style.flex = '1';
-          containerWeek.style.height = '100%';
-          let containerWeekTitle = document.createElement('div');
-          containerWeekTitle.style.textAlign = 'center';
-          containerWeekTitle.style.height = '100%';
-          containerWeekTitle.style.color = '#ffffff';
-          containerWeekTitle.style.background = '#000000';
-          containerWeekTitle.innerText = weekDATA.weekName;
-          containerWeekTitle.style.paddingBottom = '0.5rem'
-          containerWeek.appendChild(containerWeekTitle);
-          containerMonthDays.appendChild(containerWeek)
-          let containerDayInterface = document.createElement('div');
-          containerDayInterface.id = 'containerDayInterface';
-          containerDayInterface.style.display = 'flex';
-          containerDayInterface.style.flex = '1';
+          let contentWeek = document.createElement('div');
+          contentWeek.id = 'contentWeek';
+          contentWeek.style.display = 'flex';
+          contentWeek.style.flex = '1';
+          contentWeek.style.height = '100%';
+          let contentWeekTitle = document.createElement('div');
+          contentWeekTitle.style.textAlign = 'center';
+          contentWeekTitle.style.height = '100%';
+          contentWeekTitle.style.color = '#ffffff';
+          contentWeekTitle.style.background = '#000000';
+          contentWeekTitle.innerText = weekDATA.weekName;
+          contentWeekTitle.style.paddingBottom = '0.5rem'
+          contentWeek.appendChild(contentWeekTitle);
+          contentMonthDays.appendChild(contentWeek)
+          let contentDayInterface = document.createElement('div');
+          contentDayInterface.id = 'contentDayInterface';
+          contentDayInterface.style.display = 'flex';
+          contentDayInterface.style.flex = '1';
           for (let y = 0; y < weekDATA.length; y++) {
-            let dayName = weekDATA[y];
-            dayName = day.substring(0, 3);
+            let contentDayName = weekDATA[y];
+            contentDayName = contentDayName.substring(0, 3);
             // DAYS LEVEL
-            let containerDay = document.createElement('div');
-            containerDay.style.flex = '1';
+            let contentDay = document.createElement('div');
+            contentDay.style.flex = '1';
             // closure
             // let count = 0;
-            containerDay.className = 'day';
-            containerDay.innerText = day;
-            // containerDay.style.flex = '2';
-            containerDay.style.borderLeft = '1px solid #000000';
+            contentDay.className = 'contentDay';
+            contentDay.innerText = contentDayName;
+            // contentDay.style.flex = '2';
+            contentDay.style.borderLeft = '1px solid #000000';
             if (y + 1 == weekDATA.length) {
-              containerDay.style.borderRight = '1px solid #000000';
+              contentDay.style.borderRight = '1px solid #000000';
             }
             // INSIDE DAY LEVEL
             let containerAddHourButton = document.createElement('div');
             containerAddHourButton.innerText = '+';
             let hoursContainerEl = document.createElement('div');
             hoursContainerEl.className = 'hoursContainerEl';
-            containerDay.appendChild(hoursContainerEl);
+            contentDay.appendChild(hoursContainerEl);
             let containerSum = document.createElement('div');
             containerSum.className = 'containerSum';
-            let hours = containerDay.getElementsByClassName('hourEl');
+            let hours = contentDay.getElementsByClassName('hourEl');
             containerSum.innerText = hours.length;
             containerSum.style.background = '#000000';
             containerSum.style.color = '#ffffff';
@@ -259,7 +253,7 @@ window.addEventListener('load', function () {
             containerAddHourButton.onclick = function () {
               // HOUR LEVEL
               handleMarkingProject();
-              let hours = containerDay.getElementsByClassName('hourEl');
+              let hours = contentDay.getElementsByClassName('hourEl');
               containerSum.innerText = hours.length;
             }
             containerAddHourButton.style.height = '1.5rem';
@@ -274,7 +268,7 @@ window.addEventListener('load', function () {
             let containerMinusHourButton = document.createElement('div');
             containerMinusHourButton.innerText = '-';
             containerMinusHourButton.onclick = function () {
-              let hours = containerDay.getElementsByClassName('hourEl');
+              let hours = contentDay.getElementsByClassName('hourEl');
               if (hours && hours.length) {
                 let hour = hours[hours.length - 1];
                 hoursContainerEl.removeChild(hour);
@@ -292,19 +286,19 @@ window.addEventListener('load', function () {
             containerMinusHourButton.style.cursor = 'pointer';
             containerButtons.appendChild(containerAddHourButton);
             containerButtons.appendChild(containerMinusHourButton);
-            containerDay.appendChild(containerButtons);
-            containerDay.appendChild(hoursContainerEl);
-            containerDay.appendChild(containerSum);
-            containerDayInterface.appendChild(containerDay);
+            contentDay.appendChild(containerButtons);
+            contentDay.appendChild(hoursContainerEl);
+            contentDay.appendChild(containerSum);
+            contentDayInterface.appendChild(contentDay);
           }
-          containerWeek.appendChild(containerDayInterface);
+          contentWeek.appendChild(contentDayInterface);
         }
-        containerMonth.appendChild(monthTitleEl);
-        containerMonth.appendChild(monthDaysEl);
-        year.appendChild(containerMonth);
+        contentMonth.appendChild(contentMonthTitle);
+        contentMonth.appendChild(contentMonthDays);
+        contentYear.appendChild(contentMonth);
         // containerMain.appendChild(year);
       }
-      return year;
+      return contentYear;
     }
     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
       let length = HTMLCollection.length;
@@ -380,13 +374,14 @@ window.addEventListener('load', function () {
       }
       HTMLCollection[0].style.display = 'block';
     }
-    carouselify(hourLog.children, '0.5rem', '7rem', 3);
-    let hourLogCarousel = document.createElement('div');
-    hourLogCarousel.id = 'hourLogCarousel';
-    hourLogCarousel.style.display = 'flex';
-    hourLogCarousel.style.flex = '1';
-    hourLogCarousel.appendChild(hourLog);
-    calendar.appendChild(hourLogCarousel);
+    let contentYear = contentCreateYear();
+    carouselify(contentYear.children, '0.5rem', '7rem', 3);
+    let containerContentYear = document.createElement('div');
+    containerContentYear.id = 'containerContentYear';
+    containerContentYear.style.display = 'flex';
+    containerContentYear.style.flex = '1';
+    containerContentYear.appendChild(contentYear);
+    calendar.appendChild(contentYear);
     calendarCarousel.appendChild(calendar);
     return calendarCarousel;
   }
@@ -568,7 +563,7 @@ window.addEventListener('load', function () {
   //     }
   //     let calendar = createCalendar();
   //     // let et
-  //     let hourLog = createHoursLog();
+  //     let contentYear = createContainerYear();
   //     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
   //       let length = HTMLCollection.length;
   //       console.log(length);
@@ -643,13 +638,13 @@ window.addEventListener('load', function () {
   //       }
   //       HTMLCollection[0].style.display = 'block';
   //     }
-  //     carouselify(hourLog.children, '0.5rem', '7rem', 3);
-  //     let containerHourLog = document.createElement('div');
-  //     containerHourLog.id = 'containerHourLog';
-  //     containerHourLog.style.display = 'flex';
-  //     containerHourLog.style.flex = '1';
-  //     containerHourLog.appendChild(hourLog);
-  //     calendar.appendChild(containerHourLog);
+  //     carouselify(contentYear.children, '0.5rem', '7rem', 3);
+  //     let containercontentYear = document.createElement('div');
+  //     containercontentYear.id = 'containercontentYear';
+  //     containercontentYear.style.display = 'flex';
+  //     containercontentYear.style.flex = '1';
+  //     containercontentYear.appendChild(contentYear);
+  //     calendar.appendChild(containercontentYear);
   //     containerCalendar.appendChild(calendar);
   //     ///// CONTAINER Calendar CONCLUDE
   //     containerVisuals.appendChild(containerResultTimeBlocks);
@@ -834,6 +829,9 @@ window.addEventListener('load', function () {
     containerCalendar.id = 'containerCalendar';
     containerCalendar.style.display = 'flex';
 
+
+
+  
     function createCalendar() {
       let calendar = document.createElement('div');
       calendar.style.display = 'flex';
@@ -844,7 +842,7 @@ window.addEventListener('load', function () {
     }
     let calendar = createCalendar();
     // let et
-    let hourLog = createHoursLog();
+    // let contentYear = createContainerYear();
     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
       let length = HTMLCollection.length;
       console.log(length);
@@ -919,15 +917,17 @@ window.addEventListener('load', function () {
       }
       HTMLCollection[0].style.display = 'block';
     }
-    carouselify(hourLog.children, '0.5rem', '7rem', 3);
-    let containerHourLog = document.createElement('div');
-    containerHourLog.id = 'containerHourLog';
-    containerHourLog.style.display = 'flex';
-    containerHourLog.style.flex = '1';
-    containerHourLog.appendChild(hourLog);
-    calendar.appendChild(containerHourLog);
+    carouselify(contentYear.children, '0.5rem', '7rem', 3);
+    let containercontentYear = document.createElement('div');
+    containercontentYear.id = 'containercontentYear';
+    containercontentYear.style.display = 'flex';
+    containercontentYear.style.flex = '1';
+    containercontentYear.appendChild(contentYear);
+    calendar.appendChild(containercontentYear);
     containerCalendar.appendChild(calendar);
     ///// CONTAINER Calendar CONCLUDE
+
+
     containerVisuals.appendChild(containerResultTimeBlocks);
     containerVisuals.appendChild(containerCalendar);
     // containerMain.appendChild(containerVisuals);
@@ -940,16 +940,6 @@ window.addEventListener('load', function () {
     // containerMain.appendChild(containerMenu);
     return main;
     //// CONTAINER MENU CONCLUDE
-  }
-  function createContainerMain() {
-    let containerMain = document.createElement('div');
-    containerMain.id = 'containerMain';
-    containerMain.style.display = 'flex';
-    containerMain.style.height = '100vh';
-
-    let main = createMain();
-    return containerMain;
-    // / CONTAINER MAIN CONCLUDE
   }
 
   /// CONTAINER BOTTOMBAR
@@ -1075,166 +1065,166 @@ function createTopBar() {
   topBar.appendChild(aboutPage);
   return topBar;
 }
-function createHoursLog() {
-  // let containerMain = document.getElementById('containerMainet
-  // container.id  = let
-  hourLog = document.createElement('div');
-  hourLog.style.display = 'flex';
-  hourLog.style.flex = '1';
-  for (let i = 0; i < yearDATA.length; i++) {
-    let monthDATA = yearDATA[i];
-    // MONTHS LEVEL
-    let containerMonth = document.createElement('div');
-    containerMonth.id = 'containerMonth';
-    containerMonth.style.display = 'flex';
-    containerMonth.style.flex = '1';
-    let monthTitleEl = document.createElement('div');
-    monthTitleEl.innerText = monthDATA.monthName;
-    monthTitleEl.style.textAlign = 'left';
-    monthTitleEl.style.fontSize = '1.75rem';
-    monthTitleEl.style.padding = '0.25rem';
-    monthTitleEl.style.textAlign = 'left';
-    let monthDaysEl = document.createElement('div');
-    monthDaysEl.className = 'month';
-    monthDaysEl.style.display = 'flex';
-    monthDaysEl.style.flex = '1';
-    monthDaysEl.style.justifyContent = 'flex-start';
-    for (let j = 0; j < monthDATA.length; j++) {
-      let weekDATA = monthDATA[j];
-      // WEEKS LEVEL
-      let containerWeek = document.createElement('div');
-      containerWeek.id = 'containerWeek';
-      containerWeek.style.display = 'flex';
-      containerWeek.style.flex = '1';
-      containerWeek.style.height = '100%';
-      let containerWeekTitle = document.createElement('div');
-      containerWeekTitle.style.textAlign = 'center';
-      containerWeekTitle.style.height = '100%';
-      containerWeekTitle.style.color = '#ffffff';
-      containerWeekTitle.style.background = '#000000';
-      containerWeekTitle.innerText = weekDATA.weekName;
-      containerWeekTitle.style.paddingBottom = '0.5rem'
-      containerWeek.appendChild(containerWeekTitle);
-      monthDaysEl.appendChild(containerWeek)
-      let containerDayInterface = document.createElement('div');
-      containerDayInterface.id = 'containerDayInterface';
-      containerDayInterface.style.display = 'flex';
-      containerDayInterface.style.flex = '1';
-      for (let y = 0; y < weekDATA.length; y++) {
-        let day = weekDATA[y];
-        day = day.substring(0, 3);
-        // DAYS LEVEL
-        let containerDay = document.createElement('div');
-        containerDay.style.flex = '1';
-        // closure
-        // let count = 0;
-        containerDay.className = 'day';
-        containerDay.innerText = day;
-        // containerDay.style.flex = '2';
-        containerDay.style.borderLeft = '1px solid #000000';
-        if (y + 1 == weekDATA.length) {
-          containerDay.style.borderRight = '1px solid #000000';
-        }
-        // INSIDE DAY LEVEL
-        let containerAddHourButton = document.createElement('div');
-        containerAddHourButton.innerText = '+';
-        let hoursContainerEl = document.createElement('div');
-        hoursContainerEl.className = 'hoursContainerEl';
-        containerDay.appendChild(hoursContainerEl);
-        let containerSum = document.createElement('div');
-        containerSum.className = 'containerSum';
-        let hours = containerDay.getElementsByClassName('hourEl');
-        containerSum.innerText = hours.length;
-        containerSum.style.background = '#000000';
-        containerSum.style.color = '#ffffff';
-        containerSum.style.textAlign = 'center';
-        containerSum.style.height = '1.75rem';
-        containerSum.style.fontSize = '1.5rem';
-        function handleMarkingProject() {
-          let hourTick = resourceCreateHourTick();
-          hourTick.className = 'hourEl';
-          hoursContainerEl.appendChild(hourTick);
-          // coords
-          hourTick.addEventListener('requestCoords', function (e) {
-            let hourEl = e.target;
-            let markerEl = e.markerEl;
-            let hRect = hourEl.getBoundingClientRect();
-            let mRect = markerEl.getBoundingClientRect();
-            let matchY = false;
-            let matchX = false;
-            // Why? Negation leaves points subsets that cannot not intersect.
-            let topNotAfterHourBottom = !(mRect.top > hRect.bottom);
-            let BottomNotBeforeHourTop = !(mRect.bottom < hRect.top);
-            let leftNotAfterHourRight = !(mRect.left > hRect.right);
-            let rightNotBeforeHourLeft = !(mRect.right < hRect.left);
-            // Check match.
-            if (topNotAfterHourBottom && BottomNotBeforeHourTop) {
-              matchY = true;
-            }
-            if (leftNotAfterHourRight && rightNotBeforeHourLeft) {
-              matchX = true;
-            }
-            let match = matchY && matchX;
-            // Mark match.
-            if (match) {
-              hourEl.style.background = markerEl.projectColor;
+// function createContainerYear() {
+//   // let containerMain = document.getElementById('containerMainet
+//   // container.id  = let
+//   contentYear = document.createElement('div');
+//   contentYear.style.display = 'flex';
+//   contentYear.style.flex = '1';
+//   for (let i = 0; i < yearDATA.length; i++) {
+//     let monthDATA = yearDATA[i];
+//     // MONTHS LEVEL
+//     let contentMonth = document.createElement('div');
+//     contentMonth.id = 'contentMonth';
+//     contentMonth.style.display = 'flex';
+//     contentMonth.style.flex = '1';
+//     let contentMonthTitle = document.createElement('div');
+//     contentMonthTitle.innerText = monthDATA.monthName;
+//     contentMonthTitle.style.textAlign = 'left';
+//     contentMonthTitle.style.fontSize = '1.75rem';
+//     contentMonthTitle.style.padding = '0.25rem';
+//     contentMonthTitle.style.textAlign = 'left';
+//     let contentMonthDaysEl = document.createElement('div');
+//     contentMonthDaysEl.className = 'month';
+//     contentMonthDaysEl.style.display = 'flex';
+//     contentMonthDaysEl.style.flex = '1';
+//     contentMonthDaysEl.style.justifyContent = 'flex-start';
+//     for (let j = 0; j < monthDATA.length; j++) {
+//       let weekDATA = monthDATA[j];
+//       // WEEKS LEVEL
+//       let contentWeek = document.createElement('div');
+//       contentWeek.id = 'contentWeek';
+//       contentWeek.style.display = 'flex';
+//       contentWeek.style.flex = '1';
+//       contentWeek.style.height = '100%';
+//       let contentWeekTitle = document.createElement('div');
+//       contentWeekTitle.style.textAlign = 'center';
+//       contentWeekTitle.style.height = '100%';
+//       contentWeekTitle.style.color = '#ffffff';
+//       contentWeekTitle.style.background = '#000000';
+//       contentWeekTitle.innerText = weekDATA.weekName;
+//       contentWeekTitle.style.paddingBottom = '0.5rem'
+//       contentWeek.appendChild(contentWeekTitle);
+//       contentMonthDaysEl.appendChild(contentWeek)
+//       let contentDayInterface = document.createElement('div');
+//       contentDayInterface.id = 'contentDayInterface';
+//       contentDayInterface.style.display = 'flex';
+//       contentDayInterface.style.flex = '1';
+//       for (let y = 0; y < weekDATA.length; y++) {
+//         let day = weekDATA[y];
+//         day = day.substring(0, 3);
+//         // DAYS LEVEL
+//         let contentDay = document.createElement('div');
+//         contentDay.style.flex = '1';
+//         // closure
+//         // let count = 0;
+//         contentDay.className = 'day';
+//         contentDay.innerText = day;
+//         // contentDay.style.flex = '2';
+//         contentDay.style.borderLeft = '1px solid #000000';
+//         if (y + 1 == weekDATA.length) {
+//           contentDay.style.borderRight = '1px solid #000000';
+//         }
+//         // INSIDE DAY LEVEL
+//         let containerAddHourButton = document.createElement('div');
+//         containerAddHourButton.innerText = '+';
+//         let hoursContainerEl = document.createElement('div');
+//         hoursContainerEl.className = 'hoursContainerEl';
+//         contentDay.appendChild(hoursContainerEl);
+//         let containerSum = document.createElement('div');
+//         containerSum.className = 'containerSum';
+//         let hours = contentDay.getElementsByClassName('hourEl');
+//         containerSum.innerText = hours.length;
+//         containerSum.style.background = '#000000';
+//         containerSum.style.color = '#ffffff';
+//         containerSum.style.textAlign = 'center';
+//         containerSum.style.height = '1.75rem';
+//         containerSum.style.fontSize = '1.5rem';
+//         function handleMarkingProject() {
+//           let hourTick = resourceCreateHourTick();
+//           hourTick.className = 'hourEl';
+//           hoursContainerEl.appendChild(hourTick);
+//           // coords
+//           hourTick.addEventListener('requestCoords', function (e) {
+//             let hourEl = e.target;
+//             let markerEl = e.markerEl;
+//             let hRect = hourEl.getBoundingClientRect();
+//             let mRect = markerEl.getBoundingClientRect();
+//             let matchY = false;
+//             let matchX = false;
+//             // Why? Negation leaves points subsets that cannot not intersect.
+//             let topNotAfterHourBottom = !(mRect.top > hRect.bottom);
+//             let BottomNotBeforeHourTop = !(mRect.bottom < hRect.top);
+//             let leftNotAfterHourRight = !(mRect.left > hRect.right);
+//             let rightNotBeforeHourLeft = !(mRect.right < hRect.left);
+//             // Check match.
+//             if (topNotAfterHourBottom && BottomNotBeforeHourTop) {
+//               matchY = true;
+//             }
+//             if (leftNotAfterHourRight && rightNotBeforeHourLeft) {
+//               matchX = true;
+//             }
+//             let match = matchY && matchX;
+//             // Mark match.
+//             if (match) {
+//               hourEl.style.background = markerEl.projectColor;
 
-            }
-          }, false);
-        }
-        let containerButtons = document.createElement('containerButtons');
-        containerButtons.className = 'containerButtons';
-        containerButtons.style.display = 'flex';
-        containerAddHourButton.onclick = function () {
-          // HOUR LEVEL
-          handleMarkingProject();
-          let hours = containerDay.getElementsByClassName('hourEl');
-          containerSum.innerText = hours.length;
-        }
-        containerAddHourButton.style.height = '1.5rem';
-        containerAddHourButton.style.flex = '1';
-        // containerAddHourButton.style.display= 'inline-block';
-        containerAddHourButton.style.fontSize = '1.5rem';
-        containerAddHourButton.style.textAlign = 'center';
-        containerAddHourButton.style.color = '#fff';
-        containerAddHourButton.style.background = '#000';
-        containerAddHourButton.style.textAlign = 'center';
-        containerAddHourButton.style.cursor = 'pointer';
-        let containerMinusHourButton = document.createElement('div');
-        containerMinusHourButton.innerText = '-';
-        containerMinusHourButton.onclick = function () {
-          let hours = containerDay.getElementsByClassName('hourEl');
-          if (hours && hours.length) {
-            let hour = hours[hours.length - 1];
-            hoursContainerEl.removeChild(hour);
-            containerSum.innerText = hours.length;
-          }
-        }
-        containerMinusHourButton.style.height = '1.5rem';
-        containerMinusHourButton.style.flex = '1';
-        // containerAddHourButton.style.display= 'inline-block';
-        containerMinusHourButton.style.fontSize = '1.5rem';
-        containerMinusHourButton.style.textAlign = 'center';
-        containerMinusHourButton.style.color = '#fff';
-        containerMinusHourButton.style.background = '#000';
-        containerMinusHourButton.style.textAlign = 'center';
-        containerMinusHourButton.style.cursor = 'pointer';
-        containerButtons.appendChild(containerAddHourButton);
-        containerButtons.appendChild(containerMinusHourButton);
-        containerDay.appendChild(containerButtons);
-        containerDay.appendChild(hoursContainerEl);
-        containerDay.appendChild(containerSum);
-        containerDayInterface.appendChild(containerDay);
-      }
-      containerWeek.appendChild(containerDayInterface);
-    }
-    containerMonth.appendChild(monthTitleEl);
-    containerMonth.appendChild(monthDaysEl);
-    hourLog.appendChild(containerMonth);
-    // containerMain.appendChild(hourLog);
-  }
-  return hourLog;
-}
+//             }
+//           }, false);
+//         }
+//         let containerButtons = document.createElement('containerButtons');
+//         containerButtons.className = 'containerButtons';
+//         containerButtons.style.display = 'flex';
+//         containerAddHourButton.onclick = function () {
+//           // HOUR LEVEL
+//           handleMarkingProject();
+//           let hours = contentDay.getElementsByClassName('hourEl');
+//           containerSum.innerText = hours.length;
+//         }
+//         containerAddHourButton.style.height = '1.5rem';
+//         containerAddHourButton.style.flex = '1';
+//         // containerAddHourButton.style.display= 'inline-block';
+//         containerAddHourButton.style.fontSize = '1.5rem';
+//         containerAddHourButton.style.textAlign = 'center';
+//         containerAddHourButton.style.color = '#fff';
+//         containerAddHourButton.style.background = '#000';
+//         containerAddHourButton.style.textAlign = 'center';
+//         containerAddHourButton.style.cursor = 'pointer';
+//         let containerMinusHourButton = document.createElement('div');
+//         containerMinusHourButton.innerText = '-';
+//         containerMinusHourButton.onclick = function () {
+//           let hours = contentDay.getElementsByClassName('hourEl');
+//           if (hours && hours.length) {
+//             let hour = hours[hours.length - 1];
+//             hoursContainerEl.removeChild(hour);
+//             containerSum.innerText = hours.length;
+//           }
+//         }
+//         containerMinusHourButton.style.height = '1.5rem';
+//         containerMinusHourButton.style.flex = '1';
+//         // containerAddHourButton.style.display= 'inline-block';
+//         containerMinusHourButton.style.fontSize = '1.5rem';
+//         containerMinusHourButton.style.textAlign = 'center';
+//         containerMinusHourButton.style.color = '#fff';
+//         containerMinusHourButton.style.background = '#000';
+//         containerMinusHourButton.style.textAlign = 'center';
+//         containerMinusHourButton.style.cursor = 'pointer';
+//         containerButtons.appendChild(containerAddHourButton);
+//         containerButtons.appendChild(containerMinusHourButton);
+//         contentDay.appendChild(containerButtons);
+//         contentDay.appendChild(hoursContainerEl);
+//         contentDay.appendChild(containerSum);
+//         contentDayInterface.appendChild(contentDay);
+//       }
+//       contentWeek.appendChild(contentDayInterface);
+//     }
+//     contentMonth.appendChild(monthTitleEl);
+//     contentMonth.appendChild(monthDaysEl);
+//     contentYear.appendChild(contentMonth);
+//     // containerMain.appendChild(contentYear);
+//   }
+//   return contentYear;
+// }
 const VALUES_MenuSharedCSS = {
   height_menuWhole: '9rem',
   width_menuSmallerBlock: '9rem',
@@ -1243,10 +1233,10 @@ const VALUES_MenuSharedCSS = {
 }
 function createMonth(monthNum) {
   const monthNames = getMonthNames();
-  var containerMonth = document.createElement('div');
-  containerMonth.classList.add('month');
-  containerMonth.classList.add('containerMonth');
-  containerMonth.classList.add([monthNames[monthNum]]);
+  var contentMonth = document.createElement('div');
+  contentMonth.classList.add('month');
+  contentMonth.classList.add('contentMonth');
+  contentMonth.classList.add([monthNames[monthNum]]);
   monthContainer.style.display = 'flex';
   document.getElementById('containerRoot').appendChild(monthContainer);
   // createSidewaysTitle(monthNames[monthNum], monthNum);
