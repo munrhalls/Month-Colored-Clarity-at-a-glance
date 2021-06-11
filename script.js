@@ -68,7 +68,30 @@ window.addEventListener('load', function () {
     arr.forEach(function (el, index) {
       if (typeof el == 'object') {
         let name = arr[index - 1] || container;
-        let nestedContainer = document.getElementsByClassName(name)[0];
+        let nestedContainers = document.getElementsByClassName(name);
+        let nestedContainer = nestedContainers[0];
+        let num = 0;
+        if (nestedContainers.length > 1) {
+          let isNumNotDetermined = true;
+          function checkChildrenAndSetContainer() {
+            console.log(nestedContainers.length, num)
+            if (num < nestedContainers.length) {
+              if (nestedContainers[num].children.length == 0) {
+                nestedContainer = nestedContainer[num];
+                isNumNotDetermined = false;
+              }  else {
+                num++;
+              }
+              if (isNumNotDetermined) {
+                checkChildrenAndSetContainer();
+              }
+            }
+          }
+          checkChildrenAndSetContainer();
+        }
+        if (nestedContainer.children.length > 0) {
+          
+        }
         let nestedArr = el;
         console.log(nestedArr);
         assembleElements(nestedArr, nestedContainer);
