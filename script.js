@@ -79,28 +79,30 @@ window.addEventListener('load', function () {
   }
   function styleTimeBlocks() {
     const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
+    const titleBarHeight = '1.5rem';
+    const btnAddTimeBlockHeight = '1.5rem';
+
     containerTimeBlocks.style.display = 'flex';
     containerTimeBlocks.style.height = containerTimeBlocksHeight;
+    loop('titleBar', styleTitleBar);
+    function styleTitleBar(el) {
+      el.style.height = titleBarHeight;
+    }
+
     loop('timeBottle', styleTimeBottle);
     function styleTimeBottle(el) {
-      el.style.height = '100%';
+      el.style.height = 'calc(100% - ' + titleBarHeight +')';
     }
 
     loop('timeBlocks', modifyTimeBlocks);
     function modifyTimeBlocks(el) {
-      el.style.height = '100%';
+      el.style.height = 'calc(100% - ' + btnAddTimeBlockHeight + ')';
       el.style.textAlign = 'center';
     }
-    
-    const btnsAddTimeBlock = containerTimeBlocks.getElementsByClassName('btnAddTimeBlock');
-    for (let i = 0; i < btnsAddTimeBlock.length; i++) {
-      const btnAddTimeBlock = btnsAddTimeBlock[i];
-      btnAddTimeBlock.style.width = '100%';
-      btnAddTimeBlock.style.textAlign = 'center';
-    }
-
+  
     loop('btnAddTimeBlock', modifyBtnAddTimeBlock);
     function modifyBtnAddTimeBlock(el) {
+      el.style.height = btnAddTimeBlockHeight;
       el.style.width = '100%';
       el.style.textAlign = 'center';
     }
