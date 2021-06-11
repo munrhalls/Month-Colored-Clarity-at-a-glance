@@ -47,9 +47,34 @@ let main = document.getElementById('app');
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  const timeAmpoule = ['titleBar', 'containerTime'];
-  const arrTimeAmpoules = ['containerTimeAmpoule', timeAmpoule, 'containerTimeAmpoule', timeAmpoule, 'containerTimeAmpoule', timeAmpoule];
-  // pattern is: '...' is a container title, [...] is nesting stuff inside that container
+  const timeBlocks = ['timeBlocks', 'btnAddTimeBlock'];
+  const timeBottle = ['titleBar', 'containerTimeBlocks', timeBlocks];
+  const containerTimeBottle = ['containerTimeBottle', timeBottle,
+    'containerTimeBottle', timeBottle,
+    'containerTimeBottle', timeBottle];
+  function contentifyTimeBlocks() {
+    const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
+    const titleBars = containerTimeBlocks.getElementsByClassName('titleBar');
+    for (let i = 0; i < titleBars.length; i++) {
+      const titleBar = titleBars[i];
+      const input = document.createElement('input');
+      input.style.type = 'text';
+      titleBar.appendChild(input);
+    }
+    const btnsAddTimeBlock = containerTimeBlocks.getElementsByClassName('btnAddTimeBlock');
+    for (let i = 0; i < btnsAddTimeBlock.length; i++) {
+      const btnAddTimeBlock = btnsAddTimeBlock[i];
+      btnAddTimeBlock.innerText = '+';
+    }
+  }
+  function functionalizeTimeBlocks() {
+
+  }
+  function styleTimeBlocks() {
+    const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
+    containerTimeBlocks.style.display = 'flex';
+    containerTimeBlocks.style.height = containerTimeBlocksHeight;
+  }
   const containersArr = [
     'containerRoot',
     [
@@ -57,20 +82,21 @@ window.addEventListener('load', function () {
       'containerCenter',
       ['containerVisuals',
         ['containerTimeBlocks',
-          arrTimeAmpoules,
+          containerTimeBottle,
           'containerCalendar'],
         'containerRightbar',
       ],
       'containerFooter'
     ],
   ];
+  // pattern is: '...' is a container title, [...] is nesting stuff inside that container
   function assembleElements(arr, container) {
     arr.forEach(function (el, index) {
       if (typeof el == 'object') {
         let name = arr[index - 1] || container;
         let nestedContainers = document.getElementsByClassName(name);
-        let nestedContainer = (nestedContainers.length > 1) ? 
-                              nestedContainers[nestedContainers.length - 1] : nestedContainers[0];
+        let nestedContainer = (nestedContainers.length > 1) ?
+          nestedContainers[nestedContainers.length - 1] : nestedContainers[0];
         let nestedArr = el;
         assembleElements(nestedArr, nestedContainer);
       } else {
@@ -78,7 +104,7 @@ window.addEventListener('load', function () {
         div.className = el;
         // comment / uncomment
         optional_borderify(div);
-        optional_textMark(div, el);
+        // optional_textMark(div, el);
         container.appendChild(div);
       }
     });
@@ -115,15 +141,12 @@ window.addEventListener('load', function () {
   containerVisuals.style.flex = '3';
 
   // HOUR BLOCKS
-  const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
-  containerTimeBlocks.style.display = 'flex';
-  const timeBlocks = createTimeBlocks();
-  containerTimeBlocks.style.height = containerTimeBlocksHeight;
-  containerTimeBlocks.appendChild(timeBlocks);
-  function createTimeBlocks() {
-    const timeBlocks = document.createElement('div');
-    return timeBlocks;
-  }
+  // // const timeBlocks = createTimeBlocks();
+  // containerTimeBlocks.style.height = containerTimeBlocksHeight;
+  // containerTimeBlocks.appendChild(timeBlocks);
+  contentifyTimeBlocks();
+  functionalizeTimeBlocks();
+  styleTimeBlocks();
 
   // CALENDAR
   const containerCalendar = document.getElementsByClassName('containerCalendar')[0];
