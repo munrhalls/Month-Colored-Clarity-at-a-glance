@@ -23,8 +23,8 @@ for (let i = 1; i <= 12; i++) {
   let weeksByCommaString = '';
   for (let j = 1; j <= numDaysInMonth; j++) {
     const day = new Date(year, i - 1, j);
-    const contentDayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
-    weeksByCommaString += contentDayName === 'Sunday' ? contentDayName + ',' : contentDayName + ' ';
+    const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
+    weeksByCommaString += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
   }
   // 3. gather weeks from the string, as arrays of days, push each into month array
   const weeks = weeksByCommaString.split(',');
@@ -93,18 +93,19 @@ window.addEventListener('load', function () {
       } else {
         let div = document.createElement('div');
         div.id = el
-        assembleHelper_borderify(div);
-        assembleHelper_textMark(div, el);
+        optional_borderify(div);
+        optional_textMark(div, el);
         container.appendChild(div);
       }
     });
   }
-  function assembleHelper_borderify(el) {
+  function optional_borderify(el) {
     el.style.border = '1px solid black';
+    el.style.background = 'grey';
     // el.style.height = '1rem';
     // el.style.width = '1rem';
   }
-  function assembleHelper_textMark(el, text) {
+  function optional_textMark(el, text) {
     let span = document.createElement('span');
     span.style.position = 'absolute';
     span.style.top = '1rem';
@@ -122,10 +123,13 @@ window.addEventListener('load', function () {
   let containerTopbar = document.getElementById('containerTopbar');
   let topBar = createTopBar();
   containerTopbar.appendChild(topBar);
+
   let containerCenter = document.getElementById('containerCenter');
   containerCenter.style.display = 'flex';
+
   let containerVisuals = document.getElementById('containerVisuals');
   containerVisuals.style.flex = '3';
+
   let containerHourBlocks = document.getElementById('containerHourBlocks');
   containerHourBlocks.style.height = '40vh';
 
@@ -134,6 +138,8 @@ window.addEventListener('load', function () {
   let contentCalendarCarousel = contentCreateCalendarCarousel();
   contentCalendarCarousel.style.height = '100%';
   containerCalendar.appendChild(contentCalendarCarousel);
+
+
 
   function contentCreateCalendarCarousel() {
     let calendarCarousel = document.createElement('div');
@@ -148,87 +154,87 @@ window.addEventListener('load', function () {
     calendar.style.width = '100%';
 
     function contentCreateYear() {
-      // let containerMain = document.getElementById('containerMainet
-      // container.id  = let
-      let contentYear = document.createElement('div');
-      contentYear.style.display = 'flex';
-      contentYear.style.flex = '1';
-      contentYear.style.height = '100%';
+      let year = document.createElement('div');
+      year.style.display = 'flex';
+      year.style.flex = '1';
+      year.style.height = '100%';
+
       for (let i = 0; i < yearDATA.length; i++) {
         let monthDATA = yearDATA[i];
         // MONTHS LEVEL
-        let contentMonth = document.createElement('div');
-        contentMonth.id = 'contentMonth';
-        contentMonth.style.display = 'flex';
-        contentMonth.style.flex = '1';
-        contentMonth.style.height = '100%';
-        let contentMonthTitle = document.createElement('div');
-        contentMonthTitle.innerText = monthDATA.monthName;
-        contentMonthTitle.style.textAlign = 'left';
-        contentMonthTitle.style.fontSize = '1.75rem';
-        contentMonthTitle.style.padding = '0.25rem';
-        contentMonthTitle.style.textAlign = 'left';
-        let contentMonthDays = document.createElement('div');
-        contentMonthDays.className = 'month';
-        contentMonthDays.style.display = 'flex';
-        contentMonthDays.style.flex = '1';
-        contentMonthDays.style.justifyContent = 'flex-start';
-        contentMonthDays.style.height = '100%';
+        let month = document.createElement('div');
+        month.id = 'month';
+        month.style.display = 'flex';
+        month.style.flex = '1';
+        month.style.height = '100%';
+        let monthTitle = document.createElement('div');
+        monthTitle.innerText = monthDATA.monthName;
+        monthTitle.style.textAlign = 'left';
+        monthTitle.style.fontSize = '1.75rem';
+        monthTitle.style.padding = '0.25rem';
+        monthTitle.style.textAlign = 'left';
+        let monthDays = document.createElement('div');
+        monthDays.className = 'month';
+        monthDays.style.display = 'flex';
+        monthDays.style.flex = '1';
+        monthDays.style.justifyContent = 'flex-start';
+        monthDays.style.height = '100%';
+
         for (let j = 0; j < monthDATA.length; j++) {
           let weekDATA = monthDATA[j];
           // WEEKS LEVEL
-          let contentWeek = document.createElement('div');
-          contentWeek.id = 'contentWeek';
-          contentWeek.style.display = 'flex';
-          contentWeek.style.flex = '1';
-          contentWeek.style.height = '100%';
-          let contentWeekTitle = document.createElement('div');
-          contentWeekTitle.style.textAlign = 'center';
-          contentWeekTitle.style.height = '100%';
-          contentWeekTitle.style.color = '#ffffff';
-          contentWeekTitle.style.background = '#000000';
-          contentWeekTitle.innerText = weekDATA.weekName;
-          contentWeekTitle.style.paddingBottom = '0.5rem'
-          contentWeek.appendChild(contentWeekTitle);
-          contentMonthDays.appendChild(contentWeek)
-          let contentDayInterface = document.createElement('div');
-          contentDayInterface.id = 'contentDayInterface';
-          contentDayInterface.style.display = 'flex';
-          contentDayInterface.style.flex = '1';
+          let week = document.createElement('div');
+          week.id = 'week';
+          week.style.display = 'flex';
+          week.style.flex = '1';
+          week.style.height = '100%';
+          let weekTitle = document.createElement('div');
+          weekTitle.style.textAlign = 'center';
+          weekTitle.style.height = '100%';
+          weekTitle.style.color = '#ffffff';
+          weekTitle.style.background = '#000000';
+          weekTitle.innerText = weekDATA.weekName;
+          weekTitle.style.paddingBottom = '0.5rem'
+          week.appendChild(weekTitle);
+          monthDays.appendChild(week)
+          let dayInterface = document.createElement('div');
+          dayInterface.id = 'dayInterface';
+          dayInterface.style.display = 'flex';
+          dayInterface.style.flex = '1';
+          dayInterface.style.height = '100%';
+
           for (let y = 0; y < weekDATA.length; y++) {
-            let contentDayName = weekDATA[y];
-            contentDayName = contentDayName.substring(0, 3);
+            let dayName = weekDATA[y];
+            dayName = dayName.substring(0, 3);
             // DAYS LEVEL
-            let contentDay = document.createElement('div');
-            contentDay.style.flex = '1';
-            // closure
-            // let count = 0;
-            contentDay.className = 'contentDay';
-            contentDay.innerText = contentDayName;
-            // contentDay.style.flex = '2';
-            contentDay.style.borderLeft = '1px solid #000000';
+            let day = document.createElement('div');
+            day.style.flex = '1';
+            day.className = 'day';
+            day.innerText = dayName;
+            day.style.borderLeft = '1px solid #000000';
             if (y + 1 == weekDATA.length) {
-              contentDay.style.borderRight = '1px solid #000000';
+              day.style.borderRight = '1px solid #000000';
             }
             // INSIDE DAY LEVEL
-            let containerAddHourButton = document.createElement('div');
-            containerAddHourButton.innerText = '+';
-            let hoursContainerEl = document.createElement('div');
-            hoursContainerEl.className = 'hoursContainerEl';
-            contentDay.appendChild(hoursContainerEl);
-            let containerSum = document.createElement('div');
-            containerSum.className = 'containerSum';
-            let hours = contentDay.getElementsByClassName('hourEl');
-            containerSum.innerText = hours.length;
-            containerSum.style.background = '#000000';
-            containerSum.style.color = '#ffffff';
-            containerSum.style.textAlign = 'center';
-            containerSum.style.height = '1.75rem';
-            containerSum.style.fontSize = '1.5rem';
+            let addHourBtn = document.createElement('div');
+            addHourBtn.innerText = '+';
+            let containerHours = document.createElement('div');
+            containerHours.className = 'containerHours';
+            containerHours
+            day.appendChild(containerHours);
+            let sum = document.createElement('div');
+            sum.className = 'sum';
+            let hours = day.getElementsByClassName('hourEl');
+            sum.innerText = hours.length;
+            sum.style.background = '#000000';
+            sum.style.color = '#ffffff';
+            sum.style.textAlign = 'center';
+            sum.style.height = '1.75rem';
+            sum.style.fontSize = '1.5rem';
             function handleMarkingProject() {
               let hourTick = resourceCreateHourTick();
               hourTick.className = 'hourEl';
-              hoursContainerEl.appendChild(hourTick);
+              containerHours.appendChild(hourTick);
               // coords
               hourTick.addEventListener('requestCoords', function (e) {
                 let hourEl = e.target;
@@ -260,55 +266,55 @@ window.addEventListener('load', function () {
             let containerButtons = document.createElement('containerButtons');
             containerButtons.className = 'containerButtons';
             containerButtons.style.display = 'flex';
-            containerAddHourButton.onclick = function () {
+            addHourBtn.onclick = function () {
               // HOUR LEVEL
               handleMarkingProject();
-              let hours = contentDay.getElementsByClassName('hourEl');
-              containerSum.innerText = hours.length;
+              let hours = day.getElementsByClassName('hourEl');
+              sum.innerText = hours.length;
             }
-            containerAddHourButton.style.height = '1.5rem';
-            containerAddHourButton.style.flex = '1';
-            // containerAddHourButton.style.display= 'inline-block';
-            containerAddHourButton.style.fontSize = '1.5rem';
-            containerAddHourButton.style.textAlign = 'center';
-            containerAddHourButton.style.color = '#fff';
-            containerAddHourButton.style.background = '#000';
-            containerAddHourButton.style.textAlign = 'center';
-            containerAddHourButton.style.cursor = 'pointer';
-            let containerMinusHourButton = document.createElement('div');
-            containerMinusHourButton.innerText = '-';
-            containerMinusHourButton.onclick = function () {
-              let hours = contentDay.getElementsByClassName('hourEl');
+            addHourBtn.style.height = '1.5rem';
+            addHourBtn.style.flex = '1';
+            // addHourBtn.style.display= 'inline-block';
+            addHourBtn.style.fontSize = '1.5rem';
+            addHourBtn.style.textAlign = 'center';
+            addHourBtn.style.color = '#fff';
+            addHourBtn.style.background = '#000';
+            addHourBtn.style.textAlign = 'center';
+            addHourBtn.style.cursor = 'pointer';
+            let minusHourBtn = document.createElement('div');
+            minusHourBtn.innerText = '-';
+            minusHourBtn.onclick = function () {
+              let hours = day.getElementsByClassName('hourEl');
               if (hours && hours.length) {
                 let hour = hours[hours.length - 1];
-                hoursContainerEl.removeChild(hour);
-                containerSum.innerText = hours.length;
+                containerHours.removeChild(hour);
+                sum.innerText = hours.length;
               }
             }
-            containerMinusHourButton.style.height = '1.5rem';
-            containerMinusHourButton.style.flex = '1';
-            // containerAddHourButton.style.display= 'inline-block';
-            containerMinusHourButton.style.fontSize = '1.5rem';
-            containerMinusHourButton.style.textAlign = 'center';
-            containerMinusHourButton.style.color = '#fff';
-            containerMinusHourButton.style.background = '#000';
-            containerMinusHourButton.style.textAlign = 'center';
-            containerMinusHourButton.style.cursor = 'pointer';
-            containerButtons.appendChild(containerAddHourButton);
-            containerButtons.appendChild(containerMinusHourButton);
-            contentDay.appendChild(containerButtons);
-            contentDay.appendChild(hoursContainerEl);
-            contentDay.appendChild(containerSum);
-            contentDayInterface.appendChild(contentDay);
+            minusHourBtn.style.height = '1.5rem';
+            minusHourBtn.style.flex = '1';
+            // addHourBtn.style.display= 'inline-block';
+            minusHourBtn.style.fontSize = '1.5rem';
+            minusHourBtn.style.textAlign = 'center';
+            minusHourBtn.style.color = '#fff';
+            minusHourBtn.style.background = '#000';
+            minusHourBtn.style.textAlign = 'center';
+            minusHourBtn.style.cursor = 'pointer';
+            containerButtons.appendChild(addHourBtn);
+            containerButtons.appendChild(minusHourBtn);
+            day.appendChild(containerButtons);
+            day.appendChild(containerHours);
+            day.appendChild(sum);
+            dayInterface.appendChild(day);
           }
-          contentWeek.appendChild(contentDayInterface);
+          week.appendChild(dayInterface);
         }
-        contentMonth.appendChild(contentMonthTitle);
-        contentMonth.appendChild(contentMonthDays);
-        contentYear.appendChild(contentMonth);
+        month.appendChild(monthTitle);
+        month.appendChild(monthDays);
+        year.appendChild(month);
         // containerMain.appendChild(year);
       }
-      return contentYear;
+      return year;
     }
     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
       let length = HTMLCollection.length;
@@ -384,14 +390,14 @@ window.addEventListener('load', function () {
       }
       HTMLCollection[0].style.display = 'block';
     }
-    let contentYear = contentCreateYear();
-    carouselify(contentYear.children, '0.5rem', '7rem', 3);
-    let containerContentYear = document.createElement('div');
-    containerContentYear.id = 'containerContentYear';
-    containerContentYear.style.display = 'flex';
-    containerContentYear.style.flex = '1';
-    containerContentYear.appendChild(contentYear);
-    calendar.appendChild(contentYear);
+    let year = contentCreateYear();
+    carouselify(year.children, '0.5rem', '7rem', 3);
+    let containeryear = document.createElement('div');
+    containeryear.id = 'containeryear';
+    containeryear.style.display = 'flex';
+    containeryear.style.flex = '1';
+    containeryear.appendChild(year);
+    calendar.appendChild(year);
     calendarCarousel.appendChild(calendar);
     return calendarCarousel;
   }
@@ -563,7 +569,7 @@ window.addEventListener('load', function () {
   //     }
   //     let calendar = createCalendar();
   //     // let et
-  //     let contentYear = createContainerYear();
+  //     let year = createContainerYear();
   //     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
   //       let length = HTMLCollection.length;
   //       console.log(length);
@@ -638,13 +644,13 @@ window.addEventListener('load', function () {
   //       }
   //       HTMLCollection[0].style.display = 'block';
   //     }
-  //     carouselify(contentYear.children, '0.5rem', '7rem', 3);
-  //     let containercontentYear = document.createElement('div');
-  //     containercontentYear.id = 'containercontentYear';
-  //     containercontentYear.style.display = 'flex';
-  //     containercontentYear.style.flex = '1';
-  //     containercontentYear.appendChild(contentYear);
-  //     calendar.appendChild(containercontentYear);
+  //     carouselify(year.children, '0.5rem', '7rem', 3);
+  //     let containeryear = document.createElement('div');
+  //     containeryear.id = 'containeryear';
+  //     containeryear.style.display = 'flex';
+  //     containeryear.style.flex = '1';
+  //     containeryear.appendChild(year);
+  //     calendar.appendChild(containeryear);
   //     containerCalendar.appendChild(calendar);
   //     ///// CONTAINER Calendar CONCLUDE
   //     containerVisuals.appendChild(containerResultTimeBlocks);
@@ -842,7 +848,7 @@ window.addEventListener('load', function () {
     }
     let calendar = createCalendar();
     // let et
-    // let contentYear = createContainerYear();
+    // let year = createContainerYear();
     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
       let length = HTMLCollection.length;
       console.log(length);
@@ -917,13 +923,13 @@ window.addEventListener('load', function () {
       }
       HTMLCollection[0].style.display = 'block';
     }
-    carouselify(contentYear.children, '0.5rem', '7rem', 3);
-    let containercontentYear = document.createElement('div');
-    containercontentYear.id = 'containercontentYear';
-    containercontentYear.style.display = 'flex';
-    containercontentYear.style.flex = '1';
-    containercontentYear.appendChild(contentYear);
-    calendar.appendChild(containercontentYear);
+    carouselify(year.children, '0.5rem', '7rem', 3);
+    let containeryear = document.createElement('div');
+    containeryear.id = 'containeryear';
+    containeryear.style.display = 'flex';
+    containeryear.style.flex = '1';
+    containeryear.appendChild(year);
+    calendar.appendChild(containeryear);
     containerCalendar.appendChild(calendar);
     ///// CONTAINER Calendar CONCLUDE
 
@@ -1068,82 +1074,82 @@ function createTopBar() {
 // function createContainerYear() {
 //   // let containerMain = document.getElementById('containerMainet
 //   // container.id  = let
-//   contentYear = document.createElement('div');
-//   contentYear.style.display = 'flex';
-//   contentYear.style.flex = '1';
+//   year = document.createElement('div');
+//   year.style.display = 'flex';
+//   year.style.flex = '1';
 //   for (let i = 0; i < yearDATA.length; i++) {
 //     let monthDATA = yearDATA[i];
 //     // MONTHS LEVEL
-//     let contentMonth = document.createElement('div');
-//     contentMonth.id = 'contentMonth';
-//     contentMonth.style.display = 'flex';
-//     contentMonth.style.flex = '1';
-//     let contentMonthTitle = document.createElement('div');
-//     contentMonthTitle.innerText = monthDATA.monthName;
-//     contentMonthTitle.style.textAlign = 'left';
-//     contentMonthTitle.style.fontSize = '1.75rem';
-//     contentMonthTitle.style.padding = '0.25rem';
-//     contentMonthTitle.style.textAlign = 'left';
-//     let contentMonthDaysEl = document.createElement('div');
-//     contentMonthDaysEl.className = 'month';
-//     contentMonthDaysEl.style.display = 'flex';
-//     contentMonthDaysEl.style.flex = '1';
-//     contentMonthDaysEl.style.justifyContent = 'flex-start';
+//     let month = document.createElement('div');
+//     month.id = 'month';
+//     month.style.display = 'flex';
+//     month.style.flex = '1';
+//     let monthTitle = document.createElement('div');
+//     monthTitle.innerText = monthDATA.monthName;
+//     monthTitle.style.textAlign = 'left';
+//     monthTitle.style.fontSize = '1.75rem';
+//     monthTitle.style.padding = '0.25rem';
+//     monthTitle.style.textAlign = 'left';
+//     let monthDaysEl = document.createElement('div');
+//     monthDaysEl.className = 'month';
+//     monthDaysEl.style.display = 'flex';
+//     monthDaysEl.style.flex = '1';
+//     monthDaysEl.style.justifyContent = 'flex-start';
 //     for (let j = 0; j < monthDATA.length; j++) {
 //       let weekDATA = monthDATA[j];
 //       // WEEKS LEVEL
-//       let contentWeek = document.createElement('div');
-//       contentWeek.id = 'contentWeek';
-//       contentWeek.style.display = 'flex';
-//       contentWeek.style.flex = '1';
-//       contentWeek.style.height = '100%';
-//       let contentWeekTitle = document.createElement('div');
-//       contentWeekTitle.style.textAlign = 'center';
-//       contentWeekTitle.style.height = '100%';
-//       contentWeekTitle.style.color = '#ffffff';
-//       contentWeekTitle.style.background = '#000000';
-//       contentWeekTitle.innerText = weekDATA.weekName;
-//       contentWeekTitle.style.paddingBottom = '0.5rem'
-//       contentWeek.appendChild(contentWeekTitle);
-//       contentMonthDaysEl.appendChild(contentWeek)
-//       let contentDayInterface = document.createElement('div');
-//       contentDayInterface.id = 'contentDayInterface';
-//       contentDayInterface.style.display = 'flex';
-//       contentDayInterface.style.flex = '1';
+//       let week = document.createElement('div');
+//       week.id = 'week';
+//       week.style.display = 'flex';
+//       week.style.flex = '1';
+//       week.style.height = '100%';
+//       let weekTitle = document.createElement('div');
+//       weekTitle.style.textAlign = 'center';
+//       weekTitle.style.height = '100%';
+//       weekTitle.style.color = '#ffffff';
+//       weekTitle.style.background = '#000000';
+//       weekTitle.innerText = weekDATA.weekName;
+//       weekTitle.style.paddingBottom = '0.5rem'
+//       week.appendChild(weekTitle);
+//       monthDaysEl.appendChild(week)
+//       let dayInterface = document.createElement('div');
+//       dayInterface.id = 'dayInterface';
+//       dayInterface.style.display = 'flex';
+//       dayInterface.style.flex = '1';
 //       for (let y = 0; y < weekDATA.length; y++) {
 //         let day = weekDATA[y];
 //         day = day.substring(0, 3);
 //         // DAYS LEVEL
-//         let contentDay = document.createElement('div');
-//         contentDay.style.flex = '1';
+//         let day = document.createElement('div');
+//         day.style.flex = '1';
 //         // closure
 //         // let count = 0;
-//         contentDay.className = 'day';
-//         contentDay.innerText = day;
-//         // contentDay.style.flex = '2';
-//         contentDay.style.borderLeft = '1px solid #000000';
+//         day.className = 'day';
+//         day.innerText = day;
+//         // day.style.flex = '2';
+//         day.style.borderLeft = '1px solid #000000';
 //         if (y + 1 == weekDATA.length) {
-//           contentDay.style.borderRight = '1px solid #000000';
+//           day.style.borderRight = '1px solid #000000';
 //         }
 //         // INSIDE DAY LEVEL
-//         let containerAddHourButton = document.createElement('div');
-//         containerAddHourButton.innerText = '+';
-//         let hoursContainerEl = document.createElement('div');
-//         hoursContainerEl.className = 'hoursContainerEl';
-//         contentDay.appendChild(hoursContainerEl);
-//         let containerSum = document.createElement('div');
-//         containerSum.className = 'containerSum';
-//         let hours = contentDay.getElementsByClassName('hourEl');
-//         containerSum.innerText = hours.length;
-//         containerSum.style.background = '#000000';
-//         containerSum.style.color = '#ffffff';
-//         containerSum.style.textAlign = 'center';
-//         containerSum.style.height = '1.75rem';
-//         containerSum.style.fontSize = '1.5rem';
+//         let addHourBtn = document.createElement('div');
+//         addHourBtn.innerText = '+';
+//         let containerHours = document.createElement('div');
+//         containerHours.className = 'containerHours';
+//         day.appendChild(containerHours);
+//         let sum = document.createElement('div');
+//         sum.className = 'sum';
+//         let hours = day.getElementsByClassName('hourEl');
+//         sum.innerText = hours.length;
+//         sum.style.background = '#000000';
+//         sum.style.color = '#ffffff';
+//         sum.style.textAlign = 'center';
+//         sum.style.height = '1.75rem';
+//         sum.style.fontSize = '1.5rem';
 //         function handleMarkingProject() {
 //           let hourTick = resourceCreateHourTick();
 //           hourTick.className = 'hourEl';
-//           hoursContainerEl.appendChild(hourTick);
+//           containerHours.appendChild(hourTick);
 //           // coords
 //           hourTick.addEventListener('requestCoords', function (e) {
 //             let hourEl = e.target;
@@ -1175,55 +1181,55 @@ function createTopBar() {
 //         let containerButtons = document.createElement('containerButtons');
 //         containerButtons.className = 'containerButtons';
 //         containerButtons.style.display = 'flex';
-//         containerAddHourButton.onclick = function () {
+//         addHourBtn.onclick = function () {
 //           // HOUR LEVEL
 //           handleMarkingProject();
-//           let hours = contentDay.getElementsByClassName('hourEl');
-//           containerSum.innerText = hours.length;
+//           let hours = day.getElementsByClassName('hourEl');
+//           sum.innerText = hours.length;
 //         }
-//         containerAddHourButton.style.height = '1.5rem';
-//         containerAddHourButton.style.flex = '1';
-//         // containerAddHourButton.style.display= 'inline-block';
-//         containerAddHourButton.style.fontSize = '1.5rem';
-//         containerAddHourButton.style.textAlign = 'center';
-//         containerAddHourButton.style.color = '#fff';
-//         containerAddHourButton.style.background = '#000';
-//         containerAddHourButton.style.textAlign = 'center';
-//         containerAddHourButton.style.cursor = 'pointer';
-//         let containerMinusHourButton = document.createElement('div');
-//         containerMinusHourButton.innerText = '-';
-//         containerMinusHourButton.onclick = function () {
-//           let hours = contentDay.getElementsByClassName('hourEl');
+//         addHourBtn.style.height = '1.5rem';
+//         addHourBtn.style.flex = '1';
+//         // addHourBtn.style.display= 'inline-block';
+//         addHourBtn.style.fontSize = '1.5rem';
+//         addHourBtn.style.textAlign = 'center';
+//         addHourBtn.style.color = '#fff';
+//         addHourBtn.style.background = '#000';
+//         addHourBtn.style.textAlign = 'center';
+//         addHourBtn.style.cursor = 'pointer';
+//         let minusHourBtn = document.createElement('div');
+//         minusHourBtn.innerText = '-';
+//         minusHourBtn.onclick = function () {
+//           let hours = day.getElementsByClassName('hourEl');
 //           if (hours && hours.length) {
 //             let hour = hours[hours.length - 1];
-//             hoursContainerEl.removeChild(hour);
-//             containerSum.innerText = hours.length;
+//             containerHours.removeChild(hour);
+//             sum.innerText = hours.length;
 //           }
 //         }
-//         containerMinusHourButton.style.height = '1.5rem';
-//         containerMinusHourButton.style.flex = '1';
-//         // containerAddHourButton.style.display= 'inline-block';
-//         containerMinusHourButton.style.fontSize = '1.5rem';
-//         containerMinusHourButton.style.textAlign = 'center';
-//         containerMinusHourButton.style.color = '#fff';
-//         containerMinusHourButton.style.background = '#000';
-//         containerMinusHourButton.style.textAlign = 'center';
-//         containerMinusHourButton.style.cursor = 'pointer';
-//         containerButtons.appendChild(containerAddHourButton);
-//         containerButtons.appendChild(containerMinusHourButton);
-//         contentDay.appendChild(containerButtons);
-//         contentDay.appendChild(hoursContainerEl);
-//         contentDay.appendChild(containerSum);
-//         contentDayInterface.appendChild(contentDay);
+//         minusHourBtn.style.height = '1.5rem';
+//         minusHourBtn.style.flex = '1';
+//         // addHourBtn.style.display= 'inline-block';
+//         minusHourBtn.style.fontSize = '1.5rem';
+//         minusHourBtn.style.textAlign = 'center';
+//         minusHourBtn.style.color = '#fff';
+//         minusHourBtn.style.background = '#000';
+//         minusHourBtn.style.textAlign = 'center';
+//         minusHourBtn.style.cursor = 'pointer';
+//         containerButtons.appendChild(addHourBtn);
+//         containerButtons.appendChild(minusHourBtn);
+//         day.appendChild(containerButtons);
+//         day.appendChild(containerHours);
+//         day.appendChild(sum);
+//         dayInterface.appendChild(day);
 //       }
-//       contentWeek.appendChild(contentDayInterface);
+//       week.appendChild(dayInterface);
 //     }
-//     contentMonth.appendChild(monthTitleEl);
-//     contentMonth.appendChild(monthDaysEl);
-//     contentYear.appendChild(contentMonth);
-//     // containerMain.appendChild(contentYear);
+//     month.appendChild(monthTitleEl);
+//     month.appendChild(monthDaysEl);
+//     year.appendChild(month);
+//     // containerMain.appendChild(year);
 //   }
-//   return contentYear;
+//   return year;
 // }
 const VALUES_MenuSharedCSS = {
   height_menuWhole: '9rem',
@@ -1233,10 +1239,10 @@ const VALUES_MenuSharedCSS = {
 }
 function createMonth(monthNum) {
   const monthNames = getMonthNames();
-  var contentMonth = document.createElement('div');
-  contentMonth.classList.add('month');
-  contentMonth.classList.add('contentMonth');
-  contentMonth.classList.add([monthNames[monthNum]]);
+  var month = document.createElement('div');
+  month.classList.add('month');
+  month.classList.add('month');
+  month.classList.add([monthNames[monthNum]]);
   monthContainer.style.display = 'flex';
   document.getElementById('containerRoot').appendChild(monthContainer);
   // createSidewaysTitle(monthNames[monthNum], monthNum);
@@ -1774,23 +1780,23 @@ function fillHoursData(textFile) {
 }
 function clearHoursFromTheDay(day) {
   for (let r = day.getElementsByClassName('hourEl').length - 1; r >= 0; r--) {
-    let hoursContainerEl = day.getElementsByClassName('hoursContainerEl')[0];
-    hoursContainerEl.getElementsByClassName('hourEl')[r].remove();
+    let containerHours = day.getElementsByClassName('containerHours')[0];
+    containerHours.getElementsByClassName('hourEl')[r].remove();
   }
 }
 function appendHoursToDay(hoursNum, day) {
   for (let j = 1; j <= hoursNum; j++) {
     appendHour(hoursNum, day);
   }
-  let containerSum = day.getElementsByClassName('containerSum')[0];
-  containerSum.innerText = day.getElementsByClassName('hourEl').length;
+  let sum = day.getElementsByClassName('sum')[0];
+  sum.innerText = day.getElementsByClassName('hourEl').length;
 }
 function appendHour(hoursNum, day) {
   const hour = resourceCreateHourTick();
   hour.className = 'hourEl';
   // appendNumToHour(hoursNum, hour);
-  let hoursContainerEl = day.getElementsByClassName('hoursContainerEl')[0];
-  hoursContainerEl.appendChild(hour);
+  let containerHours = day.getElementsByClassName('containerHours')[0];
+  containerHours.appendChild(hour);
 }
 function createSaveToExcelBtn() {
   var saveToExcelBtn = document.createElement('input');
