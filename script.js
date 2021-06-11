@@ -7,7 +7,7 @@ const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00'
 // resultTimeBlocks
 const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
-const calendarHeight = '39vh';
+const calendarHeight = containerCalendarHeight;
 
 const calendarMonthTitlePadding = '0.25rem';
 const calendarMonthTitleFontSize = '1.75rem';
