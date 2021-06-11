@@ -122,17 +122,18 @@ window.addEventListener('load', function () {
   let containerTopbar = document.getElementById('containerTopbar');
   let topBar = createTopBar();
   containerTopbar.appendChild(topBar);
-
   let containerCenter = document.getElementById('containerCenter');
   containerCenter.style.display = 'flex';
   let containerVisuals = document.getElementById('containerVisuals');
   containerVisuals.style.flex = '3';
-  // calendar
+  let containerHourBlocks = document.getElementById('containerHourBlocks');
+  containerHourBlocks.style.height = '40vh';
+
   let containerCalendar = document.getElementById('containerCalendar');
-  containerCalendar.style.height = '45vh';
-  let calendarCarousel = contentCreateCalendarCarousel();
-  calendarCarousel.style.height = '100%';
-  containerCalendar.appendChild(calendarCarousel);
+  containerCalendar.style.height = '40vh';
+  let contentCalendarCarousel = contentCreateCalendarCarousel();
+  contentCalendarCarousel.style.height = '100%';
+  containerCalendar.appendChild(contentCalendarCarousel);
 
   function contentCreateCalendarCarousel() {
     let calendarCarousel = document.createElement('div');
@@ -401,16 +402,6 @@ window.addEventListener('load', function () {
   containerRightbar.appendChild(menu);
   let containerRoot = document.getElementById('containerRoot');
   // C E N T E R   C O N C L U D E
-
-
-
-
-
-
-
-
-
-
 
 
 
