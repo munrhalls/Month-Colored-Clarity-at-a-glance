@@ -100,8 +100,8 @@ window.addEventListener('load', function () {
   assembleElements(containersArr, main);
 
   const containerTopbar = document.getElementById('containerTopbar');
-  containerTopbar.style.height = containerTopbarHeight;
   const topBar = createTopBar();
+  containerTopbar.style.height = containerTopbarHeight;
   containerTopbar.appendChild(topBar);
 
   const containerCenter = document.getElementById('containerCenter');
@@ -117,8 +117,22 @@ window.addEventListener('load', function () {
   containerTimeBlocks.appendChild(timeBlocks);
   function createTimeBlocks() {
     const timeBlocks = document.createElement('div');
+    timeBlocks.style.height = '100%';
+    timeBlocks.style.display = 'flex';
+    const colsNum = 3;
+
+    for (let i = 0; i < colsNum; i++) {
+      let timeAmpoule = document.createElement('div');
+      timeAmpoule.style.flex = '1';
+      timeAmpoule.style.border = '1px solid black';
+      timeBlocks.appendChild(timeAmpoule);
+    }
     return timeBlocks;
   }
+
+
+
+
 
 
    // function createTimeBlocks() {
