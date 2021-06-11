@@ -47,7 +47,7 @@ let main = document.getElementById('app');
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  const timeBlocks = ['timeBlocks', 'btnAddTimeBlock'];
+  const timeBlocks = ['timeBlocks', 'hourBlocksCarousel', 'btnAddTimeBlock'];
   const timeBottle = ['titleBar', 'timeBottle', timeBlocks];
   const containerTimeBottle = ['containerTimeBottle', timeBottle,
     'containerTimeBottle', timeBottle,
@@ -62,11 +62,18 @@ window.addEventListener('load', function () {
   function contentifyTimeBlocks() {
     const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
     const titleBars = containerTimeBlocks.getElementsByClassName('titleBar');
-    for (let i = 0; i < titleBars.length; i++) {
-      const titleBar = titleBars[i];
+    // for (let i = 0; i < titleBars.length; i++) {
+    //   const titleBar = titleBars[i];
+    //   const input = document.createElement('input');
+    //   input.style.type = 'text';
+    //   titleBar.appendChild(input);
+    // }
+    loop('titleBar', contentifyTitleBars);
+    function contentifyTitleBars(el) {
+      el
       const input = document.createElement('input');
       input.style.type = 'text';
-      titleBar.appendChild(input);
+      el.appendChild(input);
     }
     const btnsAddTimeBlock = containerTimeBlocks.getElementsByClassName('btnAddTimeBlock');
     for (let i = 0; i < btnsAddTimeBlock.length; i++) {
@@ -94,14 +101,14 @@ window.addEventListener('load', function () {
       el.style.height = 'calc(100% - ' + titleBarHeight +')';
     }
 
-    loop('timeBlocks', modifyTimeBlocks);
-    function modifyTimeBlocks(el) {
+    loop('timeBlocks', styleTimeBlocks);
+    function styleTimeBlocks(el) {
       el.style.height = 'calc(100% - ' + btnAddTimeBlockHeight + ')';
       el.style.textAlign = 'center';
     }
   
-    loop('btnAddTimeBlock', modifyBtnAddTimeBlock);
-    function modifyBtnAddTimeBlock(el) {
+    loop('btnAddTimeBlock', styleBtnAddTimeBlock);
+    function styleBtnAddTimeBlock(el) {
       el.style.height = btnAddTimeBlockHeight;
       el.style.width = '100%';
       el.style.textAlign = 'center';
