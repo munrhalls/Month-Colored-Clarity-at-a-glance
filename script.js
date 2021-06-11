@@ -1,7 +1,8 @@
 // DATA VALUES
 const containerTopbarHeight = '3.5rem';
+const calendarMonthTitlePadding = '0.25rem';
 const containerTimeBlocksHeight = 'calc(50vh - ' + parseFloat(containerTopbarHeight) / 2 + 'rem)';
-const containerCalendarHeight = 'calc(50vh - ' + parseFloat(containerTopbarHeight) / 2 + 'rem)';
+const containerCalendarHeight = 'calc(50vh - ' + ((parseFloat(containerTopbarHeight) / 2) + parseFloat(calendarMonthTitlePadding)) + 'rem)';
 const rightBarWidth = '18rem';
 const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00', '#FF0000'];
 // resultTimeBlocks
@@ -9,7 +10,6 @@ const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
 const calendarHeight = containerCalendarHeight;
 // CALENDAR
-const calendarMonthTitlePadding = '0.25rem';
 const calendarMonthTitleFontSize = '1.5rem';
 const calendarMonthTitleHeight = '2.5rem';
 
@@ -112,134 +112,141 @@ window.addEventListener('load', function () {
 
   // HOUR BLOCKS
   const containerTimeBlocks = document.getElementById('containerTimeBlocks');
+  const timeBlocks = createTimeBlocks();
   containerTimeBlocks.style.height = containerTimeBlocksHeight;
-  function createTimeBlocks() {
-    let resultTimeBlocks = document.createElement('div');
-    resultTimeBlocks.style.display = 'flex';
-    // flex
-    resultTimeBlocks.style.height = '100%';
-    resultTimeBlocks.style.width = '100%';
-    let containerResultCards = document.createElement('div');
-    containerResultCards.id = 'containerResultCards';
-    containerResultCards.style.flex = '3';
-    containerResultCards.style.display = 'flex';
-    // flex
-    containerResultCards.style.height = '100%';
-
-    function createResultCard(color) {
-      let resultCard = document.createElement('div');
-      resultCard.className = 'resultCard';
-      resultCard.style.flex = '1';
-      resultCard.style.height = '100%';
-      resultCard.style.border = '1px solid black';
-      resultCard.style.position = 'relative';
-      // first result card bg, lightest
-      let opacityDiv = document.createElement('div');
-      opacityDiv.style.position = 'absolute';
-      opacityDiv.style.width = '100%';
-      opacityDiv.style.height = '100%';
-      opacityDiv.style.background = color || 'darkblue';
-      opacityDiv.style.opacity = resultCardOpacity;
-      resultCard.appendChild(opacityDiv);
-
-      let resultBlock = document.createElement('div');
-      resultBlock.style.position = 'relative';
-      resultBlock.style.top = '3rem';
-      resultBlock.style.left = '1rem';
-      // position
-      resultBlock.style.width = '12rem';
-      resultBlock.style.height = '12rem';
-      resultBlock.style.background = 'black';
-      resultBlock.style.border = '1px solid black';
-
-
-      let input = document.createElement('input');
-      input.type = 'text';
-      input.style.background = 'black';
-      input.style.border = '2.5px solid ' + color;
-      input.style.width = '100%';
-      input.style.height = '100%';
-      input.style.color = 'white'
-      input.style.fontSize = '1.5rem';
-      input.style.textAlign = 'center';
-      input.style.zIndex = '3';
-      input.style.position = 'absolute';
-      input.placeholder = 'RESULT TITLE';
-      // A D D COMPLETION CRITERIA INPUTS BELOW
-      // input.style.top = '3rem';
-      // input.style.bottom = '3rem';
-      // input.style.left = '3rem';
-      // input.style.right = '3rem';
-
-
-
-      resultBlock.appendChild(input);
-      resultBlock.style.innerText = 'RESULT';
-      function createTimeBlock() {
-        let timeBlock = document.createElement('div');
-        return timeBlock;
-      }
-      let timeBlock = createTimeBlock();
-
-      resultCard.appendChild(resultBlock);
-      return resultCard;
-    }
-    function addResultCard(color) {
-      let resultCard = createResultCard(color);
-      // resultCard.style.opacity = resultCardOpacity;
-      containerResultCards.appendChild(resultCard);
-    }
-    addResultCard(colors[0]);
-    addResultCard(colors[1]);
-    addResultCard(colors[2]);
-    let containerCardWithAddBtn = document.createElement('div');
-    containerCardWithAddBtn.id = 'containerCardWithAddBtn';
-    containerCardWithAddBtn.style.display = 'flex';
-    containerCardWithAddBtn.style.flex = '1';
-    // flex
-    containerCardWithAddBtn.style.border = '1px solid black';
-
-    function createCardWithAddBtn() {
-      let cardWithAddBtn = document.createElement('div');
-      cardWithAddBtn.style.display = 'flex';
-      cardWithAddBtn.style.width = '100%';
-      // flex
-      let containerAddBtn = document.createElement('div');
-      containerAddBtn.id = 'containerAddBtn';
-      containerAddBtn.style.display = 'flex';
-      containerAddBtn.style.justifyContent = 'center';
-      containerAddBtn.style.alignItems = 'center';
-      containerAddBtn.style.height = '100%';
-      containerAddBtn.style.width = '100%';
-      // flex
-
-      let addBtn = document.createElement('div');
-      addBtn.style.background = 'black';
-      addBtn.style.fontSize = resultCardAddBtn;
-      addBtn.style.fontWeight = 'bold';
-      addBtn.style.width = resultCardAddBtn;
-      addBtn.style.color = 'white';
-      addBtn.style.borderRadius = '100%';
-      addBtn.style.opacity = '0.9';
-      addBtn.innerText = '+';
-      addBtn.style.textAlign = 'center';
-      addBtn.onclick = function (e) {
-        addResultCard();
-      }
-      containerAddBtn.appendChild(addBtn);
-      cardWithAddBtn.appendChild(containerAddBtn);
-      return cardWithAddBtn;
-    }
-    let cardWithAddBtn = createCardWithAddBtn();
-    containerCardWithAddBtn.appendChild(cardWithAddBtn);
-
-    resultTimeBlocks.appendChild(containerResultCards);
-    resultTimeBlocks.appendChild(containerCardWithAddBtn);
-
-    return resultTimeBlocks;
-  }
-  let timeBlocks = createTimeBlocks();
   containerTimeBlocks.appendChild(timeBlocks);
+  function createTimeBlocks() {
+    const timeBlocks = document.createElement('div');
+    return timeBlocks;
+  }
+
+
+   // function createTimeBlocks() {
+  //   let resultTimeBlocks = document.createElement('div');
+  //   resultTimeBlocks.style.display = 'flex';
+  //   // flex
+  //   resultTimeBlocks.style.height = '100%';
+  //   resultTimeBlocks.style.width = '100%';
+    
+  //   let containerResultCards = document.createElement('div');
+  //   containerResultCards.id = 'containerResultCards';
+  //   containerResultCards.style.flex = '3';
+  //   containerResultCards.style.display = 'flex';
+  //   // flex
+  //   containerResultCards.style.height = '100%';
+
+  //   function createResultCard(color) {
+  //     let resultCard = document.createElement('div');
+  //     resultCard.className = 'resultCard';
+  //     resultCard.style.flex = '1';
+  //     resultCard.style.height = '100%';
+  //     resultCard.style.border = '1px solid black';
+  //     resultCard.style.position = 'relative';
+  //     // first result card bg, lightest
+  //     let opacityDiv = document.createElement('div');
+  //     opacityDiv.style.position = 'absolute';
+  //     opacityDiv.style.width = '100%';
+  //     opacityDiv.style.height = '100%';
+  //     opacityDiv.style.background = color || 'darkblue';
+  //     opacityDiv.style.opacity = resultCardOpacity;
+  //     resultCard.appendChild(opacityDiv);
+
+  //     let resultBlock = document.createElement('div');
+  //     resultBlock.style.position = 'relative';
+  //     resultBlock.style.top = '3rem';
+  //     resultBlock.style.left = '1rem';
+  //     // position
+  //     resultBlock.style.width = '12rem';
+  //     resultBlock.style.height = '12rem';
+  //     resultBlock.style.background = 'black';
+  //     resultBlock.style.border = '1px solid black';
+
+
+  //     let input = document.createElement('input');
+  //     input.type = 'text';
+  //     input.style.background = 'black';
+  //     input.style.border = '2.5px solid ' + color;
+  //     input.style.width = '100%';
+  //     input.style.height = '100%';
+  //     input.style.color = 'white'
+  //     input.style.fontSize = '1.5rem';
+  //     input.style.textAlign = 'center';
+  //     input.style.zIndex = '3';
+  //     input.style.position = 'absolute';
+  //     input.placeholder = 'RESULT TITLE';
+  //     // A D D COMPLETION CRITERIA INPUTS BELOW
+  //     // input.style.top = '3rem';
+  //     // input.style.bottom = '3rem';
+  //     // input.style.left = '3rem';
+  //     // input.style.right = '3rem';
+
+
+
+  //     resultBlock.appendChild(input);
+  //     resultBlock.style.innerText = 'RESULT';
+  //     function createTimeBlock() {
+  //       let timeBlock = document.createElement('div');
+  //       return timeBlock;
+  //     }
+  //     let timeBlock = createTimeBlock();
+
+  //     resultCard.appendChild(resultBlock);
+  //     return resultCard;
+  //   }
+  //   function addResultCard(color) {
+  //     let resultCard = createResultCard(color);
+  //     // resultCard.style.opacity = resultCardOpacity;
+  //     containerResultCards.appendChild(resultCard);
+  //   }
+  //   addResultCard(colors[0]);
+  //   addResultCard(colors[1]);
+  //   addResultCard(colors[2]);
+  //   let containerCardWithAddBtn = document.createElement('div');
+  //   containerCardWithAddBtn.id = 'containerCardWithAddBtn';
+  //   containerCardWithAddBtn.style.display = 'flex';
+  //   containerCardWithAddBtn.style.flex = '1';
+  //   // flex
+  //   containerCardWithAddBtn.style.border = '1px solid black';
+
+  //   function createCardWithAddBtn() {
+  //     let cardWithAddBtn = document.createElement('div');
+  //     cardWithAddBtn.style.display = 'flex';
+  //     cardWithAddBtn.style.width = '100%';
+  //     // flex
+  //     let containerAddBtn = document.createElement('div');
+  //     containerAddBtn.id = 'containerAddBtn';
+  //     containerAddBtn.style.display = 'flex';
+  //     containerAddBtn.style.justifyContent = 'center';
+  //     containerAddBtn.style.alignItems = 'center';
+  //     containerAddBtn.style.height = '100%';
+  //     containerAddBtn.style.width = '100%';
+  //     // flex
+
+  //     let addBtn = document.createElement('div');
+  //     addBtn.style.background = 'black';
+  //     addBtn.style.fontSize = resultCardAddBtn;
+  //     addBtn.style.fontWeight = 'bold';
+  //     addBtn.style.width = resultCardAddBtn;
+  //     addBtn.style.color = 'white';
+  //     addBtn.style.borderRadius = '100%';
+  //     addBtn.style.opacity = '0.9';
+  //     addBtn.innerText = '+';
+  //     addBtn.style.textAlign = 'center';
+  //     addBtn.onclick = function (e) {
+  //       addResultCard();
+  //     }
+  //     containerAddBtn.appendChild(addBtn);
+  //     cardWithAddBtn.appendChild(containerAddBtn);
+  //     return cardWithAddBtn;
+  //   }
+  //   let cardWithAddBtn = createCardWithAddBtn();
+  //   containerCardWithAddBtn.appendChild(cardWithAddBtn);
+
+  //   resultTimeBlocks.appendChild(containerResultCards);
+  //   resultTimeBlocks.appendChild(containerCardWithAddBtn);
+
+  //   return resultTimeBlocks;
+  // }
 
 
 
