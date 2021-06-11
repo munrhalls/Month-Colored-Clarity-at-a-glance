@@ -47,7 +47,7 @@ let main = document.getElementById('app');
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  const timeBlocks = ['timeBlocks', 'hourBlocksCarousel', 'btnAddTimeBlock'];
+  const timeBlocks = ['timeBlocks', 'timeBlocksCarousel', 'btnAddTimeBlock'];
   const timeBottle = ['titleBar', 'timeBottle', timeBlocks];
   const containerTimeBottle = ['containerTimeBottle', timeBottle,
     'containerTimeBottle', timeBottle,
@@ -60,7 +60,6 @@ window.addEventListener('load', function () {
     }
   }
   function contentifyTimeBlocks() {
-    const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
     loop('titleBar', contentifyTitleBar);
     function contentifyTitleBar(el) {
       el
@@ -68,7 +67,15 @@ window.addEventListener('load', function () {
       input.style.type = 'text';
       el.appendChild(input);
     }
-    const btnsAddTimeBlock = containerTimeBlocks.getElementsByClassName('btnAddTimeBlock');
+    loop('timeBlocksCarousel', contentifytimeBlocksCarousel);
+    function contentifytimeBlocksCarousel(el) {
+      for (let i = 1; i < 25; i++) {
+        let timeBlock = document.createElement('div');
+        timeBlock.innerText = i;
+        timeBlock.className = i +'-hours timeBlock';
+        el.appendChild(timeBlock)        
+      }
+    }
     loop('btnAddTimeBlock', contentifyBtnAddTimeBlock);
     function contentifyBtnAddTimeBlock(el) {
       el.innerText = '+';
@@ -82,7 +89,6 @@ window.addEventListener('load', function () {
     const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
     const titleBarHeight = '1.5rem';
     const btnAddTimeBlockHeight = '1.5rem';
-
     containerTimeBlocks.style.display = 'flex';
     containerTimeBlocks.style.height = containerTimeBlocksHeight;
     loop('titleBar', styleTitleBar);
@@ -100,7 +106,15 @@ window.addEventListener('load', function () {
       el.style.height = 'calc(100% - ' + btnAddTimeBlockHeight + ')';
       el.style.textAlign = 'center';
     }
-  
+    loop('timeBlocksCarousel', contentifytimeBlocksCarousel);
+    function contentifytimeBlocksCarousel(el) {
+      for (let i = 1; i < 25; i++) {
+        let timeBlock = document.createElement('div');
+        timeBlock.innerText = i;
+        timeBlock.className = i +'-hours timeBlock';
+        el.appendChild(timeBlock)        
+      }
+    }
     loop('btnAddTimeBlock', styleBtnAddTimeBlock);
     function styleBtnAddTimeBlock(el) {
       el.style.height = btnAddTimeBlockHeight;
