@@ -1,15 +1,13 @@
-// DATA VALUES
-const containerTopbarHeight = '3.5rem';
-const calendarMonthTitlePadding = '0.25rem';
-const containerVisualsHeight = 'calc(100vh - ' + ((parseFloat(containerTopbarHeight) / 2) + parseFloat(calendarMonthTitlePadding)) + 'rem)';
-const containerCalendarHeight = 'calc(50vh - ' + ((parseFloat(containerTopbarHeight) / 2) + parseFloat(calendarMonthTitlePadding)) + 'rem)';
+// // DATA VALUES
+const heightTopbar = '3.5rem';
+const paddingTitle = '0.25rem';
+const heightVisuals = 'calc(100vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
+const containerheightCalendar = 'calc(50vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
 const rightBarWidth = '18rem';
 const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00', '#FF0000'];
-// resultTimeBlocks
 const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
-const calendarHeight = containerCalendarHeight;
-// CALENDAR
+const heightCalendar = containerheightCalendar;
 const calendarMonthTitleFontSize = '1.5rem';
 const calendarMonthTitleHeight = '2.5rem';
 
@@ -43,7 +41,6 @@ for (let i = 1; i <= 12; i++) {
   // 4. push month array, filled with month's week arrays with days inside, into year array
   yearDATA.push(monthDATA);
 }
-let main = document.getElementById('app');
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
@@ -153,7 +150,7 @@ window.addEventListener('load', function () {
     function styleContainerVisuals(el) {
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
-      el.style.height = containerVisualsHeight;
+      el.style.height = heightVisuals;
     }
   }
   function contentifyTimeBlocks() {
@@ -273,10 +270,11 @@ window.addEventListener('load', function () {
       el.appendChild(span);
     }
   }
+  let main = document.getElementById('app');
   assembleElements(containersArr, main);
   const containerTopbar = document.getElementsByClassName('containerTopbar')[0];
   const topBar = createTopBar();
-  containerTopbar.style.height = containerTopbarHeight;
+  containerTopbar.style.height = heightTopbar;
   containerTopbar.appendChild(topBar);
 
   const containerCenter = document.getElementsByClassName('containerCenter')[0];
@@ -310,7 +308,7 @@ window.addEventListener('load', function () {
     let calendar = document.createElement('div');
     calendar.style.display = 'flex';
     calendar.style.flex = '1';
-    calendar.style.height = calendarHeight;
+    calendar.style.height = heightCalendar;
     calendar.style.width = '100%';
 
     function contentCreateYear() {
@@ -331,7 +329,7 @@ window.addEventListener('load', function () {
         monthTitle.innerText = monthDATA.monthName;
         monthTitle.style.textAlign = 'left';
         monthTitle.style.fontSize = calendarMonthTitleFontSize;
-        monthTitle.style.padding = calendarMonthTitlePadding;
+        monthTitle.style.padding = paddingTitle;
         monthTitle.style.height = calendarMonthTitleHeight;
         let monthDays = document.createElement('div');
         monthDays.className = 'month';
@@ -339,7 +337,7 @@ window.addEventListener('load', function () {
         monthDays.style.flex = '1';
         monthDays.style.justifyContent = 'flex-start';
         monthDays.style.height = 'calc(100% - ' + parseFloat(calendarMonthTitleHeight) + 'rem)';
-        // parseFloat(containerCalendarHeight) - parseFloat(calendarMonthTitleHeight) + 'vh';
+        // parseFloat(containerheightCalendar) - parseFloat(calendarMonthTitleHeight) + 'vh';
         for (let j = 0; j < monthDATA.length; j++) {
           let weekDATA = monthDATA[j];
           // WEEKS LEVEL
