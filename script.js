@@ -1,6 +1,7 @@
 // DATA VALUES
 const containerTopbarHeight = '3.5rem';
 const calendarMonthTitlePadding = '0.25rem';
+const containerVisualsHeight = 'calc(100vh - ' + ((parseFloat(containerTopbarHeight) / 2) + parseFloat(calendarMonthTitlePadding)) + 'rem)';
 const containerCalendarHeight = 'calc(50vh - ' + ((parseFloat(containerTopbarHeight) / 2) + parseFloat(calendarMonthTitlePadding)) + 'rem)';
 const rightBarWidth = '18rem';
 const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00', '#FF0000'];
@@ -152,10 +153,7 @@ window.addEventListener('load', function () {
     function styleContainerVisuals(el) {
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
-      el.style.height = '100%';
-      for (let i = 0; i < el.children.length; i++) {
-        el.style.flex = '1';
-      }
+      el.style.height = containerVisualsHeight;
     }
   }
   function contentifyTimeBlocks() {
@@ -185,14 +183,13 @@ window.addEventListener('load', function () {
 
   }
   function styleTimeBlocks() {
-    // const height = 'calc(50vh - ' + parseFloat(containerTopbarHeight) / 2 + 'rem)';
     const titleHeight = '1.5rem';
     const btnHeight = '1.5rem';
     const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
+    containerTimeBlocks.style.flex = '1';
     containerTimeBlocks.style.display = 'flex';
 
     loop('titleBar', styleTitleBar);
-
 
     loop('titleBar', styleTitleBar);
     function styleTitleBar(el) {
@@ -229,6 +226,12 @@ window.addEventListener('load', function () {
       // el.style.height = btnHeight;
       el.style.width = '100%';
       el.style.textAlign = 'center';
+    }
+  }
+  function styleCalendar() {
+    loop('containerCalendar', styleContainerCalendar);
+    function styleContainerCalendar(el) {
+      el.style.flex = '1';
     }
   }
   // pattern is: '...' is a container title, [...] is nesting stuff inside that container
@@ -290,11 +293,12 @@ window.addEventListener('load', function () {
   contentifyTimeBlocks();
   functionalizeTimeBlocks();
   styleTimeBlocks();
+  styleCalendar();
 
   // CALENDAR
   const containerCalendar = document.getElementsByClassName('containerCalendar')[0];
   const calendarCarousel = createCalendarCarousel();
-  containerCalendar.style.height = containerCalendarHeight;
+  containerCalendar.style.flex = '1';
   calendarCarousel.style.height = '100%';
   containerCalendar.appendChild(calendarCarousel);
   function createCalendarCarousel() {
