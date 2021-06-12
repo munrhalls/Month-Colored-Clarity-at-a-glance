@@ -1,7 +1,6 @@
 // DATA VALUES
 const containerTopbarHeight = '3.5rem';
 const calendarMonthTitlePadding = '0.25rem';
-const containerTimeBlocksHeight = 'calc(50vh - ' + parseFloat(containerTopbarHeight) / 2 + 'rem)';
 const containerCalendarHeight = 'calc(50vh - ' + ((parseFloat(containerTopbarHeight) / 2) + parseFloat(calendarMonthTitlePadding)) + 'rem)';
 const rightBarWidth = '18rem';
 const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00', '#FF0000'];
@@ -52,77 +51,6 @@ window.addEventListener('load', function () {
   const containerTimeBottle = ['containerTimeBottle', timeBottle,
     'containerTimeBottle', timeBottle,
     'containerTimeBottle', timeBottle];
-
-  function loop(className, modify) {
-    const elements = document.getElementsByClassName(className);
-    for (let i = 0; i < elements.length; i++) {
-      modify(elements[i]);
-    }
-  }
-  function contentifyTimeBlocks() {
-    loop('titleBar', contentifyTitleBar);
-    function contentifyTitleBar(el) {
-      el
-      const input = document.createElement('input');
-      input.style.type = 'text';
-      el.appendChild(input);
-    }
-    loop('timeBlocksCarousel', contentifytimeBlocksCarousel);
-    function contentifytimeBlocksCarousel(el) {
-      for (let i = 1; i < 25; i++) {
-        let timeBlock = document.createElement('div');
-        timeBlock.innerText = i;
-        timeBlock.className = i +'-hours timeBlock';
-        el.appendChild(timeBlock)        
-      }
-    }
-    loop('btnAddTimeBlock', contentifyBtnAddTimeBlock);
-    function contentifyBtnAddTimeBlock(el) {
-      el.innerText = '+';
-    }
-
-  }
-  function functionalizeTimeBlocks() {
-
-  }
-  function styleTimeBlocks() {
-    const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
-    const titleBarHeight = '1.5rem';
-    const btnAddTimeBlockHeight = '1.5rem';
-    containerTimeBlocks.style.display = 'flex';
-    containerTimeBlocks.style.height = containerTimeBlocksHeight;
-    loop('titleBar', styleTitleBar);
-    function styleTitleBar(el) {
-      el.style.height = titleBarHeight;
-    }
-
-    loop('timeBottle', styleTimeBottle);
-    function styleTimeBottle(el) {
-      el.style.height = 'calc(100% - ' + titleBarHeight +')';
-    }
-
-    loop('timeBlocks', styleTimeBlocks);
-    function styleTimeBlocks(el) {
-      el.style.height = 'calc(100% - ' + btnAddTimeBlockHeight + ')';
-      el.style.textAlign = 'center';
-    }
-    loop('timeBlocksCarousel', contentifytimeBlocksCarousel);
-    function contentifytimeBlocksCarousel(el) {
-      for (let i = 1; i < 25; i++) {
-        let timeBlock = document.createElement('div');
-        timeBlock.innerText = i;
-        timeBlock.className = i +'-hours timeBlock';
-        el.appendChild(timeBlock)        
-      }
-    }
-    loop('btnAddTimeBlock', styleBtnAddTimeBlock);
-    function styleBtnAddTimeBlock(el) {
-      el.style.height = btnAddTimeBlockHeight;
-      el.style.width = '100%';
-      el.style.textAlign = 'center';
-    }
-  }
-  
   const containersArr = [
     'containerRoot',
     [
@@ -137,6 +65,172 @@ window.addEventListener('load', function () {
       'containerFooter'
     ],
   ];
+  function loop(className, modify) {
+    const elements = document.getElementsByClassName(className);
+    for (let i = 0; i < elements.length; i++) {
+      modify(elements[i]);
+    }
+  }
+  function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
+    let length = HTMLCollection.length;
+    console.log(length);
+    for (let i = 0; i < length; i++) {
+      let childEl = HTMLCollection[i];
+      console.log(childEl);
+      childEl.style.position = 'relative';
+      childEl.style.display = 'none';
+      // add event sensors
+      let sensorsContainer = document.createElement('div');
+      sensorsContainer.style.position = 'absolute';
+      sensorsContainer.style.top = arrDistanceTop;
+      sensorsContainer.style.left = arrDistanceLeft;
+      sensorsContainer.style.display = 'flex';
+      // created an arrow of its own! (can re-use later);
+      let arrowLength = arrSize;
+      let borderBottom = (arrowLength / 1.25) / arrowLength;
+      let borderTop = (arrowLength / 1.25) / arrowLength;
+      let arrowLengthToRem = arrowLength + 'rem';
+      let borderBottomToRem = borderBottom + 'rem';
+      let borderTopToRem = borderTop + 'rem';
+      let sensorsContainerWidth = arrowLength * 2.5;
+      let sensorsContainerWidthToRem = sensorsContainerWidth + 'rem';
+      sensorsContainer.style.width = sensorsContainerWidthToRem;
+      sensorsContainer.style.justifyContent = 'space-between';
+      if (i !== 0) {
+        let arrowSensorL = document.createElement('div');
+        arrowSensorL.style.cursor = 'pointer';
+        arrowSensorL.style.height = '5px';
+        arrowSensorL.style.width = '5px';
+        arrowSensorL.style.border = arrowLengthToRem + ' solid black';
+        arrowSensorL.style.borderLeft = '0 solid black';
+        arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
+        // 4/12 0,3333
+        arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
+        // 1/12 0,0833
+        arrowSensorL.onclick = function (e) {
+          childEl.style.display = 'none';
+          let index = i - 1;
+          let prevEl = HTMLCollection[index];
+          prevEl.style.display = 'block';
+          console.log(prevEl);
+        }
+        sensorsContainer.appendChild(arrowSensorL);
+      }
+
+      let arrowSensorR = document.createElement('div');
+      arrowSensorR.style.cursor = 'pointer';
+      arrowSensorR.style.height = '5px';
+      arrowSensorR.style.width = '5px';
+      arrowSensorR.style.border = arrowLengthToRem + ' solid black';
+      arrowSensorR.style.borderRight = '0 solid black';
+      arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
+      // 4/12 0,3333
+      arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
+      if (i + 1 < length) {
+        arrowSensorR.onclick = function (e) {
+          childEl.style.display = 'none';
+          let index = i + 1;
+          let nextEl = HTMLCollection[index];
+          nextEl.style.display = 'block';
+          console.log(nextEl);
+        }
+      } else {
+        arrowSensorR.style.display = 'none';
+      }
+      sensorsContainer.appendChild(arrowSensorR);
+      childEl.appendChild(sensorsContainer);
+
+      // on left n - 1`
+      // on right n + 1
+      // set current to hidden
+      // set new to visible
+    }
+    HTMLCollection[0].style.display = 'block';
+  }
+  function styleVisuals() {
+    loop('containerVisuals', styleContainerVisuals);
+    function styleContainerVisuals(el) {
+      el.style.display = 'flex';
+      el.style.flexDirection = 'column';
+      el.style.height = '100%';
+      for (let i = 0; i < el.children.length; i++) {
+        el.style.flex = '1';
+      }
+    }
+  }
+  function contentifyTimeBlocks() {
+    loop('titleBar', contentifyTitleBar);
+    function contentifyTitleBar(el) {
+      el
+      const input = document.createElement('input');
+      input.style.type = 'text';
+      el.appendChild(input);
+    }
+    loop('timeBlocksCarousel', contentifyTimeBlocksCarousel);
+    function contentifyTimeBlocksCarousel(el) {
+      for (let i = 1; i < 25; i++) {
+        let timeBlock = document.createElement('div');
+        timeBlock.innerText = i;
+        timeBlock.className = i + '-hours timeBlock';
+        el.appendChild(timeBlock)
+      }
+    }
+    loop('btnAddTimeBlock', contentifyBtnAddTimeBlock);
+    function contentifyBtnAddTimeBlock(el) {
+      el.innerText = '+';
+    }
+
+  }
+  function functionalizeTimeBlocks() {
+
+  }
+  function styleTimeBlocks() {
+    // const height = 'calc(50vh - ' + parseFloat(containerTopbarHeight) / 2 + 'rem)';
+    const titleHeight = '1.5rem';
+    const btnHeight = '1.5rem';
+    const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
+    containerTimeBlocks.style.display = 'flex';
+
+    loop('titleBar', styleTitleBar);
+
+
+    loop('titleBar', styleTitleBar);
+    function styleTitleBar(el) {
+      el.style.height = titleHeight;
+    }
+
+    loop('timeBottle', styleTimeBottle);
+    function styleTimeBottle(el) {
+      // el.style.height = 'calc(100% - ' + titleHeight +')';
+      el.style.display = 'flex';
+      el.style.flexDirection = 'column';
+      el.style.justifyContent = 'flex-end';
+    }
+
+    loop('timeBlocks', styleTimeBlocks);
+    function styleTimeBlocks(el) {
+      // el.style.height = 'calc(100% - ' + btnHeight + ')';
+      el.style.flex = '5';
+      // el.style.flexBasis = height;
+      el.style.textAlign = 'center';
+    }
+    loop('timeBlocksCarousel', styleTimeBlocksCarousel);
+    function styleTimeBlocksCarousel(el) {
+      el.style.flex = '2';
+
+      el.style.display = 'flex';
+      el.style.flexDirection = 'row';
+      el.style.justifyContent = 'center';
+      carouselify(el.children, '0', '1rem', '1.5');
+    }
+    loop('btnAddTimeBlock', styleBtnAddTimeBlock);
+    function styleBtnAddTimeBlock(el) {
+      el.style.flex = '1';
+      // el.style.height = btnHeight;
+      el.style.width = '100%';
+      el.style.textAlign = 'center';
+    }
+  }
   // pattern is: '...' is a container title, [...] is nesting stuff inside that container
   function assembleElements(arr, container) {
     arr.forEach(function (el, index) {
@@ -190,8 +284,9 @@ window.addEventListener('load', function () {
 
   // HOUR BLOCKS
   // // const timeBlocks = createTimeBlocks();
-  // containerTimeBlocks.style.height = containerTimeBlocksHeight;
+  // containerTimeBlocks.style.height = height;
   // containerTimeBlocks.appendChild(timeBlocks);
+  styleVisuals();
   contentifyTimeBlocks();
   functionalizeTimeBlocks();
   styleTimeBlocks();
@@ -380,82 +475,7 @@ window.addEventListener('load', function () {
       }
       return year;
     }
-    function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
-      let length = HTMLCollection.length;
-      console.log(length);
-      for (let i = 0; i < length; i++) {
-        let childEl = HTMLCollection[i];
-        console.log(childEl);
-        childEl.style.position = 'relative';
-        childEl.style.display = 'none';
-        // add event sensors
-        let sensorsContainer = document.createElement('div');
-        sensorsContainer.style.position = 'absolute';
-        sensorsContainer.style.top = arrDistanceTop;
-        sensorsContainer.style.left = arrDistanceLeft;
-        sensorsContainer.style.display = 'flex';
-        // created an arrow of its own! (can re-use later);
-        let arrowLength = arrSize;
-        let borderBottom = (arrowLength / 1.25) / arrowLength;
-        let borderTop = (arrowLength / 1.25) / arrowLength;
-        let arrowLengthToRem = arrowLength + 'rem';
-        let borderBottomToRem = borderBottom + 'rem';
-        let borderTopToRem = borderTop + 'rem';
-        let sensorsContainerWidth = arrowLength * 2.5;
-        let sensorsContainerWidthToRem = sensorsContainerWidth + 'rem';
-        sensorsContainer.style.width = sensorsContainerWidthToRem;
-        sensorsContainer.style.justifyContent = 'space-between';
-        if (i !== 0) {
-          let arrowSensorL = document.createElement('div');
-          arrowSensorL.style.cursor = 'pointer';
-          arrowSensorL.style.height = '5px';
-          arrowSensorL.style.width = '5px';
-          arrowSensorL.style.border = arrowLengthToRem + ' solid black';
-          arrowSensorL.style.borderLeft = '0 solid black';
-          arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
-          // 4/12 0,3333
-          arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
-          // 1/12 0,0833
-          arrowSensorL.onclick = function (e) {
-            childEl.style.display = 'none';
-            let index = i - 1;
-            let prevEl = HTMLCollection[index];
-            prevEl.style.display = 'block';
-            console.log(prevEl);
-          }
-          sensorsContainer.appendChild(arrowSensorL);
-        }
 
-        let arrowSensorR = document.createElement('div');
-        arrowSensorR.style.cursor = 'pointer';
-        arrowSensorR.style.height = '5px';
-        arrowSensorR.style.width = '5px';
-        arrowSensorR.style.border = arrowLengthToRem + ' solid black';
-        arrowSensorR.style.borderRight = '0 solid black';
-        arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
-        // 4/12 0,3333
-        arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
-        if (i + 1 < length) {
-          arrowSensorR.onclick = function (e) {
-            childEl.style.display = 'none';
-            let index = i + 1;
-            let nextEl = HTMLCollection[index];
-            nextEl.style.display = 'block';
-            console.log(nextEl);
-          }
-        } else {
-          arrowSensorR.style.display = 'none';
-        }
-        sensorsContainer.appendChild(arrowSensorR);
-        childEl.appendChild(sensorsContainer);
-
-        // on left n - 1`
-        // on right n + 1
-        // set current to hidden
-        // set new to visible
-      }
-      HTMLCollection[0].style.display = 'block';
-    }
     let year = contentCreateYear();
     carouselify(year.children, '0.5rem', '7rem', 3);
     let containeryear = document.createElement('div');
