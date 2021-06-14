@@ -51,22 +51,102 @@ window.addEventListener('load', function () {
     'containerTimeBottle', timeBottle];
   const containersArr = [
     'containerRoot',
-    [
-      'containerTopbar',
-      'containerCenter',
+    ['containerTopbar', 'containerCenter',
       ['containerVisuals',
-        ['containerTimeBlocks',
-          containerTimeBottle,
-          'containerCalendar'],
-        'containerRightbar',
-      ],
-      'containerFooter'
+        ['containerTimeBlocks', containerTimeBottle, 'containerCalendar'], 'containerRightbar',
+      ], 'containerFooter'
     ],
   ];
+
   function loop(className, modify) {
     const elements = document.getElementsByClassName(className);
     for (let i = 0; i < elements.length; i++) {
       modify(elements[i]);
+    }
+  }
+  function styleVisuals() {
+    loop('containerVisuals', styleContainerVisuals);
+    function styleContainerVisuals(el) {
+      el.style.display = 'flex';
+      el.style.flexDirection = 'column';
+      el.style.height = heightVisuals;
+    }
+  }
+
+  function contentifyTimeBlocks() {
+    loop('titleBar', contentifyTitleBar);
+    function contentifyTitleBar(el) {
+      el
+      const input = document.createElement('input');
+      input.style.type = 'text';
+      el.appendChild(input);
+    }
+    loop('timeBlocksCarousel', contentifyTimeBlocksCarousel);
+    function contentifyTimeBlocksCarousel(el) {
+      for (let i = 1; i < 25; i++) {
+        let timeBlock = document.createElement('div');
+        timeBlock.innerText = i;
+        timeBlock.className = i + '-hours timeBlock';
+        el.appendChild(timeBlock)
+      }
+    }
+    loop('btnAddTimeBlock', contentifyBtnAddTimeBlock);
+    function contentifyBtnAddTimeBlock(el) {
+      el.innerText = '+';
+    }
+
+  }
+  function functionalizeTimeBlocks() {
+
+  }
+  function styleTimeBlocks() {
+    const titleHeight = '1.5rem';
+    const btnHeight = '1.5rem';
+    const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
+    containerTimeBlocks.style.flex = '1';
+    containerTimeBlocks.style.display = 'flex';
+
+    loop('titleBar', styleTitleBar);
+    function styleTitleBar(el) {
+      el.style.height = titleHeight;
+    }
+
+    loop('timeBottle', styleTimeBottle);
+    function styleTimeBottle(el) {
+      // el.style.height = 'calc(100% - ' + titleHeight +')';
+      el.style.display = 'flex';
+      el.style.flexDirection = 'column';
+      el.style.justifyContent = 'flex-end';
+    }
+
+    loop('timeBlocks', styleTimeBlocks);
+    function styleTimeBlocks(el) {
+      // el.style.height = 'calc(100% - ' + btnHeight + ')';
+      el.style.flex = '5';
+      // el.style.flexBasis = height;
+      el.style.textAlign = 'center';
+    }
+    loop('timeBlocksCarousel', styleTimeBlocksCarousel);
+    function styleTimeBlocksCarousel(el) {
+      el.style.flex = '2';
+
+      el.style.display = 'flex';
+      el.style.flexDirection = 'row';
+      el.style.justifyContent = 'center';
+      carouselify(el.children, '0', '1rem', '1.5');
+    }
+    loop('btnAddTimeBlock', styleBtnAddTimeBlock);
+    function styleBtnAddTimeBlock(el) {
+      el.style.flex = '1';
+      // el.style.height = btnHeight;
+      el.style.width = '100%';
+      el.style.textAlign = 'center';
+    }
+  }
+  function styleCalendar() {
+    loop('containerCalendar', styleContainerCalendar);
+    function styleContainerCalendar(el) {
+      el.style.flex = '1';
     }
   }
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
@@ -144,95 +224,7 @@ window.addEventListener('load', function () {
       // set new to visible
     }
     HTMLCollection[0].style.display = 'block';
-  }
-  function styleVisuals() {
-    loop('containerVisuals', styleContainerVisuals);
-    function styleContainerVisuals(el) {
-      el.style.display = 'flex';
-      el.style.flexDirection = 'column';
-      el.style.height = heightVisuals;
-    }
-  }
-  function contentifyTimeBlocks() {
-    loop('titleBar', contentifyTitleBar);
-    function contentifyTitleBar(el) {
-      el
-      const input = document.createElement('input');
-      input.style.type = 'text';
-      el.appendChild(input);
-    }
-    loop('timeBlocksCarousel', contentifyTimeBlocksCarousel);
-    function contentifyTimeBlocksCarousel(el) {
-      for (let i = 1; i < 25; i++) {
-        let timeBlock = document.createElement('div');
-        timeBlock.innerText = i;
-        timeBlock.className = i + '-hours timeBlock';
-        el.appendChild(timeBlock)
-      }
-    }
-    loop('btnAddTimeBlock', contentifyBtnAddTimeBlock);
-    function contentifyBtnAddTimeBlock(el) {
-      el.innerText = '+';
-    }
-
-  }
-  function functionalizeTimeBlocks() {
-
-  }
-  function styleTimeBlocks() {
-    const titleHeight = '1.5rem';
-    const btnHeight = '1.5rem';
-    const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
-    containerTimeBlocks.style.flex = '1';
-    containerTimeBlocks.style.display = 'flex';
-
-    loop('titleBar', styleTitleBar);
-
-    loop('titleBar', styleTitleBar);
-    function styleTitleBar(el) {
-      el.style.height = titleHeight;
-    }
-
-    loop('timeBottle', styleTimeBottle);
-    function styleTimeBottle(el) {
-      // el.style.height = 'calc(100% - ' + titleHeight +')';
-      el.style.display = 'flex';
-      el.style.flexDirection = 'column';
-      el.style.justifyContent = 'flex-end';
-    }
-
-    loop('timeBlocks', styleTimeBlocks);
-    function styleTimeBlocks(el) {
-      // el.style.height = 'calc(100% - ' + btnHeight + ')';
-      el.style.flex = '5';
-      // el.style.flexBasis = height;
-      el.style.textAlign = 'center';
-    }
-    loop('timeBlocksCarousel', styleTimeBlocksCarousel);
-    function styleTimeBlocksCarousel(el) {
-      el.style.flex = '2';
-
-      el.style.display = 'flex';
-      el.style.flexDirection = 'row';
-      el.style.justifyContent = 'center';
-      carouselify(el.children, '0', '1rem', '1.5');
-    }
-    loop('btnAddTimeBlock', styleBtnAddTimeBlock);
-    function styleBtnAddTimeBlock(el) {
-      el.style.flex = '1';
-      // el.style.height = btnHeight;
-      el.style.width = '100%';
-      el.style.textAlign = 'center';
-    }
-  }
-  function styleCalendar() {
-    loop('containerCalendar', styleContainerCalendar);
-    function styleContainerCalendar(el) {
-      el.style.flex = '1';
-    }
-  }
-  // pattern is: '...' is a container title, [...] is nesting stuff inside that container
-  function assembleElements(arr, container) {
+  } function assembleElements(arr, container) {
     arr.forEach(function (el, index) {
       if (typeof el == 'object') {
         let name = arr[index - 1] || container;
@@ -845,44 +837,44 @@ function createTopBar() {
   let title_color = '#ffffff';
   let title_fontSize = '1.5rem';
   let title_padding = '0.5rem';
+
   let topBar = document.createElement('div');
   topBar.id = 'topBar';
   topBar.style.display = 'flex';
   topBar.style.background = title_bgColor;
   topBar.style.height = '100%';
-  let titleTitle = document.createElement('div');
-  titleTitle.style.background = title_bgColor;
-  titleTitle.style.height = title_height;
-  titleTitle.style.color = '#ffffff';
+
+  let title = document.createElement('div');
+  title.style.background = title_bgColor;
+  title.style.height = title_height;
+  title.style.color = '#ffffff';
+
   let spanOne = document.createElement('span');
   spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
-  titleTitle.appendChild(spanOne);
-  // let colors = ['blue', 'purple', 'green', 'grey', 'yellow', 'orange', 'red'];
+  title.appendChild(spanOne);
+
   let letters = ('project').split('');
   for (let i = 0; i < letters.length; i++) {
     let span = document.createElement('span');
     span.innerText = letters[i].toUpperCase();
     span.style.color = colors[i];
     span.style.letterSpacing = '3px';
-    titleTitle.appendChild(span);
+    title.appendChild(span);
   }
-  titleTitle.style.padding = title_padding
-  titleTitle.style.fontSize = title_fontSize;
-  titleTitle.style.borderRight = '1px solid #ffffff';
-  let aboutPage = document.createElement('div');
-  aboutPage.innerText = 'ABOUT';
-  aboutPage.style.color = title_color;
-  aboutPage.style.padding = title_padding;
-  aboutPage.style.fontSize = title_fontSize;
-  topBar.appendChild(titleTitle);
-  topBar.appendChild(aboutPage);
+
+  title.style.padding = title_padding
+  title.style.fontSize = title_fontSize;
+  title.style.borderRight = '1px solid #ffffff';
+
+  let about = document.createElement('div');
+  about.innerText = 'ABOUT';
+  about.style.color = title_color;
+  about.style.padding = title_padding;
+  about.style.fontSize = title_fontSize;
+
+  topBar.appendChild(title);
+  topBar.appendChild(about);
   return topBar;
-}
-const VALUES_MenuSharedCSS = {
-  height_menuWhole: '9rem',
-  width_menuSmallerBlock: '9rem',
-  space_TopTo1stElement: '1.5rem',
-  space_BottomTo1stElement: '0.25rem',
 }
 function createMonth(monthNum) {
   const monthNames = getMonthNames();
