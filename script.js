@@ -49,17 +49,49 @@ window.addEventListener('load', function () {
   const timeBottle = ['timeBottle', bottle,
     'timeBottle', bottle,
     'timeBottle', bottle];
-  const visuals = ['timeElements', timeBottle, 'calendar'];
+  const visuals = ['timeBlocks', timeBottle, 'calendar'];
   const DATA_DOM = [
     'root',
     ['topbar',
       'main',
       ['timeVisuals',
-        visuals, 'menuSegment',
+        visuals, 'menuBlock',
       ],
       'footer'
     ],
   ];
+  function assembleDOM(arr, container) {
+    arr.forEach(function (el, index) {
+      if (typeof el == 'object') {
+        let name = arr[index - 1] || container;
+        let nestedContainers = document.getElementsByClassName(name);
+        let nestedContainer = (nestedContainers.length > 1) ?
+          nestedContainers[nestedContainers.length - 1] : nestedContainers[0];
+        let nestedArr = el;
+        assembleDOM(nestedArr, nestedContainer);
+      } else {
+        let div = document.createElement('div');
+        div.className = el;
+        // comment / uncomment
+        optional_borderify(div);
+        // optional_textMark(div, el);
+        container.appendChild(div);
+      }
+    });
+    function optional_borderify(el) {
+      el.style.border = '1px solid black';
+    }
+    function optional_greyifyBg(el) {
+      el.style.background = 'grey';
+    }
+    function optional_textMark(el, text) {
+      let span = document.createElement('span');
+      // span.style.position = 'absolute';
+      span.style.top = '1rem'; span.style.left = '1rem'; span.innerText = text; span.style.color = 'blue'; span.style.letterSpacing = '1px'; span.style.fontSize = '2.5rem';
+      el.style.position = 'relative';
+      el.appendChild(span);
+    }
+  }
 
   function loop(className, modify) {
     const elements = document.getElementsByClassName(className);
@@ -67,9 +99,10 @@ window.addEventListener('load', function () {
       modify(elements[i]);
     }
   }
-  function styleVisuals() {
-    loop('timeVisuals', styletimeVisuals);
-    function styletimeVisuals(el) {
+
+  function styleTimeVisuals() {
+    loop('timeVisuals', styleTimeVisuals);
+    function styleTimeVisuals(el) {
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
       el.style.height = heightVisuals;
@@ -105,9 +138,9 @@ window.addEventListener('load', function () {
   function styleblocks() {
     const titleHeight = '1.5rem';
     const btnHeight = '1.5rem';
-    const timeElements = document.getElementsByClassName('timeElements')[0];
-    timeElements.style.flex = '1';
-    timeElements.style.display = 'flex';
+    const timeBlocks = document.getElementsByClassName('timeBlocks')[0];
+    timeBlocks.style.flex = '1';
+    timeBlocks.style.display = 'flex';
 
     loop('titleBar', styleTitleBar);
     function styleTitleBar(el) {
@@ -218,46 +251,9 @@ window.addEventListener('load', function () {
     }
     HTMLCollection[0].style.display = 'block';
   }
-  function assembleElements(arr, container) {
-    arr.forEach(function (el, index) {
-      if (typeof el == 'object') {
-        let name = arr[index - 1] || container;
-        let nestedContainers = document.getElementsByClassName(name);
-        let nestedContainer = (nestedContainers.length > 1) ?
-          nestedContainers[nestedContainers.length - 1] : nestedContainers[0];
-        let nestedArr = el;
-        assembleElements(nestedArr, nestedContainer);
-      } else {
-        let div = document.createElement('div');
-        div.className = el;
-        // comment / uncomment
-        optional_borderify(div);
-        // optional_textMark(div, el);
-        container.appendChild(div);
-      }
-    });
-    function optional_borderify(el) {
-      el.style.border = '1px solid black';
-    }
-    function optional_greyifyBg(el) {
-      el.style.background = 'grey';
-    }
-    function optional_textMark(el, text) {
-      let span = document.createElement('span');
-      // span.style.position = 'absolute';
-      span.style.top = '1rem';
-      span.style.left = '1rem';
-      span.innerText = text;
-      span.style.color = 'blue';
-      span.style.letterSpacing = '1px';
-      span.style.fontSize = '2.5rem';
 
-      el.style.position = 'relative';
-      el.appendChild(span);
-    }
-  }
   let app = document.getElementById('app');
-  assembleElements(DATA_DOM, app);
+  assembleDOM(DATA_DOM, app);
   const topbar = document.getElementsByClassName('topbar')[0];
   const main = document.getElementsByClassName('main')[0];
   const timeVisuals = document.getElementsByClassName('timeVisuals')[0];
@@ -267,7 +263,7 @@ window.addEventListener('load', function () {
   main.style.display = 'flex';
   timeVisuals.style.flex = '3';
 
-  styleVisuals();
+  styleTimeVisuals();
   contentifyblocks();
   functionalizeblocks();
   styleblocks();
@@ -471,10 +467,10 @@ window.addEventListener('load', function () {
   }
 
   // RIGHTBAR MENU
-  let menuSegment = document.getElementsByClassName('menuSegment')[0];
-  menuSegment.style.flex = '1';
+  let menuBlock = document.getElementsByClassName('menuBlock')[0];
+  menuBlock.style.flex = '1';
   let menu = createMenu();
-  menuSegment.appendChild(menu);
+  menuBlock.appendChild(menu);
   let root = document.getElementsByClassName('root')[0];
 
 
