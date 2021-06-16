@@ -54,9 +54,10 @@ window.addEventListener('load', function () {
     'containerRoot',
     ['containerTopbar',
       'containerMain',
-      ['containerVisuals',
+      ['containerTimeVisuals',
         visuals, 'containerRightbar',
-      ], 'containerFooter'
+      ],
+      'containerFooter'
     ],
   ];
 
@@ -67,8 +68,8 @@ window.addEventListener('load', function () {
     }
   }
   function styleVisuals() {
-    loop('containerVisuals', styleContainerVisuals);
-    function styleContainerVisuals(el) {
+    loop('containerTimeVisuals', stylecontainerTimeVisuals);
+    function stylecontainerTimeVisuals(el) {
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
       el.style.height = heightVisuals;
@@ -259,12 +260,12 @@ window.addEventListener('load', function () {
   assembleElements(containersArr, main);
   const containerTopbar = document.getElementsByClassName('containerTopbar')[0];
   const containerMain = document.getElementsByClassName('containerMain')[0];
-  const containerVisuals = document.getElementsByClassName('containerVisuals')[0];
+  const containerTimeVisuals = document.getElementsByClassName('containerTimeVisuals')[0];
   const topBar = createTopBar();
   containerTopbar.appendChild(topBar);
   containerTopbar.style.height = heightTopbar;
   containerMain.style.display = 'flex';
-  containerVisuals.style.flex = '3';
+  containerTimeVisuals.style.flex = '3';
 
   styleVisuals();
   contentifyTimeBlocks();
@@ -481,9 +482,9 @@ window.addEventListener('load', function () {
     //// CONTAINER VISUALS
     let main = document.createElement('div');
 
-    let containerVisuals = document.createElement('div');
-    containerVisuals.id = 'containerVisuals';
-    containerVisuals.style.width = 'calc(100% - ' + rightBarWidth + ')';
+    let containerTimeVisuals = document.createElement('div');
+    containerTimeVisuals.id = 'containerTimeVisuals';
+    containerTimeVisuals.style.width = 'calc(100% - ' + rightBarWidth + ')';
     ///// CONTAINER resultTimeBlocks
     let containerResultTimeBlocks = document.createElement('div');
     containerResultTimeBlocks.id = 'containerResultTimeBlocks';
@@ -721,9 +722,9 @@ window.addEventListener('load', function () {
     ///// CONTAINER Calendar CONCLUDE
 
 
-    containerVisuals.appendChild(containerResultTimeBlocks);
-    containerVisuals.appendChild(containerCalendar);
-    // containerMain.appendChild(containerVisuals);
+    containerTimeVisuals.appendChild(containerResultTimeBlocks);
+    containerTimeVisuals.appendChild(containerCalendar);
+    // containerMain.appendChild(containerTimeVisuals);
     //// CONTAINER VISUALS CONCLUDE
     //// CONTAINER MENU
     let containerMenu = document.createElement('div');
