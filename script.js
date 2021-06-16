@@ -49,7 +49,7 @@ window.addEventListener('load', function () {
   const timeBottle = ['timeBottle', bottle,
     'timeBottle', bottle,
     'timeBottle', bottle];
-  const visuals = ['timeElements', timeBottle, 'containerCalendar'];
+  const visuals = ['timeElements', timeBottle, 'calendar'];
   const DATA_DOM = [
     'root',
     ['topbar',
@@ -147,8 +147,8 @@ window.addEventListener('load', function () {
     }
   }
   function styleCalendar() {
-    loop('containerCalendar', styleContainerCalendar);
-    function styleContainerCalendar(el) {
+    loop('calendar', stylecalendar);
+    function stylecalendar(el) {
       el.style.flex = '1';
     }
   }
@@ -274,22 +274,22 @@ window.addEventListener('load', function () {
   styleCalendar();
 
   // CALENDAR
-  const containerCalendar = document.getElementsByClassName('containerCalendar')[0];
+  const calendar = document.getElementsByClassName('calendar')[0];
   const calendarCarousel = createCalendarCarousel();
-  containerCalendar.style.flex = '1';
+  calendar.style.flex = '1';
   calendarCarousel.style.height = '100%';
-  containerCalendar.appendChild(calendarCarousel);
+  calendar.appendChild(calendarCarousel);
   function createCalendarCarousel() {
     let calendarCarousel = document.createElement('div');
     calendarCarousel.id = 'calendarCarousel';
     calendarCarousel.style.display = 'flex';
     calendarCarousel.style.height = '100%';
 
-    let calendar = document.createElement('div');
-    calendar.style.display = 'flex';
-    calendar.style.flex = '1';
-    calendar.style.height = heightCalendar;
-    calendar.style.width = '100%';
+    let table = document.createElement('div');
+    table.style.display = 'flex';
+    table.style.flex = '1';
+    table.style.height = heightCalendar;
+    table.style.width = '100%';
 
     function contentCreateYear() {
       const year = document.createElement('div');
@@ -465,8 +465,8 @@ window.addEventListener('load', function () {
     containeryear.style.display = 'flex';
     containeryear.style.flex = '1';
     containeryear.appendChild(year);
-    calendar.appendChild(year);
-    calendarCarousel.appendChild(calendar);
+    table.appendChild(year);
+    calendarCarousel.appendChild(table);
     return calendarCarousel;
   }
 
@@ -618,22 +618,22 @@ window.addEventListener('load', function () {
     ///// CONTAINER resultblocks CONCLUDE
 
     ///// CONTAINER Calendar
-    let containerCalendar = document.createElement('div');
-    containerCalendar.id = 'containerCalendar';
-    containerCalendar.style.display = 'flex';
+    let calendar = document.createElement('div');
+    calendar.id = 'calendar';
+    calendar.style.display = 'flex';
 
 
 
 
-    function createCalendar() {
-      let calendar = document.createElement('div');
-      calendar.style.display = 'flex';
-      calendar.style.flex = '1';
-      calendar.style.height = '45vh';
-      calendar.style.width = '100%';
-      return calendar;
-    }
-    let calendar = createCalendar();
+    // function createCalendar() {
+    //   let calendar = document.createElement('div');
+    //   calendar.style.display = 'flex';
+    //   calendar.style.flex = '1';
+    //   calendar.style.height = '45vh';
+    //   calendar.style.width = '100%';
+    //   return calendar;
+    // }
+    // let calendar = createCalendar();
     // let et
     // let year = createContainerYear();
     function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
@@ -718,12 +718,12 @@ window.addEventListener('load', function () {
     containeryear.style.flex = '1';
     containeryear.appendChild(year);
     calendar.appendChild(containeryear);
-    containerCalendar.appendChild(calendar);
+    calendar.appendChild(calendar);
     ///// CONTAINER Calendar CONCLUDE
 
 
     timeVisuals.appendChild(containerResultblocks);
-    timeVisuals.appendChild(containerCalendar);
+    timeVisuals.appendChild(calendar);
     // main.appendChild(timeVisuals);
     //// CONTAINER VISUALS CONCLUDE
     //// CONTAINER MENU
