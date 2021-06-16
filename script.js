@@ -121,7 +121,7 @@ window.addEventListener('load', function () {
     loop('titleBar', content_titleBar);
     loop('blocksCarousel', content_blocksCarousel);
     loop('addBlock', content_addBlock);
-    
+
     // S T Y L E
     function style_timeVisuals(el) {
       el.style.display = 'flex';
@@ -171,8 +171,6 @@ window.addEventListener('load', function () {
     }
     style_blocks();
   }
-
-
 
 
   function styleCalendar() {
