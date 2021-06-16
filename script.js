@@ -49,11 +49,13 @@ window.addEventListener('load', function () {
   const containerTimeBottle = ['containerTimeBottle', timeBottle,
     'containerTimeBottle', timeBottle,
     'containerTimeBottle', timeBottle];
+  const visuals = ['containerTimeBlocks', containerTimeBottle, 'containerCalendar'];
   const containersArr = [
     'containerRoot',
-    ['containerTopbar', 'containerCenter',
+    ['containerTopbar',
+      'containerMain',
       ['containerVisuals',
-        ['containerTimeBlocks', containerTimeBottle, 'containerCalendar'], 'containerRightbar',
+        visuals, 'containerRightbar',
       ], 'containerFooter'
     ],
   ];
@@ -157,13 +159,11 @@ window.addEventListener('load', function () {
       console.log(childEl);
       childEl.style.position = 'relative';
       childEl.style.display = 'none';
-      // add event sensors
       let sensorsContainer = document.createElement('div');
       sensorsContainer.style.position = 'absolute';
       sensorsContainer.style.top = arrDistanceTop;
       sensorsContainer.style.left = arrDistanceLeft;
       sensorsContainer.style.display = 'flex';
-      // created an arrow of its own! (can re-use later);
       let arrowLength = arrSize;
       let borderBottom = (arrowLength / 1.25) / arrowLength;
       let borderTop = (arrowLength / 1.25) / arrowLength;
@@ -182,9 +182,7 @@ window.addEventListener('load', function () {
         arrowSensorL.style.border = arrowLengthToRem + ' solid black';
         arrowSensorL.style.borderLeft = '0 solid black';
         arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
-        // 4/12 0,3333
         arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
-        // 1/12 0,0833
         arrowSensorL.onclick = function (e) {
           childEl.style.display = 'none';
           let index = i - 1;
@@ -202,7 +200,6 @@ window.addEventListener('load', function () {
       arrowSensorR.style.border = arrowLengthToRem + ' solid black';
       arrowSensorR.style.borderRight = '0 solid black';
       arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
-      // 4/12 0,3333
       arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
       if (i + 1 < length) {
         arrowSensorR.onclick = function (e) {
@@ -217,14 +214,10 @@ window.addEventListener('load', function () {
       }
       sensorsContainer.appendChild(arrowSensorR);
       childEl.appendChild(sensorsContainer);
-
-      // on left n - 1`
-      // on right n + 1
-      // set current to hidden
-      // set new to visible
     }
     HTMLCollection[0].style.display = 'block';
-  } function assembleElements(arr, container) {
+  }
+  function assembleElements(arr, container) {
     arr.forEach(function (el, index) {
       if (typeof el == 'object') {
         let name = arr[index - 1] || container;
@@ -265,20 +258,14 @@ window.addEventListener('load', function () {
   let main = document.getElementById('app');
   assembleElements(containersArr, main);
   const containerTopbar = document.getElementsByClassName('containerTopbar')[0];
-  const topBar = createTopBar();
-  containerTopbar.style.height = heightTopbar;
-  containerTopbar.appendChild(topBar);
-
-  const containerCenter = document.getElementsByClassName('containerCenter')[0];
-  containerCenter.style.display = 'flex';
-
+  const containerMain = document.getElementsByClassName('containerMain')[0];
   const containerVisuals = document.getElementsByClassName('containerVisuals')[0];
+  const topBar = createTopBar();
+  containerTopbar.appendChild(topBar);
+  containerTopbar.style.height = heightTopbar;
+  containerMain.style.display = 'flex';
   containerVisuals.style.flex = '3';
 
-  // HOUR BLOCKS
-  // // const timeBlocks = createTimeBlocks();
-  // containerTimeBlocks.style.height = height;
-  // containerTimeBlocks.appendChild(timeBlocks);
   styleVisuals();
   contentifyTimeBlocks();
   functionalizeTimeBlocks();
@@ -471,7 +458,7 @@ window.addEventListener('load', function () {
     }
 
     let year = contentCreateYear();
-    carouselify(year.children, '0.5rem', '7rem', 3);
+    carouselify(year.children);
     let containeryear = document.createElement('div');
     containeryear.id = 'containeryear';
     containeryear.style.display = 'flex';
@@ -875,21 +862,6 @@ function createTopBar() {
   topBar.appendChild(title);
   topBar.appendChild(about);
   return topBar;
-}
-function createMonth(monthNum) {
-  const monthNames = getMonthNames();
-  var month = document.createElement('div');
-  month.classList.add('month');
-  month.classList.add('month');
-  month.classList.add([monthNames[monthNum]]);
-  monthContainer.style.display = 'flex';
-  document.getElementById('containerRoot').appendChild(monthContainer);
-  // createSidewaysTitle(monthNames[monthNum], monthNum);
-  createWeeksContainer(monthNum);
-  createWeek(1, monthNum);
-  createWeek(2, monthNum);
-  createWeek(3, monthNum);
-  createWeek(4, monthNum);
 }
 function createMenu() {
   // let width = '30rem';
