@@ -92,33 +92,21 @@ window.addEventListener('load', function () {
       el.appendChild(span);
     }
   }
-
   function loop(className, modify) {
     const elements = document.getElementsByClassName(className);
     for (let i = 0; i < elements.length; i++) {
       modify(elements[i]);
     }
   }
-
-  function styleTimeVisuals() {
-    loop('timeVisuals', styleTimeVisuals);
-    function styleTimeVisuals(el) {
-      el.style.display = 'flex';
-      el.style.flexDirection = 'column';
-      el.style.height = heightVisuals;
-    }
-  }
-
-  function contentifyblocks() {
-    loop('titleBar', contentifyTitleBar);
-    function contentifyTitleBar(el) {
+  function cr8_timeVisuals() {
+    // C O N T E N T
+    function content_titleBar(el) {
       el
       const input = document.createElement('input');
       input.style.type = 'text';
       el.appendChild(input);
     }
-    loop('blocksCarousel', contentifyblocksCarousel);
-    function contentifyblocksCarousel(el) {
+    function content_blocksCarousel(el) {
       for (let i = 1; i < 25; i++) {
         let timeBlock = document.createElement('div');
         timeBlock.innerText = i;
@@ -126,65 +114,75 @@ window.addEventListener('load', function () {
         el.appendChild(timeBlock)
       }
     }
-    loop('addBlock', contentifyaddBlock);
-    function contentifyaddBlock(el) {
+    function content_addBlock(el) {
       el.innerText = '+';
     }
-
-  }
-  function functionalizeblocks() {
-
-  }
-  function styleblocks() {
-    const titleHeight = '1.5rem';
-    const btnHeight = '1.5rem';
-    const timeBlocks = document.getElementsByClassName('timeBlocks')[0];
-    timeBlocks.style.flex = '1';
-    timeBlocks.style.display = 'flex';
-
-    loop('titleBar', styleTitleBar);
-    function styleTitleBar(el) {
-      el.style.height = titleHeight;
-    }
-
-    loop('bottle', stylebottle);
-    function stylebottle(el) {
-      // el.style.height = 'calc(100% - ' + titleHeight +')';
+    loop('timeVisuals', style_timeVisuals);
+    loop('titleBar', content_titleBar);
+    loop('blocksCarousel', content_blocksCarousel);
+    loop('addBlock', content_addBlock);
+    
+    // S T Y L E
+    function style_timeVisuals(el) {
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
-      el.style.justifyContent = 'flex-end';
+      el.style.height = heightVisuals;
     }
-
-    loop('blocks', styleblocks);
-    function styleblocks(el) {
-      // el.style.height = 'calc(100% - ' + btnHeight + ')';
-      el.style.flex = '5';
-      // el.style.flexBasis = height;
-      el.style.textAlign = 'center';
+    function style_blocks() {
+      const titleHeight = '1.5rem';
+      const btnHeight = '1.5rem';
+      const timeBlocks = document.getElementsByClassName('timeBlocks')[0];
+      timeBlocks.style.flex = '1';
+      timeBlocks.style.display = 'flex';
+      function style_titleBar(el) {
+        el.style.height = titleHeight;
+      }
+      function style_bottle(el) {
+        // el.style.height = 'calc(100% - ' + titleHeight +')';
+        el.style.display = 'flex';
+        el.style.flexDirection = 'column';
+        el.style.justifyContent = 'flex-end';
+      }
+      function style_blocks(el) {
+        // el.style.height = 'calc(100% - ' + btnHeight + ')';
+        el.style.flex = '5';
+        // el.style.flexBasis = height;
+        el.style.textAlign = 'center';
+      }
+      function style_blocksCarousel(el) {
+        el.style.flex = '2';
+  
+        el.style.display = 'flex';
+        el.style.flexDirection = 'row';
+        el.style.justifyContent = 'center';
+        carouselify(el.children, '0', '1rem', '1.5');
+      }
+      function style_addBlock(el) {
+        el.style.flex = '1';
+        // el.style.height = btnHeight;
+        el.style.width = '100%';
+        el.style.textAlign = 'center';
+      }
+      loop('titleBar', style_titleBar);
+      loop('bottle', style_bottle);
+      loop('blocks', style_blocks);
+      loop('blocksCarousel', style_blocksCarousel);
+      loop('addBlock', style_addBlock);
     }
-    loop('blocksCarousel', styleblocksCarousel);
-    function styleblocksCarousel(el) {
-      el.style.flex = '2';
-
-      el.style.display = 'flex';
-      el.style.flexDirection = 'row';
-      el.style.justifyContent = 'center';
-      carouselify(el.children, '0', '1rem', '1.5');
-    }
-    loop('addBlock', styleaddBlock);
-    function styleaddBlock(el) {
-      el.style.flex = '1';
-      // el.style.height = btnHeight;
-      el.style.width = '100%';
-      el.style.textAlign = 'center';
-    }
+    style_blocks();
   }
+
+
+
+
   function styleCalendar() {
     loop('calendar', stylecalendar);
     function stylecalendar(el) {
       el.style.flex = '1';
     }
   }
+
+
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
     let length = HTMLCollection.length;
     console.log(length);
@@ -262,11 +260,7 @@ window.addEventListener('load', function () {
   topbar.style.height = heightTopbar;
   main.style.display = 'flex';
   timeVisuals.style.flex = '3';
-
-  styleTimeVisuals();
-  contentifyblocks();
-  functionalizeblocks();
-  styleblocks();
+  cr8_timeVisuals();
   styleCalendar();
 
   // CALENDAR
