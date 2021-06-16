@@ -44,20 +44,20 @@ for (let i = 1; i <= 12; i++) {
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
-  const timeBlocks = ['timeBlocks', 'timeBlocksCarousel', 'btnAddTimeBlock'];
-  const timeBottle = ['titleBar', 'timeBottle', timeBlocks];
-  const containerTimeBottle = ['containerTimeBottle', timeBottle,
-    'containerTimeBottle', timeBottle,
-    'containerTimeBottle', timeBottle];
-  const visuals = ['containerTimeBlocks', containerTimeBottle, 'containerCalendar'];
+  const blocks = ['blocks', 'blocksCarousel', 'addBlock'];
+  const bottle = ['titleBar', 'bottle', blocks];
+  const timeBottle = ['timeBottle', bottle,
+    'timeBottle', bottle,
+    'timeBottle', bottle];
+  const visuals = ['timeElements', timeBottle, 'containerCalendar'];
   const DATA_DOM = [
     'root',
     ['topbar',
       'main',
-      ['containerTimeVisuals',
-        visuals, 'containerRightbar',
+      ['timeVisuals',
+        visuals, 'menuSegment',
       ],
-      'containerFooter'
+      'footer'
     ],
   ];
 
@@ -68,15 +68,15 @@ window.addEventListener('load', function () {
     }
   }
   function styleVisuals() {
-    loop('containerTimeVisuals', stylecontainerTimeVisuals);
-    function stylecontainerTimeVisuals(el) {
+    loop('timeVisuals', styletimeVisuals);
+    function styletimeVisuals(el) {
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
       el.style.height = heightVisuals;
     }
   }
 
-  function contentifyTimeBlocks() {
+  function contentifyblocks() {
     loop('titleBar', contentifyTitleBar);
     function contentifyTitleBar(el) {
       el
@@ -84,8 +84,8 @@ window.addEventListener('load', function () {
       input.style.type = 'text';
       el.appendChild(input);
     }
-    loop('timeBlocksCarousel', contentifyTimeBlocksCarousel);
-    function contentifyTimeBlocksCarousel(el) {
+    loop('blocksCarousel', contentifyblocksCarousel);
+    function contentifyblocksCarousel(el) {
       for (let i = 1; i < 25; i++) {
         let timeBlock = document.createElement('div');
         timeBlock.innerText = i;
@@ -93,44 +93,44 @@ window.addEventListener('load', function () {
         el.appendChild(timeBlock)
       }
     }
-    loop('btnAddTimeBlock', contentifyBtnAddTimeBlock);
-    function contentifyBtnAddTimeBlock(el) {
+    loop('addBlock', contentifyaddBlock);
+    function contentifyaddBlock(el) {
       el.innerText = '+';
     }
 
   }
-  function functionalizeTimeBlocks() {
+  function functionalizeblocks() {
 
   }
-  function styleTimeBlocks() {
+  function styleblocks() {
     const titleHeight = '1.5rem';
     const btnHeight = '1.5rem';
-    const containerTimeBlocks = document.getElementsByClassName('containerTimeBlocks')[0];
-    containerTimeBlocks.style.flex = '1';
-    containerTimeBlocks.style.display = 'flex';
+    const timeElements = document.getElementsByClassName('timeElements')[0];
+    timeElements.style.flex = '1';
+    timeElements.style.display = 'flex';
 
     loop('titleBar', styleTitleBar);
     function styleTitleBar(el) {
       el.style.height = titleHeight;
     }
 
-    loop('timeBottle', styleTimeBottle);
-    function styleTimeBottle(el) {
+    loop('bottle', stylebottle);
+    function stylebottle(el) {
       // el.style.height = 'calc(100% - ' + titleHeight +')';
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
       el.style.justifyContent = 'flex-end';
     }
 
-    loop('timeBlocks', styleTimeBlocks);
-    function styleTimeBlocks(el) {
+    loop('blocks', styleblocks);
+    function styleblocks(el) {
       // el.style.height = 'calc(100% - ' + btnHeight + ')';
       el.style.flex = '5';
       // el.style.flexBasis = height;
       el.style.textAlign = 'center';
     }
-    loop('timeBlocksCarousel', styleTimeBlocksCarousel);
-    function styleTimeBlocksCarousel(el) {
+    loop('blocksCarousel', styleblocksCarousel);
+    function styleblocksCarousel(el) {
       el.style.flex = '2';
 
       el.style.display = 'flex';
@@ -138,8 +138,8 @@ window.addEventListener('load', function () {
       el.style.justifyContent = 'center';
       carouselify(el.children, '0', '1rem', '1.5');
     }
-    loop('btnAddTimeBlock', styleBtnAddTimeBlock);
-    function styleBtnAddTimeBlock(el) {
+    loop('addBlock', styleaddBlock);
+    function styleaddBlock(el) {
       el.style.flex = '1';
       // el.style.height = btnHeight;
       el.style.width = '100%';
@@ -260,17 +260,17 @@ window.addEventListener('load', function () {
   assembleElements(DATA_DOM, app);
   const topbar = document.getElementsByClassName('topbar')[0];
   const main = document.getElementsByClassName('main')[0];
-  const containerTimeVisuals = document.getElementsByClassName('containerTimeVisuals')[0];
+  const timeVisuals = document.getElementsByClassName('timeVisuals')[0];
   const topBar = createTopBar();
   topbar.appendChild(topBar);
   topbar.style.height = heightTopbar;
   main.style.display = 'flex';
-  containerTimeVisuals.style.flex = '3';
+  timeVisuals.style.flex = '3';
 
   styleVisuals();
-  contentifyTimeBlocks();
-  functionalizeTimeBlocks();
-  styleTimeBlocks();
+  contentifyblocks();
+  functionalizeblocks();
+  styleblocks();
   styleCalendar();
 
   // CALENDAR
@@ -471,10 +471,10 @@ window.addEventListener('load', function () {
   }
 
   // RIGHTBAR MENU
-  let containerRightbar = document.getElementsByClassName('containerRightbar')[0];
-  containerRightbar.style.flex = '1';
+  let menuSegment = document.getElementsByClassName('menuSegment')[0];
+  menuSegment.style.flex = '1';
   let menu = createMenu();
-  containerRightbar.appendChild(menu);
+  menuSegment.appendChild(menu);
   let root = document.getElementsByClassName('root')[0];
 
 
@@ -482,18 +482,18 @@ window.addEventListener('load', function () {
     //// CONTAINER VISUALS
     let main = document.createElement('div');
 
-    let containerTimeVisuals = document.createElement('div');
-    containerTimeVisuals.id = 'containerTimeVisuals';
-    containerTimeVisuals.style.width = 'calc(100% - ' + rightBarWidth + ')';
-    ///// CONTAINER resultTimeBlocks
-    let containerResultTimeBlocks = document.createElement('div');
-    containerResultTimeBlocks.id = 'containerResultTimeBlocks';
-    function createResultTimeBlocks() {
-      let resultTimeBlocks = document.createElement('div');
-      resultTimeBlocks.style.display = 'flex';
+    let timeVisuals = document.createElement('div');
+    timeVisuals.id = 'timeVisuals';
+    timeVisuals.style.width = 'calc(100% - ' + rightBarWidth + ')';
+    ///// CONTAINER resultblocks
+    let containerResultblocks = document.createElement('div');
+    containerResultblocks.id = 'containerResultblocks';
+    function createResultblocks() {
+      let resultblocks = document.createElement('div');
+      resultblocks.style.display = 'flex';
       // flex
-      resultTimeBlocks.style.height = '45vh';
-      resultTimeBlocks.style.width = '100%';
+      resultblocks.style.height = '45vh';
+      resultblocks.style.width = '100%';
       let containerResultCards = document.createElement('div');
       containerResultCards.id = 'containerResultCards';
       containerResultCards.style.flex = '3';
@@ -608,14 +608,14 @@ window.addEventListener('load', function () {
       let cardWithAddBtn = createCardWithAddBtn();
       containerCardWithAddBtn.appendChild(cardWithAddBtn);
 
-      resultTimeBlocks.appendChild(containerResultCards);
-      resultTimeBlocks.appendChild(containerCardWithAddBtn);
+      resultblocks.appendChild(containerResultCards);
+      resultblocks.appendChild(containerCardWithAddBtn);
 
-      return resultTimeBlocks;
+      return resultblocks;
     }
-    let resultTimeBlocks = createResultTimeBlocks();
-    containerResultTimeBlocks.appendChild(resultTimeBlocks);
-    ///// CONTAINER resultTimeBlocks CONCLUDE
+    let resultblocks = createResultblocks();
+    containerResultblocks.appendChild(resultblocks);
+    ///// CONTAINER resultblocks CONCLUDE
 
     ///// CONTAINER Calendar
     let containerCalendar = document.createElement('div');
@@ -722,9 +722,9 @@ window.addEventListener('load', function () {
     ///// CONTAINER Calendar CONCLUDE
 
 
-    containerTimeVisuals.appendChild(containerResultTimeBlocks);
-    containerTimeVisuals.appendChild(containerCalendar);
-    // main.appendChild(containerTimeVisuals);
+    timeVisuals.appendChild(containerResultblocks);
+    timeVisuals.appendChild(containerCalendar);
+    // main.appendChild(timeVisuals);
     //// CONTAINER VISUALS CONCLUDE
     //// CONTAINER MENU
     let containerMenu = document.createElement('div');
