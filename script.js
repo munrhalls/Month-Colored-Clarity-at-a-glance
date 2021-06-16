@@ -13,7 +13,7 @@ const calendarMonthTitleHeight = '2.5rem';
 
 const date = new Date();
 const year = date.getFullYear();
-const yearDATA = [];
+const DATA_Calendar = [];
 for (let i = 1; i <= 12; i++) {
   // Each loop equals:
   // 1. get number of days in a month.
@@ -39,7 +39,7 @@ for (let i = 1; i <= 12; i++) {
     count++;
   })
   // 4. push month array, filled with month's week arrays with days inside, into year array
-  yearDATA.push(monthDATA);
+  DATA_Calendar.push(monthDATA);
 }
 
 window.addEventListener('load', function () {
@@ -50,10 +50,10 @@ window.addEventListener('load', function () {
     'containerTimeBottle', timeBottle,
     'containerTimeBottle', timeBottle];
   const visuals = ['containerTimeBlocks', containerTimeBottle, 'containerCalendar'];
-  const containersArr = [
-    'containerRoot',
-    ['containerTopbar',
-      'containerMain',
+  const DATA_DOM = [
+    'root',
+    ['topbar',
+      'main',
       ['containerTimeVisuals',
         visuals, 'containerRightbar',
       ],
@@ -256,15 +256,15 @@ window.addEventListener('load', function () {
       el.appendChild(span);
     }
   }
-  let main = document.getElementById('app');
-  assembleElements(containersArr, main);
-  const containerTopbar = document.getElementsByClassName('containerTopbar')[0];
-  const containerMain = document.getElementsByClassName('containerMain')[0];
+  let app = document.getElementById('app');
+  assembleElements(DATA_DOM, app);
+  const topbar = document.getElementsByClassName('topbar')[0];
+  const main = document.getElementsByClassName('main')[0];
   const containerTimeVisuals = document.getElementsByClassName('containerTimeVisuals')[0];
   const topBar = createTopBar();
-  containerTopbar.appendChild(topBar);
-  containerTopbar.style.height = heightTopbar;
-  containerMain.style.display = 'flex';
+  topbar.appendChild(topBar);
+  topbar.style.height = heightTopbar;
+  main.style.display = 'flex';
   containerTimeVisuals.style.flex = '3';
 
   styleVisuals();
@@ -297,8 +297,8 @@ window.addEventListener('load', function () {
       year.style.flex = '1';
       year.style.height = '100%';
 
-      for (let i = 0; i < yearDATA.length; i++) {
-        let monthDATA = yearDATA[i];
+      for (let i = 0; i < DATA_Calendar.length; i++) {
+        let monthDATA = DATA_Calendar[i];
         // MONTHS LEVEL
         let month = document.createElement('div');
         month.id = 'month';
@@ -453,7 +453,7 @@ window.addEventListener('load', function () {
         month.appendChild(monthTitle);
         month.appendChild(monthDays);
         year.appendChild(month);
-        // containerMain.appendChild(year);
+        // main.appendChild(year);
       }
       return year;
     }
@@ -475,7 +475,7 @@ window.addEventListener('load', function () {
   containerRightbar.style.flex = '1';
   let menu = createMenu();
   containerRightbar.appendChild(menu);
-  let containerRoot = document.getElementsByClassName('containerRoot')[0];
+  let root = document.getElementsByClassName('root')[0];
 
 
   function createMain() {
@@ -724,14 +724,14 @@ window.addEventListener('load', function () {
 
     containerTimeVisuals.appendChild(containerResultTimeBlocks);
     containerTimeVisuals.appendChild(containerCalendar);
-    // containerMain.appendChild(containerTimeVisuals);
+    // main.appendChild(containerTimeVisuals);
     //// CONTAINER VISUALS CONCLUDE
     //// CONTAINER MENU
     let containerMenu = document.createElement('div');
     containerMenu.id = 'containerMenu';
     let menu = createMenu();
     containerMenu.appendChild(menu);
-    // containerMain.appendChild(containerMenu);
+    // main.appendChild(containerMenu);
     return main;
     //// CONTAINER MENU CONCLUDE
   }
@@ -742,17 +742,17 @@ window.addEventListener('load', function () {
   let copyrightNote2 = createCopyrightNote2();
   bottomBar.appendChild(copyrightNote);
   bottomBar.appendChild(copyrightNote2);
-  containerRoot.appendChild(bottomBar);
+  root.appendChild(bottomBar);
   /// CONTAINER BOTTOMBAR CONCLUDE
 
   // select area with mouse drag
   // (idk what's the Big O of that, so it's prolly rly expensive)
-  containerRoot.style.minHeight = '100vh';
-  containerRoot.style.userSelect = 'none';
-  containerRoot.markingHoursEvent = false;
-  containerRoot.style.position = 'relative';
-  containerRoot.addEventListener('mousedown', function (e) {
-    containerRoot.markingHoursEvent = true;
+  root.style.minHeight = '100vh';
+  root.style.userSelect = 'none';
+  root.markingHoursEvent = false;
+  root.style.position = 'relative';
+  root.addEventListener('mousedown', function (e) {
+    root.markingHoursEvent = true;
     // console.log('create div');
     let markerEl = document.createElement('div');
     markerEl.id = 'markerEl';
@@ -777,10 +777,10 @@ window.addEventListener('load', function () {
     markerEl.style.left = x;
     markerEl.y = y;
     markerEl.x = x;
-    containerRoot.appendChild(markerEl)
+    root.appendChild(markerEl)
   });
-  containerRoot.addEventListener('mousemove', function (e) {
-    if (containerRoot.markingHoursEvent) {
+  root.addEventListener('mousemove', function (e) {
+    if (root.markingHoursEvent) {
       // console.log('re-draw div');
       let markerEl = document.getElementById('markerEl');
       let prevCursorY = parseInt((markerEl.y).split('px')[0]);
@@ -801,8 +801,8 @@ window.addEventListener('load', function () {
     }
     // Dispatch the event.
   });
-  containerRoot.addEventListener('mouseup', function (e) {
-    containerRoot.markingHoursEvent = false;
+  root.addEventListener('mouseup', function (e) {
+    root.markingHoursEvent = false;
     let markerEl = document.getElementById('markerEl');
     let hourEls = document.getElementsByClassName('hourEl');
     if (hourEls && hourEls.length) {
