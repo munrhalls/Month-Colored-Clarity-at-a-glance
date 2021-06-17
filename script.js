@@ -44,6 +44,8 @@ for (let i = 1; i <= 12; i++) {
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
+  const app = document.getElementById('app');
+
   const blocks = ['blocks', 'blocksCarousel', 'addBlock'];
   const bottle = ['titleBar', 'bottle', blocks];
   const timeBottle = ['timeBottle', bottle,
@@ -52,14 +54,12 @@ window.addEventListener('load', function () {
   const visuals = ['timeBlocks', timeBottle, 'calendar'];
   const DATA_DOM = [
     'root',
-    ['topbar',
-      'main',
-      ['timeVisuals',
-        visuals, 'menuBlock',
-      ],
+    ['topbar', ['title', 'about'],
+      'main', ['timeVisuals', visuals, 'menuBlock'],
       'footer'
     ],
   ];
+
   function assembleDOM(arr, container) {
     arr.forEach(function (el, index) {
       if (typeof el == 'object') {
@@ -92,16 +92,74 @@ window.addEventListener('load', function () {
       el.appendChild(span);
     }
   }
+  assembleDOM(DATA_DOM, app);
+
   function loop(className, modify) {
     const elements = document.getElementsByClassName(className);
     for (let i = 0; i < elements.length; i++) {
       modify(elements[i]);
     }
   }
+  function cr8_topbar() {
+    // C O N T E N T
+    function content_title(el) {
+      let spanOne = document.createElement('span');
+      spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
+      el.appendChild(spanOne);
+      let letters = ('project').split('');
+      for (let i = 0; i < letters.length; i++) {
+        let span = document.createElement('span');
+        span.innerText = letters[i].toUpperCase();
+        span.style.color = colors[i];
+        span.style.letterSpacing = '3px';
+        el.appendChild(span);
+      }
+    }
+    function content_about(el) {
+      el.innerText = 'ABOUT';
+    }
+    // S T Y L E
+    let title_height = '3rem';
+    let title_bgColor = '#000000';
+    let title_color = '#ffffff';
+    let title_fontSize = '1.5rem';
+    let title_padding = '0.5rem';
+    function style_topbar(el) {
+      el.style.display = 'flex';
+      el.style.background = title_bgColor;
+      el.style.height = '100%';
+    }
+    function style_title(el) {
+      el.style.background = title_bgColor;
+      el.style.height = title_height;
+      el.style.color = '#ffffff';
+      el.style.padding = title_padding
+      el.style.fontSize = title_fontSize;
+      el.style.borderRight = '1px solid #ffffff';
+    }
+    function style_about(el) {
+      el.style.color = title_color;
+      el.style.padding = title_padding;
+      el.style.fontSize = title_fontSize;
+    }
+    loop('title', content_title);
+    loop('about', content_about);
+    loop('topbar', style_topbar);
+    loop('title', style_title);
+    loop('about', style_about);
+  }
+  cr8_topbar();
+
+  function cr8_main() {
+    function style_main(el) {
+      el.style.display = 'flex';
+    }
+    loop('main', style_main);
+  }
+  cr8_main(); 
   function cr8_timeVisuals() {
     // C O N T E N T
     function content_titleBar(el) {
-      el
       const input = document.createElement('input');
       input.style.type = 'text';
       el.appendChild(input);
@@ -110,20 +168,16 @@ window.addEventListener('load', function () {
       for (let i = 1; i < 25; i++) {
         let timeBlock = document.createElement('div');
         timeBlock.innerText = i;
-        timeBlock.className = i + '-hours timeBlock';
+        timeBlock.className = i + '-hours';
         el.appendChild(timeBlock)
       }
     }
     function content_addBlock(el) {
       el.innerText = '+';
     }
-    loop('timeVisuals', style_timeVisuals);
-    loop('titleBar', content_titleBar);
-    loop('blocksCarousel', content_blocksCarousel);
-    loop('addBlock', content_addBlock);
-
     // S T Y L E
     function style_timeVisuals(el) {
+      el.style.flex = '3';
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
       el.style.height = heightVisuals;
@@ -151,7 +205,7 @@ window.addEventListener('load', function () {
       }
       function style_blocksCarousel(el) {
         el.style.flex = '2';
-  
+
         el.style.display = 'flex';
         el.style.flexDirection = 'row';
         el.style.justifyContent = 'center';
@@ -169,17 +223,13 @@ window.addEventListener('load', function () {
       loop('blocksCarousel', style_blocksCarousel);
       loop('addBlock', style_addBlock);
     }
+    loop('timeVisuals', style_timeVisuals);
+    loop('titleBar', content_titleBar);
+    loop('blocksCarousel', content_blocksCarousel);
+    loop('addBlock', content_addBlock);
     style_blocks();
   }
-
-
-  function styleCalendar() {
-    loop('calendar', stylecalendar);
-    function stylecalendar(el) {
-      el.style.flex = '1';
-    }
-  }
-
+  cr8_timeVisuals();
 
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
     let length = HTMLCollection.length;
@@ -248,215 +298,286 @@ window.addEventListener('load', function () {
     HTMLCollection[0].style.display = 'block';
   }
 
-  let app = document.getElementById('app');
-  assembleDOM(DATA_DOM, app);
-  const topbar = document.getElementsByClassName('topbar')[0];
-  const main = document.getElementsByClassName('main')[0];
-  const timeVisuals = document.getElementsByClassName('timeVisuals')[0];
-  const topBar = createTopBar();
-  topbar.appendChild(topBar);
-  topbar.style.height = heightTopbar;
-  main.style.display = 'flex';
-  timeVisuals.style.flex = '3';
-  cr8_timeVisuals();
-  styleCalendar();
+
+
+
+
+
 
   // CALENDAR
-  const calendar = document.getElementsByClassName('calendar')[0];
-  const calendarCarousel = createCalendarCarousel();
-  calendar.style.flex = '1';
-  calendarCarousel.style.height = '100%';
-  calendar.appendChild(calendarCarousel);
-  function createCalendarCarousel() {
-    let calendarCarousel = document.createElement('div');
-    calendarCarousel.id = 'calendarCarousel';
-    calendarCarousel.style.display = 'flex';
-    calendarCarousel.style.height = '100%';
+  // const calendar = document.getElementsByClassName('calendar')[0];
+  // const calendarCarousel = createCalendarCarousel();
+  // calendar.style.flex = '1';
+  // calendarCarousel.style.height = '100%';
+  // calendar.appendChild(calendarCarousel);
 
-    let table = document.createElement('div');
-    table.style.display = 'flex';
-    table.style.flex = '1';
-    table.style.height = heightCalendar;
-    table.style.width = '100%';
 
-    function contentCreateYear() {
-      const year = document.createElement('div');
-      year.style.display = 'flex';
-      year.style.flex = '1';
-      year.style.height = '100%';
 
-      for (let i = 0; i < DATA_Calendar.length; i++) {
-        let monthDATA = DATA_Calendar[i];
-        // MONTHS LEVEL
-        let month = document.createElement('div');
-        month.id = 'month';
-        month.style.display = 'flex';
-        month.style.flex = '1';
-        month.style.height = '100%';
-        let monthTitle = document.createElement('div');
-        monthTitle.innerText = monthDATA.monthName;
-        monthTitle.style.textAlign = 'left';
-        monthTitle.style.fontSize = calendarMonthTitleFontSize;
-        monthTitle.style.padding = paddingTitle;
-        monthTitle.style.height = calendarMonthTitleHeight;
-        let monthDays = document.createElement('div');
-        monthDays.className = 'month';
-        monthDays.style.display = 'flex';
-        monthDays.style.flex = '1';
-        monthDays.style.justifyContent = 'flex-start';
-        monthDays.style.height = 'calc(100% - ' + parseFloat(calendarMonthTitleHeight) + 'rem)';
-        // parseFloat(containerheightCalendar) - parseFloat(calendarMonthTitleHeight) + 'vh';
-        for (let j = 0; j < monthDATA.length; j++) {
-          let weekDATA = monthDATA[j];
-          // WEEKS LEVEL
-          let week = document.createElement('div');
-          week.id = 'week';
-          week.style.display = 'flex';
-          week.style.flex = '1';
-          week.style.height = '100%';
-          let weekTitle = document.createElement('div');
-          weekTitle.style.textAlign = 'center';
-          weekTitle.style.height = '100%';
-          weekTitle.style.color = '#ffffff';
-          weekTitle.style.background = '#000000';
-          weekTitle.innerText = weekDATA.weekName;
-          weekTitle.style.paddingBottom = '0.5rem'
-          week.appendChild(weekTitle);
-          monthDays.appendChild(week)
-          let dayInterface = document.createElement('div');
-          dayInterface.id = 'dayInterface';
-          dayInterface.style.display = 'flex';
-          dayInterface.style.flex = '1';
-          dayInterface.style.height = '100%';
+  // function createCalendarCarousel() {
+  //   let calendarCarousel = document.createElement('div');
+  //   calendarCarousel.id = 'calendarCarousel';
+  //   calendarCarousel.style.display = 'flex';
+  //   calendarCarousel.style.height = '100%';
 
-          for (let y = 0; y < weekDATA.length; y++) {
-            let dayName = weekDATA[y];
-            dayName = dayName.substring(0, 3);
-            // DAYS LEVEL
-            let day = document.createElement('div');
-            day.style.flex = '1';
-            day.className = 'day';
-            day.innerText = dayName;
-            day.style.borderLeft = '1px solid #000000';
-            if (y + 1 == weekDATA.length) {
-              day.style.borderRight = '1px solid #000000';
-            }
-            // INSIDE DAY LEVEL
-            let addHourBtn = document.createElement('div');
-            addHourBtn.innerText = '+';
-            let containerHours = document.createElement('div');
-            containerHours.className = 'containerHours';
-            containerHours
-            day.appendChild(containerHours);
-            // SUM
-            let sum = document.createElement('div');
-            sum.className = 'sum';
-            let hours = day.getElementsByClassName('hourEl');
-            sum.innerText = hours.length;
-            sum.style.background = '#000000';
-            sum.style.color = '#ffffff';
-            sum.style.textAlign = 'center';
-            sum.style.height = '1.75rem';
-            sum.style.fontSize = '1.5rem';
-            // COLOR MARKING HOURS
-            function handleMarkingProject() {
-              let hourTick = resourceCreateHourTick();
-              hourTick.className = 'hourEl';
-              containerHours.appendChild(hourTick);
-              // coords
-              hourTick.addEventListener('requestCoords', function (e) {
-                let hourEl = e.target;
-                let markerEl = e.markerEl;
-                let hRect = hourEl.getBoundingClientRect();
-                let mRect = markerEl.getBoundingClientRect();
-                let matchY = false;
-                let matchX = false;
-                // Why? Negation leaves points subsets that cannot not intersect.
-                let topNotAfterHourBottom = !(mRect.top > hRect.bottom);
-                let BottomNotBeforeHourTop = !(mRect.bottom < hRect.top);
-                let leftNotAfterHourRight = !(mRect.left > hRect.right);
-                let rightNotBeforeHourLeft = !(mRect.right < hRect.left);
-                // Check match.
-                if (topNotAfterHourBottom && BottomNotBeforeHourTop) {
-                  matchY = true;
-                }
-                if (leftNotAfterHourRight && rightNotBeforeHourLeft) {
-                  matchX = true;
-                }
-                let match = matchY && matchX;
-                // Mark match.
-                if (match) {
-                  hourEl.style.background = markerEl.projectColor;
 
-                }
-              }, false);
-            }
-            // BUTTONS 
-            let containerButtons = document.createElement('containerButtons');
-            containerButtons.className = 'containerButtons';
-            containerButtons.style.display = 'flex';
-            addHourBtn.onclick = function () {
-              // HOUR LEVEL
-              handleMarkingProject();
-              let hours = day.getElementsByClassName('hourEl');
-              sum.innerText = hours.length;
-            }
-            addHourBtn.style.height = '1.5rem';
-            addHourBtn.style.flex = '1';
-            // addHourBtn.style.display= 'inline-block';
-            addHourBtn.style.fontSize = '1.5rem';
-            addHourBtn.style.textAlign = 'center';
-            addHourBtn.style.color = '#fff';
-            addHourBtn.style.background = '#000';
-            addHourBtn.style.textAlign = 'center';
-            addHourBtn.style.cursor = 'pointer';
-            let minusHourBtn = document.createElement('div');
-            minusHourBtn.innerText = '-';
-            minusHourBtn.onclick = function () {
-              let hours = day.getElementsByClassName('hourEl');
-              if (hours && hours.length) {
-                let hour = hours[hours.length - 1];
-                containerHours.removeChild(hour);
-                sum.innerText = hours.length;
-              }
-            }
-            minusHourBtn.style.height = '1.5rem';
-            minusHourBtn.style.flex = '1';
-            // addHourBtn.style.display= 'inline-block';
-            minusHourBtn.style.fontSize = '1.5rem';
-            minusHourBtn.style.textAlign = 'center';
-            minusHourBtn.style.color = '#fff';
-            minusHourBtn.style.background = '#000';
-            minusHourBtn.style.textAlign = 'center';
-            minusHourBtn.style.cursor = 'pointer';
-            containerButtons.appendChild(addHourBtn);
-            containerButtons.appendChild(minusHourBtn);
-            day.appendChild(containerButtons);
-            day.appendChild(containerHours);
-            day.appendChild(sum);
-            dayInterface.appendChild(day);
-          }
-          week.appendChild(dayInterface);
-        }
-        month.appendChild(monthTitle);
-        month.appendChild(monthDays);
-        year.appendChild(month);
-        // main.appendChild(year);
-      }
-      return year;
-    }
 
-    let year = contentCreateYear();
-    carouselify(year.children);
-    let containeryear = document.createElement('div');
-    containeryear.id = 'containeryear';
-    containeryear.style.display = 'flex';
-    containeryear.style.flex = '1';
-    containeryear.appendChild(year);
-    table.appendChild(year);
-    calendarCarousel.appendChild(table);
-    return calendarCarousel;
-  }
+  //   let table = document.createElement('div');
+  //   table.style.display = 'flex';
+  //   table.style.flex = '1';
+  //   table.style.height = heightCalendar;
+  //   table.style.width = '100%';
+
+
+
+
+  //   function content_calendar() {
+  //     const year = document.createElement('div');
+  //     year.style.display = 'flex';
+  //     year.style.flex = '1';
+  //     year.style.height = '100%';
+
+  //     for (let i = 0; i < DATA_Calendar.length; i++) {
+  //       let monthDATA = DATA_Calendar[i];
+
+
+
+  //       // MONTHS LEVEL
+  //       let month = document.createElement('div');
+  //       month.id = 'month';
+  //       month.style.display = 'flex';
+  //       month.style.flex = '1';
+  //       month.style.height = '100%';
+
+
+
+  //       let monthTitle = document.createElement('div');
+  //       monthTitle.innerText = monthDATA.monthName;
+  //       monthTitle.style.textAlign = 'left';
+  //       monthTitle.style.fontSize = calendarMonthTitleFontSize;
+  //       monthTitle.style.padding = paddingTitle;
+  //       monthTitle.style.height = calendarMonthTitleHeight;
+
+
+
+  //       let monthDays = document.createElement('div');
+  //       monthDays.className = 'month';
+  //       monthDays.style.display = 'flex';
+  //       monthDays.style.flex = '1';
+  //       monthDays.style.justifyContent = 'flex-start';
+  //       monthDays.style.height = 'calc(100% - ' + parseFloat(calendarMonthTitleHeight) + 'rem)';
+        
+
+
+  //       for (let j = 0; j < monthDATA.length; j++) {
+  //         let weekDATA = monthDATA[j];
+
+
+
+  //         // WEEKS LEVEL
+  //         let week = document.createElement('div');
+  //         week.id = 'week';
+  //         week.style.display = 'flex';
+  //         week.style.flex = '1';
+  //         week.style.height = '100%';
+
+
+
+  //         let weekTitle = document.createElement('div');
+  //         weekTitle.style.textAlign = 'center';
+  //         weekTitle.style.height = '100%';
+  //         weekTitle.style.color = '#ffffff';
+  //         weekTitle.style.background = '#000000';
+  //         weekTitle.innerText = weekDATA.weekName;
+  //         weekTitle.style.paddingBottom = '0.5rem'
+  //         week.appendChild(weekTitle);
+  //         monthDays.appendChild(week)
+
+
+
+  //         let dayInterface = document.createElement('div');
+  //         dayInterface.id = 'dayInterface';
+  //         dayInterface.style.display = 'flex';
+  //         dayInterface.style.flex = '1';
+  //         dayInterface.style.height = '100%';
+
+
+
+  //         for (let y = 0; y < weekDATA.length; y++) {
+  //           let dayName = weekDATA[y];
+  //           dayName = dayName.substring(0, 3);
+
+
+
+  //           // DAYS LEVEL
+  //           let day = document.createElement('div');
+  //           day.style.flex = '1';
+  //           day.className = 'day';
+  //           day.innerText = dayName;
+  //           day.style.borderLeft = '1px solid #000000';
+  //           if (y + 1 == weekDATA.length) {
+  //             day.style.borderRight = '1px solid #000000';
+  //           }
+
+
+
+  //           // INSIDE DAY LEVEL
+  //           let addHourBtn = document.createElement('div');
+  //           addHourBtn.innerText = '+';
+  //           let containerHours = document.createElement('div');
+  //           containerHours.className = 'containerHours';
+  //           containerHours
+  //           day.appendChild(containerHours);
+
+
+
+  //           // SUM
+  //           let sum = document.createElement('div');
+  //           sum.className = 'sum';
+  //           let hours = day.getElementsByClassName('hourEl');
+  //           sum.innerText = hours.length;
+  //           sum.style.background = '#000000';
+  //           sum.style.color = '#ffffff';
+  //           sum.style.textAlign = 'center';
+  //           sum.style.height = '1.75rem';
+  //           sum.style.fontSize = '1.5rem';
+
+
+
+  //           // COLOR MARKING HOURS
+  //           function handleMarkingProject() {
+  //             let hourTick = resourceCreateHourTick();
+  //             hourTick.className = 'hourEl';
+  //             containerHours.appendChild(hourTick);
+  //             // coords
+  //             hourTick.addEventListener('requestCoords', function (e) {
+  //               let hourEl = e.target;
+  //               let markerEl = e.markerEl;
+  //               let hRect = hourEl.getBoundingClientRect();
+  //               let mRect = markerEl.getBoundingClientRect();
+  //               let matchY = false;
+  //               let matchX = false;
+  //               // Why? Negation leaves points subsets that cannot not intersect.
+  //               let topNotAfterHourBottom = !(mRect.top > hRect.bottom);
+  //               let BottomNotBeforeHourTop = !(mRect.bottom < hRect.top);
+  //               let leftNotAfterHourRight = !(mRect.left > hRect.right);
+  //               let rightNotBeforeHourLeft = !(mRect.right < hRect.left);
+  //               // Check match.
+  //               if (topNotAfterHourBottom && BottomNotBeforeHourTop) {
+  //                 matchY = true;
+  //               }
+  //               if (leftNotAfterHourRight && rightNotBeforeHourLeft) {
+  //                 matchX = true;
+  //               }
+  //               let match = matchY && matchX;
+  //               // Mark match.
+  //               if (match) {
+  //                 hourEl.style.background = markerEl.projectColor;
+
+  //               }
+  //             }, false);
+  //           }
+
+
+
+  //           // BUTTONS 
+  //           let containerButtons = document.createElement('containerButtons');
+  //           containerButtons.className = 'containerButtons';
+  //           containerButtons.style.display = 'flex';
+           
+           
+           
+  //           addHourBtn.onclick = function () {
+  //             // HOUR LEVEL
+  //             handleMarkingProject();
+  //             let hours = day.getElementsByClassName('hourEl');
+  //             sum.innerText = hours.length;
+  //           }
+  //           addHourBtn.style.height = '1.5rem';
+  //           addHourBtn.style.flex = '1';
+  //           addHourBtn.style.fontSize = '1.5rem';
+  //           addHourBtn.style.textAlign = 'center';
+  //           addHourBtn.style.color = '#fff';
+  //           addHourBtn.style.background = '#000';
+  //           addHourBtn.style.textAlign = 'center';
+  //           addHourBtn.style.cursor = 'pointer';
+
+
+
+  //           let minusHourBtn = document.createElement('div');
+  //           minusHourBtn.innerText = '-';
+  //           minusHourBtn.onclick = function () {
+  //             let hours = day.getElementsByClassName('hourEl');
+  //             if (hours && hours.length) {
+  //               let hour = hours[hours.length - 1];
+  //               containerHours.removeChild(hour);
+  //               sum.innerText = hours.length;
+  //             }
+  //           }
+  //           minusHourBtn.style.height = '1.5rem';
+  //           minusHourBtn.style.flex = '1';
+  //           minusHourBtn.style.fontSize = '1.5rem';
+  //           minusHourBtn.style.textAlign = 'center';
+  //           minusHourBtn.style.color = '#fff';
+  //           minusHourBtn.style.background = '#000';
+  //           minusHourBtn.style.textAlign = 'center';
+  //           minusHourBtn.style.cursor = 'pointer';
+
+
+            
+  //           containerButtons.appendChild(addHourBtn);
+  //           containerButtons.appendChild(minusHourBtn);
+  //           day.appendChild(containerButtons);
+  //           day.appendChild(containerHours);
+  //           day.appendChild(sum);
+  //           dayInterface.appendChild(day);
+  //         }
+  //         week.appendChild(dayInterface);
+  //       }
+  //       month.appendChild(monthTitle);
+  //       month.appendChild(monthDays);
+  //       year.appendChild(month);
+  //     }
+  //     return year;
+  //   }
+
+
+
+
+  //   let year = content_calendar();
+  //   carouselify(year.children);
+
+
+
+
+
+  //   let containeryear = document.createElement('div');
+  //   containeryear.id = 'containeryear';
+  //   containeryear.style.display = 'flex';
+  //   containeryear.style.flex = '1';
+
+
+
+
+  //   containeryear.appendChild(year);
+  //   table.appendChild(year);
+  //   calendarCarousel.appendChild(table);
+  //   return calendarCarousel;
+
+
+
+
+  //   function styleCalendar() {
+  //     loop('calendar', stylecalendar);
+  //     function stylecalendar(el) {
+  //       el.style.flex = '1';
+  //     }
+  //   }
+  //   styleCalendar();
+
+  // }
+
+
+
 
   // RIGHTBAR MENU
   let menuBlock = document.getElementsByClassName('menuBlock')[0];
@@ -807,51 +928,51 @@ window.addEventListener('load', function () {
     markerEl.remove();
   });
 });
-function createTopBar() {
-  let title_height = '3rem';
-  let title_bgColor = '#000000';
-  let title_color = '#ffffff';
-  let title_fontSize = '1.5rem';
-  let title_padding = '0.5rem';
+// function createTopBar() {
+//   let title_height = '3rem';
+//   let title_bgColor = '#000000';
+//   let title_color = '#ffffff';
+//   let title_fontSize = '1.5rem';
+//   let title_padding = '0.5rem';
 
-  let topBar = document.createElement('div');
-  topBar.id = 'topBar';
-  topBar.style.display = 'flex';
-  topBar.style.background = title_bgColor;
-  topBar.style.height = '100%';
+//   let topBar = document.createElement('div');
+//   topBar.id = 'topBar';
+//   topBar.style.display = 'flex';
+//   topBar.style.background = title_bgColor;
+//   topBar.style.height = '100%';
 
-  let title = document.createElement('div');
-  title.style.background = title_bgColor;
-  title.style.height = title_height;
-  title.style.color = '#ffffff';
+//   let title = document.createElement('div');
+//   title.style.background = title_bgColor;
+//   title.style.height = title_height;
+//   title.style.color = '#ffffff';
 
-  let spanOne = document.createElement('span');
-  spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
-  title.appendChild(spanOne);
+//   let spanOne = document.createElement('span');
+//   spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
+//   title.appendChild(spanOne);
 
-  let letters = ('project').split('');
-  for (let i = 0; i < letters.length; i++) {
-    let span = document.createElement('span');
-    span.innerText = letters[i].toUpperCase();
-    span.style.color = colors[i];
-    span.style.letterSpacing = '3px';
-    title.appendChild(span);
-  }
+//   let letters = ('project').split('');
+//   for (let i = 0; i < letters.length; i++) {
+//     let span = document.createElement('span');
+//     span.innerText = letters[i].toUpperCase();
+//     span.style.color = colors[i];
+//     span.style.letterSpacing = '3px';
+//     title.appendChild(span);
+//   }
 
-  title.style.padding = title_padding
-  title.style.fontSize = title_fontSize;
-  title.style.borderRight = '1px solid #ffffff';
+//   title.style.padding = title_padding
+//   title.style.fontSize = title_fontSize;
+//   title.style.borderRight = '1px solid #ffffff';
 
-  let about = document.createElement('div');
-  about.innerText = 'ABOUT';
-  about.style.color = title_color;
-  about.style.padding = title_padding;
-  about.style.fontSize = title_fontSize;
+//   let about = document.createElement('div');
+//   about.innerText = 'ABOUT';
+//   about.style.color = title_color;
+//   about.style.padding = title_padding;
+//   about.style.fontSize = title_fontSize;
 
-  topBar.appendChild(title);
-  topBar.appendChild(about);
-  return topBar;
-}
+//   topBar.appendChild(title);
+//   topBar.appendChild(about);
+//   return topBar;
+// }
 function createMenu() {
   // let width = '30rem';
   // let width = rightBarWidth;
