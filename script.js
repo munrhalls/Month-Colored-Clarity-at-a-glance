@@ -41,6 +41,15 @@ for (let i = 1; i <= 12; i++) {
   // 4. push month array, filled with month's week arrays with days inside, into year array
   DATA_Calendar.push(monthDATA);
 }
+const DATA_monthsHash = {};
+for (let i = 1; i <= 12;  i++) {
+  const month = new Date(year, i, 0);
+  let monthDATA = new Array();
+  monthDATA.monthName = month.toLocaleString('default', { month: 'long' });
+  DATA_monthsHash[monthDATA.monthName] = monthDATA.monthName;
+}
+console.log(DATA_monthsHash)
+
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
@@ -61,7 +70,7 @@ window.addEventListener('load', function () {
   ];
   assembleDOM(DATA_DOM, app);
   cr8_topbar();
-  cr8_main(); 
+  cr8_main();
   cr8_timeVisuals();
 
   function assembleDOM(arr, container) {
@@ -150,7 +159,6 @@ window.addEventListener('load', function () {
       el.style.padding = title_padding;
       el.style.fontSize = title_fontSize;
     }
-
   }
   function cr8_main() {
     function style_main(el) {
@@ -181,64 +189,63 @@ window.addEventListener('load', function () {
       el.innerText = '+';
     }
     // S T Y L E
-    style_blocks();
+    const titleHeight = '1.5rem';
+    const btnHeight = '1.5rem';
+    loop('timeBlocks', style_timeBlocks);
+    loop('titleBar', style_titleBar);
+    loop('bottle', style_bottle);
+    loop('blocks', style_blocks);
+    loop('blocksCarousel', style_blocksCarousel);
+    loop('addBlock', style_addBlock);
     function style_timeVisuals(el) {
       el.style.flex = '3';
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
       el.style.height = heightVisuals;
     }
-    function style_blocks() {
-      const titleHeight = '1.5rem';
-      const btnHeight = '1.5rem';
-      const timeBlocks = document.getElementsByClassName('timeBlocks')[0];
-      timeBlocks.style.flex = '1';
-      timeBlocks.style.display = 'flex';
-      function style_titleBar(el) {
-        el.style.height = titleHeight;
-      }
-      function style_bottle(el) {
-        // el.style.height = 'calc(100% - ' + titleHeight +')';
-        el.style.display = 'flex';
-        el.style.flexDirection = 'column';
-        el.style.justifyContent = 'flex-end';
-      }
-      function style_blocks(el) {
-        // el.style.height = 'calc(100% - ' + btnHeight + ')';
-        el.style.flex = '5';
-        // el.style.flexBasis = height;
-        el.style.textAlign = 'center';
-      }
-      function style_blocksCarousel(el) {
-        el.style.flex = '2';
-
-        el.style.display = 'flex';
-        el.style.flexDirection = 'row';
-        el.style.justifyContent = 'center';
-        carouselify(el.children, '0', '1rem', '1.5');
-      }
-      function style_addBlock(el) {
-        el.style.flex = '1';
-        // el.style.height = btnHeight;
-        el.style.width = '100%';
-        el.style.textAlign = 'center';
-      }
-      loop('titleBar', style_titleBar);
-      loop('bottle', style_bottle);
-      loop('blocks', style_blocks);
-      loop('blocksCarousel', style_blocksCarousel);
-      loop('addBlock', style_addBlock);
+    function style_timeBlocks(el) {
+      el.style.flex = '1';
+      el.style.display = 'flex';
     }
+    function style_titleBar(el) {
+      el.style.height = titleHeight;
+    }
+    function style_bottle(el) {
+      // el.style.height = 'calc(100% - ' + titleHeight +')';
+      el.style.display = 'flex';
+      el.style.flexDirection = 'column';
+      el.style.justifyContent = 'flex-end';
+    }
+    function style_blocks(el) {
+      // el.style.height = 'calc(100% - ' + btnHeight + ')';
+      el.style.flex = '5';
+      // el.style.flexBasis = height;
+      el.style.textAlign = 'center';
+    }
+    function style_blocksCarousel(el) {
+      el.style.flex = '2';
 
+      el.style.display = 'flex';
+      el.style.flexDirection = 'row';
+      el.style.justifyContent = 'center';
+      carouselify(el.children, '0', '1rem', '1.5');
+    }
+    function style_addBlock(el) {
+      el.style.flex = '1';
+      // el.style.height = btnHeight;
+      el.style.width = '100%';
+      el.style.textAlign = 'center';
+    }
   }
+
+
+
 
 
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
     let length = HTMLCollection.length;
-    console.log(length);
     for (let i = 0; i < length; i++) {
       let childEl = HTMLCollection[i];
-      console.log(childEl);
       childEl.style.position = 'relative';
       childEl.style.display = 'none';
       let sensorsContainer = document.createElement('div');
@@ -362,7 +369,7 @@ window.addEventListener('load', function () {
   //       monthDays.style.flex = '1';
   //       monthDays.style.justifyContent = 'flex-start';
   //       monthDays.style.height = 'calc(100% - ' + parseFloat(calendarMonthTitleHeight) + 'rem)';
-        
+
 
 
   //       for (let j = 0; j < monthDATA.length; j++) {
@@ -480,9 +487,9 @@ window.addEventListener('load', function () {
   //           let containerButtons = document.createElement('containerButtons');
   //           containerButtons.className = 'containerButtons';
   //           containerButtons.style.display = 'flex';
-           
-           
-           
+
+
+
   //           addHourBtn.onclick = function () {
   //             // HOUR LEVEL
   //             handleMarkingProject();
@@ -520,7 +527,7 @@ window.addEventListener('load', function () {
   //           minusHourBtn.style.cursor = 'pointer';
 
 
-            
+
   //           containerButtons.appendChild(addHourBtn);
   //           containerButtons.appendChild(minusHourBtn);
   //           day.appendChild(containerButtons);
