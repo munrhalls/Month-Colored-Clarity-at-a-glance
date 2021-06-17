@@ -59,6 +59,10 @@ window.addEventListener('load', function () {
       'footer'
     ],
   ];
+  assembleDOM(DATA_DOM, app);
+  cr8_topbar();
+  cr8_main(); 
+  cr8_timeVisuals();
 
   function assembleDOM(arr, container) {
     arr.forEach(function (el, index) {
@@ -92,8 +96,6 @@ window.addEventListener('load', function () {
       el.appendChild(span);
     }
   }
-  assembleDOM(DATA_DOM, app);
-
   function loop(className, modify) {
     const elements = document.getElementsByClassName(className);
     for (let i = 0; i < elements.length; i++) {
@@ -102,6 +104,9 @@ window.addEventListener('load', function () {
   }
   function cr8_topbar() {
     // C O N T E N T
+    loop('title', content_title);
+    loop('about', content_about);
+
     function content_title(el) {
       let spanOne = document.createElement('span');
       spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
@@ -124,6 +129,9 @@ window.addEventListener('load', function () {
     let title_color = '#ffffff';
     let title_fontSize = '1.5rem';
     let title_padding = '0.5rem';
+    loop('topbar', style_topbar);
+    loop('title', style_title);
+    loop('about', style_about);
     function style_topbar(el) {
       el.style.display = 'flex';
       el.style.background = title_bgColor;
@@ -142,23 +150,20 @@ window.addEventListener('load', function () {
       el.style.padding = title_padding;
       el.style.fontSize = title_fontSize;
     }
-    loop('title', content_title);
-    loop('about', content_about);
-    loop('topbar', style_topbar);
-    loop('title', style_title);
-    loop('about', style_about);
-  }
-  cr8_topbar();
 
+  }
   function cr8_main() {
     function style_main(el) {
       el.style.display = 'flex';
     }
     loop('main', style_main);
   }
-  cr8_main(); 
   function cr8_timeVisuals() {
     // C O N T E N T
+    loop('timeVisuals', style_timeVisuals);
+    loop('titleBar', content_titleBar);
+    loop('blocksCarousel', content_blocksCarousel);
+    loop('addBlock', content_addBlock);
     function content_titleBar(el) {
       const input = document.createElement('input');
       input.style.type = 'text';
@@ -176,6 +181,7 @@ window.addEventListener('load', function () {
       el.innerText = '+';
     }
     // S T Y L E
+    style_blocks();
     function style_timeVisuals(el) {
       el.style.flex = '3';
       el.style.display = 'flex';
@@ -223,13 +229,9 @@ window.addEventListener('load', function () {
       loop('blocksCarousel', style_blocksCarousel);
       loop('addBlock', style_addBlock);
     }
-    loop('timeVisuals', style_timeVisuals);
-    loop('titleBar', content_titleBar);
-    loop('blocksCarousel', content_blocksCarousel);
-    loop('addBlock', content_addBlock);
-    style_blocks();
+
   }
-  cr8_timeVisuals();
+
 
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
     let length = HTMLCollection.length;
@@ -297,11 +299,6 @@ window.addEventListener('load', function () {
     }
     HTMLCollection[0].style.display = 'block';
   }
-
-
-
-
-
 
 
   // CALENDAR
