@@ -62,23 +62,6 @@ for (let i = 0; i < DATA_Calendar.length; i++) {
   }
 }
 
-function cr8_calendar() {
-  getEl_loopF('calendar', content_months);
-  getEl_loopF('calendar', content_weeks);
-  getEl_loopF('calendar', content_days);
-  function content_months(el) {
-    // months.
-  }
-  function content_weeks() {
-
-  }
-  function content_days() {
-  
-  }
-  function content_dayInterface() {
-  
-  }
-}
 
 
 
@@ -102,6 +85,8 @@ window.addEventListener('load', function () {
   cr8_topbar();
   cr8_main();
   cr8_timeVisuals();
+  cr8_calendar();
+
 
   function assembleDOM(arr, container) {
     arr.forEach(function (el, index) {
@@ -265,6 +250,27 @@ window.addEventListener('load', function () {
       // el.style.height = btnHeight;
       el.style.width = '100%';
       el.style.textAlign = 'center';
+    }
+  }
+  function cr8_calendar() {
+    getEl_loopF('calendar', content_months);
+    getEl_loopF('calendar', content_weeks);
+    getEl_loopF('calendar', content_days);
+    function content_months(el) {
+      for (let i = 0; i < months.length; i++) {
+        const month = document.createElement('div');
+        month.className = months[i];
+        el.appendChild(month);
+      }
+    }
+    function content_weeks() {
+  
+    }
+    function content_days() {
+    
+    }
+    function content_dayInterface() {
+    
     }
   }
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
