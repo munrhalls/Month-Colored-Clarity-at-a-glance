@@ -41,11 +41,9 @@ for (let i = 1; i <= 12; i++) {
   // 4. push month array, filled with month's week arrays with days inside, into year array
   DATA_Calendar.push(monthDATA);
 }
-
 const months = [];
 const weeks = [];
 const days = [];
-
 for (let i = 0; i < DATA_Calendar.length; i++) {
   const month = DATA_Calendar[i];
   const name = month.name;
@@ -64,6 +62,25 @@ for (let i = 0; i < DATA_Calendar.length; i++) {
   }
 }
 
+function cr8_calendar() {
+  getEl_loopF('calendar', content_months);
+  getEl_loopF('calendar', content_weeks);
+  getEl_loopF('calendar', content_days);
+  function content_months(el) {
+    // months.
+  }
+  function content_weeks() {
+
+  }
+  function content_days() {
+  
+  }
+  function content_dayInterface() {
+  
+  }
+}
+
+
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
@@ -71,14 +88,13 @@ window.addEventListener('load', function () {
 
   const blocks = ['blocks', 'blocksCarousel', 'addBlock'];
   const bottle = ['titleBar', 'bottle', blocks];
-  const timeBottle = ['timeBottle', bottle,
-    'timeBottle', bottle,
-    'timeBottle', bottle];
-  const visuals = ['timeBlocks', timeBottle, 'calendar'];
+  const contentTimeBlocks = ['timeBottles', bottle,
+    'timeBottles', bottle,
+    'timeBottles', bottle]
   const DATA_DOM = [
     'root',
     ['topbar', ['title', 'about'],
-      'main', ['timeVisuals', visuals, 'menuBlock'],
+      'main', ['timeVisuals', ['timeBlocks', contentTimeBlocks, 'calendar'], 'menuBlock'],
       'footer'
     ],
   ];
@@ -119,7 +135,7 @@ window.addEventListener('load', function () {
       el.appendChild(span);
     }
   }
-  function loop(className, modify) {
+  function getEl_loopF(className, modify) {
     const elements = document.getElementsByClassName(className);
     for (let i = 0; i < elements.length; i++) {
       modify(elements[i]);
@@ -127,8 +143,8 @@ window.addEventListener('load', function () {
   }
   function cr8_topbar() {
     // C O N T E N T
-    loop('title', content_title);
-    loop('about', content_about);
+    getEl_loopF('title', content_title);
+    getEl_loopF('about', content_about);
 
     function content_title(el) {
       let spanOne = document.createElement('span');
@@ -152,9 +168,9 @@ window.addEventListener('load', function () {
     let title_color = '#ffffff';
     let title_fontSize = '1.5rem';
     let title_padding = '0.5rem';
-    loop('topbar', style_topbar);
-    loop('title', style_title);
-    loop('about', style_about);
+    getEl_loopF('topbar', style_topbar);
+    getEl_loopF('title', style_title);
+    getEl_loopF('about', style_about);
     function style_topbar(el) {
       el.style.display = 'flex';
       el.style.background = title_bgColor;
@@ -178,14 +194,14 @@ window.addEventListener('load', function () {
     function style_main(el) {
       el.style.display = 'flex';
     }
-    loop('main', style_main);
+    getEl_loopF('main', style_main);
   }
   function cr8_timeVisuals() {
     // C O N T E N T
-    loop('timeVisuals', style_timeVisuals);
-    loop('titleBar', content_titleBar);
-    loop('blocksCarousel', content_blocksCarousel);
-    loop('addBlock', content_addBlock);
+    getEl_loopF('timeVisuals', style_timeVisuals);
+    getEl_loopF('titleBar', content_titleBar);
+    getEl_loopF('blocksCarousel', content_blocksCarousel);
+    getEl_loopF('addBlock', content_addBlock);
     function content_titleBar(el) {
       const input = document.createElement('input');
       input.style.type = 'text';
@@ -205,12 +221,12 @@ window.addEventListener('load', function () {
     // S T Y L E
     const titleHeight = '1.5rem';
     const btnHeight = '1.5rem';
-    loop('timeBlocks', style_timeBlocks);
-    loop('titleBar', style_titleBar);
-    loop('bottle', style_bottle);
-    loop('blocks', style_blocks);
-    loop('blocksCarousel', style_blocksCarousel);
-    loop('addBlock', style_addBlock);
+    getEl_loopF('timeBlocks', style_timeBlocks);
+    getEl_loopF('titleBar', style_titleBar);
+    getEl_loopF('bottle', style_bottle);
+    getEl_loopF('blocks', style_blocks);
+    getEl_loopF('blocksCarousel', style_blocksCarousel);
+    getEl_loopF('addBlock', style_addBlock);
     function style_timeVisuals(el) {
       el.style.flex = '3';
       el.style.display = 'flex';
@@ -576,7 +592,7 @@ window.addEventListener('load', function () {
 
 
   //   function styleCalendar() {
-  //     loop('calendar', stylecalendar);
+  //     getEl_loopF('calendar', stylecalendar);
   //     function stylecalendar(el) {
   //       el.style.flex = '1';
   //     }
