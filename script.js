@@ -329,7 +329,6 @@ window.addEventListener('load', function () {
       }
     }
     // S T Y L E 
-    let monthShown = 'January';
     getEl_loopF('calendar', style_calendar);
     getEl_loopF('month', style_month);
     
@@ -338,12 +337,18 @@ window.addEventListener('load', function () {
       el.style.display = 'flex';
     }
     function style_month(el) {
+      el.style.flex = '1';
+      el.style.border = '1px solid #000000';
+    }
+    // I N T E R A C T I V E S
+    let monthShown = 'January';
+    getEl_loopF('month', inter_monthDisplay);
+
+    function inter_monthDisplay(el) {
       const monthName = el.className.split(' ')[1];
       if (monthName !== monthShown) {
         el.style.display = 'none';
       }
-      el.style.flex = '1';
-      el.style.border = '1px solid #000000';
     }
   }
 
