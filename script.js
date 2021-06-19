@@ -73,21 +73,21 @@ window.addEventListener('load', function () {
   const app = document.getElementById('app');
 
   const blocks = ['blocks', 'blocksCarousel', 'addBlock'];
-  const bottle = ['titleBar1', 'bottle', blocks];
+  const bottle = ['titlebar1', 'bottle', blocks];
   const contentTimeBlocks = ['timeBottles', bottle,
     'timeBottles', bottle,
     'timeBottles', bottle];
-    const contentTitlebar2 = ['title2', 'arrows2', ['arrowL2', 'arrowR2']];
+  const contentTitlebar2 = ['title2', 'arrows2', ['arrowL2', 'arrowR2']];
   const DATA_DOM = [
     'root',
     ['topbar', ['title', 'about'],
-      'main', ['timeVisuals', ['timeBlocks', contentTimeBlocks, 'titlebar2', contentTitlebar2, 'calendar', ], 'menuBlock'],
+      'main', ['timeVisuals', ['timeBlocks', contentTimeBlocks, 'titlebar2', contentTitlebar2, 'calendar'], 'menuBlock'],
       'footer'
     ],
   ];
   assembleDOM(DATA_DOM, app);
   cr8_topbar();
-  cr8_main(); 
+  cr8_main();
   cr8_timeVisuals();
   cr8_timeBlocks();
   cr8_titlebar2();
@@ -199,10 +199,10 @@ window.addEventListener('load', function () {
   }
   function cr8_timeBlocks() {
     // C O N T E N T
-    getEl_loopF('titleBar1', content_titleBar1);
+    getEl_loopF('titlebar1', content_titlebar1);
     getEl_loopF('blocksCarousel', content_blocksCarousel);
     getEl_loopF('addBlock', content_addBlock);
-    function content_titleBar1(el) {
+    function content_titlebar1(el) {
       const input = document.createElement('input');
       input.style.type = 'text';
       el.appendChild(input);
@@ -222,7 +222,7 @@ window.addEventListener('load', function () {
     const titleHeight = '1.5rem';
     const btnHeight = '1.5rem';
     getEl_loopF('timeBlocks', style_timeBlocks);
-    getEl_loopF('titleBar1', style_titleBar);
+    getEl_loopF('titlebar1', style_titleBar);
     getEl_loopF('bottle', style_bottle);
     getEl_loopF('blocks', style_blocks);
     getEl_loopF('blocksCarousel', style_blocksCarousel);
@@ -264,22 +264,24 @@ window.addEventListener('load', function () {
   }
   function cr8_titlebar2() {
     // C O N T E N T
-    
+
     getEl_loopF('title2', content_title2);
     getEl_loopF('arrows2', content_arrows2);
-    getEl_loopF('arrowLeft-2', content_arrowLeft2);
-    getEl_loopF('arrowRight-2', content_arrowRight2);
+    getEl_loopF('arrowL2', content_arrowL2);
+    getEl_loopF('arrowR2', content_arrowR2);
 
     function content_title2(el) {
-      el.innerText = 'CALENDAR';
+      const title = document.createElement('span');
+      title.innerText = 'CALENDAR';
+      el.appendChild(title);
     }
     function content_arrows2(el) {
-      el.innerText = 'ARROWS';
+
     }
-    function content_arrowLeft2(el) {
-      el.innerText = 'ARROW LEFT';
+    function content_arrowL2(el) {
+      el.style.border = '1px solid #ffffff';
     }
-    function content_arrowRight2(el) {
+    function content_arrowR2(el) {
       el.innerText = 'ARROW RIGHT';
     }
     // S T Y L E
@@ -305,7 +307,7 @@ window.addEventListener('load', function () {
       monthShown = 'July';
     }
   }
-  
+
   function cr8_calendar() {
     // C O N T E N T
     cr8_calendarDOM();
@@ -355,7 +357,7 @@ window.addEventListener('load', function () {
     // S T Y L E 
     getEl_loopF('calendar', style_calendar);
     getEl_loopF('month', style_month);
-    
+
     function style_calendar(el) {
       el.style.flex = '1';
       el.style.display = 'flex';
