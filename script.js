@@ -85,6 +85,7 @@ window.addEventListener('load', function () {
   cr8_topbar();
   cr8_main();
   cr8_timeVisuals();
+  cr8_timeBlocks();
   cr8_calendar();
 
 
@@ -182,8 +183,17 @@ window.addEventListener('load', function () {
     getEl_loopF('main', style_main);
   }
   function cr8_timeVisuals() {
-    // C O N T E N T
     getEl_loopF('timeVisuals', style_timeVisuals);
+
+    function style_timeVisuals(el) {
+      el.style.flex = '3';
+      el.style.display = 'flex';
+      el.style.flexDirection = 'column';
+      el.style.height = heightVisuals;
+    }
+  }
+  function cr8_timeBlocks() {
+    // C O N T E N T
     getEl_loopF('titleBar', content_titleBar);
     getEl_loopF('blocksCarousel', content_blocksCarousel);
     getEl_loopF('addBlock', content_addBlock);
@@ -212,12 +222,7 @@ window.addEventListener('load', function () {
     getEl_loopF('blocks', style_blocks);
     getEl_loopF('blocksCarousel', style_blocksCarousel);
     getEl_loopF('addBlock', style_addBlock);
-    function style_timeVisuals(el) {
-      el.style.flex = '3';
-      el.style.display = 'flex';
-      el.style.flexDirection = 'column';
-      el.style.height = heightVisuals;
-    }
+
     function style_timeBlocks(el) {
       el.style.flex = '1';
       el.style.display = 'flex';
@@ -252,39 +257,54 @@ window.addEventListener('load', function () {
       el.style.textAlign = 'center';
     }
   }
-  function cr8_calendarDOM() {
-    // C O N T E N T
-    getEl_loopF('calendar', content_months);
-    getEl_loopF('calendar', content_weeks);
-    getEl_loopF('calendar', content_days);
-    function content_months(el) {
-      for (let i = 0; i < months.length; i++) {
-        const month = document.createElement('div');
-        month.classList = 'month ' + months[i];
-        el.appendChild(month);
-      }
-    }
-    function content_weeks() {
-      for (let i = 0; i < weeks.length; i++) {
-        const week = document.createElement('div');
-        week.classList = 'week ' + weeks[i].name;
-        const monthName = weeks[i].name.split('-')[0];
-        const monthDOM = document.getElementsByClassName(monthName)[0];
-        monthDOM.appendChild(week);
-      }
-    }
-    function content_days() {
-      for (let i = 0; i < days.length; i++) {
-        const day = document.createElement('div');
-        const weekName = days[i].name.split(' ')[0];
-        const weekDOM = document.getElementsByClassName(weekName)[0];
-        day.classList = 'day ' + days[i].name;
-        weekDOM.appendChild(day);
-      }
-    }
-  }
+
   function cr8_calendar() {
+    // C O N T E N T
+    function cr8_calendarDOM() {
+      // C O N T E N T
+      getEl_loopF('calendar', content_months);
+      getEl_loopF('calendar', content_weeks);
+      getEl_loopF('calendar', content_days);
+      function content_months(el) {
+        for (let i = 0; i < months.length; i++) {
+          const month = document.createElement('div');
+          month.classList = 'month ' + months[i];
+          el.appendChild(month);
+        }
+      }
+      function content_weeks() {
+        for (let i = 0; i < weeks.length; i++) {
+          const week = document.createElement('div');
+          week.classList = 'week ' + weeks[i].name;
+          const monthName = weeks[i].name.split('-')[0];
+          const monthDOM = document.getElementsByClassName(monthName)[0];
+          monthDOM.appendChild(week);
+        }
+      }
+      function content_days() {
+        for (let i = 0; i < days.length; i++) {
+          const day = document.createElement('div');
+          const weekName = days[i].name.split(' ')[0];
+          const weekDOM = document.getElementsByClassName(weekName)[0];
+          day.classList = 'day ' + days[i].name;
+          weekDOM.appendChild(day);
+        }
+      }
+    }
     cr8_calendarDOM();
+    // S T Y L E 
+    getEl_loopF('calendar', style_calendar);
+    getEl_loopF('month', style_month);
+
+    function style_calendar(el) {
+      el.style.flex = '1';
+      el.style.display = 'flex';
+    } 
+    function style_month(el) {
+      el.style.flex = '1';
+      el.style.border = '1px solid #000000';
+      el.style.height = '40vh'
+    }
   }
 
 
