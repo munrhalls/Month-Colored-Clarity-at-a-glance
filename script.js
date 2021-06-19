@@ -1,3 +1,6 @@
+// I N T E R A C T I V E S 
+var monthShown = 'January';
+
 // // DATA VALUES
 const heightTopbar = '3.5rem';
 const paddingTitle = '0.25rem';
@@ -341,7 +344,6 @@ window.addEventListener('load', function () {
       el.style.border = '1px solid #000000';
     }
     // I N T E R A C T I V E S
-    let monthShown = 'January';
     getEl_loopF('month', inter_monthDisplay);
 
     function inter_monthDisplay(el) {
