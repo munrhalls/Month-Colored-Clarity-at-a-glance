@@ -264,7 +264,6 @@ window.addEventListener('load', function () {
   }
   function cr8_titlebar2() {
     // C O N T E N T
-
     getEl_loopF('title2', content_title2);
     getEl_loopF('month_arrows', content_month_arrows);
     getEl_loopF('month_title', content_month_title);
@@ -289,6 +288,7 @@ window.addEventListener('load', function () {
 
     }
     function content_arrowR2(el) {
+
     }
     // S T Y L E
     const maxHeight = 3;
@@ -352,8 +352,18 @@ window.addEventListener('load', function () {
     }
     // I N T E R A C T I V E S
     inter_monthShown();
+    getEl_loopF('arrowL2', inter_prevMonth);
+    getEl_loopF('arrowR2', style_nextMonth);
     function inter_monthShown() {
       monthShown = 'July';
+    }
+    function inter_prevMonth(el) {
+      el.onclick = function(el) {
+        console.log("YTADA!!!")
+      }
+    }
+    function style_nextMonth(el) {
+
     }
   }
 
