@@ -55,7 +55,7 @@ for (let i = 0; i < DATA_Calendar.length; i++) {
     for (let y = 0; y < week.length; y++) {
       const day = week[y];
       const dayObj = {};
-      dayObj.name = week.name + '-' + 'Day-' + (y + 1);
+      dayObj.name = week.name + ' Day-' + (y + 1);
       dayObj.day = day;
       days.push(dayObj);
     }
@@ -263,20 +263,27 @@ window.addEventListener('load', function () {
         el.appendChild(month);
       }
     }
-    function content_weeks(el) {
+    function content_weeks() {
       for (let i = 0; i < weeks.length; i++) {
         const week = document.createElement('div');
         week.classList = 'week ' + weeks[i].name;
         const monthName = weeks[i].name.split('-')[0];
         const monthDOM = document.getElementsByClassName(monthName)[0];
         monthDOM.appendChild(week);
+        // console.log(week)
       }
     }
     function content_days() {
-    
+      for (let i = 0; i < days.length; i++) {
+        const day = document.createElement('div');
+        const weekName = days[i].name.split(' ')[0];
+        const weekDOM = document.getElementsByClassName(weekName)[0];
+        day.classList = 'day ' + days[i].name;
+        weekDOM.appendChild(day);
+      }
     }
     function content_dayInterface() {
-    
+
     }
   }
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
