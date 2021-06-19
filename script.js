@@ -77,7 +77,7 @@ window.addEventListener('load', function () {
   const contentTimeBlocks = ['timeBottles', bottle,
     'timeBottles', bottle,
     'timeBottles', bottle];
-  const contentTitlebar2 = ['title2', 'arrows2', ['arrowL2', 'arrowR2']];
+  const contentTitlebar2 = ['title2', 'month_arrows', ['arrowL2', 'month_title', 'arrowR2']];
   const DATA_DOM = [
     'root',
     ['topbar', ['title', 'about'],
@@ -266,7 +266,8 @@ window.addEventListener('load', function () {
     // C O N T E N T
 
     getEl_loopF('title2', content_title2);
-    getEl_loopF('arrows2', content_arrows2);
+    getEl_loopF('month_arrows', content_month_arrows);
+    getEl_loopF('month_title', content_month_title);
     getEl_loopF('arrowL2', content_arrowL2);
     getEl_loopF('arrowR2', content_arrowR2);
 
@@ -275,8 +276,14 @@ window.addEventListener('load', function () {
       title.innerText = 'CALENDAR';
       el.appendChild(title);
     }
-    function content_arrows2(el) {
-
+    function content_month_arrows(el) {
+      
+    }
+    function content_month_title(el) {
+      const title = document.createElement('div');
+      // global var
+      title.innerText = months[0];
+      el.appendChild(title);
     }
     function content_arrowL2(el) {
 
@@ -286,9 +293,11 @@ window.addEventListener('load', function () {
     // S T Y L E
     const maxHeight = 3;
     const horizMargin = 1.5;
+    const titleSize = 1.5;
     getEl_loopF('titlebar2', style_titlebar2);
     getEl_loopF('title2', style_title2);
-    getEl_loopF('arrows2', style_arrows2);
+    getEl_loopF('month_arrows', style_month_arrows);
+    getEl_loopF('month_title', style_month_title);
     getEl_loopF('arrowL2', style_arrowL2);
     getEl_loopF('arrowR2', style_arrowR2);
     function style_titlebar2(el) {
@@ -305,26 +314,41 @@ window.addEventListener('load', function () {
       el.style.flexDirection = 'column';
       el.style.justifyContent = 'center';
     }
-    function style_arrows2(el) {
+    function style_month_arrows(el) {
       el.style.display = 'flex';
       el.style.alignItems = 'center';
-      el.style.marginLeft = horizMargin + 'rem';
-
+      el.style.marginLeft = (horizMargin * 3) + 'rem';
+      el.style.color = '#ffffff';
+      // position
+      el.style.position = 'relative';
+    }
+    function style_month_title(el) {
+      // global var
+      el.style.fontSize = titleSize + 'rem';
     }
     function style_arrowL2(el) {
-      el.style.borderTop = maxHeight/2 + 'rem solid #ffffff';
-      el.style.borderLeft = maxHeight/6 + 'rem solid transparent';
-      el.style.borderRight = maxHeight/6 + 'rem solid transparent';
-      el.style.width = '0.25rem';
+      const width = 0.25;
+      el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
+      el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
+      el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
+      el.style.width = width + 'rem';
       el.style.transform = 'rotate(90deg)';
+      // position
+      el.style.position = 'absolute';
+      el.style.left = 0 - (width * 9) + 'rem';
     }
     function style_arrowR2(el) {
-      el.style.borderTop = maxHeight/2 + 'rem solid #ffffff';
-      el.style.borderLeft = maxHeight/6 + 'rem solid transparent';
-      el.style.borderRight = maxHeight/6 + 'rem solid transparent';
+      const width = 0.25;
+      el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
+      el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
+      el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
       el.style.width = '0.25rem';
       el.style.transform = 'rotate(-90deg)';
       el.style.marginLeft = (horizMargin * 7) + 'rem';
+      // position
+      el.style.position = 'absolute';
+      el.style.right = 0 - (width * 9) + 'rem';
+
     }
     // I N T E R A C T I V E S
     inter_monthShown();
