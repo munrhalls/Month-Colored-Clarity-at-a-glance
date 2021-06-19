@@ -259,12 +259,14 @@ window.addEventListener('load', function () {
     function content_months(el) {
       for (let i = 0; i < months.length; i++) {
         const month = document.createElement('div');
-        month.className = months[i];
+        month.classList = 'month ' + months[i];
         el.appendChild(month);
       }
     }
-    function content_weeks() {
-  
+    function content_weeks(el) {
+      for (let i = 0; i < weeks.length; i++) {
+        console.log(weeks[i].name.split('-')[0])
+      }
     }
     function content_days() {
     
