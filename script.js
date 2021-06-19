@@ -279,17 +279,21 @@ window.addEventListener('load', function () {
 
     }
     function content_arrowL2(el) {
-      el.style.border = '1px solid #ffffff';
+
     }
     function content_arrowR2(el) {
-      el.innerText = 'ARROW RIGHT';
     }
     // S T Y L E
+    const maxHeight = 3;
+    const horizMargin = 1.5;
     getEl_loopF('titlebar2', style_titlebar2);
     getEl_loopF('title2', style_title2);
+    getEl_loopF('arrows2', style_arrows2);
+    getEl_loopF('arrowL2', style_arrowL2);
+    getEl_loopF('arrowR2', style_arrowR2);
     function style_titlebar2(el) {
       el.style.flex = '1';
-      el.style.maxHeight = '3rem';
+      el.style.maxHeight = maxHeight + 'rem';
       el.style.backgroundColor = '#000000';
       el.style.display = 'flex';
     }
@@ -300,6 +304,27 @@ window.addEventListener('load', function () {
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
       el.style.justifyContent = 'center';
+    }
+    function style_arrows2(el) {
+      el.style.display = 'flex';
+      el.style.alignItems = 'center';
+      el.style.marginLeft = horizMargin + 'rem';
+
+    }
+    function style_arrowL2(el) {
+      el.style.borderTop = maxHeight/2 + 'rem solid #ffffff';
+      el.style.borderLeft = maxHeight/6 + 'rem solid transparent';
+      el.style.borderRight = maxHeight/6 + 'rem solid transparent';
+      el.style.width = '0.25rem';
+      el.style.transform = 'rotate(90deg)';
+    }
+    function style_arrowR2(el) {
+      el.style.borderTop = maxHeight/2 + 'rem solid #ffffff';
+      el.style.borderLeft = maxHeight/6 + 'rem solid transparent';
+      el.style.borderRight = maxHeight/6 + 'rem solid transparent';
+      el.style.width = '0.25rem';
+      el.style.transform = 'rotate(-90deg)';
+      el.style.marginLeft = (horizMargin * 7) + 'rem';
     }
     // I N T E R A C T I V E S
     inter_monthShown();
