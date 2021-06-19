@@ -294,6 +294,10 @@ window.addEventListener('load', function () {
         for (let i = 0; i < months.length; i++) {
           const month = document.createElement('div');
           month.classList = 'month ' + months[i];
+          const title = document.createElement('span');
+          const text = months[i];
+          title.innerText = text;
+          month.appendChild(title);
           el.appendChild(month);
         }
       }
@@ -301,6 +305,10 @@ window.addEventListener('load', function () {
         for (let i = 0; i < weeks.length; i++) {
           const week = document.createElement('div');
           week.classList = 'week ' + weeks[i].name;
+          const title = document.createElement('span');
+          const text = weeks[i].name.split('-')[1] + ' ' + weeks[i].name.split('-')[2];
+          title.innerText = text;
+          week.appendChild(title);
           const monthName = weeks[i].name.split('-')[0];
           const monthDOM = document.getElementsByClassName(monthName)[0];
           monthDOM.appendChild(week);
@@ -312,12 +320,13 @@ window.addEventListener('load', function () {
           const weekName = days[i].name.split(' ')[0];
           const weekDOM = document.getElementsByClassName(weekName)[0];
           day.classList = 'day ' + days[i].name;
+          const title = document.createElement('span');
+          const text = days[i].name;
+          title.innerText = text;
+          day.appendChild(title);
           weekDOM.appendChild(day);
         }
       }
-    }
-    function content_titlebar(el) {
-
     }
     // S T Y L E 
     getEl_loopF('calendar', style_calendar);
