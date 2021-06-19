@@ -265,7 +265,11 @@ window.addEventListener('load', function () {
     }
     function content_weeks(el) {
       for (let i = 0; i < weeks.length; i++) {
-        console.log(weeks[i].name.split('-')[0])
+        const week = document.createElement('div');
+        week.classList = 'week ' + weeks[i].name;
+        const monthName = weeks[i].name.split('-')[0];
+        const monthDOM = document.getElementsByClassName(monthName)[0];
+        monthDOM.appendChild(week);
       }
     }
     function content_days() {
