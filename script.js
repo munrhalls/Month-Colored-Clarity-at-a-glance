@@ -1,5 +1,5 @@
 // I N T E R A C T I V E S 
-var monthShown = 'January';
+var monthShown = 'July';
 
 // // DATA VALUES
 const heightTopbar = '3.5rem';
@@ -262,6 +262,7 @@ window.addEventListener('load', function () {
       el.style.textAlign = 'center';
     }
   }
+
   function cr8_titlebar2() {
     // C O N T E N T
     getEl_loopF('title2', content_title2);
@@ -281,14 +282,13 @@ window.addEventListener('load', function () {
     function content_month_title(el) {
       const title = document.createElement('div');
       // global var
-      title.innerText = months[0];
+      const index = months.indexOf(monthShown);
+      title.innerText = months[index];
       el.appendChild(title);
     }
     function content_arrowL2(el) {
-
     }
     function content_arrowR2(el) {
-
     }
     // S T Y L E
     const maxHeight = 3;
@@ -351,20 +351,26 @@ window.addEventListener('load', function () {
 
     }
     // I N T E R A C T I V E S
-    inter_monthShown();
     getEl_loopF('arrowL2', inter_prevMonth);
-    getEl_loopF('arrowR2', style_nextMonth);
     function inter_monthShown() {
       monthShown = 'July';
     }
     function inter_prevMonth(el) {
-      el.onclick = function(el) {
-        console.log("YTADA!!!")
+      el.onclick = function() {
+        const index = months.indexOf(monthShown);
+        console.log(index)
+        if (index > 0) {
+          const prevIndex = index - 1;
+          monthShown = months[prevIndex];
+          console.log(monthShown)
+          getEl_loopF('month_title', inter_shiftMonth);
+        }
       }
     }
-    function style_nextMonth(el) {
-
+    function inter_shiftMonth(el) {
+      el.innerText = monthShown;
     }
+  
   }
 
   function cr8_calendar() {
