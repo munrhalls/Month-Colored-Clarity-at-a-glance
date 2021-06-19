@@ -284,6 +284,11 @@ window.addEventListener('load', function () {
       el.style.fontWeight = 'bold';
       el.style.marginLeft = '1.5rem';
     }
+    // I N T E R A C T I V E S
+    inter_monthShown();
+    function inter_monthShown() {
+      monthShown = 'July';
+    }
   }
   function cr8_calendar() {
     // C O N T E N T
