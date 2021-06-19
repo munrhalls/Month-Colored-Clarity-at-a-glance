@@ -252,7 +252,8 @@ window.addEventListener('load', function () {
       el.style.textAlign = 'center';
     }
   }
-  function cr8_calendar() {
+  function cr8_calendarDOM() {
+    // C O N T E N T
     getEl_loopF('calendar', content_months);
     getEl_loopF('calendar', content_weeks);
     getEl_loopF('calendar', content_days);
@@ -270,7 +271,6 @@ window.addEventListener('load', function () {
         const monthName = weeks[i].name.split('-')[0];
         const monthDOM = document.getElementsByClassName(monthName)[0];
         monthDOM.appendChild(week);
-        // console.log(week)
       }
     }
     function content_days() {
@@ -282,10 +282,16 @@ window.addEventListener('load', function () {
         weekDOM.appendChild(day);
       }
     }
-    function content_dayInterface() {
-
-    }
   }
+  function cr8_calendar() {
+    cr8_calendarDOM();
+  }
+
+
+
+
+
+  
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
     let length = HTMLCollection.length;
     for (let i = 0; i < length; i++) {
