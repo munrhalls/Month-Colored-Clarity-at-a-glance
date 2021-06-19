@@ -352,6 +352,7 @@ window.addEventListener('load', function () {
     }
     // I N T E R A C T I V E S
     getEl_loopF('arrowL2', inter_prevMonth);
+    getEl_loopF('arrowR2', inter_nextMonth);
     function inter_monthShown() {
       monthShown = 'July';
     }
@@ -361,6 +362,17 @@ window.addEventListener('load', function () {
         console.log(index)
         if (index > 0) {
           const prevIndex = index - 1;
+          monthShown = months[prevIndex];
+          console.log(monthShown)
+          getEl_loopF('month_title', inter_shiftMonth);
+        }
+      }
+    }
+    function inter_nextMonth(el) {
+      el.onclick = function() {
+        const index = months.indexOf(monthShown);
+        if (index < months.length - 1) {
+          const prevIndex = index + 1;
           monthShown = months[prevIndex];
           console.log(monthShown)
           getEl_loopF('month_title', inter_shiftMonth);
