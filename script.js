@@ -19,18 +19,19 @@ const year = date.getFullYear();
 const DATA_Calendar = [];
 
 for (let i = 1; i <= 12; i++) {
-
   const month = new Date(year, i, 0);
   const monthDATA = new Array();
   monthDATA.code = month.toLocaleString('default', { month: 'long' });
-  const numDaysInMonth = month.getDate();
+  const daysInMonth = month.getDate();
 
   let strDaysByComma = '';
-  for (let j = 1; j <= numDaysInMonth; j++) {
+  let strDayNums = '';
+  for (let j = 1; j <= daysInMonth; j++) {
     const day = new Date(year, i - 1, j);
     const dayNum = day.getDate();
     const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
     strDaysByComma += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
+    strDayNums += dayNum + ' ';
   }
   const strWeeks = strDaysByComma.split(',');
   strWeeks.pop();
@@ -40,8 +41,7 @@ for (let i = 1; i <= 12; i++) {
     week.code = 'Week ' + count;
     monthDATA.push(week);
     count++;
-  })
-
+  });
   DATA_Calendar.push(monthDATA);
 }
 
@@ -51,7 +51,6 @@ const days = [];
 for (let i = 0; i < DATA_Calendar.length; i++) {
   const month = DATA_Calendar[i];
   const name = month.code;
-  console.log(month)
   months.push(name);
   for (let j = 0; j < month.length; j++) {
     const week = month[j];
@@ -383,7 +382,6 @@ window.addEventListener('load', function () {
     function inter_prevMonth(el) {
       el.onclick = function () {
         const index = months.indexOf(monthShown);
-        console.log(index)
         if (index > 0) {
           const prevIndex = index - 1;
           monthShown = months[prevIndex];
@@ -416,7 +414,6 @@ window.addEventListener('load', function () {
 
     cr8_calendarDOM();
     function cr8_calendarDOM() {
-
       getEl_loopF('calendar', content_months);
       getEl_loopF('calendar', content_weeks);
       getEl_loopF('calendar', content_days);
@@ -424,10 +421,6 @@ window.addEventListener('load', function () {
         for (let i = 0; i < months.length; i++) {
           const month = document.createElement('div');
           month.classList = 'month ' + months[i];
-          const title = document.createElement('span');
-          const text = months[i];
-          title.innerText = text;
-          month.appendChild(title);
           el.appendChild(month);
         }
       }
@@ -435,7 +428,9 @@ window.addEventListener('load', function () {
         for (let i = 0; i < weeks.length; i++) {
           const week = document.createElement('div');
           week.classList = 'week ' + weeks[i].code;
+          
           const title = document.createElement('span');
+          title.classList = 'weekTitle';
           const text = weeks[i].code.split('-')[1] + ' ' + weeks[i].code.split('-')[2];
           title.innerText = text;
           week.appendChild(title);
@@ -446,17 +441,19 @@ window.addEventListener('load', function () {
       }
       function content_days() {
         for (let i = 0; i < days.length; i++) {
-          const day = document.createElement('div');
+          const day = document  .createElement('div');
           const weekName = days[i].code.split(' ')[0];
           const weekDOM = document.getElementsByClassName(weekName)[0];
           day.classList = 'day ' + days[i].code;
           const title = document.createElement('span');
           const text = days[i].name;
-          console.log(text)
           title.innerText = text;
           day.appendChild(title);
           weekDOM.appendChild(day);
         }
+      }
+      function content_dayNum() {
+
       }
     }
 
@@ -465,6 +462,7 @@ window.addEventListener('load', function () {
     getEl_loopF('calendar', style_calendar);
     getEl_loopF('month', style_month);
     getEl_loopF('week', style_week);
+    getEl_loopF('weekTitle', style_weekTitle);
     getEl_loopF('day', style_day);
 
 
@@ -481,9 +479,18 @@ window.addEventListener('load', function () {
     function style_week(el) {
       el.style.flex = '1';
       el.style.display = 'flex';
+
+    }
+    function style_weekTitle(el) {
+      el.style.fontWeight = 'bold';
+      el.style.backgroundColor = '#000000';
+      el.style.color = '#ffffff';
+      el.style.padding = '0 1rem';
     }
     function style_day(el) {
+      el.style.flex = '1';
       el.style.border = '1px solid #000000';
+      el.style.padding = '0 0.25rem';
     }
 
     // I N T E R A C T I V E S
