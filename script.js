@@ -132,6 +132,10 @@ window.addEventListener('load', function () {
     }
   }
 
+  function getOneEl_runF(className, i, modify) {
+    const el = document.getElementsByClassName(className)[i];
+    modify(el);
+  }
 
   function cr8_topbar() {
 
@@ -405,6 +409,8 @@ window.addEventListener('load', function () {
           monthShown = months[prevIndex];
           console.log(monthShown)
           getEl_loopF('month_title', inter_shiftMonth);
+          getEl_loopF('month', inter_monthDisplay);
+          // getEl_loopF('month', cr8_calendar.inter_monthDisplay);
         }
       }
     }
@@ -449,6 +455,7 @@ window.addEventListener('load', function () {
           week.classList = 'week ' + weeks[i].code;
           const monthName = weeks[i].code.split('-')[0];
           const monthDOM = document.getElementsByClassName(monthName)[0];
+
           function content_weekHeader(week) {
             const weekHeader = document.createElement('span');
             weekHeader.classList = 'weekHeader';
@@ -533,14 +540,16 @@ window.addEventListener('load', function () {
     }
 
     // I N T E R A C T I V E S
+    const monthNow = new Date();
+    const num = monthNow.getMonth();
+    getEl_loopF('month', setup_hideMonths);
+    getOneEl_runF('month', num, inter_showMonth);
 
-    getEl_loopF('month', inter_monthDisplay);
-
-    function inter_monthDisplay(el) {
-      const monthName = el.className.split(' ')[1];
-      if (monthName !== monthShown) {
-        el.style.display = 'none';
-      }
+    function setup_hideMonths(el) {
+      // el.style.visibility = 'hidden';
+    }
+    function inter_showMonth(el) {
+      el.style.visibility = 'visible';
     }
   }
 
@@ -612,76 +621,76 @@ window.addEventListener('load', function () {
     HTMLCollection[0].style.display = 'block';
   }
 
-const root = document.getElementsByClassName('root')[0]
-root.style.minHeight = '100vh';
-root.style.userSelect = 'none';
-root.markingHoursEvent = false;
-root.style.position = 'relative';
-root.addEventListener('mousedown', function (e) {
-  root.markingHoursEvent = true;
-  // console.log('create div');
-  let markerEl = document.createElement('div');
-  markerEl.id = 'markerEl';
-  markerEl.onclick = function (e) {
-    // console.log(e)
-  }
-
-  markerEl.style.height = '1px';
-  markerEl.style.width = '1px';
-  markerEl.style.border = '1px solid #000000';
-  let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
-  let projectColor = colors[rndNum];
-  markerEl.style.background = projectColor;
-  markerEl.projectColor = projectColor;
-  markerEl.style.opacity = '70%';
-  markerEl.style.position = 'absolute';
-  let y = e.pageY.toString() + 'px';
-  let x = e.pageX.toString() + 'px';
-  markerEl.style.top = y;
-  markerEl.style.left = x;
-  markerEl.y = y;
-  markerEl.x = x;
-  root.appendChild(markerEl)
-});
-root.addEventListener('mousemove', function (e) {
-  if (root.markingHoursEvent) {
-    // console.log('re-draw div');
-    let markerEl = document.getElementById('markerEl');
-    let prevCursorY = parseInt((markerEl.y).split('px')[0]);
-    let prevCursorX = parseInt((markerEl.x).split('px')[0]);
-    let heightUpdateY = Math.abs(e.pageY - prevCursorY) + 'px';
-    let heightUpdateX = Math.abs(e.pageX - prevCursorX) + 'px';
-    markerEl.style.height = heightUpdateY;
-    markerEl.style.width = heightUpdateX;
-    if (e.pageY - parseInt((markerEl.y).split('px')[0]) < 0) {
-      markerEl.style.top = e.pageY + 'px';
-    }
-    if (e.pageX - parseInt((markerEl.x).split('px')[0]) < 0) {
-      markerEl.style.left = e.pageX + 'px';
-    }
-    // console.log('check if an hourtick is inside coordinates (math, < than)');
-    // console.log('pre-mark hour ticks inside');
-    // console.log('erase mark or set mark, depending on confirmation');
-  }
-  // Dispatch the event.
-});
-root.addEventListener('mouseup', function (e) {
+  const root = document.getElementsByClassName('root')[0]
+  root.style.minHeight = '100vh';
+  root.style.userSelect = 'none';
   root.markingHoursEvent = false;
-  let markerEl = document.getElementById('markerEl');
-  let hourEls = document.getElementsByClassName('hourEl');
-  if (hourEls && hourEls.length) {
-    const event = new Event('requestCoords', {
-      bubbles: false,
-    });
-    event.markerEl = markerEl;
-    for (let i = 0; i < hourEls.length; i++) {
-      hourEls[i].dispatchEvent(event);
+  root.style.position = 'relative';
+  root.addEventListener('mousedown', function (e) {
+    root.markingHoursEvent = true;
+    // console.log('create div');
+    let markerEl = document.createElement('div');
+    markerEl.id = 'markerEl';
+    markerEl.onclick = function (e) {
+      // console.log(e)
     }
-  }
-  // Event listeners - ctrl f 'requestCoords'
-  console.log('mouse drag select');
-  markerEl.remove();
-});
+
+    markerEl.style.height = '1px';
+    markerEl.style.width = '1px';
+    markerEl.style.border = '1px solid #000000';
+    let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
+    let projectColor = colors[rndNum];
+    markerEl.style.background = projectColor;
+    markerEl.projectColor = projectColor;
+    markerEl.style.opacity = '70%';
+    markerEl.style.position = 'absolute';
+    let y = e.pageY.toString() + 'px';
+    let x = e.pageX.toString() + 'px';
+    markerEl.style.top = y;
+    markerEl.style.left = x;
+    markerEl.y = y;
+    markerEl.x = x;
+    root.appendChild(markerEl)
+  });
+  root.addEventListener('mousemove', function (e) {
+    if (root.markingHoursEvent) {
+      // console.log('re-draw div');
+      let markerEl = document.getElementById('markerEl');
+      let prevCursorY = parseInt((markerEl.y).split('px')[0]);
+      let prevCursorX = parseInt((markerEl.x).split('px')[0]);
+      let heightUpdateY = Math.abs(e.pageY - prevCursorY) + 'px';
+      let heightUpdateX = Math.abs(e.pageX - prevCursorX) + 'px';
+      markerEl.style.height = heightUpdateY;
+      markerEl.style.width = heightUpdateX;
+      if (e.pageY - parseInt((markerEl.y).split('px')[0]) < 0) {
+        markerEl.style.top = e.pageY + 'px';
+      }
+      if (e.pageX - parseInt((markerEl.x).split('px')[0]) < 0) {
+        markerEl.style.left = e.pageX + 'px';
+      }
+      // console.log('check if an hourtick is inside coordinates (math, < than)');
+      // console.log('pre-mark hour ticks inside');
+      // console.log('erase mark or set mark, depending on confirmation');
+    }
+    // Dispatch the event.
+  });
+  root.addEventListener('mouseup', function (e) {
+    root.markingHoursEvent = false;
+    let markerEl = document.getElementById('markerEl');
+    let hourEls = document.getElementsByClassName('hourEl');
+    if (hourEls && hourEls.length) {
+      const event = new Event('requestCoords', {
+        bubbles: false,
+      });
+      event.markerEl = markerEl;
+      for (let i = 0; i < hourEls.length; i++) {
+        hourEls[i].dispatchEvent(event);
+      }
+    }
+    // Event listeners - ctrl f 'requestCoords'
+    console.log('mouse drag select');
+    markerEl.remove();
+  });
 });
 
 
