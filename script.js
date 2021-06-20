@@ -417,6 +417,17 @@ window.addEventListener('load', function () {
       getEl_loopF('calendar', content_months);
       getEl_loopF('calendar', content_weeks);
       getEl_loopF('calendar', content_days);
+      getEl_loopF('weekHeader', content_hourMarks);
+
+      function content_hourMarks(el) {
+        const hourMarks = document.createElement('div');
+        for (let i = 0; i <= 24; i += 4) {
+          const hour = document.createElement('div');
+          hour.innerText = i;
+          hourMarks.appendChild(hour);
+        }
+        el.appendChild(hourMarks);
+      }
       function content_months(el) {
         for (let i = 0; i < months.length; i++) {
           const month = document.createElement('div');
@@ -428,14 +439,18 @@ window.addEventListener('load', function () {
         for (let i = 0; i < weeks.length; i++) {
           const week = document.createElement('div');
           week.classList = 'week ' + weeks[i].code;
-          
-          const title = document.createElement('span');
-          title.classList = 'weekTitle';
-          const text = weeks[i].code.split('-')[1] + ' ' + weeks[i].code.split('-')[2];
-          title.innerText = text;
-          week.appendChild(title);
           const monthName = weeks[i].code.split('-')[0];
           const monthDOM = document.getElementsByClassName(monthName)[0];
+          function content_weekHeader(week) {
+            const weekHeader = document.createElement('span');
+              weekHeader.classList = 'weekHeader';
+              const text = weeks[i].code.split('-')[1] + ' ' + weeks[i].code.split('-')[2];
+              const title = document.createElement('span');
+              title.innerText = text;
+              weekHeader.appendChild(title);
+              week.appendChild(weekHeader);
+          }
+          content_weekHeader(week);
           monthDOM.appendChild(week);
         }
       }
@@ -462,7 +477,7 @@ window.addEventListener('load', function () {
     getEl_loopF('calendar', style_calendar);
     getEl_loopF('month', style_month);
     getEl_loopF('week', style_week);
-    getEl_loopF('weekTitle', style_weekTitle);
+    getEl_loopF('weekHeader', style_weekHeader);
     getEl_loopF('day', style_day);
 
 
@@ -481,7 +496,7 @@ window.addEventListener('load', function () {
       el.style.display = 'flex';
 
     }
-    function style_weekTitle(el) {
+    function style_weekHeader(el) {
       el.style.fontWeight = 'bold';
       el.style.backgroundColor = '#000000';
       el.style.color = '#ffffff';
