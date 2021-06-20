@@ -279,6 +279,7 @@ window.addEventListener('load', function () {
     }
     function style_addBlock(el) {
       el.style.flex = '1';
+      el.style.maxHeight = '2rem';
       // el.style.height = btnHeight;
       el.style.width = '100%';
       el.style.textAlign = 'center';
