@@ -17,22 +17,21 @@ const calendarMonthTitleHeight = '2.5rem';
 const date = new Date();
 const year = date.getFullYear();
 const DATA_Calendar = [];
+
 for (let i = 1; i <= 12; i++) {
-  // Each loop equals:
-  // 1. get number of days in a month.
+
   const month = new Date(year, i, 0);
-  let monthDATA = new Array();
+  const monthDATA = new Array();
   monthDATA.name = month.toLocaleString('default', { month: 'long' });
   const numDaysInMonth = month.getDate();
-  // 2. get weeks with proper days as string, mark each week by comma
-  let weeksByCommaString = '';
+
+  let strWeeksByComma = '';
   for (let j = 1; j <= numDaysInMonth; j++) {
     const day = new Date(year, i - 1, j);
     const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
-    weeksByCommaString += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
+    strWeeksByComma += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
   }
-  // 3. gather weeks from the string, as arrays of days, push each into month array
-  const weeks = weeksByCommaString.split(',');
+  const weeks = strWeeksByComma.split(',');
   weeks.pop();
   let count = 1;
   weeks.forEach(function (week) {
@@ -41,9 +40,10 @@ for (let i = 1; i <= 12; i++) {
     monthDATA.push(weekInDays);
     count++;
   })
-  // 4. push month array, filled with month's week arrays with days inside, into year array
+
   DATA_Calendar.push(monthDATA);
 }
+
 const months = [];
 const weeks = [];
 const days = [];
@@ -107,18 +107,18 @@ window.addEventListener('load', function () {
         let div = document.createElement('div');
         div.className = el;
         // comment / uncomment
-        optional_borderify(div);
-        // optional_textMark(div, el);
+        devHelperF_borderify(div);
+        // devHelperF_textMark(div, el);
         container.appendChild(div);
       }
     });
-    function optional_borderify(el) {
+    function devHelperF_borderify(el) {
       el.style.border = '1px solid black';
     }
-    function optional_greyifyBg(el) {
+    function devHelperF_greyifyBg(el) {
       el.style.background = 'grey';
     }
-    function optional_textMark(el, text) {
+    function devHelperF_textMark(el, text) {
       let span = document.createElement('span');
       // span.style.position = 'absolute';
       span.style.top = '1rem'; span.style.left = '1rem'; span.innerText = text; span.style.color = 'blue'; span.style.letterSpacing = '1px'; span.style.fontSize = '2.5rem';
@@ -126,14 +126,20 @@ window.addEventListener('load', function () {
       el.appendChild(span);
     }
   }
+
+
   function getEl_loopF(className, modify) {
     const elements = document.getElementsByClassName(className);
     for (let i = 0; i < elements.length; i++) {
       modify(elements[i]);
     }
   }
+
+
   function cr8_topbar() {
+
     // C O N T E N T
+
     getEl_loopF('title', content_title);
     getEl_loopF('about', content_about);
 
@@ -153,7 +159,9 @@ window.addEventListener('load', function () {
     function content_about(el) {
       el.innerText = 'ABOUT';
     }
+
     // S T Y L E
+
     let title_height = '3rem';
     let title_bgColor = '#000000';
     let title_color = '#ffffff';
@@ -181,12 +189,16 @@ window.addEventListener('load', function () {
       el.style.fontSize = title_fontSize;
     }
   }
+
+
   function cr8_main() {
     function style_main(el) {
       el.style.display = 'flex';
     }
     getEl_loopF('main', style_main);
   }
+
+
   function cr8_timeVisuals() {
     getEl_loopF('timeVisuals', style_timeVisuals);
 
@@ -197,8 +209,12 @@ window.addEventListener('load', function () {
       el.style.height = heightVisuals;
     }
   }
+
+
   function cr8_timeBlocks() {
+
     // C O N T E N T
+
     getEl_loopF('titlebar1', content_titlebar1);
     getEl_loopF('blocksCarousel', content_blocksCarousel);
     getEl_loopF('addBlock', content_addBlock);
@@ -218,7 +234,9 @@ window.addEventListener('load', function () {
     function content_addBlock(el) {
       el.innerText = '+';
     }
+
     // S T Y L E
+
     const titleHeight = '1.5rem';
     const btnHeight = '1.5rem';
     getEl_loopF('timeBlocks', style_timeBlocks);
@@ -263,8 +281,11 @@ window.addEventListener('load', function () {
     }
   }
 
+
   function cr8_titlebar2() {
+
     // C O N T E N T
+
     getEl_loopF('title2', content_title2);
     getEl_loopF('month_arrows', content_month_arrows);
     getEl_loopF('month_title', content_month_title);
@@ -277,7 +298,7 @@ window.addEventListener('load', function () {
       el.appendChild(title);
     }
     function content_month_arrows(el) {
-      
+
     }
     function content_month_title(el) {
       const title = document.createElement('div');
@@ -290,7 +311,9 @@ window.addEventListener('load', function () {
     }
     function content_arrowR2(el) {
     }
+
     // S T Y L E
+
     const maxHeight = 3;
     const horizMargin = 1.5;
     const titleSize = 1.5;
@@ -350,14 +373,16 @@ window.addEventListener('load', function () {
       el.style.right = 0 - (width * 9) + 'rem';
 
     }
+
     // I N T E R A C T I V E S
+
     getEl_loopF('arrowL2', inter_prevMonth);
     getEl_loopF('arrowR2', inter_nextMonth);
     function inter_monthShown() {
       monthShown = 'July';
     }
     function inter_prevMonth(el) {
-      el.onclick = function() {
+      el.onclick = function () {
         const index = months.indexOf(monthShown);
         console.log(index)
         if (index > 0) {
@@ -369,7 +394,7 @@ window.addEventListener('load', function () {
       }
     }
     function inter_nextMonth(el) {
-      el.onclick = function() {
+      el.onclick = function () {
         const index = months.indexOf(monthShown);
         if (index < months.length - 1) {
           const prevIndex = index + 1;
@@ -382,14 +407,17 @@ window.addEventListener('load', function () {
     function inter_shiftMonth(el) {
       el.innerText = monthShown;
     }
-  
+
   }
 
+
   function cr8_calendar() {
+
     // C O N T E N T
+
     cr8_calendarDOM();
     function cr8_calendarDOM() {
-      // C O N T E N T
+
       getEl_loopF('calendar', content_months);
       getEl_loopF('calendar', content_weeks);
       getEl_loopF('calendar', content_days);
@@ -431,7 +459,9 @@ window.addEventListener('load', function () {
         }
       }
     }
+
     // S T Y L E 
+
     getEl_loopF('calendar', style_calendar);
     getEl_loopF('month', style_month);
 
@@ -443,7 +473,9 @@ window.addEventListener('load', function () {
       el.style.flex = '1';
       el.style.border = '1px solid #000000';
     }
+
     // I N T E R A C T I V E S
+
     getEl_loopF('month', inter_monthDisplay);
 
     function inter_monthDisplay(el) {
