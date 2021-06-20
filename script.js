@@ -65,9 +65,6 @@ for (let i = 0; i < DATA_Calendar.length; i++) {
   }
 }
 
-
-
-
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   const app = document.getElementById('app');
@@ -464,6 +461,8 @@ window.addEventListener('load', function () {
 
     getEl_loopF('calendar', style_calendar);
     getEl_loopF('month', style_month);
+    getEl_loopF('week', style_week);
+
 
     function style_calendar(el) {
       el.style.flex = '1';
@@ -472,6 +471,13 @@ window.addEventListener('load', function () {
     function style_month(el) {
       el.style.flex = '1';
       el.style.border = '1px solid #000000';
+      el.style.display = 'flex';
+      el.style.flexDirection = 'column';
+    }
+
+    function style_week(el) {
+      el.style.flex = '1';
+      el.style.display = 'flex';
     }
 
     // I N T E R A C T I V E S
