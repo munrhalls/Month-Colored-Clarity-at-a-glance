@@ -22,22 +22,23 @@ for (let i = 1; i <= 12; i++) {
 
   const month = new Date(year, i, 0);
   const monthDATA = new Array();
-  monthDATA.name = month.toLocaleString('default', { month: 'long' });
+  monthDATA.code = month.toLocaleString('default', { month: 'long' });
   const numDaysInMonth = month.getDate();
 
-  let strWeeksByComma = '';
+  let strDaysByComma = '';
   for (let j = 1; j <= numDaysInMonth; j++) {
     const day = new Date(year, i - 1, j);
+    const dayNum = day.getDate();
     const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
-    strWeeksByComma += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
+    strDaysByComma += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
   }
-  const weeks = strWeeksByComma.split(',');
-  weeks.pop();
+  const strWeeks = strDaysByComma.split(',');
+  strWeeks.pop();
   let count = 1;
-  weeks.forEach(function (week) {
-    const weekInDays = week.split(' ');
-    weekInDays.name = 'Week ' + count;
-    monthDATA.push(weekInDays);
+  strWeeks.forEach(function (strWeek) {
+    const week = strWeek.split(' ');
+    week.code = 'Week ' + count;
+    monthDATA.push(week);
     count++;
   })
 
@@ -49,17 +50,18 @@ const weeks = [];
 const days = [];
 for (let i = 0; i < DATA_Calendar.length; i++) {
   const month = DATA_Calendar[i];
-  const name = month.name;
+  const name = month.code;
+  console.log(month)
   months.push(name);
   for (let j = 0; j < month.length; j++) {
     const week = month[j];
-    week.name = month.name + '-Week-' + (j + 1);
+    week.code = month.code + '-Week-' + (j + 1);
     weeks.push(week);
     for (let y = 0; y < week.length; y++) {
       const day = week[y];
       const dayObj = {};
-      dayObj.name = week.name + ' Day-' + (y + 1);
-      dayObj.day = day;
+      dayObj.code = week.code + ' Day-' + (y + 1);
+      dayObj.name = day;
       days.push(dayObj);
     }
   }
@@ -432,12 +434,12 @@ window.addEventListener('load', function () {
       function content_weeks() {
         for (let i = 0; i < weeks.length; i++) {
           const week = document.createElement('div');
-          week.classList = 'week ' + weeks[i].name;
+          week.classList = 'week ' + weeks[i].code;
           const title = document.createElement('span');
-          const text = weeks[i].name.split('-')[1] + ' ' + weeks[i].name.split('-')[2];
+          const text = weeks[i].code.split('-')[1] + ' ' + weeks[i].code.split('-')[2];
           title.innerText = text;
           week.appendChild(title);
-          const monthName = weeks[i].name.split('-')[0];
+          const monthName = weeks[i].code.split('-')[0];
           const monthDOM = document.getElementsByClassName(monthName)[0];
           monthDOM.appendChild(week);
         }
@@ -445,11 +447,12 @@ window.addEventListener('load', function () {
       function content_days() {
         for (let i = 0; i < days.length; i++) {
           const day = document.createElement('div');
-          const weekName = days[i].name.split(' ')[0];
+          const weekName = days[i].code.split(' ')[0];
           const weekDOM = document.getElementsByClassName(weekName)[0];
-          day.classList = 'day ' + days[i].name;
+          day.classList = 'day ' + days[i].code;
           const title = document.createElement('span');
           const text = days[i].name;
+          console.log(text)
           title.innerText = text;
           day.appendChild(title);
           weekDOM.appendChild(day);
@@ -609,7 +612,7 @@ window.addEventListener('load', function () {
 
 
   //       let monthTitle = document.createElement('div');
-  //       monthTitle.innerText = monthDATA.name;
+  //       monthTitle.innerText = monthDATA.code;
   //       monthTitle.style.textAlign = 'left';
   //       monthTitle.style.fontSize = calendarMonthTitleFontSize;
   //       monthTitle.style.padding = paddingTitle;
@@ -645,7 +648,7 @@ window.addEventListener('load', function () {
   //         weekTitle.style.height = '100%';
   //         weekTitle.style.color = '#ffffff';
   //         weekTitle.style.background = '#000000';
-  //         weekTitle.innerText = weekDATA.name;
+  //         weekTitle.innerText = weekDATA.code;
   //         weekTitle.style.paddingBottom = '0.5rem'
   //         week.appendChild(weekTitle);
   //         monthDays.appendChild(week)
@@ -1667,7 +1670,7 @@ function createFillDataBtn() {
   dropTextFileBtn.setAttribute('type', 'file');
   dropTextFileBtn.setAttribute('accept', 'text/plain');
   dropTextFileBtn.id = 'dropTextFileBtn';
-  dropTextFileBtn.name = 'dropTextFileBtn';
+  dropTextFileBtn.code = 'dropTextFileBtn';
 
   dropTextFileBtn.onchange = (function () {
     let file = this.files[0];
