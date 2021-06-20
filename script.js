@@ -421,6 +421,7 @@ window.addEventListener('load', function () {
 
       function content_hourMarks(el) {
         const hourMarks = document.createElement('div');
+        hourMarks.className = 'hourMarks';
         for (let i = 0; i <= 24; i += 4) {
           const hour = document.createElement('div');
           hour.innerText = i;
@@ -446,6 +447,7 @@ window.addEventListener('load', function () {
               weekHeader.classList = 'weekHeader';
               const text = weeks[i].code.split('-')[1] + ' ' + weeks[i].code.split('-')[2];
               const title = document.createElement('span');
+              title.className = 'weekTitle';
               title.innerText = text;
               weekHeader.appendChild(title);
               week.appendChild(weekHeader);
@@ -473,11 +475,14 @@ window.addEventListener('load', function () {
     }
 
     // S T Y L E 
-
+    const fontSize = 1;
     getEl_loopF('calendar', style_calendar);
     getEl_loopF('month', style_month);
     getEl_loopF('week', style_week);
     getEl_loopF('weekHeader', style_weekHeader);
+    getEl_loopF('weekTitle', style_weekTitle);
+
+    getEl_loopF('hourMarks', style_hourMarks);
     getEl_loopF('day', style_day);
 
 
@@ -494,13 +499,21 @@ window.addEventListener('load', function () {
     function style_week(el) {
       el.style.flex = '1';
       el.style.display = 'flex';
-
     }
     function style_weekHeader(el) {
-      el.style.fontWeight = 'bold';
+      el.style.display = 'flex';
+      el.style.flexDirection = 'column';
+      el.style.alignItems = 'flex-end'
       el.style.backgroundColor = '#000000';
       el.style.color = '#ffffff';
       el.style.padding = '0 1rem';
+    }
+    function style_weekTitle(el) {
+      el.style.paddingBottom = (fontSize -0.9) + 'rem';
+    }
+    function style_hourMarks(el) {
+      el.style.flex = '1';
+      el.style.fontSize = (fontSize - 0.33) + 'rem';
     }
     function style_day(el) {
       el.style.flex = '1';
