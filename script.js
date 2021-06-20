@@ -462,6 +462,7 @@ window.addEventListener('load', function () {
     getEl_loopF('calendar', style_calendar);
     getEl_loopF('month', style_month);
     getEl_loopF('week', style_week);
+    getEl_loopF('day', style_day);
 
 
     function style_calendar(el) {
@@ -474,10 +475,12 @@ window.addEventListener('load', function () {
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
     }
-
     function style_week(el) {
       el.style.flex = '1';
       el.style.display = 'flex';
+    }
+    function style_day(el) {
+      el.style.border = '1px solid #000000';
     }
 
     // I N T E R A C T I V E S
