@@ -509,16 +509,20 @@ window.addEventListener('load', function () {
       el.style.padding = '0 1rem';
     }
     function style_weekTitle(el) {
-      el.style.paddingBottom = (fontSize -0.9) + 'rem';
+      el.style.fontSize = (fontSize - 0.25) + 'rem';
+      el.style.padding = '0 ' + (fontSize/5) + 'rem';
+      el.style.paddingTop = (fontSize/15) + 'rem';
     }
     function style_hourMarks(el) {
       el.style.flex = '1';
       el.style.fontSize = (fontSize - 0.33) + 'rem';
     }
     function style_day(el) {
+      el.style.fontSize = (fontSize - 0.25) + 'rem';
       el.style.flex = '1';
       el.style.border = '1px solid #000000';
-      el.style.padding = '0 0.25rem';
+      el.style.padding = '0 ' + (fontSize/5) + 'rem';
+      el.style.paddingTop = (fontSize/15) + 'rem';
     }
 
     // I N T E R A C T I V E S
