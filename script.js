@@ -252,6 +252,7 @@ window.addEventListener('load', function () {
     function style_timeBlocks(el) {
       el.style.flex = '1';
       el.style.display = 'flex';
+      el.style.flexDirection = 'column';
     }
     function style_titleBar(el) {
       el.style.height = titleHeight;
@@ -264,7 +265,7 @@ window.addEventListener('load', function () {
       // el.style.height = 'calc(100% - ' + titleHeight +')';
       el.style.flex = '1';
       el.style.display = 'flex';
-      el.style.flexDirection = 'column';
+      // el.style.flexDirection = 'column';
       el.style.justifyContent = 'flex-end';
     }
     function style_blocks(el) {
@@ -397,7 +398,7 @@ window.addEventListener('load', function () {
           const prevIndex = index - 1;
           monthShown = months[prevIndex];
           console.log(monthShown)
-          getEl_loopF('month_title', inter_shiftMonth);
+          getEl_loopF('month_title', inter_shiftMonthTitle);
         }
       }
     }
@@ -408,13 +409,14 @@ window.addEventListener('load', function () {
           const prevIndex = index + 1;
           monthShown = months[prevIndex];
           console.log(monthShown)
-          getEl_loopF('month_title', inter_shiftMonth);
-          getEl_loopF('month', inter_monthDisplay);
+          getEl_loopF('month_title', inter_shiftMonthTitle);
+          getOneEl_runF('month', index, inter_hideMonth);
+          getOneEl_runF('month', prevIndex, inter_showMonth);
           // getEl_loopF('month', cr8_calendar.inter_monthDisplay);
         }
       }
     }
-    function inter_shiftMonth(el) {
+    function inter_shiftMonthTitle(el) {
       el.innerText = monthShown;
     }
 
@@ -490,6 +492,7 @@ window.addEventListener('load', function () {
 
     // S T Y L E 
     const fontSize = 1;
+    const monthDisplay = 'flex';
     getEl_loopF('calendar', style_calendar);
     getEl_loopF('month', style_month);
     getEl_loopF('week', style_week);
@@ -499,7 +502,6 @@ window.addEventListener('load', function () {
     getEl_loopF('hourMarks', style_hourMarks);
     getEl_loopF('day', style_day);
 
-
     function style_calendar(el) {
       el.style.flex = '1';
       el.style.display = 'flex';
@@ -507,7 +509,7 @@ window.addEventListener('load', function () {
     function style_month(el) {
       el.style.flex = '1';
       el.style.border = '1px solid #000000';
-      el.style.display = 'flex';
+      el.style.display = monthDisplay;
       el.style.flexDirection = 'column';
     }
     function style_week(el) {
@@ -540,17 +542,22 @@ window.addEventListener('load', function () {
     }
 
     // I N T E R A C T I V E S
+
+
+    function setup_hideMonths(el) {
+      el.style.display = 'none';
+    }
+    function inter_hideMonth(el) {
+      el.style.display = 'none';
+    }
+    function inter_showMonth(el) {
+      el.style.display = monthDisplay;
+      console.log(el);
+    }
     const monthNow = new Date();
     const num = monthNow.getMonth();
     getEl_loopF('month', setup_hideMonths);
     getOneEl_runF('month', num, inter_showMonth);
-
-    function setup_hideMonths(el) {
-      // el.style.visibility = 'hidden';
-    }
-    function inter_showMonth(el) {
-      el.style.visibility = 'visible';
-    }
   }
 
 
