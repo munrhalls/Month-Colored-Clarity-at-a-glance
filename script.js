@@ -70,11 +70,11 @@ window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   const app = document.getElementById('app');
 
-  const blocks = ['blocks', 'blocksCarousel', 'addBlock'];
-  const bottle = ['titlebar1', 'bottle', blocks];
-  const contentTimeBlocks = ['timeBottles', bottle,
-    'timeBottles', bottle,
-    'timeBottles', bottle];
+  const blocks = ['blocksCarousel', 'addBlock', 'blocks'];
+  const bottle = ['projectTitle', 'bottle', blocks];
+  const contentTimeBlocks = ['timeBar', bottle,
+    'timeBar', bottle,
+    'timeBar', bottle];
   const contentTitlebar2 = ['title2', 'month_arrows', ['arrowL2', 'month_title', 'arrowR2']];
   const DATA_DOM = [
     'root',
@@ -213,16 +213,19 @@ window.addEventListener('load', function () {
 
 
   function cr8_timeBlocks() {
-
     // C O N T E N T
 
-    getEl_loopF('titlebar1', content_titlebar1);
+    getEl_loopF('projectTitle', content_projectTitle);
+    getEl_loopF('blocks', content_blocks);
     getEl_loopF('blocksCarousel', content_blocksCarousel);
     getEl_loopF('addBlock', content_addBlock);
-    function content_titlebar1(el) {
+    function content_projectTitle(el) {
       const input = document.createElement('input');
       input.style.type = 'text';
       el.appendChild(input);
+    }
+    function content_blocks(el) {
+      
     }
     function content_blocksCarousel(el) {
       for (let i = 1; i < 25; i++) {
@@ -238,11 +241,12 @@ window.addEventListener('load', function () {
 
     // S T Y L E
 
-    const titleHeight = '1.5rem';
+    const buttonWidth = 5;
+    const barHeight = 5;
     const btnHeight = '1.5rem';
     getEl_loopF('timeBlocks', style_timeBlocks);
-    getEl_loopF('titlebar1', style_titleBar);
-    getEl_loopF('timeBottles', style_timeBottles);
+    getEl_loopF('projectTitle', style_projectTitle);
+    getEl_loopF('timeBar', style_timeBar);
 
     getEl_loopF('bottle', style_bottle);
     getEl_loopF('blocks', style_blocks);
@@ -254,12 +258,12 @@ window.addEventListener('load', function () {
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
     }
-    function style_titleBar(el) {
-      el.style.height = titleHeight;
+    function style_projectTitle(el) {
+      el.style.height = barHeight + 'rem';
+      el.style.width = buttonWidth + 'rem';
     }
-    function style_timeBottles(el) {
+    function style_timeBar(el) {
       el.style.display = 'flex';
-      el.style.flexDirection = 'column';
     }
     function style_bottle(el) {
       // el.style.height = 'calc(100% - ' + titleHeight +')';
