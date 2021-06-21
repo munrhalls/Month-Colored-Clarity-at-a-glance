@@ -221,11 +221,10 @@ window.addEventListener('load', function () {
     getEl_loopF('addBlock', content_addBlock);
     function content_projectTitle(el) {
       const input = document.createElement('input');
-      input.style.type = 'text';
+      input.type = 'text';
       el.appendChild(input);
     }
     function content_blocks(el) {
-      
     }
     function content_blocksCarousel(el) {
       for (let i = 1; i < 25; i++) {
@@ -241,7 +240,7 @@ window.addEventListener('load', function () {
 
     // S T Y L E
 
-    const buttonWidth = 5;
+    const barElWidth = 5;
     const barHeight = 5;
     const btnHeight = '1.5rem';
     getEl_loopF('timeBlocks', style_timeBlocks);
@@ -260,7 +259,20 @@ window.addEventListener('load', function () {
     }
     function style_projectTitle(el) {
       el.style.height = barHeight + 'rem';
-      el.style.width = buttonWidth + 'rem';
+      el.style.width = (barElWidth * 2) + 'rem';
+      el.style.display = 'flex';
+      function style_input() {
+        const input = el.getElementsByTagName('input')[0];
+        input.style.flex = '1';
+        input.style.maxWidth = (barElWidth * 2) + 'rem';
+        input.style.width = '100%';
+        input.style.padding = '0';
+        input.style.margin= '0';
+        input.style.display = 'flex';
+        input.style.textAlign = 'center';
+        input.style.justifyContent = 'center';
+      }
+      style_input();
     }
     function style_timeBar(el) {
       el.style.display = 'flex';
