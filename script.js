@@ -152,50 +152,61 @@ window.addEventListener('load', function () {
   // things
   function cr8_colorBtn() {
     // C O N T E N T 
-    const colorBtn = document.createElement('div');
-    colorBtn.className = 'colorBtn';
-    content_colorBtnMenu();
-    function content_colorBtnMenu() {
+    const colorBtn = content_colorBtn();
+    const colorMenu = content_colorMenu();
+    content_colorBlocks();
+
+    function content_colorBtn() {
+      const colorBtn = document.createElement('div');
+      colorBtn.className = 'colorBtn';
+      return colorBtn;
+    }
+    function content_colorMenu() {
       const colorMenu = document.createElement('div');
       colorMenu.className = 'colorMenu';
-      for (let i = 0; i < 3; i++) {
-        let row = document.createElement('div');
-        row.className = 'colorMenuRow';
-
-        colorMenu.appendChild(row);
-        for (let j = 0; j < 3; j++) {
-          let col = document.createElement('div');
-          col.className = 'colorMenuCol';
-          row.appendChild(col);
-        }
-      }
       colorBtn.appendChild(colorMenu);
+      return colorMenu;
+    }
+    function content_colorBlocks() {
+      const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
+      colors.forEach(function(){
+        const block = document.createElement('div');
+        block.className = 'colorBlock';
+        colorMenu.appendChild(block);
+      });
+ 
     }
     // S T Y L E
-    style_colorBtnMenu();
-    function style_colorBtnMenu() {
+    style_colorBtn();
+    style_colorMenu();
+    style_colorBlocks();
+    function style_colorBtn() {
+      const colorBtn = document.createElement('div');
+      colorBtn.style.position = 'relative';
+    }
+    function style_colorMenu() {
       const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
-      colorMenu.style.height = timebarHeight * 3 + 'rem';
-      colorMenu.style.width = timebarHeight * 3 + 'rem';
-      colorMenu.style.display = 'flex';
-      colorMenu.style.flexDirection = 'column';
-      const rows = colorBtn.getElementsByClassName('colorMenuRow');
-      for (let i = 0; i < rows.length; i++) { 
-        rows[i].style.height = timebarWidth * 3 + 'rem';
-        rows[i].style.flex = '1';
-        rows[i].style.display = 'flex';
-      }
-      const cols = colorBtn.getElementsByClassName('colorMenuCol');
-      for (let i = 0; i < cols.length; i++) {
-        cols[i].style.flex = '1'
-        cols[i].style.backgroundColor = colors[i];
+      colorMenu.style.position = 'absolute';
+      colorMenu.style.top = '0';
+      colorMenu.style.right = '0'
+    }
+    function style_colorBlocks() {
+      const blocks = colorMenu.getElementsByClassName('colorBlock');
+      for (let i = 0; i < colors.length; i++) {
+        blocks[i].style.backgroundColor = colors[i];
       }
     }
     // I N T E R A C T I V E S
+    setup_hideColorMenu();
     inter_CLICKtbColorBtn(colorBtn);
+    function setup_hideColorMenu() {
+      const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
+      // colorMenu.style.display = 'none';
+      colorMenu.classList = 'colorMenu displayNone';
+    }
     function inter_CLICKtbColorBtn(colorBtn) {
-      colorBtn.onclick = function(e) {
-        console.log('btn')
+      colorBtn.onclick = function (e) {
+        const btn = e.target;
       }
     }
     return colorBtn;
