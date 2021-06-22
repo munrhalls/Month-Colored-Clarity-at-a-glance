@@ -2,11 +2,14 @@
 var monthShown = 'July';
 
 // // DATA VALUES
+const timebarHeight = 5;
+const timebarWidth = 5;
+
 const heightTopbar = '3.5rem';
 const paddingTitle = '0.25rem';
 const heightVisuals = 'calc(100vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
 const containerheightCalendar = 'calc(50vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
-const rightBarWidth = '18rem';
+const righttimebarWidth = '18rem';
 const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00', '#FF0000'];
 const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
@@ -148,8 +151,46 @@ window.addEventListener('load', function () {
   }
   // things
   function cr8_colorBtn() {
+    // C O N T E N T 
     const colorBtn = document.createElement('div');
     colorBtn.className = 'colorBtn';
+    content_colorBtnMenu();
+    function content_colorBtnMenu() {
+      const colorMenu = document.createElement('div');
+      colorMenu.className = 'colorMenu';
+      for (let i = 0; i < 3; i++) {
+        let row = document.createElement('div');
+        row.className = 'colorMenuRow';
+
+        colorMenu.appendChild(row);
+        for (let j = 0; j < 3; j++) {
+          let col = document.createElement('div');
+          col.className = 'colorMenuCol';
+          row.appendChild(col);
+        }
+      }
+      colorBtn.appendChild(colorMenu);
+    }
+    // S T Y L E
+    function style_colorBtnMenu() {
+      const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
+      colorMenu.style.height = timebarHeight * 3 + 'rem';
+      colorMenu.style.width = timebarHeight * 3 + 'rem';
+      colorMenu.style.display = 'flex';
+      colorMenu.style.flexDirection = 'column';
+      const rows = colorBtn.getElementsByClassName('colorMenuRow');
+      for (let i = 0; i < rows.length; i++) { 
+        rows[i].style.height = timebarWidth * 3 + 'rem';
+        rows[i].style.flex = '1';
+        rows[i].style.display = 'flex';
+      }
+      const cols = colorBtn.getElementsByClassName('colorMenuCol');
+      for (let i = 0; i < cols.length; i++) {
+        cols[i].style.flex = '1'
+        cols[i].style.backgroundColor = colors[i];
+      }
+    }
+    style_colorBtnMenu();
     return colorBtn;
   }
 
@@ -176,7 +217,7 @@ window.addEventListener('load', function () {
     function content_about(el) {
       el.innerText = 'ABOUT';
     }
-  
+
     // S T Y L E
 
     let title_height = '3rem';
@@ -256,11 +297,9 @@ window.addEventListener('load', function () {
     function content_addBlock(el) {
       el.innerText = '+';
     }
-    
+
     // S T Y L E
 
-    const barHeight = 5;
-    const barWidth = 5;
     const btnHeight = '1.5rem';
     getEl_loopF('timeBlocks', style_timeBlocks);
     getEl_loopF('colorsMenu', style_colorsMenu);
@@ -279,7 +318,7 @@ window.addEventListener('load', function () {
     }
     function style_colorsMenu(el) {
       el.style.flex = '1';
-      el.style.maxWidth = barWidth / 1.5 + 'rem';
+      el.style.maxWidth = timebarWidth / 1.5 + 'rem';
       el.style.display = 'flex';
       el.style.justifyContent = 'center';
       el.style.alignItems = 'center';
@@ -287,16 +326,16 @@ window.addEventListener('load', function () {
     }
     function style_tbColorBtn(el) {
       el.style.backgroundColor = '#000000';
-      el.style.height = barHeight + 'rem';
-      el.style.width = barWidth + 'rem';
+      el.style.height = timebarHeight + 'rem';
+      el.style.width = timebarWidth + 'rem';
       el.style.display = 'flex';
       el.style.justifyContent = 'center';
       el.style.alignItems = 'center';
       function style_colorBtn() {
         const btn = el.getElementsByClassName('colorBtn')[0];
         btn.style.backgroundColor = 'blue';
-        btn.style.height = (barHeight / 1.75) + 'rem';
-        btn.style.width = (barWidth / 1.75) + 'rem';
+        btn.style.height = (timebarHeight / 1.75) + 'rem';
+        btn.style.width = (timebarWidth / 1.75) + 'rem';
       }
       style_colorBtn();
     }
@@ -309,13 +348,13 @@ window.addEventListener('load', function () {
       el.style.display = 'flex';
     }
     function style_projectTitle(el) {
-      el.style.height = barHeight + 'rem';
-      el.style.width = (barWidth * 2) + 'rem';
+      el.style.height = timebarHeight + 'rem';
+      el.style.width = (timebarWidth * 2) + 'rem';
       el.style.display = 'flex';
       function style_input() {
         const input = el.getElementsByTagName('input')[0];
         input.style.flex = '1';
-        input.style.maxWidth = (barWidth * 2) + 'rem';
+        input.style.maxWidth = (timebarWidth * 2) + 'rem';
         input.style.width = '100%';
         input.style.padding = '0';
         input.style.margin = '0';
@@ -821,7 +860,7 @@ window.addEventListener('load', function () {
 // }
 function createMenu() {
   // let width = '30rem';
-  // let width = rightBarWidth;
+  // let width = righttimebarWidth;
   let height = '100vh';
   let color = '#000000';
   const menu = document.createElement('div');
