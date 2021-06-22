@@ -172,6 +172,7 @@ window.addEventListener('load', function () {
       colorBtn.appendChild(colorMenu);
     }
     // S T Y L E
+    style_colorBtnMenu();
     function style_colorBtnMenu() {
       const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
       colorMenu.style.height = timebarHeight * 3 + 'rem';
@@ -190,7 +191,13 @@ window.addEventListener('load', function () {
         cols[i].style.backgroundColor = colors[i];
       }
     }
-    style_colorBtnMenu();
+    // I N T E R A C T I V E S
+    inter_CLICKtbColorBtn(colorBtn);
+    function inter_CLICKtbColorBtn(colorBtn) {
+      colorBtn.onclick = function(e) {
+        console.log('btn')
+      }
+    }
     return colorBtn;
   }
 
