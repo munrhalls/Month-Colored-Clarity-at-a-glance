@@ -71,9 +71,9 @@ window.addEventListener('load', function () {
   const app = document.getElementById('app');
 
   const blocks = ['blocksCarousel', 'addBlock', 'blocks'];
-  const bottle = ['projectTitle', 'bottle', blocks];
+  const bottle = ['tbColorBtn', 'projectTitle', 'bottle', blocks];
   const contentColorsMenu = ['colorBtn'];
-  const contentTimeBars = ['timeBar', bottle,
+  const contentTimeBar = ['timeBar', bottle,
     'timeBar', bottle,
     'timeBar', bottle];
   const contentTitlebar2 = ['title2', 'month_arrows',
@@ -85,7 +85,7 @@ window.addEventListener('load', function () {
       'main',
       ['timeVisuals',
         ['timeBlocks',
-          ['colorsMenu', contentColorsMenu, 'timeBars', contentTimeBars
+          ['timeBars', contentTimeBar
           ], 'titlebar2', contentTitlebar2,
           'calendar'],
         'menuBlock'],
@@ -223,17 +223,17 @@ window.addEventListener('load', function () {
 
   function cr8_timeBlocks() {
     // C O N T E N T
-    getEl_loopF('colorsMenu', content_colorsMenu);
-    getEl_loopF('colorBtn', content_colorBtn);
+    getEl_loopF('tbColorBtn', content_tbColorBtn);
     getEl_loopF('projectTitle', content_projectTitle);
     getEl_loopF('blocks', content_blocks);
     getEl_loopF('blocksCarousel', content_blocksCarousel);
     getEl_loopF('addBlock', content_addBlock);
     function content_colorsMenu(el) {
     }
-    function content_colorBtn(el) {
-      const colorBtn = document.createElement('div');
-      el.appendChild(colorBtn);
+    function content_tbColorBtn(el) {
+      const btn = document.createElement('div');
+      btn.className = 'colorBtn';
+      el.appendChild(btn);
     }
     function content_projectTitle(el) {
       const input = document.createElement('input');
@@ -256,12 +256,12 @@ window.addEventListener('load', function () {
 
     // S T Y L E
 
-    const barElWidth = 5;
     const barHeight = 5;
+    const barWidth = 5;
     const btnHeight = '1.5rem';
     getEl_loopF('timeBlocks', style_timeBlocks);
     getEl_loopF('colorsMenu', style_colorsMenu);
-    getEl_loopF('colorBtn', style_colorBtn);
+    getEl_loopF('tbColorBtn', style_tbColorBtn);
     getEl_loopF('timeBars', style_timeBars);
     getEl_loopF('timeBar', style_timeBar);
     getEl_loopF('projectTitle', style_projectTitle);
@@ -276,16 +276,26 @@ window.addEventListener('load', function () {
     }
     function style_colorsMenu(el) {
       el.style.flex = '1';
-      el.style.maxWidth = barElWidth/1.5 + 'rem';
+      el.style.maxWidth = barWidth / 1.5 + 'rem';
       el.style.display = 'flex';
       el.style.justifyContent = 'center';
       el.style.alignItems = 'center';
       el.style.backgroundColor = '#000000';
     }
-    function style_colorBtn(el) {
-      el.style.backgroundColor = 'blue';
-      el.style.height = barHeight/2 + 'rem';
-      el.style.width = barElWidth/2 + 'rem';
+    function style_tbColorBtn(el) {
+      el.style.backgroundColor = '#000000';
+      el.style.height = barHeight + 'rem';
+      el.style.width = barWidth + 'rem';
+      el.style.display = 'flex';
+      el.style.justifyContent = 'center';
+      el.style.alignItems = 'center';
+      function style_colorBtn() {
+        const btn = el.getElementsByClassName('colorBtn')[0];
+        btn.style.backgroundColor = 'blue';
+        btn.style.height = (barHeight / 1.75) + 'rem';
+        btn.style.width = (barWidth / 1.75) + 'rem';
+      }
+      style_colorBtn();
     }
     function style_timeBars(el) {
       el.style.flex = '5';
@@ -297,12 +307,12 @@ window.addEventListener('load', function () {
     }
     function style_projectTitle(el) {
       el.style.height = barHeight + 'rem';
-      el.style.width = (barElWidth * 2) + 'rem';
+      el.style.width = (barWidth * 2) + 'rem';
       el.style.display = 'flex';
       function style_input() {
         const input = el.getElementsByTagName('input')[0];
         input.style.flex = '1';
-        input.style.maxWidth = (barElWidth * 2) + 'rem';
+        input.style.maxWidth = (barWidth * 2) + 'rem';
         input.style.width = '100%';
         input.style.padding = '0';
         input.style.margin = '0';
@@ -339,6 +349,13 @@ window.addEventListener('load', function () {
       // el.style.height = btnHeight;
       el.style.width = '100%';
       el.style.textAlign = 'center';
+    }
+    // I N T E R A C T I V E S
+    getEl_loopF('tbColorBtn', inter_CLICKtbColorBtn)
+    function inter_CLICKtbColorBtn(el) {
+      el.onclick = function (e) {
+        console.log(el);
+      }
     }
   }
 
