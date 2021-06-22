@@ -174,26 +174,31 @@ window.addEventListener('load', function () {
         block.className = 'colorBlock';
         colorMenu.appendChild(block);
       });
- 
     }
     // S T Y L E
     style_colorBtn();
     style_colorMenu();
     style_colorBlocks();
     function style_colorBtn() {
-      const colorBtn = document.createElement('div');
       colorBtn.style.position = 'relative';
     }
     function style_colorMenu() {
       const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
+      colorMenu.style.height = timebarHeight + 'rem';
+      colorMenu.style.width = timebarWidth + 'rem';
+      colorMenu.style.top = '0';
+
       colorMenu.style.position = 'absolute';
       colorMenu.style.top = '0';
       colorMenu.style.right = '0'
+      colorMenu.style.display = 'flex';
     }
     function style_colorBlocks() {
       const blocks = colorMenu.getElementsByClassName('colorBlock');
       for (let i = 0; i < colors.length; i++) {
         blocks[i].style.backgroundColor = colors[i];
+        blocks[i].style.height = timebarHeight + 'rem';
+        blocks[i].style.flex = '1';
       }
     }
     // I N T E R A C T I V E S
@@ -202,7 +207,7 @@ window.addEventListener('load', function () {
     function setup_hideColorMenu() {
       const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
       // colorMenu.style.display = 'none';
-      colorMenu.classList = 'colorMenu displayNone';
+      colorMenu.classList = 'colorMenu';
     }
     function inter_CLICKtbColorBtn(colorBtn) {
       colorBtn.onclick = function (e) {
