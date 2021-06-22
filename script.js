@@ -93,6 +93,7 @@ window.addEventListener('load', function () {
     ],
   ];
   assembleDOM(DATA_DOM, app);
+  // ABSTRACTIONS
   cr8_topbar();
   cr8_main();
   cr8_timeVisuals();
@@ -133,21 +134,27 @@ window.addEventListener('load', function () {
     }
   }
 
-
+  // ABSTRACTIONS
+  // access
   function getEl_loopF(className, modify) {
     const elements = document.getElementsByClassName(className);
     for (let i = 0; i < elements.length; i++) {
       modify(elements[i]);
     }
   }
-
   function getOneEl_runF(className, i, modify) {
     const el = document.getElementsByClassName(className)[i];
     modify(el);
   }
+  // things
+  function cr8_colorBtn() {
+    const colorBtn = document.createElement('div');
+    colorBtn.className = 'colorBtn';
+    return colorBtn;
+  }
+
 
   function cr8_topbar() {
-
     // C O N T E N T
 
     getEl_loopF('title', content_title);
@@ -169,7 +176,7 @@ window.addEventListener('load', function () {
     function content_about(el) {
       el.innerText = 'ABOUT';
     }
-
+  
     // S T Y L E
 
     let title_height = '3rem';
@@ -220,7 +227,6 @@ window.addEventListener('load', function () {
     }
   }
 
-
   function cr8_timeBlocks() {
     // C O N T E N T
     getEl_loopF('tbColorBtn', content_tbColorBtn);
@@ -228,11 +234,8 @@ window.addEventListener('load', function () {
     getEl_loopF('blocks', content_blocks);
     getEl_loopF('blocksCarousel', content_blocksCarousel);
     getEl_loopF('addBlock', content_addBlock);
-    function content_colorsMenu(el) {
-    }
     function content_tbColorBtn(el) {
-      const btn = document.createElement('div');
-      btn.className = 'colorBtn';
+      const btn = cr8_colorBtn();
       el.appendChild(btn);
     }
     function content_projectTitle(el) {
@@ -253,7 +256,7 @@ window.addEventListener('load', function () {
     function content_addBlock(el) {
       el.innerText = '+';
     }
-
+    
     // S T Y L E
 
     const barHeight = 5;
