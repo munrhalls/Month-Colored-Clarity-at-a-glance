@@ -75,7 +75,6 @@ window.addEventListener('load', function () {
 
   const blocks = ['blocksCarousel', 'addBlock', 'blocks'];
   const bottle = ['tbColorBtn', 'projectTitle', 'bottle', blocks];
-  const contentColorsMenu = ['colorBtn'];
   const contentTimeBar = ['timeBar', bottle,
     'timeBar', bottle,
     'timeBar', bottle];
@@ -180,7 +179,7 @@ window.addEventListener('load', function () {
     style_colorMenu();
     style_colorBlocks();
     function style_colorBtn() {
-      colorBtn.style.position = 'relative';
+        colorBtn.style.position = 'relative';
     }
     function style_colorMenu() {
       const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
@@ -190,7 +189,7 @@ window.addEventListener('load', function () {
 
       colorMenu.style.position = 'absolute';
       colorMenu.style.top = '0';
-      colorMenu.style.right = '0'
+      colorMenu.style.left = '100%';
       colorMenu.style.display = 'flex';
     }
     function style_colorBlocks() {
