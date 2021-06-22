@@ -179,18 +179,14 @@ window.addEventListener('load', function () {
     style_colorMenu();
     style_colorBlocks();
     function style_colorBtn() {
-        colorBtn.style.position = 'relative';
     }
     function style_colorMenu() {
       const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
       colorMenu.style.height = timebarHeight + 'rem';
-      colorMenu.style.width = timebarWidth + 'rem';
+      colorMenu.style.width = (timebarWidth * colors.length) + 'rem';
       colorMenu.style.top = '0';
 
-      colorMenu.style.position = 'absolute';
-      colorMenu.style.top = '0';
-      colorMenu.style.left = '100%';
-      colorMenu.style.display = 'flex';
+      colorMenu.style.position = 'absolute'; colorMenu.style.top = '0'; colorMenu.style.left = '100%';colorMenu.style.display = 'flex';
     }
     function style_colorBlocks() {
       const blocks = colorMenu.getElementsByClassName('colorBlock');
@@ -347,6 +343,7 @@ window.addEventListener('load', function () {
       el.style.backgroundColor = '#000000';
     }
     function style_tbColorBtn(el) {
+      el.style.position = 'relative';
       el.style.backgroundColor = '#000000';
       el.style.height = timebarHeight + 'rem';
       el.style.width = timebarWidth + 'rem';
