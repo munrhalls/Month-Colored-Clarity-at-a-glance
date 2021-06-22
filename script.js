@@ -154,6 +154,7 @@ window.addEventListener('load', function () {
     const colorBtn = content_colorBtn();
     const colorMenu = content_colorMenu();
     content_colorBlocks();
+    content_btnsInBlocks();
 
     function content_colorBtn() {
       const colorBtn = document.createElement('div');
@@ -173,6 +174,14 @@ window.addEventListener('load', function () {
         block.className = 'colorBlock';
         colorMenu.appendChild(block);
       });
+    }
+    function content_btnsInBlocks() {
+        const blocks = colorMenu.getElementsByClassName('colorBlock');
+        const btn = document.createElement('div');
+        for(let i = 0; i < blocks.length; i++) {
+          btn.className = 'colorBlockBtn';
+          blocks[i].appendChild(btn);
+        }
     }
     // S T Y L E
     style_colorBtn();
