@@ -72,14 +72,23 @@ window.addEventListener('load', function () {
 
   const blocks = ['blocksCarousel', 'addBlock', 'blocks'];
   const bottle = ['projectTitle', 'bottle', blocks];
-  const contentTimeBlocks = ['timeBar', bottle,
+  const contentColorsMenu = ['colorBtn'];
+  const contentTimeBars = ['timeBar', bottle,
     'timeBar', bottle,
     'timeBar', bottle];
-  const contentTitlebar2 = ['title2', 'month_arrows', ['arrowL2', 'month_title', 'arrowR2']];
+  const contentTitlebar2 = ['title2', 'month_arrows',
+    ['arrowL2', 'month_title', 'arrowR2']
+  ];
   const DATA_DOM = [
     'root',
     ['topbar', ['title', 'about'],
-      'main', ['timeVisuals', ['timeBlocks', contentTimeBlocks, 'titlebar2', contentTitlebar2, 'calendar'], 'menuBlock'],
+      'main',
+      ['timeVisuals',
+        ['timeBlocks',
+          ['colorsMenu', contentColorsMenu, 'timeBars', contentTimeBars
+          ], 'titlebar2', contentTitlebar2,
+          'calendar'],
+        'menuBlock'],
       'footer'
     ],
   ];
@@ -214,11 +223,18 @@ window.addEventListener('load', function () {
 
   function cr8_timeBlocks() {
     // C O N T E N T
-
+    getEl_loopF('colorsMenu', content_colorsMenu);
+    getEl_loopF('colorBtn', content_colorBtn);
     getEl_loopF('projectTitle', content_projectTitle);
     getEl_loopF('blocks', content_blocks);
     getEl_loopF('blocksCarousel', content_blocksCarousel);
     getEl_loopF('addBlock', content_addBlock);
+    function content_colorsMenu(el) {
+    }
+    function content_colorBtn(el) {
+      const colorBtn = document.createElement('div');
+      el.appendChild(colorBtn);
+    }
     function content_projectTitle(el) {
       const input = document.createElement('input');
       input.type = 'text';
@@ -244,9 +260,11 @@ window.addEventListener('load', function () {
     const barHeight = 5;
     const btnHeight = '1.5rem';
     getEl_loopF('timeBlocks', style_timeBlocks);
-    getEl_loopF('projectTitle', style_projectTitle);
+    getEl_loopF('colorsMenu', style_colorsMenu);
+    getEl_loopF('colorBtn', style_colorBtn);
+    getEl_loopF('timeBars', style_timeBars);
     getEl_loopF('timeBar', style_timeBar);
-
+    getEl_loopF('projectTitle', style_projectTitle);
     getEl_loopF('bottle', style_bottle);
     getEl_loopF('blocks', style_blocks);
     getEl_loopF('blocksCarousel', style_blocksCarousel);
@@ -255,7 +273,27 @@ window.addEventListener('load', function () {
     function style_timeBlocks(el) {
       el.style.flex = '1';
       el.style.display = 'flex';
+    }
+    function style_colorsMenu(el) {
+      el.style.flex = '1';
+      el.style.maxWidth = barElWidth/1.5 + 'rem';
+      el.style.display = 'flex';
+      el.style.justifyContent = 'center';
+      el.style.alignItems = 'center';
+      el.style.backgroundColor = '#000000';
+    }
+    function style_colorBtn(el) {
+      el.style.backgroundColor = 'blue';
+      el.style.height = barHeight/2 + 'rem';
+      el.style.width = barElWidth/2 + 'rem';
+    }
+    function style_timeBars(el) {
+      el.style.flex = '5';
+      el.style.display = 'flex';
       el.style.flexDirection = 'column';
+    }
+    function style_timeBar(el) {
+      el.style.display = 'flex';
     }
     function style_projectTitle(el) {
       el.style.height = barHeight + 'rem';
@@ -267,15 +305,12 @@ window.addEventListener('load', function () {
         input.style.maxWidth = (barElWidth * 2) + 'rem';
         input.style.width = '100%';
         input.style.padding = '0';
-        input.style.margin= '0';
+        input.style.margin = '0';
         input.style.display = 'flex';
         input.style.textAlign = 'center';
         input.style.justifyContent = 'center';
       }
       style_input();
-    }
-    function style_timeBar(el) {
-      el.style.display = 'flex';
     }
     function style_bottle(el) {
       // el.style.height = 'calc(100% - ' + titleHeight +')';
