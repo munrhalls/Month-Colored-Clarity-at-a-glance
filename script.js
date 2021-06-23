@@ -149,7 +149,7 @@ window.addEventListener('load', function () {
     modify(el);
   }
   // things
-  function cr8_colorBtn() {
+  function cr8_colorMenuBtn() {
     // C O N T E N T 
     const colorBtn = content_colorBtn();
     const colorMenu = content_colorMenu();
@@ -184,6 +184,7 @@ window.addEventListener('load', function () {
       }
     }
     // S T Y L E
+    const menuDisplay = 'flex';
     style_colorBtn();
     style_colorMenu();
     style_colorBlocks();
@@ -195,6 +196,7 @@ window.addEventListener('load', function () {
       colorMenu.style.height = timebarHeight + 'rem';
       colorMenu.style.width = (timebarWidth * colors.length) + 'rem';
       colorMenu.style.top = '0';
+      colorMenu.style.display = menuDisplay;
 
       colorMenu.style.position = 'absolute'; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
     }
@@ -225,12 +227,15 @@ window.addEventListener('load', function () {
     inter_CLICKtbColorBtn(colorBtn);
     function setup_hideColorMenu() {
       const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
-      // colorMenu.style.display = 'none';
+      colorMenu.style.display = 'none';
       colorMenu.classList = 'colorMenu';
     }
     function inter_CLICKtbColorBtn(colorBtn) {
       colorBtn.onclick = function (e) {
         const btn = e.target;
+        const colorMenu = btn.getElementsByClassName('colorMenu')[0];
+        colorMenu.style.display = menuDisplay;
+
       }
     }
     return colorBtn;
@@ -318,7 +323,7 @@ window.addEventListener('load', function () {
     getEl_loopF('blocksCarousel', content_blocksCarousel);
     getEl_loopF('addBlock', content_addBlock);
     function content_tbColorBtn(el) {
-      const btn = cr8_colorBtn();
+      const btn = cr8_colorMenuBtn();
       el.appendChild(btn);
     }
     function content_projectTitle(el) {
