@@ -201,7 +201,7 @@ window.addEventListener('load', function () {
     function style_colorBlocks() {
       const blocks = colorMenu.getElementsByClassName('colorBlock');
       for (let i = 0; i < colors.length; i++) {
-        blocks[i].style.backgroundColor = '#000000';
+        blocks[i].style.backgroundColor = '#414141';
         blocks[i].style.flex = '1';
         blocks[i].style.display = 'flex';
         blocks[i].style.justifyContent = 'center';
@@ -210,14 +210,14 @@ window.addEventListener('load', function () {
     }
     function style_btnsInBlocks() {
       const btns = colorMenu.getElementsByClassName('btn');
-      console.log(btns)
       for (let i = 0; i < btns.length; i++) {
         btns[i].style.backgroundColor = colors[i];
-        // btns[i].style.maxHeight = timebarHeight + 'rem';
-        btns[i].style.height = timebarHeight/2 + 'rem';
+        btns[i].style.height = timebarHeight/2.25 + 'rem';
         btns[i].style.width = timebarHeight/2 + 'rem';
-
-
+        btns[i].style.border = '0.8rem solid #000000';
+        btns[i].style.borderRadius = '5%';
+        btns[i].style.boxSizing = 'content-box';
+        btns[i].style.cursor = 'pointer';
       }
     }
     // I N T E R A C T I V E S
