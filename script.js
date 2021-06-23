@@ -213,7 +213,11 @@ window.addEventListener('load', function () {
       console.log(btns)
       for (let i = 0; i < btns.length; i++) {
         btns[i].style.backgroundColor = colors[i];
-        btns[i].style.height = timebarHeight + 'rem';
+        // btns[i].style.maxHeight = timebarHeight + 'rem';
+        btns[i].style.height = timebarHeight/2 + 'rem';
+        btns[i].style.width = timebarHeight/2 + 'rem';
+
+
       }
     }
     // I N T E R A C T I V E S
