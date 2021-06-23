@@ -194,14 +194,17 @@ window.addEventListener('load', function () {
     function content_btnClose() {
       const blockClose = colorMenu.getElementsByClassName('blockClose')[0];
       const btnClose = document.createElement('div');
-      btnClose.innerText = 'X';
+      const closeSymbol = document.createElement('span');
       btnClose.className = 'btnClose';
+      closeSymbol.innerText = 'X';
+      btnClose.appendChild(closeSymbol);
       blockClose.appendChild(btnClose);
     }
     // S T Y L E
     const menuDisplay = 'flex';
-    const btnDistance = 0.75;
     const borderRadius = '5%';
+    const btnDistance = 0.75;
+    const btnBorder = 0.5;
     style_colorBtn();
     style_colorMenu();
     style_colorBlocks();
@@ -236,7 +239,7 @@ window.addEventListener('load', function () {
         btns[i].style.backgroundColor = colors[i];
         btns[i].style.height = timebarHeight / 2.25 + 'rem';
         btns[i].style.width = timebarHeight / 2 + 'rem';
-        btns[i].style.border = '0.75rem solid #000000';
+        btns[i].style.border = btnBorder + 'rem solid #000000';
         btns[i].style.borderRadius = borderRadius;
         // btns[i].style.boxSizing = 'content-box';
         btns[i].style.cursor = 'pointer';
@@ -252,13 +255,16 @@ window.addEventListener('load', function () {
     }
     function style_btnClose() {
       const btnClose = colorMenu.getElementsByClassName('btnClose')[0];
+      btnClose.style.display = 'flex';
+      btnClose.style.justifyContent = 'center';
+      btnClose.style.alignItems = 'center';
+      btnClose.style.textAlign = 'center';
+      btnClose.style.fontSize = '2rem';
       btnClose.style.backgroundColor = '#000000';
       btnClose.style.borderRadius = borderRadius;
-      btnClose.style.textAlign = 'center';
-      btnClose.style.fontSize = (timebarHeight - 1) + 'rem';
       btnClose.style.color = 'orange';
-      btnClose.style.height = (timebarHeight / 2.25) + 0.75 * 2 + 'rem';
-      btnClose.style.width = timebarHeight/1.1 + 'rem';
+      btnClose.style.height = (timebarHeight / 2.25) + btnBorder * 2 + 'rem';
+      btnClose.style.width = timebarHeight / 1.25 + 'rem';
       btnClose.style.marginLeft = btnDistance * 2 + 'rem';
       btnClose.style.marginRight = btnDistance + 'rem';
     }
