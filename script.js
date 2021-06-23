@@ -155,6 +155,8 @@ window.addEventListener('load', function () {
     const colorMenu = content_colorMenu();
     content_colorBlocks();
     content_btnsInBlocks();
+    content_blockClose();
+    content_btnClose();
 
     function content_colorBtn() {
       const colorBtn = document.createElement('div');
@@ -183,12 +185,29 @@ window.addEventListener('load', function () {
         blocks[i].appendChild(btn);
       }
     }
+    function content_blockClose() {
+      const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
+      const blockClose = document.createElement('div');
+      blockClose.className = 'blockClose';
+      colorMenu.appendChild(blockClose);
+    }
+    function content_btnClose() {
+      const blockClose = colorMenu.getElementsByClassName('blockClose')[0];
+      const btnClose = document.createElement('div');
+      btnClose.innerText = 'X';
+      btnClose.className = 'btnClose';
+      blockClose.appendChild(btnClose);
+    }
     // S T Y L E
     const menuDisplay = 'flex';
+    const btnDistance = 0.75;
+    const borderRadius = '5%';
     style_colorBtn();
     style_colorMenu();
     style_colorBlocks();
     style_btnsInBlocks();
+    style_blockClose();
+    style_btnClose();
     function style_colorBtn() {
     }
     function style_colorMenu() {
@@ -208,19 +227,40 @@ window.addEventListener('load', function () {
         blocks[i].style.display = 'flex';
         blocks[i].style.justifyContent = 'center';
         blocks[i].style.alignItems = 'center';
+        blocks[i].style.paddingLeft = btnDistance + 'rem';
       }
     }
     function style_btnsInBlocks() {
       const btns = colorMenu.getElementsByClassName('btn');
       for (let i = 0; i < btns.length; i++) {
         btns[i].style.backgroundColor = colors[i];
-        btns[i].style.height = timebarHeight/2.25 + 'rem';
-        btns[i].style.width = timebarHeight/2 + 'rem';
-        btns[i].style.border = '0.8rem solid #000000';
-        btns[i].style.borderRadius = '5%';
-        btns[i].style.boxSizing = 'content-box';
+        btns[i].style.height = timebarHeight / 2.25 + 'rem';
+        btns[i].style.width = timebarHeight / 2 + 'rem';
+        btns[i].style.border = '0.75rem solid #000000';
+        btns[i].style.borderRadius = borderRadius;
+        // btns[i].style.boxSizing = 'content-box';
         btns[i].style.cursor = 'pointer';
       }
+    }
+    function style_blockClose() {
+      const btnClose = colorMenu.getElementsByClassName('blockClose')[0];
+      btnClose.style.backgroundColor = '#414141';
+      btnClose.style.flex = '1';
+      btnClose.style.display = 'flex';
+      btnClose.style.justifyContent = 'center';
+      btnClose.style.alignItems = 'center';
+    }
+    function style_btnClose() {
+      const btnClose = colorMenu.getElementsByClassName('btnClose')[0];
+      btnClose.style.backgroundColor = '#000000';
+      btnClose.style.borderRadius = borderRadius;
+      btnClose.style.textAlign = 'center';
+      btnClose.style.fontSize = (timebarHeight - 1) + 'rem';
+      btnClose.style.color = 'orange';
+      btnClose.style.height = (timebarHeight / 2.25) + 0.75 * 2 + 'rem';
+      btnClose.style.width = timebarHeight/1.1 + 'rem';
+      btnClose.style.marginLeft = btnDistance * 2 + 'rem';
+      btnClose.style.marginRight = btnDistance + 'rem';
     }
     // I N T E R A C T I V E S
     setup_hideColorMenu();
@@ -235,7 +275,6 @@ window.addEventListener('load', function () {
         const btn = e.target;
         const colorMenu = btn.getElementsByClassName('colorMenu')[0];
         colorMenu.style.display = menuDisplay;
-
       }
     }
     return colorBtn;
