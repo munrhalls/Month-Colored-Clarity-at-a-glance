@@ -169,24 +169,25 @@ window.addEventListener('load', function () {
     }
     function content_colorBlocks() {
       const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
-      colors.forEach(function(){
+      colors.forEach(function () {
         const block = document.createElement('div');
         block.className = 'colorBlock';
         colorMenu.appendChild(block);
       });
     }
     function content_btnsInBlocks() {
-        const blocks = colorMenu.getElementsByClassName('colorBlock');
+      const blocks = colorMenu.getElementsByClassName('colorBlock');
+      for (let i = 0; i < blocks.length; i++) {
         const btn = document.createElement('div');
-        for(let i = 0; i < blocks.length; i++) {
-          btn.className = 'colorBlockBtn';
-          blocks[i].appendChild(btn);
-        }
+        btn.className = 'btn';
+        blocks[i].appendChild(btn);
+      }
     }
     // S T Y L E
     style_colorBtn();
     style_colorMenu();
     style_colorBlocks();
+    style_btnsInBlocks();
     function style_colorBtn() {
     }
     function style_colorMenu() {
@@ -195,14 +196,24 @@ window.addEventListener('load', function () {
       colorMenu.style.width = (timebarWidth * colors.length) + 'rem';
       colorMenu.style.top = '0';
 
-      colorMenu.style.position = 'absolute'; colorMenu.style.top = '0'; colorMenu.style.left = '100%';colorMenu.style.display = 'flex';
+      colorMenu.style.position = 'absolute'; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
     }
     function style_colorBlocks() {
       const blocks = colorMenu.getElementsByClassName('colorBlock');
       for (let i = 0; i < colors.length; i++) {
-        blocks[i].style.backgroundColor = colors[i];
-        blocks[i].style.height = timebarHeight + 'rem';
+        blocks[i].style.backgroundColor = '#000000';
         blocks[i].style.flex = '1';
+        blocks[i].style.display = 'flex';
+        blocks[i].style.justifyContent = 'center';
+        blocks[i].style.alignItems = 'center';
+      }
+    }
+    function style_btnsInBlocks() {
+      const btns = colorMenu.getElementsByClassName('btn');
+      console.log(btns)
+      for (let i = 0; i < btns.length; i++) {
+        btns[i].style.backgroundColor = colors[i];
+        btns[i].style.height = timebarHeight + 'rem';
       }
     }
     // I N T E R A C T I V E S
@@ -548,9 +559,6 @@ window.addEventListener('load', function () {
           monthShown = months[prevIndex];
           console.log(monthShown)
           getEl_loopF('month_title', inter_shiftMonthTitle);
-          getOneEl_runF('month', index, inter_hideMonth);
-          getOneEl_runF('month', prevIndex, inter_showMonth);
-          // getEl_loopF('month', cr8_calendar.inter_monthDisplay);
         }
       }
     }
