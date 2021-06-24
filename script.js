@@ -272,14 +272,13 @@ window.addEventListener('load', function () {
       btnClose.style.marginRight = btnDistance + 'rem';
     }
     // I N T E R A C T I V E S
-    // setup_findElementUp
     setup_hideColorMenu();
     inter_CLICKcolorMenuBtn(colorBtn);
     inter_CLICKcloseBtn();
     var count = 0;
     function setup_findElementUp(elem, name) {
       return elem.parentElement.className == name && count < 12 ?
-        elem.parentElement : (function () { count++; return setup_findElementUp(elem.parentElement, name) })();
+        (function(){ count = 0; return elem.parentElement})() : (function () { count++; return setup_findElementUp(elem.parentElement, name) })();
     }
     function setup_hideColorMenu() {
       colorMenu.style.display = 'none';
@@ -295,6 +294,7 @@ window.addEventListener('load', function () {
       closeBlock.onclick = function (e) {
         const menu = setup_findElementUp(e.target, 'colorMenu');
         menu.style.display = 'none';
+        menu.style.backgroundColor = 'blue';
         console.log(menu)
       }
     }
