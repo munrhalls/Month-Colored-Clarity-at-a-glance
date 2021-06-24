@@ -255,6 +255,7 @@ window.addEventListener('load', function () {
     }
     function style_btnClose() {
       const btnClose = colorMenu.getElementsByClassName('btnClose')[0];
+      btnClose.style.cursor = 'pointer';
       btnClose.style.display = 'flex';
       btnClose.style.justifyContent = 'center';
       btnClose.style.alignItems = 'center';
@@ -269,18 +270,30 @@ window.addEventListener('load', function () {
       btnClose.style.marginRight = btnDistance + 'rem';
     }
     // I N T E R A C T I V E S
+    // setup_findElementUp
     setup_hideColorMenu();
-    inter_CLICKtbColorBtn(colorBtn);
+    inter_CLICKcolorMenuBtn(colorBtn);
+    inter_CLICKcloseBtn();
+    var count = 0;
+    function setup_findElementUp(elem, name) {
+      return elem.parentElement.className == name && count < 12 ?
+        elem.parentElement : (function () { count++; return setup_findElementUp(elem.parentElement, name) })();
+    }
     function setup_hideColorMenu() {
-      const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
       colorMenu.style.display = 'none';
       colorMenu.classList = 'colorMenu';
     }
-    function inter_CLICKtbColorBtn(colorBtn) {
+    function inter_CLICKcolorMenuBtn(colorBtn) {
       colorBtn.onclick = function (e) {
         const btn = e.target;
-        const colorMenu = btn.getElementsByClassName('colorMenu')[0];
         colorMenu.style.display = menuDisplay;
+      }
+    }
+    function inter_CLICKcloseBtn(e) {
+      const closeBlock = colorMenu.getElementsByClassName('blockClose')[0];
+      closeBlock.onclick = function (e) {
+        const menu = setup_findElementUp(e.target, 'colorMenu');
+        console.log(menu);
       }
     }
     return colorBtn;
@@ -391,7 +404,6 @@ window.addEventListener('load', function () {
     }
 
     // S T Y L E
-
     const btnHeight = '1.5rem';
     getEl_loopF('timeBlocks', style_timeBlocks);
     getEl_loopF('colorsMenu', style_colorsMenu);
@@ -486,7 +498,7 @@ window.addEventListener('load', function () {
       el.style.textAlign = 'center';
     }
     // I N T E R A C T I V E S
-    getEl_loopF('tbColorBtn', inter_CLICKtbColorBtn)
+    // getEl_loopF('tbColorBtn', inter_CLICKtbColorBtn)
     function inter_CLICKtbColorBtn(el) {
       el.onclick = function (e) {
         console.log(el);
