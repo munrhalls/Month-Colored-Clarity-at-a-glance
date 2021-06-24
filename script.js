@@ -201,10 +201,12 @@ window.addEventListener('load', function () {
       blockClose.appendChild(btnClose);
     }
     // S T Y L E
+    const menuZIndex = '3';
     const menuDisplay = 'flex';
     const borderRadius = '5%';
     const btnDistance = 0.75;
     const btnBorder = 0.5;
+    const blockBgColor = '#000000';
     style_colorBtn();
     style_colorMenu();
     style_colorBlocks();
@@ -220,12 +222,12 @@ window.addEventListener('load', function () {
       colorMenu.style.top = '0';
       colorMenu.style.display = menuDisplay;
 
-      colorMenu.style.position = 'absolute'; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
+      colorMenu.style.position = 'absolute'; colorMenu.style.zIndex = menuZIndex; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
     }
     function style_colorBlocks() {
       const blocks = colorMenu.getElementsByClassName('colorBlock');
       for (let i = 0; i < colors.length; i++) {
-        blocks[i].style.backgroundColor = '#414141';
+        blocks[i].style.backgroundColor = blockBgColor;
         blocks[i].style.flex = '1';
         blocks[i].style.display = 'flex';
         blocks[i].style.justifyContent = 'center';
@@ -247,7 +249,7 @@ window.addEventListener('load', function () {
     }
     function style_blockClose() {
       const btnClose = colorMenu.getElementsByClassName('blockClose')[0];
-      btnClose.style.backgroundColor = '#414141';
+      btnClose.style.backgroundColor = blockBgColor;
       btnClose.style.flex = '1';
       btnClose.style.display = 'flex';
       btnClose.style.justifyContent = 'center';
@@ -261,7 +263,7 @@ window.addEventListener('load', function () {
       btnClose.style.alignItems = 'center';
       btnClose.style.textAlign = 'center';
       btnClose.style.fontSize = '2rem';
-      btnClose.style.backgroundColor = '#000000';
+      btnClose.style.backgroundColor = blockBgColor;
       btnClose.style.borderRadius = borderRadius;
       btnClose.style.color = 'orange';
       btnClose.style.height = (timebarHeight / 2.25) + btnBorder * 2 + 'rem';
@@ -281,7 +283,6 @@ window.addEventListener('load', function () {
     }
     function setup_hideColorMenu() {
       colorMenu.style.display = 'none';
-      colorMenu.classList = 'colorMenu';
     }
     function inter_CLICKcolorMenuBtn(colorBtn) {
       colorBtn.onclick = function (e) {
@@ -289,11 +290,12 @@ window.addEventListener('load', function () {
         colorMenu.style.display = menuDisplay;
       }
     }
-    function inter_CLICKcloseBtn(e) {
+    function inter_CLICKcloseBtn() {
       const closeBlock = colorMenu.getElementsByClassName('blockClose')[0];
       closeBlock.onclick = function (e) {
         const menu = setup_findElementUp(e.target, 'colorMenu');
-        console.log(menu);
+        menu.style.display = 'none';
+        console.log(menu)
       }
     }
     return colorBtn;
