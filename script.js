@@ -193,7 +193,7 @@ window.addEventListener('load', function () {
       const blocks = colorMenu.getElementsByClassName('colorChoice');
       for (let i = 0; i < blocks.length; i++) {
         const btn = document.createElement('div');
-        btn.className = 'btn';
+        btn.classList = 'btn';
         blocks[i].appendChild(btn);
       }
     }
@@ -230,6 +230,11 @@ window.addEventListener('load', function () {
       style_btnClose();
 
       function style_colorMenuBtn() {
+        colorMenuBtn.style.cursor = 'pointer';
+        colorMenuBtn.style.borderRadius = borderRadius;
+        colorMenuBtn.style.height = timebarHeight / 1.25 + 'rem';
+        colorMenuBtn.style.width = timebarHeight / 1.75 + 'rem';
+        colorMenuBtn.style.backgroundColor = 'blue';
       }
       function style_colorMenu() {
         const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
@@ -254,7 +259,7 @@ window.addEventListener('load', function () {
       }
       function style_colorChoiceBtns() {
         const btns = colorMenu.getElementsByClassName('btn');
-        for (let i = 0; i < btns.length; i++) {
+        for (let i = 0; i < colors.length; i++) {
           const choiceBtn = btns[i];
           choiceBtn.style.backgroundColor = colors[i];
           choiceBtn.style.height = timebarHeight / 1.25 + 'rem';
@@ -279,16 +284,19 @@ window.addEventListener('load', function () {
         btnClose.style.display = 'flex';
         btnClose.style.justifyContent = 'center';
         btnClose.style.alignItems = 'center';
-        btnClose.style.textAlign = 'center';
-        btnClose.style.fontSize = '3.5rem';
-        btnClose.style.backgroundColor = blockBgColor;
-        btnClose.style.borderRadius = borderRadius;
-        btnClose.style.color = '#ffffff';
-        btnClose.style.height = (timebarHeight / 2.25) + btnBorder * 2 + 'rem';
+        // btnClose.style.height = (timebarHeight / 2.25) + btnBorder * 2 + 'rem';
+        btnClose.style.height = (timebarHeight / 1.25) + 'rem';
         btnClose.style.width = timebarHeight / 1.25 + 'rem';
         btnClose.style.marginLeft = btnDistance * 2 + 'rem';
         btnClose.style.marginRight = btnDistance * 2 + 'rem';
         btnClose.style.border = '1px solid #ffffff';
+        btnClose.style.backgroundColor = blockBgColor;
+        btnClose.style.borderRadius = borderRadius;
+        btnClose.style.color = '#ffffff';
+        btnClose.style.textAlign = 'center';
+        btnClose.style.fontSize = '3.5rem';
+
+
       }
     }
 
@@ -470,13 +478,6 @@ window.addEventListener('load', function () {
       el.style.display = 'flex';
       el.style.justifyContent = 'center';
       el.style.alignItems = 'center';
-      function style_colorMenuBtn() {
-        const btn = el.getElementsByClassName('colorMenuBtn')[0];
-        btn.style.backgroundColor = 'blue';
-        btn.style.height = (timebarHeight / 1.75) + 'rem';
-        btn.style.width = (timebarWidth / 1.75) + 'rem';
-      }
-      style_colorMenuBtn();
     }
     function style_timebars(el) {
       el.style.flex = '5';
