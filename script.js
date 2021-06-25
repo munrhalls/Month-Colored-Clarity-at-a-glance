@@ -676,7 +676,6 @@ window.addEventListener('load', function () {
 
 
   function cr8_calendar() {
-
     // C O N T E N T
 
     cr8_calendarDOM();
@@ -684,18 +683,8 @@ window.addEventListener('load', function () {
       getEl_loopF('calendar', content_months);
       getEl_loopF('calendar', content_weeks);
       getEl_loopF('calendar', content_days);
-      getEl_loopF('weekHeader', content_hourMarks);
+      getEl_loopF('day', content_hourMarks);
 
-      function content_hourMarks(el) {
-        const hourMarks = document.createElement('div');
-        hourMarks.className = 'hourMarks';
-        for (let i = 0; i <= 24; i += 4) {
-          const hour = document.createElement('div');
-          hour.innerText = i;
-          hourMarks.appendChild(hour);
-        }
-        el.appendChild(hourMarks);
-      }
       function content_months(el) {
         for (let i = 0; i < months.length; i++) {
           const month = document.createElement('div');
@@ -729,13 +718,23 @@ window.addEventListener('load', function () {
           const day = document.createElement('div');
           const weekName = days[i].code.split(' ')[0];
           const weekDOM = document.getElementsByClassName(weekName)[0];
-          day.classList = 'day ' + days[i].code;
           const title = document.createElement('span');
           const text = days[i].name;
+          day.classList = 'day ' + days[i].code;
           title.innerText = text;
           day.appendChild(title);
           weekDOM.appendChild(day);
         }
+      }
+      function content_hourMarks(el) {
+        const hourMarks = document.createElement('div');
+        hourMarks.className = 'hourMarks';
+        for (let i = 0; i <= 24; i += 4) {
+          const hour = document.createElement('div');
+          hour.innerText = i;
+          hourMarks.appendChild(hour);
+        }
+        el.appendChild(hourMarks);
       }
       function content_dayNum() {
 
