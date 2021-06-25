@@ -153,9 +153,9 @@ window.addEventListener('load', function () {
     // C O N T E N T 
     const colorBtn = content_colorBtn();
     const colorMenu = content_colorMenu();
-    content_colorBlocks();
-    content_btnsInBlocks();
-    content_blockClose();
+    content_colorChoices();
+    content_colorChoiceBtns();
+    content_menuCloser();
     content_btnClose();
 
     function content_colorBtn() {
@@ -169,7 +169,7 @@ window.addEventListener('load', function () {
       colorBtn.appendChild(colorMenu);
       return colorMenu;
     }
-    function content_colorBlocks() {
+    function content_colorChoices() {
       const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
       colors.forEach(function () {
         const block = document.createElement('div');
@@ -177,7 +177,7 @@ window.addEventListener('load', function () {
         colorMenu.appendChild(block);
       });
     }
-    function content_btnsInBlocks() {
+    function content_colorChoiceBtns() {
       const blocks = colorMenu.getElementsByClassName('colorBlock');
       for (let i = 0; i < blocks.length; i++) {
         const btn = document.createElement('div');
@@ -185,20 +185,20 @@ window.addEventListener('load', function () {
         blocks[i].appendChild(btn);
       }
     }
-    function content_blockClose() {
+    function content_menuCloser() {
       const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
-      const blockClose = document.createElement('div');
-      blockClose.className = 'blockClose';
-      colorMenu.appendChild(blockClose);
+      const menuCloser = document.createElement('div');
+      menuCloser.className = 'menuCloser';
+      colorMenu.appendChild(menuCloser);
     }
     function content_btnClose() {
-      const blockClose = colorMenu.getElementsByClassName('blockClose')[0];
+      const menuCloser = colorMenu.getElementsByClassName('menuCloser')[0];
       const btnClose = document.createElement('div');
       const closeSymbol = document.createElement('span');
       btnClose.className = 'btnClose';
       closeSymbol.innerText = 'X';
       btnClose.appendChild(closeSymbol);
-      blockClose.appendChild(btnClose);
+      menuCloser.appendChild(btnClose);
     }
     // S T Y L E
     const menuZIndex = '3';
@@ -209,9 +209,9 @@ window.addEventListener('load', function () {
     const blockBgColor = '#000000';
     style_colorBtn();
     style_colorMenu();
-    style_colorBlocks();
-    style_btnsInBlocks();
-    style_blockClose();
+    style_colorChoices();
+    style_colorChoiceBtns();
+    style_menuCloser();
     style_btnClose();
     function style_colorBtn() {
     }
@@ -224,7 +224,7 @@ window.addEventListener('load', function () {
 
       colorMenu.style.position = 'absolute'; colorMenu.style.zIndex = menuZIndex; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
     }
-    function style_colorBlocks() {
+    function style_colorChoices() {
       const blocks = colorMenu.getElementsByClassName('colorBlock');
       for (let i = 0; i < colors.length; i++) {
         blocks[i].style.backgroundColor = blockBgColor;
@@ -235,7 +235,7 @@ window.addEventListener('load', function () {
         blocks[i].style.paddingLeft = btnDistance + 'rem';
       }
     }
-    function style_btnsInBlocks() {
+    function style_colorChoiceBtns() {
       const btns = colorMenu.getElementsByClassName('btn');
       for (let i = 0; i < btns.length; i++) {
         btns[i].style.backgroundColor = colors[i];
@@ -247,8 +247,8 @@ window.addEventListener('load', function () {
         btns[i].style.cursor = 'pointer';
       }
     }
-    function style_blockClose() {
-      const btnClose = colorMenu.getElementsByClassName('blockClose')[0];
+    function style_menuCloser() {
+      const btnClose = colorMenu.getElementsByClassName('menuCloser')[0];
       btnClose.style.backgroundColor = blockBgColor;
       btnClose.style.flex = '1';
       btnClose.style.display = 'flex';
@@ -298,7 +298,14 @@ window.addEventListener('load', function () {
       }
     }
     function inter_CLICKcloseBtn() {
-      const closeBlock = colorMenu.getElementsByClassName('blockClose')[0];
+      const closeBlock = colorMenu.getElementsByClassName('menuCloser')[0];
+      closeBlock.onclick = function (e) {
+        e.stopPropagation();
+        colorMenu.style.display = 'none'
+      }
+    }
+    function inter_CLICKcolor() {
+      const closeBlock = colorMenu.getElementsByClassName('menuCloser')[0];
       closeBlock.onclick = function (e) {
         e.stopPropagation();
         colorMenu.style.display = 'none'
