@@ -277,26 +277,31 @@ window.addEventListener('load', function () {
     inter_CLICKcloseBtn();
     var count = 0;
     function setup_findElementUp(elem, name) {
-      return elem.parentElement.className == name && count < 12 ?
-        (function(){ count = 0; return elem.parentElement})() : (function () { count++; return setup_findElementUp(elem.parentElement, name) })();
+      return elem.parentElement.parentElement.parentElement.getElementsByClassName('colorMenu')[0];
+            // return elem.parentElement.className == name && count < 12 ? elem.parentElement :
+      //   function (elem) { 
+      //     count++; 
+      //     return setup_findElementUp(elem.parentElement, name);
+      //   }(elem);
     }
     function setup_hideColorMenu() {
       colorMenu.style.display = 'none';
     }
     function inter_CLICKcolorMenuBtn(colorBtn) {
       colorBtn.onclick = function (e) {
-        const btn = e.target;
+        e.stopPropagation();
+        e.preventDefault();
         colorMenu.style.display = menuDisplay;
+        console.log(colorMenu)
       }
     }
     function inter_CLICKcloseBtn() {
       const closeBlock = colorMenu.getElementsByClassName('blockClose')[0];
       closeBlock.onclick = function (e) {
-        const menu = setup_findElementUp(e.target, 'colorMenu');
-        menu.style.display = 'none';
-        menu.style.backgroundColor = 'blue';
-        console.log(menu)
-      }
+        e.stopPropagation();
+        colorMenu.style.display = 'none'
+        console.log(colorMenu)
+      } 
     }
     return colorBtn;
   }
