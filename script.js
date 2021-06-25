@@ -74,7 +74,7 @@ window.addEventListener('load', function () {
   const app = document.getElementById('app');
 
   const blocks = ['blocksCarousel', 'addBlock', 'blocks'];
-  const bottle = ['tbColorBtn', 'projectTitle', 'bottle', blocks];
+  const bottle = ['tbcolorMenuBtn', 'projectTitle', 'bottle', blocks];
   const contentTimeBar = ['timeBar', bottle,
     'timeBar', bottle,
     'timeBar', bottle];
@@ -151,26 +151,26 @@ window.addEventListener('load', function () {
   // things
   function cr8_colorMenuBtn() {
     // C O N T E N T 
-    const colorBtn = content_colorBtn();
+    const colorMenuBtn = content_colorMenuBtn();
     const colorMenu = content_colorMenu();
     content_colorChoices();
     content_colorChoiceBtns();
     content_menuCloser();
     content_btnClose();
 
-    function content_colorBtn() {
-      const colorBtn = document.createElement('div');
-      colorBtn.className = 'colorBtn';
-      return colorBtn;
+    function content_colorMenuBtn() {
+      const colorMenuBtn = document.createElement('div');
+      colorMenuBtn.className = 'colorMenuBtn';
+      return colorMenuBtn;
     }
     function content_colorMenu() {
       const colorMenu = document.createElement('div');
       colorMenu.className = 'colorMenu';
-      colorBtn.appendChild(colorMenu);
+      colorMenuBtn.appendChild(colorMenu);
       return colorMenu;
     }
     function content_colorChoices() {
-      const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
+      const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
       colors.forEach(function () {
         const block = document.createElement('div');
         block.className = 'colorBlock';
@@ -186,7 +186,7 @@ window.addEventListener('load', function () {
       }
     }
     function content_menuCloser() {
-      const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
+      const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
       const menuCloser = document.createElement('div');
       menuCloser.className = 'menuCloser';
       colorMenu.appendChild(menuCloser);
@@ -207,16 +207,16 @@ window.addEventListener('load', function () {
     const btnDistance = 0.75;
     const btnBorder = 0.5;
     const blockBgColor = '#000000';
-    style_colorBtn();
+    style_colorMenuBtn();
     style_colorMenu();
     style_colorChoices();
     style_colorChoiceBtns();
     style_menuCloser();
     style_btnClose();
-    function style_colorBtn() {
+    function style_colorMenuBtn() {
     }
     function style_colorMenu() {
-      const colorMenu = colorBtn.getElementsByClassName('colorMenu')[0];
+      const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
       colorMenu.style.height = timebarHeight + 'rem';
       colorMenu.style.width = (timebarWidth * colors.length) + 'rem';
       colorMenu.style.top = '0';
@@ -274,7 +274,7 @@ window.addEventListener('load', function () {
     }
     // I N T E R A C T I V E S
     setup_hideColorMenu();
-    inter_CLICKcolorMenuBtn(colorBtn);
+    inter_CLICKcolorMenuBtn(colorMenuBtn);
     inter_CLICKcloseBtn();
     var count = 0;
     function setup_findElementUp(elem, name) {
@@ -291,8 +291,8 @@ window.addEventListener('load', function () {
     function setup_hideColorMenu() {
       colorMenu.style.display = 'none';
     }
-    function inter_CLICKcolorMenuBtn(colorBtn) {
-      colorBtn.onclick = function (e) {
+    function inter_CLICKcolorMenuBtn(colorMenuBtn) {
+      colorMenuBtn.onclick = function (e) {
         e.stopPropagation();
         colorMenu.style.display = menuDisplay;
       }
@@ -311,7 +311,7 @@ window.addEventListener('load', function () {
         colorMenu.style.display = 'none'
       }
     }
-    return colorBtn;
+    return colorMenuBtn;
   }
 
 
@@ -390,12 +390,12 @@ window.addEventListener('load', function () {
 
   function cr8_timeBlocks() {
     // C O N T E N T
-    getEl_loopF('tbColorBtn', content_tbColorBtn);
+    getEl_loopF('tbcolorMenuBtn', content_tbcolorMenuBtn);
     getEl_loopF('projectTitle', content_projectTitle);
     getEl_loopF('blocks', content_blocks);
     getEl_loopF('blocksCarousel', content_blocksCarousel);
     getEl_loopF('addBlock', content_addBlock);
-    function content_tbColorBtn(el) {
+    function content_tbcolorMenuBtn(el) {
       const btn = cr8_colorMenuBtn();
       el.appendChild(btn);
     }
@@ -422,7 +422,7 @@ window.addEventListener('load', function () {
     const btnHeight = '1.5rem';
     getEl_loopF('timeBlocks', style_timeBlocks);
     getEl_loopF('colorsMenu', style_colorsMenu);
-    getEl_loopF('tbColorBtn', style_tbColorBtn);
+    getEl_loopF('tbcolorMenuBtn', style_tbcolorMenuBtn);
     getEl_loopF('timeBars', style_timeBars);
     getEl_loopF('timeBar', style_timeBar);
     getEl_loopF('projectTitle', style_projectTitle);
@@ -443,7 +443,7 @@ window.addEventListener('load', function () {
       el.style.alignItems = 'center';
       el.style.backgroundColor = '#000000';
     }
-    function style_tbColorBtn(el) {
+    function style_tbcolorMenuBtn(el) {
       el.style.position = 'relative';
       el.style.backgroundColor = '#000000';
       el.style.height = timebarHeight + 'rem';
@@ -451,13 +451,13 @@ window.addEventListener('load', function () {
       el.style.display = 'flex';
       el.style.justifyContent = 'center';
       el.style.alignItems = 'center';
-      function style_colorBtn() {
-        const btn = el.getElementsByClassName('colorBtn')[0];
+      function style_colorMenuBtn() {
+        const btn = el.getElementsByClassName('colorMenuBtn')[0];
         btn.style.backgroundColor = 'blue';
         btn.style.height = (timebarHeight / 1.75) + 'rem';
         btn.style.width = (timebarWidth / 1.75) + 'rem';
       }
-      style_colorBtn();
+      style_colorMenuBtn();
     }
     function style_timeBars(el) {
       el.style.flex = '5';
@@ -513,8 +513,8 @@ window.addEventListener('load', function () {
       el.style.textAlign = 'center';
     }
     // I N T E R A C T I V E S
-    // getEl_loopF('tbColorBtn', inter_CLICKtbColorBtn)
-    function inter_CLICKtbColorBtn(el) {
+    // getEl_loopF('tbcolorMenuBtn', inter_CLICKtbcolorMenuBtn)
+    function inter_CLICKtbcolorMenuBtn(el) {
       el.onclick = function (e) {
         console.log(el);
       }
