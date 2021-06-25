@@ -729,16 +729,17 @@ window.addEventListener('load', function () {
       function content_hourMarks(el) {
         const hourMarks = document.createElement('div');
         hourMarks.className = 'hourMarks';
-        for (let i = 0; i <= 24; i += 4) {
-          const hour = document.createElement('div');
-          hour.innerText = i;
-          hourMarks.appendChild(hour);
+        content_hourMark(el);
+        function content_hourMark(el) {
+          for (let i = 0; i <= 24; i += 4) {
+            const hour = document.createElement('div');
+            hour.innerText = i;
+            hourMarks.appendChild(hour);
+          }
+          el.appendChild(hourMarks);
         }
-        el.appendChild(hourMarks);
       }
-      function content_dayNum() {
 
-      }
     }
 
     // S T Y L E 
@@ -749,9 +750,8 @@ window.addEventListener('load', function () {
     getEl_loopF('week', style_week);
     getEl_loopF('weekHeader', style_weekHeader);
     getEl_loopF('weekTitle', style_weekTitle);
-
-    getEl_loopF('hourMarks', style_hourMarks);
     getEl_loopF('day', style_day);
+    getEl_loopF('hourMarks', style_hourMarks);
 
     function style_calendar(el) {
       el.style.flex = '1';
@@ -780,16 +780,38 @@ window.addEventListener('load', function () {
       el.style.padding = '0 ' + (fontSize / 5) + 'rem';
       el.style.paddingTop = (fontSize / 15) + 'rem';
     }
-    function style_hourMarks(el) {
-      el.style.flex = '1';
-      el.style.fontSize = (fontSize - 0.33) + 'rem';
-    }
     function style_day(el) {
       el.style.fontSize = (fontSize - 0.25) + 'rem';
       el.style.flex = '1';
       el.style.border = '1px solid #000000';
-      el.style.padding = '0 ' + (fontSize / 5) + 'rem';
-      el.style.paddingTop = (fontSize / 15) + 'rem';
+      el.style.display = 'flex';
+      el.style.flexDirection = 'column';
+      el.style.justifyContent = 'space-between';
+      style_dayTitle(el);
+      function style_dayTitle(el) {
+        el.children[0].style.padding = '0 ' + (fontSize / 5) + 'rem';
+        el.children[0].style.paddingTop = (fontSize / 15) + 'rem';
+      }
+    }
+    function style_hourMarks(el) {
+      // el.style.justifySelf = 'flex-end';
+      el.style.flex = '1';
+      el.style.fontSize = (fontSize - 0.33) + 'rem';
+      el.style.display = 'flex';
+      el.style.alignItems = 'flex-end';
+      el.style.maxHeight = '0.75rem';
+      el.style.backgroundColor = '#000000';
+      el.style.borderLeft = '1px solid #ffffff';
+      // el.style.borderRight = '1px solid #ffffff';
+      style_hourMark(el);
+      function style_hourMark(el) {
+        for (let i = 0; i < el.children.length; i++) {
+          const hour = el.children[i];
+          hour.style.flex = '1';
+          hour.style.textAlign = 'center';
+          hour.style.color = '#ffffff';
+        }
+      }
     }
 
     // I N T E R A C T I V E S
