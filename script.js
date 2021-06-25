@@ -171,14 +171,14 @@ window.addEventListener('load', function () {
     }
     function content_colorChoices() {
       const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
-      colors.forEach(function () {
+      colors.forEach(function (color) {
         const block = document.createElement('div');
-        block.className = 'colorBlock';
+        block.classList = 'colorChoice ' + color;
         colorMenu.appendChild(block);
       });
     }
     function content_colorChoiceBtns() {
-      const blocks = colorMenu.getElementsByClassName('colorBlock');
+      const blocks = colorMenu.getElementsByClassName('colorChoice');
       for (let i = 0; i < blocks.length; i++) {
         const btn = document.createElement('div');
         btn.className = 'btn';
@@ -225,7 +225,7 @@ window.addEventListener('load', function () {
       colorMenu.style.position = 'absolute'; colorMenu.style.zIndex = menuZIndex; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
     }
     function style_colorChoices() {
-      const blocks = colorMenu.getElementsByClassName('colorBlock');
+      const blocks = colorMenu.getElementsByClassName('colorChoice');
       for (let i = 0; i < colors.length; i++) {
         blocks[i].style.backgroundColor = blockBgColor;
         blocks[i].style.flex = '1';
@@ -276,6 +276,7 @@ window.addEventListener('load', function () {
     setup_hideColorMenu();
     inter_CLICKcolorMenuBtn(colorMenuBtn);
     inter_CLICKcloseBtn();
+    inter_CLICKcolorChoice();
     var count = 0;
     function setup_findElementUp(elem, name) {
       return (elem.parentElement.className == name && count < 12) ?
@@ -304,11 +305,13 @@ window.addEventListener('load', function () {
         colorMenu.style.display = 'none'
       }
     }
-    function inter_CLICKcolor() {
-      const closeBlock = colorMenu.getElementsByClassName('menuCloser')[0];
-      closeBlock.onclick = function (e) {
-        e.stopPropagation();
-        colorMenu.style.display = 'none'
+    function inter_CLICKcolorChoice() {
+      const colorChoices = colorMenu.getElementsByClassName('colorChoice');
+      for (let i = 0; i < colorChoices.length; i++) {
+        colorChoices[i].onclick = function (e) {
+          e.stopPropagation();
+          colorMenuBtn.style.backgroundColor = colorChoices[i].classList[1];
+        }
       }
     }
     return colorMenuBtn;
