@@ -277,12 +277,15 @@ window.addEventListener('load', function () {
     inter_CLICKcloseBtn();
     var count = 0;
     function setup_findElementUp(elem, name) {
-      return elem.parentElement.parentElement.parentElement.getElementsByClassName('colorMenu')[0];
-            // return elem.parentElement.className == name && count < 12 ? elem.parentElement :
-      //   function (elem) { 
-      //     count++; 
-      //     return setup_findElementUp(elem.parentElement, name);
-      //   }(elem);
+      return (elem.parentElement.className == name && count < 12) ?
+        (function () {
+          count = 0;
+          return elem.parentElement;
+        })() :
+        (function () {
+          count++;
+          return setup_findElementUp(elem.parentElement, name);
+        })();
     }
     function setup_hideColorMenu() {
       colorMenu.style.display = 'none';
@@ -290,9 +293,7 @@ window.addEventListener('load', function () {
     function inter_CLICKcolorMenuBtn(colorBtn) {
       colorBtn.onclick = function (e) {
         e.stopPropagation();
-        e.preventDefault();
         colorMenu.style.display = menuDisplay;
-        console.log(colorMenu)
       }
     }
     function inter_CLICKcloseBtn() {
@@ -300,8 +301,7 @@ window.addEventListener('load', function () {
       closeBlock.onclick = function (e) {
         e.stopPropagation();
         colorMenu.style.display = 'none'
-        console.log(colorMenu)
-      } 
+      }
     }
     return colorBtn;
   }
