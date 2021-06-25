@@ -75,9 +75,9 @@ window.addEventListener('load', function () {
 
   const blocks = ['blocksCarousel', 'addBlock', 'blocks'];
   const bottle = ['tbcolorMenuBtn', 'projectTitle', 'bottle', blocks];
-  const contentTimeBar = ['timeBar', bottle,
-    'timeBar', bottle,
-    'timeBar', bottle];
+  const contentTimebar = ['timebar', bottle,
+    'timebar', bottle,
+    'timebar', bottle];
   const contentTitlebar2 = ['title2', 'month_arrows',
     ['arrowL2', 'month_title', 'arrowR2']
   ];
@@ -87,7 +87,7 @@ window.addEventListener('load', function () {
       'main',
       ['timeVisuals',
         ['timeBlocks',
-          ['timeBars', contentTimeBar
+          ['timebars', contentTimebar
           ], 'titlebar2', contentTitlebar2,
           'calendar'],
         'menuBlock'],
@@ -147,6 +147,18 @@ window.addEventListener('load', function () {
   function getOneEl_runF(className, i, modify) {
     const el = document.getElementsByClassName(className)[i];
     modify(el);
+  }
+  var count = 0;
+  function setup_findElementUp(elem, name) {
+    return (elem.parentElement.className == name && count < 12) ?
+      (function () {
+        count = 0;
+        return elem.parentElement;
+      })() :
+      (function () {
+        count++;
+        return setup_findElementUp(elem.parentElement, name);
+      })();
   }
   // things
   function cr8_colorMenuBtn() {
@@ -277,18 +289,6 @@ window.addEventListener('load', function () {
     inter_CLICKcolorMenuBtn(colorMenuBtn);
     inter_CLICKcloseBtn();
     inter_CLICKcolorChoice();
-    var count = 0;
-    function setup_findElementUp(elem, name) {
-      return (elem.parentElement.className == name && count < 12) ?
-        (function () {
-          count = 0;
-          return elem.parentElement;
-        })() :
-        (function () {
-          count++;
-          return setup_findElementUp(elem.parentElement, name);
-        })();
-    }
     function setup_hideColorMenu() {
       colorMenu.style.display = 'none';
     }
@@ -310,7 +310,10 @@ window.addEventListener('load', function () {
       for (let i = 0; i < colorChoices.length; i++) {
         colorChoices[i].onclick = function (e) {
           e.stopPropagation();
-          colorMenuBtn.style.backgroundColor = colorChoices[i].classList[1];
+          const color = colorChoices[i].classList[1];
+          const timebar = setup_findElementUp(colorMenuBtn, 'timebar');
+          colorMenuBtn.style.backgroundColor = color;
+          timebar.style.backgroundColor = color;
         }
       }
     }
@@ -426,8 +429,8 @@ window.addEventListener('load', function () {
     getEl_loopF('timeBlocks', style_timeBlocks);
     getEl_loopF('colorsMenu', style_colorsMenu);
     getEl_loopF('tbcolorMenuBtn', style_tbcolorMenuBtn);
-    getEl_loopF('timeBars', style_timeBars);
-    getEl_loopF('timeBar', style_timeBar);
+    getEl_loopF('timebars', style_timebars);
+    getEl_loopF('timebar', style_timebar);
     getEl_loopF('projectTitle', style_projectTitle);
     getEl_loopF('bottle', style_bottle);
     getEl_loopF('blocks', style_blocks);
@@ -462,12 +465,12 @@ window.addEventListener('load', function () {
       }
       style_colorMenuBtn();
     }
-    function style_timeBars(el) {
+    function style_timebars(el) {
       el.style.flex = '5';
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
     }
-    function style_timeBar(el) {
+    function style_timebar(el) {
       el.style.display = 'flex';
     }
     function style_projectTitle(el) {
@@ -484,6 +487,7 @@ window.addEventListener('load', function () {
         input.style.display = 'flex';
         input.style.textAlign = 'center';
         input.style.justifyContent = 'center';
+        input.style.backgroundColor = 'transparent';
       }
       style_input();
     }
