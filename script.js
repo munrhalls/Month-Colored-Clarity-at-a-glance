@@ -259,7 +259,7 @@ window.addEventListener('load', function () {
           choiceBtn.style.backgroundColor = colors[i];
           choiceBtn.style.height = timebarHeight / 1.25 + 'rem';
           choiceBtn.style.width = timebarHeight / 1.75 + 'rem';
-          choiceBtn.style.border = btnBorder + 'rem solid #000000';
+          // choiceBtn.style.border = btnBorder + 'rem solid #000000';
           choiceBtn.style.borderRadius = borderRadius;
           // choiceBtn.style.boxSizing = 'content-box';
           choiceBtn.style.cursor = 'pointer';
@@ -325,6 +325,7 @@ window.addEventListener('load', function () {
             const timebar = setup_findElementUp(colorMenuBtn, 'timebar');
             colorMenuBtn.style.backgroundColor = color;
             timebar.style.backgroundColor = color;
+            colorMenu.style.display = 'none';
           }
         }
       }
