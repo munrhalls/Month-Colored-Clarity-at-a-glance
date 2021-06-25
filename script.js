@@ -622,11 +622,15 @@ window.addEventListener('load', function () {
     }
 
     // I N T E R A C T I V E S
-
+    inter_monthShown();
     getEl_loopF('arrowL2', inter_prevMonth);
     getEl_loopF('arrowR2', inter_nextMonth);
+    getEl_loopF('month_title', inter_shiftMonthTitle);
+
     function inter_monthShown() {
-      monthShown = 'July';
+      const date = new Date(); 
+      const monthName = date.toLocaleString('en-EN', {month: 'long'});
+      monthShown = monthName;
     }
     function inter_prevMonth(el) {
       el.onclick = function () {
