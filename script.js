@@ -544,9 +544,7 @@ window.addEventListener('load', function () {
 
 
   function cr8_calendarBar() {
-
     // C O N T E N T
-
     getEl_loopF('calendarTitle', content_calendarTitle);
     getEl_loopF('month_arrows', content_month_arrows);
     getEl_loopF('month_title', content_month_title);
@@ -574,7 +572,6 @@ window.addEventListener('load', function () {
     }
 
     // S T Y L E
-
     const maxHeight = 3;
     const horizMargin = 1.5;
     const titleSize = 1.5;
@@ -584,6 +581,7 @@ window.addEventListener('load', function () {
     getEl_loopF('month_title', style_month_title);
     getEl_loopF('arrowL2', style_arrowL2);
     getEl_loopF('arrowR2', style_arrowR2);
+
     function style_titlebar2(el) {
       el.style.flex = '1';
       el.style.maxHeight = maxHeight + 'rem';
@@ -612,6 +610,8 @@ window.addEventListener('load', function () {
     }
     function style_arrowL2(el) {
       const width = 0.25;
+      el.style.cursor = 'pointer';
+      el.style.padding = width * 2;
       el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
       el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
       el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
@@ -623,6 +623,7 @@ window.addEventListener('load', function () {
     }
     function style_arrowR2(el) {
       const width = 0.25;
+      el.style.cursor = 'pointer';
       el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
       el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
       el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
@@ -632,7 +633,6 @@ window.addEventListener('load', function () {
       // position
       el.style.position = 'absolute';
       el.style.right = 0 - (width * 9) + 'rem';
-
     }
 
     // I N T E R A C T I V E S
