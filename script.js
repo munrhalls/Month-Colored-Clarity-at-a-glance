@@ -78,7 +78,7 @@ window.addEventListener('load', function () {
   const contentTimebar = ['timebar', bottle,
     'timebar', bottle,
     'timebar', bottle];
-  const contentTitlebar2 = ['title2', 'month_arrows',
+  const contentTitlebar2 = ['calendarTitle', 'month_arrows',
     ['arrowL2', 'month_title', 'arrowR2']
   ];
   const DATA_DOM = [
@@ -100,7 +100,7 @@ window.addEventListener('load', function () {
   cr8_main();
   cr8_timeVisuals();
   cr8_timeBlocks();
-  cr8_titlebar2();
+  cr8_calendarBar();
   cr8_calendar();
 
   function assembleDOM(arr, container) {
@@ -529,17 +529,17 @@ window.addEventListener('load', function () {
   }
 
 
-  function cr8_titlebar2() {
+  function cr8_calendarBar() {
 
     // C O N T E N T
 
-    getEl_loopF('title2', content_title2);
+    getEl_loopF('calendarTitle', content_calendarTitle);
     getEl_loopF('month_arrows', content_month_arrows);
     getEl_loopF('month_title', content_month_title);
     getEl_loopF('arrowL2', content_arrowL2);
     getEl_loopF('arrowR2', content_arrowR2);
 
-    function content_title2(el) {
+    function content_calendarTitle(el) {
       const title = document.createElement('span');
       title.innerText = 'CALENDAR';
       el.appendChild(title);
@@ -565,7 +565,7 @@ window.addEventListener('load', function () {
     const horizMargin = 1.5;
     const titleSize = 1.5;
     getEl_loopF('titlebar2', style_titlebar2);
-    getEl_loopF('title2', style_title2);
+    getEl_loopF('calendarTitle', style_calendarTitle);
     getEl_loopF('month_arrows', style_month_arrows);
     getEl_loopF('month_title', style_month_title);
     getEl_loopF('arrowL2', style_arrowL2);
@@ -576,7 +576,7 @@ window.addEventListener('load', function () {
       el.style.backgroundColor = '#000000';
       el.style.display = 'flex';
     }
-    function style_title2(el) {
+    function style_calendarTitle(el) {
       el.style.color = '#ffffff';
       el.style.fontWeight = 'bold';
       el.style.marginLeft = '1.5rem';
