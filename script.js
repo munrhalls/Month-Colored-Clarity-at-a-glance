@@ -213,107 +213,117 @@ window.addEventListener('load', function () {
       menuCloser.appendChild(btnClose);
     }
     // S T Y L E
+
     const menuZIndex = '3';
     const menuDisplay = 'flex';
     const borderRadius = '5%';
     const btnDistance = 0.75;
     const btnBorder = 0.5;
     const blockBgColor = '#000000';
-    style_colorMenuBtn();
-    style_colorMenu();
-    style_colorChoices();
-    style_colorChoiceBtns();
-    style_menuCloser();
-    style_btnClose();
-    function style_colorMenuBtn() {
-    }
-    function style_colorMenu() {
-      const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
-      colorMenu.style.height = timebarHeight + 'rem';
-      colorMenu.style.width = (timebarWidth * colors.length) + 'rem';
-      colorMenu.style.top = '0';
-      colorMenu.style.display = menuDisplay;
-
-      colorMenu.style.position = 'absolute'; colorMenu.style.zIndex = menuZIndex; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
-    }
-    function style_colorChoices() {
-      const blocks = colorMenu.getElementsByClassName('colorChoice');
-      for (let i = 0; i < colors.length; i++) {
-        blocks[i].style.backgroundColor = blockBgColor;
-        blocks[i].style.flex = '1';
-        blocks[i].style.display = 'flex';
-        blocks[i].style.justifyContent = 'center';
-        blocks[i].style.alignItems = 'center';
-        blocks[i].style.paddingLeft = btnDistance + 'rem';
+    style();
+    function style() {
+      style_colorMenuBtn();
+      style_colorMenu();
+      style_colorChoices();
+      style_colorChoiceBtns();
+      style_menuCloser();
+      style_btnClose();
+      
+      function style_colorMenuBtn() {
       }
-    }
-    function style_colorChoiceBtns() {
-      const btns = colorMenu.getElementsByClassName('btn');
-      for (let i = 0; i < btns.length; i++) {
-        btns[i].style.backgroundColor = colors[i];
-        btns[i].style.height = timebarHeight / 1.25 + 'rem';
-        btns[i].style.width = timebarHeight / 1.75 + 'rem';
-        btns[i].style.border = btnBorder + 'rem solid #000000';
-        btns[i].style.borderRadius = borderRadius;
-        // btns[i].style.boxSizing = 'content-box';
-        btns[i].style.cursor = 'pointer';
-      }
-    }
-    function style_menuCloser() {
-      const btnClose = colorMenu.getElementsByClassName('menuCloser')[0];
-      btnClose.style.backgroundColor = blockBgColor;
-      btnClose.style.flex = '1';
-      btnClose.style.display = 'flex';
-      btnClose.style.justifyContent = 'center';
-      btnClose.style.alignItems = 'center';
-    }
-    function style_btnClose() {
-      const btnClose = colorMenu.getElementsByClassName('btnClose')[0];
-      btnClose.style.cursor = 'pointer';
-      btnClose.style.display = 'flex';
-      btnClose.style.justifyContent = 'center';
-      btnClose.style.alignItems = 'center';
-      btnClose.style.textAlign = 'center';
-      btnClose.style.fontSize = '3.5rem';
-      btnClose.style.backgroundColor = blockBgColor;
-      btnClose.style.borderRadius = borderRadius;
-      btnClose.style.color = '#ffffff';
-      btnClose.style.height = (timebarHeight / 2.25) + btnBorder * 2 + 'rem';
-      btnClose.style.width = timebarHeight / 1.25 + 'rem';
-      btnClose.style.marginLeft = btnDistance * 2 + 'rem';
-      btnClose.style.marginRight = btnDistance * 2 + 'rem';
-      btnClose.style.border = '1px solid #ffffff';
-    }
-    // I N T E R A C T I V E S
-    setup_hideColorMenu();
-    inter_CLICKcolorMenuBtn(colorMenuBtn);
-    inter_CLICKcloseBtn();
-    inter_CLICKcolorChoice();
-    function setup_hideColorMenu() {
-      colorMenu.style.display = 'none';
-    }
-    function inter_CLICKcolorMenuBtn(colorMenuBtn) {
-      colorMenuBtn.onclick = function (e) {
-        e.stopPropagation();
+      function style_colorMenu() {
+        const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
+        colorMenu.style.height = timebarHeight + 'rem';
+        colorMenu.style.width = (timebarWidth * colors.length) + 'rem';
+        colorMenu.style.top = '0';
         colorMenu.style.display = menuDisplay;
+
+        colorMenu.style.position = 'absolute'; colorMenu.style.zIndex = menuZIndex; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
+      }
+      function style_colorChoices() {
+        const blocks = colorMenu.getElementsByClassName('colorChoice');
+        for (let i = 0; i < colors.length; i++) {
+          blocks[i].style.backgroundColor = blockBgColor;
+          blocks[i].style.flex = '1';
+          blocks[i].style.display = 'flex';
+          blocks[i].style.justifyContent = 'center';
+          blocks[i].style.alignItems = 'center';
+          blocks[i].style.paddingLeft = btnDistance + 'rem';
+        }
+      }
+      function style_colorChoiceBtns() {
+        const btns = colorMenu.getElementsByClassName('btn');
+        for (let i = 0; i < btns.length; i++) {
+          btns[i].style.backgroundColor = colors[i];
+          btns[i].style.height = timebarHeight / 1.25 + 'rem';
+          btns[i].style.width = timebarHeight / 1.75 + 'rem';
+          btns[i].style.border = btnBorder + 'rem solid #000000';
+          btns[i].style.borderRadius = borderRadius;
+          // btns[i].style.boxSizing = 'content-box';
+          btns[i].style.cursor = 'pointer';
+        }
+      }
+      function style_menuCloser() {
+        const btnClose = colorMenu.getElementsByClassName('menuCloser')[0];
+        btnClose.style.backgroundColor = blockBgColor;
+        btnClose.style.flex = '1';
+        btnClose.style.display = 'flex';
+        btnClose.style.justifyContent = 'center';
+        btnClose.style.alignItems = 'center';
+      }
+      function style_btnClose() {
+        const btnClose = colorMenu.getElementsByClassName('btnClose')[0];
+        btnClose.style.cursor = 'pointer';
+        btnClose.style.display = 'flex';
+        btnClose.style.justifyContent = 'center';
+        btnClose.style.alignItems = 'center';
+        btnClose.style.textAlign = 'center';
+        btnClose.style.fontSize = '3.5rem';
+        btnClose.style.backgroundColor = blockBgColor;
+        btnClose.style.borderRadius = borderRadius;
+        btnClose.style.color = '#ffffff';
+        btnClose.style.height = (timebarHeight / 2.25) + btnBorder * 2 + 'rem';
+        btnClose.style.width = timebarHeight / 1.25 + 'rem';
+        btnClose.style.marginLeft = btnDistance * 2 + 'rem';
+        btnClose.style.marginRight = btnDistance * 2 + 'rem';
+        btnClose.style.border = '1px solid #ffffff';
       }
     }
-    function inter_CLICKcloseBtn() {
-      const closeBlock = colorMenu.getElementsByClassName('menuCloser')[0];
-      closeBlock.onclick = function (e) {
-        e.stopPropagation();
-        colorMenu.style.display = 'none'
+
+    // I N T E R A C T I V E S
+    interactives();
+    function interactives() {
+      setup_hideColorMenu();
+      inter_CLICKcolorMenuBtn(colorMenuBtn);
+      inter_CLICKcloseBtn();
+      inter_CLICKcolorChoice();
+
+      function setup_hideColorMenu() {
+        colorMenu.style.display = 'none';
       }
-    }
-    function inter_CLICKcolorChoice() {
-      const colorChoices = colorMenu.getElementsByClassName('colorChoice');
-      for (let i = 0; i < colorChoices.length; i++) {
-        colorChoices[i].onclick = function (e) {
+      function inter_CLICKcolorMenuBtn(colorMenuBtn) {
+        colorMenuBtn.onclick = function (e) {
           e.stopPropagation();
-          const color = colorChoices[i].classList[1];
-          const timebar = setup_findElementUp(colorMenuBtn, 'timebar');
-          colorMenuBtn.style.backgroundColor = color;
-          timebar.style.backgroundColor = color;
+          colorMenu.style.display = menuDisplay;
+        }
+      }
+      function inter_CLICKcloseBtn() {
+        const closeBlock = colorMenu.getElementsByClassName('menuCloser')[0];
+        closeBlock.onclick = function (e) {
+          e.stopPropagation();
+          colorMenu.style.display = 'none'
+        }
+      }
+      function inter_CLICKcolorChoice() {
+        const colorChoices = colorMenu.getElementsByClassName('colorChoice');
+        for (let i = 0; i < colorChoices.length; i++) {
+          colorChoices[i].onclick = function (e) {
+            e.stopPropagation();
+            const color = colorChoices[i].classList[1];
+            const timebar = setup_findElementUp(colorMenuBtn, 'timebar');
+            colorMenuBtn.style.backgroundColor = color;
+            timebar.style.backgroundColor = color;
+          }
         }
       }
     }
@@ -628,8 +638,8 @@ window.addEventListener('load', function () {
     getEl_loopF('month_title', inter_shiftMonthTitle);
 
     function inter_monthShown() {
-      const date = new Date(); 
-      const monthName = date.toLocaleString('en-EN', {month: 'long'});
+      const date = new Date();
+      const monthName = date.toLocaleString('en-EN', { month: 'long' });
       monthShown = monthName;
     }
     function inter_prevMonth(el) {
