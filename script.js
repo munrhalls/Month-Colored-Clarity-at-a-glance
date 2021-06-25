@@ -228,7 +228,7 @@ window.addEventListener('load', function () {
       style_colorChoiceBtns();
       style_menuCloser();
       style_btnClose();
-      
+
       function style_colorMenuBtn() {
       }
       function style_colorMenu() {
@@ -243,24 +243,26 @@ window.addEventListener('load', function () {
       function style_colorChoices() {
         const blocks = colorMenu.getElementsByClassName('colorChoice');
         for (let i = 0; i < colors.length; i++) {
-          blocks[i].style.backgroundColor = blockBgColor;
-          blocks[i].style.flex = '1';
-          blocks[i].style.display = 'flex';
-          blocks[i].style.justifyContent = 'center';
-          blocks[i].style.alignItems = 'center';
-          blocks[i].style.paddingLeft = btnDistance + 'rem';
+          const colorChoice = blocks[i];
+          colorChoice.style.backgroundColor = blockBgColor;
+          colorChoice.style.flex = '1';
+          colorChoice.style.display = 'flex';
+          colorChoice.style.justifyContent = 'center';
+          colorChoice.style.alignItems = 'center';
+          colorChoice.style.paddingLeft = btnDistance + 'rem';
         }
       }
       function style_colorChoiceBtns() {
         const btns = colorMenu.getElementsByClassName('btn');
         for (let i = 0; i < btns.length; i++) {
-          btns[i].style.backgroundColor = colors[i];
-          btns[i].style.height = timebarHeight / 1.25 + 'rem';
-          btns[i].style.width = timebarHeight / 1.75 + 'rem';
-          btns[i].style.border = btnBorder + 'rem solid #000000';
-          btns[i].style.borderRadius = borderRadius;
-          // btns[i].style.boxSizing = 'content-box';
-          btns[i].style.cursor = 'pointer';
+          const choiceBtn = btns[i];
+          choiceBtn.style.backgroundColor = colors[i];
+          choiceBtn.style.height = timebarHeight / 1.25 + 'rem';
+          choiceBtn.style.width = timebarHeight / 1.75 + 'rem';
+          choiceBtn.style.border = btnBorder + 'rem solid #000000';
+          choiceBtn.style.borderRadius = borderRadius;
+          // choiceBtn.style.boxSizing = 'content-box';
+          choiceBtn.style.cursor = 'pointer';
         }
       }
       function style_menuCloser() {
