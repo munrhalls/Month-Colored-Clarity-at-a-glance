@@ -10,7 +10,7 @@ const paddingTitle = '0.25rem';
 const heightVisuals = 'calc(100vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
 const containerheightCalendar = 'calc(50vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
 const righttimebarWidth = '18rem';
-const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00', '#FF0000'];
+const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00', '#790604'];
 const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
 const heightCalendar = containerheightCalendar;
@@ -427,9 +427,9 @@ window.addEventListener('load', function () {
       el.appendChild(btn);
     }
     function content_projectTitle(el) {
-      const input = document.createElement('input');
-      input.type = 'text';
-      el.appendChild(input);
+      const textarea = document.createElement('textarea');
+      textarea.type = 'text';
+      el.appendChild(textarea);
     }
     function content_blocks(el) {
     }
@@ -491,17 +491,23 @@ window.addEventListener('load', function () {
       el.style.height = timebarHeight + 'rem';
       el.style.width = (timebarWidth * 2) + 'rem';
       el.style.display = 'flex';
+      el.style.wordWrap= 'break-word';
       function style_input() {
-        const input = el.getElementsByTagName('input')[0];
-        input.style.flex = '1';
-        input.style.maxWidth = (timebarWidth * 2) + 'rem';
-        input.style.width = '100%';
-        input.style.padding = '0';
-        input.style.margin = '0';
-        input.style.display = 'flex';
-        input.style.textAlign = 'center';
-        input.style.justifyContent = 'center';
-        input.style.backgroundColor = 'transparent';
+        const textarea = el.getElementsByTagName('textarea')[0];
+        textarea.style.flex = '1';
+        textarea.style.maxWidth = (timebarWidth * 2) + 'rem';
+        textarea.style.width = '100%';
+        textarea.style.padding = '0';
+        textarea.style.margin = '0';
+        textarea.style.display = 'flex';
+        textarea.style.flexWrap = 'wrap';
+        textarea.style.wordWrap= 'break-word';
+        textarea.style.justifyContent = 'center';
+        textarea.style.alignItems = 'center';
+        textarea.style.backgroundColor = 'transparent';
+        textarea.style.textAlign = 'center';
+        textarea.style.fontSize = '1.25rem';
+
       }
       style_input();
     }
@@ -519,7 +525,7 @@ window.addEventListener('load', function () {
       el.style.textAlign = 'center';
     }
     function style_blocksCarousel(el) {
-      el.style.flex = '2';
+      el.style.flex = '1';
 
       el.style.display = 'flex';
       el.style.flexDirection = 'row';
