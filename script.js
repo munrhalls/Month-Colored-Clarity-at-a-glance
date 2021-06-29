@@ -593,6 +593,8 @@ window.addEventListener('load', function () {
         el.style.maxHeight = (heightMultiplier / 24) * timeBarHeight + 'rem';
         el.style.fontSize = '1.5rem';
         el.style.border = '2px solid #000000';
+        el.style.paddingLeft = '0.5rem';
+        el.style.paddingRight = '0.5rem';
         el.style.borderRadius = borderRadius;
       }
       function style_nextHourBlock(el) {
