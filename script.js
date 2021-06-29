@@ -73,10 +73,11 @@ window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   const app = document.getElementById('app');
 
-  const hourBlocks = ['hourBlockChoices', 'addBlock', 'blocks'];
+
+  const hourBlocks = ['hourBlockChoices', [''], 'addBlock', 'blocks'];
   const timeBar = ['timeBar', ['tbcolorMenuBtn', 'projectTitle', 'hourBlocks', hourBlocks]];
-  const calendarBar = ['calendarTitle', 'month_arrows',
-    ['arrowL2', 'month_title', 'arrowR2']
+  const calendarBar = ['calendarTitle', 'monthChoice',
+    ['prevMonth', 'monthTitle', 'nextMonth']
   ];
 
   const DATA_DOM = [
@@ -86,8 +87,10 @@ window.addEventListener('load', function () {
       ['timeVisuals',
         ['timeBlocks',
           ['timeBars', timeBar
-          ], 'calendarBar', calendarBar,
-          'calendar'],
+          ],
+          'calendarBar', calendarBar,
+          'calendar'
+        ],
         'menuBlock'],
       'footer'
     ],
@@ -489,7 +492,7 @@ window.addEventListener('load', function () {
       el.style.height = timeBarHeight + 'rem';
       el.style.width = (timeBarWidth * 2) + 'rem';
       el.style.display = 'flex';
-      el.style.wordWrap= 'break-word';
+      el.style.wordWrap = 'break-word';
       function style_input() {
         const textarea = el.getElementsByTagName('textarea')[0];
         textarea.style.flex = '1';
@@ -499,7 +502,7 @@ window.addEventListener('load', function () {
         textarea.style.margin = '0';
         textarea.style.display = 'flex';
         textarea.style.flexWrap = 'wrap';
-        textarea.style.wordWrap= 'break-word';
+        textarea.style.wordWrap = 'break-word';
         textarea.style.justifyContent = 'center';
         textarea.style.alignItems = 'center';
         textarea.style.backgroundColor = 'transparent';
@@ -554,28 +557,28 @@ window.addEventListener('load', function () {
   function cr8_calendarBar() {
     // C O N T E N T
     getEl_loopF('calendarTitle', content_calendarTitle);
-    getEl_loopF('month_arrows', content_month_arrows);
-    getEl_loopF('month_title', content_month_title);
-    getEl_loopF('arrowL2', content_arrowL2);
-    getEl_loopF('arrowR2', content_arrowR2);
+    getEl_loopF('monthChoice', content_monthChoice);
+    getEl_loopF('monthTitle', content_monthTitle);
+    getEl_loopF('prevMonth', content_prevMonth);
+    getEl_loopF('nextMonth', content_nextMonth);
 
     function content_calendarTitle(el) {
       const title = document.createElement('span');
       title.innerText = 'CALENDAR';
       el.appendChild(title);
     }
-    function content_month_arrows(el) {
+    function content_monthChoice(el) {
     }
-    function content_month_title(el) {
+    function content_monthTitle(el) {
       const title = document.createElement('div');
       // global var
       const index = months.indexOf(monthShown);
       title.innerText = months[index];
       el.appendChild(title);
     }
-    function content_arrowL2(el) {
+    function content_prevMonth(el) {
     }
-    function content_arrowR2(el) {
+    function content_nextMonth(el) {
     }
 
     // S T Y L E
@@ -584,10 +587,10 @@ window.addEventListener('load', function () {
     const titleSize = 1.5;
     getEl_loopF('calendarBar', style_calendarBar);
     getEl_loopF('calendarTitle', style_calendarTitle);
-    getEl_loopF('month_arrows', style_month_arrows);
-    getEl_loopF('month_title', style_month_title);
-    getEl_loopF('arrowL2', style_arrowL2);
-    getEl_loopF('arrowR2', style_arrowR2);
+    getEl_loopF('monthChoice', style_monthChoice);
+    getEl_loopF('monthTitle', style_monthTitle);
+    getEl_loopF('prevMonth', style_prevMonth);
+    getEl_loopF('nextMonth', style_nextMonth);
 
     function style_calendarBar(el) {
       el.style.flex = '1';
@@ -603,7 +606,7 @@ window.addEventListener('load', function () {
       el.style.flexDirection = 'column';
       el.style.justifyContent = 'center';
     }
-    function style_month_arrows(el) {
+    function style_monthChoice(el) {
       el.style.display = 'flex';
       el.style.alignItems = 'center';
       el.style.marginLeft = (horizMargin * 3) + 'rem';
@@ -611,11 +614,11 @@ window.addEventListener('load', function () {
       // position
       el.style.position = 'relative';
     }
-    function style_month_title(el) {
+    function style_monthTitle(el) {
       // global var
       el.style.fontSize = titleSize + 'rem';
     }
-    function style_arrowL2(el) {
+    function style_prevMonth(el) {
       const width = 0.25;
       el.style.cursor = 'pointer';
       el.style.padding = width * 2;
@@ -628,7 +631,7 @@ window.addEventListener('load', function () {
       el.style.position = 'absolute';
       el.style.left = 0 - (width * 9) + 'rem';
     }
-    function style_arrowR2(el) {
+    function style_nextMonth(el) {
       const width = 0.25;
       el.style.cursor = 'pointer';
       el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
@@ -644,9 +647,9 @@ window.addEventListener('load', function () {
 
     // I N T E R A C T I V E S
     inter_monthShown();
-    getEl_loopF('arrowL2', inter_prevMonth);
-    getEl_loopF('arrowR2', inter_nextMonth);
-    getEl_loopF('month_title', inter_shiftMonthTitle);
+    getEl_loopF('prevMonth', inter_prevMonth);
+    getEl_loopF('nextMonth', inter_nextMonth);
+    getEl_loopF('monthTitle', inter_shiftMonthTitle);
 
     function inter_monthShown() {
       const date = new Date();
@@ -660,7 +663,7 @@ window.addEventListener('load', function () {
           const prevIndex = index - 1;
           monthShown = months[prevIndex];
           console.log(monthShown)
-          getEl_loopF('month_title', inter_shiftMonthTitle);
+          getEl_loopF('monthTitle', inter_shiftMonthTitle);
         }
       }
     }
@@ -671,7 +674,7 @@ window.addEventListener('load', function () {
           const prevIndex = index + 1;
           monthShown = months[prevIndex];
           console.log(monthShown)
-          getEl_loopF('month_title', inter_shiftMonthTitle);
+          getEl_loopF('monthTitle', inter_shiftMonthTitle);
         }
       }
     }
