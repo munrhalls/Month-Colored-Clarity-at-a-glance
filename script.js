@@ -634,7 +634,7 @@ window.addEventListener('load', function () {
             plusText.style.borderRadius = borderRadius;
             plusText.style.position = 'absolute';
             plusText.style.position = 'absolute';
-            plusText.style.top = 0 - (timeBarHeight) / 4 + 'rem';
+            plusText.style.top = 0 - (timeBarHeight) / 5.25 + 'rem';
             plusText.style.bottom = 0;
             plusText.style.left = 0;
             plusText.style.right = 0;
