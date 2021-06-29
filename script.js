@@ -14,8 +14,8 @@ const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00'
 const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
 const heightCalendar = containerheightCalendar;
-const calendarMonthTitleFontSize = '1.5rem';
-const calendarMonthTitleHeight = '2.5rem';
+const calendarMonthChoiceFontSize = '1.5rem';
+const calendarMonthChoiceHeight = '2.5rem';
 
 const date = new Date();
 const year = date.getFullYear();
@@ -74,10 +74,10 @@ window.addEventListener('load', function () {
   const app = document.getElementById('app');
 
 
-  const hourBlocks = ['hourBlockChoices', [''], 'addBlock', 'blocks'];
+  const hourBlocks = ['hourBlockChoices', ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'], 'addBlock', 'blocks'];
   const timeBar = ['timeBar', ['tbcolorMenuBtn', 'projectTitle', 'hourBlocks', hourBlocks]];
-  const calendarBar = ['calendarTitle', 'monthChoice',
-    ['prevMonth', 'monthTitle', 'nextMonth']
+  const calendarBar = ['calendarTitle', 'monthChoices',
+    ['prevMonth', 'monthChoice', 'nextMonth']
   ];
 
   const DATA_DOM = [
@@ -557,8 +557,8 @@ window.addEventListener('load', function () {
   function cr8_calendarBar() {
     // C O N T E N T
     getEl_loopF('calendarTitle', content_calendarTitle);
+    getEl_loopF('monthChoices', content_monthChoices);
     getEl_loopF('monthChoice', content_monthChoice);
-    getEl_loopF('monthTitle', content_monthTitle);
     getEl_loopF('prevMonth', content_prevMonth);
     getEl_loopF('nextMonth', content_nextMonth);
 
@@ -567,9 +567,9 @@ window.addEventListener('load', function () {
       title.innerText = 'CALENDAR';
       el.appendChild(title);
     }
-    function content_monthChoice(el) {
+    function content_monthChoices(el) {
     }
-    function content_monthTitle(el) {
+    function content_monthChoice(el) {
       const title = document.createElement('div');
       // global var
       const index = months.indexOf(monthShown);
@@ -587,8 +587,8 @@ window.addEventListener('load', function () {
     const titleSize = 1.5;
     getEl_loopF('calendarBar', style_calendarBar);
     getEl_loopF('calendarTitle', style_calendarTitle);
+    getEl_loopF('monthChoices', style_monthChoices);
     getEl_loopF('monthChoice', style_monthChoice);
-    getEl_loopF('monthTitle', style_monthTitle);
     getEl_loopF('prevMonth', style_prevMonth);
     getEl_loopF('nextMonth', style_nextMonth);
 
@@ -606,7 +606,7 @@ window.addEventListener('load', function () {
       el.style.flexDirection = 'column';
       el.style.justifyContent = 'center';
     }
-    function style_monthChoice(el) {
+    function style_monthChoices(el) {
       el.style.display = 'flex';
       el.style.alignItems = 'center';
       el.style.marginLeft = (horizMargin * 3) + 'rem';
@@ -614,7 +614,7 @@ window.addEventListener('load', function () {
       // position
       el.style.position = 'relative';
     }
-    function style_monthTitle(el) {
+    function style_monthChoice(el) {
       // global var
       el.style.fontSize = titleSize + 'rem';
     }
@@ -649,7 +649,7 @@ window.addEventListener('load', function () {
     inter_monthShown();
     getEl_loopF('prevMonth', inter_prevMonth);
     getEl_loopF('nextMonth', inter_nextMonth);
-    getEl_loopF('monthTitle', inter_shiftMonthTitle);
+    getEl_loopF('monthChoice', inter_shiftMonthChoice);
 
     function inter_monthShown() {
       const date = new Date();
@@ -663,7 +663,7 @@ window.addEventListener('load', function () {
           const prevIndex = index - 1;
           monthShown = months[prevIndex];
           console.log(monthShown)
-          getEl_loopF('monthTitle', inter_shiftMonthTitle);
+          getEl_loopF('monthChoice', inter_shiftMonthChoice);
         }
       }
     }
@@ -674,11 +674,11 @@ window.addEventListener('load', function () {
           const prevIndex = index + 1;
           monthShown = months[prevIndex];
           console.log(monthShown)
-          getEl_loopF('monthTitle', inter_shiftMonthTitle);
+          getEl_loopF('monthChoice', inter_shiftMonthChoice);
         }
       }
     }
-    function inter_shiftMonthTitle(el) {
+    function inter_shiftMonthChoice(el) {
       el.innerText = monthShown;
     }
 
@@ -1771,16 +1771,16 @@ function createWeek(weekNum, monthNum) {
   week.style.display = 'inline-block';
   week.style.position = 'relative';
   //CREATE TITLE OF THE MONTH; APPEND TO THE LEFT OF EACH OF THE 4 WEEKS
-  var monthTitle = document.createElement('div');
-  monthTitle.innerText = 'Deep work hours';
-  monthTitle.style.color = '#fff';
-  monthTitle.style.position = "absolute";
-  monthTitle.style.transform = 'rotate(-90deg)';
-  monthTitle.style.fontSize = '2.75rem';
-  monthTitle.style.letterSpacing = '1rem';
-  monthTitle.style.top = 'calc(50% - 0.75rem)';
-  monthTitle.style.right = 'calc(100% - 14.75rem)';
-  week.appendChild(monthTitle);
+  var monthChoice = document.createElement('div');
+  monthChoice.innerText = 'Deep work hours';
+  monthChoice.style.color = '#fff';
+  monthChoice.style.position = "absolute";
+  monthChoice.style.transform = 'rotate(-90deg)';
+  monthChoice.style.fontSize = '2.75rem';
+  monthChoice.style.letterSpacing = '1rem';
+  monthChoice.style.top = 'calc(50% - 0.75rem)';
+  monthChoice.style.right = 'calc(100% - 14.75rem)';
+  week.appendChild(monthChoice);
 
   if (weekNum <= 3) {
     //create btn
