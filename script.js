@@ -5,7 +5,7 @@ var monthShown = 'July';
 // // DATA VALUES
 const borderRadius = '5%';
 
-const timeBarHeight = 5;
+const timeBarHeight = 8;
 const timeBarWidth = 5;
 
 const heightTopbar = '3.5rem';
@@ -589,8 +589,8 @@ window.addEventListener('load', function () {
       function style_hourBlock(el) {
         const heightMultiplier = el.classList[1];
         console.log(heightMultiplier)
-        el.style.height = (heightMultiplier / 24) * timeBarHeight + 'rem';
-        el.style.maxHeight = (heightMultiplier / 24) * timeBarHeight + 'rem';
+        el.style.height = 1.5 + (heightMultiplier / 24) * 8 * timeBarHeight / 8 + 'rem';
+        el.style.maxHeight = 1.5 + (heightMultiplier / 24) * 8  * timeBarHeight / 8 + 'rem';
         el.style.fontSize = '1.5rem';
         el.style.border = '2px solid #000000';
         el.style.paddingLeft = '0.5rem';
@@ -745,7 +745,7 @@ window.addEventListener('load', function () {
 
     // S T Y L E
     const maxHeight = 5;
-    const marginLeft = 1.5;
+    const marginLeft = 3;
     const titleSize = 1.5;
     getEl_loopF('calendarBar', style_calendarBar);
     getEl_loopF('calendarTitle', style_calendarTitle);
@@ -756,7 +756,7 @@ window.addEventListener('load', function () {
 
     function style_calendarBar(el) {
       el.style.flex = '1';
-      el.style.maxHeight = timeBarHeight + 'rem';
+      el.style.maxHeight = timeBarHeight / 2 + 'rem';
       el.style.backgroundColor = '#000000';
       el.style.display = 'flex';
     }
@@ -783,10 +783,13 @@ window.addEventListener('load', function () {
     function style_prevMonth(el) {
       const width = 0.25;
       style_prevArr(el, timeBarHeight, width);
+      el.style.marginLeft = 0 - marginLeft + 'rem';
     }
     function style_nextMonth(el) {
       const width = 0.25;
-      style_nextArr(el, timeBarHeight, width, marginLeft)
+      const left = 0 - marginLeft * 3;
+      style_nextArr(el, timeBarHeight, width, left)
+      el.style.marginRight = 0 - marginLeft + 'rem';
     }
 
     // I N T E R A C T I V E S
