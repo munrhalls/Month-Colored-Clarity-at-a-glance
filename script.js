@@ -73,10 +73,10 @@ window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   const app = document.getElementById('app');
 
-  const hourBlocks = ['hourBlockChoices', ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'], 'addHourBlock', 'hourBlocksAdded'];
+  const hourBlocks = ['chooseHourBlock', ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'], 'addHourBlock', 'hourBlocksAdded'];
   const timeBar = ['timeBar', ['tbcolorMenuBtn', 'projectTitle', 'hourBlocks', hourBlocks]];
   const calendarBar = ['calendarTitle', 'monthChoices',
-    ['prevMonth', 'monthChoice', 'nextMonth']
+    ['prevMonth', 'chooseMonth', 'nextMonth']
   ];
 
   const DATA_DOM = [
@@ -477,7 +477,7 @@ window.addEventListener('load', function () {
 
       getEl_loopF('hourBlocks', style_bottle);
       getEl_loopF('hourBlocksAdded', style_hourBlocksAdded);
-      getEl_loopF('hourBlockChoices', style_hourBlockChoices);
+      getEl_loopF('chooseHourBlock', style_chooseHourBlock);
 
       getEl_loopF('prevHourBlock', style_prevHourBlock);
       getEl_loopF('nextHourBlock', style_nextHourBlock);
@@ -551,7 +551,7 @@ window.addEventListener('load', function () {
         // el.style.flexBasis = height;
         el.style.textAlign = 'center';
       }
-      function style_hourBlockChoices(el) {
+      function style_chooseHourBlock(el) {
         el.style.flex = '1';
         el.style.display = 'flex';
         el.style.flexDirection = 'row';
@@ -602,7 +602,8 @@ window.addEventListener('load', function () {
       }
       function inter_CLICKprevHourBlock(el) {
         el.onclick = function (e) {
-          console.log(el);
+          const hourBlockChoice = el.parentElement.getElementsByClassName('hourBlockChoice');
+          console.log(hourBlockChoice) 
         }
       }
       function inter_CLICKnextHourBlock(el) {
@@ -618,7 +619,7 @@ window.addEventListener('load', function () {
     // C O N T E N T
     getEl_loopF('calendarTitle', content_calendarTitle);
     getEl_loopF('monthChoices', content_monthChoices);
-    getEl_loopF('monthChoice', content_monthChoice);
+    getEl_loopF('chooseMonth', content_monthChoice);
     getEl_loopF('prevMonth', content_prevMonth);
     getEl_loopF('nextMonth', content_nextMonth);
 
@@ -648,7 +649,7 @@ window.addEventListener('load', function () {
     getEl_loopF('calendarBar', style_calendarBar);
     getEl_loopF('calendarTitle', style_calendarTitle);
     getEl_loopF('monthChoices', style_monthChoices);
-    getEl_loopF('monthChoice', style_monthChoice);
+    getEl_loopF('chooseMonth', style_monthChoice);
     getEl_loopF('prevMonth', style_prevMonth);
     getEl_loopF('nextMonth', style_nextMonth);
 
@@ -691,7 +692,7 @@ window.addEventListener('load', function () {
     inter_monthShown();
     getEl_loopF('prevMonth', inter_prevMonth);
     getEl_loopF('nextMonth', inter_nextMonth);
-    getEl_loopF('monthChoice', inter_shiftMonthChoice);
+    getEl_loopF('chooseMonth', inter_shiftMonthChoice);
 
     function inter_monthShown() {
       const date = new Date();
@@ -705,7 +706,7 @@ window.addEventListener('load', function () {
           const prevIndex = index - 1;
           monthShown = months[prevIndex];
           console.log(monthShown)
-          getEl_loopF('monthChoice', inter_shiftMonthChoice);
+          getEl_loopF('chooseMonth', inter_shiftMonthChoice);
         }
       }
     }
@@ -716,7 +717,7 @@ window.addEventListener('load', function () {
           const prevIndex = index + 1;
           monthShown = months[prevIndex];
           console.log(monthShown)
-          getEl_loopF('monthChoice', inter_shiftMonthChoice);
+          getEl_loopF('chooseMonth', inter_shiftMonthChoice);
         }
       }
     }
