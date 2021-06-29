@@ -73,7 +73,7 @@ window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   const app = document.getElementById('app');
 
-  const hourBlocks = ['blocksCarousel', 'addBlock', 'blocks'];
+  const hourBlocks = ['hourBlockChoices', 'addBlock', 'blocks'];
   const timeBar = ['timeBar', ['tbcolorMenuBtn', 'projectTitle', 'hourBlocks', hourBlocks]];
   const calendarBar = ['calendarTitle', 'month_arrows',
     ['arrowL2', 'month_title', 'arrowR2']
@@ -418,7 +418,7 @@ window.addEventListener('load', function () {
     getEl_loopF('tbcolorMenuBtn', content_tbcolorMenuBtn);
     getEl_loopF('projectTitle', content_projectTitle);
     getEl_loopF('blocks', content_blocks);
-    getEl_loopF('blocksCarousel', content_blocksCarousel);
+    getEl_loopF('hourBlockChoices', hourBlockChoices);
     getEl_loopF('addBlock', content_addBlock);
     function content_tbcolorMenuBtn(el) {
       const btn = cr8_colorMenuBtn();
@@ -431,7 +431,7 @@ window.addEventListener('load', function () {
     }
     function content_blocks(el) {
     }
-    function content_blocksCarousel(el) {
+    function hourBlockChoices(el) {
       for (let i = 1; i < 25; i++) {
         let timeBlock = document.createElement('div');
         timeBlock.innerText = i;
@@ -452,8 +452,8 @@ window.addEventListener('load', function () {
     getEl_loopF('timeBar', style_timeBar);
     getEl_loopF('projectTitle', style_projectTitle);
     getEl_loopF('hourBlocks', style_bottle);
-    getEl_loopF('blocks', style_blocks);
-    getEl_loopF('blocksCarousel', style_blocksCarousel);
+    getEl_loopF('blocks', style_hourBlocks);
+    getEl_loopF('hourBlockChoices', style_hourBlockChoices);
     getEl_loopF('addBlock', style_addBlock);
 
     function style_timeBlocks(el) {
@@ -516,19 +516,17 @@ window.addEventListener('load', function () {
       // el.style.flexDirection = 'column';
       el.style.justifyContent = 'flex-end';
     }
-    function style_blocks(el) {
+    function style_hourBlocks(el) {
       // el.style.height = 'calc(100% - ' + btnHeight + ')';
       el.style.flex = '5';
       // el.style.flexBasis = height;
       el.style.textAlign = 'center';
     }
-    function style_blocksCarousel(el) {
+    function style_hourBlockChoices(el) {
       el.style.flex = '1';
-
       el.style.display = 'flex';
       el.style.flexDirection = 'row';
       el.style.justifyContent = 'center';
-      carouselify(el.children, '0', '1rem', '1.5');
     }
     function style_addBlock(el) {
       el.style.flex = '1';
@@ -538,7 +536,13 @@ window.addEventListener('load', function () {
       el.style.textAlign = 'center';
     }
     // I N T E R A C T I V E S
-    // getEl_loopF('tbcolorMenuBtn', inter_CLICKtbcolorMenuBtn)
+    getEl_loopF('hourBlockChoices', setup_hourBlockChoices)
+    function setup_hourBlockChoices(el) {
+      for (let i = 1; i < el.children.length; i++) {
+        const hourBlock = el.children[i];
+        hourBlock.style.display = 'none';
+      }
+    }
     function inter_CLICKtbcolorMenuBtn(el) {
       el.onclick = function (e) {
         console.log(el);
@@ -561,7 +565,6 @@ window.addEventListener('load', function () {
       el.appendChild(title);
     }
     function content_month_arrows(el) {
-
     }
     function content_month_title(el) {
       const title = document.createElement('div');
