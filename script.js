@@ -457,10 +457,6 @@ window.addEventListener('load', function () {
     getEl_loopF('addHourBlock', content_addHourBlock);
     // getEl_loopF('hourBlocksAdded', content_hourBlocksAdded);
 
-
-
-
-
     function content_chooseTimeBarColor(el) {
       const btn = cr8_colorMenuBtn();
       el.appendChild(btn);
@@ -479,7 +475,10 @@ window.addEventListener('load', function () {
       }
     }
     function content_addHourBlock(el) {
-      el.innerText = '+';
+      const plus = document.createElement('div');
+      plus.innerText = '+';
+      plus.className = 'plus';
+      el.appendChild(plus);
     }
 
     // S T Y L E
@@ -573,6 +572,7 @@ window.addEventListener('load', function () {
       }
       function style_chooseHourBlock(el) {
         el.style.flex = '1';
+        el.style.maxWidth = maxHeight * 3 + 'rem';
         el.style.display = 'flex';
         el.style.flexDirection = 'row';
         el.style.justifyContent = 'center';
@@ -616,10 +616,19 @@ window.addEventListener('load', function () {
       }
       function style_addHourBlock(el) {
         el.style.flex = '1';
-        el.style.maxHeight = '2rem';
-        // el.style.height = btnHeight;
-        el.style.width = '100%';
+        el.style.maxWidth = maxHeight * 1.5 +'rem';
         el.style.textAlign = 'center';
+        el.style.justifyContent = 'center';
+        el.style.position = 'relative';
+        style_plusSymbol();
+        function style_plusSymbol() {
+          const plus = el.getElementsByClassName('plus')[0];
+          plus.style.fontSize = maxHeight * 2 + 'rem';
+          plus.style.position = 'absolute';
+          plus.style.top = 0; plus.style.bottom = 0;
+          plus.style.left = 0;
+          plus.style.right = 0;
+        }
       }
     }
     // I N T E R A C T I V E S
