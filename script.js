@@ -10,7 +10,7 @@ const paddingTitle = '0.25rem';
 const heightVisuals = 'calc(100vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
 const containerheightCalendar = 'calc(50vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
 const righttimeBarWidth = '18rem';
-const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00', '#790604'];
+const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#E7FF21', '#790604'];
 const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
 const heightCalendar = containerheightCalendar;
@@ -483,9 +483,11 @@ window.addEventListener('load', function () {
       getEl_loopF('projectTitle', style_projectTitle);
 
       getEl_loopF('hourBlocks', style_bottle);
-      getEl_loopF('hourBlocksAdded', style_hourBlocks);
+      getEl_loopF('hourBlocksAdded', style_hourBlocksAdded);
       getEl_loopF('hourBlockChoices', style_hourBlockChoices);
       getEl_loopF('prevHourBlock', style_prevHourBlock);
+      getEl_loopF('hourBlockChoice', style_hourBlockChoice);
+      getEl_loopF('nextHourBlock', style_nextHourBlock);
 
       getEl_loopF('addHourBlock', style_addHourBlock);
 
@@ -549,7 +551,7 @@ window.addEventListener('load', function () {
         // el.style.flexDirection = 'column';
         el.style.justifyContent = 'flex-end';
       }
-      function style_hourBlocks(el) {
+      function style_hourBlocksAdded(el) {
         // el.style.height = 'calc(100% - ' + btnHeight + ')';
         el.style.flex = '5';
         // el.style.flexBasis = height;
@@ -564,6 +566,9 @@ window.addEventListener('load', function () {
       function style_prevHourBlock(el) {
         const width = 0.25;
         style_prevArr(el, maxHeight, width);
+      }
+      function style_hourBlockChoice(el) {
+
       }
       function style_nextHourBlock(el) {
         const width = 0.25;
