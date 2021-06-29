@@ -171,6 +171,7 @@ window.addEventListener('load', function () {
     el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
     el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
     el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
+    el.style.borderBottom = '0';
     el.style.width = width + 'rem';
     el.style.transform = 'rotate(90deg)';
     // position
@@ -182,6 +183,7 @@ window.addEventListener('load', function () {
     el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
     el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
     el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
+    el.style.borderBottom = '0';
     el.style.width = '0.25rem';
     el.style.transform = 'rotate(-90deg)';
     el.style.marginLeft = (marginLeft * 7) + 'rem';
@@ -621,6 +623,7 @@ window.addEventListener('load', function () {
         el.style.fontSize = '1.5rem';
       }
       function style_addHourBlock(el) {
+        el.style.cursor = 'pointer';
         el.style.flex = '1';
         el.style.maxWidth = maxHeight * 1.75 + 'rem';
         el.style.minWidth = maxHeight * 1.75 + 'rem';
@@ -645,6 +648,7 @@ window.addEventListener('load', function () {
           function style_plusText() {
             const plusText = plus.children[0];
             plusText.style.fontSize = maxHeight * 1.5 + 'rem';
+            plusText.style.borderRadius = borderRadius;
             plusText.style.position = 'absolute';
             plusText.style.position = 'absolute';
             plusText.style.top = 0 - (maxHeight * 1.5) / 4.66 + 'rem';
