@@ -586,6 +586,16 @@ window.addEventListener('load', function () {
         el.style.justifyContent = 'center';
         el.style.alignItems = 'center';
       }
+      function style_hourBlock(el) {
+        const heightMultiplier = el.classList[1];
+        console.log(heightMultiplier)
+        el.style.height = (heightMultiplier / 24) * timeBarHeight + 'rem';
+        el.style.maxHeight = (heightMultiplier / 24) * timeBarHeight + 'rem';
+        el.style.fontSize = '1.5rem';
+        el.style.border = '2px solid #000000';
+        el.style.borderRadius = borderRadius;
+        el.style.padding = '1rem';
+      }
       function style_nextHourBlock(el) {
         const width = 0.25;
         style_nextArr(el, timeBarHeight, width, marginLeft);
@@ -593,21 +603,11 @@ window.addEventListener('load', function () {
         el.style.right = '0.5rem';
         el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
       }
-      function style_hourBlock(el) {
-        const heightMultiplier = el.classList[1];
-        console.log(heightMultiplier)
-        el.style.height = (heightMultiplier/24) * timeBarHeight + 'rem';
-        el.style.maxHeight = (heightMultiplier/24) * timeBarHeight + 'rem';
-        el.style.fontSize = '1.5rem';
-        el.style.border = '2px solid #000000';
-        el.style.borderRadius = borderRadius;
-        el.style.padding = '1rem';
-      }
       function style_addHourBlock(el) {
         el.style.cursor = 'pointer';
         el.style.flex = '1';
-        el.style.maxWidth = timeBarHeight * 1.75 + 'rem';
-        el.style.minWidth = timeBarHeight * 1.75 + 'rem';
+        el.style.maxWidth = timeBarHeight + 'rem';
+        el.style.minWidth = timeBarHeight + 'rem';
         el.style.textAlign = 'center';
         el.style.display = 'flex';
         el.style.justifyContent = 'center';
@@ -633,7 +633,7 @@ window.addEventListener('load', function () {
             plusText.style.borderRadius = borderRadius;
             plusText.style.position = 'absolute';
             plusText.style.position = 'absolute';
-            plusText.style.top = 0 - (timeBarHeight) / 3 + 'rem';
+            plusText.style.top = 0 - (timeBarHeight) / 4 + 'rem';
             plusText.style.bottom = 0;
             plusText.style.left = 0;
             plusText.style.right = 0;
