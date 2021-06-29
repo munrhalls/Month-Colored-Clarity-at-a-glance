@@ -79,7 +79,7 @@ window.addEventListener('load', function () {
 
 
   const topBar = ['title', 'about'];
-  const chooseHourBlock = ['prevHourBlock', 'hourBlockChoices', 'nextHourBlock'];
+  const chooseHourBlock = ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'];
   const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'logHourBlocks'];
   const timeBarComponents = ['chooseTimeBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
   const timeBar = ['timeBar', timeBarComponents];
@@ -447,7 +447,7 @@ window.addEventListener('load', function () {
     // C O N T E N T
     getEl_loopF('chooseTimeBarColor', content_chooseTimeBarColor);
     getEl_loopF('projectTitle', content_projectTitle);
-    getEl_loopF('hourBlockChoices', content_hourBlockChoices);
+    getEl_loopF('hourBlockChoice', content_hourBlockChoice);
     getEl_loopF('addHourBlock', content_addHourBlock);
 
     function content_chooseTimeBarColor(el) {
@@ -459,12 +459,12 @@ window.addEventListener('load', function () {
       textarea.type = 'text';
       el.appendChild(textarea);
     }
-    function content_hourBlockChoices(el) {
+    function content_hourBlockChoice(el) {
       for (let i = 1; i < 25; i++) {
-        let hourBlockChoices = document.createElement('div');
-        hourBlockChoices.innerText = i;
-        hourBlockChoices.classList = 'hourBlock ' + i + ' hours';
-        el.appendChild(hourBlockChoices)
+        let hourBlockChoice = document.createElement('div');
+        hourBlockChoice.innerText = i;
+        hourBlockChoice.classList = 'hourBlock ' + i + ' hours';
+        el.appendChild(hourBlockChoice)
       }
     }
     function content_addHourBlock(el) {
@@ -493,11 +493,12 @@ window.addEventListener('load', function () {
 
       getEl_loopF('chooseHourBlock', style_chooseHourBlock);
       getEl_loopF('prevHourBlock', style_prevHourBlock);
-      getEl_loopF('hourBlockChoices', style_hourBlockChoices);
+      getEl_loopF('hourBlockChoice', style_hourBlockChoice);
+      getEl_loopF('hourBlock', style_hourBlock);
       getEl_loopF('nextHourBlock', style_nextHourBlock);
       getEl_loopF('addHourBlock', style_addHourBlock);
 
-      getEl_loopF('logHourBlocks', style_hourBlocksAdded);
+      getEl_loopF('logHourBlocks', style_logHourBlocks);
 
 
       function style_timeBlocks(el) {
@@ -578,15 +579,15 @@ window.addEventListener('load', function () {
         el.style.left = '0.5rem';
         el.style.top = 'calc(50% - ' + maxHeight / 4 + 'rem)'
       }
-      function style_hourBlockChoices(el) {
+      function style_hourBlockChoice(el) {
         el.style.flex = '1';
         el.style.border = 'none';
         el.style.display = 'flex';
         el.style.justifyContent = 'center';
         el.style.alignItems = 'center';
         const hourBlocks = el.getElementsByClassName('hourBlock');
-        style_hourBlocks(hourBlocks);
-        function style_hourBlocks(hourBlocks) {
+        style_hourBlock(hourBlocks);
+        function style_hourBlock(hourBlocks) {
           for (let i = 0; i < hourBlocks.length; i++) {
             const hourBlock = hourBlocks[i];
             hourBlock.style.fontSize = '1.5rem';
@@ -605,6 +606,7 @@ window.addEventListener('load', function () {
       }
       function style_hourBlock(el) {
         el.style.fontSize = '1.5rem';
+        el.style.height = maxHeight;
       }
       function style_addHourBlock(el) {
         el.style.cursor = 'pointer';
@@ -643,7 +645,7 @@ window.addEventListener('load', function () {
           }
         }
       }
-      function style_hourBlocksAdded(el) {
+      function style_logHourBlocks(el) {
         el.style.display = 'flex';
         // el.style.height = 'calc(100% - ' + btnHeight + ')';
         el.style.flex = '5';
@@ -655,7 +657,7 @@ window.addEventListener('load', function () {
     interactives();
     function interactives() {
       getEl_loopF('projectTitle', inter_INPUT_projectTitle);
-      getEl_loopF('hourBlockChoices', setup_hourBlockChoices);
+      getEl_loopF('hourBlockChoice', setup_hourBlockChoice);
       getEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
       getEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
       getEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
@@ -667,8 +669,8 @@ window.addEventListener('load', function () {
           localStorage.setItem('projectTitle', projectTitle);
         }
       }
-      function setup_hourBlockChoices(el) {
-        el.classList = 'hourBlockChoices ' + '1';
+      function setup_hourBlockChoice(el) {
+        el.classList = 'hourBlockChoice ' + '1';
         const hourBlocks = el.getElementsByClassName('hourBlock');
         for (let i = 1; i < hourBlocks.length; i++) {
           hourBlocks[i].style.display = 'none';
@@ -676,42 +678,42 @@ window.addEventListener('load', function () {
       }
       function inter_CLICK_prevHourBlock(el) {
         el.onclick = function () {
-          const hourBlockChoices = el.parentElement.getElementsByClassName('hourBlockChoices')[0];
-          const num = hourBlockChoices.classList[1];
+          const hourBlockChoice = el.parentElement.getElementsByClassName('hourBlockChoice')[0];
+          const num = hourBlockChoice.classList[1];
           if (1 < Number(num)) {
             const newNum = Number(num) - 1;
-            hourBlockChoices.classList = 'hourBlockChoices ' + newNum;
-            hourBlockChoices.getElementsByClassName(num)[0].style.display = 'none';
-            hourBlockChoices.getElementsByClassName(newNum)[0].style.display = 'block';
+            hourBlockChoice.classList = 'hourBlockChoice ' + newNum;
+            hourBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
+            hourBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
           }
         }
       }
       function inter_CLICK_nextHourBlock(el) {
         el.onclick = function (e) {
-          const hourBlockChoices = el.parentElement.getElementsByClassName('hourBlockChoices')[0];
-          const hourBlocks = hourBlockChoices.getElementsByClassName('hourBlock');
-          const num = hourBlockChoices.classList[1];
+          const hourBlockChoice = el.parentElement.getElementsByClassName('hourBlockChoice')[0];
+          const hourBlocks = hourBlockChoice.getElementsByClassName('hourBlock');
+          const num = hourBlockChoice.classList[1];
 
           if (Number(num) < hourBlocks.length) {
             const newNum = Number(num) + 1;
-            hourBlockChoices.classList = 'hourBlockChoices ' + newNum;
-            hourBlockChoices.getElementsByClassName(num)[0].style.display = 'none';
-            hourBlockChoices.getElementsByClassName(newNum)[0].style.display = 'block';
+            hourBlockChoice.classList = 'hourBlockChoice ' + newNum;
+            hourBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
+            hourBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
           }
         }
       }
       function inter_CLICK_addHourBlock(el) {
         el.onclick = function () {
-          const hourBlocks = setup_findElementUp(el, 'consoleHourBlocks');
-          const hourBlockChoices = hourBlocks.getElementsByClassName('hourBlockChoices')[0];
-          const hourBlockChoice = hourBlockChoices.classList[1];
-          const hourBlock = hourBlockChoices.getElementsByClassName(hourBlockChoice)[0];
+          const consoleHourBlocks = setup_findElementUp(el, 'consoleHourBlocks');
+          const hourBlockChoice = consoleHourBlocks.getElementsByClassName('hourBlockChoice')[0];
+          const choiceNum = hourBlockChoice.classList[1];
+          const hourBlock = hourBlockChoice.getElementsByClassName(choiceNum)[0];
           let newClone = hourBlock.cloneNode(true);
-          style_hourBlock(newClone);
+
           appendClone(newClone);
           function appendClone(newClone) {
-            const hourBlocksAdded = hourBlocks.getElementsByClassName('logHourBlocks')[0];
-            hourBlocksAdded.appendChild(newClone);
+            const logHourBlocks = consoleHourBlocks.getElementsByClassName('logHourBlocks')[0];
+            logHourBlocks.appendChild(newClone);
           }
         }
       }
