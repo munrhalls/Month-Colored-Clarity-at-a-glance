@@ -77,20 +77,23 @@ window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   const app = document.getElementById('app');
 
-  const hourBlocks = ['chooseHourBlock', ['prevHourBlock', 'hourBlockChoices', 'nextHourBlock'], 'addHourBlock', 'logHourBlocks'];
-  const timeBar = ['timeBar', ['chooseTimeBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks]];
-  const calendarBar = ['calendarTitle', 'monthChoices',
-    ['prevMonth', 'chooseMonth', 'nextMonth']
-  ];
 
-  const DATA_DOM = [
+  const topBar = ['title', 'about'];
+  const chooseHourBlock = ['prevHourBlock', 'hourBlockChoices', 'nextHourBlock'];
+  const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'logHourBlocks'];
+  const timeBarComponents = ['chooseTimeBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
+  const timeBar = ['timeBar', timeBarComponents];
+  const timeBlocks = ['timeBars', timeBar];
+
+  const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
+  const calendarBar = ['calendarTitle', 'monthChoices', monthChoices];
+
+  const BASIC_DOM = [
     'root',
-    ['topbar', ['title', 'about'],
+    ['topBar', topBar,
       'main',
       ['timeVisuals',
-        ['timeBlocks',
-          ['timeBars', timeBar
-          ],
+        ['timeBlocks', timeBlocks,
           'calendarBar', calendarBar,
           'calendar'
         ],
@@ -98,9 +101,9 @@ window.addEventListener('load', function () {
       'footer'
     ],
   ];
-  assembleDOM(DATA_DOM, app);
+  assembleDOM(BASIC_DOM, app);
   // ABSTRACTIONS
-  cr8_topbar();
+  cr8_topBar();
   cr8_main();
   cr8_timeVisuals();
   cr8_timeBlocks();
@@ -371,7 +374,7 @@ window.addEventListener('load', function () {
   }
 
 
-  function cr8_topbar() {
+  function cr8_topBar() {
     // C O N T E N T
     getEl_loopF('title', content_title);
     getEl_loopF('about', content_about);
@@ -392,16 +395,16 @@ window.addEventListener('load', function () {
     function content_about(el) {
       el.innerText = 'ABOUT';
     }
-
     // S T Y L E
     let title_height = '3rem';
     let title_bgColor = '#000000';
     let title_color = '#ffffff';
     let title_fontSize = '1.5rem';
     let title_padding = '0.5rem';
-    getEl_loopF('topbar', style_topbar);
+    getEl_loopF('topBar', style_topbar);
     getEl_loopF('title', style_title);
     getEl_loopF('about', style_about);
+
     function style_topbar(el) {
       el.style.display = 'flex';
       el.style.background = title_bgColor;
@@ -444,21 +447,8 @@ window.addEventListener('load', function () {
     // C O N T E N T
     getEl_loopF('chooseTimeBarColor', content_chooseTimeBarColor);
     getEl_loopF('projectTitle', content_projectTitle);
-
-    // getEl_loopF('timeBlocks', content_timeBlocks);
-    // getEl_loopF('colorsMenu', content_colorsMenu);
-
-    // getEl_loopF('timeBars', content_timeBars);
-    // getEl_loopF('timeBar', content_timeBar);
-
-    // getEl_loopF('consoleHourBlocks', content_hourBlocks);
-    // getEl_loopF('chooseHourBlock', content_chooseHourBlock);
-    // getEl_loopF('prevHourBlock', content_prevHourBlock);
     getEl_loopF('hourBlockChoices', content_hourBlockChoices);
-    // getEl_loopF('nextHourBlock', content_nextHourBlock);
-
     getEl_loopF('addHourBlock', content_addHourBlock);
-    // getEl_loopF('logHourBlocks', content_hourBlocksAdded);
 
     function content_chooseTimeBarColor(el) {
       const btn = cr8_colorMenuBtn();
@@ -671,8 +661,8 @@ window.addEventListener('load', function () {
       getEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
 
       function inter_INPUT_projectTitle(el) {
-        const textarea = el.getElementsByTagName('textarea')[0]; 
-        textarea.onchange = function(e) {
+        const textarea = el.getElementsByTagName('textarea')[0];
+        textarea.onchange = function (e) {
           const projectTitle = e.target.value;
           localStorage.setItem('projectTitle', projectTitle);
         }
@@ -711,7 +701,7 @@ window.addEventListener('load', function () {
         }
       }
       function inter_CLICK_addHourBlock(el) {
-        el.onclick = function() {
+        el.onclick = function () {
           const hourBlocks = setup_findElementUp(el, 'consoleHourBlocks');
           const hourBlockChoices = hourBlocks.getElementsByClassName('hourBlockChoices')[0];
           const hourBlockChoice = hourBlockChoices.classList[1];
