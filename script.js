@@ -2,14 +2,14 @@
 var monthShown = 'July';
 
 // // DATA VALUES
-const timebarHeight = 5;
-const timebarWidth = 5;
+const timeBarHeight = 5;
+const timeBarWidth = 5;
 
 const heightTopbar = '3.5rem';
 const paddingTitle = '0.25rem';
 const heightVisuals = 'calc(100vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
 const containerheightCalendar = 'calc(50vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
-const righttimebarWidth = '18rem';
+const righttimeBarWidth = '18rem';
 const colors = ['#0000FF', '#00FF00', '#FF00AA', '#808080', '#FFA500', '#FFFF00', '#790604'];
 const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
@@ -75,9 +75,9 @@ window.addEventListener('load', function () {
 
   const hourBlocks = ['blocksCarousel', 'addBlock', 'blocks'];
   const bottle = ['tbcolorMenuBtn', 'projectTitle', 'bottle', hourBlocks];
-  const contentTimebar = ['timebar', bottle,
-    'timebar', bottle,
-    'timebar', bottle];
+  const contentTimeBar = ['timeBar', bottle,
+    'timeBar', bottle,
+    'timeBar', bottle];
   const contentCalendarBar = ['calendarTitle', 'month_arrows',
     ['arrowL2', 'month_title', 'arrowR2']
   ];
@@ -88,7 +88,7 @@ window.addEventListener('load', function () {
       'main',
       ['timeVisuals',
         ['timeBlocks',
-          ['timebars', contentTimebar
+          ['timeBars', contentTimeBar
           ], 'calendarBar', contentCalendarBar,
           'calendar'],
         'menuBlock'],
@@ -233,14 +233,14 @@ window.addEventListener('load', function () {
       function style_colorMenuBtn() {
         colorMenuBtn.style.cursor = 'pointer';
         colorMenuBtn.style.borderRadius = borderRadius;
-        colorMenuBtn.style.height = timebarHeight / 1.25 + 'rem';
-        colorMenuBtn.style.width = timebarHeight / 1.75 + 'rem';
+        colorMenuBtn.style.height = timeBarHeight / 1.25 + 'rem';
+        colorMenuBtn.style.width = timeBarHeight / 1.75 + 'rem';
         colorMenuBtn.style.backgroundColor = 'blue';
       }
       function style_colorMenu() {
         const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
-        colorMenu.style.height = timebarHeight + 'rem';
-        colorMenu.style.width = (timebarWidth * colors.length) + 'rem';
+        colorMenu.style.height = timeBarHeight + 'rem';
+        colorMenu.style.width = (timeBarWidth * colors.length) + 'rem';
         colorMenu.style.top = '0';
         colorMenu.style.display = menuDisplay;
 
@@ -263,8 +263,8 @@ window.addEventListener('load', function () {
         for (let i = 0; i < colors.length; i++) {
           const choiceBtn = btns[i];
           choiceBtn.style.backgroundColor = colors[i];
-          choiceBtn.style.height = timebarHeight / 1.25 + 'rem';
-          choiceBtn.style.width = timebarHeight / 1.75 + 'rem';
+          choiceBtn.style.height = timeBarHeight / 1.25 + 'rem';
+          choiceBtn.style.width = timeBarHeight / 1.75 + 'rem';
           // choiceBtn.style.border = btnBorder + 'rem solid #000000';
           choiceBtn.style.borderRadius = borderRadius;
           // choiceBtn.style.boxSizing = 'content-box';
@@ -285,9 +285,9 @@ window.addEventListener('load', function () {
         btnClose.style.display = 'flex';
         btnClose.style.justifyContent = 'center';
         btnClose.style.alignItems = 'center';
-        // btnClose.style.height = (timebarHeight / 2.25) + btnBorder * 2 + 'rem';
-        btnClose.style.height = (timebarHeight / 1.25) + 'rem';
-        btnClose.style.width = timebarHeight / 1.25 + 'rem';
+        // btnClose.style.height = (timeBarHeight / 2.25) + btnBorder * 2 + 'rem';
+        btnClose.style.height = (timeBarHeight / 1.25) + 'rem';
+        btnClose.style.width = timeBarHeight / 1.25 + 'rem';
         btnClose.style.marginLeft = btnDistance * 2 + 'rem';
         btnClose.style.marginRight = btnDistance * 2 + 'rem';
         btnClose.style.border = '1px solid #ffffff';
@@ -331,9 +331,9 @@ window.addEventListener('load', function () {
           colorChoices[i].onclick = function (e) {
             e.stopPropagation();
             const color = colorChoices[i].classList[1];
-            const timebar = setup_findElementUp(colorMenuBtn, 'timebar');
+            const timeBar = setup_findElementUp(colorMenuBtn, 'timeBar');
             colorMenuBtn.style.backgroundColor = color;
-            timebar.style.backgroundColor = color;
+            timeBar.style.backgroundColor = color;
             colorMenu.style.display = 'none';
           }
         }
@@ -451,8 +451,8 @@ window.addEventListener('load', function () {
     getEl_loopF('timeBlocks', style_timeBlocks);
     getEl_loopF('colorsMenu', style_colorsMenu);
     getEl_loopF('tbcolorMenuBtn', style_tbcolorMenuBtn);
-    getEl_loopF('timebars', style_timebars);
-    getEl_loopF('timebar', style_timebar);
+    getEl_loopF('timeBars', style_timeBars);
+    getEl_loopF('timeBar', style_timeBar);
     getEl_loopF('projectTitle', style_projectTitle);
     getEl_loopF('bottle', style_bottle);
     getEl_loopF('blocks', style_blocks);
@@ -465,7 +465,7 @@ window.addEventListener('load', function () {
     }
     function style_colorsMenu(el) {
       el.style.flex = '1';
-      el.style.maxWidth = timebarWidth / 1.5 + 'rem';
+      el.style.maxWidth = timeBarWidth / 1.5 + 'rem';
       el.style.display = 'flex';
       el.style.justifyContent = 'center';
       el.style.alignItems = 'center';
@@ -474,29 +474,29 @@ window.addEventListener('load', function () {
     function style_tbcolorMenuBtn(el) {
       el.style.position = 'relative';
       el.style.backgroundColor = '#000000';
-      el.style.height = timebarHeight + 'rem';
-      el.style.width = timebarWidth + 'rem';
+      el.style.height = timeBarHeight + 'rem';
+      el.style.width = timeBarWidth + 'rem';
       el.style.display = 'flex';
       el.style.justifyContent = 'center';
       el.style.alignItems = 'center';
     }
-    function style_timebars(el) {
+    function style_timeBars(el) {
       el.style.flex = '5';
       el.style.display = 'flex';
       el.style.flexDirection = 'column';
     }
-    function style_timebar(el) {
+    function style_timeBar(el) {
       el.style.display = 'flex';
     }
     function style_projectTitle(el) {
-      el.style.height = timebarHeight + 'rem';
-      el.style.width = (timebarWidth * 2) + 'rem';
+      el.style.height = timeBarHeight + 'rem';
+      el.style.width = (timeBarWidth * 2) + 'rem';
       el.style.display = 'flex';
       el.style.wordWrap= 'break-word';
       function style_input() {
         const textarea = el.getElementsByTagName('textarea')[0];
         textarea.style.flex = '1';
-        textarea.style.maxWidth = (timebarWidth * 2) + 'rem';
+        textarea.style.maxWidth = (timeBarWidth * 2) + 'rem';
         textarea.style.width = '100%';
         textarea.style.padding = '0';
         textarea.style.margin = '0';
@@ -1030,7 +1030,7 @@ window.addEventListener('load', function () {
 // }
 function createMenu() {
   // let width = '30rem';
-  // let width = righttimebarWidth;
+  // let width = righttimeBarWidth;
   let height = '100vh';
   let color = '#000000';
   const menu = document.createElement('div');
