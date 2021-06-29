@@ -581,21 +581,11 @@ window.addEventListener('load', function () {
       }
       function style_hourBlockChoice(el) {
         el.style.flex = '1';
+        el.style.minWidth = maxHeight * 2.5 + 'rem';
         el.style.border = 'none';
         el.style.display = 'flex';
         el.style.justifyContent = 'center';
         el.style.alignItems = 'center';
-        const hourBlocks = el.getElementsByClassName('hourBlock');
-        style_hourBlock(hourBlocks);
-        function style_hourBlock(hourBlocks) {
-          for (let i = 0; i < hourBlocks.length; i++) {
-            const hourBlock = hourBlocks[i];
-            hourBlock.style.fontSize = '1.5rem';
-            hourBlock.style.border = '2px solid #000000';
-            hourBlock.style.borderRadius = borderRadius;
-            hourBlock.style.padding = '1rem';
-          }
-        }
       }
       function style_nextHourBlock(el) {
         const width = 0.25;
@@ -605,8 +595,12 @@ window.addEventListener('load', function () {
         el.style.top = 'calc(50% - ' + maxHeight / 4 + 'rem)'
       }
       function style_hourBlock(el) {
-        el.style.fontSize = '1.5rem';
-        el.style.height = maxHeight;
+          el.style.fontSize = '1.5rem';
+          el.style.height = maxHeight;
+          el.style.fontSize = '1.5rem';
+          el.style.border = '2px solid #000000';
+          el.style.borderRadius = borderRadius;
+          el.style.padding = '1rem';
       }
       function style_addHourBlock(el) {
         el.style.cursor = 'pointer';
@@ -689,7 +683,7 @@ window.addEventListener('load', function () {
         }
       }
       function inter_CLICK_nextHourBlock(el) {
-        el.onclick = function (e) {
+        el.onclick = function () {
           const hourBlockChoice = el.parentElement.getElementsByClassName('hourBlockChoice')[0];
           const hourBlocks = hourBlockChoice.getElementsByClassName('hourBlock');
           const num = hourBlockChoice.classList[1];
