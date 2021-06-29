@@ -74,11 +74,8 @@ window.addEventListener('load', function () {
   const app = document.getElementById('app');
 
   const hourBlocks = ['blocksCarousel', 'addBlock', 'blocks'];
-  const bottle = ['tbcolorMenuBtn', 'projectTitle', 'bottle', hourBlocks];
-  const contentTimeBar = ['timeBar', bottle,
-    'timeBar', bottle,
-    'timeBar', bottle];
-  const contentCalendarBar = ['calendarTitle', 'month_arrows',
+  const timeBar = ['timeBar', ['tbcolorMenuBtn', 'projectTitle', 'hourBlocks', hourBlocks]];
+  const calendarBar = ['calendarTitle', 'month_arrows',
     ['arrowL2', 'month_title', 'arrowR2']
   ];
 
@@ -88,8 +85,8 @@ window.addEventListener('load', function () {
       'main',
       ['timeVisuals',
         ['timeBlocks',
-          ['timeBars', contentTimeBar
-          ], 'calendarBar', contentCalendarBar,
+          ['timeBars', timeBar
+          ], 'calendarBar', calendarBar,
           'calendar'],
         'menuBlock'],
       'footer'
@@ -454,7 +451,7 @@ window.addEventListener('load', function () {
     getEl_loopF('timeBars', style_timeBars);
     getEl_loopF('timeBar', style_timeBar);
     getEl_loopF('projectTitle', style_projectTitle);
-    getEl_loopF('bottle', style_bottle);
+    getEl_loopF('hourBlocks', style_bottle);
     getEl_loopF('blocks', style_blocks);
     getEl_loopF('blocksCarousel', style_blocksCarousel);
     getEl_loopF('addBlock', style_addBlock);
