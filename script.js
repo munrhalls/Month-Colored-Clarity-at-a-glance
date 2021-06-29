@@ -73,7 +73,6 @@ window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   const app = document.getElementById('app');
 
-
   const hourBlocks = ['hourBlockChoices', ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'], 'addHourBlock', 'hourBlocksAdded'];
   const timeBar = ['timeBar', ['tbcolorMenuBtn', 'projectTitle', 'hourBlocks', hourBlocks]];
   const calendarBar = ['calendarTitle', 'monthChoices',
@@ -161,7 +160,31 @@ window.addEventListener('load', function () {
         return setup_findElementUp(elem.parentElement, name);
       })();
   }
-  // things
+  // things (smallest to biggest, code-wise)
+  function style_prev(el, maxHeight, width) {
+    el.style.cursor = 'pointer';
+    el.style.padding = width * 2;
+    el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
+    el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
+    el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
+    el.style.width = width + 'rem';
+    el.style.transform = 'rotate(90deg)';
+    // position
+    el.style.position = 'absolute';
+    el.style.left = 0 - (width * 9) + 'rem';
+  }
+  function style_next(el, maxHeight, width, marginLeft) {
+    el.style.cursor = 'pointer';
+    el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
+    el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
+    el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
+    el.style.width = '0.25rem';
+    el.style.transform = 'rotate(-90deg)';
+    el.style.marginLeft = (marginLeft * 7) + 'rem';
+    // position
+    el.style.position = 'absolute';
+    el.style.right = 0 - (width * 9) + 'rem';
+  }
   function cr8_colorMenuBtn() {
     // C O N T E N T 
     const colorMenuBtn = content_colorMenuBtn();
@@ -583,7 +606,7 @@ window.addEventListener('load', function () {
 
     // S T Y L E
     const maxHeight = 3;
-    const horizMargin = 1.5;
+    const marginLeft = 1.5;
     const titleSize = 1.5;
     getEl_loopF('calendarBar', style_calendarBar);
     getEl_loopF('calendarTitle', style_calendarTitle);
@@ -609,7 +632,7 @@ window.addEventListener('load', function () {
     function style_monthChoices(el) {
       el.style.display = 'flex';
       el.style.alignItems = 'center';
-      el.style.marginLeft = (horizMargin * 3) + 'rem';
+      el.style.marginLeft = (marginLeft * 3) + 'rem';
       el.style.color = '#ffffff';
       // position
       el.style.position = 'relative';
@@ -620,29 +643,11 @@ window.addEventListener('load', function () {
     }
     function style_prevMonth(el) {
       const width = 0.25;
-      el.style.cursor = 'pointer';
-      el.style.padding = width * 2;
-      el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
-      el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
-      el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
-      el.style.width = width + 'rem';
-      el.style.transform = 'rotate(90deg)';
-      // position
-      el.style.position = 'absolute';
-      el.style.left = 0 - (width * 9) + 'rem';
+      style_prev(el, maxHeight, width);
     }
     function style_nextMonth(el) {
       const width = 0.25;
-      el.style.cursor = 'pointer';
-      el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
-      el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
-      el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
-      el.style.width = '0.25rem';
-      el.style.transform = 'rotate(-90deg)';
-      el.style.marginLeft = (horizMargin * 7) + 'rem';
-      // position
-      el.style.position = 'absolute';
-      el.style.right = 0 - (width * 9) + 'rem';
+      style_next(el, maxHeight, width, marginLeft)
     }
 
     // I N T E R A C T I V E S
