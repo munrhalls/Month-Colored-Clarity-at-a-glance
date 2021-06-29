@@ -77,8 +77,8 @@ window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   const app = document.getElementById('app');
 
-  const hourBlocks = ['chooseHourBlock', ['prevHourBlock', 'hourBlockChoices', 'nextHourBlock'], 'addHourBlock', 'hourBlocksAdded'];
-  const timeBar = ['timeBar', ['chooseTimeBarColor', 'projectTitle', 'hourBlocks', hourBlocks]];
+  const hourBlocks = ['chooseHourBlock', ['prevHourBlock', 'hourBlockChoices', 'nextHourBlock'], 'addHourBlock', 'logHourBlocks'];
+  const timeBar = ['timeBar', ['chooseTimeBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks]];
   const calendarBar = ['calendarTitle', 'monthChoices',
     ['prevMonth', 'chooseMonth', 'nextMonth']
   ];
@@ -451,14 +451,14 @@ window.addEventListener('load', function () {
     // getEl_loopF('timeBars', content_timeBars);
     // getEl_loopF('timeBar', content_timeBar);
 
-    // getEl_loopF('hourBlocks', content_hourBlocks);
+    // getEl_loopF('consoleHourBlocks', content_hourBlocks);
     // getEl_loopF('chooseHourBlock', content_chooseHourBlock);
     // getEl_loopF('prevHourBlock', content_prevHourBlock);
     getEl_loopF('hourBlockChoices', content_hourBlockChoices);
     // getEl_loopF('nextHourBlock', content_nextHourBlock);
 
     getEl_loopF('addHourBlock', content_addHourBlock);
-    // getEl_loopF('hourBlocksAdded', content_hourBlocksAdded);
+    // getEl_loopF('logHourBlocks', content_hourBlocksAdded);
 
     function content_chooseTimeBarColor(el) {
       const btn = cr8_colorMenuBtn();
@@ -499,15 +499,16 @@ window.addEventListener('load', function () {
       getEl_loopF('timeBar', style_timeBar);
       getEl_loopF('projectTitle', style_projectTitle);
 
-      getEl_loopF('hourBlocks', style_bottle);
-      getEl_loopF('hourBlocksAdded', style_hourBlocksAdded);
-      getEl_loopF('chooseHourBlock', style_chooseHourBlock);
+      getEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
 
+      getEl_loopF('chooseHourBlock', style_chooseHourBlock);
       getEl_loopF('prevHourBlock', style_prevHourBlock);
       getEl_loopF('hourBlockChoices', style_hourBlockChoices);
       getEl_loopF('nextHourBlock', style_nextHourBlock);
-
       getEl_loopF('addHourBlock', style_addHourBlock);
+
+      getEl_loopF('logHourBlocks', style_hourBlocksAdded);
+
 
       function style_timeBlocks(el) {
         el.style.flex = '1';
@@ -564,19 +565,12 @@ window.addEventListener('load', function () {
           textarea.style.fontSize = '1.15rem';
         }
       }
-      function style_bottle(el) {
+      function style_consoleHourBlocks(el) {
         // el.style.height = 'calc(100% - ' + titleHeight +')';
         el.style.flex = '1';
         el.style.display = 'flex';
         // el.style.flexDirection = 'column';
         el.style.justifyContent = 'flex-end';
-      }
-      function style_hourBlocksAdded(el) {
-        el.style.display = 'flex';
-        // el.style.height = 'calc(100% - ' + btnHeight + ')';
-        el.style.flex = '5';
-        // el.style.flexBasis = height;
-        el.style.textAlign = 'center';
       }
       function style_chooseHourBlock(el) {
         el.style.flex = '1';
@@ -636,6 +630,7 @@ window.addEventListener('load', function () {
         function style_plusSymbol() {
           const plus = el.getElementsByClassName('plus')[0];
           plus.style.border = '0.75rem solid #000000';
+          plus.style.borderRadius = '25%';
           plus.style.position = 'absolute';
           plus.style.top = 0;
           plus.style.bottom = 0;
@@ -657,6 +652,13 @@ window.addEventListener('load', function () {
             plusText.style.right = 0;
           }
         }
+      }
+      function style_hourBlocksAdded(el) {
+        el.style.display = 'flex';
+        // el.style.height = 'calc(100% - ' + btnHeight + ')';
+        el.style.flex = '5';
+        // el.style.flexBasis = height;
+        el.style.textAlign = 'center';
       }
     }
     // I N T E R A C T I V E S
@@ -710,15 +712,15 @@ window.addEventListener('load', function () {
       }
       function inter_CLICK_addHourBlock(el) {
         el.onclick = function() {
-          const hourBlocks = setup_findElementUp(el, 'hourBlocks');
+          const hourBlocks = setup_findElementUp(el, 'consoleHourBlocks');
           const hourBlockChoices = hourBlocks.getElementsByClassName('hourBlockChoices')[0];
           const hourBlockChoice = hourBlockChoices.classList[1];
-          const hourBlock = hourBlockChoices.getElementsByClassName(hourBlockChoice)[0]
+          const hourBlock = hourBlockChoices.getElementsByClassName(hourBlockChoice)[0];
           let newClone = hourBlock.cloneNode(true);
-
+          style_hourBlock(newClone);
           appendClone(newClone);
           function appendClone(newClone) {
-            const hourBlocksAdded = hourBlocks.getElementsByClassName('hourBlocksAdded')[0];
+            const hourBlocksAdded = hourBlocks.getElementsByClassName('logHourBlocks')[0];
             hourBlocksAdded.appendChild(newClone);
           }
         }
