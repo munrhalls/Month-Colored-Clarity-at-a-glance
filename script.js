@@ -329,27 +329,27 @@ window.addEventListener('load', function () {
     interactives();
     function interactives() {
       setup_hideColorMenu();
-      inter_CLICKcolorMenuBtn(colorMenuBtn);
-      inter_CLICKcloseBtn();
-      inter_CLICKcolorChoice();
+      inter_CLICK_colorMenuBtn(colorMenuBtn);
+      inter_CLICK_closeBtn();
+      inter_CLICK_colorChoice();
 
       function setup_hideColorMenu() {
         colorMenu.style.display = 'none';
       }
-      function inter_CLICKcolorMenuBtn(colorMenuBtn) {
+      function inter_CLICK_colorMenuBtn(colorMenuBtn) {
         colorMenuBtn.onclick = function (e) {
           e.stopPropagation();
           colorMenu.style.display = menuDisplay;
         }
       }
-      function inter_CLICKcloseBtn() {
+      function inter_CLICK_closeBtn() {
         const closeBlock = colorMenu.getElementsByClassName('menuCloser')[0];
         closeBlock.onclick = function (e) {
           e.stopPropagation();
           colorMenu.style.display = 'none'
         }
       }
-      function inter_CLICKcolorChoice() {
+      function inter_CLICK_colorChoice() {
         const colorChoices = colorMenu.getElementsByClassName('colorChoice');
         for (let i = 0; i < colorChoices.length; i++) {
           colorChoices[i].onclick = function (e) {
@@ -626,24 +626,40 @@ window.addEventListener('load', function () {
     interactives();
     function interactives() {
       getEl_loopF('hourBlockChoices', setup_hourBlockChoices);
-      getEl_loopF('prevHourBlock', inter_CLICKprevHourBlock);
-      getEl_loopF('nextHourBlock', inter_CLICKnextHourBlock);
+      getEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
+      getEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
 
       function setup_hourBlockChoices(el) {
-        const hourBlocks = el.getElementsByClassName('hours');
+        el.classList = 'hourBlockChoices ' + '1';
+        const hourBlocks = el.getElementsByClassName('hourBlock');
         for (let i = 1; i < hourBlocks.length; i++) {
           hourBlocks[i].style.display = 'none';
         }
       }
-      function inter_CLICKprevHourBlock(el) {
-        el.onclick = function (e) {
-          const hourBlockChoices = el.parentElement.getElementsByClassName('hourBlockChoices');
-          console.log(hourBlockChoices)
+      function inter_CLICK_prevHourBlock(el) {
+        el.onclick = function () {
+          const hourBlockChoices = el.parentElement.getElementsByClassName('hourBlockChoices')[0];
+          const num = hourBlockChoices.classList[1];
+          if (1 < Number(num)) {
+            const newNum = Number(num) - 1;
+            hourBlockChoices.classList = 'hourBlockChoices ' + newNum;
+            hourBlockChoices.getElementsByClassName(num)[0].style.display = 'none';
+            hourBlockChoices.getElementsByClassName(newNum)[0].style.display = 'block';
+          }
         }
       }
-      function inter_CLICKnextHourBlock(el) {
+      function inter_CLICK_nextHourBlock(el) {
         el.onclick = function (e) {
-          console.log(el);
+          const hourBlockChoices = el.parentElement.getElementsByClassName('hourBlockChoices')[0];
+          const hourBlocks = hourBlockChoices.getElementsByClassName('hourBlock');
+          const num = hourBlockChoices.classList[1];
+
+          if (Number(num) < hourBlocks.length) {
+            const newNum = Number(num) + 1;
+            hourBlockChoices.classList = 'hourBlockChoices ' + newNum;
+            hourBlockChoices.getElementsByClassName(num)[0].style.display = 'none';
+            hourBlockChoices.getElementsByClassName(newNum)[0].style.display = 'block';
+          }
         }
       }
     }
