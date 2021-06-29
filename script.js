@@ -1,4 +1,5 @@
 // I N T E R A C T I V E S 
+const localStorage = window.localStorage;
 var monthShown = 'July';
 
 // // DATA VALUES
@@ -26,7 +27,7 @@ const DATA_Calendar = [];
 for (let i = 1; i <= 12; i++) {
   const month = new Date(year, i, 0);
   const monthDATA = new Array();
-  monthDATA.code = month.toLocaleString('default', { month: 'long' });
+  monthDATA.code = month.toLocaleString('en-EN', { month: 'long' });
   const daysInMonth = month.getDate();
 
   let strDaysByComma = '';
@@ -70,6 +71,7 @@ for (let i = 0; i < DATA_Calendar.length; i++) {
     }
   }
 }
+console.log(months)
 
 window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
@@ -446,7 +448,6 @@ window.addEventListener('load', function () {
 
     // getEl_loopF('timeBars', content_timeBars);
     // getEl_loopF('timeBar', content_timeBar);
-    getEl_loopF('projectTitle', content_projectTitle);
 
     // getEl_loopF('hourBlocks', content_hourBlocks);
     // getEl_loopF('chooseHourBlock', content_chooseHourBlock);
@@ -483,7 +484,6 @@ window.addEventListener('load', function () {
       plus.appendChild(plusText);
       el.appendChild(plus);
     }
-
     // S T Y L E
     const maxHeight = 3;
     const marginLeft = 1.5;
@@ -541,7 +541,9 @@ window.addEventListener('load', function () {
         el.style.width = (timeBarWidth * 2) + 'rem';
         el.style.display = 'flex';
         el.style.wordWrap = 'break-word';
-        function style_input() {
+        el.style.padding = '0.25rem';
+        style_textArea();
+        function style_textArea() {
           const textarea = el.getElementsByTagName('textarea')[0];
           textarea.style.flex = '1';
           textarea.style.maxWidth = (timeBarWidth * 2) + 'rem';
@@ -554,11 +556,11 @@ window.addEventListener('load', function () {
           textarea.style.justifyContent = 'center';
           textarea.style.alignItems = 'center';
           textarea.style.backgroundColor = 'transparent';
+          textarea.style.border = '0px solid transparent';
           textarea.style.textAlign = 'center';
-          textarea.style.fontSize = '1.25rem';
-
+          textarea.style.verticalAlign = 'middle';
+          textarea.style.fontSize = '1.15rem';
         }
-        style_input();
       }
       function style_bottle(el) {
         // el.style.height = 'calc(100% - ' + titleHeight +')';
@@ -568,6 +570,7 @@ window.addEventListener('load', function () {
         el.style.justifyContent = 'flex-end';
       }
       function style_hourBlocksAdded(el) {
+        el.style.display = 'flex';
         // el.style.height = 'calc(100% - ' + btnHeight + ')';
         el.style.flex = '5';
         // el.style.flexBasis = height;
@@ -655,10 +658,19 @@ window.addEventListener('load', function () {
     // I N T E R A C T I V E S
     interactives();
     function interactives() {
+      getEl_loopF('projectTitle', inter_INPUT_projectTitle);
       getEl_loopF('hourBlockChoices', setup_hourBlockChoices);
       getEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
       getEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
+      getEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
 
+      function inter_INPUT_projectTitle(el) {
+        const textarea = el.getElementsByTagName('textarea')[0]; 
+        textarea.onchange = function(e) {
+          const projectTitle = e.target.value;
+          localStorage.setItem('projectTitle', projectTitle);
+        }
+      }
       function setup_hourBlockChoices(el) {
         el.classList = 'hourBlockChoices ' + '1';
         const hourBlocks = el.getElementsByClassName('hourBlock');
@@ -692,9 +704,23 @@ window.addEventListener('load', function () {
           }
         }
       }
+      function inter_CLICK_addHourBlock(el) {
+        el.onclick = function() {
+          const hourBlocks = setup_findElementUp(el, 'hourBlocks');
+          const hourBlockChoices = hourBlocks.getElementsByClassName('hourBlockChoices')[0];
+          const hourBlockChoice = hourBlockChoices.classList[1];
+          const hourBlock = hourBlockChoices.getElementsByClassName(hourBlockChoice)[0]
+          let newClone = hourBlock.cloneNode(true);
+
+          appendClone(newClone);
+          function appendClone(newClone) {
+            const hourBlocksAdded = hourBlocks.getElementsByClassName('hourBlocksAdded')[0];
+            hourBlocksAdded.appendChild(newClone);
+          }
+        }
+      }
     }
   }
-
 
   function cr8_calendarBar() {
     // C O N T E N T
@@ -778,7 +804,7 @@ window.addEventListener('load', function () {
     function inter_monthShown() {
       const date = new Date();
       const monthName = date.toLocaleString('en-EN', { month: 'long' });
-      monthShown = monthName;
+      monthShown = monthName.split('')[0].toUpperCase() + monthName.substring(1, monthName.split('').length);
     }
     function inter_prevMonth(el) {
       el.onclick = function () {
@@ -807,7 +833,6 @@ window.addEventListener('load', function () {
     }
 
   }
-
 
   function cr8_calendar() {
     // C O N T E N T
@@ -966,8 +991,6 @@ window.addEventListener('load', function () {
     getEl_loopF('month', setup_hideMonths);
     getOneEl_runF('month', num, inter_showMonth);
   }
-
-
 
 
   function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
