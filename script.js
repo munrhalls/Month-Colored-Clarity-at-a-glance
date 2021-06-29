@@ -565,7 +565,7 @@ window.addEventListener('load', function () {
       function style_chooseHourBlock(el) {
         // el.style.flex = '1';
         el.style.maxWidth = timeBarHeight * 3 + 'rem';
-        // el.style.display = 'flex';
+        el.style.display = 'flex';
         el.style.flexDirection = 'row';
         el.style.justifyContent = 'center';
         el.style.position = 'relative';
@@ -589,8 +589,8 @@ window.addEventListener('load', function () {
       function style_hourBlock(el) {
         const heightMultiplier = el.classList[1];
         console.log(heightMultiplier)
-        el.style.height = 1.5 + (heightMultiplier / 24) * 8 * timeBarHeight / 8 + 'rem';
-        el.style.maxHeight = 1.5 + (heightMultiplier / 24) * 8  * timeBarHeight / 8 + 'rem';
+        el.style.height =  (heightMultiplier / 24) * 8 * timeBarHeight / 8 + 'rem';
+        el.style.maxHeight =  (heightMultiplier / 24) * 8  * timeBarHeight / 8 + 'rem';
         el.style.fontSize = '1.5rem';
         el.style.border = '2px solid #000000';
         el.style.paddingLeft = '0.5rem';
