@@ -477,8 +477,7 @@ window.addEventListener('load', function () {
       el.appendChild(plus);
     }
     // S T Y L E
-    const maxHeight = 3;
-    const marginLeft = 1.5;
+    const marginLeft = timeBarHeight / 2;
     style();
     function style() {
       getEl_loopF('timeBlocks', style_timeBlocks);
@@ -565,7 +564,7 @@ window.addEventListener('load', function () {
       }
       function style_chooseHourBlock(el) {
         // el.style.flex = '1';
-        el.style.maxWidth = maxHeight * 3 + 'rem';
+        el.style.maxWidth = timeBarHeight * 3 + 'rem';
         // el.style.display = 'flex';
         el.style.flexDirection = 'row';
         el.style.justifyContent = 'center';
@@ -573,15 +572,15 @@ window.addEventListener('load', function () {
       }
       function style_prevHourBlock(el) {
         const width = 0.25;
-        style_prevArr(el, maxHeight, width);
+        style_prevArr(el, timeBarHeight, width);
         // el.style.backgroundColor = '#000000';
         el.style.borderTopColor = '#000000';
         el.style.left = '0.5rem';
-        el.style.top = 'calc(50% - ' + maxHeight / 4 + 'rem)'
+        el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
       }
       function style_hourBlockChoice(el) {
         // el.style.flex = '1';
-        el.style.minWidth = maxHeight * 2.5 + 'rem';
+        el.style.minWidth = timeBarHeight * 2.5 + 'rem';
         el.style.border = 'none';
         el.style.display = 'flex';
         el.style.justifyContent = 'center';
@@ -589,16 +588,16 @@ window.addEventListener('load', function () {
       }
       function style_nextHourBlock(el) {
         const width = 0.25;
-        style_nextArr(el, maxHeight, width, marginLeft);
+        style_nextArr(el, timeBarHeight, width, marginLeft);
         el.style.borderTopColor = '#000000';
         el.style.right = '0.5rem';
-        el.style.top = 'calc(50% - ' + maxHeight / 4 + 'rem)'
+        el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
       }
       function style_hourBlock(el) {
         const heightMultiplier = el.classList[1];
         console.log(heightMultiplier)
-        el.style.height = (heightMultiplier/24) * maxHeight + 'rem';
-        el.style.maxHeight = (heightMultiplier/24) * maxHeight + 'rem';
+        el.style.height = (heightMultiplier/24) * timeBarHeight + 'rem';
+        el.style.maxHeight = (heightMultiplier/24) * timeBarHeight + 'rem';
         el.style.fontSize = '1.5rem';
         el.style.border = '2px solid #000000';
         el.style.borderRadius = borderRadius;
@@ -607,8 +606,8 @@ window.addEventListener('load', function () {
       function style_addHourBlock(el) {
         el.style.cursor = 'pointer';
         el.style.flex = '1';
-        el.style.maxWidth = maxHeight * 1.75 + 'rem';
-        el.style.minWidth = maxHeight * 1.75 + 'rem';
+        el.style.maxWidth = timeBarHeight * 1.75 + 'rem';
+        el.style.minWidth = timeBarHeight * 1.75 + 'rem';
         el.style.textAlign = 'center';
         el.style.display = 'flex';
         el.style.justifyContent = 'center';
@@ -630,11 +629,11 @@ window.addEventListener('load', function () {
           style_plusText();
           function style_plusText() {
             const plusText = plus.children[0];
-            plusText.style.fontSize = maxHeight * 1.5 + 'rem';
+            plusText.style.fontSize = timeBarHeight + 'rem';
             plusText.style.borderRadius = borderRadius;
             plusText.style.position = 'absolute';
             plusText.style.position = 'absolute';
-            plusText.style.top = 0 - (maxHeight * 1.5) / 4.66 + 'rem';
+            plusText.style.top = 0 - (timeBarHeight) / 3 + 'rem';
             plusText.style.bottom = 0;
             plusText.style.left = 0;
             plusText.style.right = 0;
@@ -744,7 +743,7 @@ window.addEventListener('load', function () {
     }
 
     // S T Y L E
-    const maxHeight = 3;
+    const maxHeight = 5;
     const marginLeft = 1.5;
     const titleSize = 1.5;
     getEl_loopF('calendarBar', style_calendarBar);
@@ -756,7 +755,7 @@ window.addEventListener('load', function () {
 
     function style_calendarBar(el) {
       el.style.flex = '1';
-      el.style.maxHeight = maxHeight + 'rem';
+      el.style.maxHeight = timeBarHeight + 'rem';
       el.style.backgroundColor = '#000000';
       el.style.display = 'flex';
     }
@@ -782,11 +781,11 @@ window.addEventListener('load', function () {
     }
     function style_prevMonth(el) {
       const width = 0.25;
-      style_prevArr(el, maxHeight, width);
+      style_prevArr(el, timeBarHeight, width);
     }
     function style_nextMonth(el) {
       const width = 0.25;
-      style_nextArr(el, maxHeight, width, marginLeft)
+      style_nextArr(el, timeBarHeight, width, marginLeft)
     }
 
     // I N T E R A C T I V E S
