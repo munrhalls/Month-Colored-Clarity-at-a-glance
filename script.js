@@ -594,7 +594,6 @@ window.addEventListener('load', function () {
         el.style.fontSize = '1.5rem';
         el.style.border = '2px solid #000000';
         el.style.borderRadius = borderRadius;
-        el.style.padding = '1rem';
       }
       function style_nextHourBlock(el) {
         const width = 0.25;
