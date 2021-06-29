@@ -74,7 +74,7 @@ window.addEventListener('load', function () {
   const app = document.getElementById('app');
 
 
-  const hourBlocks = ['hourBlockChoices', ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'], 'addBlock', 'blocks'];
+  const hourBlocks = ['hourBlockChoices', ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'], 'addHourBlock', 'hourBlocksAdded'];
   const timeBar = ['timeBar', ['tbcolorMenuBtn', 'projectTitle', 'hourBlocks', hourBlocks]];
   const calendarBar = ['calendarTitle', 'monthChoices',
     ['prevMonth', 'monthChoice', 'nextMonth']
@@ -420,9 +420,9 @@ window.addEventListener('load', function () {
     // C O N T E N T
     getEl_loopF('tbcolorMenuBtn', content_tbcolorMenuBtn);
     getEl_loopF('projectTitle', content_projectTitle);
-    getEl_loopF('blocks', content_blocks);
+    getEl_loopF('hourBlocksAdded', content_blocks);
     getEl_loopF('hourBlockChoices', hourBlockChoices);
-    getEl_loopF('addBlock', content_addBlock);
+    getEl_loopF('addHourBlock', content_addHourBlock);
     function content_tbcolorMenuBtn(el) {
       const btn = cr8_colorMenuBtn();
       el.appendChild(btn);
@@ -442,7 +442,7 @@ window.addEventListener('load', function () {
         el.appendChild(timeBlock)
       }
     }
-    function content_addBlock(el) {
+    function content_addHourBlock(el) {
       el.innerText = '+';
     }
 
@@ -455,9 +455,9 @@ window.addEventListener('load', function () {
     getEl_loopF('timeBar', style_timeBar);
     getEl_loopF('projectTitle', style_projectTitle);
     getEl_loopF('hourBlocks', style_bottle);
-    getEl_loopF('blocks', style_hourBlocks);
+    getEl_loopF('hourBlocksAdded', style_hourBlocks);
     getEl_loopF('hourBlockChoices', style_hourBlockChoices);
-    getEl_loopF('addBlock', style_addBlock);
+    getEl_loopF('addHourBlock', style_addHourBlock);
 
     function style_timeBlocks(el) {
       el.style.flex = '1';
@@ -531,7 +531,7 @@ window.addEventListener('load', function () {
       el.style.flexDirection = 'row';
       el.style.justifyContent = 'center';
     }
-    function style_addBlock(el) {
+    function style_addHourBlock(el) {
       el.style.flex = '1';
       el.style.maxHeight = '2rem';
       // el.style.height = btnHeight;
