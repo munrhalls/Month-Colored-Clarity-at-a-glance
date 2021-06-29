@@ -564,9 +564,9 @@ window.addEventListener('load', function () {
         el.style.justifyContent = 'flex-end';
       }
       function style_chooseHourBlock(el) {
-        el.style.flex = '1';
+        // el.style.flex = '1';
         el.style.maxWidth = maxHeight * 3 + 'rem';
-        el.style.display = 'flex';
+        // el.style.display = 'flex';
         el.style.flexDirection = 'row';
         el.style.justifyContent = 'center';
         el.style.position = 'relative';
@@ -580,7 +580,7 @@ window.addEventListener('load', function () {
         el.style.top = 'calc(50% - ' + maxHeight / 4 + 'rem)'
       }
       function style_hourBlockChoice(el) {
-        el.style.flex = '1';
+        // el.style.flex = '1';
         el.style.minWidth = maxHeight * 2.5 + 'rem';
         el.style.border = 'none';
         el.style.display = 'flex';
@@ -595,12 +595,15 @@ window.addEventListener('load', function () {
         el.style.top = 'calc(50% - ' + maxHeight / 4 + 'rem)'
       }
       function style_hourBlock(el) {
-          el.style.fontSize = '1.5rem';
-          el.style.height = maxHeight;
-          el.style.fontSize = '1.5rem';
-          el.style.border = '2px solid #000000';
-          el.style.borderRadius = borderRadius;
-          el.style.padding = '1rem';
+        const heightMultiplier = el.classList[1];
+        console.log(heightMultiplier)
+        el.style.height = (heightMultiplier/24) * maxHeight + 'rem';
+        console.log((heightMultiplier/24) * maxHeight)
+        el.style.maxHeight = (heightMultiplier/24) * maxHeight + 'rem';
+        el.style.fontSize = '1.5rem';
+        el.style.border = '2px solid #000000';
+        el.style.borderRadius = borderRadius;
+        el.style.padding = '1rem';
       }
       function style_addHourBlock(el) {
         el.style.cursor = 'pointer';
