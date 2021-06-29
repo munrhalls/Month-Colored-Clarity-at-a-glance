@@ -161,7 +161,7 @@ window.addEventListener('load', function () {
       })();
   }
   // things (smallest to biggest, code-wise)
-  function style_prev(el, maxHeight, width) {
+  function style_prevArr(el, maxHeight, width) {
     el.style.cursor = 'pointer';
     el.style.padding = width * 2;
     el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
@@ -173,7 +173,7 @@ window.addEventListener('load', function () {
     el.style.position = 'absolute';
     el.style.left = 0 - (width * 9) + 'rem';
   }
-  function style_next(el, maxHeight, width, marginLeft) {
+  function style_nextArr(el, maxHeight, width, marginLeft) {
     el.style.cursor = 'pointer';
     el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
     el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
@@ -470,108 +470,127 @@ window.addEventListener('load', function () {
     }
 
     // S T Y L E
-    const btnHeight = '1.5rem';
-    getEl_loopF('timeBlocks', style_timeBlocks);
-    getEl_loopF('colorsMenu', style_colorsMenu);
-    getEl_loopF('tbcolorMenuBtn', style_tbcolorMenuBtn);
-    getEl_loopF('timeBars', style_timeBars);
-    getEl_loopF('timeBar', style_timeBar);
-    getEl_loopF('projectTitle', style_projectTitle);
-    getEl_loopF('hourBlocks', style_bottle);
-    getEl_loopF('hourBlocksAdded', style_hourBlocks);
-    getEl_loopF('hourBlockChoices', style_hourBlockChoices);
-    getEl_loopF('addHourBlock', style_addHourBlock);
+    const maxHeight = 3;
+    const marginLeft = 1.5;
+    style();
+    function style() {
+      getEl_loopF('timeBlocks', style_timeBlocks);
+      getEl_loopF('colorsMenu', style_colorsMenu);
+      getEl_loopF('tbcolorMenuBtn', style_tbcolorMenuBtn);
 
-    function style_timeBlocks(el) {
-      el.style.flex = '1';
-      el.style.display = 'flex';
-    }
-    function style_colorsMenu(el) {
-      el.style.flex = '1';
-      el.style.maxWidth = timeBarWidth / 1.5 + 'rem';
-      el.style.display = 'flex';
-      el.style.justifyContent = 'center';
-      el.style.alignItems = 'center';
-      el.style.backgroundColor = '#000000';
-    }
-    function style_tbcolorMenuBtn(el) {
-      el.style.position = 'relative';
-      el.style.backgroundColor = '#000000';
-      el.style.height = timeBarHeight + 'rem';
-      el.style.width = timeBarWidth + 'rem';
-      el.style.display = 'flex';
-      el.style.justifyContent = 'center';
-      el.style.alignItems = 'center';
-    }
-    function style_timeBars(el) {
-      el.style.flex = '5';
-      el.style.display = 'flex';
-      el.style.flexDirection = 'column';
-    }
-    function style_timeBar(el) {
-      el.style.display = 'flex';
-    }
-    function style_projectTitle(el) {
-      el.style.height = timeBarHeight + 'rem';
-      el.style.width = (timeBarWidth * 2) + 'rem';
-      el.style.display = 'flex';
-      el.style.wordWrap = 'break-word';
-      function style_input() {
-        const textarea = el.getElementsByTagName('textarea')[0];
-        textarea.style.flex = '1';
-        textarea.style.maxWidth = (timeBarWidth * 2) + 'rem';
-        textarea.style.width = '100%';
-        textarea.style.padding = '0';
-        textarea.style.margin = '0';
-        textarea.style.display = 'flex';
-        textarea.style.flexWrap = 'wrap';
-        textarea.style.wordWrap = 'break-word';
-        textarea.style.justifyContent = 'center';
-        textarea.style.alignItems = 'center';
-        textarea.style.backgroundColor = 'transparent';
-        textarea.style.textAlign = 'center';
-        textarea.style.fontSize = '1.25rem';
+      getEl_loopF('timeBars', style_timeBars);
+      getEl_loopF('timeBar', style_timeBar);
+      getEl_loopF('projectTitle', style_projectTitle);
 
+      getEl_loopF('hourBlocks', style_bottle);
+      getEl_loopF('hourBlocksAdded', style_hourBlocks);
+      getEl_loopF('hourBlockChoices', style_hourBlockChoices);
+      getEl_loopF('prevHourBlock', style_prevHourBlock);
+
+      getEl_loopF('addHourBlock', style_addHourBlock);
+
+      function style_timeBlocks(el) {
+        el.style.flex = '1';
+        el.style.display = 'flex';
       }
-      style_input();
-    }
-    function style_bottle(el) {
-      // el.style.height = 'calc(100% - ' + titleHeight +')';
-      el.style.flex = '1';
-      el.style.display = 'flex';
-      // el.style.flexDirection = 'column';
-      el.style.justifyContent = 'flex-end';
-    }
-    function style_hourBlocks(el) {
-      // el.style.height = 'calc(100% - ' + btnHeight + ')';
-      el.style.flex = '5';
-      // el.style.flexBasis = height;
-      el.style.textAlign = 'center';
-    }
-    function style_hourBlockChoices(el) {
-      el.style.flex = '1';
-      el.style.display = 'flex';
-      el.style.flexDirection = 'row';
-      el.style.justifyContent = 'center';
-    }
-    function style_addHourBlock(el) {
-      el.style.flex = '1';
-      el.style.maxHeight = '2rem';
-      // el.style.height = btnHeight;
-      el.style.width = '100%';
-      el.style.textAlign = 'center';
+      function style_colorsMenu(el) {
+        el.style.flex = '1';
+        el.style.maxWidth = timeBarWidth / 1.5 + 'rem';
+        el.style.display = 'flex';
+        el.style.justifyContent = 'center';
+        el.style.alignItems = 'center';
+        el.style.backgroundColor = '#000000';
+      }
+      function style_tbcolorMenuBtn(el) {
+        el.style.position = 'relative';
+        el.style.backgroundColor = '#000000';
+        el.style.height = timeBarHeight + 'rem';
+        el.style.width = timeBarWidth + 'rem';
+        el.style.display = 'flex';
+        el.style.justifyContent = 'center';
+        el.style.alignItems = 'center';
+      }
+      function style_timeBars(el) {
+        el.style.flex = '5';
+        el.style.display = 'flex';
+        el.style.flexDirection = 'column';
+      }
+      function style_timeBar(el) {
+        el.style.display = 'flex';
+      }
+      function style_projectTitle(el) {
+        el.style.height = timeBarHeight + 'rem';
+        el.style.width = (timeBarWidth * 2) + 'rem';
+        el.style.display = 'flex';
+        el.style.wordWrap = 'break-word';
+        function style_input() {
+          const textarea = el.getElementsByTagName('textarea')[0];
+          textarea.style.flex = '1';
+          textarea.style.maxWidth = (timeBarWidth * 2) + 'rem';
+          textarea.style.width = '100%';
+          textarea.style.padding = '0';
+          textarea.style.margin = '0';
+          textarea.style.display = 'flex';
+          textarea.style.flexWrap = 'wrap';
+          textarea.style.wordWrap = 'break-word';
+          textarea.style.justifyContent = 'center';
+          textarea.style.alignItems = 'center';
+          textarea.style.backgroundColor = 'transparent';
+          textarea.style.textAlign = 'center';
+          textarea.style.fontSize = '1.25rem';
+
+        }
+        style_input();
+      }
+      function style_bottle(el) {
+        // el.style.height = 'calc(100% - ' + titleHeight +')';
+        el.style.flex = '1';
+        el.style.display = 'flex';
+        // el.style.flexDirection = 'column';
+        el.style.justifyContent = 'flex-end';
+      }
+      function style_hourBlocks(el) {
+        // el.style.height = 'calc(100% - ' + btnHeight + ')';
+        el.style.flex = '5';
+        // el.style.flexBasis = height;
+        el.style.textAlign = 'center';
+      }
+      function style_hourBlockChoices(el) {
+        el.style.flex = '1';
+        el.style.display = 'flex';
+        el.style.flexDirection = 'row';
+        el.style.justifyContent = 'center';
+      }
+      function style_prevHourBlock(el) {
+        const width = 0.25;
+        style_prevArr(el, maxHeight, width);
+      }
+      function style_nextHourBlock(el) {
+        const width = 0.25;
+        style_prevArr(el, maxHeight, width, marginLeft);
+      }
+      function style_addHourBlock(el) {
+        el.style.flex = '1';
+        el.style.maxHeight = '2rem';
+        // el.style.height = btnHeight;
+        el.style.width = '100%';
+        el.style.textAlign = 'center';
+      }
     }
     // I N T E R A C T I V E S
-    getEl_loopF('hourBlockChoices', setup_hourBlockChoices)
-    function setup_hourBlockChoices(el) {
-      for (let i = 1; i < el.children.length; i++) {
-        const hourBlock = el.children[i];
-        hourBlock.style.display = 'none';
+    interactives();
+    function interactives() {
+      getEl_loopF('hourBlockChoices', setup_hourBlockChoices)
+      function setup_hourBlockChoices(el) {
+        for (let i = 1; i < el.children.length; i++) {
+          const hourBlock = el.children[i];
+          hourBlock.style.display = 'none';
+        }
       }
-    }
-    function inter_CLICKtbcolorMenuBtn(el) {
-      el.onclick = function (e) {
-        console.log(el);
+      function inter_CLICKtbcolorMenuBtn(el) {
+        el.onclick = function (e) {
+          console.log(el);
+        }
       }
     }
   }
@@ -643,11 +662,11 @@ window.addEventListener('load', function () {
     }
     function style_prevMonth(el) {
       const width = 0.25;
-      style_prev(el, maxHeight, width);
+      style_prevArr(el, maxHeight, width);
     }
     function style_nextMonth(el) {
       const width = 0.25;
-      style_next(el, maxHeight, width, marginLeft)
+      style_nextArr(el, maxHeight, width, marginLeft)
     }
 
     // I N T E R A C T I V E S
