@@ -598,7 +598,6 @@ window.addEventListener('load', function () {
         const heightMultiplier = el.classList[1];
         console.log(heightMultiplier)
         el.style.height = (heightMultiplier/24) * maxHeight + 'rem';
-        console.log((heightMultiplier/24) * maxHeight)
         el.style.maxHeight = (heightMultiplier/24) * maxHeight + 'rem';
         el.style.fontSize = '1.5rem';
         el.style.border = '2px solid #000000';
