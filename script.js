@@ -476,8 +476,11 @@ window.addEventListener('load', function () {
     }
     function content_addHourBlock(el) {
       const plus = document.createElement('div');
-      plus.innerText = '+';
       plus.className = 'plus';
+      const plusText = document.createElement('div');
+      plusText.className = 'plusText';
+      plusText.innerText = '+';
+      plus.appendChild(plusText);
       el.appendChild(plus);
     }
 
@@ -584,7 +587,7 @@ window.addEventListener('load', function () {
         // el.style.backgroundColor = '#000000';
         el.style.borderTopColor = '#000000';
         el.style.left = '0.5rem';
-        el.style.top = 'calc(50% - ' + maxHeight/4 + 'rem)'
+        el.style.top = 'calc(50% - ' + maxHeight / 4 + 'rem)'
       }
       function style_hourBlockChoices(el) {
         el.style.flex = '1';
@@ -609,25 +612,43 @@ window.addEventListener('load', function () {
         style_nextArr(el, maxHeight, width, marginLeft);
         el.style.borderTopColor = '#000000';
         el.style.right = '0.5rem';
-        el.style.top = 'calc(50% - ' + maxHeight/4 + 'rem)'
+        el.style.top = 'calc(50% - ' + maxHeight / 4 + 'rem)'
       }
       function style_hourBlock(el) {
         el.style.fontSize = '1.5rem';
       }
       function style_addHourBlock(el) {
         el.style.flex = '1';
-        el.style.maxWidth = maxHeight * 1.5 +'rem';
+        el.style.maxWidth = maxHeight * 1.75 + 'rem';
+        el.style.minWidth = maxHeight * 1.75 + 'rem';
         el.style.textAlign = 'center';
+        el.style.display = 'flex';
         el.style.justifyContent = 'center';
+        el.style.alignItems = 'center';
         el.style.position = 'relative';
         style_plusSymbol();
         function style_plusSymbol() {
           const plus = el.getElementsByClassName('plus')[0];
-          plus.style.fontSize = maxHeight * 2 + 'rem';
+          plus.style.border = '0.75rem solid #000000';
           plus.style.position = 'absolute';
-          plus.style.top = 0; plus.style.bottom = 0;
+          plus.style.top = 0;
+          plus.style.bottom = 0;
           plus.style.left = 0;
           plus.style.right = 0;
+          plus.style.display = 'flex';
+          plus.style.textAlign = 'center';
+          plus.style.justifyContent = 'center';
+          style_plusText();
+          function style_plusText() {
+            const plusText = plus.children[0];
+            plusText.style.fontSize = maxHeight * 1.5 + 'rem';
+            plusText.style.position = 'absolute';
+            plusText.style.position = 'absolute';
+            plusText.style.top = 0 - (maxHeight * 1.5) / 4.66 + 'rem';
+            plusText.style.bottom = 0;
+            plusText.style.left = 0;
+            plusText.style.right = 0;
+          }
         }
       }
     }
