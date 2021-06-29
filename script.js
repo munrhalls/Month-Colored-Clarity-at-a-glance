@@ -2,6 +2,8 @@
 var monthShown = 'July';
 
 // // DATA VALUES
+const borderRadius = '5%';
+
 const timeBarHeight = 5;
 const timeBarWidth = 5;
 
@@ -240,7 +242,6 @@ window.addEventListener('load', function () {
 
     const menuZIndex = '3';
     const menuDisplay = 'flex';
-    const borderRadius = '5%';
     const btnDistance = 0.75;
     const btnBorder = 0.5;
     const blockBgColor = '#000000';
@@ -473,7 +474,7 @@ window.addEventListener('load', function () {
       for (let i = 1; i < 25; i++) {
         let hourBlockChoices = document.createElement('div');
         hourBlockChoices.innerText = i;
-        hourBlockChoices.classList = i + ' hours';
+        hourBlockChoices.classList = 'hourBlock ' + i + ' hours';
         el.appendChild(hourBlockChoices)
       }
     }
@@ -499,8 +500,8 @@ window.addEventListener('load', function () {
       getEl_loopF('chooseHourBlock', style_chooseHourBlock);
 
       getEl_loopF('prevHourBlock', style_prevHourBlock);
-      getEl_loopF('nextHourBlock', style_nextHourBlock);
       getEl_loopF('hourBlockChoices', style_hourBlockChoices);
+      getEl_loopF('nextHourBlock', style_nextHourBlock);
 
       getEl_loopF('addHourBlock', style_addHourBlock);
 
@@ -582,6 +583,8 @@ window.addEventListener('load', function () {
         style_prevArr(el, maxHeight, width);
         // el.style.backgroundColor = '#000000';
         el.style.borderTopColor = '#000000';
+        el.style.left = '0.5rem';
+        el.style.top = 'calc(50% - ' + maxHeight/4 + 'rem)'
       }
       function style_hourBlockChoices(el) {
         el.style.flex = '1';
@@ -589,11 +592,24 @@ window.addEventListener('load', function () {
         el.style.display = 'flex';
         el.style.justifyContent = 'center';
         el.style.alignItems = 'center';
+        const hourBlocks = el.getElementsByClassName('hourBlock');
+        style_hourBlocks(hourBlocks);
+        function style_hourBlocks(hourBlocks) {
+          for (let i = 0; i < hourBlocks.length; i++) {
+            const hourBlock = hourBlocks[i];
+            hourBlock.style.fontSize = '1.5rem';
+            hourBlock.style.border = '2px solid #000000';
+            hourBlock.style.borderRadius = borderRadius;
+            hourBlock.style.padding = '1rem';
+          }
+        }
       }
       function style_nextHourBlock(el) {
         const width = 0.25;
         style_nextArr(el, maxHeight, width, marginLeft);
         el.style.borderTopColor = '#000000';
+        el.style.right = '0.5rem';
+        el.style.top = 'calc(50% - ' + maxHeight/4 + 'rem)'
       }
       function style_hourBlock(el) {
         el.style.fontSize = '1.5rem';
