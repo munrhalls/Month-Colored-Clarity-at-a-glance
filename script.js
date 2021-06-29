@@ -73,14 +73,15 @@ window.addEventListener('load', function () {
   console.log('This function is executed once the page is fully loaded');
   const app = document.getElementById('app');
 
-  const blocks = ['blocksCarousel', 'addBlock', 'blocks'];
-  const bottle = ['tbcolorMenuBtn', 'projectTitle', 'bottle', blocks];
+  const hourBlocks = ['blocksCarousel', 'addBlock', 'blocks'];
+  const bottle = ['tbcolorMenuBtn', 'projectTitle', 'bottle', hourBlocks];
   const contentTimebar = ['timebar', bottle,
     'timebar', bottle,
     'timebar', bottle];
-  const contentTitlebar2 = ['calendarTitle', 'month_arrows',
+  const contentCalendarBar = ['calendarTitle', 'month_arrows',
     ['arrowL2', 'month_title', 'arrowR2']
   ];
+
   const DATA_DOM = [
     'root',
     ['topbar', ['title', 'about'],
@@ -88,7 +89,7 @@ window.addEventListener('load', function () {
       ['timeVisuals',
         ['timeBlocks',
           ['timebars', contentTimebar
-          ], 'titlebar2', contentTitlebar2,
+          ], 'calendarBar', contentCalendarBar,
           'calendar'],
         'menuBlock'],
       'footer'
@@ -581,14 +582,14 @@ window.addEventListener('load', function () {
     const maxHeight = 3;
     const horizMargin = 1.5;
     const titleSize = 1.5;
-    getEl_loopF('titlebar2', style_titlebar2);
+    getEl_loopF('calendarBar', style_calendarBar);
     getEl_loopF('calendarTitle', style_calendarTitle);
     getEl_loopF('month_arrows', style_month_arrows);
     getEl_loopF('month_title', style_month_title);
     getEl_loopF('arrowL2', style_arrowL2);
     getEl_loopF('arrowR2', style_arrowR2);
 
-    function style_titlebar2(el) {
+    function style_calendarBar(el) {
       el.style.flex = '1';
       el.style.maxHeight = maxHeight + 'rem';
       el.style.backgroundColor = '#000000';
