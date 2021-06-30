@@ -589,8 +589,12 @@ window.addEventListener('load', function () {
       }
       function style_hourBlock(el) {
         const heightMultiplier = Number(el.classList[1]);
-        console.log(heightMultiplier)
-        el.style.height =  heightMultiplier / 24 * 100 + '%';
+        const num = 1 - 1 / (heightMultiplier * 2);
+        el.style.height = num * 100 + '%';
+        function log() {
+          console.log(num)
+        }
+        log();
         // el.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
         el.style.fontSize = '1.5rem';
         el.style.border = '2px solid #000000';
