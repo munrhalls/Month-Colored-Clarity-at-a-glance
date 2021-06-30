@@ -565,7 +565,7 @@ window.addEventListener('load', function () {
       }
       function style_chooseHourBlock(el) {
         // el.style.flex = '1';
-        el.style.maxWidth = timeBarHeight * 3 + 'rem';
+        el.style.maxWidth = timeBarHeight * 1.75 + 'rem';
         el.style.display = 'flex';
         el.style.flexDirection = 'row';
         el.style.justifyContent = 'center';
@@ -576,7 +576,14 @@ window.addEventListener('load', function () {
         style_prevArr(el, timeBarHeight, width);
         // el.style.backgroundColor = '#000000';
         el.style.borderTopColor = '#000000';
-        el.style.left = '0.5rem';
+        el.style.left = '0.8rem';
+        el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
+      }
+      function style_nextHourBlock(el) {
+        const width = 0.25;
+        style_nextArr(el, timeBarHeight, width, marginLeft);
+        el.style.borderTopColor = '#000000';
+        el.style.right = '0.8rem';
         el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
       }
       function style_hourBlockChoice(el) {
@@ -601,13 +608,6 @@ window.addEventListener('load', function () {
         el.style.justifyContent = 'center';
         el.style.alignItems = 'center';
         el.style.fontWeight = 'bold';
-      }
-      function style_nextHourBlock(el) {
-        const width = 0.25;
-        style_nextArr(el, timeBarHeight, width, marginLeft);
-        el.style.borderTopColor = '#000000';
-        el.style.right = '0.5rem';
-        el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
       }
       function style_addHourBlock(el) {
         el.style.cursor = 'pointer';
