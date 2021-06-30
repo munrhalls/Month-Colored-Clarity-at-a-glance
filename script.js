@@ -102,7 +102,6 @@ window.addEventListener('load', function () {
     ],
   ];
   assembleDOM(BASIC_DOM, app);
-  // ABSTRACTIONS
   cr8_topBar();
   cr8_main();
   cr8_timeVisuals();
@@ -110,6 +109,7 @@ window.addEventListener('load', function () {
   cr8_calendarBar();
   cr8_calendar();
 
+  // ABSTRACTIONS
   function assembleDOM(arr, container) {
     arr.forEach(function (el, index) {
       if (typeof el == 'object') {
@@ -142,19 +142,7 @@ window.addEventListener('load', function () {
       el.appendChild(span);
     }
   }
-
-  // ABSTRACTIONS
   // access
-  function getEl_loopF(className, modify) {
-    const elements = document.getElementsByClassName(className);
-    for (let i = 0; i < elements.length; i++) {
-      modify(elements[i]);
-    }
-  }
-  function getOneEl_runF(className, i, modify) {
-    const el = document.getElementsByClassName(className)[i];
-    modify(el);
-  }
   var count = 0;
   function setup_findElementUp(elem, name) {
     return (elem.parentElement.className == name && count < 12) ?
@@ -167,7 +155,16 @@ window.addEventListener('load', function () {
         return setup_findElementUp(elem.parentElement, name);
       })();
   }
-  // things (smallest to biggest, code-wise)
+  function getEl_loopF(className, modify) {
+    const elements = document.getElementsByClassName(className);
+    for (let i = 0; i < elements.length; i++) {
+      modify(elements[i]);
+    }
+  }
+  function getOneEl_runF(className, i, modify) {
+    const el = document.getElementsByClassName(className)[i];
+    modify(el);
+  }
   function style_prevArr(el, maxHeight, width) {
     el.style.cursor = 'pointer';
     el.style.padding = width * 2;
@@ -245,8 +242,8 @@ window.addEventListener('load', function () {
       btnClose.appendChild(closeSymbol);
       menuCloser.appendChild(btnClose);
     }
-    // S T Y L E
 
+    // S T Y L E
     const menuZIndex = '3';
     const menuDisplay = 'flex';
     const btnDistance = 0.75;
@@ -373,7 +370,7 @@ window.addEventListener('load', function () {
     return colorMenuBtn;
   }
 
-
+  // THINGS
   function cr8_topBar() {
     // C O N T E N T
     getEl_loopF('title', content_title);
@@ -596,10 +593,10 @@ window.addEventListener('load', function () {
       }
       function style_hourBlock(el) {
         const hoursNum = Number(el.classList[1]);
-        const num = 1 - 0.75 + (hoursNum/100 * 3);
+        const num = 1 - 0.75 + (hoursNum / 100 * 3);
         el.style.height = num * 100 + '%';
         // el.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
-        el.style.fontSize = 1.5 + hoursNum/100 * 2 + 'rem';
+        el.style.fontSize = 1.5 + hoursNum / 100 * 2 + 'rem';
         el.style.border = '2px solid #000000';
         el.style.paddingLeft = '1rem';
         el.style.paddingRight = '1rem';
@@ -749,91 +746,96 @@ window.addEventListener('load', function () {
     }
 
     // S T Y L E
-    const maxHeight = 5;
     const marginLeft = 3;
     const titleSize = 1.5;
-    getEl_loopF('calendarBar', style_calendarBar);
-    getEl_loopF('calendarTitle', style_calendarTitle);
-    getEl_loopF('monthChoices', style_monthChoices);
-    getEl_loopF('chooseMonth', style_monthChoice);
-    getEl_loopF('prevMonth', style_prevMonth);
-    getEl_loopF('nextMonth', style_nextMonth);
+    style();
+    function style() {
+      getEl_loopF('calendarBar', style_calendarBar);
+      getEl_loopF('calendarTitle', style_calendarTitle);
+      getEl_loopF('monthChoices', style_monthChoices);
+      getEl_loopF('chooseMonth', style_monthChoice);
+      getEl_loopF('prevMonth', style_prevMonth);
+      getEl_loopF('nextMonth', style_nextMonth);
 
-    function style_calendarBar(el) {
-      el.style.flex = '1';
-      el.style.maxHeight = timeBarHeight / 2 + 'rem';
-      el.style.backgroundColor = '#000000';
-      el.style.display = 'flex';
+      function style_calendarBar(el) {
+        el.style.flex = '1';
+        el.style.maxHeight = timeBarHeight / 2 + 'rem';
+        el.style.backgroundColor = '#000000';
+        el.style.display = 'flex';
+      }
+      function style_calendarTitle(el) {
+        el.style.color = '#ffffff';
+        el.style.fontWeight = 'bold';
+        el.style.marginLeft = '1.5rem';
+        el.style.display = 'flex';
+        el.style.flexDirection = 'column';
+        el.style.justifyContent = 'center';
+      }
+      function style_monthChoices(el) {
+        el.style.display = 'flex';
+        el.style.alignItems = 'center';
+        el.style.marginLeft = (marginLeft * 3) + 'rem';
+        el.style.color = '#ffffff';
+        // position
+        el.style.position = 'relative';
+      }
+      function style_monthChoice(el) {
+        // global var
+        el.style.fontSize = titleSize + 'rem';
+      }
+      function style_prevMonth(el) {
+        const width = 0.25;
+        style_prevArr(el, timeBarHeight, width);
+        el.style.marginLeft = 0 - marginLeft + 'rem';
+      }
+      function style_nextMonth(el) {
+        const width = 0.25;
+        const left = 0 - marginLeft * 3;
+        style_nextArr(el, timeBarHeight, width, left)
+        el.style.marginRight = 0 - marginLeft + 'rem';
+      }
     }
-    function style_calendarTitle(el) {
-      el.style.color = '#ffffff';
-      el.style.fontWeight = 'bold';
-      el.style.marginLeft = '1.5rem';
-      el.style.display = 'flex';
-      el.style.flexDirection = 'column';
-      el.style.justifyContent = 'center';
-    }
-    function style_monthChoices(el) {
-      el.style.display = 'flex';
-      el.style.alignItems = 'center';
-      el.style.marginLeft = (marginLeft * 3) + 'rem';
-      el.style.color = '#ffffff';
-      // position
-      el.style.position = 'relative';
-    }
-    function style_monthChoice(el) {
-      // global var
-      el.style.fontSize = titleSize + 'rem';
-    }
-    function style_prevMonth(el) {
-      const width = 0.25;
-      style_prevArr(el, timeBarHeight, width);
-      el.style.marginLeft = 0 - marginLeft + 'rem';
-    }
-    function style_nextMonth(el) {
-      const width = 0.25;
-      const left = 0 - marginLeft * 3;
-      style_nextArr(el, timeBarHeight, width, left)
-      el.style.marginRight = 0 - marginLeft + 'rem';
-    }
-
     // I N T E R A C T I V E S
-    inter_monthShown();
-    getEl_loopF('prevMonth', inter_prevMonth);
-    getEl_loopF('nextMonth', inter_nextMonth);
-    getEl_loopF('chooseMonth', inter_shiftMonthChoice);
+    interactives();
+    function interactives() {
+      inter_monthShown();
+      getEl_loopF('prevMonth', inter_prevMonth);
+      getEl_loopF('nextMonth', inter_nextMonth);
+      getEl_loopF('chooseMonth', inter_shiftMonthChoice);
 
-    function inter_monthShown() {
-      const date = new Date();
-      const monthName = date.toLocaleString('en-EN', { month: 'long' });
-      monthShown = monthName.split('')[0].toUpperCase() + monthName.substring(1, monthName.split('').length);
-    }
-    function inter_prevMonth(el) {
-      el.onclick = function () {
-        const index = months.indexOf(monthShown);
-        if (index > 0) {
-          const prevIndex = index - 1;
-          monthShown = months[prevIndex];
-          console.log(monthShown)
-          getEl_loopF('chooseMonth', inter_shiftMonthChoice);
+      function inter_monthShown() {
+        const date = new Date();
+        const monthName = date.toLocaleString('en-EN', { month: 'long' });
+        const firstLetter =  monthName.split('')[0].toUpperCase();
+        const remainingLetters = monthName.substring(1, monthName.split('').length);
+        monthShown = firstLetter + remainingLetters;
+      }
+      function inter_prevMonth(el) {
+        el.onclick = function () {
+          const currentIndex = months.indexOf(monthShown);
+          if (currentIndex > 0) {
+            const prevIndex = currentIndex - 1;
+            monthShown = months[prevIndex];
+            console.log(monthShown)
+            getEl_loopF('chooseMonth', inter_shiftMonthChoice);
+          }
         }
       }
-    }
-    function inter_nextMonth(el) {
-      el.onclick = function () {
-        const index = months.indexOf(monthShown);
-        if (index < months.length - 1) {
-          const prevIndex = index + 1;
-          monthShown = months[prevIndex];
-          console.log(monthShown)
-          getEl_loopF('chooseMonth', inter_shiftMonthChoice);
+      function inter_nextMonth(el) {
+        el.onclick = function () {
+          const index = months.indexOf(monthShown);
+          if (index < months.length - 1) {
+            const prevIndex = index + 1;
+            monthShown = months[prevIndex];
+            console.log(monthShown)
+            getEl_loopF('chooseMonth', inter_shiftMonthChoice);
+          }
         }
       }
+      function inter_shiftMonthChoice(el) {
+        el.innerText = monthShown;
+      }
     }
-    function inter_shiftMonthChoice(el) {
-      el.innerText = monthShown;
-    }
-
   }
 
   function cr8_calendar() {
@@ -976,8 +978,10 @@ window.addEventListener('load', function () {
     }
 
     // I N T E R A C T I V E S
-
-
+    const monthNow = new Date();
+    const num = monthNow.getMonth();
+    getEl_loopF('month', setup_hideMonths);
+    getOneEl_runF('month', num, inter_showMonth);
     function setup_hideMonths(el) {
       el.style.display = 'none';
     }
@@ -988,76 +992,6 @@ window.addEventListener('load', function () {
       el.style.display = monthDisplay;
       console.log(el);
     }
-    const monthNow = new Date();
-    const num = monthNow.getMonth();
-    getEl_loopF('month', setup_hideMonths);
-    getOneEl_runF('month', num, inter_showMonth);
-  }
-
-
-  function carouselify(HTMLCollection, arrDistanceTop, arrDistanceLeft, arrSize) {
-    let length = HTMLCollection.length;
-    for (let i = 0; i < length; i++) {
-      let childEl = HTMLCollection[i];
-      childEl.style.position = 'relative';
-      childEl.style.display = 'none';
-      let sensorsContainer = document.createElement('div');
-      sensorsContainer.style.position = 'absolute';
-      sensorsContainer.style.top = arrDistanceTop;
-      sensorsContainer.style.left = arrDistanceLeft;
-      sensorsContainer.style.display = 'flex';
-      let arrowLength = arrSize;
-      let borderBottom = (arrowLength / 1.25) / arrowLength;
-      let borderTop = (arrowLength / 1.25) / arrowLength;
-      let arrowLengthToRem = arrowLength + 'rem';
-      let borderBottomToRem = borderBottom + 'rem';
-      let borderTopToRem = borderTop + 'rem';
-      let sensorsContainerWidth = arrowLength * 2.5;
-      let sensorsContainerWidthToRem = sensorsContainerWidth + 'rem';
-      sensorsContainer.style.width = sensorsContainerWidthToRem;
-      sensorsContainer.style.justifyContent = 'space-between';
-      if (i !== 0) {
-        let arrowSensorL = document.createElement('div');
-        arrowSensorL.style.cursor = 'pointer';
-        arrowSensorL.style.height = '5px';
-        arrowSensorL.style.width = '5px';
-        arrowSensorL.style.border = arrowLengthToRem + ' solid black';
-        arrowSensorL.style.borderLeft = '0 solid black';
-        arrowSensorL.style.borderBottom = borderBottomToRem + ' solid white';
-        arrowSensorL.style.borderTop = borderTopToRem + ' solid white';
-        arrowSensorL.onclick = function (e) {
-          childEl.style.display = 'none';
-          let index = i - 1;
-          let prevEl = HTMLCollection[index];
-          prevEl.style.display = 'block';
-          console.log(prevEl);
-        }
-        sensorsContainer.appendChild(arrowSensorL);
-      }
-
-      let arrowSensorR = document.createElement('div');
-      arrowSensorR.style.cursor = 'pointer';
-      arrowSensorR.style.height = '5px';
-      arrowSensorR.style.width = '5px';
-      arrowSensorR.style.border = arrowLengthToRem + ' solid black';
-      arrowSensorR.style.borderRight = '0 solid black';
-      arrowSensorR.style.borderBottom = borderBottomToRem + ' solid white';
-      arrowSensorR.style.borderTop = borderTopToRem + ' solid white';
-      if (i + 1 < length) {
-        arrowSensorR.onclick = function (e) {
-          childEl.style.display = 'none';
-          let index = i + 1;
-          let nextEl = HTMLCollection[index];
-          nextEl.style.display = 'block';
-          console.log(nextEl);
-        }
-      } else {
-        arrowSensorR.style.display = 'none';
-      }
-      sensorsContainer.appendChild(arrowSensorR);
-      childEl.appendChild(sensorsContainer);
-    }
-    HTMLCollection[0].style.display = 'block';
   }
 
   const root = document.getElementsByClassName('root')[0]
