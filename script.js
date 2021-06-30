@@ -74,8 +74,6 @@ for (let i = 0; i < DATA_Calendar.length; i++) {
 console.log(months)
 
 window.addEventListener('load', function () {
-  app();
-  function app() {
     console.log('This function is executed once the page is fully loaded');
     const app = document.getElementById('app');
 
@@ -422,14 +420,12 @@ window.addEventListener('load', function () {
         el.style.fontSize = title_fontSize;
       }
     }
-
     function cr8_main() {
       function style_main(el) {
         el.style.display = 'flex';
       }
       getEl_loopF('main', style_main);
     }
-
     function cr8_timeVisuals() {
       getEl_loopF('timeVisuals', style_timeVisuals);
 
@@ -440,9 +436,8 @@ window.addEventListener('load', function () {
         el.style.height = heightVisuals;
       }
     }
-
     function cr8_timeBlocks() {
-      // C O N T E N T
+      // T I M E  B L O C K S  -   C O N T E N T
       getEl_loopF('chooseTimeBarColor', content_chooseTimeBarColor);
       getEl_loopF('projectTitle', content_projectTitle);
       getEl_loopF('hourBlockChoice', content_hourBlockChoice);
@@ -474,7 +469,7 @@ window.addEventListener('load', function () {
         plus.appendChild(plusText);
         el.appendChild(plus);
       }
-      // S T Y L E
+      // T I M E  B L O C K S  -  S T Y L E
       const marginLeft = timeBarHeight / 2;
       style();
       function style() {
@@ -652,7 +647,7 @@ window.addEventListener('load', function () {
           el.style.textAlign = 'center';
         }
       }
-      // I N T E R A C T I V E S
+      // T I M E  B L O C K S  -  I N T E R A C T I V E S
       interactives();
       function interactives() {
         getEl_loopF('projectTitle', inter_INPUT_projectTitle);
@@ -660,6 +655,7 @@ window.addEventListener('load', function () {
         getEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
         getEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
         getEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
+        
 
         function inter_INPUT_projectTitle(el) {
           const textarea = el.getElementsByTagName('textarea')[0];
@@ -718,7 +714,6 @@ window.addEventListener('load', function () {
         }
       }
     }
-
     function cr8_calendarBar() {
       // C A L E N D A R  B A R - C O N T E N T
       getEl_loopF('calendarTitle', content_calendarTitle);
@@ -848,7 +843,6 @@ window.addEventListener('load', function () {
         }
       }
     }
-
     function cr8_calendar() {
       // C A L E N D A R - C O N T E N T
       cr8_calendarDOM();
@@ -1073,9 +1067,6 @@ window.addEventListener('load', function () {
       console.log('mouse drag select');
       markerEl.remove();
     });
-
-
-  }
 });
 
 
