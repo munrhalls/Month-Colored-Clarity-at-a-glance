@@ -591,16 +591,16 @@ window.addEventListener('load', function () {
         const hoursNum = Number(el.classList[1]);
         const num = 1 - 0.75 + (hoursNum/100 * 3);
         el.style.height = num * 100 + '%';
-        function log() {
-          console.log(hoursNum)
-        }
-        log();
         // el.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
-        el.style.fontSize = '1.5rem';
+        el.style.fontSize = 1.5 + hoursNum/100 * 2 + 'rem';
         el.style.border = '2px solid #000000';
         el.style.paddingLeft = '1rem';
         el.style.paddingRight = '1rem';
         el.style.borderRadius = borderRadius;
+        el.style.display = 'flex';
+        el.style.justifyContent = 'center';
+        el.style.alignItems = 'center';
+        el.style.fontWeight = 'bold';
       }
       function style_nextHourBlock(el) {
         const width = 0.25;
