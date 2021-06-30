@@ -516,7 +516,8 @@ window.addEventListener('load', function () {
         el.style.position = 'relative';
         el.style.backgroundColor = '#000000';
         el.style.height = timeBarHeight + 'rem';
-        el.style.width = timeBarWidth + 'rem';
+        el.style.width = timeBarWidth + 2.5 + 'rem';
+        // el.style.paddingRight = '0.5rem';
         el.style.display = 'flex';
         el.style.justifyContent = 'center';
         el.style.alignItems = 'center';
@@ -587,10 +588,10 @@ window.addEventListener('load', function () {
         el.style.alignItems = 'center';
       }
       function style_hourBlock(el) {
-        const heightMultiplier = el.classList[1];
+        const heightMultiplier = Number(el.classList[1]);
         console.log(heightMultiplier)
-        el.style.height =  (heightMultiplier / 24) * 8 * timeBarHeight / 8 + 'rem';
-        el.style.maxHeight =  (heightMultiplier / 24) * 8  * timeBarHeight / 8 + 'rem';
+        el.style.height =  heightMultiplier / 24 * 100 + '%';
+        // el.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
         el.style.fontSize = '1.5rem';
         el.style.border = '2px solid #000000';
         el.style.paddingLeft = '0.5rem';
