@@ -588,18 +588,18 @@ window.addEventListener('load', function () {
         el.style.alignItems = 'center';
       }
       function style_hourBlock(el) {
-        const heightMultiplier = Number(el.classList[1]);
-        const num = 1 - 1 / (heightMultiplier * 2);
+        const hoursNum = Number(el.classList[1]);
+        const num = 1 - 0.75 + (hoursNum/100 * 3);
         el.style.height = num * 100 + '%';
         function log() {
-          console.log(num)
+          console.log(hoursNum)
         }
         log();
         // el.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
         el.style.fontSize = '1.5rem';
         el.style.border = '2px solid #000000';
-        el.style.paddingLeft = '0.5rem';
-        el.style.paddingRight = '0.5rem';
+        el.style.paddingLeft = '1rem';
+        el.style.paddingRight = '1rem';
         el.style.borderRadius = borderRadius;
       }
       function style_nextHourBlock(el) {
