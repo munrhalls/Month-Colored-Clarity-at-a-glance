@@ -751,9 +751,16 @@ window.addEventListener('load', function () {
         }
       }
       function inter_DRAG_hourBlock(el) {
-        el.onclick = function () {
-          console.log('click')
-        }
+        el.setAttribute('draggable', true);
+        el.addEventListener('dragstart', function (e) {
+          console.log('dragstart');
+        });
+        el.addEventListener('mousemove', function (e) {
+          console.log('mouse move');
+        });
+        el.addEventListener('mouseup', function (e) {
+          console.log('mouse drag select');
+        });
       }
     }
   }
@@ -1039,77 +1046,88 @@ window.addEventListener('load', function () {
       }
     }
   }
+  function dragstart_handler(ev) {
+    // Add the target element's id to the data transfer object
+    ev.dataTransfer.setData("text/plain", ev.target.id);
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    // Get the element by id
+    const element = document.getElementById("p1");
+    // Add the ondragstart event listener
+    element.addEventListener("dragstart", dragstart_handler);
+  });
 
-  const root = document.getElementsByClassName('root')[0]
-  root.style.minHeight = '100vh';
-  root.style.userSelect = 'none';
-  root.markingHoursEvent = false;
-  root.style.position = 'relative';
-  root.addEventListener('mousedown', function (e) {
-    root.markingHoursEvent = true;
-    // console.log('create div');
-    let markerEl = document.createElement('div');
-    markerEl.id = 'markerEl';
-    markerEl.onclick = function (e) {
-      // console.log(e)
-    }
 
-    markerEl.style.height = '1px';
-    markerEl.style.width = '1px';
-    markerEl.style.border = '1px solid #000000';
-    let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
-    let projectColor = colors[rndNum];
-    markerEl.style.background = projectColor;
-    markerEl.projectColor = projectColor;
-    markerEl.style.opacity = '70%';
-    markerEl.style.position = 'absolute';
-    let y = e.pageY.toString() + 'px';
-    let x = e.pageX.toString() + 'px';
-    markerEl.style.top = y;
-    markerEl.style.left = x;
-    markerEl.y = y;
-    markerEl.x = x;
-    root.appendChild(markerEl)
-  });
-  root.addEventListener('mousemove', function (e) {
-    if (root.markingHoursEvent) {
-      // console.log('re-draw div');
-      let markerEl = document.getElementById('markerEl');
-      let prevCursorY = parseInt((markerEl.y).split('px')[0]);
-      let prevCursorX = parseInt((markerEl.x).split('px')[0]);
-      let heightUpdateY = Math.abs(e.pageY - prevCursorY) + 'px';
-      let heightUpdateX = Math.abs(e.pageX - prevCursorX) + 'px';
-      markerEl.style.height = heightUpdateY;
-      markerEl.style.width = heightUpdateX;
-      if (e.pageY - parseInt((markerEl.y).split('px')[0]) < 0) {
-        markerEl.style.top = e.pageY + 'px';
-      }
-      if (e.pageX - parseInt((markerEl.x).split('px')[0]) < 0) {
-        markerEl.style.left = e.pageX + 'px';
-      }
-      // console.log('check if an hourtick is inside coordinates (math, < than)');
-      // console.log('pre-mark hour ticks inside');
-      // console.log('erase mark or set mark, depending on confirmation');
-    }
-    // Dispatch the event.
-  });
-  root.addEventListener('mouseup', function (e) {
-    root.markingHoursEvent = false;
-    let markerEl = document.getElementById('markerEl');
-    let hourEls = document.getElementsByClassName('hourEl');
-    if (hourEls && hourEls.length) {
-      const event = new Event('requestCoords', {
-        bubbles: false,
-      });
-      event.markerEl = markerEl;
-      for (let i = 0; i < hourEls.length; i++) {
-        hourEls[i].dispatchEvent(event);
-      }
-    }
-    // Event listeners - ctrl f 'requestCoords'
-    console.log('mouse drag select');
-    markerEl.remove();
-  });
+  // const root = document.getElementsByClassName('root')[0]
+  // root.style.minHeight = '100vh';
+  // root.style.userSelect = 'none';
+  // root.markingHoursEvent = false;
+  // root.style.position = 'relative';
+  // root.addEventListener('mousedown', function (e) {
+  //   root.markingHoursEvent = true;
+  //   // console.log('create div');
+  //   let markerEl = document.createElement('div');
+  //   markerEl.id = 'markerEl';
+  //   markerEl.onclick = function (e) {
+  //     // console.log(e)
+  //   }
+
+  //   markerEl.style.height = '1px';
+  //   markerEl.style.width = '1px';
+  //   markerEl.style.border = '1px solid #000000';
+  //   let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
+  //   let projectColor = colors[rndNum];
+  //   markerEl.style.background = projectColor;
+  //   markerEl.projectColor = projectColor;
+  //   markerEl.style.opacity = '70%';
+  //   markerEl.style.position = 'absolute';
+  //   let y = e.pageY.toString() + 'px';
+  //   let x = e.pageX.toString() + 'px';
+  //   markerEl.style.top = y;
+  //   markerEl.style.left = x;
+  //   markerEl.y = y;
+  //   markerEl.x = x;
+  //   root.appendChild(markerEl)
+  // });
+  // root.addEventListener('mousemove', function (e) {
+  //   if (root.markingHoursEvent) {
+  //     // console.log('re-draw div');
+  //     let markerEl = document.getElementById('markerEl');
+  //     let prevCursorY = parseInt((markerEl.y).split('px')[0]);
+  //     let prevCursorX = parseInt((markerEl.x).split('px')[0]);
+  //     let heightUpdateY = Math.abs(e.pageY - prevCursorY) + 'px';
+  //     let heightUpdateX = Math.abs(e.pageX - prevCursorX) + 'px';
+  //     markerEl.style.height = heightUpdateY;
+  //     markerEl.style.width = heightUpdateX;
+  //     if (e.pageY - parseInt((markerEl.y).split('px')[0]) < 0) {
+  //       markerEl.style.top = e.pageY + 'px';
+  //     }
+  //     if (e.pageX - parseInt((markerEl.x).split('px')[0]) < 0) {
+  //       markerEl.style.left = e.pageX + 'px';
+  //     }
+  //     // console.log('check if an hourtick is inside coordinates (math, < than)');
+  //     // console.log('pre-mark hour ticks inside');
+  //     // console.log('erase mark or set mark, depending on confirmation');
+  //   }
+  //   // Dispatch the event.
+  // });
+  // root.addEventListener('mouseup', function (e) {
+  //   root.markingHoursEvent = false;
+  //   let markerEl = document.getElementById('markerEl');
+  //   let hourEls = document.getElementsByClassName('hourEl');
+  //   if (hourEls && hourEls.length) {
+  //     const event = new Event('requestCoords', {
+  //       bubbles: false,
+  //     });
+  //     event.markerEl = markerEl;
+  //     for (let i = 0; i < hourEls.length; i++) {
+  //       hourEls[i].dispatchEvent(event);
+  //     }
+  //   }
+  //   // Event listeners - ctrl f 'requestCoords'
+  //   console.log('mouse drag select');
+  //   markerEl.remove();
+  // });
 });
 
 
