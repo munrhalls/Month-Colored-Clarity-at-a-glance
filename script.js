@@ -676,6 +676,7 @@ window.addEventListener('load', function () {
         for (let i = 0; i < hours.children.length; i++) {
           const hour = hours.children[i];
           hour.style.backgroundColor = '#000000';
+          hour.style.opacity = '0.85';
           hour.style.color = '#ffffff';
           hour.style.flex = '1';
           hour.style.fontSize = '0.5rem';
@@ -690,6 +691,7 @@ window.addEventListener('load', function () {
       getEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
       getEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
       getEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
+      getEl_loopF('hourBlock', inter_DRAG_hourBlock);
 
       function inter_INPUT_projectTitle(el) {
         const textarea = el.getElementsByTagName('textarea')[0];
@@ -737,13 +739,20 @@ window.addEventListener('load', function () {
           const hourBlockChoice = consoleHourBlocks.getElementsByClassName('hourBlockChoice')[0];
           const choiceNum = hourBlockChoice.classList[1];
           const hourBlock = hourBlockChoice.getElementsByClassName(choiceNum)[0];
-          let newClone = hourBlock.cloneNode(true);
 
+          let newClone = hourBlock.cloneNode(true);
+          inter_DRAG_hourBlock(newClone);
           appendClone(newClone);
+
           function appendClone(newClone) {
             const logHourBlocks = consoleHourBlocks.getElementsByClassName('logHourBlocks')[0];
             logHourBlocks.appendChild(newClone);
           }
+        }
+      }
+      function inter_DRAG_hourBlock(el) {
+        el.onclick = function () {
+          console.log('click')
         }
       }
     }
