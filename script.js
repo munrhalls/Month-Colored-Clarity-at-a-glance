@@ -1069,15 +1069,19 @@ window.addEventListener('load', function () {
 
   function dragover_handler(ev) {
     ev.preventDefault();
-    ev.dataTransfer.dropEffect = "move"
+    ev.dataTransfer.dropEffect = "copy"
   }
   function drop_handler(ev) {
     ev.preventDefault();
     // Get the id of the target and add the moved element to the target's DOM
     const data = ev.dataTransfer.getData("text/plain");
     const className = 'hourBlock ' + data;
-    const hourBlock = document.getElementsByClassName(className)[0]
-    ev.target.appendChild(hourBlock);
+    const hourBlock = document.getElementsByClassName(className)[0];
+    console.log(ev.target.classList[0])
+    if (ev.target.classList[0] == 'day') {
+      let newClone = hourBlock.cloneNode(true);
+      ev.target.appendChild(newClone);
+    }
   }
 
 
