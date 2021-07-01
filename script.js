@@ -950,6 +950,8 @@ window.addEventListener('load', function () {
       function content_hourMarks(el) {
         const hourMarks = document.createElement('div');
         hourMarks.className = 'hourMarks';
+        hourMarks.style.flex = '1';
+        // hourMarks.style.position = 'absolute'
         content_hourMark(el);
         function content_hourMark(el) {
           for (let i = 0; i <= 24; i += 4) {
@@ -1018,7 +1020,7 @@ window.addEventListener('load', function () {
       el.style.fontSize = (fontSize - 0.33) + 'rem';
       el.style.display = 'flex';
       el.style.alignItems = 'flex-end';
-      el.style.maxHeight = '0.75rem';
+      // el.style.maxHeight = '0.75rem';
       el.style.backgroundColor = '#000000';
       el.style.borderLeft = '1px solid #ffffff';
       // el.style.borderRight = '1px solid #ffffff';
@@ -1077,9 +1079,11 @@ window.addEventListener('load', function () {
     const data = ev.dataTransfer.getData("text/plain");
     const className = 'hourBlock ' + data;
     const hourBlock = document.getElementsByClassName(className)[0];
-    console.log(ev.target.classList[0])
+    console.log(ev.target.classList[0]);
     if (ev.target.classList[0] == 'day') {
       let newClone = hourBlock.cloneNode(true);
+
+
       ev.target.appendChild(newClone);
     }
   }
