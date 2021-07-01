@@ -753,8 +753,9 @@ window.addEventListener('load', function () {
       function inter_DRAG_hourBlock(el) {
         el.setAttribute('draggable', true);
         el.addEventListener('dragstart', function (e) {
-          console.log('dragstart');
           e.dataTransfer.dropEffect = "copy";
+          e.dataTransfer.setData("text/plain", e.target.innerText);
+          e.dataTransfer.setData("text/html", e.target.outerHTML);
         });
         el.addEventListener('mousemove', function (e) {
           e.preventDefault();
@@ -1046,8 +1047,10 @@ window.addEventListener('load', function () {
         el.style.display = monthDisplay;
       }
       function inter_makeIntoDropZone(el) {
-        el.ondrop = "drop_handler(event)"
-        el.ondragover = "dragover_handler(event)"
+        el.setAttribute('dragenter', 'event.preventDefault();');
+        el.setAttribute('ondragover', 'event.preventDefault();');
+        el.ondragover = dragover_handler;
+        el.ondrop = drop_handler;
       }
     }
   }
@@ -1066,13 +1069,15 @@ window.addEventListener('load', function () {
 
   function dragover_handler(ev) {
     ev.preventDefault();
-    ev.dataTransfer.dropEffect = "move";
+    ev.dataTransfer.dropEffect = "move"
   }
   function drop_handler(ev) {
     ev.preventDefault();
     // Get the id of the target and add the moved element to the target's DOM
     const data = ev.dataTransfer.getData("text/plain");
-    ev.target.appendChild(document.getElementById(data));
+    const className = 'hourBlock ' + data;
+    const hourBlock = document.getElementsByClassName(className)[0]
+    ev.target.appendChild(hourBlock);
   }
 
 
