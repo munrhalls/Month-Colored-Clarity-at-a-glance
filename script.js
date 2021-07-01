@@ -622,6 +622,7 @@ window.addEventListener('load', function () {
         el.style.justifyContent = 'center';
         el.style.alignItems = 'center';
         el.style.fontWeight = 'bold';
+        el.style.color = '#000000';
       }
       function style_addHourBlock(el) {
         el.style.cursor = 'pointer';
