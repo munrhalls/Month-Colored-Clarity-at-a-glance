@@ -1114,7 +1114,7 @@ window.addEventListener('load', function () {
     const className = 'hourBlock ' + data;
     const hourBlock = document.getElementsByClassName(className)[0];
     console.log(ev.target.classList[0]);
-    if (ev.target.classList[0] == 'hourMark') {
+    if (ev.target.classList[0] == 'hourMarkDropzone') {
       let newClone = hourBlock.cloneNode(true);
       ev.target.appendChild(newClone);
     }
