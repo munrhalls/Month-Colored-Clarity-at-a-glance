@@ -1041,14 +1041,30 @@ window.addEventListener('load', function () {
       // el.style.borderRight = '1px solid #ffffff';
       style_hourMark(el);
       function style_hourMark(el) {
-        const hourMarks = el.getElementsByClassName('hourMarkCol');
-        for (let i = 0; i < hourMarks.length; i++) {
-          const hour = hourMarks[i];
-          hour.style.flex = '1';
-          hour.style.textAlign = 'center';
-          hour.style.color = '#ffffff';
-          hour.style.backgroundColor = '#000000';
-
+        const cols = el.getElementsByClassName('hourMarkCol');
+        for (let i = 0; i < cols.length; i++) {
+          const col = cols[i];
+          col.style.flex = '1';
+          col.style.textAlign = 'center';
+          col.style.color = '#ffffff';
+          col.style.height = '100%';
+          col.style.display = 'flex';
+          col.style.flexDirection = 'column';
+        }
+        const dropzones = el.getElementsByClassName('hourMarkDropzone');
+        for (let i = 0; i < dropzones.length; i++) {
+          const dropzone = dropzones[i];
+          dropzone.style.flex = '1';
+          dropzone.style.backgroundColor = 'transparent';
+          dropzone.style.height = '100%';
+        }
+        const marks = el.getElementsByClassName('hourMark');
+        for (let i = 0; i < marks.length; i++) {
+          const mark = marks[i];
+          mark.style.flex = '1';
+          mark.style.backgroundColor = '#000000';
+          mark.style.maxHeight = '0.75rem';
+          mark.style.flex = '1';
         }
       }
     }
