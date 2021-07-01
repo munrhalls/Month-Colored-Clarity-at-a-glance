@@ -754,11 +754,14 @@ window.addEventListener('load', function () {
         el.setAttribute('draggable', true);
         el.addEventListener('dragstart', function (e) {
           console.log('dragstart');
+          e.dataTransfer.dropEffect = "copy";
         });
         el.addEventListener('mousemove', function (e) {
+          e.preventDefault();
           console.log('mouse move');
         });
         el.addEventListener('mouseup', function (e) {
+          e.preventDefault();
           console.log('mouse drag select');
         });
       }
@@ -1035,17 +1038,21 @@ window.addEventListener('load', function () {
       const num = monthNow.getMonth();
       getEl_loopF('month', setup_hideMonths);
       getOneEl_runF('month', num, inter_showMonth);
+      getEl_loopF('day', inter_makeIntoDropZone);
       function setup_hideMonths(el) {
-        el.style.display = 'none';
-      }
-      function inter_hideMonth(el) {
         el.style.display = 'none';
       }
       function inter_showMonth(el) {
         el.style.display = monthDisplay;
       }
+      function inter_makeIntoDropZone(el) {
+        el.ondrop = "drop_handler(event)"
+        el.ondragover = "dragover_handler(event)"
+      }
     }
   }
+
+
   function dragstart_handler(ev) {
     // Add the target element's id to the data transfer object
     ev.dataTransfer.setData("text/plain", ev.target.id);
@@ -1056,6 +1063,18 @@ window.addEventListener('load', function () {
     // Add the ondragstart event listener
     element.addEventListener("dragstart", dragstart_handler);
   });
+
+  function dragover_handler(ev) {
+    ev.preventDefault();
+    ev.dataTransfer.dropEffect = "move";
+  }
+  function drop_handler(ev) {
+    ev.preventDefault();
+    // Get the id of the target and add the moved element to the target's DOM
+    const data = ev.dataTransfer.getData("text/plain");
+    ev.target.appendChild(document.getElementById(data));
+  }
+
 
 
   // const root = document.getElementsByClassName('root')[0]
