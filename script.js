@@ -482,7 +482,9 @@ window.addEventListener('load', function () {
       const hours = document.createElement('div');
       for (let i = 1; i <= daysNum; i++) {
         let hour = document.createElement('div');
-        hour.innerText = i;
+        let num = document.createElement('span');
+        num.innerText = i;
+        hour.appendChild(num);
         hours.appendChild(hour);
       }
       const log = document.getElementsByClassName('logHourBlocks')[0];
@@ -662,14 +664,21 @@ window.addEventListener('load', function () {
         el.style.display = 'flex';
         el.style.flex = '5';
         el.style.textAlign = 'center';
+        el.style.alignItems = 'flex-end';
+        el.style.position = 'relative';
         const hours = el.children[0];
+        hours.style.position = 'absolute';
+        hours.style.bottom = '0';
+        hours.style.left = '0';
+        hours.style.right = '0';
         hours.style.flex = '5';
         hours.style.display = 'flex';
-        for (let i = 0; i < hours.length; i++) {
-          const hour = hours[i];
+        for (let i = 0; i < hours.children.length; i++) {
+          const hour = hours.children[i];
           hour.style.backgroundColor = '#000000';
           hour.style.color = '#ffffff';
           hour.style.flex = '1';
+          hour.style.fontSize = '0.5rem';
         }
       }
     }
