@@ -955,12 +955,28 @@ window.addEventListener('load', function () {
         content_hourMark(el);
         function content_hourMark(el) {
           for (let i = 0; i <= 24; i += 4) {
-            const hour = document.createElement('div');
-            hour.innerText = i;
-            hourMarks.appendChild(hour);
+            const hourMarkCol = document.createElement('div');
+            const hourMarkDropzone = document.createElement('div');
+            const hourMark = document.createElement('div');
+            hourMarkCol.className = 'hourMarkCol';
+            hourMarkDropzone.className = 'hourMarkDropzone';
+            hourMark.className = 'hourMark';
+            hourMark.innerText = i;
+            hourMarkCol.appendChild(hourMarkDropzone);
+            hourMarkCol.appendChild(hourMark);
+            hourMarks.appendChild(hourMarkCol);
+
           }
           el.appendChild(hourMarks);
         }
+        // function content_hourMark(el) {
+        //   for (let i = 0; i <= 24; i += 4) {
+        //     const hour = document.createElement('div');
+        //     hour.innerText = i;
+        //     hourMarks.appendChild(hour);
+        //   }
+        //   el.appendChild(hourMarks);
+        // }
       }
     }
     // C A L E N D A R - S T Y L E 
@@ -1021,16 +1037,18 @@ window.addEventListener('load', function () {
       el.style.display = 'flex';
       el.style.alignItems = 'flex-end';
       // el.style.maxHeight = '0.75rem';
-      el.style.backgroundColor = '#000000';
       el.style.borderLeft = '1px solid #ffffff';
       // el.style.borderRight = '1px solid #ffffff';
       style_hourMark(el);
       function style_hourMark(el) {
-        for (let i = 0; i < el.children.length; i++) {
-          const hour = el.children[i];
+        const hourMarks = el.getElementsByClassName('hourMarkCol');
+        for (let i = 0; i < hourMarks.length; i++) {
+          const hour = hourMarks[i];
           hour.style.flex = '1';
           hour.style.textAlign = 'center';
           hour.style.color = '#ffffff';
+          hour.style.backgroundColor = '#000000';
+
         }
       }
     }
@@ -1080,10 +1098,8 @@ window.addEventListener('load', function () {
     const className = 'hourBlock ' + data;
     const hourBlock = document.getElementsByClassName(className)[0];
     console.log(ev.target.classList[0]);
-    if (ev.target.classList[0] == 'day') {
+    if (ev.target.classList[0] == 'hourMark') {
       let newClone = hourBlock.cloneNode(true);
-
-
       ev.target.appendChild(newClone);
     }
   }
