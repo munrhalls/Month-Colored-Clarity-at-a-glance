@@ -1126,14 +1126,22 @@ window.addEventListener('load', function () {
     handle_dropMatch();
     function handle_dropMatch() {
       if (ev.target.classList[0] == 'hourMarksDropzoneCol') {
+        const container = hourBlock.parentElement;
         let newClone = hourBlock.cloneNode(true);
         handle_dragClone();
-        function handle_dragClone(ev) {
+        function handle_dragClone() {
           newClone.setAttribute('draggable', true);
           newClone.addEventListener('dragstart', function (ev) {
-            ev.dataTransfer.dropEffect = "move";
             ev.dataTransfer.setData("text/plain", ev.target.innerText);
+            ev.dataTransfer.dropEffect = "move";
           });
+          newClone.addEventListener('dragover', dragover_handler);
+        }
+        function dragover_handler(ev) {
+          console.log("dragOver: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
+          ev.preventDefault();
+          // Set the dropEffect to move
+          ev.dataTransfer.dropEffect = "move"
         }
         style_newClone();
         function style_newClone() {
@@ -1145,6 +1153,8 @@ window.addEventListener('load', function () {
           newClone.style.padding = '0';
         }
         ev.target.appendChild(newClone);
+        container.removeChild(hourBlock);
+
       }
     }
   }
