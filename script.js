@@ -758,14 +758,14 @@ window.addEventListener('load', function () {
           e.dataTransfer.setData("text/plain", e.target.innerText);
           e.dataTransfer.setData("text/html", e.target.outerHTML);
         });
-        el.addEventListener('mousemove', function (e) {
-          e.preventDefault();
-          console.log('mouse move');
-        });
-        el.addEventListener('mouseup', function (e) {
-          e.preventDefault();
-          console.log('mouse drag select');
-        });
+        // el.addEventListener('mousemove', function (e) {
+        //   e.preventDefault();
+        //   console.log('mouse move');
+        // });
+        // el.addEventListener('mouseup', function (e) {
+        //   e.preventDefault();
+        //   console.log('mouse drag select');
+        // });
       }
     }
   }
@@ -1043,11 +1043,6 @@ window.addEventListener('load', function () {
       el.style.borderLeft = '1px solid #ffffff';
       style_dropzone();
       style_container();
-      // hour marks stretch
-      // symmetrically 24 dropzone cols
-      // adjust drop vars
-      // conditional to not exceeed 24 
-      // 
 
       function style_dropzone() {
         const dropzone = el.getElementsByClassName('hourMarksDropzone')[0];
@@ -1108,7 +1103,7 @@ window.addEventListener('load', function () {
 
   function dragstart_handler(ev) {
     // Add the target element's id to the data transfer object
-    ev.dataTransfer.setData("text/plain", ev.target.id);
+    // ev.dataTransfer.setData("text/plain", ev.target.id);
   }
   window.addEventListener('DOMContentLoaded', () => {
     // Get the element by id
@@ -1130,14 +1125,24 @@ window.addEventListener('load', function () {
 
     if (ev.target.classList[0] == 'hourMarksDropzoneCol') {
       let newClone = hourBlock.cloneNode(true);
-      const domRect = ev.target.getBoundingClientRect();
-      const remWidth = domRect.width * 0.06;
+      inter_DRAG_clone();
+      function inter_DRAG_clone() {
+        newClone.setAttribute('draggable', true);
+        newClone.addEventListener('dragstart', function (ev) {
+          ev.dataTransfer.dropEffect = "move";
+          ev.dataTransfer.setData("text/plain", ev.target.innerText);
+          ev.dataTransfer.setData("text/html", ev.target.outerHTML);
+        });
+      }
+      const remWidth = ev.target.getBoundingClientRect().width * 0.06;
       const timeBlockSize = Number(data);
-
-      newClone.style.width = remWidth * timeBlockSize + 'rem';
-      newClone.style.margin = '0';
-      newClone.style.height = '100%';
-      newClone.style.padding = '0';
+      style_newClone();
+      function style_newClone() {
+        newClone.style.width = remWidth * timeBlockSize + 'rem';
+        newClone.style.margin = '0';
+        newClone.style.height = '100%';
+        newClone.style.padding = '0';
+      }
       ev.target.appendChild(newClone);
     }
   }
