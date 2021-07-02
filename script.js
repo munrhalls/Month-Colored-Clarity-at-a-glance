@@ -1035,6 +1035,10 @@ window.addEventListener('load', function () {
       el.style.borderLeft = '1px solid #ffffff';
       style_dropzone();
       style_container();
+      // hour marks stretch
+
+      // symmetrically 24 dropzone cols
+      // conditional to not exceeed 24 
       function style_dropzone() {
         const dropzone = el.getElementsByClassName('dropzone')[0];
 
@@ -1042,6 +1046,15 @@ window.addEventListener('load', function () {
       function style_container() {
         const container = el.getElementsByClassName('hourMarksContainer')[0];
         container.style.display = 'flex';
+        container.style.width = '100%';
+        style_mark();
+        function style_mark() {
+          const marks = container.getElementsByClassName('hourMark');
+          for (let i = 0; i < marks.length; i++) {
+            const mark = marks[i];
+            mark.style.flex = '1';
+          }
+        }
       }
     }
 
