@@ -1046,8 +1046,9 @@ window.addEventListener('load', function () {
       // hour marks stretch
       // symmetrically 24 dropzone cols
       // adjust drop vars
-
       // conditional to not exceeed 24 
+      // 
+
       function style_dropzone() {
         const dropzone = el.getElementsByClassName('hourMarksDropzone')[0];
         dropzone.style.height = '100%';
@@ -1059,6 +1060,7 @@ window.addEventListener('load', function () {
           for (let i = 0; i < cols.length; i++) {
             const col = cols[i];
             col.style.flex = '1';
+            col.style.borderLeft = '1px solid rgb(220,220,220, 0.3)';
           }
         }
 
