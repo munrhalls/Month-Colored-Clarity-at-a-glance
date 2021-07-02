@@ -1118,32 +1118,27 @@ window.addEventListener('load', function () {
   }
   function drop_handler(ev) {
     ev.preventDefault();
+    ev.dataTransfer.effectAllowed = "move"
     // Get the id of the target and add the moved element to the target's DOM
     const data = ev.dataTransfer.getData("text/plain");
     const className = 'hourBlock ' + data;
     const hourBlock = document.getElementsByClassName(className)[0];
+    handle_dropMatch();
+    function handle_dropMatch() {
+      if (ev.target.classList[0] == 'hourMarksDropzoneCol') {
+        let newClone = hourBlock.cloneNode(true);
+        const remWidth = ev.target.getBoundingClientRect().width * 0.06;
+        const timeBlockSize = Number(data);
+        style_newClone();
+        function style_newClone() {
+          newClone.style.width = remWidth * timeBlockSize + 'rem';
+          newClone.style.margin = '0';
+          newClone.style.height = '100%';
+          newClone.style.padding = '0';
+        }
+        ev.target.appendChild(newClone);
+      }
 
-    if (ev.target.classList[0] == 'hourMarksDropzoneCol') {
-      let newClone = hourBlock.cloneNode(true);
-      inter_DRAG_clone();
-      function inter_DRAG_clone() {
-        newClone.setAttribute('draggable', true);
-        newClone.addEventListener('dragstart', function (ev) {
-          ev.dataTransfer.dropEffect = "move";
-          ev.dataTransfer.setData("text/plain", ev.target.innerText);
-          ev.dataTransfer.setData("text/html", ev.target.outerHTML);
-        });
-      }
-      const remWidth = ev.target.getBoundingClientRect().width * 0.06;
-      const timeBlockSize = Number(data);
-      style_newClone();
-      function style_newClone() {
-        newClone.style.width = remWidth * timeBlockSize + 'rem';
-        newClone.style.margin = '0';
-        newClone.style.height = '100%';
-        newClone.style.padding = '0';
-      }
-      ev.target.appendChild(newClone);
     }
   }
 
