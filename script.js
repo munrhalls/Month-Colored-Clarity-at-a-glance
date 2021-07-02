@@ -962,7 +962,7 @@ window.addEventListener('load', function () {
           function content_dropzoneCols() {
             for (let i = 1; i < 25; i++) {
               const col = document.createElement('div');
-              col.className = 'hourMarksDropzoneCol';
+              col.classList = 'hourMarksDropzoneCol ' + i;
               dropzone.appendChild(col);
             }
           }
@@ -971,7 +971,7 @@ window.addEventListener('load', function () {
         function content_marks() {
           const marks = document.createElement('div');
           marks.className = 'hourMarksContainer';
-          for (let i = 1; i < 25; i++) {
+          for (let i = 0; i < 25; i += 4) {
             const mark = document.createElement('div');
             mark.className = 'hourMark';
             mark.innerText = i;
@@ -1045,6 +1045,7 @@ window.addEventListener('load', function () {
       style_container();
       // hour marks stretch
       // symmetrically 24 dropzone cols
+      // adjust drop vars
 
       // conditional to not exceeed 24 
       function style_dropzone() {
@@ -1054,13 +1055,10 @@ window.addEventListener('load', function () {
         dropzone.style.display = 'flex';
         style_cols();
         function style_cols() {
-
           const cols = dropzone.getElementsByClassName('hourMarksDropzoneCol')
-          console.log(cols)
           for (let i = 0; i < cols.length; i++) {
             const col = cols[i];
             col.style.flex = '1';
-            col.style.background = 'blue'
           }
         }
 
@@ -1075,6 +1073,8 @@ window.addEventListener('load', function () {
           for (let i = 0; i < marks.length; i++) {
             const mark = marks[i];
             mark.style.flex = '1';
+            mark.style.color = '#ffffff';
+            mark.style.backgroundColor = '#000000';
           }
         }
       }
@@ -1125,13 +1125,14 @@ window.addEventListener('load', function () {
     const data = ev.dataTransfer.getData("text/plain");
     const className = 'hourBlock ' + data;
     const hourBlock = document.getElementsByClassName(className)[0];
-    console.log(ev.target.classList[0]);
-    if (ev.target.classList[0] == 'hourMarkDropzone') {
+
+    if (ev.target.classList[0] == 'hourMarksDropzoneCol') {
       let newClone = hourBlock.cloneNode(true);
       const domRect = ev.target.getBoundingClientRect();
       const remWidth = domRect.width * 0.06;
       const timeBlockSize = Number(data);
       const fourHoursWidth = 4;
+
       newClone.style.width = (remWidth / fourHoursWidth) * timeBlockSize + 'rem';
       newClone.style.margin = '0';
       newClone.style.height = '100%';
