@@ -758,14 +758,7 @@ window.addEventListener('load', function () {
           e.dataTransfer.setData("text/plain", e.target.innerText);
           e.dataTransfer.setData("text/html", e.target.outerHTML);
         });
-        // el.addEventListener('mousemove', function (e) {
-        //   e.preventDefault();
-        //   console.log('mouse move');
-        // });
-        // el.addEventListener('mouseup', function (e) {
-        //   e.preventDefault();
-        //   console.log('mouse drag select');
-        // });
+
       }
     }
   }
@@ -1122,28 +1115,14 @@ window.addEventListener('load', function () {
     const data = ev.dataTransfer.getData("text/plain");
     const className = 'hourBlock ' + data;
     const hourBlock = document.getElementsByClassName(className)[0];
-
-    handle_dropMatch();
-    function handle_dropMatch() {
+    handle_matchingDropzone();
+    function handle_matchingDropzone() {
       if (ev.target.classList[0] == 'hourMarksDropzoneCol') {
-        const container = hourBlock.parentElement;
         let newClone = hourBlock.cloneNode(true);
-        handle_dragClone();
-        function handle_dragClone() {
-          newClone.setAttribute('draggable', true);
-          newClone.addEventListener('dragstart', function (ev) {
-            ev.dataTransfer.setData("text/plain", ev.target.innerText);
-            ev.dataTransfer.dropEffect = "move";
-          });
-          newClone.addEventListener('dragover', dragover_handler);
-        }
-        function dragover_handler(ev) {
-          console.log("dragOver: dropEffect = " + ev.dataTransfer.dropEffect + " ; effectAllowed = " + ev.dataTransfer.effectAllowed);
-          ev.preventDefault();
-          // Set the dropEffect to move
-          ev.dataTransfer.dropEffect = "move"
-        }
+        handle_dragFromCalendar();
         style_newClone();
+        ev.target.appendChild(newClone);
+
         function style_newClone() {
           const remWidth = ev.target.getBoundingClientRect().width * 0.06;
           const timeBlockSize = Number(data);
@@ -1152,10 +1131,15 @@ window.addEventListener('load', function () {
           newClone.style.height = '100%';
           newClone.style.padding = '0';
         }
-        ev.target.appendChild(newClone);
-        container.removeChild(hourBlock);
-
+        function handle_dragFromCalendar() {
+          newClone.setAttribute('draggable', true);
+          newClone.addEventListener('dragstart', function (ev) {
+            ev.dataTransfer.setData("text/plain", ev.target.innerText);
+            ev.dataTransfer.dropEffect = "move";
+          });
+        }
       }
+
     }
   }
 
