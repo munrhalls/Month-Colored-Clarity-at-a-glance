@@ -1135,11 +1135,10 @@ window.addEventListener('load', function () {
             ev.dataTransfer.setData("text/plain", ev.target.innerText);
           });
         }
-
-        const remWidth = ev.target.getBoundingClientRect().width * 0.06;
-        const timeBlockSize = Number(data);
         style_newClone();
         function style_newClone() {
+          const remWidth = ev.target.getBoundingClientRect().width * 0.06;
+          const timeBlockSize = Number(data);
           newClone.style.width = remWidth * timeBlockSize + 'rem';
           newClone.style.margin = '0';
           newClone.style.height = '100%';
