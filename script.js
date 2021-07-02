@@ -1131,9 +1131,8 @@ window.addEventListener('load', function () {
       const domRect = ev.target.getBoundingClientRect();
       const remWidth = domRect.width * 0.06;
       const timeBlockSize = Number(data);
-      const fourHoursWidth = 4;
 
-      newClone.style.width = (remWidth / fourHoursWidth) * timeBlockSize + 'rem';
+      newClone.style.width = remWidth * timeBlockSize + 'rem';
       newClone.style.margin = '0';
       newClone.style.height = '100%';
       newClone.style.padding = '0';
