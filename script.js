@@ -1117,12 +1117,15 @@ window.addEventListener('load', function () {
     const hourBlock = document.getElementsByClassName(className)[0];
     console.log(ev.target.classList[0]);
     if (ev.target.classList[0] == 'hourMarkDropzone') {
-      const domRect = ev.target.getBoundingClientRect();
       let newClone = hourBlock.cloneNode(true);
+      const domRect = ev.target.getBoundingClientRect();
       const remWidth = domRect.width * 0.06;
-      newClone.style.width = remWidth / 4 + 'rem';
+      const timeBlockSize = Number(data);
+      const fourHoursWidth = 4;
+      newClone.style.width = (remWidth / fourHoursWidth) * timeBlockSize + 'rem';
       newClone.style.margin = '0';
       newClone.style.height = '100%';
+      newClone.style.padding = '0';
       ev.target.appendChild(newClone);
     }
   }
