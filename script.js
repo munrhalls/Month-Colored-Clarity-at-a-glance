@@ -1046,7 +1046,7 @@ window.addEventListener('load', function () {
         for (let i = 0; i < cols.length; i++) {
           const col = cols[i];
           col.style.flex = '1';
-          col.style.textAlign = 'center';
+          col.style.textAlign = 'right';
           col.style.color = '#ffffff';
           col.style.height = '100%';
           col.style.display = 'flex';
