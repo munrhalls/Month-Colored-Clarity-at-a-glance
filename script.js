@@ -1051,6 +1051,7 @@ window.addEventListener('load', function () {
           col.style.height = '100%';
           col.style.display = 'flex';
           col.style.flexDirection = 'column';
+
         }
         const dropzones = el.getElementsByClassName('hourMarkDropzone');
         for (let i = 0; i < dropzones.length; i++) {
@@ -1116,7 +1117,12 @@ window.addEventListener('load', function () {
     const hourBlock = document.getElementsByClassName(className)[0];
     console.log(ev.target.classList[0]);
     if (ev.target.classList[0] == 'hourMarkDropzone') {
+      const domRect = ev.target.getBoundingClientRect();
       let newClone = hourBlock.cloneNode(true);
+      const remWidth = domRect.width * 0.06;
+      newClone.style.width = remWidth / 4 + 'rem';
+      newClone.style.margin = '0';
+      newClone.style.height = '100%';
       ev.target.appendChild(newClone);
     }
   }
