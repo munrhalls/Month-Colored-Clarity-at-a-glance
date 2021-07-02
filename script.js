@@ -958,6 +958,14 @@ window.addEventListener('load', function () {
         function content_dropzone() {
           const dropzone = document.createElement('div');
           dropzone.className = 'hourMarksDropzone';
+          content_dropzoneCols();
+          function content_dropzoneCols() {
+            for (let i = 1; i < 25; i++) {
+              const col = document.createElement('div');
+              col.className = 'hourMarksDropzoneCol';
+              dropzone.appendChild(col);
+            }
+          }
           hourMarks.appendChild(dropzone);
         }
         function content_marks() {
@@ -1036,11 +1044,25 @@ window.addEventListener('load', function () {
       style_dropzone();
       style_container();
       // hour marks stretch
-
       // symmetrically 24 dropzone cols
+
       // conditional to not exceeed 24 
       function style_dropzone() {
-        const dropzone = el.getElementsByClassName('dropzone')[0];
+        const dropzone = el.getElementsByClassName('hourMarksDropzone')[0];
+        dropzone.style.height = '100%';
+        dropzone.style.width = '100%';
+        dropzone.style.display = 'flex';
+        style_cols();
+        function style_cols() {
+
+          const cols = dropzone.getElementsByClassName('hourMarksDropzoneCol')
+          console.log(cols)
+          for (let i = 0; i < cols.length; i++) {
+            const col = cols[i];
+            col.style.flex = '1';
+            col.style.background = 'blue'
+          }
+        }
 
       }
       function style_container() {
