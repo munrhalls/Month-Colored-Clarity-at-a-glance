@@ -1111,37 +1111,35 @@ window.addEventListener('load', function () {
   }
   function drop_handler(ev) {
     ev.preventDefault();
-    // Get the id of the target and add the moved element to the target's DOM
     const data = ev.dataTransfer.getData("text/plain");
-    const className = 'hourBlock ' + data;
-    const hourBlock = document.getElementsByClassName(className)[0];
-    handle_matchingDropzone();
-    function handle_matchingDropzone() {
-      if (ev.target.classList[0] == 'hourMarksDropzoneCol') {
-        let newClone = hourBlock.cloneNode(true);
-        handle_dragFromCalendar();
-        style_newClone();
-        ev.target.appendChild(newClone);
+    const hourBlock = document.getElementsByClassName('hourBlock ' + data)[0];
+    const isDraggedFromCalendar = hourBlock.parentElement.className == 'hourMarksDropzoneCol';
+    const isDropzone = ev.target.classList[0] == 'hourMarksDropzoneCol';
 
-        function style_newClone() {
-          const remWidth = ev.target.getBoundingClientRect().width * 0.06;
-          const timeBlockSize = Number(data);
-          newClone.style.width = remWidth * timeBlockSize + 'rem';
-          newClone.style.margin = '0';
-          newClone.style.height = '100%';
-          newClone.style.padding = '0';
-        }
-        function handle_dragFromCalendar() {
-          newClone.setAttribute('draggable', true);
-          newClone.addEventListener('dragstart', function (ev) {
-            ev.dataTransfer.setData("text/plain", ev.target.innerText);
-            ev.dataTransfer.dropEffect = "move";
-          });
-        }
+    if (isDropzone && isDraggedFromCalendar) {
+      handle_dragFromCalendar();
+    }
+    if (isDropzone && !isDraggedFromCalendar) {
+      handle_dragFromTimeBar();
+    }
+    function handle_dragFromCalendar() {
+      ev.target.appendChild(hourBlock);
+    }
+    function handle_dragFromTimeBar() {
+      let newClone = hourBlock.cloneNode(true);
+      style_newClone();
+      function style_newClone() {
+        const remWidth = ev.target.getBoundingClientRect().width * 0.06;
+        const timeBlockSize = Number(data);
+        newClone.style.width = remWidth * timeBlockSize + 'rem';
+        newClone.style.margin = '0';
+        newClone.style.height = '100%';
+        newClone.style.padding = '0';
       }
-
+      ev.target.appendChild(newClone);
     }
   }
+
 
 
 
