@@ -952,32 +952,26 @@ window.addEventListener('load', function () {
         const hourMarks = document.createElement('div');
         hourMarks.className = 'hourMarks';
         hourMarks.style.flex = '1';
-        // hourMarks.style.position = 'absolute'
-        content_hourMark(el);
-        function content_hourMark(el) {
-          for (let i = 0; i <= 24; i += 4) {
-            const hourMarkCol = document.createElement('div');
-            const hourMarkDropzone = document.createElement('div');
-            const hourMark = document.createElement('div');
-            hourMarkCol.className = 'hourMarkCol';
-            hourMarkDropzone.className = 'hourMarkDropzone';
-            hourMark.className = 'hourMark';
-            hourMark.innerText = i;
-            hourMarkCol.appendChild(hourMarkDropzone);
-            hourMarkCol.appendChild(hourMark);
-            hourMarks.appendChild(hourMarkCol);
-
-          }
-          el.appendChild(hourMarks);
+        el.appendChild(hourMarks)
+        content_dropzone();
+        content_marks();
+        function content_dropzone() {
+          const dropzone = document.createElement('div');
+          dropzone.className = 'hourMarksDropzone';
+          hourMarks.appendChild(dropzone);
         }
-        // function content_hourMark(el) {
-        //   for (let i = 0; i <= 24; i += 4) {
-        //     const hour = document.createElement('div');
-        //     hour.innerText = i;
-        //     hourMarks.appendChild(hour);
-        //   }
-        //   el.appendChild(hourMarks);
-        // }
+        function content_marks() {
+          const marks = document.createElement('div');
+          marks.className = 'hourMarksContainer';
+          for (let i = 1; i < 25; i++) {
+            const mark = document.createElement('div');
+            mark.className = 'hourMark';
+            mark.innerText = i;
+            marks.appendChild(mark);
+          }
+          hourMarks.appendChild(marks);
+        }
+        // 
       }
     }
     // C A L E N D A R - S T Y L E 
@@ -1032,44 +1026,25 @@ window.addEventListener('load', function () {
       }
     }
     function style_hourMarks(el) {
-      // el.style.justifySelf = 'flex-end';
       el.style.flex = '1';
       el.style.fontSize = (fontSize - 0.33) + 'rem';
       el.style.display = 'flex';
+      el.style.flexDirection = 'column';
       el.style.alignItems = 'flex-end';
-      // el.style.maxHeight = '0.75rem';
+      el.style.justifyContent = 'flex-end';
       el.style.borderLeft = '1px solid #ffffff';
-      // el.style.borderRight = '1px solid #ffffff';
-      style_hourMark(el);
-      function style_hourMark(el) {
-        const cols = el.getElementsByClassName('hourMarkCol');
-        for (let i = 0; i < cols.length; i++) {
-          const col = cols[i];
-          col.style.flex = '1';
-          col.style.textAlign = 'right';
-          col.style.color = '#ffffff';
-          col.style.height = '100%';
-          col.style.display = 'flex';
-          col.style.flexDirection = 'column';
+      style_dropzone();
+      style_container();
+      function style_dropzone() {
+        const dropzone = el.getElementsByClassName('dropzone')[0];
 
-        }
-        const dropzones = el.getElementsByClassName('hourMarkDropzone');
-        for (let i = 0; i < dropzones.length; i++) {
-          const dropzone = dropzones[i];
-          dropzone.style.flex = '1';
-          dropzone.style.backgroundColor = 'transparent';
-          dropzone.style.height = '100%';
-        }
-        const marks = el.getElementsByClassName('hourMark');
-        for (let i = 0; i < marks.length; i++) {
-          const mark = marks[i];
-          mark.style.flex = '1';
-          mark.style.backgroundColor = '#000000';
-          mark.style.maxHeight = '0.75rem';
-          mark.style.flex = '1';
-        }
+      }
+      function style_container() {
+        const container = el.getElementsByClassName('hourMarksContainer')[0];
+        container.style.display = 'flex';
       }
     }
+
     // C A L E N D A R - I N T E R A C T I V E S
     interactives();
     function interactives() {
