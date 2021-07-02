@@ -1113,21 +1113,24 @@ window.addEventListener('load', function () {
     ev.preventDefault();
     const data = ev.dataTransfer.getData("text/plain");
     const hourBlock = document.getElementsByClassName('hourBlock ' + data)[0];
+    console.log(hourBlock.parentElement.classList[0])
     const isDraggedFromCalendar = hourBlock.parentElement.className == 'hourMarksDropzoneCol';
     const isDropzone = ev.target.classList[0] == 'hourMarksDropzoneCol';
 
+    console.log(hourBlock.parentElement.className)
     if (isDropzone && isDraggedFromCalendar) {
-      handle_dragFromCalendar();
+      handle_dragFromCalendar(ev, hourBlock);
     }
     if (isDropzone && !isDraggedFromCalendar) {
-      handle_dragFromTimeBar();
+      handle_dragFromTimeBar(ev, hourBlock);
     }
-    function handle_dragFromCalendar() {
+    function handle_dragFromCalendar(ev) {
       ev.target.appendChild(hourBlock);
     }
-    function handle_dragFromTimeBar() {
+    function handle_dragFromTimeBar(ev) {
       let newClone = hourBlock.cloneNode(true);
       style_newClone();
+      ev.target.appendChild(newClone);
       function style_newClone() {
         const remWidth = ev.target.getBoundingClientRect().width * 0.06;
         const timeBlockSize = Number(data);
@@ -1136,7 +1139,6 @@ window.addEventListener('load', function () {
         newClone.style.height = '100%';
         newClone.style.padding = '0';
       }
-      ev.target.appendChild(newClone);
     }
   }
 
@@ -1214,8 +1216,6 @@ window.addEventListener('load', function () {
   //   markerEl.remove();
   // });
 });
-
-
 
 
 // function createTopBar() {
