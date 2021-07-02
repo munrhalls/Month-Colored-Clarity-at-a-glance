@@ -1113,6 +1113,10 @@ window.addEventListener('load', function () {
     ev.preventDefault();
     const data = ev.dataTransfer.getData("text/plain");
     const hourBlock = document.getElementsByClassName('hourBlock ' + data)[0];
+    // !!!!!!!!!!!!!!!!! 
+    // DUPLICATION !!!!!!!!!!!!!!!!!!!!!
+    // H O U R S !!!!!!!!!!!!!!!!!!!!!!!!! COSTING HOURS!!!!!!!!!!!!!!!!!!!
+    // HOUR BLOCK IS 2 X!!!!!!!!!!!!!!!!!!!!!!!!
     console.log(hourBlock.parentElement.classList[0])
     const isDraggedFromCalendar = hourBlock.parentElement.className == 'hourMarksDropzoneCol';
     const isDropzone = ev.target.classList[0] == 'hourMarksDropzoneCol';
@@ -1128,7 +1132,7 @@ window.addEventListener('load', function () {
       ev.target.appendChild(hourBlock);
     }
     function handle_dragFromTimeBar(ev) {
-      let newClone = hourBlock.cloneNode(true);
+      const newClone = hourBlock.cloneNode(true);
       style_newClone();
       ev.target.appendChild(newClone);
       function style_newClone() {
