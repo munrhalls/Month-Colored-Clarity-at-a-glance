@@ -1112,38 +1112,9 @@ window.addEventListener('load', function () {
   function drop_handler(ev) {
     ev.preventDefault();
     const data = ev.dataTransfer.getData("text/plain");
-    const hourBlock = document.getElementsByClassName('hourBlock ' + data)[0];
-    // !!!!!!!!!!!!!!!!! 
-    // DUPLICATION !!!!!!!!!!!!!!!!!!!!!
-    // H O U R S !!!!!!!!!!!!!!!!!!!!!!!!! COSTING HOURS!!!!!!!!!!!!!!!!!!!
-    // HOUR BLOCK IS 2 X!!!!!!!!!!!!!!!!!!!!!!!!
-    console.log(hourBlock.parentElement.classList[0])
-    const isDraggedFromCalendar = hourBlock.parentElement.className == 'hourMarksDropzoneCol';
-    const isDropzone = ev.target.classList[0] == 'hourMarksDropzoneCol';
-
-    console.log(hourBlock.parentElement.className)
-    if (isDropzone && isDraggedFromCalendar) {
-      handle_dragFromCalendar(ev, hourBlock);
-    }
-    if (isDropzone && !isDraggedFromCalendar) {
-      handle_dragFromTimeBar(ev, hourBlock);
-    }
-    function handle_dragFromCalendar(ev) {
-      ev.target.appendChild(hourBlock);
-    }
-    function handle_dragFromTimeBar(ev) {
-      const newClone = hourBlock.cloneNode(true);
-      style_newClone();
-      ev.target.appendChild(newClone);
-      function style_newClone() {
-        const remWidth = ev.target.getBoundingClientRect().width * 0.06;
-        const timeBlockSize = Number(data);
-        newClone.style.width = remWidth * timeBlockSize + 'rem';
-        newClone.style.margin = '0';
-        newClone.style.height = '100%';
-        newClone.style.padding = '0';
-      }
-    }
+    const name = 'hourBlock ' + data;
+    const block = document.getElementsByClassName(name)[0];
+    ev.target.appendChild(block);
   }
 
 
