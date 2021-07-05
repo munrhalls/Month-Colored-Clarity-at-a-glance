@@ -743,8 +743,6 @@ window.addEventListener('load', function () {
           const numOfHours = choice.classList[1];
           const hourBlock = choice.getElementsByClassName(numOfHours)[0];
           let newClone = hourBlock.cloneNode(true);
-          newClone.id = 'hourBlock-' + numOfHours;
-          inter_DRAG_hourBlock(newClone);
           appendClone(newClone);
           function appendClone(newClone) {
             const logHourBlocks = consoleHourBlocks.getElementsByClassName('logHourBlocks')[0];
@@ -1080,10 +1078,10 @@ window.addEventListener('load', function () {
 
   function dragAndDrop() {
     // I N T E R A C T I V E S
-    getEl_loopF('hourBlock', drag_hourBlock);
+    getEl_loopF('hourBlock', dragStart_hourBlock);
     getEl_loopF('day', turnIntoDropzone);
 
-    function drag_hourBlock(el) {
+    function dragStart_hourBlock(el) {
       el.setAttribute('draggable', true);
       el.addEventListener('dragstart', function (e) {
         e.dataTransfer.dropEffect = "copy";
@@ -1093,13 +1091,13 @@ window.addEventListener('load', function () {
     function turnIntoDropzone(el) {
       el.setAttribute('dragenter', 'event.preventDefault();');
       el.setAttribute('ondragover', 'event.preventDefault();');
-      el.ondrop = drop_handler;
+      el.ondrop = handleDrop;
     }
 
     function dragstart_handler(ev) {
       console.log(ev);
     }
-    function drop_handler(ev) {
+    function handleDrop(ev) {
       ev.preventDefault();
       const data = ev.dataTransfer.getData("text/plain");
       const block = document.getElementsByClassName(data)[0];
