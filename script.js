@@ -108,6 +108,8 @@ window.addEventListener('load', function () {
   cr8_calendarBar();
   cr8_calendar();
 
+  dragAndDrop();
+
   // ABSTRACTIONS
   function assembleDOM(arr, container) {
     arr.forEach(function (el, index) {
@@ -692,7 +694,6 @@ window.addEventListener('load', function () {
       getEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
       getEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
       getEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
-      getEl_loopF('hourBlock', inter_DRAG_hourBlock);
 
       function inter_INPUT_projectTitle(el) {
         const textarea = el.getElementsByTagName('textarea')[0];
@@ -736,10 +737,13 @@ window.addEventListener('load', function () {
       function inter_CLICK_addHourBlock(el) {
         el.onclick = function () {
           const consoleHourBlocks = setup_findElementUp(el, 'consoleHourBlocks');
-          const hourBlockChoice = consoleHourBlocks.getElementsByClassName('hourBlockChoice')[0];
-          const choiceNum = hourBlockChoice.classList[1];
-          const hourBlock = hourBlockChoice.getElementsByClassName(choiceNum)[0];
+          const hourBlockChoices = consoleHourBlocks.getElementsByClassName('hourBlockChoice');
+          const choice = hourBlockChoices[0];
+          console.log(choice)
+          const numOfHours = choice.classList[1];
+          const hourBlock = choice.getElementsByClassName(numOfHours)[0];
           let newClone = hourBlock.cloneNode(true);
+          newClone.id = 'hourBlock-' + numOfHours;
           inter_DRAG_hourBlock(newClone);
           appendClone(newClone);
           function appendClone(newClone) {
@@ -747,14 +751,6 @@ window.addEventListener('load', function () {
             logHourBlocks.appendChild(newClone);
           }
         }
-      }
-      function inter_DRAG_hourBlock(el) {
-        el.setAttribute('draggable', true);
-        el.addEventListener('dragstart', function (e) {
-          e.dataTransfer.dropEffect = "copy";
-          e.dataTransfer.setData("text/plain", e.target.className);
-          console.log(e.dataTransfer)
-        });
       }
     }
   }
@@ -1073,44 +1069,58 @@ window.addEventListener('load', function () {
       const num = monthNow.getMonth();
       getEl_loopF('month', setup_hideMonths);
       getOneEl_runF('month', num, inter_showMonth);
-      getEl_loopF('day', inter_makeIntoDropZone);
       function setup_hideMonths(el) {
         el.style.display = 'none';
       }
       function inter_showMonth(el) {
         el.style.display = monthDisplay;
       }
-      function inter_makeIntoDropZone(el) {
-        el.setAttribute('dragenter', 'event.preventDefault();');
-        el.setAttribute('ondragover', 'event.preventDefault();');
+    }
+  }
 
-        el.ondrop = drop_handler;
+  function dragAndDrop() {
+    // I N T E R A C T I V E S
+    getEl_loopF('hourBlock', inter_DRAG_hourBlock);
+    getEl_loopF('day', inter_makeIntoDropZone);
+
+    function inter_DRAG_hourBlock(el) {
+      el.setAttribute('draggable', true);
+      el.addEventListener('dragstart', function (e) {
+        e.dataTransfer.dropEffect = "copy";
+        e.dataTransfer.setData("text/plain", e.target.className);
+      });
+    }
+
+    function inter_makeIntoDropZone(el) {
+      el.setAttribute('dragenter', 'event.preventDefault();');
+      el.setAttribute('ondragover', 'event.preventDefault();');
+      el.ondrop = drop_handler;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Get the element by id
+      const element = document.getElementById("p1");
+      // Add the ondragstart event listener
+      element.addEventListener("dragstart", dragstart_handler);
+    });
+    function dragstart_handler(ev) {
+      console.log(ev);
+    }
+    function drop_handler(ev) {
+      ev.preventDefault();
+      ev.dataTransfer.dropEffect = "move"
+      const data = ev.dataTransfer.getData("text/plain");
+      const block = document.getElementsByClassName(data)[0];
+      const isDragInCalendar = data.split(' ').includes('drag-in-calendar');
+      if (isDragInCalendar) {
+
+      }
+      if (!isDragInCalendar) {
+        ev.target.appendChild(block);
       }
     }
   }
 
-
-
-  window.addEventListener('DOMContentLoaded', () => {
-    // Get the element by id
-    const element = document.getElementById("p1");
-    // Add the ondragstart event listener
-    element.addEventListener("dragstart", dragstart_handler);
-  });
-  function dragstart_handler(ev) {
-    console.log(ev);
-  }
-  function drop_handler(ev) {
-    ev.preventDefault();
-    console.log(ev.dataTransfer.getData('text/plain'))
-    ev.dataTransfer.dropEffect = "move"
-    const data = ev.dataTransfer.getData("text/plain");
-    console.log(ev.dataTransfer.getData('text/html'));
-    const name = 'hourBlock ' + data;
-    const block = document.getElementsByClassName(name)[0];
-    ev.target.appendChild(block);
-
-  }
 
 
 
