@@ -1080,38 +1080,32 @@ window.addEventListener('load', function () {
 
   function dragAndDrop() {
     // I N T E R A C T I V E S
-    getEl_loopF('hourBlock', inter_DRAG_hourBlock);
-    getEl_loopF('day', inter_makeIntoDropZone);
+    getEl_loopF('hourBlock', drag_hourBlock);
+    getEl_loopF('day', turnIntoDropzone);
 
-    function inter_DRAG_hourBlock(el) {
+    function drag_hourBlock(el) {
       el.setAttribute('draggable', true);
       el.addEventListener('dragstart', function (e) {
         e.dataTransfer.dropEffect = "copy";
         e.dataTransfer.setData("text/plain", e.target.className);
       });
     }
-
-    function inter_makeIntoDropZone(el) {
+    function turnIntoDropzone(el) {
       el.setAttribute('dragenter', 'event.preventDefault();');
       el.setAttribute('ondragover', 'event.preventDefault();');
       el.ondrop = drop_handler;
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      // Get the element by id
-      const element = document.getElementById("p1");
-      // Add the ondragstart event listener
-      element.addEventListener("dragstart", dragstart_handler);
-    });
     function dragstart_handler(ev) {
       console.log(ev);
     }
     function drop_handler(ev) {
       ev.preventDefault();
-      ev.dataTransfer.dropEffect = "move"
       const data = ev.dataTransfer.getData("text/plain");
       const block = document.getElementsByClassName(data)[0];
       const isDragInCalendar = data.split(' ').includes('drag-in-calendar');
+      ev.dataTransfer.dropEffect = "move"
+
       if (isDragInCalendar) {
 
       }
