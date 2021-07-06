@@ -4,13 +4,13 @@ var monthShown = 'July';
 
 // // DATA VALUES
 const borderRadius = '5%';
-const timeBarHeight = 8;
-const timeBarWidth = 5;
+const projectBarHeight = 8;
+const projectBarWidth = 5;
 const heightTopbar = '3.5rem';
 const paddingTitle = '0.25rem';
 const heightVisuals = 'calc(100vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
 const containerheightCalendar = 'calc(50vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
-const righttimeBarWidth = '18rem';
+const rightprojectBarWidth = '18rem';
 const colors = ['#0006E1', '#31B303', '#CA008C', '#808080', '#FFA500', '#CCB726', '#790604'];
 const resultCardOpacity = '0.81';
 const resultCardAddBtn = '8rem';
@@ -82,9 +82,9 @@ function app() {
     const topBar = ['title', 'about'];
     const chooseHourBlock = ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'];
     const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'logHourBlocks'];
-    const timeBarComponents = ['chooseTimeBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
-    const timeBar = ['timeBar', timeBarComponents];
-    const timeBlocks = ['timeBars', timeBar];
+    const projectBarComponents = ['chooseprojectBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
+    const projectBar = ['projectBar', projectBarComponents];
+    const timeBlocks = ['projectBars', projectBar];
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
     const calendarBar = ['calendarTitle', 'monthChoices', monthChoices];
     const BASIC_DOM = [
@@ -92,7 +92,7 @@ function app() {
       ['topBar', topBar,
         'main',
         ['timeVisuals',
-          ['timeBlocks', timeBlocks,
+          ['projects', timeBlocks,
             'calendarBar', calendarBar,
             'calendar'
           ],
@@ -264,14 +264,14 @@ function app() {
         function style_colorMenuBtn() {
           colorMenuBtn.style.cursor = 'pointer';
           colorMenuBtn.style.borderRadius = borderRadius;
-          colorMenuBtn.style.height = timeBarHeight / 1.25 + 'rem';
-          colorMenuBtn.style.width = timeBarHeight / 1.75 + 'rem';
+          colorMenuBtn.style.height = projectBarHeight / 1.25 + 'rem';
+          colorMenuBtn.style.width = projectBarHeight / 1.75 + 'rem';
           colorMenuBtn.style.backgroundColor = 'blue';
         }
         function style_colorMenu() {
           const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
-          colorMenu.style.height = timeBarHeight + 'rem';
-          colorMenu.style.width = (timeBarWidth * colors.length) + 'rem';
+          colorMenu.style.height = projectBarHeight + 'rem';
+          colorMenu.style.width = (projectBarWidth * colors.length) + 'rem';
           colorMenu.style.top = '0';
           colorMenu.style.display = menuDisplay;
 
@@ -294,8 +294,8 @@ function app() {
           for (let i = 0; i < colors.length; i++) {
             const choiceBtn = btns[i];
             choiceBtn.style.backgroundColor = colors[i];
-            choiceBtn.style.height = timeBarHeight / 1.25 + 'rem';
-            choiceBtn.style.width = timeBarHeight / 1.75 + 'rem';
+            choiceBtn.style.height = projectBarHeight / 1.25 + 'rem';
+            choiceBtn.style.width = projectBarHeight / 1.75 + 'rem';
             // choiceBtn.style.border = btnBorder + 'rem solid #000000';
             choiceBtn.style.borderRadius = borderRadius;
             // choiceBtn.style.boxSizing = 'content-box';
@@ -316,9 +316,9 @@ function app() {
           btnClose.style.display = 'flex';
           btnClose.style.justifyContent = 'center';
           btnClose.style.alignItems = 'center';
-          // btnClose.style.height = (timeBarHeight / 2.25) + btnBorder * 2 + 'rem';
-          btnClose.style.height = (timeBarHeight / 1.25) + 'rem';
-          btnClose.style.width = timeBarHeight / 1.25 + 'rem';
+          // btnClose.style.height = (projectBarHeight / 2.25) + btnBorder * 2 + 'rem';
+          btnClose.style.height = (projectBarHeight / 1.25) + 'rem';
+          btnClose.style.width = projectBarHeight / 1.25 + 'rem';
           btnClose.style.marginLeft = btnDistance * 2 + 'rem';
           btnClose.style.marginRight = btnDistance * 2 + 'rem';
           btnClose.style.border = '1px solid #ffffff';
@@ -362,9 +362,9 @@ function app() {
             colorChoices[i].onclick = function (e) {
               e.stopPropagation();
               const color = colorChoices[i].classList[1];
-              const timeBar = setup_findElementUp(colorMenuBtn, 'timeBar');
+              const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
               colorMenuBtn.style.backgroundColor = color;
-              timeBar.style.backgroundColor = color;
+              projectBar.style.backgroundColor = color;
               colorMenu.style.display = 'none';
             }
           }
@@ -441,17 +441,17 @@ function app() {
     }
     function cr8_timeBlocks() {
       // T I M E  B L O C K S  -   C O N T E N T
-      getEl_loopF('timeBar', content_timeBar);
-      getEl_loopF('chooseTimeBarColor', content_chooseTimeBarColor);
+      getEl_loopF('projectBar', content_projectBar);
+      getEl_loopF('chooseprojectBarColor', content_chooseprojectBarColor);
       getEl_loopF('projectTitle', content_projectTitle);
       getEl_loopF('hourBlockChoice', content_hourBlockChoice);
       getEl_loopF('addHourBlock', content_addHourBlock);
       getEl_loopF('logHourBlocks', content_logHourBlocks);
 
-      function content_timeBar(el) {
+      function content_projectBar(el) {
         // el.classList = 'timerBar ' + monthShown +'-';
       }
-      function content_chooseTimeBarColor(el) {
+      function content_chooseprojectBarColor(el) {
         const btn = cr8_colorMenuBtn();
         el.appendChild(btn);
       }
@@ -494,14 +494,14 @@ function app() {
       }
 
       // T I M E  B L O C K S  -  S T Y L E
-      const marginLeft = timeBarHeight / 2;
+      const marginLeft = projectBarHeight / 2;
       style();
       function style() {
-        getEl_loopF('timeBlocks', style_timeBlocks);
+        getEl_loopF('projects', style_timeBlocks);
         getEl_loopF('colorsMenu', style_colorsMenu);
-        getEl_loopF('chooseTimeBarColor', style_chooseTimeBarColor);
-        getEl_loopF('timeBars', style_timeBars);
-        getEl_loopF('timeBar', style_timeBar);
+        getEl_loopF('chooseprojectBarColor', style_chooseprojectBarColor);
+        getEl_loopF('projectBars', style_projectBars);
+        getEl_loopF('projectBar', style_projectBar);
         getEl_loopF('projectTitle', style_projectTitle);
         getEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
         getEl_loopF('chooseHourBlock', style_chooseHourBlock);
@@ -518,33 +518,33 @@ function app() {
         }
         function style_colorsMenu(el) {
           el.style.flex = '1';
-          el.style.maxWidth = timeBarWidth / 1.5 + 'rem';
+          el.style.maxWidth = projectBarWidth / 1.5 + 'rem';
           el.style.display = 'flex';
           el.style.justifyContent = 'center';
           el.style.alignItems = 'center';
           el.style.backgroundColor = '#000000';
         }
-        function style_chooseTimeBarColor(el) {
+        function style_chooseprojectBarColor(el) {
           el.style.position = 'relative';
           el.style.backgroundColor = '#000000';
-          el.style.height = timeBarHeight + 'rem';
-          el.style.width = timeBarWidth + 2.5 + 'rem';
+          el.style.height = projectBarHeight + 'rem';
+          el.style.width = projectBarWidth + 2.5 + 'rem';
           // el.style.paddingRight = '0.5rem';
           el.style.display = 'flex';
           el.style.justifyContent = 'center';
           el.style.alignItems = 'center';
         }
-        function style_timeBars(el) {
+        function style_projectBars(el) {
           el.style.flex = '5';
           el.style.display = 'flex';
           el.style.flexDirection = 'column';
         }
-        function style_timeBar(el) {
+        function style_projectBar(el) {
           el.style.display = 'flex';
         }
         function style_projectTitle(el) {
-          el.style.height = timeBarHeight + 'rem';
-          el.style.width = (timeBarWidth * 2) + 'rem';
+          el.style.height = projectBarHeight + 'rem';
+          el.style.width = (projectBarWidth * 2) + 'rem';
           el.style.display = 'flex';
           el.style.wordWrap = 'break-word';
           el.style.padding = '0.25rem';
@@ -552,7 +552,7 @@ function app() {
           function style_textArea() {
             const textarea = el.getElementsByTagName('textarea')[0];
             textarea.style.flex = '1';
-            textarea.style.maxWidth = (timeBarWidth * 2) + 'rem';
+            textarea.style.maxWidth = (projectBarWidth * 2) + 'rem';
             textarea.style.width = '100%';
             textarea.style.padding = '0';
             textarea.style.margin = '0';
@@ -577,7 +577,7 @@ function app() {
         }
         function style_chooseHourBlock(el) {
           // el.style.flex = '1';
-          el.style.maxWidth = timeBarHeight * 1.75 + 'rem';
+          el.style.maxWidth = projectBarHeight * 1.75 + 'rem';
           el.style.display = 'flex';
           el.style.flexDirection = 'row';
           el.style.justifyContent = 'center';
@@ -585,22 +585,22 @@ function app() {
         }
         function style_prevHourBlock(el) {
           const width = 0.25;
-          style_prevArr(el, timeBarHeight, width);
+          style_prevArr(el, projectBarHeight, width);
           // el.style.backgroundColor = '#000000';
           el.style.borderTopColor = '#000000';
           el.style.left = '0.8rem';
-          el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
+          el.style.top = 'calc(50% - ' + projectBarHeight / 4 + 'rem)'
         }
         function style_nextHourBlock(el) {
           const width = 0.25;
-          style_nextArr(el, timeBarHeight, width, marginLeft);
+          style_nextArr(el, projectBarHeight, width, marginLeft);
           el.style.borderTopColor = '#000000';
           el.style.right = '0.8rem';
-          el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
+          el.style.top = 'calc(50% - ' + projectBarHeight / 4 + 'rem)'
         }
         function style_hourBlockChoice(el) {
           // el.style.flex = '1';
-          el.style.minWidth = timeBarHeight * 2.5 + 'rem';
+          el.style.minWidth = projectBarHeight * 2.5 + 'rem';
           el.style.border = 'none';
           el.style.display = 'flex';
           el.style.justifyContent = 'center';
@@ -625,8 +625,8 @@ function app() {
         function style_addHourBlock(el) {
           el.style.cursor = 'pointer';
           el.style.flex = '1';
-          el.style.maxWidth = timeBarHeight + 'rem';
-          el.style.minWidth = timeBarHeight + 'rem';
+          el.style.maxWidth = projectBarHeight + 'rem';
+          el.style.minWidth = projectBarHeight + 'rem';
           el.style.textAlign = 'center';
           el.style.display = 'flex';
           el.style.justifyContent = 'center';
@@ -648,11 +648,11 @@ function app() {
             style_plusText();
             function style_plusText() {
               const plusText = plus.children[0];
-              plusText.style.fontSize = timeBarHeight + 'rem';
+              plusText.style.fontSize = projectBarHeight + 'rem';
               plusText.style.borderRadius = borderRadius;
               plusText.style.position = 'absolute';
               plusText.style.position = 'absolute';
-              plusText.style.top = 0 - (timeBarHeight) / 5.25 + 'rem';
+              plusText.style.top = 0 - (projectBarHeight) / 5.25 + 'rem';
               plusText.style.bottom = 0;
               plusText.style.left = 0;
               plusText.style.right = 0;
@@ -798,7 +798,7 @@ function app() {
 
         function style_calendarBar(el) {
           el.style.flex = '1';
-          el.style.maxHeight = timeBarHeight / 2 + 'rem';
+          el.style.maxHeight = projectBarHeight / 2 + 'rem';
           el.style.backgroundColor = '#000000';
           el.style.display = 'flex';
         }
@@ -824,13 +824,13 @@ function app() {
         }
         function style_prevMonth(el) {
           const width = 0.25;
-          style_prevArr(el, timeBarHeight, width);
+          style_prevArr(el, projectBarHeight, width);
           el.style.marginLeft = 0 - marginLeft + 'rem';
         }
         function style_nextMonth(el) {
           const width = 0.25;
           const left = 0 - marginLeft * 3;
-          style_nextArr(el, timeBarHeight, width, left)
+          style_nextArr(el, projectBarHeight, width, left)
           el.style.marginRight = 0 - marginLeft + 'rem';
         }
       }
@@ -1245,7 +1245,7 @@ function app() {
 // }
 function createMenu() {
   // let width = '30rem';
-  // let width = righttimeBarWidth;
+  // let width = rightprojectBarWidth;
   let height = '100vh';
   let color = '#000000';
   const menu = document.createElement('div');
