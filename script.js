@@ -4,10 +4,8 @@ var monthShown = 'July';
 
 // // DATA VALUES
 const borderRadius = '5%';
-
 const timeBarHeight = 8;
 const timeBarWidth = 5;
-
 const heightTopbar = '3.5rem';
 const paddingTitle = '0.25rem';
 const heightVisuals = 'calc(100vh - ' + ((parseFloat(heightTopbar) / 2) + parseFloat(paddingTitle)) + 'rem)';
@@ -23,1172 +21,1181 @@ const calendarMonthChoiceHeight = '2.5rem';
 const date = new Date();
 const year = date.getFullYear();
 const DATA_Calendar = [];
-
-for (let i = 1; i <= 12; i++) {
-  const month = new Date(year, i, 0);
-  const monthDATA = new Array();
-  const daysInMonth = month.getDate();
-  monthDATA.code = month.toLocaleString('en-EN', { month: 'long' });
-  monthDATA.daysNum = daysInMonth;
-
-  let strDaysByComma = '';
-  let strDayNums = '';
-  for (let j = 1; j <= daysInMonth; j++) {
-    const day = new Date(year, i - 1, j);
-    const dayNum = day.getDate();
-    const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
-    strDaysByComma += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
-    strDayNums += dayNum + ' ';
-  }
-  const strWeeks = strDaysByComma.split(',');
-  strWeeks.pop();
-  let count = 1;
-  strWeeks.forEach(function (strWeek) {
-    const week = strWeek.split(' ');
-    week.code = 'Week ' + count;
-    monthDATA.push(week);
-    count++;
-  });
-  DATA_Calendar.push(monthDATA);
-}
-
 const months = [];
 const weeks = [];
 const days = [];
-for (let i = 0; i < DATA_Calendar.length; i++) {
-  const month = DATA_Calendar[i];
-  const name = month.code;
-  months.push(name);
-  for (let j = 0; j < month.length; j++) {
-    const week = month[j];
-    week.code = month.code + '-Week-' + (j + 1);
-    weeks.push(week);
-    for (let y = 0; y < week.length; y++) {
-      const day = week[y];
-      const dayObj = {};
-      dayObj.code = week.code + ' Day-' + (y + 1);
-      dayObj.name = day;
-      days.push(dayObj);
+setDATA_Calendar();
+setDATA_monthsWeeksDays();
+app();
+function setDATA_Calendar() {
+  for (let i = 1; i <= 12; i++) {
+    const month = new Date(year, i, 0);
+    const monthDATA = new Array();
+    const daysInMonth = month.getDate();
+    monthDATA.code = month.toLocaleString('en-EN', { month: 'long' });
+    monthDATA.daysNum = daysInMonth;
+
+    let strDaysByComma = '';
+    let strDayNums = '';
+    for (let j = 1; j <= daysInMonth; j++) {
+      const day = new Date(year, i - 1, j);
+      const dayNum = day.getDate();
+      const dayName = day.toLocaleDateString('en-EN', { weekday: 'long' });
+      strDaysByComma += dayName === 'Sunday' ? dayName + ',' : dayName + ' ';
+      strDayNums += dayNum + ' ';
+    }
+    const strWeeks = strDaysByComma.split(',');
+    strWeeks.pop();
+    let count = 1;
+    strWeeks.forEach(function (strWeek) {
+      const week = strWeek.split(' ');
+      week.code = 'Week ' + count;
+      monthDATA.push(week);
+      count++;
+    });
+    DATA_Calendar.push(monthDATA);
+  }
+}
+function setDATA_monthsWeeksDays() {
+  for (let i = 0; i < DATA_Calendar.length; i++) {
+    const month = DATA_Calendar[i];
+    const name = month.code;
+    months.push(name);
+    for (let j = 0; j < month.length; j++) {
+      const week = month[j];
+      week.code = month.code + '-Week-' + (j + 1);
+      weeks.push(week);
+      for (let y = 0; y < week.length; y++) {
+        const day = week[y];
+        const dayObj = {};
+        dayObj.code = week.code + ' Day-' + (y + 1);
+        dayObj.name = day;
+        days.push(dayObj);
+      }
     }
   }
 }
+function app() {
+  window.addEventListener('load', function () {
+    console.log('This function is executed once the page is fully loaded');
+    const app = document.getElementById('app');
+    const topBar = ['title', 'about'];
+    const chooseHourBlock = ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'];
+    const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'logHourBlocks'];
+    const timeBarComponents = ['chooseTimeBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
+    const timeBar = ['timeBar', timeBarComponents];
+    const timeBlocks = ['timeBars', timeBar];
+    const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
+    const calendarBar = ['calendarTitle', 'monthChoices', monthChoices];
+    const BASIC_DOM = [
+      'root',
+      ['topBar', topBar,
+        'main',
+        ['timeVisuals',
+          ['timeBlocks', timeBlocks,
+            'calendarBar', calendarBar,
+            'calendar'
+          ],
+          'menuBlock'],
+        'footer'
+      ],
+    ];
 
-window.addEventListener('load', function () {
-  console.log('This function is executed once the page is fully loaded');
-  const app = document.getElementById('app');
+    assembleDOM(BASIC_DOM, app);
+    cr8_topBar();
+    cr8_main();
+    cr8_timeVisuals();
+    cr8_timeBlocks();
+    cr8_calendarBar();
+    cr8_calendar();
 
-  const topBar = ['title', 'about'];
-  const chooseHourBlock = ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'];
-  const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'logHourBlocks'];
-  const timeBarComponents = ['chooseTimeBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
-  const timeBar = ['timeBar', timeBarComponents];
-  const timeBlocks = ['timeBars', timeBar];
+    dragAndDrop();
 
-  const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
-  const calendarBar = ['calendarTitle', 'monthChoices', monthChoices];
-
-  const BASIC_DOM = [
-    'root',
-    ['topBar', topBar,
-      'main',
-      ['timeVisuals',
-        ['timeBlocks', timeBlocks,
-          'calendarBar', calendarBar,
-          'calendar'
-        ],
-        'menuBlock'],
-      'footer'
-    ],
-  ];
-  assembleDOM(BASIC_DOM, app);
-  cr8_topBar();
-  cr8_main();
-  cr8_timeVisuals();
-  cr8_timeBlocks();
-  cr8_calendarBar();
-  cr8_calendar();
-
-  dragAndDrop();
-
-  // ABSTRACTIONS
-  function assembleDOM(arr, container) {
-    arr.forEach(function (el, index) {
-      if (typeof el == 'object') {
-        let name = arr[index - 1] || container;
-        let nestedContainers = document.getElementsByClassName(name);
-        let nestedContainer = (nestedContainers.length > 1) ?
-          nestedContainers[nestedContainers.length - 1] : nestedContainers[0];
-        let nestedArr = el;
-        assembleDOM(nestedArr, nestedContainer);
-      } else {
-        let div = document.createElement('div');
-        div.className = el;
-        // comment / uncomment
-        devHelperF_borderify(div);
-        // devHelperF_textMark(div, el);
-        container.appendChild(div);
-      }
-    });
-    function devHelperF_borderify(el) {
-      el.style.border = '1px solid black';
-    }
-    function devHelperF_greyifyBg(el) {
-      el.style.background = 'grey';
-    }
-    function devHelperF_textMark(el, text) {
-      let span = document.createElement('span');
-      // span.style.position = 'absolute';
-      span.style.top = '1rem'; span.style.left = '1rem'; span.innerText = text; span.style.color = 'blue'; span.style.letterSpacing = '1px'; span.style.fontSize = '2.5rem';
-      el.style.position = 'relative';
-      el.appendChild(span);
-    }
-  }
-  // access
-  var count = 0;
-  function setup_findElementUp(elem, name) {
-    return (elem.parentElement.className == name && count < 12) ?
-      (function () {
-        count = 0;
-        return elem.parentElement;
-      })() :
-      (function () {
-        count++;
-        return setup_findElementUp(elem.parentElement, name);
-      })();
-  }
-  function getEl_loopF(className, modify) {
-    const elements = document.getElementsByClassName(className);
-    for (let i = 0; i < elements.length; i++) {
-      modify(elements[i]);
-    }
-  }
-  function getOneEl_runF(className, i, modify) {
-    const el = document.getElementsByClassName(className)[i];
-    modify(el);
-  }
-  function style_prevArr(el, maxHeight, width) {
-    el.style.cursor = 'pointer';
-    el.style.padding = width * 2;
-    el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
-    el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
-    el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
-    el.style.borderBottom = '0';
-    el.style.width = width + 'rem';
-    el.style.transform = 'rotate(90deg)';
-    // position
-    el.style.position = 'absolute';
-    el.style.left = 0 - (width * 9) + 'rem';
-  }
-  function style_nextArr(el, maxHeight, width, marginLeft) {
-    el.style.cursor = 'pointer';
-    el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
-    el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
-    el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
-    el.style.borderBottom = '0';
-    el.style.width = '0.25rem';
-    el.style.transform = 'rotate(-90deg)';
-    el.style.marginLeft = (marginLeft * 7) + 'rem';
-    // position
-    el.style.position = 'absolute';
-    el.style.right = 0 - (width * 9) + 'rem';
-  }
-  function cr8_colorMenuBtn() {
-    // C O N T E N T 
-    const colorMenuBtn = content_colorMenuBtn();
-    const colorMenu = content_colorMenu();
-    content_colorChoices();
-    content_colorChoiceBtns();
-    content_menuCloser();
-    content_btnClose();
-
-    function content_colorMenuBtn() {
-      const colorMenuBtn = document.createElement('div');
-      colorMenuBtn.className = 'colorMenuBtn';
-      return colorMenuBtn;
-    }
-    function content_colorMenu() {
-      const colorMenu = document.createElement('div');
-      colorMenu.className = 'colorMenu';
-      colorMenuBtn.appendChild(colorMenu);
-      return colorMenu;
-    }
-    function content_colorChoices() {
-      const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
-      colors.forEach(function (color) {
-        const block = document.createElement('div');
-        block.classList = 'colorChoice ' + color;
-        colorMenu.appendChild(block);
+    // ABSTRACTIONS
+    function assembleDOM(arr, container) {
+      arr.forEach(function (el, index) {
+        if (typeof el == 'object') {
+          let name = arr[index - 1] || container;
+          let nestedContainers = document.getElementsByClassName(name);
+          let nestedContainer = (nestedContainers.length > 1) ?
+            nestedContainers[nestedContainers.length - 1] : nestedContainers[0];
+          let nestedArr = el;
+          assembleDOM(nestedArr, nestedContainer);
+        } else {
+          let div = document.createElement('div');
+          div.className = el;
+          // comment / uncomment
+          devHelperF_borderify(div);
+          // devHelperF_textMark(div, el);
+          container.appendChild(div);
+        }
       });
-    }
-    function content_colorChoiceBtns() {
-      const blocks = colorMenu.getElementsByClassName('colorChoice');
-      for (let i = 0; i < blocks.length; i++) {
-        const btn = document.createElement('div');
-        btn.classList = 'btn';
-        blocks[i].appendChild(btn);
+      function devHelperF_borderify(el) {
+        el.style.border = '1px solid black';
       }
-    }
-    function content_menuCloser() {
-      const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
-      const menuCloser = document.createElement('div');
-      menuCloser.className = 'menuCloser';
-      colorMenu.appendChild(menuCloser);
-    }
-    function content_btnClose() {
-      const menuCloser = colorMenu.getElementsByClassName('menuCloser')[0];
-      const btnClose = document.createElement('div');
-      const closeSymbol = document.createElement('span');
-      btnClose.className = 'btnClose';
-      closeSymbol.innerText = 'X';
-      btnClose.appendChild(closeSymbol);
-      menuCloser.appendChild(btnClose);
-    }
-
-    // S T Y L E
-    const menuZIndex = '3';
-    const menuDisplay = 'flex';
-    const btnDistance = 0.75;
-    const btnBorder = 0.5;
-    const blockBgColor = '#000000';
-    style();
-    function style() {
-      style_colorMenuBtn();
-      style_colorMenu();
-      style_colorChoices();
-      style_colorChoiceBtns();
-      style_menuCloser();
-      style_btnClose();
-
-      function style_colorMenuBtn() {
-        colorMenuBtn.style.cursor = 'pointer';
-        colorMenuBtn.style.borderRadius = borderRadius;
-        colorMenuBtn.style.height = timeBarHeight / 1.25 + 'rem';
-        colorMenuBtn.style.width = timeBarHeight / 1.75 + 'rem';
-        colorMenuBtn.style.backgroundColor = 'blue';
+      function devHelperF_greyifyBg(el) {
+        el.style.background = 'grey';
       }
-      function style_colorMenu() {
-        const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
-        colorMenu.style.height = timeBarHeight + 'rem';
-        colorMenu.style.width = (timeBarWidth * colors.length) + 'rem';
-        colorMenu.style.top = '0';
-        colorMenu.style.display = menuDisplay;
-
-        colorMenu.style.position = 'absolute'; colorMenu.style.zIndex = menuZIndex; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
-      }
-      function style_colorChoices() {
-        const blocks = colorMenu.getElementsByClassName('colorChoice');
-        for (let i = 0; i < colors.length; i++) {
-          const colorChoice = blocks[i];
-          colorChoice.style.backgroundColor = blockBgColor;
-          colorChoice.style.flex = '1';
-          colorChoice.style.display = 'flex';
-          colorChoice.style.justifyContent = 'center';
-          colorChoice.style.alignItems = 'center';
-          colorChoice.style.paddingLeft = btnDistance + 'rem';
-        }
-      }
-      function style_colorChoiceBtns() {
-        const btns = colorMenu.getElementsByClassName('btn');
-        for (let i = 0; i < colors.length; i++) {
-          const choiceBtn = btns[i];
-          choiceBtn.style.backgroundColor = colors[i];
-          choiceBtn.style.height = timeBarHeight / 1.25 + 'rem';
-          choiceBtn.style.width = timeBarHeight / 1.75 + 'rem';
-          // choiceBtn.style.border = btnBorder + 'rem solid #000000';
-          choiceBtn.style.borderRadius = borderRadius;
-          // choiceBtn.style.boxSizing = 'content-box';
-          choiceBtn.style.cursor = 'pointer';
-        }
-      }
-      function style_menuCloser() {
-        const btnClose = colorMenu.getElementsByClassName('menuCloser')[0];
-        btnClose.style.backgroundColor = blockBgColor;
-        btnClose.style.flex = '1';
-        btnClose.style.display = 'flex';
-        btnClose.style.justifyContent = 'center';
-        btnClose.style.alignItems = 'center';
-      }
-      function style_btnClose() {
-        const btnClose = colorMenu.getElementsByClassName('btnClose')[0];
-        btnClose.style.cursor = 'pointer';
-        btnClose.style.display = 'flex';
-        btnClose.style.justifyContent = 'center';
-        btnClose.style.alignItems = 'center';
-        // btnClose.style.height = (timeBarHeight / 2.25) + btnBorder * 2 + 'rem';
-        btnClose.style.height = (timeBarHeight / 1.25) + 'rem';
-        btnClose.style.width = timeBarHeight / 1.25 + 'rem';
-        btnClose.style.marginLeft = btnDistance * 2 + 'rem';
-        btnClose.style.marginRight = btnDistance * 2 + 'rem';
-        btnClose.style.border = '1px solid #ffffff';
-        btnClose.style.backgroundColor = blockBgColor;
-        btnClose.style.borderRadius = borderRadius;
-        btnClose.style.color = '#ffffff';
-        btnClose.style.textAlign = 'center';
-        btnClose.style.fontSize = '3.5rem';
-
-
-      }
-    }
-
-    // I N T E R A C T I V E S
-    interactives();
-    function interactives() {
-      setup_hideColorMenu();
-      inter_CLICK_colorMenuBtn(colorMenuBtn);
-      inter_CLICK_closeBtn();
-      inter_CLICK_colorChoice();
-
-      function setup_hideColorMenu() {
-        colorMenu.style.display = 'none';
-      }
-      function inter_CLICK_colorMenuBtn(colorMenuBtn) {
-        colorMenuBtn.onclick = function (e) {
-          e.stopPropagation();
-          colorMenu.style.display = menuDisplay;
-        }
-      }
-      function inter_CLICK_closeBtn() {
-        const closeBlock = colorMenu.getElementsByClassName('menuCloser')[0];
-        closeBlock.onclick = function (e) {
-          e.stopPropagation();
-          colorMenu.style.display = 'none'
-        }
-      }
-      function inter_CLICK_colorChoice() {
-        const colorChoices = colorMenu.getElementsByClassName('colorChoice');
-        for (let i = 0; i < colorChoices.length; i++) {
-          colorChoices[i].onclick = function (e) {
-            e.stopPropagation();
-            const color = colorChoices[i].classList[1];
-            const timeBar = setup_findElementUp(colorMenuBtn, 'timeBar');
-            colorMenuBtn.style.backgroundColor = color;
-            timeBar.style.backgroundColor = color;
-            colorMenu.style.display = 'none';
-          }
-        }
-      }
-    }
-    return colorMenuBtn;
-  }
-
-  // THINGS
-  function cr8_topBar() {
-    // C O N T E N T
-    getEl_loopF('title', content_title);
-    getEl_loopF('about', content_about);
-
-    function content_title(el) {
-      let spanOne = document.createElement('span');
-      spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
-      el.appendChild(spanOne);
-      let letters = ('project').split('');
-      for (let i = 0; i < letters.length; i++) {
+      function devHelperF_textMark(el, text) {
         let span = document.createElement('span');
-        span.innerText = letters[i].toUpperCase();
-        span.style.color = colors[i];
-        span.style.letterSpacing = '3px';
+        // span.style.position = 'absolute';
+        span.style.top = '1rem'; span.style.left = '1rem'; span.innerText = text; span.style.color = 'blue'; span.style.letterSpacing = '1px'; span.style.fontSize = '2.5rem';
+        el.style.position = 'relative';
         el.appendChild(span);
       }
     }
-    function content_about(el) {
-      el.innerText = 'ABOUT';
+    // access
+    var count = 0;
+    function setup_findElementUp(elem, name) {
+      return (elem.parentElement.className == name && count < 12) ?
+        (function () {
+          count = 0;
+          return elem.parentElement;
+        })() :
+        (function () {
+          count++;
+          return setup_findElementUp(elem.parentElement, name);
+        })();
     }
-    // S T Y L E
-    let title_height = '3rem';
-    let title_bgColor = '#000000';
-    let title_color = '#ffffff';
-    let title_fontSize = '1.5rem';
-    let title_padding = '0.5rem';
-    getEl_loopF('topBar', style_topbar);
-    getEl_loopF('title', style_title);
-    getEl_loopF('about', style_about);
-
-    function style_topbar(el) {
-      el.style.display = 'flex';
-      el.style.background = title_bgColor;
-      el.style.height = '100%';
-    }
-    function style_title(el) {
-      el.style.background = title_bgColor;
-      el.style.height = title_height;
-      el.style.color = '#ffffff';
-      el.style.padding = title_padding
-      el.style.fontSize = title_fontSize;
-      el.style.borderRight = '1px solid #ffffff';
-    }
-    function style_about(el) {
-      el.style.color = title_color;
-      el.style.padding = title_padding;
-      el.style.fontSize = title_fontSize;
-    }
-  }
-  function cr8_main() {
-    function style_main(el) {
-      el.style.display = 'flex';
-    }
-    getEl_loopF('main', style_main);
-  }
-  function cr8_timeVisuals() {
-    getEl_loopF('timeVisuals', style_timeVisuals);
-
-    function style_timeVisuals(el) {
-      el.style.flex = '3';
-      el.style.display = 'flex';
-      el.style.flexDirection = 'column';
-      el.style.height = heightVisuals;
-    }
-  }
-  function cr8_timeBlocks() {
-    // T I M E  B L O C K S  -   C O N T E N T
-    getEl_loopF('timeBar', content_timeBar);
-    getEl_loopF('chooseTimeBarColor', content_chooseTimeBarColor);
-    getEl_loopF('projectTitle', content_projectTitle);
-    getEl_loopF('hourBlockChoice', content_hourBlockChoice);
-    getEl_loopF('addHourBlock', content_addHourBlock);
-    getEl_loopF('logHourBlocks', content_logHourBlocks);
-
-    function content_timeBar(el) {
-      // el.classList = 'timerBar ' + monthShown +'-';
-    }
-    function content_chooseTimeBarColor(el) {
-      const btn = cr8_colorMenuBtn();
-      el.appendChild(btn);
-    }
-    function content_projectTitle(el) {
-      const textarea = document.createElement('textarea');
-      textarea.type = 'text';
-      el.appendChild(textarea);
-    }
-    function content_hourBlockChoice(el) {
-      for (let i = 1; i < 25; i++) {
-        let hourBlockChoice = document.createElement('div');
-        hourBlockChoice.innerText = i;
-        hourBlockChoice.classList = 'hourBlockChosen ' + i + ' hours';
-        el.appendChild(hourBlockChoice)
+    function getEl_loopF(className, modify) {
+      const elements = document.getElementsByClassName(className);
+      for (let i = 0; i < elements.length; i++) {
+        modify(elements[i]);
       }
     }
-    function content_addHourBlock(el) {
-      const plus = document.createElement('div');
-      plus.className = 'plus';
-      const plusText = document.createElement('div');
-      plusText.className = 'plusText';
-      plusText.innerText = '+';
-      plus.appendChild(plusText);
-      el.appendChild(plus);
+    function getOneEl_runF(className, i, modify) {
+      const el = document.getElementsByClassName(className)[i];
+      modify(el);
     }
-    function content_logHourBlocks(el) {
-      // const months = months;
-      const monthNum = months.indexOf(monthShown);
-      const daysNum = DATA_Calendar[monthNum].daysNum;
-      console.log(DATA_Calendar[monthNum].daysNum)
-      const hours = document.createElement('div');
-      for (let i = 1; i <= daysNum; i++) {
-        let hour = document.createElement('div');
-        let num = document.createElement('span');
-        num.innerText = i;
-        hour.appendChild(num);
-        hours.appendChild(hour);
-      }
-      const log = document.getElementsByClassName('logHourBlocks')[0];
-      log.appendChild(hours);
+    // re-usables
+    function style_prevArr(el, maxHeight, width) {
+      el.style.cursor = 'pointer';
+      el.style.padding = width * 2;
+      el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
+      el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
+      el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
+      el.style.borderBottom = '0';
+      el.style.width = width + 'rem';
+      el.style.transform = 'rotate(90deg)';
+      // position
+      el.style.position = 'absolute';
+      el.style.left = 0 - (width * 9) + 'rem';
     }
-    // T I M E  B L O C K S  -  S T Y L E
-    const marginLeft = timeBarHeight / 2;
-    style();
-    function style() {
-      getEl_loopF('timeBlocks', style_timeBlocks);
-      getEl_loopF('colorsMenu', style_colorsMenu);
-      getEl_loopF('chooseTimeBarColor', style_chooseTimeBarColor);
+    function style_nextArr(el, maxHeight, width, marginLeft) {
+      el.style.cursor = 'pointer';
+      el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
+      el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
+      el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
+      el.style.borderBottom = '0';
+      el.style.width = '0.25rem';
+      el.style.transform = 'rotate(-90deg)';
+      el.style.marginLeft = (marginLeft * 7) + 'rem';
+      // position
+      el.style.position = 'absolute';
+      el.style.right = 0 - (width * 9) + 'rem';
+    }
+    function cr8_colorMenuBtn() {
+      // C O N T E N T 
+      const colorMenuBtn = content_colorMenuBtn();
+      const colorMenu = content_colorMenu();
+      content_colorChoices();
+      content_colorChoiceBtns();
+      content_menuCloser();
+      content_btnClose();
 
-      getEl_loopF('timeBars', style_timeBars);
-      getEl_loopF('timeBar', style_timeBar);
-      getEl_loopF('projectTitle', style_projectTitle);
-
-      getEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
-
-      getEl_loopF('chooseHourBlock', style_chooseHourBlock);
-      getEl_loopF('prevHourBlock', style_prevHourBlock);
-      getEl_loopF('hourBlockChoice', style_hourBlockChoice);
-      getEl_loopF('hourBlockChosen', style_hourBlockChosen);
-      getEl_loopF('nextHourBlock', style_nextHourBlock);
-      getEl_loopF('addHourBlock', style_addHourBlock);
-
-      getEl_loopF('logHourBlocks', style_logHourBlocks);
-
-
-      function style_timeBlocks(el) {
-        el.style.flex = '1';
-        el.style.display = 'flex';
+      function content_colorMenuBtn() {
+        const colorMenuBtn = document.createElement('div');
+        colorMenuBtn.className = 'colorMenuBtn';
+        return colorMenuBtn;
       }
-      function style_colorsMenu(el) {
-        el.style.flex = '1';
-        el.style.maxWidth = timeBarWidth / 1.5 + 'rem';
-        el.style.display = 'flex';
-        el.style.justifyContent = 'center';
-        el.style.alignItems = 'center';
-        el.style.backgroundColor = '#000000';
+      function content_colorMenu() {
+        const colorMenu = document.createElement('div');
+        colorMenu.className = 'colorMenu';
+        colorMenuBtn.appendChild(colorMenu);
+        return colorMenu;
       }
-      function style_chooseTimeBarColor(el) {
-        el.style.position = 'relative';
-        el.style.backgroundColor = '#000000';
-        el.style.height = timeBarHeight + 'rem';
-        el.style.width = timeBarWidth + 2.5 + 'rem';
-        // el.style.paddingRight = '0.5rem';
-        el.style.display = 'flex';
-        el.style.justifyContent = 'center';
-        el.style.alignItems = 'center';
+      function content_colorChoices() {
+        const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
+        colors.forEach(function (color) {
+          const block = document.createElement('div');
+          block.classList = 'colorChoice ' + color;
+          colorMenu.appendChild(block);
+        });
       }
-      function style_timeBars(el) {
-        el.style.flex = '5';
-        el.style.display = 'flex';
-        el.style.flexDirection = 'column';
-      }
-      function style_timeBar(el) {
-        el.style.display = 'flex';
-      }
-      function style_projectTitle(el) {
-        el.style.height = timeBarHeight + 'rem';
-        el.style.width = (timeBarWidth * 2) + 'rem';
-        el.style.display = 'flex';
-        el.style.wordWrap = 'break-word';
-        el.style.padding = '0.25rem';
-        style_textArea();
-        function style_textArea() {
-          const textarea = el.getElementsByTagName('textarea')[0];
-          textarea.style.flex = '1';
-          textarea.style.maxWidth = (timeBarWidth * 2) + 'rem';
-          textarea.style.width = '100%';
-          textarea.style.padding = '0';
-          textarea.style.margin = '0';
-          textarea.style.display = 'flex';
-          textarea.style.flexWrap = 'wrap';
-          textarea.style.wordWrap = 'break-word';
-          textarea.style.justifyContent = 'center';
-          textarea.style.alignItems = 'center';
-          textarea.style.backgroundColor = 'transparent';
-          textarea.style.border = '0px solid transparent';
-          textarea.style.textAlign = 'center';
-          textarea.style.verticalAlign = 'middle';
-          textarea.style.fontSize = '1.15rem';
+      function content_colorChoiceBtns() {
+        const blocks = colorMenu.getElementsByClassName('colorChoice');
+        for (let i = 0; i < blocks.length; i++) {
+          const btn = document.createElement('div');
+          btn.classList = 'btn';
+          blocks[i].appendChild(btn);
         }
       }
-      function style_consoleHourBlocks(el) {
-        // el.style.height = 'calc(100% - ' + titleHeight +')';
-        el.style.flex = '1';
-        el.style.display = 'flex';
-        // el.style.flexDirection = 'column';
-        el.style.justifyContent = 'flex-end';
+      function content_menuCloser() {
+        const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
+        const menuCloser = document.createElement('div');
+        menuCloser.className = 'menuCloser';
+        colorMenu.appendChild(menuCloser);
       }
-      function style_chooseHourBlock(el) {
-        // el.style.flex = '1';
-        el.style.maxWidth = timeBarHeight * 1.75 + 'rem';
-        el.style.display = 'flex';
-        el.style.flexDirection = 'row';
-        el.style.justifyContent = 'center';
-        el.style.position = 'relative';
+      function content_btnClose() {
+        const menuCloser = colorMenu.getElementsByClassName('menuCloser')[0];
+        const btnClose = document.createElement('div');
+        const closeSymbol = document.createElement('span');
+        btnClose.className = 'btnClose';
+        closeSymbol.innerText = 'X';
+        btnClose.appendChild(closeSymbol);
+        menuCloser.appendChild(btnClose);
       }
-      function style_prevHourBlock(el) {
-        const width = 0.25;
-        style_prevArr(el, timeBarHeight, width);
-        // el.style.backgroundColor = '#000000';
-        el.style.borderTopColor = '#000000';
-        el.style.left = '0.8rem';
-        el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
-      }
-      function style_nextHourBlock(el) {
-        const width = 0.25;
-        style_nextArr(el, timeBarHeight, width, marginLeft);
-        el.style.borderTopColor = '#000000';
-        el.style.right = '0.8rem';
-        el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
-      }
-      function style_hourBlockChoice(el) {
-        // el.style.flex = '1';
-        el.style.minWidth = timeBarHeight * 2.5 + 'rem';
-        el.style.border = 'none';
-        el.style.display = 'flex';
-        el.style.justifyContent = 'center';
-        el.style.alignItems = 'center';
-      }
-      function style_hourBlockChosen(el) {
-        const hoursNum = Number(el.classList[1]);
-        const num = 1 - 0.75 + (hoursNum / 100 * 3);
-        el.style.height = num * 100 + '%';
-        // el.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
-        el.style.fontSize = 1.5 + hoursNum / 100 * 2 + 'rem';
-        el.style.border = '2px solid #000000';
-        el.style.paddingLeft = '1rem';
-        el.style.paddingRight = '1rem';
-        el.style.borderRadius = borderRadius;
-        el.style.display = 'flex';
-        el.style.justifyContent = 'center';
-        el.style.alignItems = 'center';
-        el.style.fontWeight = 'bold';
-        el.style.color = '#000000';
-      }
-      function style_addHourBlock(el) {
-        el.style.cursor = 'pointer';
-        el.style.flex = '1';
-        el.style.maxWidth = timeBarHeight + 'rem';
-        el.style.minWidth = timeBarHeight + 'rem';
-        el.style.textAlign = 'center';
-        el.style.display = 'flex';
-        el.style.justifyContent = 'center';
-        el.style.alignItems = 'center';
-        el.style.position = 'relative';
-        style_plusSymbol();
-        function style_plusSymbol() {
-          const plus = el.getElementsByClassName('plus')[0];
-          plus.style.border = '0.75rem solid #000000';
-          plus.style.borderRadius = '25%';
-          plus.style.position = 'absolute';
-          plus.style.top = 0;
-          plus.style.bottom = 0;
-          plus.style.left = 0;
-          plus.style.right = 0;
-          plus.style.display = 'flex';
-          plus.style.textAlign = 'center';
-          plus.style.justifyContent = 'center';
-          style_plusText();
-          function style_plusText() {
-            const plusText = plus.children[0];
-            plusText.style.fontSize = timeBarHeight + 'rem';
-            plusText.style.borderRadius = borderRadius;
-            plusText.style.position = 'absolute';
-            plusText.style.position = 'absolute';
-            plusText.style.top = 0 - (timeBarHeight) / 5.25 + 'rem';
-            plusText.style.bottom = 0;
-            plusText.style.left = 0;
-            plusText.style.right = 0;
+
+      // S T Y L E
+      const menuZIndex = '3';
+      const menuDisplay = 'flex';
+      const btnDistance = 0.75;
+      const btnBorder = 0.5;
+      const blockBgColor = '#000000';
+      style();
+      function style() {
+        style_colorMenuBtn();
+        style_colorMenu();
+        style_colorChoices();
+        style_colorChoiceBtns();
+        style_menuCloser();
+        style_btnClose();
+
+        function style_colorMenuBtn() {
+          colorMenuBtn.style.cursor = 'pointer';
+          colorMenuBtn.style.borderRadius = borderRadius;
+          colorMenuBtn.style.height = timeBarHeight / 1.25 + 'rem';
+          colorMenuBtn.style.width = timeBarHeight / 1.75 + 'rem';
+          colorMenuBtn.style.backgroundColor = 'blue';
+        }
+        function style_colorMenu() {
+          const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
+          colorMenu.style.height = timeBarHeight + 'rem';
+          colorMenu.style.width = (timeBarWidth * colors.length) + 'rem';
+          colorMenu.style.top = '0';
+          colorMenu.style.display = menuDisplay;
+
+          colorMenu.style.position = 'absolute'; colorMenu.style.zIndex = menuZIndex; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
+        }
+        function style_colorChoices() {
+          const blocks = colorMenu.getElementsByClassName('colorChoice');
+          for (let i = 0; i < colors.length; i++) {
+            const colorChoice = blocks[i];
+            colorChoice.style.backgroundColor = blockBgColor;
+            colorChoice.style.flex = '1';
+            colorChoice.style.display = 'flex';
+            colorChoice.style.justifyContent = 'center';
+            colorChoice.style.alignItems = 'center';
+            colorChoice.style.paddingLeft = btnDistance + 'rem';
           }
         }
-      }
-      function style_logHourBlocks(el) {
-        el.style.display = 'flex';
-        el.style.flex = '5';
-        el.style.textAlign = 'center';
-        el.style.alignItems = 'flex-end';
-        el.style.position = 'relative';
-        const hours = el.children[0];
-        hours.style.position = 'absolute';
-        hours.style.bottom = '0';
-        hours.style.left = '0';
-        hours.style.right = '0';
-        hours.style.flex = '5';
-        hours.style.display = 'flex';
-        for (let i = 0; i < hours.children.length; i++) {
-          const hour = hours.children[i];
-          hour.style.backgroundColor = '#000000';
-          hour.style.opacity = '0.85';
-          hour.style.color = '#ffffff';
-          hour.style.flex = '1';
-          hour.style.fontSize = '0.5rem';
-        }
-      }
-    }
-    // T I M E  B L O C K S  -  I N T E R A C T I V E S
-    interactives();
-    function interactives() {
-      getEl_loopF('projectTitle', inter_INPUT_projectTitle);
-      getEl_loopF('hourBlockChoice', setup_hourBlockChoice);
-      getEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
-      getEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
-      getEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
-
-      function inter_INPUT_projectTitle(el) {
-        const textarea = el.getElementsByTagName('textarea')[0];
-        textarea.onchange = function (e) {
-          const projectTitle = e.target.value;
-          localStorage.setItem('projectTitle', projectTitle);
-        }
-      }
-      function setup_hourBlockChoice(el) {
-        el.classList = 'hourBlockChoice ' + '1';
-        const hourBlocks = el.getElementsByClassName('hourBlockChosen ');
-        for (let i = 1; i < hourBlocks.length; i++) {
-          hourBlocks[i].style.display = 'none';
-        }
-      }
-      function inter_CLICK_prevHourBlock(el) {
-        el.onclick = function () {
-          const hourBlockChoice = el.parentElement.getElementsByClassName('hourBlockChoice')[0];
-          const num = hourBlockChoice.classList[1];
-          if (1 < Number(num)) {
-            const newNum = Number(num) - 1;
-            hourBlockChoice.classList = 'hourBlockChoice ' + newNum;
-            hourBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
-            hourBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
+        function style_colorChoiceBtns() {
+          const btns = colorMenu.getElementsByClassName('btn');
+          for (let i = 0; i < colors.length; i++) {
+            const choiceBtn = btns[i];
+            choiceBtn.style.backgroundColor = colors[i];
+            choiceBtn.style.height = timeBarHeight / 1.25 + 'rem';
+            choiceBtn.style.width = timeBarHeight / 1.75 + 'rem';
+            // choiceBtn.style.border = btnBorder + 'rem solid #000000';
+            choiceBtn.style.borderRadius = borderRadius;
+            // choiceBtn.style.boxSizing = 'content-box';
+            choiceBtn.style.cursor = 'pointer';
           }
         }
+        function style_menuCloser() {
+          const btnClose = colorMenu.getElementsByClassName('menuCloser')[0];
+          btnClose.style.backgroundColor = blockBgColor;
+          btnClose.style.flex = '1';
+          btnClose.style.display = 'flex';
+          btnClose.style.justifyContent = 'center';
+          btnClose.style.alignItems = 'center';
+        }
+        function style_btnClose() {
+          const btnClose = colorMenu.getElementsByClassName('btnClose')[0];
+          btnClose.style.cursor = 'pointer';
+          btnClose.style.display = 'flex';
+          btnClose.style.justifyContent = 'center';
+          btnClose.style.alignItems = 'center';
+          // btnClose.style.height = (timeBarHeight / 2.25) + btnBorder * 2 + 'rem';
+          btnClose.style.height = (timeBarHeight / 1.25) + 'rem';
+          btnClose.style.width = timeBarHeight / 1.25 + 'rem';
+          btnClose.style.marginLeft = btnDistance * 2 + 'rem';
+          btnClose.style.marginRight = btnDistance * 2 + 'rem';
+          btnClose.style.border = '1px solid #ffffff';
+          btnClose.style.backgroundColor = blockBgColor;
+          btnClose.style.borderRadius = borderRadius;
+          btnClose.style.color = '#ffffff';
+          btnClose.style.textAlign = 'center';
+          btnClose.style.fontSize = '3.5rem';
+
+
+        }
       }
-      function inter_CLICK_nextHourBlock(el) {
-        el.onclick = function () {
-          const hourBlockChoice = el.parentElement.getElementsByClassName('hourBlockChoice')[0];
-          const hourBlocks = hourBlockChoice.getElementsByClassName('hourBlockChosen');
-          const num = hourBlockChoice.classList[1];
-          if (Number(num) < hourBlocks.length) {
-            const newNum = Number(num) + 1;
-            hourBlockChoice.classList = 'hourBlockChoice ' + newNum;
-            hourBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
-            hourBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
+
+      // I N T E R A C T I V E S
+      interactives();
+      function interactives() {
+        setup_hideColorMenu();
+        inter_CLICK_colorMenuBtn(colorMenuBtn);
+        inter_CLICK_closeBtn();
+        inter_CLICK_colorChoice();
+
+        function setup_hideColorMenu() {
+          colorMenu.style.display = 'none';
+        }
+        function inter_CLICK_colorMenuBtn(colorMenuBtn) {
+          colorMenuBtn.onclick = function (e) {
+            e.stopPropagation();
+            colorMenu.style.display = menuDisplay;
           }
         }
-      }
-      function inter_CLICK_addHourBlock(el) {
-        el.onclick = function () {
-          const hoursConsole = setup_findElementUp(el, 'consoleHourBlocks');
-          const choices = hoursConsole.getElementsByClassName('hourBlockChoice');
-          const choice = choices[0];
-          const numHours = choice.classList[1];
-          const hourBlock = choice.getElementsByClassName(numHours)[0];
-          console.log(hourBlock)
-          let newClone = hourBlock.cloneNode(true);
-          appendClone(newClone);
-          function appendClone(newClone) {
-            const log = hoursConsole.getElementsByClassName('logHourBlocks')[0];
-            log.appendChild(newClone);
+        function inter_CLICK_closeBtn() {
+          const closeBlock = colorMenu.getElementsByClassName('menuCloser')[0];
+          closeBlock.onclick = function (e) {
+            e.stopPropagation();
+            colorMenu.style.display = 'none'
           }
         }
-      }
-    }
-  }
-  function cr8_calendarBar() {
-    // C A L E N D A R  B A R - C O N T E N T
-    getEl_loopF('calendarTitle', content_calendarTitle);
-    getEl_loopF('monthChoices', content_monthChoices);
-    getEl_loopF('chooseMonth', content_monthChoice);
-    getEl_loopF('prevMonth', content_prevMonth);
-    getEl_loopF('nextMonth', content_nextMonth);
-
-    function content_calendarTitle(el) {
-      const title = document.createElement('span');
-      title.innerText = 'CALENDAR';
-      el.appendChild(title);
-    }
-    function content_monthChoices(el) {
-    }
-    function content_monthChoice(el) {
-      const title = document.createElement('div');
-      // global var
-      const index = months.indexOf(monthShown);
-      title.innerText = months[index];
-      el.appendChild(title);
-    }
-    function content_prevMonth(el) {
-    }
-    function content_nextMonth(el) {
-    }
-
-    // C A L E N D A R  B A R -  S T Y L E
-    const marginLeft = 3;
-    const titleSize = 1.5;
-    style();
-    function style() {
-      getEl_loopF('calendarBar', style_calendarBar);
-      getEl_loopF('calendarTitle', style_calendarTitle);
-      getEl_loopF('monthChoices', style_monthChoices);
-      getEl_loopF('chooseMonth', style_monthChoice);
-      getEl_loopF('prevMonth', style_prevMonth);
-      getEl_loopF('nextMonth', style_nextMonth);
-
-      function style_calendarBar(el) {
-        el.style.flex = '1';
-        el.style.maxHeight = timeBarHeight / 2 + 'rem';
-        el.style.backgroundColor = '#000000';
-        el.style.display = 'flex';
-      }
-      function style_calendarTitle(el) {
-        el.style.color = '#ffffff';
-        el.style.fontWeight = 'bold';
-        el.style.marginLeft = '1.5rem';
-        el.style.display = 'flex';
-        el.style.flexDirection = 'column';
-        el.style.justifyContent = 'center';
-      }
-      function style_monthChoices(el) {
-        el.style.display = 'flex';
-        el.style.alignItems = 'center';
-        el.style.marginLeft = (marginLeft * 3) + 'rem';
-        el.style.color = '#ffffff';
-        // position
-        el.style.position = 'relative';
-      }
-      function style_monthChoice(el) {
-        // global var
-        el.style.fontSize = titleSize + 'rem';
-      }
-      function style_prevMonth(el) {
-        const width = 0.25;
-        style_prevArr(el, timeBarHeight, width);
-        el.style.marginLeft = 0 - marginLeft + 'rem';
-      }
-      function style_nextMonth(el) {
-        const width = 0.25;
-        const left = 0 - marginLeft * 3;
-        style_nextArr(el, timeBarHeight, width, left)
-        el.style.marginRight = 0 - marginLeft + 'rem';
-      }
-    }
-    // C A L E N D A R  B A R - I N T E R A C T I V E S
-    interactives();
-    function interactives() {
-      inter_monthShown();
-      getEl_loopF('prevMonth', inter_prevMonth);
-      getEl_loopF('nextMonth', inter_nextMonth);
-      getEl_loopF('chooseMonth', inter_shiftMonthChoice);
-
-      function inter_monthShown() {
-        const date = new Date();
-        const monthName = date.toLocaleString('en-EN', { month: 'long' });
-        const firstLetter = monthName.split('')[0].toUpperCase();
-        const remainingLetters = monthName.substring(1, monthName.split('').length);
-        monthShown = firstLetter + remainingLetters;
-      }
-      function inter_prevMonth(el) {
-        el.onclick = function () {
-          hideCurrentMonth();
-          const index = months.indexOf(monthShown);
-          if (index > 0) {
-            const prevIndex = index - 1;
-            monthShown = months[prevIndex];
-            getEl_loopF('chooseMonth', inter_shiftMonthChoice);
-          }
-          showNextMonth();
-        }
-      }
-      function inter_nextMonth(el) {
-        el.onclick = function () {
-          hideCurrentMonth();
-          const index = months.indexOf(monthShown);
-          if (index < months.length - 1) {
-            const prevIndex = index + 1;
-            monthShown = months[prevIndex];
-            getEl_loopF('chooseMonth', inter_shiftMonthChoice);
-          }
-          showNextMonth();
-        }
-      }
-      function inter_shiftMonthChoice(el) {
-        el.innerText = monthShown;
-      }
-      function hideCurrentMonth() {
-        const currentMonth = document.getElementsByClassName(monthShown)[0];
-        currentMonth.style.display = 'none';
-      }
-      function showNextMonth() {
-        const currentMonth = document.getElementsByClassName(monthShown)[0];
-        currentMonth.style.display = 'flex';
-      }
-    }
-  }
-  function cr8_calendar() {
-    // C A L E N D A R - C O N T E N T
-    cr8_calendarDOM();
-    function cr8_calendarDOM() {
-      getEl_loopF('calendar', content_months);
-      getEl_loopF('calendar', content_weeks);
-      getEl_loopF('calendar', content_days);
-      getEl_loopF('day', content_hourMarks);
-
-      function content_months(el) {
-        for (let i = 0; i < months.length; i++) {
-          const month = document.createElement('div');
-          month.classList = 'month ' + months[i];
-          el.appendChild(month);
-        }
-      }
-      function content_weeks() {
-        for (let i = 0; i < weeks.length; i++) {
-          const week = document.createElement('div');
-          week.classList = 'week ' + weeks[i].code;
-          const monthName = weeks[i].code.split('-')[0];
-          const monthDOM = document.getElementsByClassName(monthName)[0];
-
-          function content_weekHeader(week) {
-            const weekHeader = document.createElement('span');
-            weekHeader.classList = 'weekHeader';
-            const text = weeks[i].code.split('-')[1] + ' ' + weeks[i].code.split('-')[2];
-            const title = document.createElement('span');
-            title.className = 'weekTitle';
-            title.innerText = text;
-            weekHeader.appendChild(title);
-            week.appendChild(weekHeader);
-          }
-          content_weekHeader(week);
-          monthDOM.appendChild(week);
-        }
-      }
-      function content_days() {
-        for (let i = 0; i < days.length; i++) {
-          const day = document.createElement('div');
-          const weekName = days[i].code.split(' ')[0];
-          const weekDOM = document.getElementsByClassName(weekName)[0];
-          const title = document.createElement('span');
-          const text = days[i].name;
-          day.classList = 'day ' + days[i].code;
-          title.innerText = text;
-          day.appendChild(title);
-          weekDOM.appendChild(day);
-        }
-      }
-      function content_hourMarks(el) {
-        const hourMarks = document.createElement('div');
-        hourMarks.className = 'hourMarks';
-        hourMarks.style.flex = '1';
-        el.appendChild(hourMarks)
-        content_dropzone();
-        content_marks();
-        function content_dropzone() {
-          const dropzone = document.createElement('div');
-          dropzone.className = 'hourMarksDropzone';
-          content_dropzoneCols();
-          function content_dropzoneCols() {
-            for (let i = 1; i < 25; i++) {
-              const col = document.createElement('div');
-              col.classList = 'hourMarksDropzoneCol ' + i;
-              dropzone.appendChild(col);
+        function inter_CLICK_colorChoice() {
+          const colorChoices = colorMenu.getElementsByClassName('colorChoice');
+          for (let i = 0; i < colorChoices.length; i++) {
+            colorChoices[i].onclick = function (e) {
+              e.stopPropagation();
+              const color = colorChoices[i].classList[1];
+              const timeBar = setup_findElementUp(colorMenuBtn, 'timeBar');
+              colorMenuBtn.style.backgroundColor = color;
+              timeBar.style.backgroundColor = color;
+              colorMenu.style.display = 'none';
             }
           }
-          hourMarks.appendChild(dropzone);
         }
-        function content_marks() {
-          const marks = document.createElement('div');
-          marks.className = 'hourMarksContainer';
-          for (let i = 0; i < 25; i += 4) {
-            const mark = document.createElement('div');
-            mark.className = 'hourMark';
-            mark.innerText = i;
-            marks.appendChild(mark);
+      }
+      return colorMenuBtn;
+    }
+
+    // THINGS
+    function cr8_topBar() {
+      // C O N T E N T
+      getEl_loopF('title', content_title);
+      getEl_loopF('about', content_about);
+      function content_title(el) {
+        let spanOne = document.createElement('span');
+        spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
+        el.appendChild(spanOne);
+        let letters = ('project').split('');
+        for (let i = 0; i < letters.length; i++) {
+          let span = document.createElement('span');
+          span.innerText = letters[i].toUpperCase();
+          span.style.color = colors[i];
+          span.style.letterSpacing = '3px';
+          el.appendChild(span);
+        }
+      }
+      function content_about(el) {
+        el.innerText = 'ABOUT';
+      }
+
+      // S T Y L E
+      let title_height = '3rem';
+      let title_bgColor = '#000000';
+      let title_color = '#ffffff';
+      let title_fontSize = '1.5rem';
+      let title_padding = '0.5rem';
+      getEl_loopF('topBar', style_topbar);
+      getEl_loopF('title', style_title);
+      getEl_loopF('about', style_about);
+
+      function style_topbar(el) {
+        el.style.display = 'flex';
+        el.style.background = title_bgColor;
+        el.style.height = '100%';
+      }
+      function style_title(el) {
+        el.style.background = title_bgColor;
+        el.style.height = title_height;
+        el.style.color = '#ffffff';
+        el.style.padding = title_padding
+        el.style.fontSize = title_fontSize;
+        el.style.borderRight = '1px solid #ffffff';
+      }
+      function style_about(el) {
+        el.style.color = title_color;
+        el.style.padding = title_padding;
+        el.style.fontSize = title_fontSize;
+      }
+    }
+    function cr8_main() {
+      function style_main(el) {
+        el.style.display = 'flex';
+      }
+      getEl_loopF('main', style_main);
+    }
+    function cr8_timeVisuals() {
+      getEl_loopF('timeVisuals', style_timeVisuals);
+      function style_timeVisuals(el) {
+        el.style.flex = '3';
+        el.style.display = 'flex';
+        el.style.flexDirection = 'column';
+        el.style.height = heightVisuals;
+      }
+    }
+    function cr8_timeBlocks() {
+      // T I M E  B L O C K S  -   C O N T E N T
+      getEl_loopF('timeBar', content_timeBar);
+      getEl_loopF('chooseTimeBarColor', content_chooseTimeBarColor);
+      getEl_loopF('projectTitle', content_projectTitle);
+      getEl_loopF('hourBlockChoice', content_hourBlockChoice);
+      getEl_loopF('addHourBlock', content_addHourBlock);
+      getEl_loopF('logHourBlocks', content_logHourBlocks);
+
+      function content_timeBar(el) {
+        // el.classList = 'timerBar ' + monthShown +'-';
+      }
+      function content_chooseTimeBarColor(el) {
+        const btn = cr8_colorMenuBtn();
+        el.appendChild(btn);
+      }
+      function content_projectTitle(el) {
+        const textarea = document.createElement('textarea');
+        textarea.type = 'text';
+        el.appendChild(textarea);
+      }
+      function content_hourBlockChoice(el) {
+        for (let i = 1; i < 25; i++) {
+          let hourBlockChoice = document.createElement('div');
+          hourBlockChoice.innerText = i;
+          hourBlockChoice.classList = 'hourBlockChosen ' + i + ' hours';
+          el.appendChild(hourBlockChoice)
+        }
+      }
+      function content_addHourBlock(el) {
+        const plus = document.createElement('div');
+        plus.className = 'plus';
+        const plusText = document.createElement('div');
+        plusText.className = 'plusText';
+        plusText.innerText = '+';
+        plus.appendChild(plusText);
+        el.appendChild(plus);
+      }
+      function content_logHourBlocks(el) {
+        const monthNum = months.indexOf(monthShown);
+        const daysNum = DATA_Calendar[monthNum].daysNum;
+        console.log(DATA_Calendar[monthNum].daysNum)
+        const hours = document.createElement('div');
+        for (let i = 1; i <= daysNum; i++) {
+          let hour = document.createElement('div');
+          let num = document.createElement('span');
+          num.innerText = i;
+          hour.appendChild(num);
+          hours.appendChild(hour);
+        }
+        const log = document.getElementsByClassName('logHourBlocks')[0];
+        log.appendChild(hours);
+      }
+
+      // T I M E  B L O C K S  -  S T Y L E
+      const marginLeft = timeBarHeight / 2;
+      style();
+      function style() {
+        getEl_loopF('timeBlocks', style_timeBlocks);
+        getEl_loopF('colorsMenu', style_colorsMenu);
+        getEl_loopF('chooseTimeBarColor', style_chooseTimeBarColor);
+        getEl_loopF('timeBars', style_timeBars);
+        getEl_loopF('timeBar', style_timeBar);
+        getEl_loopF('projectTitle', style_projectTitle);
+        getEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
+        getEl_loopF('chooseHourBlock', style_chooseHourBlock);
+        getEl_loopF('prevHourBlock', style_prevHourBlock);
+        getEl_loopF('hourBlockChoice', style_hourBlockChoice);
+        getEl_loopF('hourBlockChosen', style_hourBlockChosen);
+        getEl_loopF('nextHourBlock', style_nextHourBlock);
+        getEl_loopF('addHourBlock', style_addHourBlock);
+        getEl_loopF('logHourBlocks', style_logHourBlocks);
+
+        function style_timeBlocks(el) {
+          el.style.flex = '1';
+          el.style.display = 'flex';
+        }
+        function style_colorsMenu(el) {
+          el.style.flex = '1';
+          el.style.maxWidth = timeBarWidth / 1.5 + 'rem';
+          el.style.display = 'flex';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
+          el.style.backgroundColor = '#000000';
+        }
+        function style_chooseTimeBarColor(el) {
+          el.style.position = 'relative';
+          el.style.backgroundColor = '#000000';
+          el.style.height = timeBarHeight + 'rem';
+          el.style.width = timeBarWidth + 2.5 + 'rem';
+          // el.style.paddingRight = '0.5rem';
+          el.style.display = 'flex';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
+        }
+        function style_timeBars(el) {
+          el.style.flex = '5';
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+        }
+        function style_timeBar(el) {
+          el.style.display = 'flex';
+        }
+        function style_projectTitle(el) {
+          el.style.height = timeBarHeight + 'rem';
+          el.style.width = (timeBarWidth * 2) + 'rem';
+          el.style.display = 'flex';
+          el.style.wordWrap = 'break-word';
+          el.style.padding = '0.25rem';
+          style_textArea();
+          function style_textArea() {
+            const textarea = el.getElementsByTagName('textarea')[0];
+            textarea.style.flex = '1';
+            textarea.style.maxWidth = (timeBarWidth * 2) + 'rem';
+            textarea.style.width = '100%';
+            textarea.style.padding = '0';
+            textarea.style.margin = '0';
+            textarea.style.display = 'flex';
+            textarea.style.flexWrap = 'wrap';
+            textarea.style.wordWrap = 'break-word';
+            textarea.style.justifyContent = 'center';
+            textarea.style.alignItems = 'center';
+            textarea.style.backgroundColor = 'transparent';
+            textarea.style.border = '0px solid transparent';
+            textarea.style.textAlign = 'center';
+            textarea.style.verticalAlign = 'middle';
+            textarea.style.fontSize = '1.15rem';
           }
-          hourMarks.appendChild(marks);
         }
-        // 
-      }
-    }
-    // C A L E N D A R - S T Y L E 
-    const fontSize = 1;
-    const monthDisplay = 'flex';
-    getEl_loopF('calendar', style_calendar);
-    getEl_loopF('month', style_month);
-    getEl_loopF('week', style_week);
-    getEl_loopF('weekHeader', style_weekHeader);
-    getEl_loopF('weekTitle', style_weekTitle);
-    getEl_loopF('day', style_day);
-    getEl_loopF('hourMarks', style_hourMarks);
-
-    function style_calendar(el) {
-      el.style.flex = '1';
-      el.style.display = 'flex';
-    }
-    function style_month(el) {
-      el.style.flex = '1';
-      el.style.border = '1px solid #000000';
-      el.style.display = monthDisplay;
-      el.style.flexDirection = 'column';
-    }
-    function style_week(el) {
-      el.style.flex = '1';
-      el.style.display = 'flex';
-    }
-    function style_weekHeader(el) {
-      el.style.display = 'flex';
-      el.style.flexDirection = 'column';
-      el.style.alignItems = 'flex-end'
-      el.style.backgroundColor = '#000000';
-      el.style.color = '#ffffff';
-      el.style.padding = '0 1rem';
-    }
-    function style_weekTitle(el) {
-      el.style.fontSize = (fontSize - 0.25) + 'rem';
-      el.style.padding = '0 ' + (fontSize / 5) + 'rem';
-      el.style.paddingTop = (fontSize / 15) + 'rem';
-    }
-    function style_day(el) {
-      el.style.fontSize = (fontSize - 0.25) + 'rem';
-      el.style.flex = '1';
-      el.style.border = '1px solid #000000';
-      el.style.display = 'flex';
-      el.style.flexDirection = 'column';
-      el.style.justifyContent = 'space-between';
-      style_dayTitle(el);
-      function style_dayTitle(el) {
-        el.children[0].style.padding = '0 ' + (fontSize / 5) + 'rem';
-        el.children[0].style.paddingTop = (fontSize / 15) + 'rem';
-      }
-    }
-    function style_hourMarks(el) {
-      el.style.flex = '1';
-      el.style.fontSize = (fontSize - 0.33) + 'rem';
-      el.style.display = 'flex';
-      el.style.flexDirection = 'column';
-      el.style.alignItems = 'flex-end';
-      el.style.justifyContent = 'flex-end';
-      el.style.borderLeft = '1px solid #ffffff';
-      style_dropzone();
-      style_container();
-
-      function style_dropzone() {
-        const dropzone = el.getElementsByClassName('hourMarksDropzone')[0];
-        dropzone.style.height = '100%';
-        dropzone.style.width = '100%';
-        dropzone.style.display = 'flex';
-        style_cols();
-        function style_cols() {
-          const cols = dropzone.getElementsByClassName('hourMarksDropzoneCol')
-          for (let i = 0; i < cols.length; i++) {
-            const col = cols[i];
-            col.style.flex = '1';
-            col.style.borderLeft = '1px solid rgb(220,220,220, 0.3)';
+        function style_consoleHourBlocks(el) {
+          // el.style.height = 'calc(100% - ' + titleHeight +')';
+          el.style.flex = '1';
+          el.style.display = 'flex';
+          // el.style.flexDirection = 'column';
+          el.style.justifyContent = 'flex-end';
+        }
+        function style_chooseHourBlock(el) {
+          // el.style.flex = '1';
+          el.style.maxWidth = timeBarHeight * 1.75 + 'rem';
+          el.style.display = 'flex';
+          el.style.flexDirection = 'row';
+          el.style.justifyContent = 'center';
+          el.style.position = 'relative';
+        }
+        function style_prevHourBlock(el) {
+          const width = 0.25;
+          style_prevArr(el, timeBarHeight, width);
+          // el.style.backgroundColor = '#000000';
+          el.style.borderTopColor = '#000000';
+          el.style.left = '0.8rem';
+          el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
+        }
+        function style_nextHourBlock(el) {
+          const width = 0.25;
+          style_nextArr(el, timeBarHeight, width, marginLeft);
+          el.style.borderTopColor = '#000000';
+          el.style.right = '0.8rem';
+          el.style.top = 'calc(50% - ' + timeBarHeight / 4 + 'rem)'
+        }
+        function style_hourBlockChoice(el) {
+          // el.style.flex = '1';
+          el.style.minWidth = timeBarHeight * 2.5 + 'rem';
+          el.style.border = 'none';
+          el.style.display = 'flex';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
+        }
+        function style_hourBlockChosen(el) {
+          const hoursNum = Number(el.classList[1]);
+          const num = 1 - 0.75 + (hoursNum / 100 * 3);
+          el.style.height = num * 100 + '%';
+          // el.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
+          el.style.fontSize = 1.5 + hoursNum / 100 * 2 + 'rem';
+          el.style.border = '2px solid #000000';
+          el.style.paddingLeft = '1rem';
+          el.style.paddingRight = '1rem';
+          el.style.borderRadius = borderRadius;
+          el.style.display = 'flex';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
+          el.style.fontWeight = 'bold';
+          el.style.color = '#000000';
+        }
+        function style_addHourBlock(el) {
+          el.style.cursor = 'pointer';
+          el.style.flex = '1';
+          el.style.maxWidth = timeBarHeight + 'rem';
+          el.style.minWidth = timeBarHeight + 'rem';
+          el.style.textAlign = 'center';
+          el.style.display = 'flex';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
+          el.style.position = 'relative';
+          style_plusSymbol();
+          function style_plusSymbol() {
+            const plus = el.getElementsByClassName('plus')[0];
+            plus.style.border = '0.75rem solid #000000';
+            plus.style.borderRadius = '25%';
+            plus.style.position = 'absolute';
+            plus.style.top = 0;
+            plus.style.bottom = 0;
+            plus.style.left = 0;
+            plus.style.right = 0;
+            plus.style.display = 'flex';
+            plus.style.textAlign = 'center';
+            plus.style.justifyContent = 'center';
+            style_plusText();
+            function style_plusText() {
+              const plusText = plus.children[0];
+              plusText.style.fontSize = timeBarHeight + 'rem';
+              plusText.style.borderRadius = borderRadius;
+              plusText.style.position = 'absolute';
+              plusText.style.position = 'absolute';
+              plusText.style.top = 0 - (timeBarHeight) / 5.25 + 'rem';
+              plusText.style.bottom = 0;
+              plusText.style.left = 0;
+              plusText.style.right = 0;
+            }
           }
         }
-
+        function style_logHourBlocks(el) {
+          el.style.display = 'flex';
+          el.style.flex = '5';
+          el.style.textAlign = 'center';
+          el.style.alignItems = 'flex-end';
+          el.style.position = 'relative';
+          const hours = el.children[0];
+          hours.style.position = 'absolute';
+          hours.style.bottom = '0';
+          hours.style.left = '0';
+          hours.style.right = '0';
+          hours.style.flex = '5';
+          hours.style.display = 'flex';
+          for (let i = 0; i < hours.children.length; i++) {
+            const hour = hours.children[i];
+            hour.style.backgroundColor = '#000000';
+            hour.style.opacity = '0.85';
+            hour.style.color = '#ffffff';
+            hour.style.flex = '1';
+            hour.style.fontSize = '0.5rem';
+          }
+        }
       }
-      function style_container() {
-        const container = el.getElementsByClassName('hourMarksContainer')[0];
-        container.style.display = 'flex';
-        container.style.width = '100%';
-        style_mark();
-        function style_mark() {
-          const marks = container.getElementsByClassName('hourMark');
-          for (let i = 0; i < marks.length; i++) {
-            const mark = marks[i];
-            mark.style.flex = '1';
-            mark.style.color = '#ffffff';
-            mark.style.backgroundColor = '#000000';
+
+      // T I M E  B L O C K S  -  I N T E R A C T I V E S
+      interactives();
+      function interactives() {
+        getEl_loopF('projectTitle', inter_INPUT_projectTitle);
+        getEl_loopF('hourBlockChoice', setup_hourBlockChoice);
+        getEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
+        getEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
+        getEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
+
+        function inter_INPUT_projectTitle(el) {
+          const textarea = el.getElementsByTagName('textarea')[0];
+          textarea.onchange = function (e) {
+            const projectTitle = e.target.value;
+            localStorage.setItem('projectTitle', projectTitle);
+          }
+        }
+        function setup_hourBlockChoice(el) {
+          el.classList = 'hourBlockChoice ' + '1';
+          const hourBlocks = el.getElementsByClassName('hourBlockChosen ');
+          for (let i = 1; i < hourBlocks.length; i++) {
+            hourBlocks[i].style.display = 'none';
+          }
+        }
+        function inter_CLICK_prevHourBlock(el) {
+          el.onclick = function () {
+            const hourBlockChoice = el.parentElement.getElementsByClassName('hourBlockChoice')[0];
+            const num = hourBlockChoice.classList[1];
+            if (1 < Number(num)) {
+              const newNum = Number(num) - 1;
+              hourBlockChoice.classList = 'hourBlockChoice ' + newNum;
+              hourBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
+              hourBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
+            }
+          }
+        }
+        function inter_CLICK_nextHourBlock(el) {
+          el.onclick = function () {
+            const hourBlockChoice = el.parentElement.getElementsByClassName('hourBlockChoice')[0];
+            const hourBlocks = hourBlockChoice.getElementsByClassName('hourBlockChosen');
+            const num = hourBlockChoice.classList[1];
+            if (Number(num) < hourBlocks.length) {
+              const newNum = Number(num) + 1;
+              hourBlockChoice.classList = 'hourBlockChoice ' + newNum;
+              hourBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
+              hourBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
+            }
+          }
+        }
+        function inter_CLICK_addHourBlock(el) {
+          el.onclick = function () {
+            const hoursConsole = setup_findElementUp(el, 'consoleHourBlocks');
+            const choices = hoursConsole.getElementsByClassName('hourBlockChoice');
+            const choice = choices[0];
+            const numHours = choice.classList[1];
+            const hourBlock = choice.getElementsByClassName(numHours)[0];
+            console.log(hourBlock)
+            let newClone = hourBlock.cloneNode(true);
+            appendClone(newClone);
+            function appendClone(newClone) {
+              const log = hoursConsole.getElementsByClassName('logHourBlocks')[0];
+              log.appendChild(newClone);
+            }
+            issueEvent();
+            function issueEvent() {
+              const event = new Event('newHourBlock');
+              hoursConsole.addEventListener('newHourBlock', function (e) {
+                console.log('newHourBlock')
+              }, false);
+              hoursConsole.dispatchEvent(event);
+            }
           }
         }
       }
     }
+    function cr8_calendarBar() {
+      // C A L E N D A R  B A R - C O N T E N T
+      getEl_loopF('calendarTitle', content_calendarTitle);
+      getEl_loopF('monthChoices', content_monthChoices);
+      getEl_loopF('chooseMonth', content_monthChoice);
+      getEl_loopF('prevMonth', content_prevMonth);
+      getEl_loopF('nextMonth', content_nextMonth);
 
-    // C A L E N D A R - I N T E R A C T I V E S
-    interactives();
-    function interactives() {
-      const monthNow = new Date();
-      const num = monthNow.getMonth();
-      getEl_loopF('month', setup_hideMonths);
-      getOneEl_runF('month', num, inter_showMonth);
-      function setup_hideMonths(el) {
-        el.style.display = 'none';
+      function content_calendarTitle(el) {
+        const title = document.createElement('span');
+        title.innerText = 'CALENDAR';
+        el.appendChild(title);
       }
-      function inter_showMonth(el) {
+      function content_monthChoices(el) {
+      }
+      function content_monthChoice(el) {
+        const title = document.createElement('div');
+        // global
+        const index = months.indexOf(monthShown);
+        title.innerText = months[index];
+        el.appendChild(title);
+      }
+      function content_prevMonth(el) {
+      }
+      function content_nextMonth(el) {
+      }
+
+      // C A L E N D A R  B A R -  S T Y L E
+      const marginLeft = 3;
+      const titleSize = 1.5;
+      style();
+      function style() {
+        getEl_loopF('calendarBar', style_calendarBar);
+        getEl_loopF('calendarTitle', style_calendarTitle);
+        getEl_loopF('monthChoices', style_monthChoices);
+        getEl_loopF('chooseMonth', style_monthChoice);
+        getEl_loopF('prevMonth', style_prevMonth);
+        getEl_loopF('nextMonth', style_nextMonth);
+
+        function style_calendarBar(el) {
+          el.style.flex = '1';
+          el.style.maxHeight = timeBarHeight / 2 + 'rem';
+          el.style.backgroundColor = '#000000';
+          el.style.display = 'flex';
+        }
+        function style_calendarTitle(el) {
+          el.style.color = '#ffffff';
+          el.style.fontWeight = 'bold';
+          el.style.marginLeft = '1.5rem';
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+          el.style.justifyContent = 'center';
+        }
+        function style_monthChoices(el) {
+          el.style.display = 'flex';
+          el.style.alignItems = 'center';
+          el.style.marginLeft = (marginLeft * 3) + 'rem';
+          el.style.color = '#ffffff';
+          // position
+          el.style.position = 'relative';
+        }
+        function style_monthChoice(el) {
+          // global
+          el.style.fontSize = titleSize + 'rem';
+        }
+        function style_prevMonth(el) {
+          const width = 0.25;
+          style_prevArr(el, timeBarHeight, width);
+          el.style.marginLeft = 0 - marginLeft + 'rem';
+        }
+        function style_nextMonth(el) {
+          const width = 0.25;
+          const left = 0 - marginLeft * 3;
+          style_nextArr(el, timeBarHeight, width, left)
+          el.style.marginRight = 0 - marginLeft + 'rem';
+        }
+      }
+
+      // C A L E N D A R  B A R - I N T E R A C T I V E S
+      interactives();
+      function interactives() {
+        inter_monthShown();
+        getEl_loopF('prevMonth', inter_prevMonth);
+        getEl_loopF('nextMonth', inter_nextMonth);
+        getEl_loopF('chooseMonth', inter_shiftMonthChoice);
+
+        function inter_monthShown() {
+          const date = new Date();
+          const monthName = date.toLocaleString('en-EN', { month: 'long' });
+          const firstLetter = monthName.split('')[0].toUpperCase();
+          const remainingLetters = monthName.substring(1, monthName.split('').length);
+          monthShown = firstLetter + remainingLetters;
+        }
+        function inter_prevMonth(el) {
+          el.onclick = function () {
+            hideCurrentMonth();
+            const index = months.indexOf(monthShown);
+            if (index > 0) {
+              const prevIndex = index - 1;
+              monthShown = months[prevIndex];
+              getEl_loopF('chooseMonth', inter_shiftMonthChoice);
+            }
+            showNextMonth();
+          }
+        }
+        function inter_nextMonth(el) {
+          el.onclick = function () {
+            hideCurrentMonth();
+            const index = months.indexOf(monthShown);
+            if (index < months.length - 1) {
+              const prevIndex = index + 1;
+              monthShown = months[prevIndex];
+              getEl_loopF('chooseMonth', inter_shiftMonthChoice);
+            }
+            showNextMonth();
+          }
+        }
+        function inter_shiftMonthChoice(el) {
+          el.innerText = monthShown;
+        }
+        function hideCurrentMonth() {
+          const currentMonth = document.getElementsByClassName(monthShown)[0];
+          currentMonth.style.display = 'none';
+        }
+        function showNextMonth() {
+          const currentMonth = document.getElementsByClassName(monthShown)[0];
+          currentMonth.style.display = 'flex';
+        }
+      }
+    }
+    function cr8_calendar() {
+      // C A L E N D A R - C O N T E N T
+      cr8_calendarDOM();
+      function cr8_calendarDOM() {
+        getEl_loopF('calendar', content_months);
+        getEl_loopF('calendar', content_weeks);
+        getEl_loopF('calendar', content_days);
+        getEl_loopF('day', content_hourMarks);
+
+        function content_months(el) {
+          for (let i = 0; i < months.length; i++) {
+            const month = document.createElement('div');
+            month.classList = 'month ' + months[i];
+            el.appendChild(month);
+          }
+        }
+        function content_weeks() {
+          for (let i = 0; i < weeks.length; i++) {
+            const week = document.createElement('div');
+            week.classList = 'week ' + weeks[i].code;
+            const monthName = weeks[i].code.split('-')[0];
+            const monthDOM = document.getElementsByClassName(monthName)[0];
+
+            function content_weekHeader(week) {
+              const weekHeader = document.createElement('span');
+              weekHeader.classList = 'weekHeader';
+              const text = weeks[i].code.split('-')[1] + ' ' + weeks[i].code.split('-')[2];
+              const title = document.createElement('span');
+              title.className = 'weekTitle';
+              title.innerText = text;
+              weekHeader.appendChild(title);
+              week.appendChild(weekHeader);
+            }
+            content_weekHeader(week);
+            monthDOM.appendChild(week);
+          }
+        }
+        function content_days() {
+          for (let i = 0; i < days.length; i++) {
+            const day = document.createElement('div');
+            const weekName = days[i].code.split(' ')[0];
+            const weekDOM = document.getElementsByClassName(weekName)[0];
+            const title = document.createElement('span');
+            const text = days[i].name;
+            day.classList = 'day ' + days[i].code;
+            title.innerText = text;
+            day.appendChild(title);
+            weekDOM.appendChild(day);
+          }
+        }
+        function content_hourMarks(el) {
+          const hourMarks = document.createElement('div');
+          hourMarks.className = 'hourMarks';
+          hourMarks.style.flex = '1';
+          el.appendChild(hourMarks)
+          content_dropzone();
+          content_marks();
+          function content_dropzone() {
+            const dropzone = document.createElement('div');
+            dropzone.className = 'hourMarksDropzone';
+            content_dropzoneCols();
+            function content_dropzoneCols() {
+              for (let i = 1; i < 25; i++) {
+                const col = document.createElement('div');
+                col.classList = 'hourMarksDropzoneCol ' + i;
+                dropzone.appendChild(col);
+              }
+            }
+            hourMarks.appendChild(dropzone);
+          }
+          function content_marks() {
+            const marks = document.createElement('div');
+            marks.className = 'hourMarksContainer';
+            for (let i = 0; i < 25; i += 4) {
+              const mark = document.createElement('div');
+              mark.className = 'hourMark';
+              mark.innerText = i;
+              marks.appendChild(mark);
+            }
+            hourMarks.appendChild(marks);
+          }
+        }
+      }
+
+      // C A L E N D A R - S T Y L E 
+      const fontSize = 1;
+      const monthDisplay = 'flex';
+      getEl_loopF('calendar', style_calendar);
+      getEl_loopF('month', style_month);
+      getEl_loopF('week', style_week);
+      getEl_loopF('weekHeader', style_weekHeader);
+      getEl_loopF('weekTitle', style_weekTitle);
+      getEl_loopF('day', style_day);
+      getEl_loopF('hourMarks', style_hourMarks);
+
+      function style_calendar(el) {
+        el.style.flex = '1';
+        el.style.display = 'flex';
+      }
+      function style_month(el) {
+        el.style.flex = '1';
+        el.style.border = '1px solid #000000';
         el.style.display = monthDisplay;
+        el.style.flexDirection = 'column';
+      }
+      function style_week(el) {
+        el.style.flex = '1';
+        el.style.display = 'flex';
+      }
+      function style_weekHeader(el) {
+        el.style.display = 'flex';
+        el.style.flexDirection = 'column';
+        el.style.alignItems = 'flex-end'
+        el.style.backgroundColor = '#000000';
+        el.style.color = '#ffffff';
+        el.style.padding = '0 1rem';
+      }
+      function style_weekTitle(el) {
+        el.style.fontSize = (fontSize - 0.25) + 'rem';
+        el.style.padding = '0 ' + (fontSize / 5) + 'rem';
+        el.style.paddingTop = (fontSize / 15) + 'rem';
+      }
+      function style_day(el) {
+        el.style.fontSize = (fontSize - 0.25) + 'rem';
+        el.style.flex = '1';
+        el.style.border = '1px solid #000000';
+        el.style.display = 'flex';
+        el.style.flexDirection = 'column';
+        el.style.justifyContent = 'space-between';
+        style_dayTitle(el);
+        function style_dayTitle(el) {
+          el.children[0].style.padding = '0 ' + (fontSize / 5) + 'rem';
+          el.children[0].style.paddingTop = (fontSize / 15) + 'rem';
+        }
+      }
+      function style_hourMarks(el) {
+        el.style.flex = '1';
+        el.style.fontSize = (fontSize - 0.33) + 'rem';
+        el.style.display = 'flex';
+        el.style.flexDirection = 'column';
+        el.style.alignItems = 'flex-end';
+        el.style.justifyContent = 'flex-end';
+        el.style.borderLeft = '1px solid #ffffff';
+        style_dropzone();
+        style_container();
+
+        function style_dropzone() {
+          const dropzone = el.getElementsByClassName('hourMarksDropzone')[0];
+          dropzone.style.height = '100%';
+          dropzone.style.width = '100%';
+          dropzone.style.display = 'flex';
+          style_cols();
+          function style_cols() {
+            const cols = dropzone.getElementsByClassName('hourMarksDropzoneCol')
+            for (let i = 0; i < cols.length; i++) {
+              const col = cols[i];
+              col.style.flex = '1';
+              col.style.borderLeft = '1px solid rgb(220,220,220, 0.3)';
+            }
+          }
+
+        }
+        function style_container() {
+          const container = el.getElementsByClassName('hourMarksContainer')[0];
+          container.style.display = 'flex';
+          container.style.width = '100%';
+          style_mark();
+          function style_mark() {
+            const marks = container.getElementsByClassName('hourMark');
+            for (let i = 0; i < marks.length; i++) {
+              const mark = marks[i];
+              mark.style.flex = '1';
+              mark.style.color = '#ffffff';
+              mark.style.backgroundColor = '#000000';
+            }
+          }
+        }
+      }
+
+      // C A L E N D A R - I N T E R A C T I V E S
+      interactives();
+      function interactives() {
+        const monthNow = new Date();
+        const num = monthNow.getMonth();
+        getEl_loopF('month', setup_hideMonths);
+        getOneEl_runF('month', num, inter_showMonth);
+        function setup_hideMonths(el) {
+          el.style.display = 'none';
+        }
+        function inter_showMonth(el) {
+          el.style.display = monthDisplay;
+        }
       }
     }
-  }
 
-  function dragAndDrop() {
-    // I N T E R A C T I V E S
-    getEl_loopF('hourBlock', dragStart_hourBlock);
-    getEl_loopF('day', turnIntoDropzone);
+    function dragAndDrop() {
+      // I N T E R A C T I V E S
+      getEl_loopF('hourBlock', dragAndDrop.makeDraggable);
+      getEl_loopF('day', turnIntoDropzone);
 
-    function dragStart_hourBlock(el) {
-      el.setAttribute('draggable', true);
-      el.addEventListener('dragstart', function (e) {
-        e.dataTransfer.dropEffect = "copy";
-        e.dataTransfer.setData("text/plain", e.target.className);
-      });
-    }
-    function turnIntoDropzone(el) {
-      el.setAttribute('dragenter', 'event.preventDefault();');
-      el.setAttribute('ondragover', 'event.preventDefault();');
-      el.ondrop = handleDrop;
-    }
-
-    function dragstart_handler(ev) {
-      console.log(ev);
-    }
-    function handleDrop(ev) {
-      ev.preventDefault();
-      const data = ev.dataTransfer.getData("text/plain");
-      const block = document.getElementsByClassName(data)[0];
-      const isDragInCalendar = data.split(' ').includes('drag-in-calendar');
-      ev.dataTransfer.dropEffect = "move"
-
-      if (isDragInCalendar) {
-
+      dragAndDrop.makeDraggable = function (el) {
+        el.setAttribute('draggable', true);
+        el.addEventListener('dragstart', function (e) {
+          e.dataTransfer.dropEffect = "copy";
+          e.dataTransfer.setData("text/plain", e.target.className);
+        });
       }
-      if (!isDragInCalendar) {
+      function turnIntoDropzone(el) {
+        el.setAttribute('dragenter', 'event.preventDefault();');
+        el.setAttribute('ondragover', 'event.preventDefault();');
+        el.ondrop = handleDrop;
+      }
 
-        ev.target.appendChild(block);
+      function dragstart_handler(ev) {
+        console.log(ev);
+      }
+      function handleDrop(ev) {
+        ev.preventDefault();
+        const data = ev.dataTransfer.getData("text/plain");
+        const block = document.getElementsByClassName(data)[0];
+        const isDragInCalendar = data.split(' ').includes('drag-in-calendar');
+        ev.dataTransfer.dropEffect = "move"
+
+        if (isDragInCalendar) {
+
+        }
+        if (!isDragInCalendar) {
+          ev.target.appendChild(block);
+        }
       }
     }
-  }
 
 
 
 
 
-  // const root = document.getElementsByClassName('root')[0]
-  // root.style.minHeight = '100vh';
-  // root.style.userSelect = 'none';
-  // root.markingHoursEvent = false;
-  // root.style.position = 'relative';
-  // root.addEventListener('mousedown', function (e) {
-  //   root.markingHoursEvent = true;
-  //   // console.log('create div');
-  //   let markerEl = document.createElement('div');
-  //   markerEl.id = 'markerEl';
-  //   markerEl.onclick = function (e) {
-  //     // console.log(e)
-  //   }
+    // const root = document.getElementsByClassName('root')[0]
+    // root.style.minHeight = '100vh';
+    // root.style.userSelect = 'none';
+    // root.markingHoursEvent = false;
+    // root.style.position = 'relative';
+    // root.addEventListener('mousedown', function (e) {
+    //   root.markingHoursEvent = true;
+    //   // console.log('create div');
+    //   let markerEl = document.createElement('div');
+    //   markerEl.id = 'markerEl';
+    //   markerEl.onclick = function (e) {
+    //     // console.log(e)
+    //   }
 
-  //   markerEl.style.height = '1px';
-  //   markerEl.style.width = '1px';
-  //   markerEl.style.border = '1px solid #000000';
-  //   let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
-  //   let projectColor = colors[rndNum];
-  //   markerEl.style.background = projectColor;
-  //   markerEl.projectColor = projectColor;
-  //   markerEl.style.opacity = '70%';
-  //   markerEl.style.position = 'absolute';
-  //   let y = e.pageY.toString() + 'px';
-  //   let x = e.pageX.toString() + 'px';
-  //   markerEl.style.top = y;
-  //   markerEl.style.left = x;
-  //   markerEl.y = y;
-  //   markerEl.x = x;
-  //   root.appendChild(markerEl)
-  // });
-  // root.addEventListener('mousemove', function (e) {
-  //   if (root.markingHoursEvent) {
-  //     // console.log('re-draw div');
-  //     let markerEl = document.getElementById('markerEl');
-  //     let prevCursorY = parseInt((markerEl.y).split('px')[0]);
-  //     let prevCursorX = parseInt((markerEl.x).split('px')[0]);
-  //     let heightUpdateY = Math.abs(e.pageY - prevCursorY) + 'px';
-  //     let heightUpdateX = Math.abs(e.pageX - prevCursorX) + 'px';
-  //     markerEl.style.height = heightUpdateY;
-  //     markerEl.style.width = heightUpdateX;
-  //     if (e.pageY - parseInt((markerEl.y).split('px')[0]) < 0) {
-  //       markerEl.style.top = e.pageY + 'px';
-  //     }
-  //     if (e.pageX - parseInt((markerEl.x).split('px')[0]) < 0) {
-  //       markerEl.style.left = e.pageX + 'px';
-  //     }
-  //     // console.log('check if an hourtick is inside coordinates (math, < than)');
-  //     // console.log('pre-mark hour ticks inside');
-  //     // console.log('erase mark or set mark, depending on confirmation');
-  //   }
-  //   // Dispatch the event.
-  // });
-  // root.addEventListener('mouseup', function (e) {
-  //   root.markingHoursEvent = false;
-  //   let markerEl = document.getElementById('markerEl');
-  //   let hourEls = document.getElementsByClassName('hourEl');
-  //   if (hourEls && hourEls.length) {
-  //     const event = new Event('requestCoords', {
-  //       bubbles: false,
-  //     });
-  //     event.markerEl = markerEl;
-  //     for (let i = 0; i < hourEls.length; i++) {
-  //       hourEls[i].dispatchEvent(event);
-  //     }
-  //   }
-  //   // Event listeners - ctrl f 'requestCoords'
-  //   console.log('mouse drag select');
-  //   markerEl.remove();
-  // });
-});
+    //   markerEl.style.height = '1px';
+    //   markerEl.style.width = '1px';
+    //   markerEl.style.border = '1px solid #000000';
+    //   let rndNum = Math.floor(Math.random() * (Math.floor(7) - Math.ceil(0)) + Math.ceil(0));
+    //   let projectColor = colors[rndNum];
+    //   markerEl.style.background = projectColor;
+    //   markerEl.projectColor = projectColor;
+    //   markerEl.style.opacity = '70%';
+    //   markerEl.style.position = 'absolute';
+    //   let y = e.pageY.toString() + 'px';
+    //   let x = e.pageX.toString() + 'px';
+    //   markerEl.style.top = y;
+    //   markerEl.style.left = x;
+    //   markerEl.y = y;
+    //   markerEl.x = x;
+    //   root.appendChild(markerEl)
+    // });
+    // root.addEventListener('mousemove', function (e) {
+    //   if (root.markingHoursEvent) {
+    //     // console.log('re-draw div');
+    //     let markerEl = document.getElementById('markerEl');
+    //     let prevCursorY = parseInt((markerEl.y).split('px')[0]);
+    //     let prevCursorX = parseInt((markerEl.x).split('px')[0]);
+    //     let heightUpdateY = Math.abs(e.pageY - prevCursorY) + 'px';
+    //     let heightUpdateX = Math.abs(e.pageX - prevCursorX) + 'px';
+    //     markerEl.style.height = heightUpdateY;
+    //     markerEl.style.width = heightUpdateX;
+    //     if (e.pageY - parseInt((markerEl.y).split('px')[0]) < 0) {
+    //       markerEl.style.top = e.pageY + 'px';
+    //     }
+    //     if (e.pageX - parseInt((markerEl.x).split('px')[0]) < 0) {
+    //       markerEl.style.left = e.pageX + 'px';
+    //     }
+    //     // console.log('check if an hourtick is inside coordinates (math, < than)');
+    //     // console.log('pre-mark hour ticks inside');
+    //     // console.log('erase mark or set mark, depending on confirmation');
+    //   }
+    //   // Dispatch the event.
+    // });
+    // root.addEventListener('mouseup', function (e) {
+    //   root.markingHoursEvent = false;
+    //   let markerEl = document.getElementById('markerEl');
+    //   let hourEls = document.getElementsByClassName('hourEl');
+    //   if (hourEls && hourEls.length) {
+    //     const event = new Event('requestCoords', {
+    //       bubbles: false,
+    //     });
+    //     event.markerEl = markerEl;
+    //     for (let i = 0; i < hourEls.length; i++) {
+    //       hourEls[i].dispatchEvent(event);
+    //     }
+    //   }
+    //   // Event listeners - ctrl f 'requestCoords'
+    //   console.log('mouse drag select');
+    //   markerEl.remove();
+    // });
+  });
+}
+
 
 
 // function createTopBar() {
