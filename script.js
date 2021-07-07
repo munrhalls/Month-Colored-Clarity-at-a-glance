@@ -465,7 +465,7 @@ function app() {
       getOneEl_runF('titleTimeBlocks', 0, content_titleTimeBlocks)
 
       function content_titleProjectColor(el) {
-        el.innerText = 'choose project color';
+        el.innerText = 'choose color';
       }
       function content_titleProjectName(el) {
         el.innerText = 'choose project color';
@@ -491,6 +491,7 @@ function app() {
         function style_titleBarForProjects(el) {
           el.style.flex = '1';
           el.style.borderTop = '1px solid #ffffff';
+          el.style.borderBottom = '1px solid #ffffff';
           // el.style.borderRight = '3rem solid transparent';
           // el.style.borderLeft = '3rem solid transparent';
           el.style.display = 'flex';
@@ -500,30 +501,42 @@ function app() {
           el.style.color = '#ffffff';
         }
         function style_titleProjectColor(el) {
+          el.style.fontSize = '1.25rem'
+          el.style.display = 'flex';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
           el.style.textAlign = 'center';
           el.style.maxWidth = projectBarWidth + 2.8 + 'rem';
           el.style.width = projectBarWidth + 2.8 + 'rem ';
           el.style.borderRight = '1px solid #ffffff';
         }
         function style_titleProjectName(el) {
+          el.style.fontSize = '1.25rem'
+          el.style.display = 'flex'
           el.style.textAlign = 'center';
           el.style.maxWidth = projectBarWidth + 'rem';
           el.style.width = projectBarWidth + 'rem ';
           el.style.borderRight = '1px solid #ffffff';
         }
         function style_titleChooseTimeBlockSize(el) {
+          el.style.fontSize = '1.25rem'
+          el.style.display = 'flex'
           el.style.textAlign = 'center';
           el.style.maxWidth = projectBarWidth + 'rem';
           el.style.width = projectBarWidth + 'rem ';
           el.style.borderRight = '1px solid #ffffff';
         }
         function style_titleAddTimeBlock(el) {
+          el.style.fontSize = '1.25rem'
+          el.style.display = 'flex'
           el.style.textAlign = 'center';
           el.style.maxWidth = projectBarWidth + 'rem';
           el.style.width = projectBarWidth + 'rem ';
           el.style.borderRight = '1px solid #ffffff';
         }
         function style_titleTimeBlocks(el) {
+          el.style.fontSize = '1.25rem'
+          el.style.display = 'flex'
           el.style.textAlign = 'center';
           el.style.maxWidth = projectBarWidth + 'rem';
           el.style.width = projectBarWidth + 'rem ';
