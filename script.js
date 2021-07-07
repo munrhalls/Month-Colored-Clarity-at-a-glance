@@ -494,29 +494,39 @@ function app() {
           el.style.borderRight = '3rem solid transparent';
           el.style.borderLeft = '3rem solid transparent';
           el.style.display = 'flex';
-          el.style.height = projectBarHeight / 4 + 'rem';
-          el.style.maxHeight = projectBarHeight / 4 + 'rem'
+          el.style.height = projectBarHeight / 2 + 'rem';
+          el.style.maxHeight = projectBarHeight / 2 + 'rem'
           el.style.backgroundColor = menuBgColor;
           el.style.color = '#ffffff';
         }
         function style_titleProjectColor(el) {
-          el.innerText = 'choose project color';
+          // el.style.textAlign = 'center';
+          el.style.maxWidth = projectBarWidth + 'rem';
+          el.style.width = projectBarWidth + 'rem ';
           el.style.borderRight = '1px solid #ffffff';
         }
         function style_titleProjectName(el) {
-          el.innerText = 'choose project color';
+          el.style.textAlign = 'center';
+          el.style.maxWidth = projectBarWidth + 'rem';
+          el.style.width = projectBarWidth + 'rem ';
           el.style.borderRight = '1px solid #ffffff';
         }
         function style_titleChooseTimeBlockSize(el) {
-          el.innerText = 'choose project color';
+          el.style.textAlign = 'center';
+          el.style.maxWidth = projectBarWidth + 'rem';
+          el.style.width = projectBarWidth + 'rem ';
           el.style.borderRight = '1px solid #ffffff';
         }
         function style_titleAddTimeBlock(el) {
-          el.innerText = 'choose project color';
+          el.style.textAlign = 'center';
+          el.style.maxWidth = projectBarWidth + 'rem';
+          el.style.width = projectBarWidth + 'rem ';
           el.style.borderRight = '1px solid #ffffff';
         }
         function style_titleTimeBlocks(el) {
-          el.innerText = 'choose project color';
+          el.style.textAlign = 'center';
+          el.style.maxWidth = projectBarWidth + 'rem';
+          el.style.width = projectBarWidth + 'rem ';
           el.style.borderRight = '1px solid #ffffff';
         }
       }
