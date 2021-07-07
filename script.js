@@ -84,15 +84,15 @@ function app() {
     const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'logHourBlocks'];
     const projectBarComponents = ['chooseprojectBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
     const projectBar = ['projectBar', projectBarComponents];
-    const timeBlocks = ['projectBars', projectBar];
+    const projects = ['projectBars', projectBar];
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
     const calendarBar = ['calendarTitle', 'monthChoices', monthChoices];
     const BASIC_DOM = [
       'root',
       ['topBar', topBar,
         'main',
-        ['timeVisuals',
-          ['projects', timeBlocks,
+        ['visuals',
+          ['projects', projects,
             'calendarBar', calendarBar,
             'calendar'
           ],
@@ -102,12 +102,12 @@ function app() {
     ];
 
     assembleDOM(BASIC_DOM, app);
-    cr8_topBar();
-    cr8_main();
-    cr8_timeVisuals();
-    cr8_timeBlocks();
-    cr8_calendarBar();
-    cr8_calendar();
+    create_topBar();
+    create_main();
+    create_visuals();
+    create_projects();
+    create_calendarBar();
+    create_calendar();
 
     dragAndDrop();
 
@@ -194,7 +194,7 @@ function app() {
       el.style.position = 'absolute';
       el.style.right = 0 - (width * 9) + 'rem';
     }
-    function cr8_colorMenuBtn() {
+    function create_colorMenuBtn() {
       // C O N T E N T 
       const colorMenuBtn = content_colorMenuBtn();
       const colorMenu = content_colorMenu();
@@ -374,7 +374,7 @@ function app() {
     }
 
     // THINGS
-    function cr8_topBar() {
+    function create_topBar() {
       // C O N T E N T
       getEl_loopF('title', content_title);
       getEl_loopF('about', content_about);
@@ -424,22 +424,22 @@ function app() {
         el.style.fontSize = title_fontSize;
       }
     }
-    function cr8_main() {
+    function create_main() {
       function style_main(el) {
         el.style.display = 'flex';
       }
       getEl_loopF('main', style_main);
     }
-    function cr8_timeVisuals() {
-      getEl_loopF('timeVisuals', style_timeVisuals);
-      function style_timeVisuals(el) {
+    function create_visuals() {
+      getEl_loopF('visuals', style_visuals);
+      function style_visuals(el) {
         el.style.flex = '3';
         el.style.display = 'flex';
         el.style.flexDirection = 'column';
         el.style.height = heightVisuals;
       }
     }
-    function cr8_timeBlocks() {
+    function create_projects() {
       // T I M E  B L O C K S  -   C O N T E N T
       getEl_loopF('projectBar', content_projectBar);
       getEl_loopF('chooseprojectBarColor', content_chooseprojectBarColor);
@@ -452,7 +452,7 @@ function app() {
         // el.classList = 'timerBar ' + monthShown +'-';
       }
       function content_chooseprojectBarColor(el) {
-        const btn = cr8_colorMenuBtn();
+        const btn = create_colorMenuBtn();
         el.appendChild(btn);
       }
       function content_projectTitle(el) {
@@ -497,7 +497,7 @@ function app() {
       const marginLeft = projectBarHeight / 2;
       style();
       function style() {
-        getEl_loopF('projects', style_timeBlocks);
+        getEl_loopF('projects', style_projects);
         getEl_loopF('colorsMenu', style_colorsMenu);
         getEl_loopF('chooseprojectBarColor', style_chooseprojectBarColor);
         getEl_loopF('projectBars', style_projectBars);
@@ -512,7 +512,7 @@ function app() {
         getEl_loopF('addHourBlock', style_addHourBlock);
         getEl_loopF('logHourBlocks', style_logHourBlocks);
 
-        function style_timeBlocks(el) {
+        function style_projects(el) {
           el.style.flex = '1';
           el.style.display = 'flex';
         }
@@ -757,7 +757,7 @@ function app() {
         }
       }
     }
-    function cr8_calendarBar() {
+    function create_calendarBar() {
       // C A L E N D A R  B A R - C O N T E N T
       getEl_loopF('calendarTitle', content_calendarTitle);
       getEl_loopF('monthChoices', content_monthChoices);
@@ -887,10 +887,10 @@ function app() {
         }
       }
     }
-    function cr8_calendar() {
+    function create_calendar() {
       // C A L E N D A R - C O N T E N T
-      cr8_calendarDOM();
-      function cr8_calendarDOM() {
+      create_calendarDOM();
+      function create_calendarDOM() {
         getEl_loopF('calendar', content_months);
         getEl_loopF('calendar', content_weeks);
         getEl_loopF('calendar', content_days);
