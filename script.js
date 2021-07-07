@@ -491,8 +491,8 @@ function app() {
         function style_titleBarForProjects(el) {
           el.style.flex = '1';
           el.style.borderTop = '1px solid #ffffff';
-          el.style.borderRight = '3rem solid transparent';
-          el.style.borderLeft = '3rem solid transparent';
+          // el.style.borderRight = '3rem solid transparent';
+          // el.style.borderLeft = '3rem solid transparent';
           el.style.display = 'flex';
           el.style.height = projectBarHeight / 2 + 'rem';
           el.style.maxHeight = projectBarHeight / 2 + 'rem'
@@ -500,9 +500,9 @@ function app() {
           el.style.color = '#ffffff';
         }
         function style_titleProjectColor(el) {
-          // el.style.textAlign = 'center';
-          el.style.maxWidth = projectBarWidth + 'rem';
-          el.style.width = projectBarWidth + 'rem ';
+          el.style.textAlign = 'center';
+          el.style.maxWidth = projectBarWidth + 2.8 + 'rem';
+          el.style.width = projectBarWidth + 2.8 + 'rem ';
           el.style.borderRight = '1px solid #ffffff';
         }
         function style_titleProjectName(el) {
