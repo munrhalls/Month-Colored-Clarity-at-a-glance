@@ -466,28 +466,28 @@ function app() {
 
       function content_titleProjectColor(el) {
         el.innerText = 'choose project color';
-        el.style.borderRight = '1px solid #ffffff';
       }
       function content_titleProjectName(el) {
         el.innerText = 'choose project color';
-        el.style.borderRight = '1px solid #ffffff';
       }
       function content_titleChooseTimeBlockSize(el) {
         el.innerText = 'choose project color';
-        el.style.borderRight = '1px solid #ffffff';
       }
       function content_titleAddTimeBlock(el) {
         el.innerText = 'choose project color';
-        el.style.borderRight = '1px solid #ffffff';
       }
       function content_titleTimeBlocks(el) {
         el.innerText = 'choose project color';
-        el.style.borderRight = '1px solid #ffffff';
       }
 
       style();
       function style() {
         getEl_loopF('titleBarForProjects', style_titleBarForProjects);
+        getOneEl_runF('titleProjectColor', 0, style_titleProjectColor)
+        getOneEl_runF('titleProjectName', 0, style_titleProjectName)
+        getOneEl_runF('titleChooseTimeBlockSize', 0, style_titleChooseTimeBlockSize)
+        getOneEl_runF('titleAddTimeBlock', 0, style_titleAddTimeBlock)
+        getOneEl_runF('titleTimeBlocks', 0, style_titleTimeBlocks)
         function style_titleBarForProjects(el) {
           el.style.flex = '1';
           el.style.borderTop = '1px solid #ffffff';
@@ -498,6 +498,26 @@ function app() {
           el.style.maxHeight = projectBarHeight / 4 + 'rem'
           el.style.backgroundColor = menuBgColor;
           el.style.color = '#ffffff';
+        }
+        function style_titleProjectColor(el) {
+          el.innerText = 'choose project color';
+          el.style.borderRight = '1px solid #ffffff';
+        }
+        function style_titleProjectName(el) {
+          el.innerText = 'choose project color';
+          el.style.borderRight = '1px solid #ffffff';
+        }
+        function style_titleChooseTimeBlockSize(el) {
+          el.innerText = 'choose project color';
+          el.style.borderRight = '1px solid #ffffff';
+        }
+        function style_titleAddTimeBlock(el) {
+          el.innerText = 'choose project color';
+          el.style.borderRight = '1px solid #ffffff';
+        }
+        function style_titleTimeBlocks(el) {
+          el.innerText = 'choose project color';
+          el.style.borderRight = '1px solid #ffffff';
         }
       }
     }
