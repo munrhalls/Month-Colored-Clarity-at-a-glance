@@ -86,14 +86,15 @@ function app() {
     const projectBar = ['projectBar', projectBarComponents];
     const projects = ['projectBars', projectBar];
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
-    const calendarBar = ['calendarTitle', 'monthChoices', monthChoices];
+    const menuCalendar = ['calendarTitle', 'monthChoices', monthChoices];
     const BASIC_DOM = [
       'root',
       ['topBar', topBar,
         'main',
         ['visuals',
-          ['projects', projects,
-            'calendarBar', calendarBar,
+          ['menuProjects',
+            'projects', projects,
+            'menuCalendar', menuCalendar,
             'calendar'
           ],
           'menuBlock'],
@@ -106,7 +107,7 @@ function app() {
     create_main();
     create_visuals();
     create_projects();
-    create_calendarBar();
+    create_menuCalendar();
     create_calendar();
 
     dragAndDrop();
@@ -757,7 +758,7 @@ function app() {
         }
       }
     }
-    function create_calendarBar() {
+    function create_menuCalendar() {
       // C A L E N D A R  B A R - C O N T E N T
       getEl_loopF('calendarTitle', content_calendarTitle);
       getEl_loopF('monthChoices', content_monthChoices);
@@ -789,14 +790,14 @@ function app() {
       const titleSize = 1.5;
       style();
       function style() {
-        getEl_loopF('calendarBar', style_calendarBar);
+        getEl_loopF('menuCalendar', style_menuCalendar);
         getEl_loopF('calendarTitle', style_calendarTitle);
         getEl_loopF('monthChoices', style_monthChoices);
         getEl_loopF('chooseMonth', style_monthChoice);
         getEl_loopF('prevMonth', style_prevMonth);
         getEl_loopF('nextMonth', style_nextMonth);
 
-        function style_calendarBar(el) {
+        function style_menuCalendar(el) {
           el.style.flex = '1';
           el.style.maxHeight = projectBarHeight / 2 + 'rem';
           el.style.backgroundColor = '#000000';
