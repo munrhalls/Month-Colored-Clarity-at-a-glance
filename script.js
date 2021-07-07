@@ -3,6 +3,7 @@ const localStorage = window.localStorage;
 var monthShown = 'July';
 
 // // DATA VALUES
+const menuBgColor = '#000000';
 const borderRadius = '5%';
 const projectBarHeight = 8;
 const projectBarWidth = 5;
@@ -82,6 +83,7 @@ function app() {
     const topBar = ['title', 'about'];
     const chooseHourBlock = ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'];
     const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'logHourBlocks'];
+    const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
     const projectBarComponents = ['chooseprojectBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
     const projectBar = ['projectBar', projectBarComponents];
     const projects = ['projectBars', projectBar];
@@ -93,6 +95,7 @@ function app() {
         'main',
         ['visuals',
           ['menuProjects',
+            'titleBarForProjects', titleBarForProjects,
             'projects', projects,
             'menuCalendar', menuCalendar,
             'calendar'
@@ -107,6 +110,7 @@ function app() {
     create_main();
     create_visuals();
     create_menuProjects();
+    create_titleBarForProjects();
     create_projects();
     create_menuCalendar();
     create_calendar();
@@ -442,7 +446,6 @@ function app() {
       }
     }
     function create_menuProjects() {
-
       style();
       function style() {
         getEl_loopF('menuProjects', style_menuProjects);
@@ -450,6 +453,51 @@ function app() {
           el.style.flex = '1';
           el.style.height = projectBarHeight / 2 + 'rem';
           el.style.maxHeight = projectBarHeight / 2 + 'rem'
+          el.style.backgroundColor = menuBgColor;
+        }
+      }
+    }
+    function create_titleBarForProjects() {
+      getOneEl_runF('titleProjectColor', 0, content_titleProjectColor)
+      getOneEl_runF('titleProjectName', 0, content_titleProjectName)
+      getOneEl_runF('titleChooseTimeBlockSize', 0, content_titleChooseTimeBlockSize)
+      getOneEl_runF('titleAddTimeBlock', 0, content_titleAddTimeBlock)
+      getOneEl_runF('titleTimeBlocks', 0, content_titleTimeBlocks)
+
+      function content_titleProjectColor(el) {
+        el.innerText = 'choose project color';
+        el.style.borderRight = '1px solid #ffffff';
+      }
+      function content_titleProjectName(el) {
+        el.innerText = 'choose project color';
+        el.style.borderRight = '1px solid #ffffff';
+      }
+      function content_titleChooseTimeBlockSize(el) {
+        el.innerText = 'choose project color';
+        el.style.borderRight = '1px solid #ffffff';
+      }
+      function content_titleAddTimeBlock(el) {
+        el.innerText = 'choose project color';
+        el.style.borderRight = '1px solid #ffffff';
+      }
+      function content_titleTimeBlocks(el) {
+        el.innerText = 'choose project color';
+        el.style.borderRight = '1px solid #ffffff';
+      }
+
+      style();
+      function style() {
+        getEl_loopF('titleBarForProjects', style_titleBarForProjects);
+        function style_titleBarForProjects(el) {
+          el.style.flex = '1';
+          el.style.borderTop = '1px solid #ffffff';
+          el.style.borderRight = '3rem solid transparent';
+          el.style.borderLeft = '3rem solid transparent';
+          el.style.display = 'flex';
+          el.style.height = projectBarHeight / 4 + 'rem';
+          el.style.maxHeight = projectBarHeight / 4 + 'rem'
+          el.style.backgroundColor = menuBgColor;
+          el.style.color = '#ffffff';
         }
       }
     }
