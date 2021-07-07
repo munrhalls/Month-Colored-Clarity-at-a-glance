@@ -106,6 +106,7 @@ function app() {
     create_topBar();
     create_main();
     create_visuals();
+    create_menuProjects();
     create_projects();
     create_menuCalendar();
     create_calendar();
@@ -438,6 +439,18 @@ function app() {
         el.style.display = 'flex';
         el.style.flexDirection = 'column';
         el.style.height = heightVisuals;
+      }
+    }
+    function create_menuProjects() {
+
+      style();
+      function style() {
+        getEl_loopF('menuProjects', style_menuProjects);
+        function style_menuProjects(el) {
+          el.style.flex = '1';
+          el.style.height = projectBarHeight / 2 + 'rem';
+          el.style.maxHeight = projectBarHeight / 2 + 'rem'
+        }
       }
     }
     function create_projects() {
