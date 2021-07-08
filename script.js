@@ -85,7 +85,7 @@ function app() {
     const topBar = ['title', 'about'];
     const chooseHourBlock = ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'];
     const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'logHourBlocks'];
-    const menuProjects = ['headerProjects']
+    const menuProjects = ['headerProjects', 'addProject']
     const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
     const projectBarComponents = ['chooseprojectBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
     const projectBar = ['projectBar', projectBarComponents];
@@ -449,19 +449,40 @@ function app() {
       }
     }
     function create_menuProjects() {
-
+      getEl_loopF('headerProjects', content_menuProjects);
+      function content_menuProjects(el) {
+        el.innerText = 'PROJECTS';
+      }
 
       style();
       function style() {
         getEl_loopF('menuProjects', style_menuProjects);
+        getEl_loopF('headerProjects', style_headerProjects);
         function style_menuProjects(el) {
           el.style.flex = '1';
           el.style.height = projectBarHeight / 2 + 'rem';
           el.style.maxHeight = projectBarHeight / 2 + 'rem'
           el.style.backgroundColor = menuBgColor;
           el.style.borderTop = '1px solid #ffffff';
+          el.style.display = 'flex';
+          el.style.justifyContent = 'flex-start';
+          el.style.alignItems = 'center';
         }
-
+        function style_headerProjects(el) {
+          el.style.innerText = 'PROJECTS';
+          el.style.color = '#ffffff';
+          el.style.width = projectBarHeight;
+          el.style.border = '1px solid black';
+          el.style.color = 'rgb(255, 255, 255)';
+          el.style.fontWeight = 'bold';
+          el.style.marginLeft = '1.5rem';
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+          el.style.justifyContent = 'center';
+          el.style.fontSize = '1.5rem';
+          el.style.letterSpacing = '1.75rem';
+          el.style.marginLeft = projectBarWidth + 'rem';
+        }
       }
     }
     function create_titleBarForProjects() {
@@ -934,6 +955,9 @@ function app() {
           el.style.display = 'flex';
           el.style.flexDirection = 'column';
           el.style.justifyContent = 'center';
+          el.style.fontSize = '1.5rem';
+          el.style.letterSpacing = '1.75rem';
+          el.style.marginLeft = projectBarWidth + 'rem';
         }
         function style_monthChoices(el) {
           el.style.display = 'flex';
