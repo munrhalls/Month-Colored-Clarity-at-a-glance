@@ -647,12 +647,12 @@ function app() {
     create_projectBar();
     function create_projectBar(number) {
 
-      getEl_loopF('projectBar', content_projectBar);
-      getEl_loopF('chooseProjectBarColor', content_chooseProjectBarColor);
-      getEl_loopF('projectTitle', content_projectTitle);
-      getEl_loopF('hourBlockChoice', content_hourBlockChoice);
-      getEl_loopF('addHourBlock', content_addHourBlock);
-      getEl_loopF('storeHourBlocks', content_storeHourBlocks);
+      getOneEl_runF('projectBar', 0, content_projectBar);
+      getOneEl_runF('chooseProjectBarColor', 0, content_chooseProjectBarColor);
+      getOneEl_runF('projectTitle', 0, content_projectTitle);
+      getOneEl_runF('hourBlockChoice', 0, content_hourBlockChoice);
+      getOneEl_runF('addHourBlock', 0, content_addHourBlock);
+      getOneEl_runF('storeHourBlocks', 0, content_storeHourBlocks);
 
       function content_projectBar(el) {
         // el.classList = 'timerBar ' + monthShown +'-';
@@ -704,28 +704,19 @@ function app() {
       const marginLeft = projectBarHeight / 2;
       style();
       function style() {
-        getEl_loopF('colorsMenu', style_colorsMenu);
-        getEl_loopF('chooseProjectBarColor', style_chooseProjectBarColor);
-        getEl_loopF('projectBars', style_projectBars);
-        getEl_loopF('projectBar', style_projectBar);
-        getEl_loopF('projectTitle', style_projectTitle);
-        getEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
-        getEl_loopF('chooseHourBlock', style_chooseHourBlock);
-        getEl_loopF('prevHourBlock', style_prevHourBlock);
-        getEl_loopF('hourBlockChoice', style_hourBlockChoice);
-        getEl_loopF('hourBlockChosen', style_hourBlockChosen);
-        getEl_loopF('nextHourBlock', style_nextHourBlock);
-        getEl_loopF('addHourBlock', style_addHourBlock);
-        getEl_loopF('storeHourBlocks', style_storeHourBlocks);
+        getOneEl_runF('chooseProjectBarColor', 0, style_chooseProjectBarColor);
+        getOneEl_runF('projectBars', 0, style_projectBars);
+        getOneEl_runF('projectBar', 0, style_projectBar);
+        getOneEl_runF('projectTitle', 0, style_projectTitle);
+        getOneEl_runF('consoleHourBlocks', 0, style_consoleHourBlocks);
+        getOneEl_runF('chooseHourBlock', 0, style_chooseHourBlock);
+        getOneEl_runF('prevHourBlock', 0, style_prevHourBlock);
+        getOneEl_runF('hourBlockChoice', 0, style_hourBlockChoice);
+        getOneEl_runF('hourBlockChosen', 0, style_hourBlockChosen);
+        getOneEl_runF('nextHourBlock', 0, style_nextHourBlock);
+        getOneEl_runF('addHourBlock', 0, style_addHourBlock);
+        getOneEl_runF('storeHourBlocks', 0, style_storeHourBlocks);
 
-        function style_colorsMenu(el) {
-          el.style.flex = '1';
-          el.style.maxWidth = projectBarWidth / 1.5 + 'rem';
-          el.style.display = 'flex';
-          el.style.justifyContent = 'center';
-          el.style.alignItems = 'center';
-          el.style.backgroundColor = '#000000';
-        }
         function style_chooseProjectBarColor(el) {
           el.style.position = 'relative';
           el.style.backgroundColor = '#000000';
@@ -887,11 +878,11 @@ function app() {
       // PROJECT BAR - I N T E R A C T I V I T Y
       interactives();
       function interactives() {
-        getEl_loopF('projectTitle', inter_INPUT_projectTitle);
-        getEl_loopF('hourBlockChoice', setup_hourBlockChoice);
-        getEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
-        getEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
-        getEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
+        getOneEl_runF('projectTitle', 0, inter_INPUT_projectTitle);
+        getOneEl_runF('hourBlockChoice', 0, setup_hourBlockChoice);
+        getOneEl_runF('prevHourBlock', 0, inter_CLICK_prevHourBlock);
+        getOneEl_runF('nextHourBlock', 0, inter_CLICK_nextHourBlock);
+        getOneEl_runF('addHourBlock', 0, inter_CLICK_addHourBlock);
 
         function inter_INPUT_projectTitle(el) {
           const textarea = el.getElementsByTagName('textarea')[0];
