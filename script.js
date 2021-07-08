@@ -526,7 +526,6 @@ function app() {
             // const bars = projects.getElementsByClassName('projectBars')[0];
             const projectBars = document.getElementsByClassName('projectBars')[0];
             assembleDOM(projectBar, projectBars);
-            create_projects();
 
             // projectBar
           }
@@ -636,12 +635,12 @@ function app() {
     function create_projects() {
       // T I M E  B L O C K S  -   C O N T E N T
       // getOneEl_runF
-      getEl_loopF('projectBar', content_projectBar);
-      getEl_loopF('chooseprojectBarColor', content_chooseprojectBarColor);
-      getEl_loopF('projectTitle', content_projectTitle);
-      getEl_loopF('hourBlockChoice', content_hourBlockChoice);
-      getEl_loopF('addHourBlock', content_addHourBlock);
-      getEl_loopF('storeHourBlocks', content_storeHourBlocks);
+      // getEl_loopF('projectBar', content_projectBar);
+      // getEl_loopF('chooseprojectBarColor', content_chooseprojectBarColor);
+      // getEl_loopF('projectTitle', content_projectTitle);
+      // getEl_loopF('hourBlockChoice', content_hourBlockChoice);
+      // getEl_loopF('addHourBlock', content_addHourBlock);
+      // getEl_loopF('storeHourBlocks', content_storeHourBlocks);
 
       function content_projectBar(el) {
         // el.classList = 'timerBar ' + monthShown +'-';
@@ -690,24 +689,24 @@ function app() {
         log.appendChild(hours);
       }
 
-      // T I M E  B L O C K S  -  S T Y L E
+      // PROJECTS  -  S T Y L E
       const marginLeft = projectBarHeight / 2;
       style();
       function style() {
         getEl_loopF('projects', style_projects);
-        getEl_loopF('colorsMenu', style_colorsMenu);
-        getEl_loopF('chooseprojectBarColor', style_chooseprojectBarColor);
-        getEl_loopF('projectBars', style_projectBars);
-        getEl_loopF('projectBar', style_projectBar);
-        getEl_loopF('projectTitle', style_projectTitle);
-        getEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
-        getEl_loopF('chooseHourBlock', style_chooseHourBlock);
-        getEl_loopF('prevHourBlock', style_prevHourBlock);
-        getEl_loopF('hourBlockChoice', style_hourBlockChoice);
-        getEl_loopF('hourBlockChosen', style_hourBlockChosen);
-        getEl_loopF('nextHourBlock', style_nextHourBlock);
-        getEl_loopF('addHourBlock', style_addHourBlock);
-        getEl_loopF('storeHourBlocks', style_storeHourBlocks);
+        // getEl_loopF('colorsMenu', style_colorsMenu);
+        // getEl_loopF('chooseprojectBarColor', style_chooseprojectBarColor);
+        // getEl_loopF('projectBars', style_projectBars);
+        // getEl_loopF('projectBar', style_projectBar);
+        // getEl_loopF('projectTitle', style_projectTitle);
+        // getEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
+        // getEl_loopF('chooseHourBlock', style_chooseHourBlock);
+        // getEl_loopF('prevHourBlock', style_prevHourBlock);
+        // getEl_loopF('hourBlockChoice', style_hourBlockChoice);
+        // getEl_loopF('hourBlockChosen', style_hourBlockChosen);
+        // getEl_loopF('nextHourBlock', style_nextHourBlock);
+        // getEl_loopF('addHourBlock', style_addHourBlock);
+        // getEl_loopF('storeHourBlocks', style_storeHourBlocks);
 
         function style_projects(el) {
           el.style.flex = '1';
@@ -879,8 +878,245 @@ function app() {
           }
         }
       }
+    }
+    function create_projectBar() {
+      getEl_loopF('projectBar', content_projectBar);
+      getEl_loopF('chooseprojectBarColor', content_chooseprojectBarColor);
+      getEl_loopF('projectTitle', content_projectTitle);
+      getEl_loopF('hourBlockChoice', content_hourBlockChoice);
+      getEl_loopF('addHourBlock', content_addHourBlock);
+      getEl_loopF('storeHourBlocks', content_storeHourBlocks);
 
-      // T I M E  B L O C K S  -  I N T E R A C T I V E S
+      function content_projectBar(el) {
+        // el.classList = 'timerBar ' + monthShown +'-';
+      }
+      function content_chooseprojectBarColor(el) {
+        const btn = create_colorMenuBtn();
+        el.appendChild(btn);
+      }
+      function content_projectTitle(el) {
+        const textarea = document.createElement('textarea');
+        textarea.type = 'text';
+        textarea.placeholder = 'Project title';
+        el.appendChild(textarea);
+      }
+      function content_hourBlockChoice(el) {
+        for (let i = 1; i < 25; i++) {
+          let hourBlockChoice = document.createElement('div');
+          hourBlockChoice.innerText = i;
+          hourBlockChoice.classList = 'hourBlockChosen ' + i + ' hours';
+          el.appendChild(hourBlockChoice)
+        }
+      }
+      function content_addHourBlock(el) {
+        const plus = document.createElement('div');
+        plus.className = 'plus';
+        const plusText = document.createElement('div');
+        plusText.className = 'plusText';
+        plusText.innerText = '+';
+        plus.appendChild(plusText);
+        el.appendChild(plus);
+      }
+      function content_storeHourBlocks(el) {
+        const monthNum = months.indexOf(monthShown);
+        const daysNum = DATA_Calendar[monthNum].daysNum;
+        console.log(DATA_Calendar[monthNum])
+        console.log(DATA_Calendar[monthNum].daysNum)
+        const hours = document.createElement('div');
+        for (let i = 1; i <= daysNum; i++) {
+          let hour = document.createElement('div');
+          let num = document.createElement('span');
+          num.innerText = i;
+          hour.appendChild(num);
+          hours.appendChild(hour);
+        }
+        const log = document.getElementsByClassName('storeHourBlocks')[0];
+        log.appendChild(hours);
+      }
+      // PROJECT BAR - S T Y L E 
+      style();
+      function style() {
+        getEl_loopF('colorsMenu', style_colorsMenu);
+        getEl_loopF('chooseprojectBarColor', style_chooseprojectBarColor);
+        getEl_loopF('projectBars', style_projectBars);
+        getEl_loopF('projectBar', style_projectBar);
+        getEl_loopF('projectTitle', style_projectTitle);
+        getEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
+        getEl_loopF('chooseHourBlock', style_chooseHourBlock);
+        getEl_loopF('prevHourBlock', style_prevHourBlock);
+        getEl_loopF('hourBlockChoice', style_hourBlockChoice);
+        getEl_loopF('hourBlockChosen', style_hourBlockChosen);
+        getEl_loopF('nextHourBlock', style_nextHourBlock);
+        getEl_loopF('addHourBlock', style_addHourBlock);
+        getEl_loopF('storeHourBlocks', style_storeHourBlocks);
+
+        function style_colorsMenu(el) {
+          el.style.flex = '1';
+          el.style.maxWidth = projectBarWidth / 1.5 + 'rem';
+          el.style.display = 'flex';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
+          el.style.backgroundColor = '#000000';
+        }
+        function style_chooseprojectBarColor(el) {
+          el.style.position = 'relative';
+          el.style.backgroundColor = '#000000';
+          el.style.height = projectBarHeight + 'rem';
+          el.style.width = projectBarWidth + 2.5 + 'rem';
+          // el.style.paddingRight = '0.5rem';
+          el.style.display = 'flex';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
+        }
+        function style_projectBars(el) {
+          el.style.flex = '5';
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+        }
+        function style_projectBar(el) {
+          el.style.display = 'flex';
+        }
+        function style_projectTitle(el) {
+          el.style.height = projectBarHeight + 'rem';
+          el.style.width = (projectBarWidth * 4) + 'rem';
+          el.style.display = 'flex';
+          el.style.wordWrap = 'break-word';
+          el.style.padding = '0.25rem';
+          style_textArea();
+          function style_textArea() {
+            const textarea = el.getElementsByTagName('textarea')[0];
+            textarea.style.flex = '1';
+            textarea.style.maxWidth = (projectBarWidth * 4) + 'rem';
+            textarea.style.width = '100%';
+            textarea.style.padding = '1rem';
+            textarea.style.margin = '0';
+            textarea.style.display = 'flex';
+            textarea.style.flexWrap = 'wrap';
+            textarea.style.wordWrap = 'break-word';
+            textarea.style.justifyContent = 'center';
+            textarea.style.alignItems = 'center';
+            textarea.style.backgroundColor = 'transparent';
+            textarea.style.border = '0px solid transparent';
+            textarea.style.textAlign = 'center';
+            textarea.style.verticalAlign = 'middle';
+            textarea.style.fontSize = '1.75rem';
+          }
+        }
+        function style_consoleHourBlocks(el) {
+          // el.style.height = 'calc(100% - ' + titleHeight +')';
+          el.style.flex = '1';
+          el.style.display = 'flex';
+          // el.style.flexDirection = 'column';
+          el.style.justifyContent = 'flex-end';
+        }
+        function style_chooseHourBlock(el) {
+          // el.style.flex = '1';
+          el.style.maxWidth = projectBarHeight * 1.75 + 'rem';
+          el.style.display = 'flex';
+          el.style.flexDirection = 'row';
+          el.style.justifyContent = 'center';
+          el.style.position = 'relative';
+        }
+        function style_prevHourBlock(el) {
+          const width = 0.25;
+          style_prevArr(el, projectBarHeight, width);
+          // el.style.backgroundColor = '#000000';
+          el.style.borderTopColor = '#000000';
+          el.style.left = '0.8rem';
+          el.style.top = 'calc(50% - ' + projectBarHeight / 4 + 'rem)'
+        }
+        function style_nextHourBlock(el) {
+          const width = 0.25;
+          style_nextArr(el, projectBarHeight, width, marginLeft);
+          el.style.borderTopColor = '#000000';
+          el.style.right = '0.8rem';
+          el.style.top = 'calc(50% - ' + projectBarHeight / 4 + 'rem)'
+        }
+        function style_hourBlockChoice(el) {
+          // el.style.flex = '1';
+          el.style.minWidth = projectBarHeight * 2.5 + 'rem';
+          el.style.border = 'none';
+          el.style.display = 'flex';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
+        }
+        function style_hourBlockChosen(el) {
+          const hoursNum = Number(el.classList[1]);
+          const num = 1 - 0.75 + (hoursNum / 100 * 3);
+          el.style.height = num * 100 + '%';
+          // el.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
+          el.style.fontSize = 1.5 + hoursNum / 100 * 2 + 'rem';
+          el.style.border = '2px solid #000000';
+          el.style.paddingLeft = '1rem';
+          el.style.paddingRight = '1rem';
+          el.style.borderRadius = borderRadius;
+          el.style.display = 'flex';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
+          el.style.fontWeight = 'bold';
+          el.style.color = '#000000';
+        }
+        function style_addHourBlock(el) {
+          el.style.cursor = 'pointer';
+          el.style.flex = '1';
+          el.style.maxWidth = projectBarHeight + 'rem';
+          el.style.minWidth = projectBarHeight + 'rem';
+          el.style.textAlign = 'center';
+          el.style.display = 'flex';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
+          el.style.position = 'relative';
+          style_plusSymbol();
+          function style_plusSymbol() {
+            const plus = el.getElementsByClassName('plus')[0];
+            plus.style.border = '0.75rem solid #000000';
+            plus.style.borderRadius = '25%';
+            plus.style.position = 'absolute';
+            plus.style.top = 0;
+            plus.style.bottom = 0;
+            plus.style.left = 0;
+            plus.style.right = 0;
+            plus.style.display = 'flex';
+            plus.style.textAlign = 'center';
+            plus.style.justifyContent = 'center';
+            style_plusText();
+            function style_plusText() {
+              const plusText = plus.children[0];
+              plusText.style.fontSize = projectBarHeight + 'rem';
+              plusText.style.borderRadius = borderRadius;
+              plusText.style.position = 'absolute';
+              plusText.style.position = 'absolute';
+              plusText.style.top = 0 - (projectBarHeight) / 5.25 + 'rem';
+              plusText.style.bottom = 0;
+              plusText.style.left = 0;
+              plusText.style.right = 0;
+            }
+          }
+        }
+        function style_storeHourBlocks(el) {
+          el.style.display = 'flex';
+          el.style.flex = '5';
+          el.style.textAlign = 'center';
+          el.style.alignItems = 'flex-end';
+          el.style.position = 'relative';
+          const hours = el.children[0];
+          hours.style.position = 'absolute';
+          hours.style.bottom = '0';
+          hours.style.left = '0';
+          hours.style.right = '0';
+          hours.style.flex = '5';
+          hours.style.display = 'flex';
+          for (let i = 0; i < hours.children.length; i++) {
+            const hour = hours.children[i];
+            hour.style.backgroundColor = '#000000';
+            hour.style.opacity = '0.85';
+            hour.style.color = '#ffffff';
+            hour.style.flex = '1';
+            hour.style.fontSize = '0.5rem';
+          }
+        }
+      }
+      // PROJECT BAR - I N T E R A C T I V I T Y
       interactives();
       function interactives() {
         getEl_loopF('projectTitle', inter_INPUT_projectTitle);
