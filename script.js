@@ -5,7 +5,7 @@ var monthShown = 'July';
 // // DATA VALUES
 const menuTitleSize = 1.5;
 const menuTitleMargin = 3;
-const _letterSpacing = 0.75;
+const _letterSpacing = 0.25;
 const menuBgColor = '#000000';
 const borderRadius = '5%';
 const projectBarHeight = 8;
@@ -403,7 +403,7 @@ function app() {
         }
       }
       function content_about(el) {
-        el.innerText = 'ABOUT';
+        // el.innerText = 'ABOUT';
       }
 
       // S T Y L E
@@ -553,8 +553,8 @@ function app() {
           el.style.alignItems = 'center';
           el.style.display = 'flex'
           el.style.textAlign = 'center';
-          el.style.maxWidth = projectBarWidth * 2 + 'rem';
-          el.style.width = projectBarWidth * 2 + 'rem ';
+          el.style.maxWidth = projectBarWidth * 4 + 'rem';
+          el.style.width = projectBarWidth * 4 + 'rem ';
           el.style.borderRight = '1px solid #ffffff';
         }
         function style_titleChooseTimeBlockSize(el) {
@@ -886,25 +886,22 @@ function app() {
         }
         function inter_CLICK_addHourBlock(el) {
           el.onclick = function () {
-            const hoursConsole = setup_findElementUp(el, 'consoleHourBlocks');
-            const choices = hoursConsole.getElementsByClassName('hourBlockChoice');
-            const choice = choices[0];
-            const numHours = choice.classList[1];
-            const hourBlock = choice.getElementsByClassName(numHours)[0];
-            console.log(hourBlock)
+            const container = setup_findElementUp(el, 'consoleHourBlocks');
+            const choice = container.getElementsByClassName('hourBlockChoice')[0];
+            const hourBlock = choice.getElementsByClassName(choice.classList[1])[0];
             let newClone = hourBlock.cloneNode(true);
             appendClone(newClone);
             function appendClone(newClone) {
-              const log = hoursConsole.getElementsByClassName('logHourBlocks')[0];
+              const log = container.getElementsByClassName('logHourBlocks')[0];
               log.appendChild(newClone);
             }
             issueEvent();
             function issueEvent() {
               const event = new Event('newHourBlock');
-              hoursConsole.addEventListener('newHourBlock', function (e) {
+              container.addEventListener('newHourBlock', function (e) {
                 console.log('newHourBlock')
               }, false);
-              hoursConsole.dispatchEvent(event);
+              container.dispatchEvent(event);
             }
           }
         }
@@ -1242,9 +1239,6 @@ function app() {
 
     function dragAndDrop() {
       // I N T E R A C T I V E S
-      getEl_loopF('hourBlock', dragAndDrop.makeDraggable);
-      getEl_loopF('day', turnIntoDropzone);
-
       dragAndDrop.makeDraggable = function (el) {
         el.setAttribute('draggable', true);
         el.addEventListener('dragstart', function (e) {
@@ -1252,12 +1246,12 @@ function app() {
           e.dataTransfer.setData("text/plain", e.target.className);
         });
       }
-      function turnIntoDropzone(el) {
+      dragAndDrop.turnToDropzone = function (el) {
         el.setAttribute('dragenter', 'event.preventDefault();');
         el.setAttribute('ondragover', 'event.preventDefault();');
+        el.ondragstart = dragstart_handler;
         el.ondrop = handleDrop;
       }
-
       function dragstart_handler(ev) {
         console.log(ev);
       }
@@ -1275,6 +1269,8 @@ function app() {
           ev.target.appendChild(block);
         }
       }
+      getEl_loopF('hourBlock', dragAndDrop.makeDraggable);
+      getEl_loopF('day', dragAndDrop.turnToDropzone);
     }
 
 
