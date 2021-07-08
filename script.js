@@ -85,7 +85,7 @@ function app() {
     const app = document.getElementById('app');
     const topBar = ['title', 'about'];
     const chooseHourBlock = ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'];
-    const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'logHourBlocks'];
+    const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'storeHourBlocks'];
     const menuProjects = ['headerProjects', 'addProject']
     const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
     const projectBarComponents = ['chooseprojectBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
@@ -599,7 +599,7 @@ function app() {
       getEl_loopF('projectTitle', content_projectTitle);
       getEl_loopF('hourBlockChoice', content_hourBlockChoice);
       getEl_loopF('addHourBlock', content_addHourBlock);
-      getEl_loopF('logHourBlocks', content_logHourBlocks);
+      getEl_loopF('storeHourBlocks', content_storeHourBlocks);
 
       function content_projectBar(el) {
         // el.classList = 'timerBar ' + monthShown +'-';
@@ -630,7 +630,7 @@ function app() {
         plus.appendChild(plusText);
         el.appendChild(plus);
       }
-      function content_logHourBlocks(el) {
+      function content_storeHourBlocks(el) {
         const monthNum = months.indexOf(monthShown);
         const daysNum = DATA_Calendar[monthNum].daysNum;
         console.log(DATA_Calendar[monthNum].daysNum)
@@ -642,7 +642,7 @@ function app() {
           hour.appendChild(num);
           hours.appendChild(hour);
         }
-        const log = document.getElementsByClassName('logHourBlocks')[0];
+        const log = document.getElementsByClassName('storeHourBlocks')[0];
         log.appendChild(hours);
       }
 
@@ -663,7 +663,7 @@ function app() {
         getEl_loopF('hourBlockChosen', style_hourBlockChosen);
         getEl_loopF('nextHourBlock', style_nextHourBlock);
         getEl_loopF('addHourBlock', style_addHourBlock);
-        getEl_loopF('logHourBlocks', style_logHourBlocks);
+        getEl_loopF('storeHourBlocks', style_storeHourBlocks);
 
         function style_projects(el) {
           el.style.flex = '1';
@@ -812,7 +812,7 @@ function app() {
             }
           }
         }
-        function style_logHourBlocks(el) {
+        function style_storeHourBlocks(el) {
           el.style.display = 'flex';
           el.style.flex = '5';
           el.style.textAlign = 'center';
@@ -888,12 +888,12 @@ function app() {
           el.onclick = function () {
             const container = setup_findElementUp(el, 'consoleHourBlocks');
             const choice = container.getElementsByClassName('hourBlockChoice')[0];
-            const hourBlock = choice.getElementsByClassName(choice.classList[1])[0];
-            let newClone = hourBlock.cloneNode(true);
-            appendClone(newClone);
-            function appendClone(newClone) {
-              const log = container.getElementsByClassName('logHourBlocks')[0];
-              log.appendChild(newClone);
+            const hourBlockChosen = choice.getElementsByClassName(choice.classList[1])[0];
+            let newHourBlockAdded = hourBlockChosen.cloneNode(true);
+            appendClone(newHourBlockAdded);
+            function appendClone(newHourBlockAdded) {
+              const log = container.getElementsByClassName('storeHourBlocks')[0];
+              log.appendChild(newHourBlockAdded);
             }
             issueEvent();
             function issueEvent() {
