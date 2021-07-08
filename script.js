@@ -690,7 +690,7 @@ function app() {
         }
         function style_projectTitle(el) {
           el.style.height = projectBarHeight + 'rem';
-          el.style.width = (projectBarWidth * 2) + 'rem';
+          el.style.width = (projectBarWidth * 4) + 'rem';
           el.style.display = 'flex';
           el.style.wordWrap = 'break-word';
           el.style.padding = '0.25rem';
@@ -698,7 +698,7 @@ function app() {
           function style_textArea() {
             const textarea = el.getElementsByTagName('textarea')[0];
             textarea.style.flex = '1';
-            textarea.style.maxWidth = (projectBarWidth * 2) + 'rem';
+            textarea.style.maxWidth = (projectBarWidth * 4) + 'rem';
             textarea.style.width = '100%';
             textarea.style.padding = '0';
             textarea.style.margin = '0';
