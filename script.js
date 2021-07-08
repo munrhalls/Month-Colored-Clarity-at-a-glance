@@ -481,7 +481,7 @@ function app() {
           el.style.justifyContent = 'center';
           el.style.fontSize = '1.5rem';
           el.style.letterSpacing = '1.75rem';
-          el.style.marginLeft = projectBarWidth + 'rem';
+          el.style.marginLeft = projectBarWidth * 2 + 'rem';
         }
       }
     }
@@ -957,7 +957,7 @@ function app() {
           el.style.justifyContent = 'center';
           el.style.fontSize = '1.5rem';
           el.style.letterSpacing = '1.75rem';
-          el.style.marginLeft = projectBarWidth + 'rem';
+          el.style.marginLeft = projectBarWidth * 2 + 'rem';
         }
         function style_monthChoices(el) {
           el.style.display = 'flex';
@@ -1148,15 +1148,17 @@ function app() {
       function style_weekHeader(el) {
         el.style.display = 'flex';
         el.style.flexDirection = 'column';
-        el.style.alignItems = 'flex-end'
+        el.style.alignItems = 'flex-end';
+        el.style.justifyContent = 'flex-start';
         el.style.backgroundColor = '#000000';
         el.style.color = '#ffffff';
         el.style.padding = '0 1rem';
+        el.style.width = projectBarWidth * 1.5 + 'rem';
       }
       function style_weekTitle(el) {
-        el.style.fontSize = (fontSize - 0.25) + 'rem';
+        el.style.fontSize = fontSize * 1.25 + 'rem';
         el.style.padding = '0 ' + (fontSize / 5) + 'rem';
-        el.style.paddingTop = (fontSize / 15) + 'rem';
+        el.style.paddingTop = (fontSize / 8) + 'rem';
       }
       function style_day(el) {
         el.style.fontSize = (fontSize - 0.25) + 'rem';
