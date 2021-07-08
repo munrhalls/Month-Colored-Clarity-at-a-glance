@@ -3,6 +3,8 @@ const localStorage = window.localStorage;
 var monthShown = 'July';
 
 // // DATA VALUES
+const menuTitleSize = 1.5;
+const menuTitleMargin = 3;
 const menuBgColor = '#000000';
 const borderRadius = '5%';
 const projectBarHeight = 8;
@@ -83,18 +85,19 @@ function app() {
     const topBar = ['title', 'about'];
     const chooseHourBlock = ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'];
     const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'logHourBlocks'];
+    const menuProjects = ['headerProjects']
     const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
     const projectBarComponents = ['chooseprojectBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
     const projectBar = ['projectBar', projectBarComponents];
     const projects = ['projectBars', projectBar];
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
-    const menuCalendar = ['calendarTitle', 'monthChoices', monthChoices];
+    const menuCalendar = ['headerCalendar', 'monthChoices', monthChoices];
     const BASIC_DOM = [
       'root',
       ['topBar', topBar,
         'main',
         ['visuals',
-          ['menuProjects',
+          ['menuProjects', menuProjects,
             'titleBarForProjects', titleBarForProjects,
             'projects', projects,
             'menuCalendar', menuCalendar,
@@ -386,7 +389,7 @@ function app() {
       getEl_loopF('about', content_about);
       function content_title(el) {
         let spanOne = document.createElement('span');
-        spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
+        spanOne.innerText = ('Calendar of Time Blocks ').toUpperCase() + 'per ';
         el.appendChild(spanOne);
         let letters = ('project').split('');
         for (let i = 0; i < letters.length; i++) {
@@ -446,6 +449,7 @@ function app() {
       }
     }
     function create_menuProjects() {
+
       style();
       function style() {
         getEl_loopF('menuProjects', style_menuProjects);
@@ -454,7 +458,9 @@ function app() {
           el.style.height = projectBarHeight / 2 + 'rem';
           el.style.maxHeight = projectBarHeight / 2 + 'rem'
           el.style.backgroundColor = menuBgColor;
+          el.style.borderTop = '1px solid #ffffff';
         }
+
       }
     }
     function create_titleBarForProjects() {
@@ -477,7 +483,7 @@ function app() {
         el.innerText = 'add';
       }
       function content_titleTimeBlocks(el) {
-        el.innerText = 'project time blocks';
+        el.innerText = 'time blocks';
       }
 
       style();
@@ -877,13 +883,13 @@ function app() {
     }
     function create_menuCalendar() {
       // C A L E N D A R  B A R - C O N T E N T
-      getEl_loopF('calendarTitle', content_calendarTitle);
+      getEl_loopF('headerCalendar', content_headerCalendar);
       getEl_loopF('monthChoices', content_monthChoices);
       getEl_loopF('chooseMonth', content_monthChoice);
       getEl_loopF('prevMonth', content_prevMonth);
       getEl_loopF('nextMonth', content_nextMonth);
 
-      function content_calendarTitle(el) {
+      function content_headerCalendar(el) {
         const title = document.createElement('span');
         title.innerText = 'CALENDAR';
         el.appendChild(title);
@@ -903,12 +909,12 @@ function app() {
       }
 
       // C A L E N D A R  B A R -  S T Y L E
-      const marginLeft = 3;
-      const titleSize = 1.5;
+      const menuTitleSize = 1.5;
+      const menuTitleMargin = 3;
       style();
       function style() {
         getEl_loopF('menuCalendar', style_menuCalendar);
-        getEl_loopF('calendarTitle', style_calendarTitle);
+        getEl_loopF('headerCalendar', style_headerCalendar);
         getEl_loopF('monthChoices', style_monthChoices);
         getEl_loopF('chooseMonth', style_monthChoice);
         getEl_loopF('prevMonth', style_prevMonth);
@@ -920,7 +926,7 @@ function app() {
           el.style.backgroundColor = '#000000';
           el.style.display = 'flex';
         }
-        function style_calendarTitle(el) {
+        function style_headerCalendar(el) {
           el.style.color = '#ffffff';
           el.style.fontWeight = 'bold';
           el.style.marginLeft = '1.5rem';
@@ -931,25 +937,25 @@ function app() {
         function style_monthChoices(el) {
           el.style.display = 'flex';
           el.style.alignItems = 'center';
-          el.style.marginLeft = (marginLeft * 3) + 'rem';
+          el.style.marginLeft = (menuTitleMargin * 3) + 'rem';
           el.style.color = '#ffffff';
           // position
           el.style.position = 'relative';
         }
         function style_monthChoice(el) {
           // global
-          el.style.fontSize = titleSize + 'rem';
+          el.style.fontSize = menuTitleSize + 'rem';
         }
         function style_prevMonth(el) {
           const width = 0.25;
           style_prevArr(el, projectBarHeight, width);
-          el.style.marginLeft = 0 - marginLeft + 'rem';
+          el.style.marginLeft = 0 - menuTitleMargin + 'rem';
         }
         function style_nextMonth(el) {
           const width = 0.25;
-          const left = 0 - marginLeft * 3;
+          const left = 0 - menuTitleMargin * 3;
           style_nextArr(el, projectBarHeight, width, left)
-          el.style.marginRight = 0 - marginLeft + 'rem';
+          el.style.marginRight = 0 - menuTitleMargin + 'rem';
         }
       }
 
