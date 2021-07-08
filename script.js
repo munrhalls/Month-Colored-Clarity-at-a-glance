@@ -888,23 +888,38 @@ function app() {
           el.onclick = function () {
             const container = setup_findElementUp(el, 'consoleHourBlocks');
             const choice = container.getElementsByClassName('hourBlockChoice')[0];
-            const hourBlockChosen = choice.getElementsByClassName(choice.classList[1])[0];
-            let newHourBlockAdded = hourBlockChosen.cloneNode(true);
-            appendClone(newHourBlockAdded);
-            function appendClone(newHourBlockAdded) {
-              const log = container.getElementsByClassName('storeHourBlocks')[0];
-              log.appendChild(newHourBlockAdded);
+            const number = choice.classList[1];
+            getChosenBlock();
+            cloneAndSetup();
+            append();
+
+            function getChosenBlock() {
+              const chosenBlock = choice.getElementsByClassName(number)[0];
+              return chosenBlock;
             }
-            issueEvent();
-            function issueEvent() {
-              const event = new Event('newHourBlock');
-              container.addEventListener('newHourBlock', function (e) {
-                console.log('newHourBlock')
-              }, false);
-              container.dispatchEvent(event);
+            function cloneAndSetup() {
+              const chosenBlock = getChosenBlock();
+              let clone = chosenBlock.cloneNode(true);
+              const newHourBlock = clone;
+              newHourBlock.className = 'hourBlock ' + number + ' hours';
+              dragAndDrop.makeDraggable(newHourBlock);
+              return newHourBlock;
+            }
+            function append() {
+              const newHourBlock = cloneAndSetup();
+              const log = container.getElementsByClassName('storeHourBlocks')[0];
+              log.appendChild(newHourBlock);
             }
           }
         }
+        // issueEvent();
+        // function issueEvent() {
+        //   const event = new Event('newHourBlock');
+        //   container.addEventListener('newHourBlock', function (e) {
+        //     console.log('newHourBlock')
+        //   }, false);
+        //   container.dispatchEvent(event);
+        // }
       }
     }
     function create_menuCalendar() {
