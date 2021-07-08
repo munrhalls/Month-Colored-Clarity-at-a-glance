@@ -522,7 +522,12 @@ function app() {
         getEl_loopF('addProject', inter_addProject);
         function inter_addProject(el) {
           el.onclick = function () {
+            // const projects = document.getElementsByClassName('projects')[0];
+            // const bars = projects.getElementsByClassName('projectBars')[0];
+            const projectBars = document.getElementsByClassName('projectBars')[0];
+            assembleDOM(projectBar, projectBars);
 
+            // projectBar
           }
         }
       }
