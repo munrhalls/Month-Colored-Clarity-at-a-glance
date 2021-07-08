@@ -86,7 +86,7 @@ function app() {
     const topBar = ['title', 'about'];
     const chooseHourBlock = ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'];
     const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'storeHourBlocks'];
-    const menuProjects = ['headerProjects', 'addProject']
+    const menuProjects = ['headerProjects', 'addProject', ['addProjectLabel']]
     const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
     const projectBarComponents = ['chooseprojectBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
     const projectBar = ['projectBar', projectBarComponents];
@@ -457,14 +457,21 @@ function app() {
     }
     function create_menuProjects() {
       getEl_loopF('headerProjects', content_menuProjects);
+      getEl_loopF('addProjectLabel', content_addProjectLabel);
+
       function content_menuProjects(el) {
         el.innerText = 'PROJECTS';
+      }
+      function content_addProjectLabel(el) {
+        el.innerText = '+';
       }
 
       style();
       function style() {
         getEl_loopF('menuProjects', style_menuProjects);
         getEl_loopF('headerProjects', style_headerProjects);
+        getEl_loopF('addProject', style_addProject);
+        getEl_loopF('addProjectLabel', style_addProjectLabel);
         function style_menuProjects(el) {
           el.style.flex = '1';
           el.style.height = projectBarHeight / 2 + 'rem';
@@ -489,6 +496,26 @@ function app() {
           el.style.fontSize = '1.5rem';
           el.style.letterSpacing = '1.75rem';
           el.style.marginLeft = projectBarWidth * 2 + 'rem';
+        }
+        function style_addProject(el) {
+          el.style.position = 'relative';
+          el.style.height = '100%';
+          el.style.width = menuTitleMargin * 2 + 'rem';
+
+        }
+        function style_addProjectLabel(el) {
+          el.style.position = 'absolute';
+          el.style.top = -menuTitleSize / 2 + 'rem';
+          el.style.bottom = '0';
+          el.style.left = '0';
+          el.style.right = '0';
+          el.style.maxHeight = '100%';
+
+          el.style.color = '#ffffff';
+          el.style.marginLeft = menuTitleMargin + 'rem';
+          el.style.fontSize = menuTitleSize * 3 + 'rem';
+          el.style.width = menuTitleMargin + 'rem';
+
         }
       }
     }
@@ -611,6 +638,7 @@ function app() {
       function content_projectTitle(el) {
         const textarea = document.createElement('textarea');
         textarea.type = 'text';
+        textarea.placeholder = 'Project title';
         el.appendChild(textarea);
       }
       function content_hourBlockChoice(el) {
@@ -633,6 +661,7 @@ function app() {
       function content_storeHourBlocks(el) {
         const monthNum = months.indexOf(monthShown);
         const daysNum = DATA_Calendar[monthNum].daysNum;
+        console.log(DATA_Calendar[monthNum])
         console.log(DATA_Calendar[monthNum].daysNum)
         const hours = document.createElement('div');
         for (let i = 1; i <= daysNum; i++) {
@@ -707,7 +736,7 @@ function app() {
             textarea.style.flex = '1';
             textarea.style.maxWidth = (projectBarWidth * 4) + 'rem';
             textarea.style.width = '100%';
-            textarea.style.padding = '0';
+            textarea.style.padding = '1rem';
             textarea.style.margin = '0';
             textarea.style.display = 'flex';
             textarea.style.flexWrap = 'wrap';
@@ -718,7 +747,7 @@ function app() {
             textarea.style.border = '0px solid transparent';
             textarea.style.textAlign = 'center';
             textarea.style.verticalAlign = 'middle';
-            textarea.style.fontSize = '1.15rem';
+            textarea.style.fontSize = '1.75rem';
           }
         }
         function style_consoleHourBlocks(el) {
