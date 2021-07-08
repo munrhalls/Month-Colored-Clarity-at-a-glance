@@ -465,7 +465,7 @@ function app() {
       function content_addProjectLabel(el) {
         el.innerText = '+';
       }
-
+      // MENU PROJECTS - S T Y L E
       style();
       function style() {
         getEl_loopF('menuProjects', style_menuProjects);
@@ -498,10 +498,10 @@ function app() {
           el.style.marginLeft = projectBarWidth * 2 + 'rem';
         }
         function style_addProject(el) {
+          el.style.cursor = 'pointer';
           el.style.position = 'relative';
           el.style.height = '100%';
           el.style.width = menuTitleMargin * 2 + 'rem';
-
         }
         function style_addProjectLabel(el) {
           el.style.position = 'absolute';
@@ -510,12 +510,20 @@ function app() {
           el.style.left = '0';
           el.style.right = '0';
           el.style.maxHeight = '100%';
-
           el.style.color = '#ffffff';
           el.style.marginLeft = menuTitleMargin + 'rem';
           el.style.fontSize = menuTitleSize * 3 + 'rem';
           el.style.width = menuTitleMargin + 'rem';
+        }
+      }
+      // MENU PROJECTS - I N T E R A C T I V I T Y
+      interactivity();
+      function interactivity() {
+        getEl_loopF('addProject', inter_addProject);
+        function inter_addProject(el) {
+          el.onclick = function () {
 
+          }
         }
       }
     }
