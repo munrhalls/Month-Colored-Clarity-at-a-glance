@@ -5,6 +5,7 @@ var monthShown = 'July';
 // // DATA VALUES
 const menuTitleSize = 1.5;
 const menuTitleMargin = 3;
+const _letterSpacing = 0.75;
 const menuBgColor = '#000000';
 const borderRadius = '5%';
 const projectBarHeight = 8;
@@ -389,15 +390,16 @@ function app() {
       getEl_loopF('about', content_about);
       function content_title(el) {
         let spanOne = document.createElement('span');
-        spanOne.innerText = ('Calendar of Time Blocks ').toUpperCase() + 'per ';
+        spanOne.innerText = ('CALENDAR: TIME BLOCKS ') + 'per ';
         el.appendChild(spanOne);
         let letters = ('project').split('');
         for (let i = 0; i < letters.length; i++) {
-          let span = document.createElement('span');
-          span.innerText = letters[i].toUpperCase();
-          span.style.color = colors[i];
-          span.style.letterSpacing = '3px';
-          el.appendChild(span);
+          let letter = document.createElement('letter');
+          letter.className = 'colorLetter';
+          letter.innerText = letters[i].toUpperCase();
+          letter.style.color = colors[i];
+          letter.style.letterSpacing = '3px';
+          el.appendChild(letter);
         }
       }
       function content_about(el) {
@@ -426,6 +428,11 @@ function app() {
         el.style.padding = title_padding
         el.style.fontSize = title_fontSize;
         el.style.borderRight = '1px solid #ffffff';
+        el.style.letterSpacing = _letterSpacing + 'rem';
+        const colorLetters = el.getElementsByClassName('colorLetter');
+        for (let i = 0; i < colorLetters.length; i++) {
+          colorLetters[i].style.paddingLeft = _letterSpacing + 'rem';
+        }
       }
       function style_about(el) {
         el.style.color = title_color;
