@@ -83,14 +83,17 @@ function app() {
   window.addEventListener('load', function () {
     console.log('This function is executed once the page is fully loaded');
     const app = document.getElementById('app');
-    const topBar = ['title', 'about'];
+    // INTERACTION DOM
     const chooseHourBlock = ['prevHourBlock', 'hourBlockChoice', 'nextHourBlock'];
     const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'storeHourBlocks'];
-    const menuProjects = ['headerProjects', 'addProject', ['addProjectLabel']]
-    const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
     const projectBarComponents = ['chooseProjectBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
     const projectBar = ['projectBar', projectBarComponents];
-    const projects = ['projectBars', projectBar];
+
+    // BASIC DOM
+    const topBar = ['title', 'about'];
+    const menuProjects = ['headerProjects', 'addProject', ['addProjectLabel']];
+    const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
+    const projects = ['projectBars'];
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
     const menuCalendar = ['headerCalendar', 'monthChoices', monthChoices];
     const BASIC_DOM = [
@@ -525,6 +528,11 @@ function app() {
             // const projects = document.getElementsByClassName('projects')[0];
             // const bars = projects.getElementsByClassName('projectBars')[0];
             const projectBars = document.getElementsByClassName('projectBars')[0];
+            const numberOfBars = projectBars.getElementsByClassName('projectBar').length;
+            markDATA(numberOfBars)
+            function markDATA() {
+              console.log(numberOfBars)
+            }
             assembleDOM(projectBar, projectBars);
 
 
@@ -644,9 +652,9 @@ function app() {
         }
       }
     }
-    create_projectBar();
+    // create_projectBar();
     function create_projectBar(number) {
-
+      const projectBar = document.getElementsByClassName('projectBar')[number]
       getOneEl_runF('projectBar', 0, content_projectBar);
       getOneEl_runF('chooseProjectBarColor', 0, content_chooseProjectBarColor);
       getOneEl_runF('projectTitle', 0, content_projectTitle);
@@ -711,8 +719,8 @@ function app() {
         getOneEl_runF('consoleHourBlocks', 0, style_consoleHourBlocks);
         getOneEl_runF('chooseHourBlock', 0, style_chooseHourBlock);
         getOneEl_runF('prevHourBlock', 0, style_prevHourBlock);
-        getOneEl_runF('hourBlockChoice', 0, style_hourBlockChoice);
-        getOneEl_runF('hourBlockChosen', 0, style_hourBlockChosen);
+        getEl_loopF('hourBlockChoice', style_hourBlockChoice);
+        getEl_loopF('hourBlockChosen', style_hourBlockChosen);
         getOneEl_runF('nextHourBlock', 0, style_nextHourBlock);
         getOneEl_runF('addHourBlock', 0, style_addHourBlock);
         getOneEl_runF('storeHourBlocks', 0, style_storeHourBlocks);
