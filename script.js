@@ -450,6 +450,7 @@ function app() {
     }
     function create_menuProjects() {
 
+
       style();
       function style() {
         getEl_loopF('menuProjects', style_menuProjects);
@@ -464,11 +465,11 @@ function app() {
       }
     }
     function create_titleBarForProjects() {
-      getOneEl_runF('titleProjectColor', 0, content_titleProjectColor)
-      getOneEl_runF('titleProjectName', 0, content_titleProjectName)
-      getOneEl_runF('titleChooseTimeBlockSize', 0, content_titleChooseTimeBlockSize)
-      getOneEl_runF('titleAddTimeBlock', 0, content_titleAddTimeBlock)
-      getOneEl_runF('titleTimeBlocks', 0, content_titleTimeBlocks)
+      getEl_loopF('titleProjectColor', content_titleProjectColor)
+      getEl_loopF('titleProjectName', content_titleProjectName)
+      getEl_loopF('titleChooseTimeBlockSize', content_titleChooseTimeBlockSize)
+      getEl_loopF('titleAddTimeBlock', content_titleAddTimeBlock)
+      getEl_loopF('titleTimeBlocks', content_titleTimeBlocks)
 
       function content_titleProjectColor(el) {
         el.innerText = 'choose color';
@@ -489,11 +490,11 @@ function app() {
       style();
       function style() {
         getEl_loopF('titleBarForProjects', style_titleBarForProjects);
-        getOneEl_runF('titleProjectColor', 0, style_titleProjectColor)
-        getOneEl_runF('titleProjectName', 0, style_titleProjectName)
-        getOneEl_runF('titleChooseTimeBlockSize', 0, style_titleChooseTimeBlockSize)
-        getOneEl_runF('titleAddTimeBlock', 0, style_titleAddTimeBlock)
-        getOneEl_runF('titleTimeBlocks', 0, style_titleTimeBlocks)
+        getEl_loopF('titleProjectColor', style_titleProjectColor)
+        getEl_loopF('titleProjectName', style_titleProjectName)
+        getEl_loopF('titleChooseTimeBlockSize', style_titleChooseTimeBlockSize)
+        getEl_loopF('titleAddTimeBlock', style_titleAddTimeBlock)
+        getEl_loopF('titleTimeBlocks', style_titleTimeBlocks)
         function style_titleBarForProjects(el) {
           el.style.flex = '1';
           el.style.borderTop = '1px solid #ffffff';
