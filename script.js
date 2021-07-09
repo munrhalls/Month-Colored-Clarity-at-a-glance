@@ -526,20 +526,29 @@ function app() {
         function inter_addProject(el) {
           el.onclick = function () {
             const projectBars = document.getElementsByClassName('projectBars')[0];
-            const numberOfBars = projectBars.getElementsByClassName('projectBar').length;
+            const num = projectBars.getElementsByClassName('projectBar').length;
+            // copy project bar
+            // modify the copy
+            // return
+            // then use it
+
             // 1. recursively loop array projectBar
+            // done
             // 2. add indexing data each class
+            // return arr
+            // copy arr
             // 3. then use assemble dom
             // 4. then run create func
-            markDATA(projectBar, numberOfBars)
-            function markDATA(arr, number) {
+            const projectBarCopy = projectBar.map((x) => x);
+            markDATA(projectBarCopy, num);
+            function markDATA(arr, num) {
               // console log each entry
               for (let i = 0; i < arr.length; i++) {
-                const entry = arr[i];
+                let entry = arr[i];
                 if (typeof entry === 'object') {
-                  markDATA(entry, number);
+                  markDATA(entry, num);
                 } else {
-                  console.log(entry, i);
+                  console.log(entry, num);
                 }
               }
               // then, modify 
