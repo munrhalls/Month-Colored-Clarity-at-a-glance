@@ -535,24 +535,28 @@ function app() {
             // 1. recursively loop array projectBar
             // done
             // 2. add indexing data each class
-            // return arr
             // copy arr
+            // find a way to save modified entry
+            // modify and use that way
             // 3. then use assemble dom
             // 4. then run create func
             const projectBarCopy = projectBar.map((x) => x);
-            markDATA(projectBarCopy, num);
-            function markDATA(arr, num) {
+            loopDATA(projectBarCopy, num);
+            function loopDATA(arr, num) {
               // console log each entry
               for (let i = 0; i < arr.length; i++) {
                 let entry = arr[i];
                 if (typeof entry === 'object') {
-                  markDATA(entry, num);
+                  loopDATA(entry, num);
                 } else {
+                  modifyDATA();
+                  function modifyDATA() {
+                    entry = entry + ' ' + 'i-' + num;
+                  }
                   console.log(entry, num);
                 }
               }
               // then, modify 
-
             }
             assembleDOM(projectBar, projectBars);
 
