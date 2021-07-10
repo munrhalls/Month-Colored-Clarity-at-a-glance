@@ -560,6 +560,8 @@ function app() {
               }
             }
             console.log(projectBarCopy)
+            console.log(projectBarCopy)
+
             assembleDOM(projectBarCopy, projectBars);
 
             // projectBar
