@@ -540,7 +540,9 @@ function app() {
             // modify and use that way
             // 3. then use assemble dom
             // 4. then run create func
-            const projectBarCopy = projectBar.map((x) => x);
+            const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : item);
+
+            const projectBarCopy = clone(projectBar);
             loopDATA(projectBarCopy, num);
             function loopDATA(arr, num) {
               // console log each entry
@@ -551,14 +553,14 @@ function app() {
                 } else {
                   modifyDATA();
                   function modifyDATA() {
-                    entry = entry + ' ' + 'i-' + num;
+                    const entryIndex = arr.indexOf(entry);
+                    arr[entryIndex] = entry + ' ' + 'i-' + num;
                   }
-                  console.log(entry, num);
                 }
               }
-              // then, modify 
             }
-            assembleDOM(projectBar, projectBars);
+            console.log(projectBarCopy)
+            assembleDOM(projectBarCopy, projectBars);
 
             // projectBar
           }
