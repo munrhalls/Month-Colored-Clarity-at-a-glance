@@ -693,7 +693,7 @@ function app() {
       getOneEl_runF('projectBar', num, content_projectBar);
       getOneEl_runF('chooseProjectBarColor', num, content_chooseProjectBarColor);
       getOneEl_runF('projectTitle', num, content_projectTitle);
-      getOneEl_runF('hourBlockChoice', num, content_hourBlockChoice);
+      // getOneEl_runF('hourBlockChoice', num, content_hourBlockChoice);
       getOneEl_runF('addHourBlock', num, content_addHourBlock);
       getOneEl_runF('storeHourBlocks', num, content_storeHourBlocks);
 
@@ -730,16 +730,14 @@ function app() {
       function content_storeHourBlocks(el) {
         const monthNum = months.indexOf(monthShown);
         const daysNum = DATA_Calendar[monthNum].daysNum;
-        console.log(DATA_Calendar[monthNum])
-        console.log(DATA_Calendar[monthNum].daysNum)
         const hours = document.createElement('div');
-        for (let i = 1; i <= daysNum; i++) {
-          let hour = document.createElement('div');
-          let num = document.createElement('span');
-          num.innerText = i;
-          hour.appendChild(num);
-          hours.appendChild(hour);
-        }
+        // for (let i = 1; i <= daysNum; i++) {
+        //   let hour = document.createElement('div');
+        //   let num = document.createElement('span');
+        //   num.innerText = i;
+        //   hour.appendChild(num);
+        //   hours.appendChild(hour);
+        // }
         const log = document.getElementsByClassName('storeHourBlocks')[0];
         log.appendChild(hours);
       }
@@ -753,7 +751,7 @@ function app() {
         getOneEl_runF('consoleHourBlocks', num, style_consoleHourBlocks);
         getOneEl_runF('chooseHourBlock', num, style_chooseHourBlock);
         getOneEl_runF('prevHourBlock', num, style_prevHourBlock);
-        getEl_loopF('hourBlockChoice', style_hourBlockChoice);
+        // getEl_loopF('hourBlockChoice', style_hourBlockChoice);
         getEl_loopF('hourBlockChosen', style_hourBlockChosen);
         getOneEl_runF('nextHourBlock', num, style_nextHourBlock);
         getOneEl_runF('addHourBlock', num, style_addHourBlock);
@@ -807,7 +805,7 @@ function app() {
           el.style.justifyContent = 'flex-end';
         }
         function style_chooseHourBlock(el) {
-          // el.style.flex = '1';
+          el.style.flex = '1';
           el.style.maxWidth = projectBarHeight * 1.75 + 'rem';
           el.style.display = 'flex';
           el.style.flexDirection = 'row';
@@ -896,21 +894,21 @@ function app() {
           el.style.textAlign = 'center';
           el.style.alignItems = 'flex-end';
           el.style.position = 'relative';
-          const hours = el.children[0];
-          hours.style.position = 'absolute';
-          hours.style.bottom = '0';
-          hours.style.left = '0';
-          hours.style.right = '0';
-          hours.style.flex = '5';
-          hours.style.display = 'flex';
-          for (let i = 0; i < hours.children.length; i++) {
-            const hour = hours.children[i];
-            hour.style.backgroundColor = '#000000';
-            hour.style.opacity = '0.85';
-            hour.style.color = '#ffffff';
-            hour.style.flex = '1';
-            hour.style.fontSize = '0.5rem';
-          }
+          // const hours = el.children[0];
+          // hours.style.position = 'absolute';
+          // hours.style.bottom = '0';
+          // hours.style.left = '0';
+          // hours.style.right = '0';
+          // hours.style.flex = '5';
+          // hours.style.display = 'flex';
+          // for (let i = 0; i < hours.children.length; i++) {
+          //   const hour = hours.children[i];
+          //   hour.style.backgroundColor = '#000000';
+          //   hour.style.opacity = '0.85';
+          //   hour.style.color = '#ffffff';
+          //   hour.style.flex = '1';
+          //   hour.style.fontSize = '0.5rem';
+          // }
         }
       }
       // PROJECT BAR - I N T E R A C T I V I T Y
