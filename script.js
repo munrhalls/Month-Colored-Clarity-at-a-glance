@@ -554,7 +554,10 @@ function app() {
                   modifyDATA();
                   function modifyDATA() {
                     const accessIndex = arr.indexOf(entry);
-                    arr[accessIndex] = entry + ' ' + index;
+                    // arr[accessIndex] = entry + ' ' + index;
+                    // TEMPORARILY COMMENT - THIS IS COMPLECTED WITH COLOR MENU INTERACTIVITY
+                    // ADDING CLASSNAME CAUSES COLOR MENU'S ELEMENT ACCESS FUNCTION TO NOT WORK
+                    // THAT'S NOT A DESIRABLE DESIGN SCENARIO
                   }
                 }
               }
@@ -562,7 +565,7 @@ function app() {
 
             assembleDOM(projectBarCopy, projectBars);
             console.log(projectBarCopy)
-            create_projectBar(index);
+            create_projectBar();
           }
         }
       }
@@ -684,13 +687,13 @@ function app() {
         }
       }
     }
-    function create_projectBar(accessIndex) {
-      getOneEl_runF('projectBar ' + accessIndex, 0, content_projectBar);
-      getOneEl_runF('chooseProjectBarColor ' + accessIndex, 0, content_chooseProjectBarColor);
-      getOneEl_runF('projectTitle ' + accessIndex, 0, content_projectTitle);
-      getOneEl_runF('hourBlockChoices ' + accessIndex, 0, content_hourBlockChoices);
-      getOneEl_runF('addHourBlock ' + accessIndex, 0, content_addHourBlock);
-      getOneEl_runF('storeHourBlocks ' + accessIndex, 0, content_storeHourBlocks);
+    function create_projectBar() {
+      getEl_loopF('projectBar', content_projectBar);
+      getEl_loopF('chooseProjectBarColor', content_chooseProjectBarColor);
+      getEl_loopF('projectTitle', content_projectTitle);
+      // getEl_loopF('hourBlockChoices', content_hourBlockChoices);
+      getEl_loopF('addHourBlock', content_addHourBlock);
+      getEl_loopF('storeHourBlocks', content_storeHourBlocks);
 
       function content_projectBar(el) {
         // el.classList = 'timerBar ' + monthShown +'-';
@@ -727,31 +730,31 @@ function app() {
         const monthNum = months.indexOf(monthShown);
         const daysNum = DATA_Calendar[monthNum].daysNum;
         const hours = document.createElement('div');
-        for (let i = 1; i <= daysNum; i++) {
-          let hour = document.createElement('div');
-          let num = document.createElement('span');
-          num.innerText = i;
-          hour.appendChild(num);
-          hours.appendChild(hour);
-        }
-        const log = document.getElementsByClassName('storeHourBlocks')[0];
-        log.appendChild(hours);
+        // for (let i = 1; i <= daysNum; i++) {
+        //   let hour = document.createElement('div');
+        //   let num = document.createElement('span');
+        //   num.innerText = i;
+        //   hour.appendChild(num);
+        //   hours.appendChild(hour);
+        // }
+        // const log = document.getElementsByClassName('storeHourBlocks')[0];
+        // log.appendChild(hours);
       }
       // PROJECT BAR - S T Y L E 
       const marginLeft = projectBarHeight / 2;
       style();
       function style() {
-        getOneEl_runF('chooseProjectBarColor ' + accessIndex, 0, style_chooseProjectBarColor);
-        getOneEl_runF('projectBar ' + accessIndex, 0, style_projectBar);
-        getOneEl_runF('projectTitle ' + accessIndex, 0, style_projectTitle);
-        getOneEl_runF('consoleHourBlocks ' + accessIndex, 0, style_consoleHourBlocks);
-        getOneEl_runF('chooseHourBlock ' + accessIndex, 0, style_chooseHourBlock);
-        getOneEl_runF('prevHourBlock ' + accessIndex, 0, style_prevHourBlock);
-        getEl_loopF('hourBlockChoices', style_hourBlockChoices);
-        getEl_loopF('hourBlockChosen', style_hourBlockChosen);
-        getOneEl_runF('nextHourBlock ' + accessIndex, 0, style_nextHourBlock);
-        getOneEl_runF('addHourBlock ' + accessIndex, 0, style_addHourBlock);
-        getOneEl_runF('storeHourBlocks ' + accessIndex, 0, style_storeHourBlocks);
+        getEl_loopF('chooseProjectBarColor', style_chooseProjectBarColor);
+        getEl_loopF('projectBar', style_projectBar);
+        getEl_loopF('projectTitle', style_projectTitle);
+        getEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
+        getEl_loopF('chooseHourBlock', style_chooseHourBlock);
+        getEl_loopF('prevHourBlock', style_prevHourBlock);
+        // getEl_loopF('hourBlockChoices', style_hourBlockChoices);
+        // getEl_loopF('hourBlockChosen', style_hourBlockChosen);
+        getEl_loopF('nextHourBlock', style_nextHourBlock);
+        getEl_loopF('addHourBlock', style_addHourBlock);
+        getEl_loopF('storeHourBlocks', style_storeHourBlocks);
 
         function style_chooseProjectBarColor(el) {
           el.style.position = 'relative';
@@ -890,31 +893,31 @@ function app() {
           el.style.textAlign = 'center';
           el.style.alignItems = 'flex-end';
           el.style.position = 'relative';
-          const hours = el.children[0];
-          hours.style.position = 'absolute';
-          hours.style.bottom = '0';
-          hours.style.left = '0';
-          hours.style.right = '0';
-          hours.style.flex = '5';
-          hours.style.display = 'flex';
-          for (let i = 0; i < hours.children.length; i++) {
-            const hour = hours.children[i];
-            hour.style.backgroundColor = '#000000';
-            hour.style.opacity = '0.85';
-            hour.style.color = '#ffffff';
-            hour.style.flex = '1';
-            hour.style.fontSize = '0.5rem';
-          }
+          // const hours = el.children[0];
+          // hours.style.position = 'absolute';
+          // hours.style.bottom = '0';
+          // hours.style.left = '0';
+          // hours.style.right = '0';
+          // hours.style.flex = '5';
+          // hours.style.display = 'flex';
+          // for (let i = 0; i < hours.children.length; i++) {
+          //   const hour = hours.children[i];
+          //   hour.style.backgroundColor = '#000000';
+          //   hour.style.opacity = '0.85';
+          //   hour.style.color = '#ffffff';
+          //   hour.style.flex = '1';
+          //   hour.style.fontSize = '0.5rem';
+          // }
         }
       }
       // PROJECT BAR - I N T E R A C T I V I T Y
       interactives();
       function interactives() {
-        getOneEl_runF('projectTitle ' + accessIndex, 0, inter_INPUT_projectTitle);
-        getOneEl_runF('hourBlockChoices ' + accessIndex, 0, setup_hourBlockChoices);
-        getOneEl_runF('prevHourBlock ' + accessIndex, 0, inter_CLICK_prevHourBlock);
-        getOneEl_runF('nextHourBlock ' + accessIndex, 0, inter_CLICK_nextHourBlock);
-        getOneEl_runF('addHourBlock ' + accessIndex, 0, inter_CLICK_addHourBlock);
+        getEl_loopF('projectTitle', inter_INPUT_projectTitle);
+        getEl_loopF('hourBlockChoices', setup_hourBlockChoices);
+        getEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
+        getEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
+        getEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
 
         function inter_INPUT_projectTitle(el) {
           const textarea = el.getElementsByTagName('textarea')[0];
