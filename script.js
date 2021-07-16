@@ -697,7 +697,7 @@ function app() {
     function create_projectBar() {
       getLastEl_loopF('chooseProjectBarColor', content_chooseProjectBarColor);
       getLastEl_loopF('projectTitle', content_projectTitle);
-      getLastEl_loopF('timeBlockChoice', timeBlockChoice);
+      getLastEl_loopF('timeBlockChoice', content_timeBlockChoice);
       getLastEl_loopF('addTimeBlock', content_addTimeBlock);
       getLastEl_loopF('storeTimeBlocks', content_storeTimeBlocks);
 
@@ -711,13 +711,12 @@ function app() {
         textarea.placeholder = 'Project title';
         el.appendChild(textarea);
       }
-      function timeBlockChoice(el) {
+      function content_timeBlockChoice(el) {
         for (let i = 1; i < 25; i++) {
           let timeBlockChosen = document.createElement('div');
           timeBlockChosen.innerText = i;
           timeBlockChosen.classList = 'timeBlockChosen ' + i + ' hours';
           el.appendChild(timeBlockChosen)
-          console.log(el);
         }
       }
       function content_addTimeBlock(el) {
