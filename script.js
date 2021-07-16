@@ -86,7 +86,7 @@ function app() {
     // INTERACTION DOM
     const chooseHourBlock = ['prevHourBlock', 'timeBlockChoice', 'nextHourBlock'];
     const timeBlocks = ['chooseHourBlock', chooseHourBlock, 'addTimeBlock', 'storeTimeBlocks'];
-    const projectBarComponents = ['chooseProjectBarColor', 'projectTitle', 'consoletimeBlocks', timeBlocks];
+    const projectBarComponents = ['chooseProjectBarColor', 'projectTitle', 'consoleTimeBlocks', timeBlocks];
     const projectBar = ['projectBar', projectBarComponents];
 
     // BASIC DOM
@@ -749,7 +749,7 @@ function app() {
         getLastEl_loopF('chooseProjectBarColor', style_chooseProjectBarColor);
         getLastEl_loopF('projectBar', style_projectBar);
         getLastEl_loopF('projectTitle', style_projectTitle);
-        getLastEl_loopF('consoletimeBlocks', style_consoletimeBlocks);
+        getLastEl_loopF('consoleTimeBlocks', style_consoleTimeBlocks);
         getLastEl_loopF('chooseHourBlock', style_chooseHourBlock);
         getLastEl_loopF('prevHourBlock', style_prevHourBlock);
         getLastEl_loopF('timeBlockChoice', timeBlockChoice);
@@ -798,7 +798,7 @@ function app() {
             textarea.style.fontSize = '1.75rem';
           }
         }
-        function style_consoletimeBlocks(el) {
+        function style_consoleTimeBlocks(el) {
           // el.style.height = 'calc(100% - ' + titleHeight +')';
           el.style.flex = '1';
           el.style.display = 'flex';
@@ -962,7 +962,7 @@ function app() {
         }
         function inter_CLICK_addTimeBlock(el) {
           el.onclick = function () {
-            const container = setup_findElementUp(el, 'consoletimeBlocks');
+            const container = setup_findElementUp(el, 'consoleTimeBlocks');
             const choice = container.getElementsByClassName('timeBlockChoice')[0];
             const number = choice.classList[1];
             getChosenBlock();
