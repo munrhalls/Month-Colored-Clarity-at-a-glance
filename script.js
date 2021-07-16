@@ -714,10 +714,10 @@ function app() {
       }
       function timeBlockChoice(el) {
         for (let i = 1; i < 25; i++) {
-          let timeBlockChoice = document.createElement('div');
-          timeBlockChoice.innerText = i;
-          timeBlockChoice.classList = 'hourBlockChosen ' + i + ' hours';
-          el.appendChild(timeBlockChoice)
+          let timeBlockChosen = document.createElement('div');
+          timeBlockChosen.innerText = i;
+          timeBlockChosen.classList = 'timeBlockChosen ' + i + ' hours';
+          el.appendChild(timeBlockChosen)
           console.log(el);
         }
       }
@@ -755,7 +755,7 @@ function app() {
         getLastEl_loopF('chooseHourBlock', style_chooseHourBlock);
         getLastEl_loopF('prevHourBlock', style_prevHourBlock);
         getLastEl_loopF('timeBlockChoice', timeBlockChoice);
-        getLastEl_loopF('hourBlockChosen', style_hourBlockChosen);
+        getLastEl_loopF('timeBlockChosen', style_timeBlockChosen);
         getLastEl_loopF('nextHourBlock', style_nextHourBlock);
         getLastEl_loopF('addTimeBlock', style_addTimeBlock);
         getLastEl_loopF('storeTimeBlocks', style_storeTimeBlocks);
@@ -838,7 +838,7 @@ function app() {
           el.style.justifyContent = 'center';
           el.style.alignItems = 'center';
         }
-        function style_hourBlockChosen(el) {
+        function style_timeBlockChosen(el) {
           const hoursNum = Number(el.classList[1]);
           const num = 1 - 0.75 + (hoursNum / 100 * 3);
           el.style.height = num * 100 + '%';
@@ -932,7 +932,7 @@ function app() {
         }
         function timeBlockChoice(el) {
           el.classList = 'timeBlockChoice ' + '1';
-          const hourBlocks = el.getElementsByClassName('hourBlockChosen ');
+          const hourBlocks = el.getElementsByClassName('timeBlockChosen ');
           for (let i = 1; i < hourBlocks.length; i++) {
             hourBlocks[i].style.display = 'none';
           }
@@ -952,7 +952,7 @@ function app() {
         function inter_CLICK_nextHourBlock(el) {
           el.onclick = function () {
             const timeBlockChoice = el.parentElement.getElementsByClassName('timeBlockChoice')[0];
-            const hourBlocks = timeBlockChoice.getElementsByClassName('hourBlockChosen');
+            const hourBlocks = timeBlockChoice.getElementsByClassName('timeBlockChosen');
             const num = timeBlockChoice.classList[1];
             if (Number(num) < hourBlocks.length) {
               const newNum = Number(num) + 1;
