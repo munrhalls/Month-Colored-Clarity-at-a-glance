@@ -694,6 +694,11 @@ function app() {
         function style_projectBarsScroll(el) {
           el.style.width = projectBarWidth * 1.5 + 'rem';
           el.style.backgroundColor = '#000000';
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+          el.style.justifyContent = 'space-between';
+          el.style.paddingTop = projectBarHeight / 3 + 'rem';
+          el.style.paddingBottom = projectBarHeight / 3 + 'rem';
         }
         function style_prevProjectBar(el) {
           const width = 0.25;
@@ -705,7 +710,10 @@ function app() {
           console.log(el)
         }
         function style_nextProjectBar(el) {
-          console.log(el)
+          const width = 0.25;
+          style_prevArr(el, projectBarHeight, width);
+          el.style.marginLeft = (projectBarHeight / 1.5) + 'rem';
+          el.style.transform = 'rotate(-180deg)';
         }
         function style_projectBars(el) {
           el.style.flex = '5';
