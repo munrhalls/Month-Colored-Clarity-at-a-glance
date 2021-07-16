@@ -739,8 +739,8 @@ function app() {
           hour.appendChild(num);
           hours.appendChild(hour);
         }
-        const log = document.getElementsByClassName('storeTimeBlocks')[0];
-        log.appendChild(hours);
+        const storeTimeBlocks = document.getElementsByClassName('storeTimeBlocks')[0];
+        storeTimeBlocks.appendChild(hours);
       }
       // PROJECT BAR - S T Y L E 
       const marginLeft = projectBarHeight / 2;
