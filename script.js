@@ -159,8 +159,11 @@ function app() {
     }
     // access
     var count = 0;
+    function hasClass(element, className) {
+      return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
+    }
     function setup_findElementUp(elem, name) {
-      return (elem.parentElement.className == name && count < 12) ?
+      return (hasClass(elem.parentElement, name) && count < 12) ?
         (function () {
           count = 0;
           return elem.parentElement;
@@ -376,6 +379,7 @@ function app() {
               e.stopPropagation();
               const color = colorChoices[i].classList[1];
               const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
+              // COMPLECTED
               colorMenuBtn.style.backgroundColor = color;
               projectBar.style.backgroundColor = color;
               colorMenu.style.display = 'none';
