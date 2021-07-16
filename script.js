@@ -534,7 +534,7 @@ function app() {
         function inter_addProjectBar(el) {
           el.onclick = function () {
             const projectBars = document.getElementsByClassName('projectBars')[0];
-            const index = projectBars.getElementsByClassName('projectBar').length;
+            // const index = projectBars.getElementsByClassName('projectBar').length;
             // copy project bar
             // modify the copy
             // return
@@ -547,32 +547,31 @@ function app() {
             // find a way to save modified entry
             // modify and use that way
             // 3. then use assemble dom
-            // 4. then run create func
-            const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : item);
+            // // 4. then run create func
+            // const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : item);
 
-            const projectBarCopy = clone(projectBar);
-            indexDOM(projectBarCopy, index);
-            function indexDOM(arr, index) {
-              // console log each entry
-              for (let i = 0; i < arr.length; i++) {
-                let entry = arr[i];
-                if (typeof entry === 'object') {
-                  indexDOM(entry, index);
-                } else {
-                  modifyDATA();
-                  function modifyDATA() {
-                    const accessIndex = arr.indexOf(entry);
-                    // arr[accessIndex] = entry + ' ' + index;
-                    // TEMPORARILY COMMENT - THIS IS COMPLECTED WITH COLOR MENU INTERACTIVITY
-                    // ADDING CLASSNAME CAUSES COLOR MENU'S ELEMENT ACCESS FUNCTION TO NOT WORK
-                    // THAT'S NOT A DESIRABLE DESIGN SCENARIO
-                  }
-                }
-              }
-            }
+            // const projectBarCopy = clone(projectBar);
+            // indexDOM(projectBarCopy, index);
+            // function indexDOM(arr, index) {
+            //   // console log each entry
+            //   for (let i = 0; i < arr.length; i++) {
+            //     let entry = arr[i];
+            //     if (typeof entry === 'object') {
+            //       indexDOM(entry, index);
+            //     } else {
+            //       modifyDATA();
+            //       function modifyDATA() {
+            //         const accessIndex = arr.indexOf(entry);
+            //         // arr[accessIndex] = entry + ' ' + index;
+            //         // TEMPORARILY COMMENT - THIS IS COMPLECTED WITH COLOR MENU INTERACTIVITY
+            //         // ADDING CLASSNAME CAUSES COLOR MENU'S ELEMENT ACCESS FUNCTION TO NOT WORK
+            //         // THAT'S NOT A DESIRABLE DESIGN SCENARIO
+            //       }
+            //     }
+            //   }
+            // }
 
-            assembleDOM(projectBarCopy, projectBars);
-            console.log(projectBarCopy)
+            assembleDOM(projectBar, projectBars);
             create_projectBar();
           }
         }
