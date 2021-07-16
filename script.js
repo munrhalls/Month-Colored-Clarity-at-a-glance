@@ -84,8 +84,8 @@ function app() {
     console.log('This function is executed once the page is fully loaded');
     const app = document.getElementById('app');
     // INTERACTION DOM
-    const chooseHourBlock = ['prevHourBlock', 'hourBlockChoices', 'nextHourBlock'];
-    const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addHourBlock', 'storeHourBlocks'];
+    const chooseHourBlock = ['prevHourBlock', 'timeBlockChoice', 'nextHourBlock'];
+    const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addTimeBlock', 'storeTimeBlocks'];
     const projectBarComponents = ['chooseProjectBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
     const projectBar = ['projectBar', projectBarComponents];
 
@@ -696,16 +696,12 @@ function app() {
       }
     }
     function create_projectBar() {
-      getLastEl_loopF('projectBar', content_projectBar);
       getLastEl_loopF('chooseProjectBarColor', content_chooseProjectBarColor);
       getLastEl_loopF('projectTitle', content_projectTitle);
-      // getLastEl_loopF('hourBlockChoices', content_hourBlockChoices);
-      getLastEl_loopF('addHourBlock', content_addHourBlock);
-      getLastEl_loopF('storeHourBlocks', content_storeHourBlocks);
+      getLastEl_loopF('timeBlockChoice', timeBlockChoice);
+      getLastEl_loopF('addTimeBlock', content_addTimeBlock);
+      getLastEl_loopF('storeTimeBlocks', content_storeTimeBlocks);
 
-      function content_projectBar(el) {
-        // el.classList = 'timerBar ' + monthShown +'-';
-      }
       function content_chooseProjectBarColor(el) {
         const btn = create_colorMenuBtn();
         el.appendChild(btn);
@@ -716,16 +712,16 @@ function app() {
         textarea.placeholder = 'Project title';
         el.appendChild(textarea);
       }
-      function content_hourBlockChoices(el) {
+      function timeBlockChoice(el) {
         for (let i = 1; i < 25; i++) {
-          let hourBlockChoices = document.createElement('div');
-          hourBlockChoices.innerText = i;
-          hourBlockChoices.classList = 'hourBlockChosen ' + i + ' hours';
-          el.appendChild(hourBlockChoices)
+          let timeBlockChoice = document.createElement('div');
+          timeBlockChoice.innerText = i;
+          timeBlockChoice.classList = 'hourBlockChosen ' + i + ' hours';
+          el.appendChild(timeBlockChoice)
           console.log(el);
         }
       }
-      function content_addHourBlock(el) {
+      function content_addTimeBlock(el) {
         const plus = document.createElement('div');
         plus.className = 'plus';
         const plusText = document.createElement('div');
@@ -734,19 +730,19 @@ function app() {
         plus.appendChild(plusText);
         el.appendChild(plus);
       }
-      function content_storeHourBlocks(el) {
+      function content_storeTimeBlocks(el) {
         const monthNum = months.indexOf(monthShown);
         const daysNum = DATA_Calendar[monthNum].daysNum;
         const hours = document.createElement('div');
-        // for (let i = 1; i <= daysNum; i++) {
-        //   let hour = document.createElement('div');
-        //   let num = document.createElement('span');
-        //   num.innerText = i;
-        //   hour.appendChild(num);
-        //   hours.appendChild(hour);
-        // }
-        // const log = document.getElementsByClassName('storeHourBlocks')[0];
-        // log.appendChild(hours);
+        for (let i = 1; i <= daysNum; i++) {
+          let hour = document.createElement('div');
+          let num = document.createElement('span');
+          num.innerText = i;
+          hour.appendChild(num);
+          hours.appendChild(hour);
+        }
+        const log = document.getElementsByClassName('storeTimeBlocks')[0];
+        log.appendChild(hours);
       }
       // PROJECT BAR - S T Y L E 
       const marginLeft = projectBarHeight / 2;
@@ -758,11 +754,11 @@ function app() {
         getLastEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
         getLastEl_loopF('chooseHourBlock', style_chooseHourBlock);
         getLastEl_loopF('prevHourBlock', style_prevHourBlock);
-        // getLastEl_loopF('hourBlockChoices', style_hourBlockChoices);
-        // getLastEl_loopF('hourBlockChosen', style_hourBlockChosen);
+        getLastEl_loopF('timeBlockChoice', timeBlockChoice);
+        getLastEl_loopF('hourBlockChosen', style_hourBlockChosen);
         getLastEl_loopF('nextHourBlock', style_nextHourBlock);
-        getLastEl_loopF('addHourBlock', style_addHourBlock);
-        getLastEl_loopF('storeHourBlocks', style_storeHourBlocks);
+        getLastEl_loopF('addTimeBlock', style_addTimeBlock);
+        getLastEl_loopF('storeTimeBlocks', style_storeTimeBlocks);
 
         function style_chooseProjectBarColor(el) {
           el.style.position = 'relative';
@@ -834,7 +830,7 @@ function app() {
           el.style.right = '0.8rem';
           el.style.top = 'calc(50% - ' + projectBarHeight / 4 + 'rem)'
         }
-        function style_hourBlockChoices(el) {
+        function timeBlockChoice(el) {
           // el.style.flex = '1';
           el.style.minWidth = projectBarHeight * 2.5 + 'rem';
           el.style.border = 'none';
@@ -858,7 +854,7 @@ function app() {
           el.style.fontWeight = 'bold';
           el.style.color = '#000000';
         }
-        function style_addHourBlock(el) {
+        function style_addTimeBlock(el) {
           el.style.cursor = 'pointer';
           el.style.flex = '1';
           el.style.maxWidth = projectBarHeight + 'rem';
@@ -895,37 +891,37 @@ function app() {
             }
           }
         }
-        function style_storeHourBlocks(el) {
+        function style_storeTimeBlocks(el) {
           el.style.display = 'flex';
           el.style.flex = '5';
           el.style.textAlign = 'center';
           el.style.alignItems = 'flex-end';
           el.style.position = 'relative';
-          // const hours = el.children[0];
-          // hours.style.position = 'absolute';
-          // hours.style.bottom = '0';
-          // hours.style.left = '0';
-          // hours.style.right = '0';
-          // hours.style.flex = '5';
-          // hours.style.display = 'flex';
-          // for (let i = 0; i < hours.children.length; i++) {
-          //   const hour = hours.children[i];
-          //   hour.style.backgroundColor = '#000000';
-          //   hour.style.opacity = '0.85';
-          //   hour.style.color = '#ffffff';
-          //   hour.style.flex = '1';
-          //   hour.style.fontSize = '0.5rem';
-          // }
+          const hours = el.children[0];
+          hours.style.position = 'absolute';
+          hours.style.bottom = '0';
+          hours.style.left = '0';
+          hours.style.right = '0';
+          hours.style.flex = '5';
+          hours.style.display = 'flex';
+          for (let i = 0; i < hours.children.length; i++) {
+            const hour = hours.children[i];
+            hour.style.backgroundColor = '#000000';
+            hour.style.opacity = '0.85';
+            hour.style.color = '#ffffff';
+            hour.style.flex = '1';
+            hour.style.fontSize = '0.5rem';
+          }
         }
       }
       // PROJECT BAR - I N T E R A C T I V I T Y
       interactives();
       function interactives() {
         getLastEl_loopF('projectTitle', inter_INPUT_projectTitle);
-        getLastEl_loopF('hourBlockChoices', setup_hourBlockChoices);
+        getLastEl_loopF('timeBlockChoice', timeBlockChoice);
         getLastEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
         getLastEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
-        getLastEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
+        getLastEl_loopF('addTimeBlock', inter_CLICK_addTimeBlock);
 
         function inter_INPUT_projectTitle(el) {
           const textarea = el.getElementsByTagName('textarea')[0];
@@ -934,8 +930,8 @@ function app() {
             localStorage.setItem('projectTitle', projectTitle);
           }
         }
-        function setup_hourBlockChoices(el) {
-          el.classList = 'hourBlockChoices ' + '1';
+        function timeBlockChoice(el) {
+          el.classList = 'timeBlockChoice ' + '1';
           const hourBlocks = el.getElementsByClassName('hourBlockChosen ');
           for (let i = 1; i < hourBlocks.length; i++) {
             hourBlocks[i].style.display = 'none';
@@ -943,33 +939,33 @@ function app() {
         }
         function inter_CLICK_prevHourBlock(el) {
           el.onclick = function () {
-            const hourBlockChoices = el.parentElement.getElementsByClassName('hourBlockChoices')[0];
-            const num = hourBlockChoices.classList[1];
+            const timeBlockChoice = el.parentElement.getElementsByClassName('timeBlockChoice')[0];
+            const num = timeBlockChoice.classList[1];
             if (1 < Number(num)) {
               const newNum = Number(num) - 1;
-              hourBlockChoices.classList = 'hourBlockChoices ' + newNum;
-              hourBlockChoices.getElementsByClassName(num)[0].style.display = 'none';
-              hourBlockChoices.getElementsByClassName(newNum)[0].style.display = 'block';
+              timeBlockChoice.classList = 'timeBlockChoice ' + newNum;
+              timeBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
+              timeBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
             }
           }
         }
         function inter_CLICK_nextHourBlock(el) {
           el.onclick = function () {
-            const hourBlockChoices = el.parentElement.getElementsByClassName('hourBlockChoices')[0];
-            const hourBlocks = hourBlockChoices.getElementsByClassName('hourBlockChosen');
-            const num = hourBlockChoices.classList[1];
+            const timeBlockChoice = el.parentElement.getElementsByClassName('timeBlockChoice')[0];
+            const hourBlocks = timeBlockChoice.getElementsByClassName('hourBlockChosen');
+            const num = timeBlockChoice.classList[1];
             if (Number(num) < hourBlocks.length) {
               const newNum = Number(num) + 1;
-              hourBlockChoices.classList = 'hourBlockChoices ' + newNum;
-              hourBlockChoices.getElementsByClassName(num)[0].style.display = 'none';
-              hourBlockChoices.getElementsByClassName(newNum)[0].style.display = 'block';
+              timeBlockChoice.classList = 'timeBlockChoice ' + newNum;
+              timeBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
+              timeBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
             }
           }
         }
-        function inter_CLICK_addHourBlock(el) {
+        function inter_CLICK_addTimeBlock(el) {
           el.onclick = function () {
             const container = setup_findElementUp(el, 'consoleHourBlocks');
-            const choice = container.getElementsByClassName('hourBlockChoices')[0];
+            const choice = container.getElementsByClassName('timeBlockChoice')[0];
             const number = choice.classList[1];
             getChosenBlock();
             cloneAndSetup();
@@ -989,7 +985,7 @@ function app() {
             }
             function append() {
               const newHourBlock = cloneAndSetup();
-              const log = container.getElementsByClassName('storeHourBlocks')[0];
+              const log = container.getElementsByClassName('storeTimeBlocks')[0];
               log.appendChild(newHourBlock);
             }
           }
