@@ -681,10 +681,14 @@ function app() {
       style();
       function style() {
         getEl_loopF('projects', style_projects);
+        getEl_loopF('projectBarsScroll', style_projectBarsScroll);
         getEl_loopF('projectBars', style_projectBars);
         function style_projects(el) {
           el.style.flex = '1';
           el.style.display = 'flex';
+        }
+        function style_projectBarsScroll(el) {
+          el.style.width = projectBarWidth * 1.5 + 'rem';
         }
         function style_projectBars(el) {
           el.style.flex = '5';
