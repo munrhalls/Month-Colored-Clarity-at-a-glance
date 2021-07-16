@@ -91,7 +91,7 @@ function app() {
 
     // BASIC DOM
     const topBar = ['title', 'about'];
-    const menuProjects = ['headerProjects', 'addProject', ['addProjectLabel']];
+    const menuProjects = ['headerProjects', 'addProjectBar', ['addProjectBarLabel']];
     const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
     const projects = ['projectBars'];
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
@@ -178,6 +178,11 @@ function app() {
       for (let i = 0; i < elements.length; i++) {
         modify(elements[i]);
       }
+    }
+    function getLastEl_loopF(className, modify) {
+      const elements = document.getElementsByClassName(className);
+      const el = document.getElementsByClassName(className)[elements.length - 1];
+      modify(el);
     }
     function getOneEl_runF(className, i, modify) {
       const el = document.getElementsByClassName(className)[i];
@@ -379,7 +384,6 @@ function app() {
               e.stopPropagation();
               const color = colorChoices[i].classList[1];
               const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
-              // COMPLECTED
               colorMenuBtn.style.backgroundColor = color;
               projectBar.style.backgroundColor = color;
               colorMenu.style.display = 'none';
@@ -464,12 +468,12 @@ function app() {
     }
     function create_menuProjects() {
       getEl_loopF('headerProjects', content_menuProjects);
-      getEl_loopF('addProjectLabel', content_addProjectLabel);
+      getEl_loopF('addProjectBarLabel', content_addProjectBarLabel);
 
       function content_menuProjects(el) {
         el.innerText = 'PROJECTS';
       }
-      function content_addProjectLabel(el) {
+      function content_addProjectBarLabel(el) {
         el.innerText = '+';
       }
       // MENU PROJECTS - S T Y L E
@@ -477,8 +481,8 @@ function app() {
       function style() {
         getEl_loopF('menuProjects', style_menuProjects);
         getEl_loopF('headerProjects', style_headerProjects);
-        getEl_loopF('addProject', style_addProject);
-        getEl_loopF('addProjectLabel', style_addProjectLabel);
+        getEl_loopF('addProjectBar', style_addProjectBar);
+        getEl_loopF('addProjectBarLabel', style_addProjectBarLabel);
         function style_menuProjects(el) {
           el.style.flex = '1';
           el.style.height = projectBarHeight / 2 + 'rem';
@@ -504,13 +508,13 @@ function app() {
           el.style.letterSpacing = '1.75rem';
           el.style.marginLeft = projectBarWidth * 2 + 'rem';
         }
-        function style_addProject(el) {
+        function style_addProjectBar(el) {
           el.style.cursor = 'pointer';
           el.style.position = 'relative';
           el.style.height = '100%';
           el.style.width = menuTitleMargin * 2 + 'rem';
         }
-        function style_addProjectLabel(el) {
+        function style_addProjectBarLabel(el) {
           el.style.position = 'absolute';
           el.style.top = -menuTitleSize / 2 + 'rem';
           el.style.bottom = '0';
@@ -526,8 +530,8 @@ function app() {
       // MENU PROJECTS - I N T E R A C T I V I T Y
       interactivity();
       function interactivity() {
-        getEl_loopF('addProject', inter_addProject);
-        function inter_addProject(el) {
+        getEl_loopF('addProjectBar', inter_addProjectBar);
+        function inter_addProjectBar(el) {
           el.onclick = function () {
             const projectBars = document.getElementsByClassName('projectBars')[0];
             const index = projectBars.getElementsByClassName('projectBar').length;
@@ -692,12 +696,12 @@ function app() {
       }
     }
     function create_projectBar() {
-      getEl_loopF('projectBar', content_projectBar);
-      getEl_loopF('chooseProjectBarColor', content_chooseProjectBarColor);
-      getEl_loopF('projectTitle', content_projectTitle);
-      // getEl_loopF('hourBlockChoices', content_hourBlockChoices);
-      getEl_loopF('addHourBlock', content_addHourBlock);
-      getEl_loopF('storeHourBlocks', content_storeHourBlocks);
+      getLastEl_loopF('projectBar', content_projectBar);
+      getLastEl_loopF('chooseProjectBarColor', content_chooseProjectBarColor);
+      getLastEl_loopF('projectTitle', content_projectTitle);
+      // getLastEl_loopF('hourBlockChoices', content_hourBlockChoices);
+      getLastEl_loopF('addHourBlock', content_addHourBlock);
+      getLastEl_loopF('storeHourBlocks', content_storeHourBlocks);
 
       function content_projectBar(el) {
         // el.classList = 'timerBar ' + monthShown +'-';
@@ -748,17 +752,17 @@ function app() {
       const marginLeft = projectBarHeight / 2;
       style();
       function style() {
-        getEl_loopF('chooseProjectBarColor', style_chooseProjectBarColor);
-        getEl_loopF('projectBar', style_projectBar);
-        getEl_loopF('projectTitle', style_projectTitle);
-        getEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
-        getEl_loopF('chooseHourBlock', style_chooseHourBlock);
-        getEl_loopF('prevHourBlock', style_prevHourBlock);
-        // getEl_loopF('hourBlockChoices', style_hourBlockChoices);
-        // getEl_loopF('hourBlockChosen', style_hourBlockChosen);
-        getEl_loopF('nextHourBlock', style_nextHourBlock);
-        getEl_loopF('addHourBlock', style_addHourBlock);
-        getEl_loopF('storeHourBlocks', style_storeHourBlocks);
+        getLastEl_loopF('chooseProjectBarColor', style_chooseProjectBarColor);
+        getLastEl_loopF('projectBar', style_projectBar);
+        getLastEl_loopF('projectTitle', style_projectTitle);
+        getLastEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
+        getLastEl_loopF('chooseHourBlock', style_chooseHourBlock);
+        getLastEl_loopF('prevHourBlock', style_prevHourBlock);
+        // getLastEl_loopF('hourBlockChoices', style_hourBlockChoices);
+        // getLastEl_loopF('hourBlockChosen', style_hourBlockChosen);
+        getLastEl_loopF('nextHourBlock', style_nextHourBlock);
+        getLastEl_loopF('addHourBlock', style_addHourBlock);
+        getLastEl_loopF('storeHourBlocks', style_storeHourBlocks);
 
         function style_chooseProjectBarColor(el) {
           el.style.position = 'relative';
@@ -917,11 +921,11 @@ function app() {
       // PROJECT BAR - I N T E R A C T I V I T Y
       interactives();
       function interactives() {
-        getEl_loopF('projectTitle', inter_INPUT_projectTitle);
-        getEl_loopF('hourBlockChoices', setup_hourBlockChoices);
-        getEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
-        getEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
-        getEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
+        getLastEl_loopF('projectTitle', inter_INPUT_projectTitle);
+        getLastEl_loopF('hourBlockChoices', setup_hourBlockChoices);
+        getLastEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
+        getLastEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
+        getLastEl_loopF('addHourBlock', inter_CLICK_addHourBlock);
 
         function inter_INPUT_projectTitle(el) {
           const textarea = el.getElementsByTagName('textarea')[0];
