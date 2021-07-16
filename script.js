@@ -696,7 +696,10 @@ function app() {
           el.style.backgroundColor = '#000000';
         }
         function style_prevProjectBar(el) {
-          console.log(el)
+          const width = 0.25;
+          style_prevArr(el, projectBarHeight, width);
+          el.style.marginLeft = (projectBarHeight / 1.5) + 'rem';
+          el.style.transform = 'rotate(180deg)';
         }
         function style_projectBarsSymbolLines(el) {
           console.log(el)
