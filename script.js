@@ -85,8 +85,8 @@ function app() {
     const app = document.getElementById('app');
     // INTERACTION DOM
     const chooseHourBlock = ['prevHourBlock', 'timeBlockChoice', 'nextHourBlock'];
-    const hourBlocks = ['chooseHourBlock', chooseHourBlock, 'addTimeBlock', 'storeTimeBlocks'];
-    const projectBarComponents = ['chooseProjectBarColor', 'projectTitle', 'consoleHourBlocks', hourBlocks];
+    const timeBlocks = ['chooseHourBlock', chooseHourBlock, 'addTimeBlock', 'storeTimeBlocks'];
+    const projectBarComponents = ['chooseProjectBarColor', 'projectTitle', 'consoletimeBlocks', timeBlocks];
     const projectBar = ['projectBar', projectBarComponents];
 
     // BASIC DOM
@@ -749,7 +749,7 @@ function app() {
         getLastEl_loopF('chooseProjectBarColor', style_chooseProjectBarColor);
         getLastEl_loopF('projectBar', style_projectBar);
         getLastEl_loopF('projectTitle', style_projectTitle);
-        getLastEl_loopF('consoleHourBlocks', style_consoleHourBlocks);
+        getLastEl_loopF('consoletimeBlocks', style_consoletimeBlocks);
         getLastEl_loopF('chooseHourBlock', style_chooseHourBlock);
         getLastEl_loopF('prevHourBlock', style_prevHourBlock);
         getLastEl_loopF('timeBlockChoice', timeBlockChoice);
@@ -798,7 +798,7 @@ function app() {
             textarea.style.fontSize = '1.75rem';
           }
         }
-        function style_consoleHourBlocks(el) {
+        function style_consoletimeBlocks(el) {
           // el.style.height = 'calc(100% - ' + titleHeight +')';
           el.style.flex = '1';
           el.style.display = 'flex';
@@ -930,9 +930,9 @@ function app() {
         }
         function timeBlockChoice(el) {
           el.classList = 'timeBlockChoice ' + '1';
-          const hourBlocks = el.getElementsByClassName('timeBlockChosen ');
-          for (let i = 1; i < hourBlocks.length; i++) {
-            hourBlocks[i].style.display = 'none';
+          const timeBlocks = el.getElementsByClassName('timeBlockChosen ');
+          for (let i = 1; i < timeBlocks.length; i++) {
+            timeBlocks[i].style.display = 'none';
           }
         }
         function inter_CLICK_prevHourBlock(el) {
@@ -950,9 +950,9 @@ function app() {
         function inter_CLICK_nextHourBlock(el) {
           el.onclick = function () {
             const timeBlockChoice = el.parentElement.getElementsByClassName('timeBlockChoice')[0];
-            const hourBlocks = timeBlockChoice.getElementsByClassName('timeBlockChosen');
+            const timeBlocks = timeBlockChoice.getElementsByClassName('timeBlockChosen');
             const num = timeBlockChoice.classList[1];
-            if (Number(num) < hourBlocks.length) {
+            if (Number(num) < timeBlocks.length) {
               const newNum = Number(num) + 1;
               timeBlockChoice.classList = 'timeBlockChoice ' + newNum;
               timeBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
@@ -962,7 +962,7 @@ function app() {
         }
         function inter_CLICK_addTimeBlock(el) {
           el.onclick = function () {
-            const container = setup_findElementUp(el, 'consoleHourBlocks');
+            const container = setup_findElementUp(el, 'consoletimeBlocks');
             const choice = container.getElementsByClassName('timeBlockChoice')[0];
             const number = choice.classList[1];
             getChosenBlock();
