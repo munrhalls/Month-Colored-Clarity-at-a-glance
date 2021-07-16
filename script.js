@@ -682,6 +682,10 @@ function app() {
       function style() {
         getEl_loopF('projects', style_projects);
         getEl_loopF('projectBarsScroll', style_projectBarsScroll);
+        getEl_loopF('prevProjectBar', style_prevProjectBar);
+        getEl_loopF('projectBarsSymbolLines', style_projectBarsSymbolLines);
+        getEl_loopF('nextProjectBar', style_nextProjectBar);
+
         getEl_loopF('projectBars', style_projectBars);
         function style_projects(el) {
           el.style.flex = '1';
@@ -689,6 +693,16 @@ function app() {
         }
         function style_projectBarsScroll(el) {
           el.style.width = projectBarWidth * 1.5 + 'rem';
+          el.style.backgroundColor = '#000000';
+        }
+        function style_prevProjectBar(el) {
+          console.log(el)
+        }
+        function style_projectBarsSymbolLines(el) {
+          console.log(el)
+        }
+        function style_nextProjectBar(el) {
+          console.log(el)
         }
         function style_projectBars(el) {
           el.style.flex = '5';
