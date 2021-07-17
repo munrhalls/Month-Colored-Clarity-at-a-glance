@@ -705,14 +705,16 @@ function app() {
         function style_prevProjectBar(el) {
           style_prevArr(el);
           el.style.transform = 'rotate(180deg)';
-          // el.style.left = '50%';
           el.style.left = 'auto'
         }
         function style_projectBarsSymbolLines(el) {
         }
         function style_nextProjectBar(el) {
           style_nextArr(el);
-          el.style.transform = 'rotate(-180deg)';
+          el.style.transform = 'rotate(0deg)';
+          el.style.right = 'auto'
+          el.style.marginLeft = 'auto'
+          el.style.top = commonHeight + 'rem'
         }
         function style_projectBars(el) {
           el.style.flex = '5';
