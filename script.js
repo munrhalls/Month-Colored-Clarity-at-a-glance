@@ -697,19 +697,21 @@ function app() {
           el.style.display = 'flex';
           el.style.flexDirection = 'column';
           el.style.justifyContent = 'space-between';
+          el.style.alignItems = 'center';
           el.style.paddingTop = commonHeight / 3 + 'rem';
           el.style.paddingBottom = commonHeight / 3 + 'rem';
+          el.style.position = 'relative';
         }
         function style_prevProjectBar(el) {
           style_prevArr(el);
-          el.style.marginLeft = (commonHeight / 1.5) + 'rem';
           el.style.transform = 'rotate(180deg)';
+          // el.style.left = '50%';
+          el.style.left = 'auto'
         }
         function style_projectBarsSymbolLines(el) {
         }
         function style_nextProjectBar(el) {
-          style_prevArr(el);
-          el.style.marginLeft = (commonHeight / 1.5) + 'rem';
+          style_nextArr(el);
           el.style.transform = 'rotate(-180deg)';
         }
         function style_projectBars(el) {
