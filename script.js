@@ -189,31 +189,31 @@ function app() {
       modify(el);
     }
     // re-usables
-    function style_prevArr(el, maxHeight, width) {
+    function style_prevArr(el) {
       el.style.cursor = 'pointer';
-      el.style.padding = width * 2;
-      el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
-      el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
-      el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
+      el.style.padding = commonWidth * 2;
+      el.style.borderTop = commonHeight / 2 + 'rem solid #ffffff';
+      el.style.borderLeft = commonHeight / 6 + 'rem solid transparent';
+      el.style.borderRight = commonHeight / 6 + 'rem solid transparent';
       el.style.borderBottom = '0';
-      el.style.width = width + 'rem';
+      el.style.width = '0.25rem';
       el.style.transform = 'rotate(90deg)';
       // position
       el.style.position = 'absolute';
-      el.style.left = 0 - (width * 9) + 'rem';
+      el.style.left = -commonWidth / 2 + 'rem';
     }
-    function style_nextArr(el, maxHeight, width, marginLeft) {
+    function style_nextArr(el) {
       el.style.cursor = 'pointer';
-      el.style.borderTop = maxHeight / 2 + 'rem solid #ffffff';
-      el.style.borderLeft = maxHeight / 6 + 'rem solid transparent';
-      el.style.borderRight = maxHeight / 6 + 'rem solid transparent';
+      el.style.borderTop = commonHeight / 2 + 'rem solid #ffffff';
+      el.style.borderLeft = commonHeight / 6 + 'rem solid transparent';
+      el.style.borderRight = commonHeight / 6 + 'rem solid transparent';
       el.style.borderBottom = '0';
       el.style.width = '0.25rem';
       el.style.transform = 'rotate(-90deg)';
-      el.style.marginLeft = (marginLeft * 7) + 'rem';
+      el.style.marginLeft = (commonWidth) + 'rem';
       // position
       el.style.position = 'absolute';
-      el.style.right = 0 - (width * 9) + 'rem';
+      el.style.right = -commonWidth / 2 + 'rem';
     }
     function create_colorMenuBtn() {
       // C O N T E N T 
@@ -702,7 +702,7 @@ function app() {
         }
         function style_prevProjectBar(el) {
           const width = 0.25;
-          style_prevArr(el, commonHeight, width);
+          style_prevArr(el);
           el.style.marginLeft = (commonHeight / 1.5) + 'rem';
           el.style.transform = 'rotate(180deg)';
         }
@@ -711,7 +711,7 @@ function app() {
         }
         function style_nextProjectBar(el) {
           const width = 0.25;
-          style_prevArr(el, commonHeight, width);
+          style_prevArr(el);
           el.style.marginLeft = (commonHeight / 1.5) + 'rem';
           el.style.transform = 'rotate(-180deg)';
         }
@@ -842,16 +842,14 @@ function app() {
           el.style.position = 'relative';
         }
         function style_prevHourBlock(el) {
-          const width = 0.25;
-          style_prevArr(el, commonHeight, width);
+          style_prevArr(el);
           // el.style.backgroundColor = '#000000';
           el.style.borderTopColor = '#000000';
           el.style.left = '0.8rem';
           el.style.top = 'calc(50% - ' + commonHeight / 4 + 'rem)'
         }
         function style_nextHourBlock(el) {
-          const width = 0.25;
-          style_nextArr(el, commonHeight, width, marginLeft);
+          style_nextArr(el);
           el.style.borderTopColor = '#000000';
           el.style.right = '0.8rem';
           el.style.top = 'calc(50% - ' + commonHeight / 4 + 'rem)'
@@ -1095,14 +1093,11 @@ function app() {
           el.style.fontSize = menuTitleSize + 'rem';
         }
         function style_prevMonth(el) {
-          const width = 0.25;
-          style_prevArr(el, commonHeight, width);
+          style_prevArr(el);
           el.style.marginLeft = 0 - menuTitleMargin + 'rem';
         }
         function style_nextMonth(el) {
-          const width = 0.25;
-          const left = 0 - menuTitleMargin * 3;
-          style_nextArr(el, commonHeight, width, left)
+          style_nextArr(el)
           el.style.marginRight = 0 - menuTitleMargin + 'rem';
         }
       }
