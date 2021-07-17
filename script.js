@@ -701,16 +701,13 @@ function app() {
           el.style.paddingBottom = commonHeight / 3 + 'rem';
         }
         function style_prevProjectBar(el) {
-          const width = 0.25;
           style_prevArr(el);
           el.style.marginLeft = (commonHeight / 1.5) + 'rem';
           el.style.transform = 'rotate(180deg)';
         }
         function style_projectBarsSymbolLines(el) {
-          console.log(el)
         }
         function style_nextProjectBar(el) {
-          const width = 0.25;
           style_prevArr(el);
           el.style.marginLeft = (commonHeight / 1.5) + 'rem';
           el.style.transform = 'rotate(-180deg)';
