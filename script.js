@@ -708,6 +708,7 @@ function app() {
           el.style.left = 'auto'
         }
         function style_projectBarsSymbolLines(el) {
+
         }
         function style_nextProjectBar(el) {
           style_nextArr(el);
@@ -781,9 +782,9 @@ function app() {
         getLastEl_loopF('consoleTimeBlocks', style_consoleTimeBlocks);
         getLastEl_loopF('chooseHourBlock', style_chooseHourBlock);
         getLastEl_loopF('prevHourBlock', style_prevHourBlock);
+        getLastEl_loopF('nextHourBlock', style_nextHourBlock);
         getLastEl_loopF('timeBlockChoice', timeBlockChoice);
         getLastEl_loopF('timeBlockChosen', style_timeBlockChosen);
-        getLastEl_loopF('nextHourBlock', style_nextHourBlock);
         getLastEl_loopF('addTimeBlock', style_addTimeBlock);
         getLastEl_loopF('storeTimeBlocks', style_storeTimeBlocks);
 
@@ -864,20 +865,26 @@ function app() {
           el.style.alignItems = 'center';
         }
         function style_timeBlockChosen(el) {
-          const hoursNum = Number(el.classList[1]);
-          const num = 1 - 0.75 + (hoursNum / 100 * 3);
-          el.style.height = num * 100 + '%';
-          // el.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
-          el.style.fontSize = 1.5 + hoursNum / 100 * 2 + 'rem';
-          el.style.border = '2px solid #000000';
-          el.style.paddingLeft = '1rem';
-          el.style.paddingRight = '1rem';
-          el.style.borderRadius = borderRadius;
-          el.style.display = 'flex';
-          el.style.justifyContent = 'center';
-          el.style.alignItems = 'center';
-          el.style.fontWeight = 'bold';
-          el.style.color = '#000000';
+          const container = setup_findElementUp(el, 'projectBar');
+          const allTimeBlockChosenEls = container.getElementsByClassName('timeBlockChosen');
+          for (let i = 0; i < allTimeBlockChosenEls.length; i++) {
+            const timeBlockChosenEl = allTimeBlockChosenEls[i];
+            const hoursNum = Number(timeBlockChosenEl.classList[1]);
+            const num = 1 - 0.75 + (hoursNum / 100 * 3);
+            timeBlockChosenEl.style.height = num * 100 + '%';
+            // timeBlockChosenEl.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
+            timeBlockChosenEl.style.fontSize = 1.5 + hoursNum / 100 * 2 + 'rem';
+            timeBlockChosenEl.style.border = '2px solid #000000';
+            timeBlockChosenEl.style.paddingLeft = '1rem';
+            timeBlockChosenEl.style.paddingRight = '1rem';
+            timeBlockChosenEl.style.borderRadius = borderRadius;
+            timeBlockChosenEl.style.display = 'flex';
+            timeBlockChosenEl.style.justifyContent = 'center';
+            timeBlockChosenEl.style.alignItems = 'center';
+            timeBlockChosenEl.style.fontWeight = 'bold';
+            timeBlockChosenEl.style.color = '#000000';
+          }
+
         }
         function style_addTimeBlock(el) {
           el.style.cursor = 'pointer';
