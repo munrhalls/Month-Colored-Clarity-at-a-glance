@@ -88,7 +88,7 @@ function app() {
     const timeBlocks = ['chooseHourBlock', chooseHourBlock, 'addTimeBlock', 'storeTimeBlocks'];
     const projectBarComponents = ['chooseProjectBarColor', 'projectTitle', 'consoleTimeBlocks', timeBlocks];
     const projectBar = ['projectBar', projectBarComponents];
-    const projectBarsScroll = ['prevProjectBar', 'projectBarsSymbolLines', 'nextProjectBar'];
+    const projectBarsScroll = ['projectBarsScrollMenu', ['prevProjectBar', 'projectBarsSymbolLines', 'nextProjectBar']];
     // BASIC DOM
     const topBar = ['title', 'about'];
     const menuProjects = ['headerProjects', 'addProjectBar', ['addProjectBarLabel']];
@@ -534,6 +534,7 @@ function app() {
         function inter_addProjectBar(el) {
           el.onclick = function () {
             const projectBars = document.getElementsByClassName('projectBars')[0];
+            const projectBarsSymbolLines = document.getElementsByClassName('projectBarsSymbolLines')[0];
 
             // const index = projectBars.getElementsByClassName('projectBar').length;
             // copy project bar
@@ -572,6 +573,14 @@ function app() {
 
             assembleDOM(projectBar, projectBars);
             create_projectBar();
+            create_projectBarsSymbolLine();
+            function create_projectBarsSymbolLine() {
+              const line = document.createElement('div');
+              line.style.height = '2px';
+              line.style.width = '100%';
+              line.style.backgroundColor = '#ffffff';
+              projectBarsSymbolLines.appendChild(line);
+            }
           }
         }
       }
@@ -696,10 +705,10 @@ function app() {
           el.style.backgroundColor = '#000000';
           el.style.display = 'flex';
           el.style.flexDirection = 'column';
-          el.style.justifyContent = 'space-between';
+          el.style.justifyContent = 'center';
           el.style.alignItems = 'center';
-          el.style.paddingTop = commonHeight / 3 + 'rem';
-          el.style.paddingBottom = commonHeight / 3 + 'rem';
+          // el.style.paddingTop = commonHeight / 3 + 'rem';
+          // el.style.paddingBottom = commonHeight / 3 + 'rem';
           el.style.position = 'relative';
         }
         function style_prevProjectBar(el) {
@@ -708,7 +717,6 @@ function app() {
           el.style.left = 'auto'
         }
         function style_projectBarsSymbolLines(el) {
-
         }
         function style_nextProjectBar(el) {
           style_nextArr(el);
