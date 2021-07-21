@@ -495,6 +495,315 @@ function app() {
     function create_projects() {
       create_menuProjects();
       create_titleBarForProjects();
+      create_projectBarsScroll();
+      create_projects.create_projectBar = function () {
+        getLastEl_loopF('chooseProjectBarColor', content_chooseProjectBarColor);
+        getLastEl_loopF('projectTitle', content_projectTitle);
+        getLastEl_loopF('timeBlockChoice', content_timeBlockChoice);
+        getLastEl_loopF('addTimeBlock', content_addTimeBlock);
+        getLastEl_loopF('storeTimeBlocks', content_storeTimeBlocks);
+
+        function content_chooseProjectBarColor(el) {
+          const btn = create_colorMenuBtn();
+          el.appendChild(btn);
+        }
+        function content_projectTitle(el) {
+          const textarea = document.createElement('textarea');
+          textarea.type = 'text';
+          textarea.placeholder = 'Project title';
+          el.appendChild(textarea);
+        }
+        function content_timeBlockChoice(el) {
+          for (let i = 1; i < 25; i++) {
+            let timeBlockChosen = document.createElement('div');
+            timeBlockChosen.innerText = i;
+            timeBlockChosen.classList = 'timeBlockChosen ' + i + ' hours';
+            el.appendChild(timeBlockChosen)
+          }
+        }
+        function content_addTimeBlock(el) {
+          const plus = document.createElement('div');
+          plus.className = 'plus';
+          const plusText = document.createElement('div');
+          plusText.className = 'plusText';
+          plusText.innerText = '+';
+          plus.appendChild(plusText);
+          el.appendChild(plus);
+        }
+        function content_storeTimeBlocks(el) {
+          const monthNum = months.indexOf(monthShown);
+          const daysNum = DATA_Calendar[monthNum].daysNum;
+          // const hours = document.createElement('div');
+          // for (let i = 1; i <= daysNum; i++) {
+          //   let hour = document.createElement('div');
+          //   let num = document.createElement('span');
+          //   num.innerText = i;
+          //   hour.appendChild(num);
+          //   hours.appendChild(hour);
+          // }
+          // const storeTimeBlocks = document.getElementsByClassName('storeTimeBlocks')[0];
+          // storeTimeBlocks.appendChild(hours);
+        }
+        // PROJECT BAR - S T Y L E 
+        const marginLeft = commonHeight / 2;
+        style();
+        function style() {
+          getLastEl_loopF('chooseProjectBarColor', style_chooseProjectBarColor);
+          getLastEl_loopF('projectBar', style_projectBar);
+          getLastEl_loopF('projectTitle', style_projectTitle);
+          getLastEl_loopF('consoleTimeBlocks', style_consoleTimeBlocks);
+          getLastEl_loopF('chooseHourBlock', style_chooseHourBlock);
+          getLastEl_loopF('prevHourBlock', style_prevHourBlock);
+          getLastEl_loopF('nextHourBlock', style_nextHourBlock);
+          getLastEl_loopF('timeBlockChoice', timeBlockChoice);
+          getLastEl_loopF('timeBlockChosen', style_timeBlockChosen);
+          getLastEl_loopF('addTimeBlock', style_addTimeBlock);
+          getLastEl_loopF('storeTimeBlocks', style_storeTimeBlocks);
+
+          function style_chooseProjectBarColor(el) {
+            el.style.position = 'relative';
+            el.style.backgroundColor = '#000000';
+            el.style.height = commonHeight + 'rem';
+            el.style.width = commonWidth + 2.5 + 'rem';
+            // el.style.paddingRight = '0.5rem';
+            el.style.display = 'flex';
+            el.style.justifyContent = 'center';
+            el.style.alignItems = 'center';
+          }
+
+          function style_projectBar(el) {
+            el.style.display = 'flex';
+          }
+          function style_projectTitle(el) {
+            el.style.height = commonHeight + 'rem';
+            el.style.width = (commonWidth * 4) + 'rem';
+            el.style.display = 'flex';
+            el.style.wordWrap = 'break-word';
+            el.style.padding = '0.25rem';
+            style_textArea();
+            function style_textArea() {
+              const textarea = el.getElementsByTagName('textarea')[0];
+              textarea.style.flex = '1';
+              textarea.style.maxWidth = (commonWidth * 4) + 'rem';
+              textarea.style.width = '100%';
+              textarea.style.padding = '1rem';
+              textarea.style.margin = '0';
+              textarea.style.display = 'flex';
+              textarea.style.flexWrap = 'wrap';
+              textarea.style.wordWrap = 'break-word';
+              textarea.style.justifyContent = 'center';
+              textarea.style.alignItems = 'center';
+              textarea.style.backgroundColor = 'transparent';
+              textarea.style.border = '0px solid transparent';
+              textarea.style.textAlign = 'center';
+              textarea.style.verticalAlign = 'middle';
+              textarea.style.fontSize = '1.75rem';
+            }
+          }
+          function style_consoleTimeBlocks(el) {
+            // el.style.height = 'calc(100% - ' + titleHeight +')';
+            el.style.flex = '1';
+            el.style.display = 'flex';
+            // el.style.flexDirection = 'column';
+            el.style.justifyContent = 'flex-end';
+          }
+          function style_chooseHourBlock(el) {
+            el.style.flex = '1';
+            el.style.maxWidth = commonHeight * 1.75 + 'rem';
+            el.style.display = 'flex';
+            el.style.flexDirection = 'row';
+            el.style.justifyContent = 'center';
+            el.style.position = 'relative';
+          }
+          function style_prevHourBlock(el) {
+            style_prevArr(el);
+            // el.style.backgroundColor = '#000000';
+            el.style.borderTopColor = '#000000';
+            el.style.left = '0.8rem';
+            el.style.top = 'calc(50% - ' + commonHeight / 4 + 'rem)'
+          }
+          function style_nextHourBlock(el) {
+            style_nextArr(el);
+            el.style.borderTopColor = '#000000';
+            el.style.right = '0.8rem';
+            el.style.top = 'calc(50% - ' + commonHeight / 4 + 'rem)'
+          }
+          function timeBlockChoice(el) {
+            // el.style.flex = '1';
+            el.style.minWidth = commonHeight * 2.5 + 'rem';
+            el.style.border = 'none';
+            el.style.display = 'flex';
+            el.style.justifyContent = 'center';
+            el.style.alignItems = 'center';
+          }
+          function style_timeBlockChosen(el) {
+            const container = setup_findElementUp(el, 'projectBar');
+            const allTimeBlockChosenEls = container.getElementsByClassName('timeBlockChosen');
+            for (let i = 0; i < allTimeBlockChosenEls.length; i++) {
+              const timeBlockChosenEl = allTimeBlockChosenEls[i];
+              const hoursNum = Number(timeBlockChosenEl.classList[1]);
+              const num = 1 - 0.75 + (hoursNum / 100 * 3);
+              timeBlockChosenEl.style.height = num * 100 + '%';
+              // timeBlockChosenEl.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
+              timeBlockChosenEl.style.fontSize = 1.5 + hoursNum / 100 * 2 + 'rem';
+              timeBlockChosenEl.style.border = '2px solid #000000';
+              timeBlockChosenEl.style.paddingLeft = '1rem';
+              timeBlockChosenEl.style.paddingRight = '1rem';
+              timeBlockChosenEl.style.borderRadius = borderRadius;
+              timeBlockChosenEl.style.display = 'flex';
+              timeBlockChosenEl.style.justifyContent = 'center';
+              timeBlockChosenEl.style.alignItems = 'center';
+              timeBlockChosenEl.style.fontWeight = 'bold';
+              timeBlockChosenEl.style.color = '#000000';
+            }
+
+          }
+          function style_addTimeBlock(el) {
+            el.style.cursor = 'pointer';
+            el.style.flex = '1';
+            el.style.maxWidth = commonHeight + 'rem';
+            el.style.minWidth = commonHeight + 'rem';
+            el.style.textAlign = 'center';
+            el.style.display = 'flex';
+            el.style.justifyContent = 'center';
+            el.style.alignItems = 'center';
+            el.style.position = 'relative';
+            style_plusSymbol();
+            function style_plusSymbol() {
+              const plus = el.getElementsByClassName('plus')[0];
+              plus.style.border = '0.75rem solid #000000';
+              plus.style.borderRadius = '25%';
+              plus.style.position = 'absolute';
+              plus.style.top = 0;
+              plus.style.bottom = 0;
+              plus.style.left = 0;
+              plus.style.right = 0;
+              plus.style.display = 'flex';
+              plus.style.textAlign = 'center';
+              plus.style.justifyContent = 'center';
+              style_plusText();
+              function style_plusText() {
+                const plusText = plus.children[0];
+                plusText.style.fontSize = commonHeight + 'rem';
+                plusText.style.borderRadius = borderRadius;
+                plusText.style.position = 'absolute';
+                plusText.style.position = 'absolute';
+                plusText.style.top = 0 - (commonHeight) / 5.25 + 'rem';
+                plusText.style.bottom = 0;
+                plusText.style.left = 0;
+                plusText.style.right = 0;
+              }
+            }
+          }
+          function style_storeTimeBlocks(el) {
+            el.style.display = 'flex';
+            el.style.flex = '5';
+            el.style.textAlign = 'center';
+            el.style.alignItems = 'flex-end';
+            el.style.position = 'relative';
+            // const hours = el.children[0];
+            // hours.style.position = 'absolute';
+            // hours.style.bottom = '0';
+            // hours.style.left = '0';
+            // hours.style.right = '0';
+            // hours.style.flex = '5';
+            // hours.style.display = 'flex';
+            // for (let i = 0; i < hours.children.length; i++) {
+            //   const hour = hours.children[i];
+            //   hour.style.backgroundColor = '#000000';
+            //   hour.style.opacity = '0.85';
+            //   hour.style.color = '#ffffff';
+            //   hour.style.flex = '1';
+            //   hour.style.fontSize = '0.5rem';
+            // }
+          }
+        }
+        // PROJECT BAR - I N T E R A C T I V I T Y
+        interactives();
+        function interactives() {
+          getLastEl_loopF('projectTitle', inter_INPUT_projectTitle);
+          getLastEl_loopF('timeBlockChoice', timeBlockChoice);
+          getLastEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
+          getLastEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
+          getLastEl_loopF('addTimeBlock', inter_CLICK_addTimeBlock);
+
+          function inter_INPUT_projectTitle(el) {
+            const textarea = el.getElementsByTagName('textarea')[0];
+            textarea.onchange = function (e) {
+              const projectTitle = e.target.value;
+              localStorage.setItem('projectTitle', projectTitle);
+            }
+          }
+          function timeBlockChoice(el) {
+            el.classList = 'timeBlockChoice ' + '1';
+            const timeBlocks = el.getElementsByClassName('timeBlockChosen ');
+            for (let i = 1; i < timeBlocks.length; i++) {
+              timeBlocks[i].style.display = 'none';
+            }
+          }
+          function inter_CLICK_prevHourBlock(el) {
+            el.onclick = function () {
+              const timeBlockChoice = el.parentElement.getElementsByClassName('timeBlockChoice')[0];
+              const num = timeBlockChoice.classList[1];
+              if (1 < Number(num)) {
+                const newNum = Number(num) - 1;
+                timeBlockChoice.classList = 'timeBlockChoice ' + newNum;
+                timeBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
+                timeBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
+              }
+            }
+          }
+          function inter_CLICK_nextHourBlock(el) {
+            el.onclick = function () {
+              const timeBlockChoice = el.parentElement.getElementsByClassName('timeBlockChoice')[0];
+              const timeBlocks = timeBlockChoice.getElementsByClassName('timeBlockChosen');
+              const num = timeBlockChoice.classList[1];
+              if (Number(num) < timeBlocks.length) {
+                const newNum = Number(num) + 1;
+                timeBlockChoice.classList = 'timeBlockChoice ' + newNum;
+                timeBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
+                timeBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
+              }
+            }
+          }
+          function inter_CLICK_addTimeBlock(el) {
+            el.onclick = function () {
+              const container = setup_findElementUp(el, 'consoleTimeBlocks');
+              const choice = container.getElementsByClassName('timeBlockChoice')[0];
+              const number = choice.classList[1];
+              getChosenBlock();
+              cloneAndSetup();
+              append();
+
+              function getChosenBlock() {
+                const chosenBlock = choice.getElementsByClassName(number)[0];
+                return chosenBlock;
+              }
+              function cloneAndSetup() {
+                const chosenBlock = getChosenBlock();
+                let clone = chosenBlock.cloneNode(true);
+                const newHourBlock = clone;
+                newHourBlock.className = 'hourBlock ' + number + ' hours';
+                dragAndDrop.makeDraggable(newHourBlock);
+                return newHourBlock;
+              }
+              function append() {
+                const newHourBlock = cloneAndSetup();
+                const log = container.getElementsByClassName('storeTimeBlocks')[0];
+                log.appendChild(newHourBlock);
+              }
+            }
+          }
+          // issueEvent();
+          // function issueEvent() {
+          //   const event = new Event('newHourBlock');
+          //   container.addEventListener('newHourBlock', function (e) {
+          //     console.log('newHourBlock')
+          //   }, false);
+          //   container.dispatchEvent(event);
+          // }
+        }
+      }
       function create_menuProjects() {
         getEl_loopF('headerProjects', content_menuProjects);
         getEl_loopF('addProjectBarLabel', content_addProjectBarLabel);
@@ -566,7 +875,7 @@ function app() {
               const projectBarsSymbolLines = document.getElementsByClassName('projectBarsSymbolLines')[0];
 
               assembleDOM(projectBar, projectBars);
-              create_projectBar();
+              create_projects.create_projectBar();
               create_projectBarsSymbolLine();
               function create_projectBarsSymbolLine() {
                 const color = getLastProjectBarColor();
@@ -690,22 +999,13 @@ function app() {
           }
         }
       }
-      // PROJECTS  -  S T Y L E
-      style();
-      function style() {
-        getEl_loopF('projects', style_projects);
+      function create_projectBarsScroll() {
         getEl_loopF('projectBarsScroll', style_projectBarsScroll);
         getEl_loopF('projectBarsScrollMenu', style_projectBarsScrollMenu);
-
         getEl_loopF('prevProjectBar', style_prevProjectBar);
         getEl_loopF('projectBarsSymbolLines', style_projectBarsSymbolLines);
         getEl_loopF('nextProjectBar', style_nextProjectBar);
 
-        getEl_loopF('projectBars', style_projectBars);
-        function style_projects(el) {
-          el.style.flex = '1';
-          el.style.display = 'flex';
-        }
         function style_projectBarsScroll(el) {
           el.style.width = commonWidth * 1.5 + 'rem';
           el.style.backgroundColor = '#000000';
@@ -745,319 +1045,21 @@ function app() {
           el.style.position = 'initial';
           el.style.marginTop = commonHeight / 3 + 'rem';
         }
+      }
+      // PROJECTS  -  S T Y L E
+      style();
+      function style() {
+        getEl_loopF('projects', style_projects);
+        getEl_loopF('projectBars', style_projectBars);
+        function style_projects(el) {
+          el.style.flex = '1';
+          el.style.display = 'flex';
+        }
         function style_projectBars(el) {
           el.style.flex = '5';
           el.style.display = 'flex';
           el.style.flexDirection = 'column';
         }
-      }
-    }
-    function create_projectBar() {
-      getLastEl_loopF('chooseProjectBarColor', content_chooseProjectBarColor);
-      getLastEl_loopF('projectTitle', content_projectTitle);
-      getLastEl_loopF('timeBlockChoice', content_timeBlockChoice);
-      getLastEl_loopF('addTimeBlock', content_addTimeBlock);
-      getLastEl_loopF('storeTimeBlocks', content_storeTimeBlocks);
-
-      function content_chooseProjectBarColor(el) {
-        const btn = create_colorMenuBtn();
-        el.appendChild(btn);
-      }
-      function content_projectTitle(el) {
-        const textarea = document.createElement('textarea');
-        textarea.type = 'text';
-        textarea.placeholder = 'Project title';
-        el.appendChild(textarea);
-      }
-      function content_timeBlockChoice(el) {
-        for (let i = 1; i < 25; i++) {
-          let timeBlockChosen = document.createElement('div');
-          timeBlockChosen.innerText = i;
-          timeBlockChosen.classList = 'timeBlockChosen ' + i + ' hours';
-          el.appendChild(timeBlockChosen)
-        }
-      }
-      function content_addTimeBlock(el) {
-        const plus = document.createElement('div');
-        plus.className = 'plus';
-        const plusText = document.createElement('div');
-        plusText.className = 'plusText';
-        plusText.innerText = '+';
-        plus.appendChild(plusText);
-        el.appendChild(plus);
-      }
-      function content_storeTimeBlocks(el) {
-        const monthNum = months.indexOf(monthShown);
-        const daysNum = DATA_Calendar[monthNum].daysNum;
-        // const hours = document.createElement('div');
-        // for (let i = 1; i <= daysNum; i++) {
-        //   let hour = document.createElement('div');
-        //   let num = document.createElement('span');
-        //   num.innerText = i;
-        //   hour.appendChild(num);
-        //   hours.appendChild(hour);
-        // }
-        // const storeTimeBlocks = document.getElementsByClassName('storeTimeBlocks')[0];
-        // storeTimeBlocks.appendChild(hours);
-      }
-      // PROJECT BAR - S T Y L E 
-      const marginLeft = commonHeight / 2;
-      style();
-      function style() {
-        getLastEl_loopF('chooseProjectBarColor', style_chooseProjectBarColor);
-        getLastEl_loopF('projectBar', style_projectBar);
-        getLastEl_loopF('projectTitle', style_projectTitle);
-        getLastEl_loopF('consoleTimeBlocks', style_consoleTimeBlocks);
-        getLastEl_loopF('chooseHourBlock', style_chooseHourBlock);
-        getLastEl_loopF('prevHourBlock', style_prevHourBlock);
-        getLastEl_loopF('nextHourBlock', style_nextHourBlock);
-        getLastEl_loopF('timeBlockChoice', timeBlockChoice);
-        getLastEl_loopF('timeBlockChosen', style_timeBlockChosen);
-        getLastEl_loopF('addTimeBlock', style_addTimeBlock);
-        getLastEl_loopF('storeTimeBlocks', style_storeTimeBlocks);
-
-        function style_chooseProjectBarColor(el) {
-          el.style.position = 'relative';
-          el.style.backgroundColor = '#000000';
-          el.style.height = commonHeight + 'rem';
-          el.style.width = commonWidth + 2.5 + 'rem';
-          // el.style.paddingRight = '0.5rem';
-          el.style.display = 'flex';
-          el.style.justifyContent = 'center';
-          el.style.alignItems = 'center';
-        }
-
-        function style_projectBar(el) {
-          el.style.display = 'flex';
-        }
-        function style_projectTitle(el) {
-          el.style.height = commonHeight + 'rem';
-          el.style.width = (commonWidth * 4) + 'rem';
-          el.style.display = 'flex';
-          el.style.wordWrap = 'break-word';
-          el.style.padding = '0.25rem';
-          style_textArea();
-          function style_textArea() {
-            const textarea = el.getElementsByTagName('textarea')[0];
-            textarea.style.flex = '1';
-            textarea.style.maxWidth = (commonWidth * 4) + 'rem';
-            textarea.style.width = '100%';
-            textarea.style.padding = '1rem';
-            textarea.style.margin = '0';
-            textarea.style.display = 'flex';
-            textarea.style.flexWrap = 'wrap';
-            textarea.style.wordWrap = 'break-word';
-            textarea.style.justifyContent = 'center';
-            textarea.style.alignItems = 'center';
-            textarea.style.backgroundColor = 'transparent';
-            textarea.style.border = '0px solid transparent';
-            textarea.style.textAlign = 'center';
-            textarea.style.verticalAlign = 'middle';
-            textarea.style.fontSize = '1.75rem';
-          }
-        }
-        function style_consoleTimeBlocks(el) {
-          // el.style.height = 'calc(100% - ' + titleHeight +')';
-          el.style.flex = '1';
-          el.style.display = 'flex';
-          // el.style.flexDirection = 'column';
-          el.style.justifyContent = 'flex-end';
-        }
-        function style_chooseHourBlock(el) {
-          el.style.flex = '1';
-          el.style.maxWidth = commonHeight * 1.75 + 'rem';
-          el.style.display = 'flex';
-          el.style.flexDirection = 'row';
-          el.style.justifyContent = 'center';
-          el.style.position = 'relative';
-        }
-        function style_prevHourBlock(el) {
-          style_prevArr(el);
-          // el.style.backgroundColor = '#000000';
-          el.style.borderTopColor = '#000000';
-          el.style.left = '0.8rem';
-          el.style.top = 'calc(50% - ' + commonHeight / 4 + 'rem)'
-        }
-        function style_nextHourBlock(el) {
-          style_nextArr(el);
-          el.style.borderTopColor = '#000000';
-          el.style.right = '0.8rem';
-          el.style.top = 'calc(50% - ' + commonHeight / 4 + 'rem)'
-        }
-        function timeBlockChoice(el) {
-          // el.style.flex = '1';
-          el.style.minWidth = commonHeight * 2.5 + 'rem';
-          el.style.border = 'none';
-          el.style.display = 'flex';
-          el.style.justifyContent = 'center';
-          el.style.alignItems = 'center';
-        }
-        function style_timeBlockChosen(el) {
-          const container = setup_findElementUp(el, 'projectBar');
-          const allTimeBlockChosenEls = container.getElementsByClassName('timeBlockChosen');
-          for (let i = 0; i < allTimeBlockChosenEls.length; i++) {
-            const timeBlockChosenEl = allTimeBlockChosenEls[i];
-            const hoursNum = Number(timeBlockChosenEl.classList[1]);
-            const num = 1 - 0.75 + (hoursNum / 100 * 3);
-            timeBlockChosenEl.style.height = num * 100 + '%';
-            // timeBlockChosenEl.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
-            timeBlockChosenEl.style.fontSize = 1.5 + hoursNum / 100 * 2 + 'rem';
-            timeBlockChosenEl.style.border = '2px solid #000000';
-            timeBlockChosenEl.style.paddingLeft = '1rem';
-            timeBlockChosenEl.style.paddingRight = '1rem';
-            timeBlockChosenEl.style.borderRadius = borderRadius;
-            timeBlockChosenEl.style.display = 'flex';
-            timeBlockChosenEl.style.justifyContent = 'center';
-            timeBlockChosenEl.style.alignItems = 'center';
-            timeBlockChosenEl.style.fontWeight = 'bold';
-            timeBlockChosenEl.style.color = '#000000';
-          }
-
-        }
-        function style_addTimeBlock(el) {
-          el.style.cursor = 'pointer';
-          el.style.flex = '1';
-          el.style.maxWidth = commonHeight + 'rem';
-          el.style.minWidth = commonHeight + 'rem';
-          el.style.textAlign = 'center';
-          el.style.display = 'flex';
-          el.style.justifyContent = 'center';
-          el.style.alignItems = 'center';
-          el.style.position = 'relative';
-          style_plusSymbol();
-          function style_plusSymbol() {
-            const plus = el.getElementsByClassName('plus')[0];
-            plus.style.border = '0.75rem solid #000000';
-            plus.style.borderRadius = '25%';
-            plus.style.position = 'absolute';
-            plus.style.top = 0;
-            plus.style.bottom = 0;
-            plus.style.left = 0;
-            plus.style.right = 0;
-            plus.style.display = 'flex';
-            plus.style.textAlign = 'center';
-            plus.style.justifyContent = 'center';
-            style_plusText();
-            function style_plusText() {
-              const plusText = plus.children[0];
-              plusText.style.fontSize = commonHeight + 'rem';
-              plusText.style.borderRadius = borderRadius;
-              plusText.style.position = 'absolute';
-              plusText.style.position = 'absolute';
-              plusText.style.top = 0 - (commonHeight) / 5.25 + 'rem';
-              plusText.style.bottom = 0;
-              plusText.style.left = 0;
-              plusText.style.right = 0;
-            }
-          }
-        }
-        function style_storeTimeBlocks(el) {
-          el.style.display = 'flex';
-          el.style.flex = '5';
-          el.style.textAlign = 'center';
-          el.style.alignItems = 'flex-end';
-          el.style.position = 'relative';
-          // const hours = el.children[0];
-          // hours.style.position = 'absolute';
-          // hours.style.bottom = '0';
-          // hours.style.left = '0';
-          // hours.style.right = '0';
-          // hours.style.flex = '5';
-          // hours.style.display = 'flex';
-          // for (let i = 0; i < hours.children.length; i++) {
-          //   const hour = hours.children[i];
-          //   hour.style.backgroundColor = '#000000';
-          //   hour.style.opacity = '0.85';
-          //   hour.style.color = '#ffffff';
-          //   hour.style.flex = '1';
-          //   hour.style.fontSize = '0.5rem';
-          // }
-        }
-      }
-      // PROJECT BAR - I N T E R A C T I V I T Y
-      interactives();
-      function interactives() {
-        getLastEl_loopF('projectTitle', inter_INPUT_projectTitle);
-        getLastEl_loopF('timeBlockChoice', timeBlockChoice);
-        getLastEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
-        getLastEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
-        getLastEl_loopF('addTimeBlock', inter_CLICK_addTimeBlock);
-
-        function inter_INPUT_projectTitle(el) {
-          const textarea = el.getElementsByTagName('textarea')[0];
-          textarea.onchange = function (e) {
-            const projectTitle = e.target.value;
-            localStorage.setItem('projectTitle', projectTitle);
-          }
-        }
-        function timeBlockChoice(el) {
-          el.classList = 'timeBlockChoice ' + '1';
-          const timeBlocks = el.getElementsByClassName('timeBlockChosen ');
-          for (let i = 1; i < timeBlocks.length; i++) {
-            timeBlocks[i].style.display = 'none';
-          }
-        }
-        function inter_CLICK_prevHourBlock(el) {
-          el.onclick = function () {
-            const timeBlockChoice = el.parentElement.getElementsByClassName('timeBlockChoice')[0];
-            const num = timeBlockChoice.classList[1];
-            if (1 < Number(num)) {
-              const newNum = Number(num) - 1;
-              timeBlockChoice.classList = 'timeBlockChoice ' + newNum;
-              timeBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
-              timeBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
-            }
-          }
-        }
-        function inter_CLICK_nextHourBlock(el) {
-          el.onclick = function () {
-            const timeBlockChoice = el.parentElement.getElementsByClassName('timeBlockChoice')[0];
-            const timeBlocks = timeBlockChoice.getElementsByClassName('timeBlockChosen');
-            const num = timeBlockChoice.classList[1];
-            if (Number(num) < timeBlocks.length) {
-              const newNum = Number(num) + 1;
-              timeBlockChoice.classList = 'timeBlockChoice ' + newNum;
-              timeBlockChoice.getElementsByClassName(num)[0].style.display = 'none';
-              timeBlockChoice.getElementsByClassName(newNum)[0].style.display = 'block';
-            }
-          }
-        }
-        function inter_CLICK_addTimeBlock(el) {
-          el.onclick = function () {
-            const container = setup_findElementUp(el, 'consoleTimeBlocks');
-            const choice = container.getElementsByClassName('timeBlockChoice')[0];
-            const number = choice.classList[1];
-            getChosenBlock();
-            cloneAndSetup();
-            append();
-
-            function getChosenBlock() {
-              const chosenBlock = choice.getElementsByClassName(number)[0];
-              return chosenBlock;
-            }
-            function cloneAndSetup() {
-              const chosenBlock = getChosenBlock();
-              let clone = chosenBlock.cloneNode(true);
-              const newHourBlock = clone;
-              newHourBlock.className = 'hourBlock ' + number + ' hours';
-              dragAndDrop.makeDraggable(newHourBlock);
-              return newHourBlock;
-            }
-            function append() {
-              const newHourBlock = cloneAndSetup();
-              const log = container.getElementsByClassName('storeTimeBlocks')[0];
-              log.appendChild(newHourBlock);
-            }
-          }
-        }
-        // issueEvent();
-        // function issueEvent() {
-        //   const event = new Event('newHourBlock');
-        //   container.addEventListener('newHourBlock', function (e) {
-        //     console.log('newHourBlock')
-        //   }, false);
-        //   container.dispatchEvent(event);
-        // }
       }
     }
 
