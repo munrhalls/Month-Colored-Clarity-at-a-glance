@@ -383,12 +383,22 @@ function app() {
             colorChoices[i].onclick = function (e) {
               e.stopPropagation();
               shiftProjectBarColor();
+              updateProjectBarsSymbolLines();
               function shiftProjectBarColor() {
                 const color = colorChoices[i].classList[1];
                 const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
                 colorMenuBtn.style.backgroundColor = color;
                 projectBar.style.backgroundColor = color;
                 colorMenu.style.display = 'none';
+              }
+              function updateProjectBarsSymbolLines() {
+                const projectBars = document.getElementsByClassName('projectBar');
+                const symbolLines = document.getElementsByClassName('projectBarSymbolLine');
+                for (let i = 0; i < projectBars.length; i++) {
+                  const bar = projectBars[i];
+                  const symbolLine = symbolLines[i];
+                  symbolLine.style.backgroundColor = bar.style.backgroundColor;
+                }
               }
             }
           }
@@ -568,11 +578,12 @@ function app() {
               function getLastProjectBarColor() {
                 const num = Number(projectBars.getElementsByClassName('projectBar').length) - 1;
                 const lastProjectBar = projectBars.getElementsByClassName('projectBar')[num];
-                const bgColor = lastProjectBar.style.background;
+                const bgColor = lastProjectBar.style.backgroundColor;
                 console.log(bgColor)
                 return bgColor;
               }
               const line = document.createElement('div');
+              line.className = 'projectBarSymbolLine';
               line.style.height = '2px';
               line.style.width = '100%';
               line.style.backgroundColor = bgColor;
