@@ -569,22 +569,21 @@ function app() {
               create_projectBar();
               create_projectBarsSymbolLine();
               function create_projectBarsSymbolLine() {
-                const bgColor = getLastProjectBarColor();
+                const color = getLastProjectBarColor();
                 const line = document.createElement('div');
                 projectBarsSymbolLines.appendChild(line);
                 style();
                 function getLastProjectBarColor() {
                   const num = Number(projectBars.getElementsByClassName('projectBar').length) - 1;
                   const lastProjectBar = projectBars.getElementsByClassName('projectBar')[num];
-                  const bgColor = lastProjectBar.style.backgroundColor;
-                  console.log(bgColor)
-                  return bgColor;
+                  const color = lastProjectBar.style.backgroundColor;
+                  return color;
                 }
                 function style() {
                   line.className = 'projectBarSymbolLine';
                   line.style.height = '2px';
                   line.style.width = '100%';
-                  line.style.backgroundColor = bgColor;
+                  line.style.backgroundColor = color;
                 }
               }
             }
