@@ -398,12 +398,17 @@ function app() {
                 for (let i = 0; i < projectBars.length; i++) {
                   const bar = projectBars[i];
                   const symbolLine = symbolLines[i];
+                  symbolLine.style.transition = 'background-color 2s';
                   symbolLine.style.backgroundColor = bar.style.backgroundColor;
                 }
               }
               function animateBgColorOfNextProjectBarArrow() {
                 const nextProjectBarArrow = document.getElementsByClassName('nextProjectBar')[0];
                 nextProjectBarArrow.style.borderTopColor = color;
+                nextProjectBarArrow.style.transition = 'border-top-color 1s';
+                setTimeout(function resetColor() {
+                  nextProjectBarArrow.style.borderTopColor = '#ffffff';
+                }, 1000);
               }
             }
           }
