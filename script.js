@@ -577,10 +577,18 @@ function app() {
             create_projectBar();
             create_projectBarsSymbolLine();
             function create_projectBarsSymbolLine() {
+              const bgColor = getLastProjectBarColor();
+              function getLastProjectBarColor() {
+                const num = Number(projectBars.getElementsByClassName('projectBar').length) - 1;
+                const lastProjectBar = projectBars.getElementsByClassName('projectBar')[num];
+                const bgColor = lastProjectBar.style.background;
+                console.log(bgColor)
+                return bgColor;
+              }
               const line = document.createElement('div');
               line.style.height = '2px';
               line.style.width = '100%';
-              line.style.backgroundColor = '#ffffff';
+              line.style.backgroundColor = bgColor;
               projectBarsSymbolLines.appendChild(line);
             }
           }
