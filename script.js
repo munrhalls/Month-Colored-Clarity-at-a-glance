@@ -353,13 +353,13 @@ function app() {
         }
       }
 
-      // I N T E R A C T I V E S
+      // COLOR MENU BTN - I N T E R A C T I V E S
       interactives();
       function interactives() {
         setup_hideColorMenu();
         inter_CLICK_colorMenuBtn(colorMenuBtn);
         inter_CLICK_closeBtn();
-        inter_CLICK_colorChoice();
+        inter_CLICK_chooseProjectBarColor();
 
         function setup_hideColorMenu() {
           colorMenu.style.display = 'none';
@@ -377,16 +377,19 @@ function app() {
             colorMenu.style.display = 'none'
           }
         }
-        function inter_CLICK_colorChoice() {
+        function inter_CLICK_chooseProjectBarColor() {
           const colorChoices = colorMenu.getElementsByClassName('colorChoice');
           for (let i = 0; i < colorChoices.length; i++) {
             colorChoices[i].onclick = function (e) {
               e.stopPropagation();
-              const color = colorChoices[i].classList[1];
-              const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
-              colorMenuBtn.style.backgroundColor = color;
-              projectBar.style.backgroundColor = color;
-              colorMenu.style.display = 'none';
+              shiftProjectBarColor();
+              function shiftProjectBarColor() {
+                const color = colorChoices[i].classList[1];
+                const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
+                colorMenuBtn.style.backgroundColor = color;
+                projectBar.style.backgroundColor = color;
+                colorMenu.style.display = 'none';
+              }
             }
           }
         }
