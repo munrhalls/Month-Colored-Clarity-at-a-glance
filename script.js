@@ -804,6 +804,26 @@ function app() {
           // }
         }
       }
+      create_projects.create_projectBarsSymbolLine = function () {
+        const projectBars = document.getElementsByClassName('projectBars')[0];
+        const projectBarsSymbolLines = document.getElementsByClassName('projectBarsSymbolLines')[0];
+        const color = getLastProjectBarColor();
+        const line = document.createElement('div');
+        projectBarsSymbolLines.appendChild(line);
+        style();
+        function getLastProjectBarColor() {
+          const num = Number(projectBars.getElementsByClassName('projectBar').length) - 1;
+          const lastProjectBar = projectBars.getElementsByClassName('projectBar')[num];
+          const color = lastProjectBar.style.backgroundColor;
+          return color;
+        }
+        function style() {
+          line.className = 'projectBarSymbolLine';
+          line.style.height = '2px';
+          line.style.width = '100%';
+          line.style.backgroundColor = color;
+        }
+      }
       function create_menuProjects() {
         getEl_loopF('headerProjects', content_menuProjects);
         getEl_loopF('addProjectBarLabel', content_addProjectBarLabel);
@@ -872,29 +892,11 @@ function app() {
           function inter_addProjectBar(el) {
             el.onclick = function () {
               const projectBars = document.getElementsByClassName('projectBars')[0];
-              const projectBarsSymbolLines = document.getElementsByClassName('projectBarsSymbolLines')[0];
 
               assembleDOM(projectBar, projectBars);
               create_projects.create_projectBar();
-              create_projectBarsSymbolLine();
-              function create_projectBarsSymbolLine() {
-                const color = getLastProjectBarColor();
-                const line = document.createElement('div');
-                projectBarsSymbolLines.appendChild(line);
-                style();
-                function getLastProjectBarColor() {
-                  const num = Number(projectBars.getElementsByClassName('projectBar').length) - 1;
-                  const lastProjectBar = projectBars.getElementsByClassName('projectBar')[num];
-                  const color = lastProjectBar.style.backgroundColor;
-                  return color;
-                }
-                function style() {
-                  line.className = 'projectBarSymbolLine';
-                  line.style.height = '2px';
-                  line.style.width = '100%';
-                  line.style.backgroundColor = color;
-                }
-              }
+              create_projects.create_projectBarsSymbolLine();
+
             }
           }
         }
