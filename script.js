@@ -598,11 +598,15 @@ function app() {
                 return bgColor;
               }
               const line = document.createElement('div');
-              line.className = 'projectBarSymbolLine';
-              line.style.height = '2px';
-              line.style.width = '100%';
-              line.style.backgroundColor = bgColor;
               projectBarsSymbolLines.appendChild(line);
+
+              style();
+              function style() {
+                line.className = 'projectBarSymbolLine';
+                line.style.height = '2px';
+                line.style.width = '100%';
+                line.style.backgroundColor = bgColor;
+              }
             }
           }
         }
