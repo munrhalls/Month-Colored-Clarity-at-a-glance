@@ -536,42 +536,26 @@ function app() {
             const projectBars = document.getElementsByClassName('projectBars')[0];
             const projectBarsSymbolLines = document.getElementsByClassName('projectBarsSymbolLines')[0];
 
-            // const index = projectBars.getElementsByClassName('projectBar').length;
-            // copy project bar
-            // modify the copy
-            // return
-            // then use it
-
-            // 1. recursively loop array projectBar
-            // done
-            // 2. add indexing data each class
-            // copy arr
-            // find a way to save modified entry
-            // modify and use that way
-            // 3. then use assemble dom
-            // // 4. then run create func
-
-
-            index();
-            function index() {
-              const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : item);
-              const projectBarCopy = clone(projectBar);
-              indexDOM(projectBarCopy, index);
-              function indexDOM(arr, index) {
-                for (let i = 0; i < arr.length; i++) {
-                  let entry = arr[i];
-                  if (typeof entry === 'object') {
-                    indexDOM(entry, index);
-                  } else {
-                    modifyDATA();
-                    function modifyDATA() {
-                      const accessIndex = arr.indexOf(entry);
-                      arr[accessIndex] = entry + ' ' + index;
-                    }
-                  }
-                }
-              }
-            }
+            // index();
+            // function index() {
+            //   const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : item);
+            //   const projectBarCopy = clone(projectBar);
+            //   indexDOM(projectBarCopy, index);
+            //   function indexDOM(arr, index) {
+            //     for (let i = 0; i < arr.length; i++) {
+            //       let entry = arr[i];
+            //       if (typeof entry === 'object') {
+            //         indexDOM(entry, index);
+            //       } else {
+            //         modifyDATA();
+            //         function modifyDATA() {
+            //           const accessIndex = arr.indexOf(entry);
+            //           arr[accessIndex] = entry + ' ' + index;
+            //         }
+            //       }
+            //     }
+            //   }
+            // }
 
             assembleDOM(projectBar, projectBars);
             create_projectBar();
