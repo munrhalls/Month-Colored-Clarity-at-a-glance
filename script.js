@@ -402,9 +402,8 @@ function app() {
                 }
               }
               function animateBgColorOfNextProjectBarArrow() {
-                const nextProjectBarArrow = document.getElementsByClassName('nextProjectBar');
-                // nextProjectBarArrow.style.backgroundColor = 
-
+                const nextProjectBarArrow = document.getElementsByClassName('nextProjectBar')[0];
+                nextProjectBarArrow.style.borderTopColor = color;
               }
             }
           }
