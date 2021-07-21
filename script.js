@@ -718,6 +718,8 @@ function app() {
         function style_projectBarsScrollMenu(el) {
           el.style.position = 'relative';
           el.style.width = '100%';
+          el.style.paddingLeft = '0.5rem';
+          el.style.paddingRight = '0.5rem';
         }
         function style_prevProjectBar(el) {
           style_prevArr(el);
