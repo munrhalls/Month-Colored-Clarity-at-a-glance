@@ -550,6 +550,8 @@ function app() {
             // modify and use that way
             // 3. then use assemble dom
             // // 4. then run create func
+
+
             index();
             function index() {
               const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : item);
@@ -691,6 +693,8 @@ function app() {
       function style() {
         getEl_loopF('projects', style_projects);
         getEl_loopF('projectBarsScroll', style_projectBarsScroll);
+        getEl_loopF('projectBarsScrollMenu', style_projectBarsScrollMenu);
+
         getEl_loopF('prevProjectBar', style_prevProjectBar);
         getEl_loopF('projectBarsSymbolLines', style_projectBarsSymbolLines);
         getEl_loopF('nextProjectBar', style_nextProjectBar);
@@ -711,19 +715,31 @@ function app() {
           // el.style.paddingBottom = commonHeight / 3 + 'rem';
           el.style.position = 'relative';
         }
+        function style_projectBarsScrollMenu(el) {
+          el.style.position = 'relative';
+          el.style.width = '100%';
+        }
         function style_prevProjectBar(el) {
           style_prevArr(el);
           el.style.transform = 'rotate(180deg)';
-          el.style.left = 'auto'
+          el.style.position = 'initial';
+          el.style.marginBottom = commonHeight / 3 + 'rem';
         }
         function style_projectBarsSymbolLines(el) {
+          el.style.padding = '1rem';
+          el.style.height = commonHeight + 'rem';
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+          el.style.justifyContent = 'space-between';
         }
         function style_nextProjectBar(el) {
           style_nextArr(el);
           el.style.transform = 'rotate(0deg)';
           el.style.right = 'auto'
           el.style.marginLeft = 'auto'
-          el.style.top = commonHeight + 'rem'
+          // el.style.top = commonHeight + 'rem'
+          el.style.position = 'initial';
+          el.style.marginTop = commonHeight / 3 + 'rem';
         }
         function style_projectBars(el) {
           el.style.flex = '5';
