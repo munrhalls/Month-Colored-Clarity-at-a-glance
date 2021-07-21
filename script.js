@@ -892,11 +892,9 @@ function app() {
           function inter_addProjectBar(el) {
             el.onclick = function () {
               const projectBars = document.getElementsByClassName('projectBars')[0];
-
               assembleDOM(projectBar, projectBars);
               create_projects.create_projectBar();
               create_projects.create_projectBarsSymbolLine();
-
             }
           }
         }
