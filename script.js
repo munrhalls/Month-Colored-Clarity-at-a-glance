@@ -116,8 +116,6 @@ function app() {
     create_topBar();
     create_main();
     create_visuals();
-    create_menuProjects();
-    create_titleBarForProjects();
     create_projects();
     create_menuCalendar();
     create_calendar();
@@ -494,225 +492,228 @@ function app() {
         el.style.height = heightVisuals;
       }
     }
-    function create_menuProjects() {
-      getEl_loopF('headerProjects', content_menuProjects);
-      getEl_loopF('addProjectBarLabel', content_addProjectBarLabel);
 
-      function content_menuProjects(el) {
-        el.innerText = 'PROJECTS';
-      }
-      function content_addProjectBarLabel(el) {
-        el.innerText = '+';
-      }
-      // MENU PROJECTS - S T Y L E
-      style();
-      function style() {
-        getEl_loopF('menuProjects', style_menuProjects);
-        getEl_loopF('headerProjects', style_headerProjects);
-        getEl_loopF('addProjectBar', style_addProjectBar);
-        getEl_loopF('addProjectBarLabel', style_addProjectBarLabel);
-        function style_menuProjects(el) {
-          el.style.flex = '1';
-          el.style.height = commonHeight / 2 + 'rem';
-          el.style.maxHeight = commonHeight / 2 + 'rem'
-          el.style.backgroundColor = menuBgColor;
-          el.style.borderTop = '1px solid #ffffff';
-          el.style.display = 'flex';
-          el.style.justifyContent = 'flex-start';
-          el.style.alignItems = 'center';
-        }
-        function style_headerProjects(el) {
-          el.style.innerText = 'PROJECTS';
-          el.style.color = '#ffffff';
-          el.style.width = commonHeight;
-          el.style.border = '1px solid black';
-          el.style.color = 'rgb(255, 255, 255)';
-          el.style.fontWeight = 'bold';
-          el.style.marginLeft = '1.5rem';
-          el.style.display = 'flex';
-          el.style.flexDirection = 'column';
-          el.style.justifyContent = 'center';
-          el.style.fontSize = '1.5rem';
-          el.style.letterSpacing = '1.75rem';
-          el.style.marginLeft = commonWidth * 2 + 'rem';
-        }
-        function style_addProjectBar(el) {
-          el.style.cursor = 'pointer';
-          el.style.position = 'relative';
-          el.style.height = '100%';
-          el.style.width = menuTitleMargin * 2 + 'rem';
-        }
-        function style_addProjectBarLabel(el) {
-          el.style.position = 'absolute';
-          el.style.top = -menuTitleSize / 2 + 'rem';
-          el.style.bottom = '0';
-          el.style.left = '0';
-          el.style.right = '0';
-          el.style.maxHeight = '100%';
-          el.style.color = '#ffffff';
-          el.style.marginLeft = menuTitleMargin + 'rem';
-          el.style.fontSize = menuTitleSize * 3 + 'rem';
-          el.style.width = menuTitleMargin + 'rem';
-        }
-      }
-      // MENU PROJECTS - I N T E R A C T I V I T Y
-      interactivity();
-      function interactivity() {
-        getEl_loopF('addProjectBar', inter_addProjectBar);
-        function inter_addProjectBar(el) {
-          el.onclick = function () {
-            const projectBars = document.getElementsByClassName('projectBars')[0];
-            const projectBarsSymbolLines = document.getElementsByClassName('projectBarsSymbolLines')[0];
+    function create_projects() {
+      create_menuProjects();
+      create_titleBarForProjects();
+      function create_menuProjects() {
+        getEl_loopF('headerProjects', content_menuProjects);
+        getEl_loopF('addProjectBarLabel', content_addProjectBarLabel);
 
-            // index();
-            // function index() {
-            //   const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : item);
-            //   const projectBarCopy = clone(projectBar);
-            //   indexDOM(projectBarCopy, index);
-            //   function indexDOM(arr, index) {
-            //     for (let i = 0; i < arr.length; i++) {
-            //       let entry = arr[i];
-            //       if (typeof entry === 'object') {
-            //         indexDOM(entry, index);
-            //       } else {
-            //         modifyDATA();
-            //         function modifyDATA() {
-            //           const accessIndex = arr.indexOf(entry);
-            //           arr[accessIndex] = entry + ' ' + index;
-            //         }
-            //       }
-            //     }
-            //   }
-            // }
+        function content_menuProjects(el) {
+          el.innerText = 'PROJECTS';
+        }
+        function content_addProjectBarLabel(el) {
+          el.innerText = '+';
+        }
+        // MENU PROJECTS - S T Y L E
+        style();
+        function style() {
+          getEl_loopF('menuProjects', style_menuProjects);
+          getEl_loopF('headerProjects', style_headerProjects);
+          getEl_loopF('addProjectBar', style_addProjectBar);
+          getEl_loopF('addProjectBarLabel', style_addProjectBarLabel);
+          function style_menuProjects(el) {
+            el.style.flex = '1';
+            el.style.height = commonHeight / 2 + 'rem';
+            el.style.maxHeight = commonHeight / 2 + 'rem'
+            el.style.backgroundColor = menuBgColor;
+            el.style.borderTop = '1px solid #ffffff';
+            el.style.display = 'flex';
+            el.style.justifyContent = 'flex-start';
+            el.style.alignItems = 'center';
+          }
+          function style_headerProjects(el) {
+            el.style.innerText = 'PROJECTS';
+            el.style.color = '#ffffff';
+            el.style.width = commonHeight;
+            el.style.border = '1px solid black';
+            el.style.color = 'rgb(255, 255, 255)';
+            el.style.fontWeight = 'bold';
+            el.style.marginLeft = '1.5rem';
+            el.style.display = 'flex';
+            el.style.flexDirection = 'column';
+            el.style.justifyContent = 'center';
+            el.style.fontSize = '1.5rem';
+            el.style.letterSpacing = '1.75rem';
+            el.style.marginLeft = commonWidth * 2 + 'rem';
+          }
+          function style_addProjectBar(el) {
+            el.style.cursor = 'pointer';
+            el.style.position = 'relative';
+            el.style.height = '100%';
+            el.style.width = menuTitleMargin * 2 + 'rem';
+          }
+          function style_addProjectBarLabel(el) {
+            el.style.position = 'absolute';
+            el.style.top = -menuTitleSize / 2 + 'rem';
+            el.style.bottom = '0';
+            el.style.left = '0';
+            el.style.right = '0';
+            el.style.maxHeight = '100%';
+            el.style.color = '#ffffff';
+            el.style.marginLeft = menuTitleMargin + 'rem';
+            el.style.fontSize = menuTitleSize * 3 + 'rem';
+            el.style.width = menuTitleMargin + 'rem';
+          }
+        }
+        // MENU PROJECTS - I N T E R A C T I V I T Y
+        interactivity();
+        function interactivity() {
+          getEl_loopF('addProjectBar', inter_addProjectBar);
+          function inter_addProjectBar(el) {
+            el.onclick = function () {
+              const projectBars = document.getElementsByClassName('projectBars')[0];
+              const projectBarsSymbolLines = document.getElementsByClassName('projectBarsSymbolLines')[0];
 
-            assembleDOM(projectBar, projectBars);
-            create_projectBar();
-            create_projectBarsSymbolLine();
-            function create_projectBarsSymbolLine() {
-              const bgColor = getLastProjectBarColor();
-              function getLastProjectBarColor() {
-                const num = Number(projectBars.getElementsByClassName('projectBar').length) - 1;
-                const lastProjectBar = projectBars.getElementsByClassName('projectBar')[num];
-                const bgColor = lastProjectBar.style.backgroundColor;
-                console.log(bgColor)
-                return bgColor;
-              }
-              const line = document.createElement('div');
-              projectBarsSymbolLines.appendChild(line);
+              // index();
+              // function index() {
+              //   const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : item);
+              //   const projectBarCopy = clone(projectBar);
+              //   indexDOM(projectBarCopy, index);
+              //   function indexDOM(arr, index) {
+              //     for (let i = 0; i < arr.length; i++) {
+              //       let entry = arr[i];
+              //       if (typeof entry === 'object') {
+              //         indexDOM(entry, index);
+              //       } else {
+              //         modifyDATA();
+              //         function modifyDATA() {
+              //           const accessIndex = arr.indexOf(entry);
+              //           arr[accessIndex] = entry + ' ' + index;
+              //         }
+              //       }
+              //     }
+              //   }
+              // }
 
-              style();
-              function style() {
-                line.className = 'projectBarSymbolLine';
-                line.style.height = '2px';
-                line.style.width = '100%';
-                line.style.backgroundColor = bgColor;
+              assembleDOM(projectBar, projectBars);
+              create_projectBar();
+              create_projectBarsSymbolLine();
+              function create_projectBarsSymbolLine() {
+                const bgColor = getLastProjectBarColor();
+                function getLastProjectBarColor() {
+                  const num = Number(projectBars.getElementsByClassName('projectBar').length) - 1;
+                  const lastProjectBar = projectBars.getElementsByClassName('projectBar')[num];
+                  const bgColor = lastProjectBar.style.backgroundColor;
+                  console.log(bgColor)
+                  return bgColor;
+                }
+                const line = document.createElement('div');
+                projectBarsSymbolLines.appendChild(line);
+
+                style();
+                function style() {
+                  line.className = 'projectBarSymbolLine';
+                  line.style.height = '2px';
+                  line.style.width = '100%';
+                  line.style.backgroundColor = bgColor;
+                }
               }
             }
           }
         }
       }
-    }
-    function create_titleBarForProjects() {
-      getEl_loopF('titleProjectColor', content_titleProjectColor)
-      getEl_loopF('titleProjectName', content_titleProjectName)
-      getEl_loopF('titleChooseTimeBlockSize', content_titleChooseTimeBlockSize)
-      getEl_loopF('titleAddTimeBlock', content_titleAddTimeBlock)
-      getEl_loopF('titleTimeBlocks', content_titleTimeBlocks)
+      function create_titleBarForProjects() {
+        getEl_loopF('titleProjectColor', content_titleProjectColor)
+        getEl_loopF('titleProjectName', content_titleProjectName)
+        getEl_loopF('titleChooseTimeBlockSize', content_titleChooseTimeBlockSize)
+        getEl_loopF('titleAddTimeBlock', content_titleAddTimeBlock)
+        getEl_loopF('titleTimeBlocks', content_titleTimeBlocks)
 
-      function content_titleProjectColor(el) {
-        el.innerText = 'choose color';
-      }
-      function content_titleProjectName(el) {
-        el.innerText = 'project title';
-      }
-      function content_titleChooseTimeBlockSize(el) {
-        el.innerText = 'choose time block size';
-      }
-      function content_titleAddTimeBlock(el) {
-        el.innerText = 'add';
-      }
-      function content_titleTimeBlocks(el) {
-        el.innerText = 'time blocks';
-      }
+        function content_titleProjectColor(el) {
+          el.innerText = 'choose color';
+        }
+        function content_titleProjectName(el) {
+          el.innerText = 'project title';
+        }
+        function content_titleChooseTimeBlockSize(el) {
+          el.innerText = 'choose time block size';
+        }
+        function content_titleAddTimeBlock(el) {
+          el.innerText = 'add';
+        }
+        function content_titleTimeBlocks(el) {
+          el.innerText = 'time blocks';
+        }
 
-      style();
-      function style() {
-        getEl_loopF('titleBarForProjects', style_titleBarForProjects);
-        getEl_loopF('titleProjectColor', style_titleProjectColor)
-        getEl_loopF('titleProjectName', style_titleProjectName)
-        getEl_loopF('titleChooseTimeBlockSize', style_titleChooseTimeBlockSize)
-        getEl_loopF('titleAddTimeBlock', style_titleAddTimeBlock)
-        getEl_loopF('titleTimeBlocks', style_titleTimeBlocks)
-        function style_titleBarForProjects(el) {
-          el.style.flex = '1';
-          el.style.borderTop = '1px solid #ffffff';
-          // el.style.borderBottom = '1px solid #ffffff';
-          // el.style.borderRight = '3rem solid transparent';
-          // el.style.borderLeft = '3rem solid transparent';
-          el.style.display = 'flex';
-          el.style.height = commonHeight / 4 + 'rem';
-          el.style.maxHeight = commonHeight / 4 + 'rem'
-          el.style.backgroundColor = menuBgColor;
-          el.style.color = '#ffffff';
-          el.style.paddingTop = '0.5rem';
-        }
-        function style_titleProjectColor(el) {
-          el.style.fontSize = '1.25rem';
-          el.style.display = 'flex';
-          el.style.justifyContent = 'center';
-          el.style.alignItems = 'center';
-          el.style.textAlign = 'center';
-          el.style.maxWidth = commonWidth + 2.8 + 'rem';
-          el.style.width = commonWidth + 2.8 + 'rem ';
-          el.style.borderRight = '1px solid #ffffff';
-        }
-        function style_titleProjectName(el) {
-          el.style.fontSize = '1.25rem';
-          el.style.display = 'flex';
-          el.style.justifyContent = 'center';
-          el.style.alignItems = 'center';
-          el.style.display = 'flex'
-          el.style.textAlign = 'center';
-          el.style.maxWidth = commonWidth * 4 + 'rem';
-          el.style.width = commonWidth * 4 + 'rem ';
-          el.style.borderRight = '1px solid #ffffff';
-        }
-        function style_titleChooseTimeBlockSize(el) {
-          el.style.fontSize = '1.25rem';
-          el.style.display = 'flex';
-          el.style.justifyContent = 'center';
-          el.style.alignItems = 'center';
-          el.style.display = 'flex'
-          el.style.textAlign = 'center';
-          el.style.maxWidth = commonWidth * 2.8 + 'rem';
-          el.style.width = commonWidth * 2.8 + 'rem ';
-          el.style.borderRight = '1px solid #ffffff';
-        }
-        function style_titleAddTimeBlock(el) {
-          el.style.fontSize = '1.25rem';
-          el.style.display = 'flex';
-          el.style.justifyContent = 'center';
-          el.style.alignItems = 'center';
-          el.style.display = 'flex'
-          el.style.textAlign = 'center';
-          el.style.maxWidth = commonWidth + 3.075 + 'rem';
-          el.style.width = commonWidth + 3.075 + 'rem ';
-          el.style.borderRight = '1px solid #ffffff';
-        }
-        function style_titleTimeBlocks(el) {
-          el.style.fontSize = '1.25rem';
-          el.style.display = 'flex';
-          el.style.justifyContent = 'center';
-          el.style.alignItems = 'center';
-          el.style.display = 'flex'
-          el.style.textAlign = 'center';
-          // el.style.maxWidth = commonWidth * 4 + 'rem';
-          // el.style.width = commonWidth * 4 + 'rem ';
-          el.style.flex = '1';
+        style();
+        function style() {
+          getEl_loopF('titleBarForProjects', style_titleBarForProjects);
+          getEl_loopF('titleProjectColor', style_titleProjectColor)
+          getEl_loopF('titleProjectName', style_titleProjectName)
+          getEl_loopF('titleChooseTimeBlockSize', style_titleChooseTimeBlockSize)
+          getEl_loopF('titleAddTimeBlock', style_titleAddTimeBlock)
+          getEl_loopF('titleTimeBlocks', style_titleTimeBlocks)
+          function style_titleBarForProjects(el) {
+            el.style.flex = '1';
+            el.style.borderTop = '1px solid #ffffff';
+            // el.style.borderBottom = '1px solid #ffffff';
+            // el.style.borderRight = '3rem solid transparent';
+            // el.style.borderLeft = '3rem solid transparent';
+            el.style.display = 'flex';
+            el.style.height = commonHeight / 4 + 'rem';
+            el.style.maxHeight = commonHeight / 4 + 'rem'
+            el.style.backgroundColor = menuBgColor;
+            el.style.color = '#ffffff';
+            el.style.paddingTop = '0.5rem';
+          }
+          function style_titleProjectColor(el) {
+            el.style.fontSize = '1.25rem';
+            el.style.display = 'flex';
+            el.style.justifyContent = 'center';
+            el.style.alignItems = 'center';
+            el.style.textAlign = 'center';
+            el.style.maxWidth = commonWidth + 2.8 + 'rem';
+            el.style.width = commonWidth + 2.8 + 'rem ';
+            el.style.borderRight = '1px solid #ffffff';
+          }
+          function style_titleProjectName(el) {
+            el.style.fontSize = '1.25rem';
+            el.style.display = 'flex';
+            el.style.justifyContent = 'center';
+            el.style.alignItems = 'center';
+            el.style.display = 'flex'
+            el.style.textAlign = 'center';
+            el.style.maxWidth = commonWidth * 4 + 'rem';
+            el.style.width = commonWidth * 4 + 'rem ';
+            el.style.borderRight = '1px solid #ffffff';
+          }
+          function style_titleChooseTimeBlockSize(el) {
+            el.style.fontSize = '1.25rem';
+            el.style.display = 'flex';
+            el.style.justifyContent = 'center';
+            el.style.alignItems = 'center';
+            el.style.display = 'flex'
+            el.style.textAlign = 'center';
+            el.style.maxWidth = commonWidth * 2.8 + 'rem';
+            el.style.width = commonWidth * 2.8 + 'rem ';
+            el.style.borderRight = '1px solid #ffffff';
+          }
+          function style_titleAddTimeBlock(el) {
+            el.style.fontSize = '1.25rem';
+            el.style.display = 'flex';
+            el.style.justifyContent = 'center';
+            el.style.alignItems = 'center';
+            el.style.display = 'flex'
+            el.style.textAlign = 'center';
+            el.style.maxWidth = commonWidth + 3.075 + 'rem';
+            el.style.width = commonWidth + 3.075 + 'rem ';
+            el.style.borderRight = '1px solid #ffffff';
+          }
+          function style_titleTimeBlocks(el) {
+            el.style.fontSize = '1.25rem';
+            el.style.display = 'flex';
+            el.style.justifyContent = 'center';
+            el.style.alignItems = 'center';
+            el.style.display = 'flex'
+            el.style.textAlign = 'center';
+            // el.style.maxWidth = commonWidth * 4 + 'rem';
+            // el.style.width = commonWidth * 4 + 'rem ';
+            el.style.flex = '1';
+          }
         }
       }
-    }
-    function create_projects() {
       // PROJECTS  -  S T Y L E
       style();
       function style() {
