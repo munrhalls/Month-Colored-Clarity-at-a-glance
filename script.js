@@ -565,32 +565,14 @@ function app() {
               const projectBars = document.getElementsByClassName('projectBars')[0];
               const projectBarsSymbolLines = document.getElementsByClassName('projectBarsSymbolLines')[0];
 
-              // index();
-              // function index() {
-              //   const clone = (items) => items.map(item => Array.isArray(item) ? clone(item) : item);
-              //   const projectBarCopy = clone(projectBar);
-              //   indexDOM(projectBarCopy, index);
-              //   function indexDOM(arr, index) {
-              //     for (let i = 0; i < arr.length; i++) {
-              //       let entry = arr[i];
-              //       if (typeof entry === 'object') {
-              //         indexDOM(entry, index);
-              //       } else {
-              //         modifyDATA();
-              //         function modifyDATA() {
-              //           const accessIndex = arr.indexOf(entry);
-              //           arr[accessIndex] = entry + ' ' + index;
-              //         }
-              //       }
-              //     }
-              //   }
-              // }
-
               assembleDOM(projectBar, projectBars);
               create_projectBar();
               create_projectBarsSymbolLine();
               function create_projectBarsSymbolLine() {
                 const bgColor = getLastProjectBarColor();
+                const line = document.createElement('div');
+                projectBarsSymbolLines.appendChild(line);
+                style();
                 function getLastProjectBarColor() {
                   const num = Number(projectBars.getElementsByClassName('projectBar').length) - 1;
                   const lastProjectBar = projectBars.getElementsByClassName('projectBar')[num];
@@ -598,10 +580,6 @@ function app() {
                   console.log(bgColor)
                   return bgColor;
                 }
-                const line = document.createElement('div');
-                projectBarsSymbolLines.appendChild(line);
-
-                style();
                 function style() {
                   line.className = 'projectBarSymbolLine';
                   line.style.height = '2px';
