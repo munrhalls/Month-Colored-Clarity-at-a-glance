@@ -117,7 +117,6 @@ function app() {
     create_main();
     create_visuals();
     create_projects();
-    create_menuCalendar();
     create_calendar();
 
     dragAndDrop();
@@ -1084,137 +1083,140 @@ function app() {
         // }
       }
     }
-    function create_menuCalendar() {
-      // C A L E N D A R  B A R - C O N T E N T
-      getEl_loopF('headerCalendar', content_headerCalendar);
-      getEl_loopF('monthChoices', content_monthChoices);
-      getEl_loopF('chooseMonth', content_monthChoice);
-      getEl_loopF('prevMonth', content_prevMonth);
-      getEl_loopF('nextMonth', content_nextMonth);
 
-      function content_headerCalendar(el) {
-        const title = document.createElement('span');
-        title.innerText = 'CALENDAR';
-        el.appendChild(title);
-      }
-      function content_monthChoices(el) {
-      }
-      function content_monthChoice(el) {
-        const title = document.createElement('div');
-        // global
-        const index = months.indexOf(monthShown);
-        title.innerText = months[index];
-        el.appendChild(title);
-      }
-      function content_prevMonth(el) {
-      }
-      function content_nextMonth(el) {
-      }
-
-      // C A L E N D A R  B A R -  S T Y L E
-      const menuTitleSize = 1.5;
-      const menuTitleMargin = 3;
-      style();
-      function style() {
-        getEl_loopF('menuCalendar', style_menuCalendar);
-        getEl_loopF('headerCalendar', style_headerCalendar);
-        getEl_loopF('monthChoices', style_monthChoices);
-        getEl_loopF('chooseMonth', style_monthChoice);
-        getEl_loopF('prevMonth', style_prevMonth);
-        getEl_loopF('nextMonth', style_nextMonth);
-
-        function style_menuCalendar(el) {
-          el.style.flex = '1';
-          el.style.maxHeight = commonHeight / 2 + 'rem';
-          el.style.backgroundColor = '#000000';
-          el.style.display = 'flex';
-        }
-        function style_headerCalendar(el) {
-          el.style.color = '#ffffff';
-          el.style.fontWeight = 'bold';
-          el.style.marginLeft = '1.5rem';
-          el.style.display = 'flex';
-          el.style.flexDirection = 'column';
-          el.style.justifyContent = 'center';
-          el.style.fontSize = '1.5rem';
-          el.style.letterSpacing = '1.75rem';
-          el.style.marginLeft = commonWidth * 2 + 'rem';
-        }
-        function style_monthChoices(el) {
-          el.style.display = 'flex';
-          el.style.alignItems = 'center';
-          el.style.marginLeft = (menuTitleMargin * 3) + 'rem';
-          el.style.color = '#ffffff';
-          // position
-          el.style.position = 'relative';
-        }
-        function style_monthChoice(el) {
-          // global
-          el.style.fontSize = menuTitleSize + 'rem';
-        }
-        function style_prevMonth(el) {
-          style_prevArr(el);
-          el.style.marginLeft = 0 - menuTitleMargin + 'rem';
-        }
-        function style_nextMonth(el) {
-          style_nextArr(el)
-          el.style.marginRight = 0 - menuTitleMargin + 'rem';
-        }
-      }
-
-      // C A L E N D A R  B A R - I N T E R A C T I V E S
-      interactives();
-      function interactives() {
-        inter_monthShown();
-        getEl_loopF('prevMonth', inter_prevMonth);
-        getEl_loopF('nextMonth', inter_nextMonth);
-        getEl_loopF('chooseMonth', inter_shiftMonthChoice);
-
-        function inter_monthShown() {
-          const date = new Date();
-          const monthName = date.toLocaleString('en-EN', { month: 'long' });
-          const firstLetter = monthName.split('')[0].toUpperCase();
-          const remainingLetters = monthName.substring(1, monthName.split('').length);
-          monthShown = firstLetter + remainingLetters;
-        }
-        function inter_prevMonth(el) {
-          el.onclick = function () {
-            hideCurrentMonth();
-            const index = months.indexOf(monthShown);
-            if (index > 0) {
-              const prevIndex = index - 1;
-              monthShown = months[prevIndex];
-              getEl_loopF('chooseMonth', inter_shiftMonthChoice);
-            }
-            showNextMonth();
-          }
-        }
-        function inter_nextMonth(el) {
-          el.onclick = function () {
-            hideCurrentMonth();
-            const index = months.indexOf(monthShown);
-            if (index < months.length - 1) {
-              const prevIndex = index + 1;
-              monthShown = months[prevIndex];
-              getEl_loopF('chooseMonth', inter_shiftMonthChoice);
-            }
-            showNextMonth();
-          }
-        }
-        function inter_shiftMonthChoice(el) {
-          el.innerText = monthShown;
-        }
-        function hideCurrentMonth() {
-          const currentMonth = document.getElementsByClassName(monthShown)[0];
-          currentMonth.style.display = 'none';
-        }
-        function showNextMonth() {
-          const currentMonth = document.getElementsByClassName(monthShown)[0];
-          currentMonth.style.display = 'flex';
-        }
-      }
-    }
     function create_calendar() {
+      create_menuCalendar();
+      function create_menuCalendar() {
+        // C A L E N D A R  B A R - C O N T E N T
+        getEl_loopF('headerCalendar', content_headerCalendar);
+        getEl_loopF('monthChoices', content_monthChoices);
+        getEl_loopF('chooseMonth', content_monthChoice);
+        getEl_loopF('prevMonth', content_prevMonth);
+        getEl_loopF('nextMonth', content_nextMonth);
+
+        function content_headerCalendar(el) {
+          const title = document.createElement('span');
+          title.innerText = 'CALENDAR';
+          el.appendChild(title);
+        }
+        function content_monthChoices(el) {
+        }
+        function content_monthChoice(el) {
+          const title = document.createElement('div');
+          // global
+          const index = months.indexOf(monthShown);
+          title.innerText = months[index];
+          el.appendChild(title);
+        }
+        function content_prevMonth(el) {
+        }
+        function content_nextMonth(el) {
+        }
+
+        // C A L E N D A R  B A R -  S T Y L E
+        const menuTitleSize = 1.5;
+        const menuTitleMargin = 3;
+        style();
+        function style() {
+          getEl_loopF('menuCalendar', style_menuCalendar);
+          getEl_loopF('headerCalendar', style_headerCalendar);
+          getEl_loopF('monthChoices', style_monthChoices);
+          getEl_loopF('chooseMonth', style_monthChoice);
+          getEl_loopF('prevMonth', style_prevMonth);
+          getEl_loopF('nextMonth', style_nextMonth);
+
+          function style_menuCalendar(el) {
+            el.style.flex = '1';
+            el.style.maxHeight = commonHeight / 2 + 'rem';
+            el.style.backgroundColor = '#000000';
+            el.style.display = 'flex';
+          }
+          function style_headerCalendar(el) {
+            el.style.color = '#ffffff';
+            el.style.fontWeight = 'bold';
+            el.style.marginLeft = '1.5rem';
+            el.style.display = 'flex';
+            el.style.flexDirection = 'column';
+            el.style.justifyContent = 'center';
+            el.style.fontSize = '1.5rem';
+            el.style.letterSpacing = '1.75rem';
+            el.style.marginLeft = commonWidth * 2 + 'rem';
+          }
+          function style_monthChoices(el) {
+            el.style.display = 'flex';
+            el.style.alignItems = 'center';
+            el.style.marginLeft = (menuTitleMargin * 3) + 'rem';
+            el.style.color = '#ffffff';
+            // position
+            el.style.position = 'relative';
+          }
+          function style_monthChoice(el) {
+            // global
+            el.style.fontSize = menuTitleSize + 'rem';
+          }
+          function style_prevMonth(el) {
+            style_prevArr(el);
+            el.style.marginLeft = 0 - menuTitleMargin + 'rem';
+          }
+          function style_nextMonth(el) {
+            style_nextArr(el)
+            el.style.marginRight = 0 - menuTitleMargin + 'rem';
+          }
+        }
+
+        // C A L E N D A R  B A R - I N T E R A C T I V E S
+        interactives();
+        function interactives() {
+          inter_monthShown();
+          getEl_loopF('prevMonth', inter_prevMonth);
+          getEl_loopF('nextMonth', inter_nextMonth);
+          getEl_loopF('chooseMonth', inter_shiftMonthChoice);
+
+          function inter_monthShown() {
+            const date = new Date();
+            const monthName = date.toLocaleString('en-EN', { month: 'long' });
+            const firstLetter = monthName.split('')[0].toUpperCase();
+            const remainingLetters = monthName.substring(1, monthName.split('').length);
+            monthShown = firstLetter + remainingLetters;
+          }
+          function inter_prevMonth(el) {
+            el.onclick = function () {
+              hideCurrentMonth();
+              const index = months.indexOf(monthShown);
+              if (index > 0) {
+                const prevIndex = index - 1;
+                monthShown = months[prevIndex];
+                getEl_loopF('chooseMonth', inter_shiftMonthChoice);
+              }
+              showNextMonth();
+            }
+          }
+          function inter_nextMonth(el) {
+            el.onclick = function () {
+              hideCurrentMonth();
+              const index = months.indexOf(monthShown);
+              if (index < months.length - 1) {
+                const prevIndex = index + 1;
+                monthShown = months[prevIndex];
+                getEl_loopF('chooseMonth', inter_shiftMonthChoice);
+              }
+              showNextMonth();
+            }
+          }
+          function inter_shiftMonthChoice(el) {
+            el.innerText = monthShown;
+          }
+          function hideCurrentMonth() {
+            const currentMonth = document.getElementsByClassName(monthShown)[0];
+            currentMonth.style.display = 'none';
+          }
+          function showNextMonth() {
+            const currentMonth = document.getElementsByClassName(monthShown)[0];
+            currentMonth.style.display = 'flex';
+          }
+        }
+      }
+
       // C A L E N D A R - C O N T E N T
       create_calendarDOM();
       function create_calendarDOM() {
