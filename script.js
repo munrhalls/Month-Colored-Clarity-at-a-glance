@@ -403,12 +403,17 @@ function app() {
                 }
               }
               function animateBgColorOfNextProjectBarArrow() {
+                const prevProjectBarArrow = document.getElementsByClassName('prevProjectBar')[0];
                 const nextProjectBarArrow = document.getElementsByClassName('nextProjectBar')[0];
-                nextProjectBarArrow.style.borderTopColor = color;
-                nextProjectBarArrow.style.transition = 'border-top-color 1s';
-                setTimeout(function resetColor() {
-                  nextProjectBarArrow.style.borderTopColor = '#ffffff';
-                }, 1000);
+                animate(prevProjectBarArrow);
+                animate(nextProjectBarArrow);
+                function animate(el) {
+                  el.style.borderTopColor = color;
+                  el.style.transition = 'border-top-color 1s';
+                  setTimeout(function resetColor() {
+                    el.style.borderTopColor = '#ffffff';
+                  }, 1000);
+                }
               }
             }
           }
