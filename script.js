@@ -93,7 +93,10 @@ function app() {
     const topBar = ['title', 'about'];
     const menuProjects = ['headerProjects', 'addProjectBar', ['addProjectBarLabel']];
     const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
-    const projects = ['projectsMenuArea', ['menuProjects', menuProjects, 'titleBarForProjects', titleBarForProjects], 'projectBarsArea', ['projectBarsScroll', projectBarsScroll, 'projectBars']];
+    const projects = [
+      'projectsMenuArea', ['menuProjects', menuProjects, 'titleBarForProjects', titleBarForProjects],
+      'projectBarsArea', ['projectBarsScroll', projectBarsScroll, 'projectBars']
+    ];
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
     const menuCalendar = ['headerCalendar', 'monthChoices', monthChoices];
     const BASIC_DOM = [
