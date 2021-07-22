@@ -279,6 +279,7 @@ function app() {
       const btnBorder = 0.5;
       const blockBgColor = '#000000';
       style();
+      interactives();
       function style() {
         style_colorMenuBtn();
         style_colorMenu();
@@ -357,10 +358,43 @@ function app() {
 
         }
       }
-
-      // COLOR MENU BTN - I N T E R A C T I V E S
-      interactives();
       function interactives() {
+        const handleColorChoiceClick = function (e, colorChoice) {
+          e.stopPropagation();
+          const color = colorChoice.classList[1];
+          shiftProjectBarColor();
+          updateProjectBarsSymbolLines();
+          animateBgColorOfNextProjectBarArrow();
+          function shiftProjectBarColor() {
+            const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
+            colorMenuBtn.style.backgroundColor = color;
+            projectBar.style.backgroundColor = color;
+            colorMenu.style.display = 'none';
+          }
+          function updateProjectBarsSymbolLines() {
+            const projectBars = document.getElementsByClassName('projectBar');
+            const symbolLines = document.getElementsByClassName('projectBarSymbolLine');
+            for (let i = 0; i < projectBars.length; i++) {
+              const bar = projectBars[i];
+              const symbolLine = symbolLines[i];
+              symbolLine.style.transition = 'background-color 2s';
+              symbolLine.style.backgroundColor = bar.style.backgroundColor;
+            }
+          }
+          function animateBgColorOfNextProjectBarArrow() {
+            const prevProjectBarArrow = document.getElementsByClassName('prevProjectBar')[0];
+            const nextProjectBarArrow = document.getElementsByClassName('nextProjectBar')[0];
+            animate(prevProjectBarArrow);
+            animate(nextProjectBarArrow);
+            function animate(el) {
+              el.style.borderTopColor = color;
+              el.style.transition = 'border-top-color 1s';
+              setTimeout(function resetColor() {
+                el.style.borderTopColor = '#ffffff';
+              }, 1000);
+            }
+          }
+        }
         setup_hideColorMenu();
         inter_CLICK_colorMenuBtn(colorMenuBtn);
         inter_CLICK_closeBtn();
@@ -385,41 +419,9 @@ function app() {
         function inter_CLICK_chooseProjectBarColor() {
           const colorChoices = colorMenu.getElementsByClassName('colorChoice');
           for (let i = 0; i < colorChoices.length; i++) {
-            colorChoices[i].onclick = function (e) {
-              e.stopPropagation();
-              const color = colorChoices[i].classList[1];
-              shiftProjectBarColor();
-              updateProjectBarsSymbolLines();
-              animateBgColorOfNextProjectBarArrow();
-              function shiftProjectBarColor() {
-                const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
-                colorMenuBtn.style.backgroundColor = color;
-                projectBar.style.backgroundColor = color;
-                colorMenu.style.display = 'none';
-              }
-              function updateProjectBarsSymbolLines() {
-                const projectBars = document.getElementsByClassName('projectBar');
-                const symbolLines = document.getElementsByClassName('projectBarSymbolLine');
-                for (let i = 0; i < projectBars.length; i++) {
-                  const bar = projectBars[i];
-                  const symbolLine = symbolLines[i];
-                  symbolLine.style.transition = 'background-color 2s';
-                  symbolLine.style.backgroundColor = bar.style.backgroundColor;
-                }
-              }
-              function animateBgColorOfNextProjectBarArrow() {
-                const prevProjectBarArrow = document.getElementsByClassName('prevProjectBar')[0];
-                const nextProjectBarArrow = document.getElementsByClassName('nextProjectBar')[0];
-                animate(prevProjectBarArrow);
-                animate(nextProjectBarArrow);
-                function animate(el) {
-                  el.style.borderTopColor = color;
-                  el.style.transition = 'border-top-color 1s';
-                  setTimeout(function resetColor() {
-                    el.style.borderTopColor = '#ffffff';
-                  }, 1000);
-                }
-              }
+            const colorChoice = colorChoices[i];
+            colorChoice.onclick = function (e) {
+              handleColorChoiceClick(e, colorChoice);
             }
           }
         }
