@@ -887,9 +887,13 @@ function app() {
           function inter_addProjectBar(el) {
             el.onclick = function () {
               const projectBars = document.getElementsByClassName('projectBars')[0];
+              const randomNum = Math.floor(Math.random() * 6);
+              console.log(randomNum)
+              // const colorChoice = 
               assembleDOM(projectBar, projectBars);
               create_projects.create_projectBar();
               create_projects.create_projectBarsSymbolLine();
+              // create_colorMenuBtn.handleColorChoiceClick(e, colorChoice);
             }
           }
         }
