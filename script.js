@@ -1000,7 +1000,7 @@ function app() {
             el.style.backgroundColor = '#000000';
             el.style.display = 'flex';
             el.style.flexDirection = 'column';
-            el.style.justifyContent = 'center';
+            el.style.justifyContent = 'flex-start';
             el.style.alignItems = 'center';
             // el.style.paddingTop = commonHeight / 3 + 'rem';
             // el.style.paddingBottom = commonHeight / 3 + 'rem';
@@ -1052,6 +1052,7 @@ function app() {
           el.style.flex = '1';
           el.style.display = 'flex';
           el.style.flexDirection = 'column';
+          el.style.overflow = 'hidden';
         }
         function style_projectBarsArea(el) {
           el.style.display = 'flex';
