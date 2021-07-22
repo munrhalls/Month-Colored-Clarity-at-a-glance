@@ -176,7 +176,7 @@ function app() {
         modify(elements[i]);
       }
     }
-    function getLastEl_loopF(className, modify) {
+    function getLastEl_runF(className, modify) {
       const elements = document.getElementsByClassName(className);
       const el = document.getElementsByClassName(className)[elements.length - 1];
       modify(el);
@@ -517,11 +517,11 @@ function app() {
         }
       }
       create_projects.create_projectBar = function () {
-        getLastEl_loopF('chooseProjectBarColor', content_chooseProjectBarColor);
-        getLastEl_loopF('projectTitle', content_projectTitle);
-        getLastEl_loopF('timeBlockChoice', content_timeBlockChoice);
-        getLastEl_loopF('addTimeBlock', content_addTimeBlock);
-        getLastEl_loopF('storeTimeBlocks', content_storeTimeBlocks);
+        getLastEl_runF('chooseProjectBarColor', content_chooseProjectBarColor);
+        getLastEl_runF('projectTitle', content_projectTitle);
+        getLastEl_runF('timeBlockChoice', content_timeBlockChoice);
+        getLastEl_runF('addTimeBlock', content_addTimeBlock);
+        getLastEl_runF('storeTimeBlocks', content_storeTimeBlocks);
 
         function content_chooseProjectBarColor(el) {
           const btn = create_colorMenuBtn();
@@ -568,17 +568,17 @@ function app() {
         const marginLeft = commonHeight / 2;
         style();
         function style() {
-          getLastEl_loopF('chooseProjectBarColor', style_chooseProjectBarColor);
-          getLastEl_loopF('projectBar', style_projectBar);
-          getLastEl_loopF('projectTitle', style_projectTitle);
-          getLastEl_loopF('consoleTimeBlocks', style_consoleTimeBlocks);
-          getLastEl_loopF('chooseHourBlock', style_chooseHourBlock);
-          getLastEl_loopF('prevHourBlock', style_prevHourBlock);
-          getLastEl_loopF('nextHourBlock', style_nextHourBlock);
-          getLastEl_loopF('timeBlockChoice', timeBlockChoice);
-          getLastEl_loopF('timeBlockChosen', style_timeBlockChosen);
-          getLastEl_loopF('addTimeBlock', style_addTimeBlock);
-          getLastEl_loopF('storeTimeBlocks', style_storeTimeBlocks);
+          getLastEl_runF('chooseProjectBarColor', style_chooseProjectBarColor);
+          getLastEl_runF('projectBar', style_projectBar);
+          getLastEl_runF('projectTitle', style_projectTitle);
+          getLastEl_runF('consoleTimeBlocks', style_consoleTimeBlocks);
+          getLastEl_runF('chooseHourBlock', style_chooseHourBlock);
+          getLastEl_runF('prevHourBlock', style_prevHourBlock);
+          getLastEl_runF('nextHourBlock', style_nextHourBlock);
+          getLastEl_runF('timeBlockChoice', timeBlockChoice);
+          getLastEl_runF('timeBlockChosen', style_timeBlockChosen);
+          getLastEl_runF('addTimeBlock', style_addTimeBlock);
+          getLastEl_runF('storeTimeBlocks', style_storeTimeBlocks);
 
           function style_chooseProjectBarColor(el) {
             el.style.position = 'relative';
@@ -741,11 +741,11 @@ function app() {
         // PROJECT BAR - I N T E R A C T I V I T Y
         interactives();
         function interactives() {
-          getLastEl_loopF('projectTitle', inter_INPUT_projectTitle);
-          getLastEl_loopF('timeBlockChoice', timeBlockChoice);
-          getLastEl_loopF('prevHourBlock', inter_CLICK_prevHourBlock);
-          getLastEl_loopF('nextHourBlock', inter_CLICK_nextHourBlock);
-          getLastEl_loopF('addTimeBlock', inter_CLICK_addTimeBlock);
+          getLastEl_runF('projectTitle', inter_INPUT_projectTitle);
+          getLastEl_runF('timeBlockChoice', timeBlockChoice);
+          getLastEl_runF('prevHourBlock', inter_CLICK_prevHourBlock);
+          getLastEl_runF('nextHourBlock', inter_CLICK_nextHourBlock);
+          getLastEl_runF('addTimeBlock', inter_CLICK_addTimeBlock);
 
           function inter_INPUT_projectTitle(el) {
             const textarea = el.getElementsByTagName('textarea')[0];
@@ -1042,6 +1042,13 @@ function app() {
             // el.style.top = commonHeight + 'rem'
             el.style.position = 'initial';
             el.style.marginTop = commonHeight / 3 + 'rem';
+          }
+        }
+        interactivity();
+        function interactivity() {
+          getLastEl_runF('projectBars', setup_projectBars);
+          function setup_projectBars(el) {
+
           }
         }
       }
