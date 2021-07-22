@@ -753,8 +753,9 @@ function app() {
             const projectBarList = document.getElementsByClassName('projectBar');
             const addedProjectBar = projectBarList[projectBarList.length - 1];
             const callback = function (e) {
-              console.log(e);
-              console.log('OBSERVER');
+              const projectBar = e[0].target;
+              console.log(e[0].target);
+
             }
             let options = {
               root: document.getElementsByClassName('projectBars')[0],
