@@ -680,7 +680,6 @@ function app() {
               timeBlockChosenEl.style.fontWeight = 'bold';
               timeBlockChosenEl.style.color = '#000000';
             }
-
           }
           function style_addTimeBlock(el) {
             el.style.cursor = 'pointer';
@@ -748,6 +747,23 @@ function app() {
           getLastEl_runF('prevHourBlock', inter_CLICK_prevHourBlock);
           getLastEl_runF('nextHourBlock', inter_CLICK_nextHourBlock);
           getLastEl_runF('addTimeBlock', inter_CLICK_addTimeBlock);
+          getLastEl_runF('projectBar', inter_OBSERVE_scrollIntoView);
+
+          function inter_OBSERVE_scrollIntoView() {
+            const projectBarList = document.getElementsByClassName('projectBar');
+            const addedProjectBar = projectBarList[projectBarList.length - 1];
+            const callback = function (e) {
+              console.log(e);
+              console.log('OBSERVER');
+            }
+            let options = {
+              root: document.getElementsByClassName('projectBars')[0],
+              rootMargin: '0px',
+              threshold: 1.0
+            }
+            let observer = new IntersectionObserver(callback, options);
+            observer.observe(addedProjectBar);
+          }
 
           function inter_INPUT_projectTitle(el) {
             const textarea = el.getElementsByTagName('textarea')[0];
