@@ -89,7 +89,7 @@ function app() {
     const projectBarComponents = ['chooseProjectBarColor', 'projectTitle', 'consoleTimeBlocks', timeBlocks];
     const projectBar = ['projectBar', projectBarComponents];
     const projectBarsScroll = ['projectBarsScrollMenu', ['prevProjectBar', 'projectBarsSymbolLines', 'nextProjectBar']];
-    // BASIC DOM
+    // DOM COMPONENT PARTS
     const topBar = ['title', 'about'];
     const menuProjects = ['headerProjects', 'addProjectBar', ['addProjectBarLabel']];
     const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
@@ -99,14 +99,15 @@ function app() {
     ];
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
     const menuCalendar = ['headerCalendar', 'monthChoices', monthChoices];
+    const calendar = ['calendarMenuArea', ['menuCalendar', menuCalendar], 'calendarDataArea'];
+    // BASIC DOM
     const BASIC_DOM = [
       'root',
       ['topBar', topBar,
         'main',
         ['visuals',
           ['projects', projects,
-            'menuCalendar', menuCalendar,
-            'calendar'
+            'calendar', calendar
           ],
           'menuBlock'],
         'footer'
@@ -590,7 +591,6 @@ function app() {
             el.style.justifyContent = 'center';
             el.style.alignItems = 'center';
           }
-
           function style_projectBar(el) {
             el.style.display = 'flex';
           }
@@ -1055,6 +1055,7 @@ function app() {
         }
         function style_projectBarsArea(el) {
           el.style.display = 'flex';
+          el.style.flex = '1';
         }
         function style_projectBars(el) {
           el.style.flex = '5';
@@ -1066,6 +1067,7 @@ function app() {
 
     function create_calendar() {
       create_menuCalendar();
+      create_calendarDOM();
       function create_menuCalendar() {
         // C A L E N D A R  B A R - C O N T E N T
         getEl_loopF('headerCalendar', content_headerCalendar);
@@ -1196,13 +1198,10 @@ function app() {
           }
         }
       }
-
-      // C A L E N D A R - C O N T E N T
-      create_calendarDOM();
       function create_calendarDOM() {
-        getEl_loopF('calendar', content_months);
-        getEl_loopF('calendar', content_weeks);
-        getEl_loopF('calendar', content_days);
+        getEl_loopF('calendarDataArea', content_months);
+        getEl_loopF('calendarDataArea', content_weeks);
+        getEl_loopF('calendarDataArea', content_days);
         getEl_loopF('day', content_hourMarks);
 
         function content_months(el) {
@@ -1280,10 +1279,10 @@ function app() {
         }
       }
 
-      // C A L E N D A R - S T Y L E 
       const fontSize = 1;
       const monthDisplay = 'flex';
       getEl_loopF('calendar', style_calendar);
+      getEl_loopF('calendarDataArea', style_calendarDataArea);
       getEl_loopF('month', style_month);
       getEl_loopF('week', style_week);
       getEl_loopF('weekHeader', style_weekHeader);
@@ -1294,6 +1293,12 @@ function app() {
       function style_calendar(el) {
         el.style.flex = '1';
         el.style.display = 'flex';
+        el.style.flexDirection = 'column';
+      }
+      function style_calendarDataArea(el) {
+        el.style.flex = '1';
+        el.style.display = 'flex';
+        el.style.height = '100%';
       }
       function style_month(el) {
         el.style.flex = '1';
