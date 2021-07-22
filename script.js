@@ -888,12 +888,17 @@ function app() {
             el.onclick = function () {
               const projectBars = document.getElementsByClassName('projectBars')[0];
               const randomNum = Math.floor(Math.random() * 6);
-              console.log(randomNum)
-              // const colorChoice = 
+              const color = colors[randomNum];
               assembleDOM(projectBar, projectBars);
               create_projects.create_projectBar();
+              colorAddedProjectBar();
               create_projects.create_projectBarsSymbolLine();
-              // create_colorMenuBtn.handleColorChoiceClick(e, colorChoice);
+              function colorAddedProjectBar() {
+                const projectBarList = document.getElementsByClassName('projectBar');
+                const lastProjectBar = projectBarList[projectBarList.length - 1];
+                lastProjectBar.style.backgroundColor = color;
+                lastProjectBar.style.backgroundColor = color;
+              }
             }
           }
         }
