@@ -750,14 +750,22 @@ function app() {
           getLastEl_runF('projectBar', inter_OBSERVE_scrollIntoView);
 
           function inter_OBSERVE_scrollIntoView() {
-            const projectBarList = document.getElementsByClassName('projectBar');
-            const addedProjectBar = projectBarList[projectBarList.length - 1];
+            const barList = document.getElementsByClassName('projectBar');
+            const addedBar = barList[barList.length - 1];
             const callback = function (e) {
-              const projectBar = e[0].target;
-              const projectBarList = document.getElementsByClassName('projectBar');
-              const index = Array.prototype.indexOf.call(projectBarList, projectBar);
-              console.log(index)
-
+              const symbolLines = document.getElementsByClassName('projectBarSymbolLine');
+              const bar = e[0].target;
+              const barsList = document.getElementsByClassName('projectBar');
+              const index = Array.prototype.indexOf.call(barsList, bar);
+              const symbolLine = symbolLines[index];
+              resetAllSymbolLines();
+              function resetAllSymbolLines() {
+                for (let i = 0; i < symbolLines.length; i++) {
+                  const symbolLine = symbolLines[i];
+                  symbolLine.style.height = '1px';
+                }
+              }
+              symbolLine.style.height = '3px';
             }
             let options = {
               root: document.getElementsByClassName('projectBars')[0],
@@ -765,7 +773,7 @@ function app() {
               threshold: 1.0
             }
             let observer = new IntersectionObserver(callback, options);
-            observer.observe(addedProjectBar);
+            observer.observe(addedBar);
           }
 
           function inter_INPUT_projectTitle(el) {
