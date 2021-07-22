@@ -93,7 +93,7 @@ function app() {
     const topBar = ['title', 'about'];
     const menuProjects = ['headerProjects', 'addProjectBar', ['addProjectBarLabel']];
     const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
-    const projects = ['projectBarsScroll', projectBarsScroll, 'projectBars'];
+    const projects = ['projectsMenuArea', ['menuProjects', menuProjects, 'titleBarForProjects', titleBarForProjects], 'projectBarsArea', ['projectBarsScroll', projectBarsScroll, 'projectBars']];
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
     const menuCalendar = ['headerCalendar', 'monthChoices', monthChoices];
     const BASIC_DOM = [
@@ -101,9 +101,7 @@ function app() {
       ['topBar', topBar,
         'main',
         ['visuals',
-          ['menuProjects', menuProjects,
-            'titleBarForProjects', titleBarForProjects,
-            'projects', projects,
+          ['projects', projects,
             'menuCalendar', menuCalendar,
             'calendar'
           ],
@@ -564,9 +562,8 @@ function app() {
           // const storeTimeBlocks = document.getElementsByClassName('storeTimeBlocks')[0];
           // storeTimeBlocks.appendChild(hours);
         }
-        // PROJECT BAR - S T Y L E 
-        const marginLeft = commonHeight / 2;
         style();
+        interactives();
         function style() {
           getLastEl_runF('chooseProjectBarColor', style_chooseProjectBarColor);
           getLastEl_runF('projectBar', style_projectBar);
@@ -738,8 +735,6 @@ function app() {
             // }
           }
         }
-        // PROJECT BAR - I N T E R A C T I V I T Y
-        interactives();
         function interactives() {
           getLastEl_runF('projectTitle', inter_INPUT_projectTitle);
           getLastEl_runF('timeBlockChoice', timeBlockChoice);
@@ -1040,16 +1035,22 @@ function app() {
         function interactivity() {
           getLastEl_runF('projectBars', setup_projectBars);
           function setup_projectBars(el) {
-            el.style.flexWrap = 'wrap';
+            el.style.flexWrap = 'no-wrap';
+            el.style.overflow = 'hidden';
           }
         }
       }
       style();
       function style() {
         getEl_loopF('projects', style_projects);
+        getEl_loopF('projectBarsArea', style_projectBarsArea);
         getEl_loopF('projectBars', style_projectBars);
         function style_projects(el) {
           el.style.flex = '1';
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+        }
+        function style_projectBarsArea(el) {
           el.style.display = 'flex';
         }
         function style_projectBars(el) {
