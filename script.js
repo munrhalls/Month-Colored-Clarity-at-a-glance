@@ -359,7 +359,7 @@ function app() {
         }
       }
       function interactives() {
-        const handleColorChoiceClick = function (e, colorChoice) {
+        create_colorMenuBtn.handleColorChoiceClick = function (e, colorChoice) {
           e.stopPropagation();
           const color = colorChoice.classList[1];
           shiftProjectBarColor();
@@ -421,7 +421,7 @@ function app() {
           for (let i = 0; i < colorChoices.length; i++) {
             const colorChoice = colorChoices[i];
             colorChoice.onclick = function (e) {
-              handleColorChoiceClick(e, colorChoice);
+              create_colorMenuBtn.handleColorChoiceClick(e, colorChoice);
             }
           }
         }
