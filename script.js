@@ -221,7 +221,6 @@ function app() {
       el.style.right = -commonWidth / 2 + 'rem';
     }
     function create_colorMenuBtn() {
-      // C O N T E N T 
       const colorMenuBtn = content_colorMenuBtn();
       const colorMenu = content_colorMenu();
       content_colorChoices();
@@ -272,7 +271,6 @@ function app() {
         menuCloser.appendChild(btnClose);
       }
 
-      // S T Y L E
       const menuZIndex = '3';
       const menuDisplay = 'flex';
       const btnDistance = 0.75;
@@ -361,14 +359,15 @@ function app() {
       function interactives() {
         create_colorMenuBtn.handleColorChoiceClick = function (e, colorChoice) {
           e.stopPropagation();
+
           const color = colorChoice.classList[1];
           shiftProjectBarColor();
           updateProjectBarsSymbolLines();
           animateBgColorOfNextProjectBarArrow();
           function shiftProjectBarColor() {
             const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
-            colorMenuBtn.style.backgroundColor = color;
             projectBar.style.backgroundColor = color;
+            colorMenuBtn.style.backgroundColor = color;
             colorMenu.style.display = 'none';
           }
           function updateProjectBarsSymbolLines() {
@@ -893,6 +892,7 @@ function app() {
               create_projects.create_projectBar();
               colorAddedProjectBar();
               create_projects.create_projectBarsSymbolLine();
+
               function colorAddedProjectBar() {
                 const projectBarList = document.getElementsByClassName('projectBar');
                 const lastProjectBar = projectBarList[projectBarList.length - 1];
