@@ -1044,6 +1044,7 @@ function app() {
         function interactivity() {
           getLastEl_runF('projectBarsArea', setup_projectBarsArea);
           getLastEl_runF('projectBars', setup_projectBars);
+          getLastEl_runF('prevProjectBar', inter_CLICK_prevProjectBar);
           getLastEl_runF('nextProjectBar', inter_CLICK_nextProjectBar);
 
           function setup_projectBarsArea(el) {
@@ -1054,12 +1055,20 @@ function app() {
             el.style.overflow = 'hidden';
             el.style.maxHeight = '40vh';
           }
+          function inter_CLICK_prevProjectBar(el) {
+            el.onclick = function () {
+              const pixels = commonHeight * 16;
+              const area = setup_findElementUp(el, 'projectBarsArea');
+              const bars = area.getElementsByClassName('projectBars')[0];
+              bars.scrollBy(0, -pixels);
+            }
+          }
           function inter_CLICK_nextProjectBar(el) {
             el.onclick = function () {
-              const pixelsHeight = commonHeight * 16;
-              const projectBarsArea = setup_findElementUp(el, 'projectBarsArea');
-              const projectBars = projectBarsArea.getElementsByClassName('projectBars')[0];
-              projectBars.scrollBy(0, pixelsHeight);
+              const pixels = commonHeight * 16;
+              const area = setup_findElementUp(el, 'projectBarsArea');
+              const bars = area.getElementsByClassName('projectBars')[0];
+              bars.scrollBy(0, pixels);
             }
           }
         }
