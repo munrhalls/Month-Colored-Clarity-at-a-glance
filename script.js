@@ -814,14 +814,6 @@ function app() {
               }
             }
           }
-          // issueEvent();
-          // function issueEvent() {
-          //   const event = new Event('newHourBlock');
-          //   container.addEventListener('newHourBlock', function (e) {
-          //     console.log('newHourBlock')
-          //   }, false);
-          //   container.dispatchEvent(event);
-          // }
         }
       }
       function create_menuProjects() {
@@ -998,6 +990,7 @@ function app() {
       }
       function create_projectBarsScroll() {
         style();
+        interactivity();
         function style() {
           getEl_loopF('projectBarsScroll', style_projectBarsScroll);
           getEl_loopF('projectBarsScrollMenu', style_projectBarsScrollMenu);
@@ -1044,11 +1037,10 @@ function app() {
             el.style.marginTop = commonHeight / 3 + 'rem';
           }
         }
-        interactivity();
         function interactivity() {
           getLastEl_runF('projectBars', setup_projectBars);
           function setup_projectBars(el) {
-
+            el.style.flexWrap = 'wrap';
           }
         }
       }
