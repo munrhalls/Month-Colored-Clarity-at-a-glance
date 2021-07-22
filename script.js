@@ -997,50 +997,52 @@ function app() {
         }
       }
       function create_projectBarsScroll() {
-        getEl_loopF('projectBarsScroll', style_projectBarsScroll);
-        getEl_loopF('projectBarsScrollMenu', style_projectBarsScrollMenu);
-        getEl_loopF('prevProjectBar', style_prevProjectBar);
-        getEl_loopF('projectBarsSymbolLines', style_projectBarsSymbolLines);
-        getEl_loopF('nextProjectBar', style_nextProjectBar);
-
-        function style_projectBarsScroll(el) {
-          el.style.width = commonWidth * 1.5 + 'rem';
-          el.style.backgroundColor = '#000000';
-          el.style.display = 'flex';
-          el.style.flexDirection = 'column';
-          el.style.justifyContent = 'center';
-          el.style.alignItems = 'center';
-          // el.style.paddingTop = commonHeight / 3 + 'rem';
-          // el.style.paddingBottom = commonHeight / 3 + 'rem';
-          el.style.position = 'relative';
-        }
-        function style_projectBarsScrollMenu(el) {
-          el.style.position = 'relative';
-          el.style.width = '100%';
-          el.style.paddingLeft = '0.5rem';
-          el.style.paddingRight = '0.5rem';
-        }
-        function style_prevProjectBar(el) {
-          style_prevArr(el);
-          el.style.transform = 'rotate(180deg)';
-          el.style.position = 'initial';
-          el.style.marginBottom = commonHeight / 3 + 'rem';
-        }
-        function style_projectBarsSymbolLines(el) {
-          // el.style.padding = '1rem';
-          el.style.height = commonHeight + 'rem';
-          el.style.display = 'flex';
-          el.style.flexDirection = 'column';
-          el.style.justifyContent = 'space-between';
-        }
-        function style_nextProjectBar(el) {
-          style_nextArr(el);
-          el.style.transform = 'rotate(0deg)';
-          el.style.right = 'auto'
-          el.style.marginLeft = 'auto'
-          // el.style.top = commonHeight + 'rem'
-          el.style.position = 'initial';
-          el.style.marginTop = commonHeight / 3 + 'rem';
+        style();
+        function style() {
+          getEl_loopF('projectBarsScroll', style_projectBarsScroll);
+          getEl_loopF('projectBarsScrollMenu', style_projectBarsScrollMenu);
+          getEl_loopF('prevProjectBar', style_prevProjectBar);
+          getEl_loopF('projectBarsSymbolLines', style_projectBarsSymbolLines);
+          getEl_loopF('nextProjectBar', style_nextProjectBar);
+          function style_projectBarsScroll(el) {
+            el.style.width = commonWidth * 1.5 + 'rem';
+            el.style.backgroundColor = '#000000';
+            el.style.display = 'flex';
+            el.style.flexDirection = 'column';
+            el.style.justifyContent = 'center';
+            el.style.alignItems = 'center';
+            // el.style.paddingTop = commonHeight / 3 + 'rem';
+            // el.style.paddingBottom = commonHeight / 3 + 'rem';
+            el.style.position = 'relative';
+          }
+          function style_projectBarsScrollMenu(el) {
+            el.style.position = 'relative';
+            el.style.width = '100%';
+            el.style.paddingLeft = '0.5rem';
+            el.style.paddingRight = '0.5rem';
+          }
+          function style_prevProjectBar(el) {
+            style_prevArr(el);
+            el.style.transform = 'rotate(180deg)';
+            el.style.position = 'initial';
+            el.style.marginBottom = commonHeight / 3 + 'rem';
+          }
+          function style_projectBarsSymbolLines(el) {
+            // el.style.padding = '1rem';
+            el.style.height = commonHeight + 'rem';
+            el.style.display = 'flex';
+            el.style.flexDirection = 'column';
+            el.style.justifyContent = 'space-between';
+          }
+          function style_nextProjectBar(el) {
+            style_nextArr(el);
+            el.style.transform = 'rotate(0deg)';
+            el.style.right = 'auto'
+            el.style.marginLeft = 'auto'
+            // el.style.top = commonHeight + 'rem'
+            el.style.position = 'initial';
+            el.style.marginTop = commonHeight / 3 + 'rem';
+          }
         }
       }
       style();
