@@ -896,8 +896,9 @@ function app() {
               function colorAddedProjectBar() {
                 const projectBarList = document.getElementsByClassName('projectBar');
                 const lastProjectBar = projectBarList[projectBarList.length - 1];
+                const colorMenuBtn = lastProjectBar.getElementsByClassName('colorMenuBtn')[0];
                 lastProjectBar.style.backgroundColor = color;
-                lastProjectBar.style.backgroundColor = color;
+                colorMenuBtn.style.backgroundColor = color;
               }
             }
           }
