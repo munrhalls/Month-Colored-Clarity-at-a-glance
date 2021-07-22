@@ -357,43 +357,6 @@ function app() {
         }
       }
       function interactives() {
-        create_colorMenuBtn.handleColorChoiceClick = function (e, colorChoice) {
-          e.stopPropagation();
-
-          const color = colorChoice.classList[1];
-          shiftProjectBarColor();
-          updateProjectBarsSymbolLines();
-          animateBgColorOfNextProjectBarArrow();
-          function shiftProjectBarColor() {
-            const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
-            projectBar.style.backgroundColor = color;
-            colorMenuBtn.style.backgroundColor = color;
-            colorMenu.style.display = 'none';
-          }
-          function updateProjectBarsSymbolLines() {
-            const projectBars = document.getElementsByClassName('projectBar');
-            const symbolLines = document.getElementsByClassName('projectBarSymbolLine');
-            for (let i = 0; i < projectBars.length; i++) {
-              const bar = projectBars[i];
-              const symbolLine = symbolLines[i];
-              symbolLine.style.transition = 'background-color 2s';
-              symbolLine.style.backgroundColor = bar.style.backgroundColor;
-            }
-          }
-          function animateBgColorOfNextProjectBarArrow() {
-            const prevProjectBarArrow = document.getElementsByClassName('prevProjectBar')[0];
-            const nextProjectBarArrow = document.getElementsByClassName('nextProjectBar')[0];
-            animate(prevProjectBarArrow);
-            animate(nextProjectBarArrow);
-            function animate(el) {
-              el.style.borderTopColor = color;
-              el.style.transition = 'border-top-color 1s';
-              setTimeout(function resetColor() {
-                el.style.borderTopColor = '#ffffff';
-              }, 1000);
-            }
-          }
-        }
         setup_hideColorMenu();
         inter_CLICK_colorMenuBtn(colorMenuBtn);
         inter_CLICK_closeBtn();
@@ -420,7 +383,41 @@ function app() {
           for (let i = 0; i < colorChoices.length; i++) {
             const colorChoice = colorChoices[i];
             colorChoice.onclick = function (e) {
-              create_colorMenuBtn.handleColorChoiceClick(e, colorChoice);
+              e.stopPropagation();
+
+              const color = colorChoice.classList[1];
+              shiftProjectBarColor();
+              updateProjectBarsSymbolLines();
+              animateBgColorOfNextProjectBarArrow();
+              function shiftProjectBarColor() {
+                const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
+                projectBar.style.backgroundColor = color;
+                colorMenuBtn.style.backgroundColor = color;
+                colorMenu.style.display = 'none';
+              }
+              function updateProjectBarsSymbolLines() {
+                const projectBars = document.getElementsByClassName('projectBar');
+                const symbolLines = document.getElementsByClassName('projectBarSymbolLine');
+                for (let i = 0; i < projectBars.length; i++) {
+                  const bar = projectBars[i];
+                  const symbolLine = symbolLines[i];
+                  symbolLine.style.transition = 'background-color 2s';
+                  symbolLine.style.backgroundColor = bar.style.backgroundColor;
+                }
+              }
+              function animateBgColorOfNextProjectBarArrow() {
+                const prevProjectBarArrow = document.getElementsByClassName('prevProjectBar')[0];
+                const nextProjectBarArrow = document.getElementsByClassName('nextProjectBar')[0];
+                animate(prevProjectBarArrow);
+                animate(nextProjectBarArrow);
+                function animate(el) {
+                  el.style.borderTopColor = color;
+                  el.style.transition = 'border-top-color 1s';
+                  setTimeout(function resetColor() {
+                    el.style.borderTopColor = '#ffffff';
+                  }, 1000);
+                }
+              }
             }
           }
         }
