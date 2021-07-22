@@ -81,6 +81,12 @@ function setDATA_monthsWeeksDays() {
 }
 function app() {
   window.addEventListener('load', function () {
+    // const html = document.getElementsByTagName('html')[0];
+    // const body = document.getElementsByTagName('body')[0];
+    // html.style.height = '100%';
+    // html.style.overflow = 'auto';
+    // body.style.height = '100%';
+
     console.log('This function is executed once the page is fully loaded');
     const app = document.getElementById('app');
     // INTERACTION DOM
@@ -1036,16 +1042,21 @@ function app() {
           }
         }
         function interactivity() {
+          getLastEl_runF('projectBarsArea', setup_projectBarsArea);
           getLastEl_runF('projectBars', setup_projectBars);
           getLastEl_runF('nextProjectBar', inter_CLICK_nextProjectBar);
 
+          function setup_projectBarsArea(el) {
+            el.style.overflow = 'hidden';
+          }
           function setup_projectBars(el) {
             el.style.flexWrap = 'no-wrap';
             el.style.overflow = 'hidden';
+            el.style.maxHeight = '40vh';
           }
           function inter_CLICK_nextProjectBar(el) {
             el.onclick = function () {
-              console.log('e')
+              // getProject
             }
           }
         }
@@ -1059,7 +1070,6 @@ function app() {
           el.style.flex = '1';
           el.style.display = 'flex';
           el.style.flexDirection = 'column';
-          el.style.overflow = 'hidden';
         }
         function style_projectBarsArea(el) {
           el.style.display = 'flex';
