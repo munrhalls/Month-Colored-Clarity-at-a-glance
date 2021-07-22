@@ -1037,9 +1037,16 @@ function app() {
         }
         function interactivity() {
           getLastEl_runF('projectBars', setup_projectBars);
+          getLastEl_runF('nextProjectBar', inter_CLICK_nextProjectBar);
+
           function setup_projectBars(el) {
             el.style.flexWrap = 'no-wrap';
             el.style.overflow = 'hidden';
+          }
+          function inter_CLICK_nextProjectBar(el) {
+            el.onclick = function () {
+              console.log('e')
+            }
           }
         }
       }
