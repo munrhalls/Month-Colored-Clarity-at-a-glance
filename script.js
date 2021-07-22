@@ -827,14 +827,12 @@ function app() {
       function create_menuProjects() {
         getEl_loopF('headerProjects', content_menuProjects);
         getEl_loopF('addProjectBarLabel', content_addProjectBarLabel);
-
         function content_menuProjects(el) {
           el.innerText = 'PROJECTS';
         }
         function content_addProjectBarLabel(el) {
           el.innerText = '+';
         }
-        // MENU PROJECTS - S T Y L E
         style();
         function style() {
           getEl_loopF('menuProjects', style_menuProjects);
@@ -885,7 +883,6 @@ function app() {
             el.style.width = menuTitleMargin + 'rem';
           }
         }
-        // MENU PROJECTS - I N T E R A C T I V I T Y
         interactivity();
         function interactivity() {
           getEl_loopF('addProjectBar', inter_addProjectBar);
@@ -1046,7 +1043,6 @@ function app() {
           el.style.marginTop = commonHeight / 3 + 'rem';
         }
       }
-      // PROJECTS  -  S T Y L E
       style();
       function style() {
         getEl_loopF('projects', style_projects);
