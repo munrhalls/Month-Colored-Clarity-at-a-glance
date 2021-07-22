@@ -754,7 +754,9 @@ function app() {
             const addedProjectBar = projectBarList[projectBarList.length - 1];
             const callback = function (e) {
               const projectBar = e[0].target;
-              console.log(e[0].target);
+              const projectBarList = document.getElementsByClassName('projectBar');
+              const index = Array.prototype.indexOf.call(projectBarList, projectBar);
+              console.log(index)
 
             }
             let options = {
