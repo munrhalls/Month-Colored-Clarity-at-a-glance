@@ -1056,7 +1056,10 @@ function app() {
           }
           function inter_CLICK_nextProjectBar(el) {
             el.onclick = function () {
-              // getProject
+              const pixelsHeight = commonHeight * 16;
+              const projectBarsArea = setup_findElementUp(el, 'projectBarsArea');
+              const projectBars = projectBarsArea.getElementsByClassName('projectBars')[0];
+              projectBars.scrollBy(0, pixelsHeight);
             }
           }
         }
