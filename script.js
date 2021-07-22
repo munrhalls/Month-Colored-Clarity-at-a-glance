@@ -1110,6 +1110,7 @@ function app() {
           function style_menuCalendar(el) {
             el.style.flex = '1';
             el.style.maxHeight = commonHeight / 2 + 'rem';
+            el.style.height = commonHeight / 2 + 'rem';
             el.style.backgroundColor = '#000000';
             el.style.display = 'flex';
           }
