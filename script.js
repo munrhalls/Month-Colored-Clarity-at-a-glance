@@ -747,66 +747,42 @@ function app() {
           getLastEl_runF('prevHourBlock', inter_CLICK_prevHourBlock);
           getLastEl_runF('nextHourBlock', inter_CLICK_nextHourBlock);
           getLastEl_runF('addTimeBlock', inter_CLICK_addTimeBlock);
-          getLastEl_runF('projectBar', inter_OBSERVE_scrollIntoView);
+          getLastEl_runF('projectBar', inter_SCROLL_handleScrollIntoView);
 
-          function inter_OBSERVE_scrollIntoView() {
-            const barList = document.getElementsByClassName('projectBar');
-            const addedBar = barList[barList.length - 1];
-            const numSteps = 20.0;
-            let boxElement;
-            let prevRatio = 0.0;
-            let increasingColor = "rgba(40, 40, 190, ratio)";
-            let decreasingColor = "rgba(190, 40, 40, ratio)";
-            function handleIntersect(entries, observer) {
-              entries.forEach((entry) => {
-                if (entry.intersectionRatio > prevRatio) {
-                  console.log('true');
-                } else {
-                  console.log('false');
-                }
+          function inter_SCROLL_handleScrollIntoView() {
+            // option path 2
+            // 1. append scroll event listener upon the projectbars element
+            // 2. in the listener check if difference is > or <
+            // difference of scrollTop vs previousScrollTop
+            // 3. whether > or <, accordingly access up or below symbol lines; 
+            // - if >, access and unpaint 1 top element
+            // - access and paint 1 below element
+            // likewise for < 
 
-                prevRatio = entry.intersectionRatio;
-              });
+
+            // option path 1
+            // 1. dispatch event on scroll arrows "scroll"
+            // 2. detect in projectbarsarea
+            // 3. make all the projectbars listen for it
+            // 4. add modifier in the event listener
+
+            function isScrolledIntoView(el) {
+              var rect = el.getBoundingClientRect();
+              var elemTop = rect.top;
+              var elemBottom = rect.bottom;
+
+              // Only completely visible elements return true:
+              var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+              // Partially visible elements return true:
+              //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+              return isVisible;
             }
-
-            // const handleIntersect = function (e) {
-            //   const symbolLines = document.getElementsByClassName('projectBarSymbolLine');
-            //   const bar = e[0].target;
-            //   const barsList = document.getElementsByClassName('projectBar');
-            //   const index = Array.prototype.indexOf.call(barsList, bar);
-            //   const symbolLine = symbolLines[index];
-
-            //   // resetAllSymbolLines();
-            //   // function resetAllSymbolLines() {
-            //   //   for (let i = 0; i < symbolLines.length; i++) {
-            //   //     const symbolLine = symbolLines[i];
-            //   //     symbolLine.style.height = '1px';
-            //   //   }
-            //   // }
-            //   symbolLine.style.height = '3px';
-            // }
-            let options = {
-              root: document.getElementsByClassName('projectBars')[0],
-              rootMargin: '0px',
-              threshold: buildThresholdList()
-            }
-
-            function buildThresholdList() {
-              let thresholds = [];
-              let numSteps = 20;
-
-              for (let i = 1.0; i <= numSteps; i++) {
-                let ratio = i / numSteps;
-                thresholds.push(ratio);
-              }
-
-              thresholds.push(0);
-              return thresholds;
-            }
-
-
-            let observer = new IntersectionObserver(handleIntersect, options);
-            observer.observe(addedBar);
+            // check
+            // figure which elements are in the view
+            // access corresponding symbol lines
+            // every check, re-paint all symbol lines
+            // corresponding lines in view, paint larger
+            // corresponding lines out of view, pain smaller
           }
 
           function inter_INPUT_projectTitle(el) {
