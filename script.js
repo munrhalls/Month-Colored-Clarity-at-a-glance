@@ -754,33 +754,40 @@ function app() {
             const barsList = el.getElementsByClassName('projectBar');
             const symbolsList = document.getElementsByClassName('projectBarSymbolLine');
             el.addEventListener('scroll', function () {
-              const visibilityArr = getVisibilityArr();
-              for (let i = 0; i < visibilityArr.length; i++) {
+              const visibilityData = getData();
+              for (let i = 0; i < visibilityData.length; i++) {
                 const line = symbolsList[i];
-                highlightCorrespondingLine(line, visibilityArr[i]);
+                modify(line, visibilityData[i]);
               }
             });
-            function highlightCorrespondingLine(line, visibility) {
-              visibility ? styleInScrollArea(line) : styleOutOfScrollArea(line);
-            }
-            function styleInScrollArea(el) {
-              el.style.height = '5px';
-            }
-            function styleOutOfScrollArea(el) {
-              el.style.height = '1px';
-            }
-            function getVisibilityArr() {
-              return [...barsList].map(bar => isVisible(bar, el) ? true : false);
-            }
-            function isVisible(el, container) {
-              function isNotTooHighUp() {
-                return !(el.getBoundingClientRect().bottom < container.getBoundingClientRect().top);
+            function getData() {
+              function getVisibilityData() {
+                return [...barsList].map(bar => isVisible(bar, el) ? true : false);
               }
-              function isNotTooLowBelow() {
-                return !(el.getBoundingClientRect().top > container.getBoundingClientRect().bottom);
+              function isVisible(el, container) {
+                function isNotTooHighUp() {
+                  return !(el.getBoundingClientRect().bottom < container.getBoundingClientRect().top);
+                }
+                function isNotTooLowBelow() {
+                  return !(el.getBoundingClientRect().top > container.getBoundingClientRect().bottom);
+                }
+                return isNotTooHighUp() && isNotTooLowBelow();
+              };
+              const data = getVisibilityData();
+              return data;
+            }
+            function modify(line, visibility) {
+              function highlightByData(line, visibility) {
+                visibility ? styleInScrollArea(line) : styleOutOfScrollArea(line);
               }
-              return isNotTooHighUp() && isNotTooLowBelow();
-            };
+              function styleInScrollArea(el) {
+                el.style.height = '5px';
+              }
+              function styleOutOfScrollArea(el) {
+                el.style.height = '1px';
+              }
+              highlightByData(line, visibility);
+            }
           }
 
           function inter_INPUT_projectTitle(el) {
