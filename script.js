@@ -575,8 +575,10 @@ function app() {
         style();
         interactives();
         function style() {
-          getLastEl_runF('chooseProjectBarColor', style_chooseProjectBarColor);
+          const height_projectBar = commonHeight / 1.5
+          const width_projectBar = commonWidth;
           getLastEl_runF('projectBar', style_projectBar);
+          getLastEl_runF('chooseProjectBarColor', style_chooseProjectBarColor);
           getLastEl_runF('projectTitle', style_projectTitle);
           getLastEl_runF('consoleTimeBlocks', style_consoleTimeBlocks);
           getLastEl_runF('chooseHourBlock', style_chooseHourBlock);
@@ -590,19 +592,22 @@ function app() {
           function style_chooseProjectBarColor(el) {
             el.style.position = 'relative';
             el.style.backgroundColor = '#000000';
-            el.style.height = commonHeight + 'rem';
+            el.style.height = height_projectBar + 'rem';
             el.style.width = commonWidth + 2.5 + 'rem';
             // el.style.paddingRight = '0.5rem';
             el.style.display = 'flex';
             el.style.justifyContent = 'center';
             el.style.alignItems = 'center';
+            const colorMenuBtn = el.getElementsByClassName('colorMenuBtn')[0];
+            colorMenuBtn.style.height = height_projectBar * 0.7 + 'rem';
+            colorMenuBtn.style.width = width_projectBar * 0.6 + 'rem';
           }
           function style_projectBar(el) {
             el.style.display = 'flex';
-            el.style.height = commonHeight + 'rem';
+            el.style.height = height_projectBar + 'rem';
           }
           function style_projectTitle(el) {
-            el.style.height = commonHeight + 'rem';
+            el.style.height = height_projectBar + 'rem';
             el.style.width = (commonWidth * 4) + 'rem';
             el.style.display = 'flex';
             el.style.wordWrap = 'break-word';
@@ -637,7 +642,7 @@ function app() {
           }
           function style_chooseHourBlock(el) {
             el.style.flex = '1';
-            el.style.maxWidth = commonHeight * 1.75 + 'rem';
+            el.style.maxWidth = height_projectBar * 1.75 + 'rem';
             el.style.display = 'flex';
             el.style.flexDirection = 'row';
             el.style.justifyContent = 'center';
@@ -648,17 +653,17 @@ function app() {
             // el.style.backgroundColor = '#000000';
             el.style.borderTopColor = '#000000';
             el.style.left = '0.8rem';
-            el.style.top = 'calc(50% - ' + commonHeight / 4 + 'rem)'
+            el.style.top = 'calc(50% - ' + height_projectBar / 4 + 'rem)'
           }
           function style_nextHourBlock(el) {
             style_nextArr(el);
             el.style.borderTopColor = '#000000';
             el.style.right = '0.8rem';
-            el.style.top = 'calc(50% - ' + commonHeight / 4 + 'rem)'
+            el.style.top = 'calc(50% - ' + height_projectBar / 4 + 'rem)'
           }
           function timeBlockChoice(el) {
             // el.style.flex = '1';
-            el.style.minWidth = commonHeight * 2.5 + 'rem';
+            el.style.minWidth = height_projectBar * 2.5 + 'rem';
             el.style.border = 'none';
             el.style.display = 'flex';
             el.style.justifyContent = 'center';
