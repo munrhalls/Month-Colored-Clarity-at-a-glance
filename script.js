@@ -756,67 +756,63 @@ function app() {
             detectScroll();
             function detectScroll() {
               el.addEventListener('scroll', function () {
-                handle();
+                handleHighlight();
               });
             }
-            function getData() {
-              function getVisibility() {
-                function getVisibilityData() {
-                  return [...barsList].map(bar => isVisible(bar, el) ? true : false);
-                }
-                function isVisible(el, container) {
-                  function returnTwoThirdsElHeight() {
-                    return (el.getBoundingClientRect().height / 3) * 2;
-                  }
-                  function isNotTooHighUp() {
-                    return !((el.getBoundingClientRect().bottom - returnTwoThirdsElHeight()) < container.getBoundingClientRect().top);
-                  }
-                  function isNotTooLowBelow() {
-                    return !((el.getBoundingClientRect().top + returnTwoThirdsElHeight()) > container.getBoundingClientRect().bottom);
-                  }
-                  return isNotTooHighUp() && isNotTooLowBelow();
-                };
-                return getVisibilityData();
-              }
-              function getWidths() {
-                const visibilityData = getVisibility();
-                function getWidthsData() {
-                  const widthsData = visibilityData.map(index => {
-                    if (isBeforeFirstVisible(index)) {
-                      return getDistanceBeforeFirstVisible(index);
-                    } else if (isAfterLastVisible(index)) {
-                      return getDistanceAfterLastVisible(index);
-                    } else {
-                      return null;
-                    }
-                  });
-                  return widthsData;
-                }
-                function getDistanceBeforeFirstVisible(index) {
-                  return getFirstVisibleIndex() - index;
-                }
-                function getDistanceAfterLastVisible(index) {
-                  return index - getLastVisibleIndex();
-                }
-                function isBeforeFirstVisible(index) {
-                  return index < getFirstVisibleIndex();
-                }
-                function isAfterLastVisible(index) {
-                  return index > getLastVisibleIndex();
-                }
-                function getFirstVisibleIndex() {
-                  return visibilityData.indexOf(true);
-                }
-                function getLastVisibleIndex() {
-                  return visibilityData.lastIndexOf(true);
-                }
-                return getWidthsData();
-              }
-              const widths = getWidths();
-              console.log(widths)
-              const data = getVisibility();
-              return data;
+            function getVisibilityData() {
+              return [...barsList].map(bar => isVisible(bar, el) ? true : false);
             }
+            function isVisible(el, container) {
+              function returnTwoThirdsElHeight() {
+                return (el.getBoundingClientRect().height / 3) * 2;
+              }
+              function isNotTooHighUp() {
+                return !((el.getBoundingClientRect().bottom - returnTwoThirdsElHeight()) < container.getBoundingClientRect().top);
+              }
+              function isNotTooLowBelow() {
+                return !((el.getBoundingClientRect().top + returnTwoThirdsElHeight()) > container.getBoundingClientRect().bottom);
+              }
+              return isNotTooHighUp() && isNotTooLowBelow();
+            };
+            return getVisibilityData();
+
+            function getWidths() {
+              const visibilityData = getVisibility();
+              function getWidthsData() {
+                const widthsData = visibilityData.map(index => {
+                  if (isBeforeFirstVisible(index)) {
+                    return getDistanceBeforeFirstVisible(index);
+                  } else if (isAfterLastVisible(index)) {
+                    return getDistanceAfterLastVisible(index);
+                  } else {
+                    return null;
+                  }
+                });
+                return widthsData;
+              }
+              function getDistanceBeforeFirstVisible(index) {
+                return getFirstVisibleIndex() - index;
+              }
+              function getDistanceAfterLastVisible(index) {
+                return index - getLastVisibleIndex();
+              }
+              function isBeforeFirstVisible(index) {
+                return index < getFirstVisibleIndex();
+              }
+              function isAfterLastVisible(index) {
+                return index > getLastVisibleIndex();
+              }
+              function getFirstVisibleIndex() {
+                return visibilityData.indexOf(true);
+              }
+              function getLastVisibleIndex() {
+                return visibilityData.lastIndexOf(true);
+              }
+              return getWidthsData();
+            }
+            const widths = getWidths();
+            const data = getVisibilityData();
+
             function modify(line, visibility) {
               function highlightByData(line, visibility) {
                 visibility ? styleInScrollArea(line) : styleOutOfScrollArea(line);
@@ -829,8 +825,8 @@ function app() {
               }
               highlightByData(line, visibility);
             }
-            function handle() {
-              const visibilityData = getData();
+            function handleHighlight() {
+              const visibilityData = getVisibilityData();
               for (let i = 0; i < visibilityData.length; i++) {
                 const line = linesList[i];
                 modify(line, visibilityData[i]);
