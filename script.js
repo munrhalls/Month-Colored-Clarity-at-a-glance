@@ -768,10 +768,21 @@ function app() {
               }
             });
             function isVisible(el, container) {
-              console.log(el.getBoundingClientRect().bottom)
-              console.log(container.getBoundingClientRect().top)
+              // console.log(el.getBoundingClientRect().bottom)
+              // console.log(container.getBoundingClientRect().top)
 
-              return false;
+              function isElBottomAboveContainerTop() {
+                return el.getBoundingClientRect().bottom < container.getBoundingClientRect().top;
+              }
+              // function isElTopBelowContainerBottom() {
+              //   return el.getBoundingClientRect().top > container.getBoundingClientRect().bottom;
+              // }
+
+              function isNotTooHighUp() {
+                return !isElBottomAboveContainerTop();
+              }
+
+              return isNotTooHighUp();
             };
           }
 
