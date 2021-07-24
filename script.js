@@ -771,16 +771,13 @@ function app() {
               // console.log(el.getBoundingClientRect().bottom)
               // console.log(container.getBoundingClientRect().top)
 
-              function isElBottomAboveContainerTop() {
-                return el.getBoundingClientRect().bottom < container.getBoundingClientRect().top;
+              function isNotTooHighUp() {
+                return !(el.getBoundingClientRect().bottom < container.getBoundingClientRect().top);
               }
               // function isElTopBelowContainerBottom() {
               //   return el.getBoundingClientRect().top > container.getBoundingClientRect().bottom;
               // }
 
-              function isNotTooHighUp() {
-                return !isElBottomAboveContainerTop();
-              }
 
               return isNotTooHighUp();
             };
