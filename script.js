@@ -838,6 +838,8 @@ function app() {
               function modifyWidth(line, width) {
                 if (width) {
                   line.style.width = 'calc(100% - ' + (width * 10) + '%)';
+                } else {
+                  line.style.width = '100%';
                 }
               }
             }
@@ -1133,6 +1135,7 @@ function app() {
             el.style.display = 'flex';
             el.style.flexDirection = 'column';
             el.style.justifyContent = 'space-between';
+            el.style.alignItems = 'center';
           }
           function style_nextProjectBar(el) {
             style_nextArr(el);
