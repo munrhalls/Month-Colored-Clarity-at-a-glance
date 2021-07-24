@@ -811,25 +811,24 @@ function app() {
               return getWidthsData();
             }
             const widths = getWidths();
-            const data = getVisibilityData();
 
-            function modify(line, visibility) {
-              function highlightByData(line, visibility) {
-                visibility ? styleInScrollArea(line) : styleOutOfScrollArea(line);
-              }
-              function styleInScrollArea(el) {
-                el.style.height = '5px';
-              }
-              function styleOutOfScrollArea(el) {
-                el.style.height = '1px';
-              }
-              highlightByData(line, visibility);
-            }
             function handleHighlight() {
               const visibilityData = getVisibilityData();
               for (let i = 0; i < visibilityData.length; i++) {
                 const line = linesList[i];
-                modify(line, visibilityData[i]);
+                modifyHighlight(line, visibilityData[i]);
+              }
+              function modifyHighlight(line, visibility) {
+                function highlightByData(line, visibility) {
+                  visibility ? styleInScrollArea(line) : styleOutOfScrollArea(line);
+                }
+                function styleInScrollArea(el) {
+                  el.style.height = '5px';
+                }
+                function styleOutOfScrollArea(el) {
+                  el.style.height = '1px';
+                }
+                highlightByData(line, visibility);
               }
             }
           }
