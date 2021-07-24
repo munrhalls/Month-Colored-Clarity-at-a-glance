@@ -747,38 +747,38 @@ function app() {
           getLastEl_runF('prevHourBlock', inter_CLICK_prevHourBlock);
           getLastEl_runF('nextHourBlock', inter_CLICK_nextHourBlock);
           getLastEl_runF('addTimeBlock', inter_CLICK_addTimeBlock);
-          getLastEl_runF('projectBars', inter_SCROLL_highlightCorrespondingSymbolLines);
+          getLastEl_runF('projectBars', inter_SCROLL_highlightLines);
           // getLastEl_runF('prevProjectBar', inter_SCROLL_handleScrollUp);
 
-          function inter_SCROLL_highlightCorrespondingSymbolLines(el) {
+          function inter_SCROLL_highlightLines(el) {
             const barsList = el.getElementsByClassName('projectBar');
             const symbolsList = document.getElementsByClassName('projectBarSymbolLine');
             el.addEventListener('scroll', function () {
-              const visibles = [...barsList].map(bar => isVisible(bar, el) ? true : false);
-              console.log(visibles);
-              for (let i = 0; i < visibles.length; i++) {
-                const symbolLine = symbolsList[i];
-                visibles[i] ? styleInScrollArea(symbolLine) : styleOutOfScrollArea(symbolLine);
-                function styleInScrollArea(el) {
-                  el.style.height = '5px';
-                }
-                function styleOutOfScrollArea(el) {
-                  el.style.height = '1px';
-                }
+              const visibilityArr = getVisibilityArr();
+              for (let i = 0; i < visibilityArr.length; i++) {
+                const line = symbolsList[i];
+                highlightCorrespondingLine(line, visibilityArr[i]);
               }
             });
+            function highlightCorrespondingLine(line, visibility) {
+              visibility ? styleInScrollArea(line) : styleOutOfScrollArea(line);
+            }
+            function styleInScrollArea(el) {
+              el.style.height = '5px';
+            }
+            function styleOutOfScrollArea(el) {
+              el.style.height = '1px';
+            }
+            function getVisibilityArr() {
+              return [...barsList].map(bar => isVisible(bar, el) ? true : false);
+            }
             function isVisible(el, container) {
-              // console.log(el.getBoundingClientRect().bottom)
-              // console.log(container.getBoundingClientRect().top)
-
               function isNotTooHighUp() {
                 return !(el.getBoundingClientRect().bottom < container.getBoundingClientRect().top);
               }
               function isNotTooLowBelow() {
                 return !(el.getBoundingClientRect().top > container.getBoundingClientRect().bottom);
               }
-
-
               return isNotTooHighUp() && isNotTooLowBelow();
             };
           }
