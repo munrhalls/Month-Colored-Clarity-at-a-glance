@@ -779,7 +779,8 @@ function app() {
 
             function getWidthsData() {
               const visibilityData = getVisibilityData();
-              const widthsData = visibilityData.map(index => {
+              const widthsData = visibilityData.map((undefined, index) => {
+
                 if (isBeforeFirstVisible(index)) {
                   return getDistanceBeforeFirstVisible(index);
                 } else if (isAfterLastVisible(index)) {
