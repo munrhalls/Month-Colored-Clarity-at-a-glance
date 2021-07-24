@@ -747,42 +747,28 @@ function app() {
           getLastEl_runF('prevHourBlock', inter_CLICK_prevHourBlock);
           getLastEl_runF('nextHourBlock', inter_CLICK_nextHourBlock);
           getLastEl_runF('addTimeBlock', inter_CLICK_addTimeBlock);
-          getLastEl_runF('projectBar', inter_SCROLL_handleScrollIntoView);
+          getLastEl_runF('nextProjectBar', inter_SCROLL_handleScrollBelow);
+          // getLastEl_runF('prevProjectBar', inter_SCROLL_handleScrollUp);
 
-          function inter_SCROLL_handleScrollIntoView() {
-            // option path 2
-            // 1. append scroll event listener upon the projectbars element
-            // 2. in the listener check if difference is > or <
-            // difference of scrollTop vs previousScrollTop
-            // 3. whether > or <, accordingly access up or below symbol lines; 
-            // - if >, access and unpaint 1 top element
-            // - access and paint 1 below element
-            // likewise for < 
+          function inter_SCROLL_handleScrollBelow(el) {
+            // 1. listen for scroll event on project bars
+            // 2. 0.25 second after scrolling concludes, launch handler
+            // 3. data determiner
+            // - acquires the now saved data
+            // - checks it against current data
+            // - determines which project bars changed visibility status and how
+            // - saves that data
+            // 4. data determiner passes data to handler
+            // - handler modifies the select symbol lines accordingly to the data
 
-
-            // option path 1
-            // 1. dispatch event on scroll arrows "scroll"
-            // 2. detect in projectbarsarea
-            // 3. make all the projectbars listen for it
-            // 4. add modifier in the event listener
-
+            const projectBars = document.getElementsByClassName('projectBars')[0];
             function isScrolledIntoView(el) {
               var rect = el.getBoundingClientRect();
               var elemTop = rect.top;
               var elemBottom = rect.bottom;
-
-              // Only completely visible elements return true:
               var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
-              // Partially visible elements return true:
-              //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
               return isVisible;
             }
-            // check
-            // figure which elements are in the view
-            // access corresponding symbol lines
-            // every check, re-paint all symbol lines
-            // corresponding lines in view, paint larger
-            // corresponding lines out of view, pain smaller
           }
 
           function inter_INPUT_projectTitle(el) {
