@@ -747,28 +747,50 @@ function app() {
           getLastEl_runF('prevHourBlock', inter_CLICK_prevHourBlock);
           getLastEl_runF('nextHourBlock', inter_CLICK_nextHourBlock);
           getLastEl_runF('addTimeBlock', inter_CLICK_addTimeBlock);
-          getLastEl_runF('nextProjectBar', inter_SCROLL_handleScrollBelow);
+          getLastEl_runF('projectBars', inter_SCROLL_highlightCorrespondingSymbolLines);
           // getLastEl_runF('prevProjectBar', inter_SCROLL_handleScrollUp);
 
-          function inter_SCROLL_handleScrollBelow(el) {
+          function inter_SCROLL_highlightCorrespondingSymbolLines(el) {
+            const barsList = el.getElementsByClassName('projectBar');
+            el.addEventListener('scroll', function () {
+              const barsArr = [...barsList];
+              const visibles = barsArr.map(bar => isVisible(bar, el) ? true : false);
+
+
+              console.log(visibles);
+            });
+            function isVisible(ele, container) {
+              const eleTop = ele.offsetTop;
+              const eleBottom = eleTop + ele.clientHeight;
+
+              const containerTop = container.scrollTop;
+              const containerBottom = containerTop + container.clientHeight;
+
+              // The element is fully visible in the container
+              return (eleTop >= containerTop && eleBottom <= containerBottom) ||
+                // Some part of the element is visible in the container
+                (eleTop < containerTop && containerTop < eleBottom) ||
+                (eleTop < containerBottom && containerBottom < eleBottom);
+            };
+            // 1. start element
+            // 2. listener
+            // 3. get the data 
+            // 4. access 
+            // 5. modify to data
+
+
             // 1. listen for scroll event on project bars
             // 2. 0.25 second after scrolling concludes, launch handler
             // 3. data determiner
             // - acquires the now saved data
             // - checks it against current data
+            // ---METHOD?
+            // a) use isVisible function
+            // b) run it on all  
             // - determines which project bars changed visibility status and how
             // - saves that data
             // 4. data determiner passes data to handler
             // - handler modifies the select symbol lines accordingly to the data
-
-            const projectBars = document.getElementsByClassName('projectBars')[0];
-            function isScrolledIntoView(el) {
-              var rect = el.getBoundingClientRect();
-              var elemTop = rect.top;
-              var elemBottom = rect.bottom;
-              var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
-              return isVisible;
-            }
           }
 
           function inter_INPUT_projectTitle(el) {
