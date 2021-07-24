@@ -759,7 +759,7 @@ function app() {
                 const symbolLine = symbolsList[i];
                 visibles[i] ? styleInScrollArea(symbolLine) : styleOutOfScrollArea(symbolLine);
                 function styleInScrollArea(el) {
-                  el.style.height = '3px';
+                  el.style.height = '5px';
                 }
                 function styleOutOfScrollArea(el) {
                   el.style.height = '1px';
@@ -769,35 +769,12 @@ function app() {
             function isVisible(ele, container) {
               const eleTop = ele.offsetTop;
               const eleBottom = eleTop + ele.clientHeight;
-
               const containerTop = container.scrollTop;
               const containerBottom = containerTop + container.clientHeight;
-
-              // The element is fully visible in the container
               return (eleTop >= containerTop && eleBottom <= containerBottom) ||
-                // Some part of the element is visible in the container
                 (eleTop < containerTop && containerTop < eleBottom) ||
                 (eleTop < containerBottom && containerBottom < eleBottom);
             };
-            // 1. start element
-            // 2. listener
-            // 3. get the data 
-            // 4. access 
-            // 5. modify to data
-
-
-            // 1. listen for scroll event on project bars
-            // 2. 0.25 second after scrolling concludes, launch handler
-            // 3. data determiner
-            // - acquires the now saved data
-            // - checks it against current data
-            // ---METHOD?
-            // a) use isVisible function
-            // b) run it on all  
-            // - determines which project bars changed visibility status and how
-            // - saves that data
-            // 4. data determiner passes data to handler
-            // - handler modifies the select symbol lines accordingly to the data
           }
 
           function inter_INPUT_projectTitle(el) {
