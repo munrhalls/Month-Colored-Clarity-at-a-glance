@@ -98,7 +98,7 @@ function app() {
     // DOM COMPONENT PARTS
     const topBar = ['title', 'about'];
     const menuProjects = ['headerProjects', 'addProjectBar', ['addProjectBarLabel']];
-    const titleBarForProjects = ['titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
+    const titleBarForProjects = ['titleScrollProjects', 'titleProjectColor', 'titleProjectName', 'titleChooseTimeBlockSize', 'titleAddTimeBlock', 'titleTimeBlocks'];
     const projects = [
       'projectsMenuArea', ['menuProjects', menuProjects, 'titleBarForProjects', titleBarForProjects],
       'projectBarsArea', ['projectBarsScroll', projectBarsScroll, 'projectBars']
@@ -1002,31 +1002,36 @@ function app() {
         }
       }
       function create_titleBarForProjects() {
+        getEl_loopF('titleScrollProjects', content_titleScrollProjects)
         getEl_loopF('titleProjectColor', content_titleProjectColor)
         getEl_loopF('titleProjectName', content_titleProjectName)
         getEl_loopF('titleChooseTimeBlockSize', content_titleChooseTimeBlockSize)
         getEl_loopF('titleAddTimeBlock', content_titleAddTimeBlock)
         getEl_loopF('titleTimeBlocks', content_titleTimeBlocks)
-
+        function content_titleScrollProjects(el) {
+          el.innerText = 'Scroll project';
+        }
         function content_titleProjectColor(el) {
-          el.innerText = 'choose color';
+          el.innerText = 'Choose color';
         }
         function content_titleProjectName(el) {
-          el.innerText = 'project title';
+          el.innerText = 'Project title';
         }
         function content_titleChooseTimeBlockSize(el) {
-          el.innerText = 'choose time block size';
+          el.innerText = 'Choose time block size';
         }
         function content_titleAddTimeBlock(el) {
-          el.innerText = 'add';
+          el.innerText = 'Add';
         }
         function content_titleTimeBlocks(el) {
-          el.innerText = 'time blocks';
+          el.innerText = 'Time blocks';
         }
 
         style();
         function style() {
+          const fontSize = 1;
           getEl_loopF('titleBarForProjects', style_titleBarForProjects);
+          getEl_loopF('titleScrollProjects', style_titleScrollProjects);
           getEl_loopF('titleProjectColor', style_titleProjectColor)
           getEl_loopF('titleProjectName', style_titleProjectName)
           getEl_loopF('titleChooseTimeBlockSize', style_titleChooseTimeBlockSize)
@@ -1039,14 +1044,24 @@ function app() {
             // el.style.borderRight = '3rem solid transparent';
             // el.style.borderLeft = '3rem solid transparent';
             el.style.display = 'flex';
-            el.style.height = commonHeight / 4 + 'rem';
-            el.style.maxHeight = commonHeight / 4 + 'rem'
+            el.style.height = commonHeight / 2 + 'rem';
+            el.style.maxHeight = commonHeight / 2 + 'rem'
             el.style.backgroundColor = menuBgColor;
             el.style.color = '#ffffff';
-            el.style.paddingTop = '0.5rem';
+            el.style.paddingTop = '0.2rem';
+          }
+          function style_titleScrollProjects(el) {
+            el.style.fontSize = fontSize + 'rem';
+            el.style.display = 'flex';
+            el.style.justifyContent = 'center';
+            el.style.alignItems = 'center';
+            el.style.textAlign = 'center';
+            el.style.maxWidth = commonWidth + 2.8 + 'rem';
+            el.style.width = commonWidth + 2.8 + 'rem ';
+            el.style.borderRight = '1px solid #ffffff';
           }
           function style_titleProjectColor(el) {
-            el.style.fontSize = '1.25rem';
+            el.style.fontSize = fontSize + 'rem';
             el.style.display = 'flex';
             el.style.justifyContent = 'center';
             el.style.alignItems = 'center';
@@ -1056,7 +1071,7 @@ function app() {
             el.style.borderRight = '1px solid #ffffff';
           }
           function style_titleProjectName(el) {
-            el.style.fontSize = '1.25rem';
+            el.style.fontSize = fontSize + 'rem';
             el.style.display = 'flex';
             el.style.justifyContent = 'center';
             el.style.alignItems = 'center';
@@ -1067,7 +1082,7 @@ function app() {
             el.style.borderRight = '1px solid #ffffff';
           }
           function style_titleChooseTimeBlockSize(el) {
-            el.style.fontSize = '1.25rem';
+            el.style.fontSize = fontSize + 'rem';
             el.style.display = 'flex';
             el.style.justifyContent = 'center';
             el.style.alignItems = 'center';
@@ -1078,7 +1093,7 @@ function app() {
             el.style.borderRight = '1px solid #ffffff';
           }
           function style_titleAddTimeBlock(el) {
-            el.style.fontSize = '1.25rem';
+            el.style.fontSize = fontSize + 'rem';
             el.style.display = 'flex';
             el.style.justifyContent = 'center';
             el.style.alignItems = 'center';
@@ -1089,7 +1104,7 @@ function app() {
             el.style.borderRight = '1px solid #ffffff';
           }
           function style_titleTimeBlocks(el) {
-            el.style.fontSize = '1.25rem';
+            el.style.fontSize = fontSize + 'rem';
             el.style.display = 'flex';
             el.style.justifyContent = 'center';
             el.style.alignItems = 'center';
