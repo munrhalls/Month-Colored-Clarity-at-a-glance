@@ -755,6 +755,7 @@ function app() {
             const symbolsList = document.getElementsByClassName('projectBarSymbolLine');
             el.addEventListener('scroll', function () {
               const visibles = [...barsList].map(bar => isVisible(bar, el) ? true : false);
+              console.log(visibles);
               for (let i = 0; i < visibles.length; i++) {
                 const symbolLine = symbolsList[i];
                 visibles[i] ? styleInScrollArea(symbolLine) : styleOutOfScrollArea(symbolLine);
@@ -766,14 +767,11 @@ function app() {
                 }
               }
             });
-            function isVisible(ele, container) {
-              const eleTop = ele.offsetTop;
-              const eleBottom = eleTop + ele.clientHeight;
-              const containerTop = container.scrollTop;
-              const containerBottom = containerTop + container.clientHeight;
-              return (eleTop >= containerTop && eleBottom <= containerBottom) ||
-                (eleTop < containerTop && containerTop < eleBottom) ||
-                (eleTop < containerBottom && containerBottom < eleBottom);
+            function isVisible(el, container) {
+              console.log(el.getBoundingClientRect().bottom)
+              console.log(container.getBoundingClientRect().top)
+
+              return false;
             };
           }
 
