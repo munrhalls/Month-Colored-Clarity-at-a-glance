@@ -776,20 +776,16 @@ function app() {
             };
             return getVisibilityData();
 
-            function getWidths() {
-              const visibilityData = getVisibility();
-              function getWidthsData() {
-                const widthsData = visibilityData.map(index => {
-                  if (isBeforeFirstVisible(index)) {
-                    return getDistanceBeforeFirstVisible(index);
-                  } else if (isAfterLastVisible(index)) {
-                    return getDistanceAfterLastVisible(index);
-                  } else {
-                    return null;
-                  }
-                });
-                return widthsData;
-              }
+            function getWidthsData() {
+              const widthsData = getVisibilityData().map(index => {
+                if (isBeforeFirstVisible(index)) {
+                  return getDistanceBeforeFirstVisible(index);
+                } else if (isAfterLastVisible(index)) {
+                  return getDistanceAfterLastVisible(index);
+                } else {
+                  return null;
+                }
+              });
               function getDistanceBeforeFirstVisible(index) {
                 return getFirstVisibleIndex() - index;
               }
@@ -808,9 +804,8 @@ function app() {
               function getLastVisibleIndex() {
                 return visibilityData.lastIndexOf(true);
               }
-              return getWidthsData();
+              return widthsData;
             }
-            const widths = getWidths();
 
             function handleHighlight() {
               const visibilityData = getVisibilityData();
