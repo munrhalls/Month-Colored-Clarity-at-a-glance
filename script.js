@@ -757,27 +757,29 @@ function app() {
             function detectScroll() {
               el.addEventListener('scroll', function () {
                 handleHighlight();
+                handleWidths();
               });
             }
             function getVisibilityData() {
               return [...barsList].map(bar => isVisible(bar, el) ? true : false);
+
+              function isVisible(el, container) {
+                function returnTwoThirdsElHeight() {
+                  return (el.getBoundingClientRect().height / 3) * 2;
+                }
+                function isNotTooHighUp() {
+                  return !((el.getBoundingClientRect().bottom - returnTwoThirdsElHeight()) < container.getBoundingClientRect().top);
+                }
+                function isNotTooLowBelow() {
+                  return !((el.getBoundingClientRect().top + returnTwoThirdsElHeight()) > container.getBoundingClientRect().bottom);
+                }
+                return isNotTooHighUp() && isNotTooLowBelow();
+              };
             }
-            function isVisible(el, container) {
-              function returnTwoThirdsElHeight() {
-                return (el.getBoundingClientRect().height / 3) * 2;
-              }
-              function isNotTooHighUp() {
-                return !((el.getBoundingClientRect().bottom - returnTwoThirdsElHeight()) < container.getBoundingClientRect().top);
-              }
-              function isNotTooLowBelow() {
-                return !((el.getBoundingClientRect().top + returnTwoThirdsElHeight()) > container.getBoundingClientRect().bottom);
-              }
-              return isNotTooHighUp() && isNotTooLowBelow();
-            };
-            return getVisibilityData();
 
             function getWidthsData() {
-              const widthsData = getVisibilityData().map(index => {
+              const visibilityData = getVisibilityData();
+              const widthsData = visibilityData.map(index => {
                 if (isBeforeFirstVisible(index)) {
                   return getDistanceBeforeFirstVisible(index);
                 } else if (isAfterLastVisible(index)) {
@@ -825,6 +827,10 @@ function app() {
                 }
                 highlightByData(line, visibility);
               }
+            }
+            function handleWidths() {
+              const widthsData = getWidthsData();
+              console.log(widthsData);
             }
           }
 
