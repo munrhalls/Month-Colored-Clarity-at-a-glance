@@ -831,7 +831,15 @@ function app() {
             }
             function handleWidths() {
               const widthsData = getWidthsData();
-              console.log(widthsData);
+              for (let i = 0; i < widthsData.length; i++) {
+                const line = linesList[i];
+                modifyWidth(line, widthsData[i]);
+              }
+              function modifyWidth(line, width) {
+                if (width) {
+                  line.style.width = 'calc(100% - ' + (width * 10) + '%)';
+                }
+              }
             }
           }
 
