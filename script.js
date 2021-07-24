@@ -807,6 +807,7 @@ function app() {
               function getLastVisibleIndex() {
                 return visibilityData.lastIndexOf(true);
               }
+              console.log(widthsData)
               return widthsData;
             }
 
@@ -837,7 +838,9 @@ function app() {
               }
               function modifyWidth(line, width) {
                 if (width) {
-                  line.style.width = 'calc(100% - ' + (width * 10) + '%)';
+                  const num = Number((1 / width / 1.2));
+                  console.log(num)
+                  line.style.width = num * 100 + '%';
                 } else {
                   line.style.width = '100%';
                 }
