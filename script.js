@@ -625,6 +625,7 @@ function app() {
               textarea.style.textAlign = 'center';
               textarea.style.verticalAlign = 'middle';
               textarea.style.fontSize = '1.25rem';
+              textarea.style.fontWeight = 'normal';
             }
           }
           function style_consoleTimeBlocks(el) {
@@ -694,11 +695,13 @@ function app() {
             el.style.justifyContent = 'center';
             el.style.alignItems = 'center';
             el.style.position = 'relative';
+            el.style.backgroundColor = '#000000';
             style_plusSymbol();
             function style_plusSymbol() {
               const plus = el.getElementsByClassName('plus')[0];
-              plus.style.border = '0.75rem solid #000000';
-              plus.style.borderRadius = '25%';
+              plus.style.backgroundColor = '#000000';
+              plus.style.border = '0.1rem solid #111111';
+              plus.style.borderRadius = '100%';
               plus.style.position = 'absolute';
               plus.style.top = 0;
               plus.style.bottom = 0;
@@ -709,12 +712,16 @@ function app() {
               plus.style.justifyContent = 'center';
               style_plusText();
               function style_plusText() {
+                const bar = setup_findElementUp(el, 'projectBar');
                 const plusText = plus.children[0];
+                setTimeout(() => {
+                  plusText.style.color = bar.style.backgroundColor;
+                }, 100);
                 plusText.style.fontSize = commonHeight + 'rem';
                 plusText.style.borderRadius = borderRadius;
                 plusText.style.position = 'absolute';
                 plusText.style.position = 'absolute';
-                plusText.style.top = 0 - (commonHeight) / 5.25 + 'rem';
+                plusText.style.top = 0 - (commonHeight) / 10 + 'rem';
                 plusText.style.bottom = 0;
                 plusText.style.left = 0;
                 plusText.style.right = 0;
