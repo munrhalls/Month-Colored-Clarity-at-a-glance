@@ -752,14 +752,13 @@ function app() {
 
           function inter_SCROLL_highlightLines(el) {
             const barsList = el.getElementsByClassName('projectBar');
-            const symbolsList = document.getElementsByClassName('projectBarSymbolLine');
-            el.addEventListener('scroll', function () {
-              const visibilityData = getData();
-              for (let i = 0; i < visibilityData.length; i++) {
-                const line = symbolsList[i];
-                modify(line, visibilityData[i]);
-              }
-            });
+            const linesList = document.getElementsByClassName('projectBarSymbolLine');
+            detectScroll();
+            function detectScroll() {
+              el.addEventListener('scroll', function () {
+                handle();
+              });
+            }
             function getData() {
               function getVisibilityData() {
                 return [...barsList].map(bar => isVisible(bar, el) ? true : false);
@@ -787,6 +786,13 @@ function app() {
                 el.style.height = '1px';
               }
               highlightByData(line, visibility);
+            }
+            function handle() {
+              const visibilityData = getData();
+              for (let i = 0; i < visibilityData.length; i++) {
+                const line = linesList[i];
+                modify(line, visibilityData[i]);
+              }
             }
           }
 
