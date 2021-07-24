@@ -752,12 +752,19 @@ function app() {
 
           function inter_SCROLL_highlightCorrespondingSymbolLines(el) {
             const barsList = el.getElementsByClassName('projectBar');
+            const symbolsList = document.getElementsByClassName('projectBarSymbolLine');
             el.addEventListener('scroll', function () {
-              const barsArr = [...barsList];
-              const visibles = barsArr.map(bar => isVisible(bar, el) ? true : false);
-
-
-              console.log(visibles);
+              const visibles = [...barsList].map(bar => isVisible(bar, el) ? true : false);
+              for (let i = 0; i < visibles.length; i++) {
+                const symbolLine = symbolsList[i];
+                visibles[i] ? styleInScrollArea(symbolLine) : styleOutOfScrollArea(symbolLine);
+                function styleInScrollArea(el) {
+                  el.style.height = '3px';
+                }
+                function styleOutOfScrollArea(el) {
+                  el.style.height = '1px';
+                }
+              }
             });
             function isVisible(ele, container) {
               const eleTop = ele.offsetTop;
