@@ -517,9 +517,11 @@ function app() {
         }
         function style() {
           line.className = 'projectBarSymbolLine';
-          line.style.height = '2px';
+          line.style.height = '10px';
           line.style.width = '100%';
+          line.style.borderRadius = '100%';
           line.style.backgroundColor = color;
+          line.style.marginLeft = '1px';
         }
       }
       create_projects.create_projectBar = function () {
@@ -748,7 +750,6 @@ function app() {
           getLastEl_runF('nextHourBlock', inter_CLICK_nextHourBlock);
           getLastEl_runF('addTimeBlock', inter_CLICK_addTimeBlock);
           getLastEl_runF('projectBars', inter_SCROLL_highlightLines);
-          // getLastEl_runF('prevProjectBar', inter_SCROLL_handleScrollUp);
 
           function inter_SCROLL_highlightLines(el) {
             const barsList = el.getElementsByClassName('projectBar');
@@ -822,10 +823,10 @@ function app() {
                   visibility ? styleInScrollArea(line) : styleOutOfScrollArea(line);
                 }
                 function styleInScrollArea(el) {
-                  el.style.height = '5px';
+                  el.style.height = '10px';
                 }
                 function styleOutOfScrollArea(el) {
-                  el.style.height = '1px';
+                  el.style.height = '5px';
                 }
                 highlightByData(line, visibility);
               }
