@@ -599,6 +599,7 @@ function app() {
           }
           function style_projectBar(el) {
             el.style.display = 'flex';
+            el.style.height = commonHeight + 'rem';
           }
           function style_projectTitle(el) {
             el.style.height = commonHeight + 'rem';
@@ -623,7 +624,7 @@ function app() {
               textarea.style.border = '0px solid transparent';
               textarea.style.textAlign = 'center';
               textarea.style.verticalAlign = 'middle';
-              textarea.style.fontSize = '1.75rem';
+              textarea.style.fontSize = '1.25rem';
             }
           }
           function style_consoleTimeBlocks(el) {
@@ -1009,7 +1010,7 @@ function app() {
         getEl_loopF('titleAddTimeBlock', content_titleAddTimeBlock)
         getEl_loopF('titleTimeBlocks', content_titleTimeBlocks)
         function content_titleScrollProjects(el) {
-          el.innerText = 'Scroll project';
+          el.innerText = 'Scroll projects';
         }
         function content_titleProjectColor(el) {
           el.innerText = 'Choose color';
