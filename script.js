@@ -764,11 +764,14 @@ function app() {
                 return [...barsList].map(bar => isVisible(bar, el) ? true : false);
               }
               function isVisible(el, container) {
+                function returnTwoThirdsElHeight() {
+                  return (el.getBoundingClientRect().height / 3) * 2;
+                }
                 function isNotTooHighUp() {
-                  return !(el.getBoundingClientRect().bottom < container.getBoundingClientRect().top);
+                  return !((el.getBoundingClientRect().bottom - returnTwoThirdsElHeight()) < container.getBoundingClientRect().top);
                 }
                 function isNotTooLowBelow() {
-                  return !(el.getBoundingClientRect().top > container.getBoundingClientRect().bottom);
+                  return !((el.getBoundingClientRect().top + returnTwoThirdsElHeight()) > container.getBoundingClientRect().bottom);
                 }
                 return isNotTooHighUp() && isNotTooLowBelow();
               };
