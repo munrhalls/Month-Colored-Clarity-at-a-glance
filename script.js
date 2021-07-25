@@ -653,13 +653,19 @@ function app() {
             // el.style.backgroundColor = '#000000';
             el.style.borderTopColor = '#000000';
             el.style.left = '0.8rem';
-            el.style.top = 'calc(50% - ' + height_projectBar / 4 + 'rem)'
+            el.style.top = 'calc(50% - ' + height_projectBar / 8 + 'rem)';
+            el.style.borderTop = height_projectBar / 4 + 'rem solid #000000';
+            el.style.borderLeft = height_projectBar / 12 + 'rem solid transparent';
+            el.style.borderRight = height_projectBar / 12 + 'rem solid transparent';
           }
           function style_nextHourBlock(el) {
             style_nextArr(el);
             el.style.borderTopColor = '#000000';
             el.style.right = '0.8rem';
-            el.style.top = 'calc(50% - ' + height_projectBar / 4 + 'rem)'
+            el.style.top = 'calc(50% - ' + height_projectBar / 8 + 'rem)'
+            el.style.borderTop = height_projectBar / 4 + 'rem solid #000000';
+            el.style.borderLeft = height_projectBar / 12 + 'rem solid transparent';
+            el.style.borderRight = height_projectBar / 12 + 'rem solid transparent';
           }
           function timeBlockChoice(el) {
             // el.style.flex = '1';
