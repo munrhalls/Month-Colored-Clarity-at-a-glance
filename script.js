@@ -699,8 +699,8 @@ function app() {
           function style_addTimeBlock(el) {
             el.style.cursor = 'pointer';
             el.style.flex = '1';
-            el.style.maxWidth = commonHeight + 'rem';
-            el.style.minWidth = commonHeight + 'rem';
+            el.style.maxWidth = height_projectBar + 'rem';
+            el.style.minWidth = height_projectBar + 'rem';
             el.style.textAlign = 'center';
             el.style.display = 'flex';
             el.style.justifyContent = 'center';
@@ -711,13 +711,14 @@ function app() {
             function style_plusSymbol() {
               const plus = el.getElementsByClassName('plus')[0];
               plus.style.backgroundColor = '#000000';
-              plus.style.border = '0.1rem solid #111111';
+              plus.style.border = '0.2rem solid #ffffff';
               plus.style.borderRadius = '100%';
               plus.style.position = 'absolute';
-              plus.style.top = 0;
-              plus.style.bottom = 0;
-              plus.style.left = 0;
-              plus.style.right = 0;
+              // plus.style.top = 0;
+              // plus.style.bottom = 0;
+              // plus.style.left = 0;
+              // plus.style.right = 0;
+              plus.style.inset = '0.8rem';
               plus.style.display = 'flex';
               plus.style.textAlign = 'center';
               plus.style.justifyContent = 'center';
@@ -728,14 +729,16 @@ function app() {
                 setTimeout(() => {
                   plusText.style.color = bar.style.backgroundColor;
                 }, 100);
-                plusText.style.fontSize = commonHeight + 'rem';
+                plusText.style.fontSize = height_projectBar / 1.25 + 'rem';
+                plusText.style.fontWeight = 'bold';
                 plusText.style.borderRadius = borderRadius;
                 plusText.style.position = 'absolute';
                 plusText.style.position = 'absolute';
-                plusText.style.top = 0 - (commonHeight) / 10 + 'rem';
-                plusText.style.bottom = 0;
-                plusText.style.left = 0;
-                plusText.style.right = 0;
+                // plusText.style.top = 0 - (height_projectBar) / 10 + 'rem';
+                // plusText.style.bottom = 0;
+                // plusText.style.left = 0;
+                // plusText.style.right = 0;
+                plusText.style.inset = '-0.95rem';
               }
             }
           }
