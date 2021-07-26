@@ -1663,12 +1663,10 @@ function app() {
           el.setAttribute('draggable', true);
           el.addEventListener('dragstart', function (e) {
             const projectBar = setup_findElementUp(e.target, 'projectBar');
-            const barNum = getProjectBarNum();
-            const blockClass = getTimeBlockClass();
             let className = el.className;
             setup_className();
             function setup_className() {
-              className = 'projectBar-' + barNum + ' ' + 'numOfHourBlockFromSameSizeBlocks-' + blockClass + ' ' + e.target.className;
+              className = 'projectBar-' + getProjectBarNum() + ' ' + 'numOfHourBlockFromSameSizeBlocks-' + getTimeBlockClass() + ' ' + e.target.className;
               el.className = className;
             }
             function getProjectBarNum() {
