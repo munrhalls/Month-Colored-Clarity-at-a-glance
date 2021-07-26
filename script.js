@@ -873,7 +873,19 @@ function app() {
             detectScroll();
             function detectScroll() {
               el.addEventListener('scroll', function () {
-                create_projects.handleSymbolLinesScroll()
+                debounceF();
+                function debounceF() {
+                  let open = true;
+                  if (open) {
+                    create_projects.handleSymbolLinesScroll();
+                    open = false;
+                    setTimeout(function () {
+                      open = true;
+                    }, 250)
+                  } else {
+                    return;
+                  }
+                }
               });
             }
 
