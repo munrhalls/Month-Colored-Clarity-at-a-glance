@@ -3,6 +3,7 @@ const localStorage = window.localStorage;
 var monthShown = 'July';
 
 // // DATA VALUES
+const level2ZIndex = '1000';
 const menuTitleSize = 1.5;
 const menuTitleMargin = 3;
 const _letterSpacing = 0.25;
@@ -271,7 +272,7 @@ function app() {
         menuCloser.appendChild(btnClose);
       }
 
-      const menuZIndex = '3';
+      const menuZIndex = String(level2ZIndex + 1);
       const menuDisplay = 'flex';
       const btnDistance = 0.75;
       const btnBorder = 0.5;
@@ -299,7 +300,6 @@ function app() {
           colorMenu.style.width = (commonWidth * colors.length) + 'rem';
           colorMenu.style.top = '0';
           colorMenu.style.display = menuDisplay;
-
           colorMenu.style.position = 'absolute'; colorMenu.style.zIndex = menuZIndex; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
         }
         function style_colorChoices() {
