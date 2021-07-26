@@ -597,7 +597,6 @@ function app() {
           function getLastVisibleIndex() {
             return visibilityData.lastIndexOf(true);
           }
-          console.log(widthsData)
           return widthsData;
         }
         function handleWidths() {
@@ -609,7 +608,6 @@ function app() {
           function modifyWidth(line, width) {
             if (width) {
               const num = Number((1 / width / 1.2));
-              console.log(num)
               line.style.width = num * 100 + '%';
             } else {
               line.style.width = '100%';
@@ -870,25 +868,21 @@ function app() {
           getLastEl_runF('projectBars', inter_SCROLL_highlightLines);
 
           function inter_SCROLL_highlightLines(el) {
-            detectScroll();
-            function detectScroll() {
-              el.addEventListener('scroll', function () {
-                debounceF();
-                function debounceF() {
-                  let open = true;
-                  if (open) {
-                    create_projects.handleSymbolLinesScroll();
-                    open = false;
-                    setTimeout(function () {
-                      open = true;
-                    }, 250)
-                  } else {
-                    return;
-                  }
+            el.addEventListener('scroll', function () {
+              debounceF();
+              function debounceF() {
+                let open = true;
+                if (open) {
+                  create_projects.handleSymbolLinesScroll();
+                  open = false;
+                  setTimeout(function () {
+                    open = true;
+                  }, 250)
+                } else {
+                  return;
                 }
-              });
-            }
-
+              }
+            });
           }
 
           function inter_INPUT_projectTitle(el) {
@@ -1005,6 +999,7 @@ function app() {
             el.style.position = 'relative';
             el.style.height = '100%';
             el.style.width = menuTitleMargin * 2 + 'rem';
+            el.style.userSelect = 'none';
           }
           function style_addProjectBarLabel(el) {
             el.style.position = 'absolute';
@@ -1017,6 +1012,7 @@ function app() {
             el.style.marginLeft = menuTitleMargin + 'rem';
             el.style.fontSize = menuTitleSize * 3 + 'rem';
             el.style.width = menuTitleMargin + 'rem';
+            el.style.userSelect = 'none';
           }
         }
         interactivity();
