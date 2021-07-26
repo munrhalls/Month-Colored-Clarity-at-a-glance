@@ -934,7 +934,7 @@ function app() {
           }
           function inter_CLICK_addTimeBlock(el) {
             el.onclick = function () {
-              const container = setup_findElementUp(el, 'consoleTimeBlocks');
+              const container = setup_findElementUp(el, 'projectBar');
               const choice = container.getElementsByClassName('timeBlockChoice')[0];
               const number = choice.classList[1];
               getChosenBlock();
@@ -956,11 +956,18 @@ function app() {
               }
               function style() {
                 const newHourBlock = cloneAndSetup();
+                const storeHourBlocks = container.getElementsByClassName('storeTimeBlocks')[0];
+                const blocksNum = storeHourBlocks.getElementsByClassName('hourBlock').length;
+                const bgColor = container.style.backgroundColor;
+
                 newHourBlock.style.position = 'absolute';
+                newHourBlock.style.left = blocksNum * 1.5 + 'rem';
+                newHourBlock.style.zIndex = blocksNum;
+                newHourBlock.style.backgroundColor = bgColor;
                 return newHourBlock;
               }
               function append() {
-                const newHourBlock = cloneAndSetup();
+                const newHourBlock = style();
                 const log = container.getElementsByClassName('storeTimeBlocks')[0];
                 log.appendChild(newHourBlock);
               }
