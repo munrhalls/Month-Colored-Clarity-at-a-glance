@@ -391,13 +391,18 @@ function app() {
               animateBgColorOfNextProjectBarArrow();
               function shiftProjectBarColor() {
                 const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
+                const plus = projectBar.getElementsByClassName('plus')[0];
+                const plusText = projectBar.getElementsByClassName('plusText')[0];
                 projectBar.style.backgroundColor = color;
                 colorMenuBtn.style.backgroundColor = color;
+                plus.style.borderColor = color;
+                plusText.style.color = color;
                 colorMenu.style.display = 'none';
               }
               function updateProjectBarsSymbolLines() {
                 const projectBars = document.getElementsByClassName('projectBar');
                 const symbolLines = document.getElementsByClassName('projectBarSymbolLine');
+
                 for (let i = 0; i < projectBars.length; i++) {
                   const bar = projectBars[i];
                   const symbolLine = symbolLines[i];
@@ -880,7 +885,7 @@ function app() {
                   open = false;
                   setTimeout(function () {
                     open = true;
-                  }, 250)
+                  }, 250);
                 } else {
                   return;
                 }
