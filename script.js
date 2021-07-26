@@ -1660,28 +1660,27 @@ function app() {
       dragAndDrop.setDraggable = function (el) {
         el.setAttribute('draggable', true);
         el.addEventListener('dragstart', function (e) {
-          const projectBar = setup_findElementUp(e.target, 'projectBar');
-          let className = el.className;
-          setClassName();
-          function setClassName() {
+          setUniqueClass();
+          function setUniqueClass() {
+            const projectBar = setup_findElementUp(e.target, 'projectBar');
+            let className = el.className;
             className = 'projectBar-' + getProjectBarNum() + ' ' + 'numOfHourBlockFromSameSizeBlocks-' + getTimeBlockClass() + ' '
               + e.target.className;
             el.className = className;
-          }
-          function getProjectBarNum() {
-            return [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
-          }
-          function getTimeBlockClass() {
-            const hourBlocksOfSameSize = projectBar.getElementsByClassName(e.target.className);
-            return [...hourBlocksOfSameSize].indexOf(e.target);
+
+            function getProjectBarNum() {
+              return [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
+            }
+            function getTimeBlockClass() {
+              const hourBlocksOfSameSize = projectBar.getElementsByClassName(e.target.className);
+              return [...hourBlocksOfSameSize].indexOf(e.target);
+            }
           }
           e.dataTransfer.dropEffect = "copy";
-          e.dataTransfer.setData("text/html", className);
+          e.dataTransfer.setData("text/html", el.className);
         });
       }
-      dragAndDrop.makeDraggableFromCalendar = function (el) {
-        console.log(el)
-      }
+
       dragAndDrop.turnToDropzone = function (el) {
         el.setAttribute('dragenter', 'event.preventDefault();');
         el.setAttribute('ondragover', 'event.preventDefault();');
@@ -1694,6 +1693,7 @@ function app() {
       function handleDrop(ev) {
         ev.preventDefault();
         const data = ev.dataTransfer.getData("text/html");
+        console.log(data)
         const block = document.getElementsByClassName(data)[0];
         const isDragFromCalendar = data.split(' ').indexOf('is-in-calendar') > -1;
 
@@ -1732,7 +1732,11 @@ function app() {
               ev.target.appendChild(clone);
             }
             function turnCloneDraggable() {
-              dragAndDrop.makeDraggableFromCalendar(clone);
+              clone.setAttribute('draggable', true);
+              clone.addEventListener('dragstart', function (e) {
+                e.dataTransfer.dropEffect = "copy";
+                e.dataTransfer.setData("text/html", clone.className);
+              });
             }
             function updateBlockUndraggable() {
               block.setAttribute('draggable', false);
