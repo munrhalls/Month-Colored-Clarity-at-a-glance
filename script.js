@@ -697,6 +697,7 @@ function app() {
             }
           }
           function style_addTimeBlock(el) {
+            el.style.userSelect = 'none';
             el.style.cursor = 'pointer';
             el.style.flex = '1';
             el.style.maxWidth = height_projectBar + 'rem';
@@ -710,6 +711,7 @@ function app() {
             style_plusSymbol();
             function style_plusSymbol() {
               const plus = el.getElementsByClassName('plus')[0];
+              plus.style.userSelect = 'none';
               plus.style.backgroundColor = '#000000';
               plus.style.border = '0.2rem solid #ffffff';
               plus.style.borderRadius = '100%';
@@ -729,6 +731,7 @@ function app() {
                 setTimeout(() => {
                   plusText.style.color = bar.style.backgroundColor;
                 }, 100);
+                plusText.style.userSelect = 'none';
                 plusText.style.fontSize = height_projectBar / 1.25 + 'rem';
                 plusText.style.fontWeight = 'bold';
                 plusText.style.borderRadius = borderRadius;
