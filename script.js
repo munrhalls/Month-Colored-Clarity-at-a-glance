@@ -1667,30 +1667,40 @@ function app() {
         const isDragFromCalendar = data.split(' ').includes('drag-in-calendar');
 
         if (isDragFromCalendar) {
-          ev.dataTransfer.dropEffect = "copy"
+          ev.dataTransfer.dropEffect = "copy";
+
         }
         if (!isDragFromCalendar) {
-          cloneDragged();
-          appendClone();
-          updateToUndraggable();
-          function updateToUndraggable() {
-            block.setAttribute('draggable', false);
-            block.ondrop = '';
-          }
-          function cloneDragged() {
-            const clone = block.cloneNode(true);
-            return clone;
-          }
-          function appendClone() {
-            ev.dataTransfer.dropEffect = "copy"
-            const clone = cloneDragged();
-            updateCloneClassName();
-            function updateCloneClassName() {
-              let cloneClassName = clone.className;
-              cloneClassName += ' ' + 'is-in-calendar';
-              clone.className = cloneClassName;
+          handleDropToCalendar();
+          function handleDropToCalendar() {
+            cloneDragged();
+            styleClone();
+            appendClone();
+            updateToUndraggable();
+            function updateToUndraggable() {
+              block.setAttribute('draggable', false);
+              block.ondrop = '';
             }
-            ev.target.appendChild(clone);
+            function cloneDragged() {
+              const clone = block.cloneNode(true);
+              return clone;
+            }
+            function styleClone() {
+              const clone = cloneDragged();
+              clone.style.left = '0';
+              return clone;
+            }
+            function appendClone() {
+              ev.dataTransfer.dropEffect = "copy"
+              const clone = styleClone();
+              updateCloneClassName();
+              function updateCloneClassName() {
+                let cloneClassName = clone.className;
+                cloneClassName += ' ' + 'is-in-calendar';
+                clone.className = cloneClassName;
+              }
+              ev.target.appendChild(clone);
+            }
           }
         }
       }
