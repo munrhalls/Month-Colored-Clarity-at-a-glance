@@ -1743,7 +1743,6 @@ function app() {
             function updateBlockUndraggable() {
               block.setAttribute('draggable', false);
               block.ondragstart = () => { return false };
-              block.ondrop = '';
             }
           }
         }
