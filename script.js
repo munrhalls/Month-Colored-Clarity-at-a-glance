@@ -393,10 +393,16 @@ function app() {
                 const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
                 const plus = projectBar.getElementsByClassName('plus')[0];
                 const plusText = projectBar.getElementsByClassName('plusText')[0];
+                const storeTimeBlocks = projectBar.getElementsByClassName('storeTimeBlocks')[0];
+                const hourBlocks = storeTimeBlocks.getElementsByClassName('hourBlock');
                 projectBar.style.backgroundColor = color;
                 colorMenuBtn.style.backgroundColor = color;
                 plus.style.borderColor = color;
                 plusText.style.color = color;
+                storeTimeBlocks.style.borderBottomColor = color;
+                [...hourBlocks].forEach(function (block) {
+                  block.style.backgroundColor = color;
+                })
                 colorMenu.style.display = 'none';
               }
               function updateProjectBarsSymbolLines() {
@@ -844,11 +850,17 @@ function app() {
             }
           }
           function style_storeTimeBlocks(el) {
+            const bar = setup_findElementUp(el, 'projectBar');
+            setTimeout(() => {
+              const color = bar.style.backgroundColor;
+              el.style.borderBottomColor = color;
+            }, (250));
             el.style.display = 'flex';
             el.style.flex = '5';
             el.style.textAlign = 'center';
             el.style.alignItems = 'center';
             el.style.position = 'relative';
+            el.style.backgroundColor = '#000000';
             // const hours = el.children[0];
             // hours.style.position = 'absolute';
             // hours.style.bottom = '0';
