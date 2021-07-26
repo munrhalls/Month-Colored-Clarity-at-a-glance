@@ -788,6 +788,7 @@ function app() {
             }
           }
           function style_addTimeBlock(el) {
+            const bar = setup_findElementUp(el, 'projectBar');
             el.style.userSelect = 'none';
             el.style.cursor = 'pointer';
             el.style.flex = '1';
@@ -802,9 +803,12 @@ function app() {
             style_plusSymbol();
             function style_plusSymbol() {
               const plus = el.getElementsByClassName('plus')[0];
+              setTimeout(() => {
+                const barBgColor = bar.style.backgroundColor;
+                plus.style.border = '0.2rem solid ' + barBgColor;
+              }, 100);
               plus.style.userSelect = 'none';
               plus.style.backgroundColor = '#000000';
-              plus.style.border = '0.2rem solid #ffffff';
               plus.style.borderRadius = '100%';
               plus.style.position = 'absolute';
               // plus.style.top = 0;
@@ -817,7 +821,6 @@ function app() {
               plus.style.justifyContent = 'center';
               style_plusText();
               function style_plusText() {
-                const bar = setup_findElementUp(el, 'projectBar');
                 const plusText = plus.children[0];
                 setTimeout(() => {
                   plusText.style.color = bar.style.backgroundColor;
@@ -861,7 +864,7 @@ function app() {
         }
         function interactives() {
           getLastEl_runF('projectTitle', inter_INPUT_projectTitle);
-          getLastEl_runF('timeBlockChoice', timeBlockChoice);
+          getLastEl_runF('timeBlockChoice', inter_timeBlockChoice);
           getLastEl_runF('prevHourBlock', inter_CLICK_prevHourBlock);
           getLastEl_runF('nextHourBlock', inter_CLICK_nextHourBlock);
           getLastEl_runF('addTimeBlock', inter_CLICK_addTimeBlock);
@@ -892,7 +895,7 @@ function app() {
               localStorage.setItem('projectTitle', projectTitle);
             }
           }
-          function timeBlockChoice(el) {
+          function inter_timeBlockChoice(el) {
             el.classList = 'timeBlockChoice ' + '1';
             const timeBlocks = el.getElementsByClassName('timeBlockChosen ');
             for (let i = 1; i < timeBlocks.length; i++) {
