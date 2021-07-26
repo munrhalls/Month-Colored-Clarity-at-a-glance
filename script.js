@@ -1633,11 +1633,21 @@ function app() {
     function dragAndDrop() {
       // I N T E R A C T I V E S
       dragAndDrop.makeDraggable = function (el) {
-        el.setAttribute('draggable', true);
-        el.addEventListener('dragstart', function (e) {
-          e.dataTransfer.dropEffect = "copy";
-          e.dataTransfer.setData("text/plain", e.target.className);
-        });
+        hourBlocks();
+        function hourBlocks() {
+          el.setAttribute('draggable', true);
+          el.addEventListener('dragstart', function (e) {
+            e.dataTransfer.dropEffect = "copy";
+            const projectBar = setup_findElementUp(e.target, 'projectBar');
+            const projectBarNum = [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
+            const hourBlocksOfSameSize = projectBar.getElementsByClassName(e.target.className);
+            const numOfHourBlockFromSameSizeBlocks = [...hourBlocksOfSameSize].indexOf(e.target);
+            let className = el.className;
+            className = 'projectBar-' + projectBarNum + ' ' + 'numOfHourBlockFromSameSizeBlocks-' + numOfHourBlockFromSameSizeBlocks + ' ' + e.target.className;
+            el.className = className;
+            e.dataTransfer.setData("text/html", className);
+          });
+        }
       }
       dragAndDrop.turnToDropzone = function (el) {
         el.setAttribute('dragenter', 'event.preventDefault();');
@@ -1650,20 +1660,21 @@ function app() {
       }
       function handleDrop(ev) {
         ev.preventDefault();
-        const data = ev.dataTransfer.getData("text/plain");
+        // which element from n class is moved, not just it's class name
+        const data = ev.dataTransfer.getData("text/html");
+        console.log(data);
         const block = document.getElementsByClassName(data)[0];
-        const isDragInCalendar = data.split(' ').includes('drag-in-calendar');
-        ev.dataTransfer.dropEffect = "move"
+        const isDragFromCalendar = data.split(' ').includes('drag-in-calendar');
 
-        if (isDragInCalendar) {
-
+        if (isDragFromCalendar) {
+          ev.dataTransfer.dropEffect = "copy"
         }
-        if (!isDragInCalendar) {
+        if (!isDragFromCalendar) {
           ev.target.appendChild(block);
         }
       }
       getEl_loopF('hourBlock', dragAndDrop.makeDraggable);
-      getEl_loopF('day', dragAndDrop.turnToDropzone);
+      getEl_loopF('hourMarksDropzoneCol', dragAndDrop.turnToDropzone);
     }
 
 
