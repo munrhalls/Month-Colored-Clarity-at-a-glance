@@ -970,7 +970,7 @@ function app() {
                 let clone = chosenBlock.cloneNode(true);
                 const newHourBlock = clone;
                 newHourBlock.className = 'hourBlock ' + number + '-hours';
-                dragAndDrop.makeDraggable(newHourBlock);
+                dragAndDrop.makeDraggableFromProject(newHourBlock);
                 return newHourBlock;
               }
               function style() {
@@ -1657,22 +1657,34 @@ function app() {
 
     function dragAndDrop() {
       // I N T E R A C T I V E S
-      dragAndDrop.makeDraggable = function (el) {
-        hourBlock();
-        function hourBlock() {
+      dragAndDrop.makeDraggableFromProject = function (el) {
+        setup_timeBlock();
+        function setup_timeBlock() {
           el.setAttribute('draggable', true);
           el.addEventListener('dragstart', function (e) {
-            e.dataTransfer.dropEffect = "copy";
             const projectBar = setup_findElementUp(e.target, 'projectBar');
-            const projectBarNum = [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
-            const hourBlocksOfSameSize = projectBar.getElementsByClassName(e.target.className);
-            const numOfHourBlockFromSameSizeBlocks = [...hourBlocksOfSameSize].indexOf(e.target);
+            const barNum = getProjectBarNum();
+            const blockClass = getTimeBlockClass();
             let className = el.className;
-            className = 'projectBar-' + projectBarNum + ' ' + 'numOfHourBlockFromSameSizeBlocks-' + numOfHourBlockFromSameSizeBlocks + ' ' + e.target.className;
-            el.className = className;
+            setup_className();
+            function setup_className() {
+              className = 'projectBar-' + barNum + ' ' + 'numOfHourBlockFromSameSizeBlocks-' + blockClass + ' ' + e.target.className;
+              el.className = className;
+            }
+            function getProjectBarNum() {
+              return [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
+            }
+            function getTimeBlockClass() {
+              const hourBlocksOfSameSize = projectBar.getElementsByClassName(e.target.className);
+              return [...hourBlocksOfSameSize].indexOf(e.target);
+            }
+            e.dataTransfer.dropEffect = "copy";
             e.dataTransfer.setData("text/html", className);
           });
         }
+      }
+      dragAndDrop.makeDraggableFromCalendar = function (el) {
+        console.log(el)
       }
       dragAndDrop.turnToDropzone = function (el) {
         el.setAttribute('dragenter', 'event.preventDefault();');
@@ -1685,35 +1697,32 @@ function app() {
       }
       function handleDrop(ev) {
         ev.preventDefault();
-        // which element from n class is moved, not just it's class name
         const data = ev.dataTransfer.getData("text/html");
-        console.log(data);
         const block = document.getElementsByClassName(data)[0];
-        const isDragFromCalendar = data.split(' ').includes('drag-in-calendar');
+        const isDragFromCalendar = data.split(' ').indexOf('is-in-calendar') > -1;
 
         if (isDragFromCalendar) {
           ev.dataTransfer.dropEffect = "copy";
+          handleDropInsideCalendar()
+          function handleDropInsideCalendar() {
+          }
         }
         if (!isDragFromCalendar) {
-          handleDropToCalendar();
-          function handleDropToCalendar() {
+          handleDropFromProject();
+          function handleDropFromProject() {
             let clone;
             cloneDragged();
             styleClone();
             appendClone();
-            updateToUndraggable();
-            function updateToUndraggable() {
-              block.setAttribute('draggable', false);
-              block.ondrop = '';
-            }
+            turnCloneDraggable();
+            updateBlockUndraggable();
             function cloneDragged() {
               clone = block.cloneNode(true);
             }
             function styleClone() {
               const sizeData = clone.classList[clone.classList.length - 1];
               const size = sizeData.split('-')[0];
-              console.log(size)
-              console.log(ev.target)
+              // 
               clone.style.left = '0';
             }
             function appendClone() {
@@ -1726,10 +1735,17 @@ function app() {
               }
               ev.target.appendChild(clone);
             }
+            function turnCloneDraggable() {
+              dragAndDrop.makeDraggableFromCalendar(clone);
+            }
+            function updateBlockUndraggable() {
+              block.setAttribute('draggable', false);
+              block.ondrop = '';
+            }
           }
         }
       }
-      getEl_loopF('hourBlock', dragAndDrop.makeDraggable);
+      getEl_loopF('hourBlock', dragAndDrop.makeDraggableFromProject);
       getEl_loopF('hourMarksDropzoneCol', dragAndDrop.turnToDropzone);
     }
 
