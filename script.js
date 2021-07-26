@@ -1581,6 +1581,7 @@ function app() {
               mark.style.flex = '1';
               mark.style.color = '#ffffff';
               mark.style.backgroundColor = '#000000';
+              mark.style.textAlign = 'center';
             }
           }
         }
