@@ -1652,11 +1652,11 @@ function app() {
       dragAndDrop.turnToDropzone = function (el) {
         el.setAttribute('dragenter', 'event.preventDefault();');
         el.setAttribute('ondragover', 'event.preventDefault();');
+        el.style.position = 'relative';
         el.ondragstart = dragstart_handler;
         el.ondrop = handleDrop;
       }
       function dragstart_handler(ev) {
-        console.log(ev);
       }
       function handleDrop(ev) {
         ev.preventDefault();
@@ -1670,7 +1670,22 @@ function app() {
           ev.dataTransfer.dropEffect = "copy"
         }
         if (!isDragFromCalendar) {
-          ev.target.appendChild(block);
+          updateToUndraggable();
+          cloneDragged();
+          appendClone();
+          function updateToUndraggable() {
+            block.setAttribute('draggable', false);
+            block.ondrop = '';
+          }
+          function cloneDragged() {
+            const clone = block.cloneNode(true);
+            return clone;
+          }
+          function appendClone() {
+            ev.dataTransfer.dropEffect = "copy"
+            const clone = cloneDragged();
+            ev.target.appendChild(clone);
+          }
         }
       }
       getEl_loopF('hourBlock', dragAndDrop.makeDraggable);
