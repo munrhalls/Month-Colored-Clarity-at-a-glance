@@ -848,7 +848,7 @@ function app() {
             el.style.display = 'flex';
             el.style.flex = '5';
             el.style.textAlign = 'center';
-            el.style.alignItems = 'flex-end';
+            el.style.alignItems = 'center';
             el.style.position = 'relative';
             // const hours = el.children[0];
             // hours.style.position = 'absolute';
@@ -939,6 +939,7 @@ function app() {
               const number = choice.classList[1];
               getChosenBlock();
               cloneAndSetup();
+              style();
               append();
 
               function getChosenBlock() {
@@ -951,6 +952,11 @@ function app() {
                 const newHourBlock = clone;
                 newHourBlock.className = 'hourBlock ' + number + ' hours';
                 dragAndDrop.makeDraggable(newHourBlock);
+                return newHourBlock;
+              }
+              function style() {
+                const newHourBlock = cloneAndSetup();
+                newHourBlock.style.position = 'absolute';
                 return newHourBlock;
               }
               function append() {
