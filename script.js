@@ -1658,29 +1658,26 @@ function app() {
     function dragAndDrop() {
       // I N T E R A C T I V E S
       dragAndDrop.setDraggable = function (el) {
-        timeBlock();
-        function timeBlock() {
-          el.setAttribute('draggable', true);
-          el.addEventListener('dragstart', function (e) {
-            const projectBar = setup_findElementUp(e.target, 'projectBar');
-            let className = el.className;
-            setClassName();
-            function setClassName() {
-              className = 'projectBar-' + getProjectBarNum() + ' ' + 'numOfHourBlockFromSameSizeBlocks-' + getTimeBlockClass() + ' '
-                + e.target.className;
-              el.className = className;
-            }
-            function getProjectBarNum() {
-              return [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
-            }
-            function getTimeBlockClass() {
-              const hourBlocksOfSameSize = projectBar.getElementsByClassName(e.target.className);
-              return [...hourBlocksOfSameSize].indexOf(e.target);
-            }
-            e.dataTransfer.dropEffect = "copy";
-            e.dataTransfer.setData("text/html", className);
-          });
-        }
+        el.setAttribute('draggable', true);
+        el.addEventListener('dragstart', function (e) {
+          const projectBar = setup_findElementUp(e.target, 'projectBar');
+          let className = el.className;
+          setClassName();
+          function setClassName() {
+            className = 'projectBar-' + getProjectBarNum() + ' ' + 'numOfHourBlockFromSameSizeBlocks-' + getTimeBlockClass() + ' '
+              + e.target.className;
+            el.className = className;
+          }
+          function getProjectBarNum() {
+            return [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
+          }
+          function getTimeBlockClass() {
+            const hourBlocksOfSameSize = projectBar.getElementsByClassName(e.target.className);
+            return [...hourBlocksOfSameSize].indexOf(e.target);
+          }
+          e.dataTransfer.dropEffect = "copy";
+          e.dataTransfer.setData("text/html", className);
+        });
       }
       dragAndDrop.makeDraggableFromCalendar = function (el) {
         console.log(el)
