@@ -1701,6 +1701,7 @@ function app() {
           ev.dataTransfer.dropEffect = "copy";
           handleDropInsideCalendar()
           function handleDropInsideCalendar() {
+            ev.target.appendChild(block);
           }
         }
         if (!isDragFromCalendar) {
@@ -1719,6 +1720,7 @@ function app() {
               const sizeData = clone.classList[clone.classList.length - 1];
               const size = sizeData.split('-')[0];
               // 
+              clone.style.zIndex = 2;
               clone.style.left = '0';
             }
             function appendClone() {
