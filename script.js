@@ -645,6 +645,7 @@ function app() {
           const textarea = document.createElement('textarea');
           textarea.type = 'text';
           textarea.placeholder = 'Project title';
+          textarea.style.userSelect = 'none';
           el.appendChild(textarea);
         }
         function content_timeBlockChoice(el) {
@@ -968,7 +969,7 @@ function app() {
                 const chosenBlock = getChosenBlock();
                 let clone = chosenBlock.cloneNode(true);
                 const newHourBlock = clone;
-                newHourBlock.className = 'hourBlock ' + number + ' hours';
+                newHourBlock.className = 'hourBlock ' + number + '-hours';
                 dragAndDrop.makeDraggable(newHourBlock);
                 return newHourBlock;
               }
@@ -1094,21 +1095,28 @@ function app() {
         getEl_loopF('titleTimeBlocks', content_titleTimeBlocks)
         function content_titleScrollProjects(el) {
           el.innerText = 'Scroll projects';
+          el.style.userSelect = 'none';
         }
         function content_titleProjectColor(el) {
           el.innerText = 'Choose color';
+          el.style.userSelect = 'none'
         }
         function content_titleProjectName(el) {
           el.innerText = 'Project title';
+          el.style.userSelect = 'none'
         }
         function content_titleChooseTimeBlockSize(el) {
           el.innerText = 'Choose time block size';
+          el.style.userSelect = 'none'
         }
         function content_titleAddTimeBlock(el) {
           el.innerText = 'Add';
+          el.style.userSelect = 'none'
         }
         function content_titleTimeBlocks(el) {
           el.innerText = 'Time blocks';
+          el.style.userSelect = 'none';
+          el.style.userSelect = 'none'
         }
 
         style();
@@ -1318,6 +1326,8 @@ function app() {
         function content_headerCalendar(el) {
           const title = document.createElement('span');
           title.innerText = 'CALENDAR';
+          title.style.userSelect = 'none'
+          title.style.userSelect = 'none'
           el.appendChild(title);
         }
         function content_monthChoices(el) {
@@ -1327,6 +1337,8 @@ function app() {
           // global
           const index = months.indexOf(monthShown);
           title.innerText = months[index];
+          title.style.userSelect = 'none'
+          title.style.userSelect = 'none'
           el.appendChild(title);
         }
         function content_prevMonth(el) {
@@ -1427,6 +1439,7 @@ function app() {
           }
           function inter_shiftMonthChoice(el) {
             el.innerText = monthShown;
+            el.style.userSelect = 'none'
           }
           function hideCurrentMonth() {
             const currentMonth = document.getElementsByClassName(monthShown)[0];
@@ -1465,6 +1478,7 @@ function app() {
               const title = document.createElement('span');
               title.className = 'weekTitle';
               title.innerText = text;
+              title.style.userSelect = 'none'
               weekHeader.appendChild(title);
               week.appendChild(weekHeader);
             }
@@ -1481,6 +1495,7 @@ function app() {
             const text = days[i].name;
             day.classList = 'day ' + days[i].code;
             title.innerText = text;
+            title.style.userSelect = 'none'
             day.appendChild(title);
             weekDOM.appendChild(day);
           }
@@ -1512,6 +1527,7 @@ function app() {
               const mark = document.createElement('div');
               mark.className = 'hourMark';
               mark.innerText = i;
+              mark.style.userSelect = 'none'
               marks.appendChild(mark);
             }
             hourMarks.appendChild(marks);
@@ -1694,6 +1710,10 @@ function app() {
               clone = block.cloneNode(true);
             }
             function styleClone() {
+              const sizeData = clone.classList[clone.classList.length - 1];
+              const size = sizeData.split('-')[0];
+              console.log(size)
+              console.log(ev.target)
               clone.style.left = '0';
             }
             function appendClone() {
@@ -1812,6 +1832,7 @@ function app() {
 
 //   let spanOne = document.createElement('span');
 //   spanOne.innerText = ('Log Hours of Deep Work ').toUpperCase() + 'per ';
+// spanOne.style.userSelect = 'none'
 //   title.appendChild(spanOne);
 
 //   let letters = ('project').split('');
