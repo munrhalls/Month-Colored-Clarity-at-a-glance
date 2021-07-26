@@ -1633,8 +1633,8 @@ function app() {
     function dragAndDrop() {
       // I N T E R A C T I V E S
       dragAndDrop.makeDraggable = function (el) {
-        hourBlocks();
-        function hourBlocks() {
+        hourBlock();
+        function hourBlock() {
           el.setAttribute('draggable', true);
           el.addEventListener('dragstart', function (e) {
             e.dataTransfer.dropEffect = "copy";
@@ -1670,9 +1670,9 @@ function app() {
           ev.dataTransfer.dropEffect = "copy"
         }
         if (!isDragFromCalendar) {
-          updateToUndraggable();
           cloneDragged();
           appendClone();
+          updateToUndraggable();
           function updateToUndraggable() {
             block.setAttribute('draggable', false);
             block.ondrop = '';
