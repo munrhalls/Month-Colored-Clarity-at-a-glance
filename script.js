@@ -777,9 +777,8 @@ function app() {
             for (let i = 0; i < allTimeBlockChosenEls.length; i++) {
               const timeBlockChosenEl = allTimeBlockChosenEls[i];
               const hoursNum = Number(timeBlockChosenEl.classList[1]);
-              const num = 1 - 0.75 + (hoursNum / 100 * 3);
+              const num = 1 - 0.5 + (hoursNum / 100 * 3);
               timeBlockChosenEl.style.height = num * 100 + '%';
-              // timeBlockChosenEl.style.maxHeight =  (heightMultiplier) / (1 / heightMultiplier)  + 'rem';
               timeBlockChosenEl.style.fontSize = 1.5 + hoursNum / 100 * 2 + 'rem';
               timeBlockChosenEl.style.border = '2px solid #000000';
               timeBlockChosenEl.style.paddingLeft = '1rem';
