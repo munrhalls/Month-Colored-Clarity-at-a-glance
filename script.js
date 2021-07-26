@@ -268,6 +268,7 @@ function app() {
         const closeSymbol = document.createElement('span');
         btnClose.className = 'btnClose';
         closeSymbol.innerText = 'X';
+        closeSymbol.style.userSelect = 'none';
         btnClose.appendChild(closeSymbol);
         menuCloser.appendChild(btnClose);
       }
@@ -444,12 +445,14 @@ function app() {
       function content_title(el) {
         let spanOne = document.createElement('span');
         spanOne.innerText = ('CALENDAR: TIME BLOCKS ') + 'per ';
+        spanOne.style.userSelect = 'none'
         el.appendChild(spanOne);
         let letters = ('project').split('');
         for (let i = 0; i < letters.length; i++) {
           let letter = document.createElement('letter');
           letter.className = 'colorLetter';
           letter.innerText = letters[i].toUpperCase();
+          letter.style.userSelect = 'none'
           letter.style.color = colors[i];
           letter.style.letterSpacing = '3px';
           el.appendChild(letter);
@@ -457,6 +460,7 @@ function app() {
       }
       function content_about(el) {
         // el.innerText = 'ABOUT';
+        el.style.userSelect = 'none'
       }
 
       // S T Y L E
@@ -647,6 +651,7 @@ function app() {
           for (let i = 1; i < 25; i++) {
             let timeBlockChosen = document.createElement('div');
             timeBlockChosen.innerText = i;
+            timeBlockChosen.style.userSelect = 'none'
             timeBlockChosen.classList = 'timeBlockChosen ' + i + ' hours';
             el.appendChild(timeBlockChosen)
           }
@@ -657,6 +662,7 @@ function app() {
           const plusText = document.createElement('div');
           plusText.className = 'plusText';
           plusText.innerText = '+';
+          plusText.style.userSelect = 'none'
           plus.appendChild(plusText);
           el.appendChild(plus);
         }
@@ -668,6 +674,7 @@ function app() {
           //   let hour = document.createElement('div');
           //   let num = document.createElement('span');
           //   num.innerText = i;
+          // num.style.userSelect = 'none'
           //   hour.appendChild(num);
           //   hours.appendChild(hour);
           // }
@@ -994,9 +1001,11 @@ function app() {
         getEl_loopF('addProjectBarLabel', content_addProjectBarLabel);
         function content_menuProjects(el) {
           el.innerText = 'PROJECTS';
+          el.style.userSelect = 'none'
         }
         function content_addProjectBarLabel(el) {
           el.innerText = '+';
+          el.style.userSelect = 'none'
         }
         style();
         function style() {
@@ -1668,7 +1677,6 @@ function app() {
 
         if (isDragFromCalendar) {
           ev.dataTransfer.dropEffect = "copy";
-
         }
         if (!isDragFromCalendar) {
           handleDropToCalendar();
