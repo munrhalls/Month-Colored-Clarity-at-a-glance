@@ -1673,6 +1673,7 @@ function app() {
         if (!isDragFromCalendar) {
           handleDropToCalendar();
           function handleDropToCalendar() {
+            let clone;
             cloneDragged();
             styleClone();
             appendClone();
@@ -1682,17 +1683,13 @@ function app() {
               block.ondrop = '';
             }
             function cloneDragged() {
-              const clone = block.cloneNode(true);
-              return clone;
+              clone = block.cloneNode(true);
             }
             function styleClone() {
-              const clone = cloneDragged();
               clone.style.left = '0';
-              return clone;
             }
             function appendClone() {
               ev.dataTransfer.dropEffect = "copy"
-              const clone = styleClone();
               updateCloneClassName();
               function updateCloneClassName() {
                 let cloneClassName = clone.className;
