@@ -1017,6 +1017,7 @@ function app() {
               create_projects.create_projectBar();
               colorAddedProjectBar();
               create_projects.create_projectBarsSymbolLine();
+              create_projects.handleSymbolLinesScroll();
 
 
               function colorAddedProjectBar() {
