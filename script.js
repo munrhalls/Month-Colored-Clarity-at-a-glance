@@ -1692,8 +1692,8 @@ function app() {
       }
       function handleDrop(ev) {
         ev.preventDefault();
+        const dropTarget = ev.target;
         const data = ev.dataTransfer.getData("text/html");
-        console.log(data)
         const block = document.getElementsByClassName(data)[0];
         const isDragFromCalendar = data.split(' ').indexOf('is-in-calendar') > -1;
 
@@ -1701,7 +1701,7 @@ function app() {
           ev.dataTransfer.dropEffect = "copy";
           handleDropInsideCalendar()
           function handleDropInsideCalendar() {
-            ev.target.appendChild(block);
+            dropTarget.appendChild(block);
           }
         }
         if (!isDragFromCalendar) {
@@ -1719,7 +1719,11 @@ function app() {
             function styleClone() {
               const sizeData = clone.classList[clone.classList.length - 1];
               const size = sizeData.split('-')[0];
-              // 
+
+              // data - how many cols to the right are left
+              const colHourNumber = dropTarget.classList[1];
+              // data - size width in cols num
+              // data - cols left < size num => minus sum, add that to the right
               clone.style.zIndex = 2;
               clone.style.left = '0';
             }
@@ -1731,7 +1735,7 @@ function app() {
                 cloneClassName += ' ' + 'is-in-calendar';
                 clone.className = cloneClassName;
               }
-              ev.target.appendChild(clone);
+              dropTarget.appendChild(clone);
             }
             function turnCloneDraggable() {
               clone.setAttribute('draggable', true);
