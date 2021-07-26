@@ -517,9 +517,9 @@ function app() {
         }
         function style() {
           line.className = 'projectBarSymbolLine';
-          line.style.height = '10px';
+          line.style.height = '6px';
           line.style.width = '100%';
-          line.style.borderRadius = '100%';
+          line.style.borderRadius = '15%'
           line.style.backgroundColor = color;
           line.style.marginLeft = '1px';
         }
@@ -557,10 +557,12 @@ function app() {
               visibility ? styleInScrollArea(line) : styleOutOfScrollArea(line);
             }
             function styleInScrollArea(el) {
-              el.style.height = '10px';
+              el.style.height = '7px';
+              el.style.borderRadius = '50%'
             }
             function styleOutOfScrollArea(el) {
-              el.style.height = '5px';
+              el.style.height = '1px';
+              el.style.borderRadius = '0';
             }
             highlightByData(line, visibility);
           }
