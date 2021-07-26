@@ -1684,6 +1684,12 @@ function app() {
           function appendClone() {
             ev.dataTransfer.dropEffect = "copy"
             const clone = cloneDragged();
+            updateCloneClassName();
+            function updateCloneClassName() {
+              let cloneClassName = clone.className;
+              cloneClassName += ' ' + 'is-in-calendar';
+              clone.className = cloneClassName;
+            }
             ev.target.appendChild(clone);
           }
         }
