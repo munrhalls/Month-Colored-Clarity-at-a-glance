@@ -964,6 +964,7 @@ function app() {
                 newHourBlock.style.left = blocksNum * 1.5 + 'rem';
                 newHourBlock.style.zIndex = blocksNum;
                 newHourBlock.style.backgroundColor = bgColor;
+                newHourBlock.style.borderRadius = '15%';
                 newHourBlock.style.textAlign = 'left';
                 newHourBlock.style.paddingLeft = '0.15rem';
                 return newHourBlock;
