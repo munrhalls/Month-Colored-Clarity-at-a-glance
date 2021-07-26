@@ -1717,19 +1717,20 @@ function app() {
               clone = block.cloneNode(true);
             }
             function styleClone() {
-              const sizeData = clone.classList[clone.classList.length - 1];
-              const size = sizeData.split('-')[0];
+              // const colWidth = dropTarget.getBoundingClientRect().width;
+              // const cloneSizeData = clone.classList[clone.classList.length - 1];
+              // const cloneSize = Number(sizeData.split('-')[0]);
+              // const cloneWidth = cloneSize * colWidth + 'px';
+              // const dropColNum = Number(dropTarget.classList[1]);
+              // const spaceLeft = dropColNum
 
-              // data - how many cols to the right are left
-              const colHourNumber = Number(dropTarget.classList[1]);
-              // data - size width in cols num
-              const spaceLeft = 24 - colHourNumber;
               // if spaceLeft, fill to the right for spaceLeft n
               // then fill to the left
               // data - is the col already occupied by another timeBlock
               // data - if it is, move the drop location to the right
               // data - cols left < size num => minus sum, add that to the right
               clone.style.zIndex = 2;
+              // clone.style.width = cloneWidth;
               clone.style.left = '0';
             }
             function appendClone() {
