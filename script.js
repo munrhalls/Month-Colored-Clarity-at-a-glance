@@ -524,6 +524,97 @@ function app() {
           line.style.marginLeft = '1px';
         }
       }
+      create_projects.handleSymbolLinesScroll = function () {
+        const projectBars = document.getElementsByClassName('projectBars')[0];
+        const barsList = projectBars.getElementsByClassName('projectBar');
+        const linesList = document.getElementsByClassName('projectBarSymbolLine');
+        handleHighlight();
+        handleWidths();
+        function getVisibilityData() {
+          return [...barsList].map(bar => isVisible(bar, projectBars) ? true : false);
+
+          function isVisible(el, container) {
+            function returnTwoThirdsElHeight() {
+              return (el.getBoundingClientRect().height / 3) * 2;
+            }
+            function isNotTooHighUp() {
+              return !((el.getBoundingClientRect().bottom - returnTwoThirdsElHeight()) < container.getBoundingClientRect().top);
+            }
+            function isNotTooLowBelow() {
+              return !((el.getBoundingClientRect().top + returnTwoThirdsElHeight()) > container.getBoundingClientRect().bottom);
+            }
+            return isNotTooHighUp() && isNotTooLowBelow();
+          };
+        }
+        function handleHighlight() {
+          const visibilityData = getVisibilityData();
+          for (let i = 0; i < visibilityData.length; i++) {
+            const line = linesList[i];
+            modifyHighlight(line, visibilityData[i]);
+          }
+          function modifyHighlight(line, visibility) {
+            function highlightByData(line, visibility) {
+              visibility ? styleInScrollArea(line) : styleOutOfScrollArea(line);
+            }
+            function styleInScrollArea(el) {
+              el.style.height = '10px';
+            }
+            function styleOutOfScrollArea(el) {
+              el.style.height = '5px';
+            }
+            highlightByData(line, visibility);
+          }
+        }
+        function getWidthsData() {
+          const visibilityData = getVisibilityData();
+          const widthsData = visibilityData.map((undefined, index) => {
+
+            if (isBeforeFirstVisible(index)) {
+              return getDistanceBeforeFirstVisible(index);
+            } else if (isAfterLastVisible(index)) {
+              return getDistanceAfterLastVisible(index);
+            } else {
+              return null;
+            }
+          });
+          function getDistanceBeforeFirstVisible(index) {
+            return getFirstVisibleIndex() - index;
+          }
+          function getDistanceAfterLastVisible(index) {
+            return index - getLastVisibleIndex();
+          }
+          function isBeforeFirstVisible(index) {
+            return index < getFirstVisibleIndex();
+          }
+          function isAfterLastVisible(index) {
+            return index > getLastVisibleIndex();
+          }
+          function getFirstVisibleIndex() {
+            return visibilityData.indexOf(true);
+          }
+          function getLastVisibleIndex() {
+            return visibilityData.lastIndexOf(true);
+          }
+          console.log(widthsData)
+          return widthsData;
+        }
+        function handleWidths() {
+          const widthsData = getWidthsData();
+          for (let i = 0; i < widthsData.length; i++) {
+            const line = linesList[i];
+            modifyWidth(line, widthsData[i]);
+          }
+          function modifyWidth(line, width) {
+            if (width) {
+              const num = Number((1 / width / 1.2));
+              console.log(num)
+              line.style.width = num * 100 + '%';
+            } else {
+              line.style.width = '100%';
+            }
+          }
+        }
+      }
       create_projects.create_projectBar = function () {
         getLastEl_runF('chooseProjectBarColor', content_chooseProjectBarColor);
         getLastEl_runF('projectTitle', content_projectTitle);
@@ -777,101 +868,13 @@ function app() {
           getLastEl_runF('projectBars', inter_SCROLL_highlightLines);
 
           function inter_SCROLL_highlightLines(el) {
-            const barsList = el.getElementsByClassName('projectBar');
-            const linesList = document.getElementsByClassName('projectBarSymbolLine');
             detectScroll();
             function detectScroll() {
               el.addEventListener('scroll', function () {
-                handleHighlight();
-                handleWidths();
+                create_projects.handleSymbolLinesScroll()
               });
             }
-            function getVisibilityData() {
-              return [...barsList].map(bar => isVisible(bar, el) ? true : false);
 
-              function isVisible(el, container) {
-                function returnTwoThirdsElHeight() {
-                  return (el.getBoundingClientRect().height / 3) * 2;
-                }
-                function isNotTooHighUp() {
-                  return !((el.getBoundingClientRect().bottom - returnTwoThirdsElHeight()) < container.getBoundingClientRect().top);
-                }
-                function isNotTooLowBelow() {
-                  return !((el.getBoundingClientRect().top + returnTwoThirdsElHeight()) > container.getBoundingClientRect().bottom);
-                }
-                return isNotTooHighUp() && isNotTooLowBelow();
-              };
-            }
-
-            function getWidthsData() {
-              const visibilityData = getVisibilityData();
-              const widthsData = visibilityData.map((undefined, index) => {
-
-                if (isBeforeFirstVisible(index)) {
-                  return getDistanceBeforeFirstVisible(index);
-                } else if (isAfterLastVisible(index)) {
-                  return getDistanceAfterLastVisible(index);
-                } else {
-                  return null;
-                }
-              });
-              function getDistanceBeforeFirstVisible(index) {
-                return getFirstVisibleIndex() - index;
-              }
-              function getDistanceAfterLastVisible(index) {
-                return index - getLastVisibleIndex();
-              }
-              function isBeforeFirstVisible(index) {
-                return index < getFirstVisibleIndex();
-              }
-              function isAfterLastVisible(index) {
-                return index > getLastVisibleIndex();
-              }
-              function getFirstVisibleIndex() {
-                return visibilityData.indexOf(true);
-              }
-              function getLastVisibleIndex() {
-                return visibilityData.lastIndexOf(true);
-              }
-              console.log(widthsData)
-              return widthsData;
-            }
-
-            function handleHighlight() {
-              const visibilityData = getVisibilityData();
-              for (let i = 0; i < visibilityData.length; i++) {
-                const line = linesList[i];
-                modifyHighlight(line, visibilityData[i]);
-              }
-              function modifyHighlight(line, visibility) {
-                function highlightByData(line, visibility) {
-                  visibility ? styleInScrollArea(line) : styleOutOfScrollArea(line);
-                }
-                function styleInScrollArea(el) {
-                  el.style.height = '10px';
-                }
-                function styleOutOfScrollArea(el) {
-                  el.style.height = '5px';
-                }
-                highlightByData(line, visibility);
-              }
-            }
-            function handleWidths() {
-              const widthsData = getWidthsData();
-              for (let i = 0; i < widthsData.length; i++) {
-                const line = linesList[i];
-                modifyWidth(line, widthsData[i]);
-              }
-              function modifyWidth(line, width) {
-                if (width) {
-                  const num = Number((1 / width / 1.2));
-                  console.log(num)
-                  line.style.width = num * 100 + '%';
-                } else {
-                  line.style.width = '100%';
-                }
-              }
-            }
           }
 
           function inter_INPUT_projectTitle(el) {
@@ -1014,6 +1017,7 @@ function app() {
               create_projects.create_projectBar();
               colorAddedProjectBar();
               create_projects.create_projectBarsSymbolLine();
+
 
               function colorAddedProjectBar() {
                 const projectBarList = document.getElementsByClassName('projectBar');
