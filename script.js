@@ -1676,7 +1676,6 @@ function app() {
 
               function getTimeBlock() {
                 const timeBlock = hasClass(e.target, 'hourBlock') ? e.target : setup_findElementUp(e.target, 'hourBlock');
-                console.log(timeBlock)
                 return timeBlock;
               }
               function getProjectBarNum() {
@@ -1684,9 +1683,6 @@ function app() {
               }
               function getTimeBlockClass() {
                 const hourBlocksOfSameSize = projectBar.getElementsByClassName(timeBlock.className);
-                if (timeBlock.className == undefined) {
-                  debugger;
-                }
                 return [...hourBlocksOfSameSize].indexOf(timeBlock);
               }
             }
