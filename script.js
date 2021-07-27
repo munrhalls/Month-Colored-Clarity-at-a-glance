@@ -1705,7 +1705,6 @@ function app() {
       }
       function handleDrop(ev) {
         ev.preventDefault();
-        console.log(ev);
 
         const dropTarget = ev.target;
         const data = ev.dataTransfer.getData("text/html");
@@ -1719,7 +1718,6 @@ function app() {
         // check if the day has enough spaceLeft
         // if no, move to the next day and repeat
         // repeat until is dropzone & enough spaceLeft
-
 
         if (isFromCalendar) {
           ev.dataTransfer.dropEffect = "copy";
@@ -1747,15 +1745,14 @@ function app() {
               const cloneSize = Number(cloneSizeData.split('-')[0]);
               const cloneWidth = cloneSize * colWidth + 'px';
               const dropColNum = Number(dropTarget.classList[1]);
-
-              // data - spaceToTheRight vs cloneSize
-              // data - spaceToTheRight - cloneSize, if < 0, the count is offset for -marginleft
               const spaceToTheRight = 24 - dropColNum;
               const offset = spaceToTheRight - cloneSize;
+
               if (offset <= 0) {
                 clone.style.marginLeft = (offset * colWidth) + 'px';
               }
-
+              clone.style.height = '100%';
+              clone.style.borderRadius = '3%';
               clone.style.width = cloneWidth;
               clone.style.zIndex = 2;
               clone.style.left = '0';
