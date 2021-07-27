@@ -1703,14 +1703,14 @@ function app() {
 
         if (isDragFromCalendar) {
           ev.dataTransfer.dropEffect = "copy";
-          handleDropInsideCalendar()
-          function handleDropInsideCalendar() {
+          fromCalendar()
+          function fromCalendar() {
             dropTarget.appendChild(block);
           }
         }
         if (!isDragFromCalendar) {
-          handleDropFromProject();
-          function handleDropFromProject() {
+          fromProject();
+          function fromProject() {
             let clone;
             cloneDragged();
             styleClone();
