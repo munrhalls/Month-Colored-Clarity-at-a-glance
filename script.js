@@ -1720,9 +1720,28 @@ function app() {
         // repeat until is dropzone & enough spaceLeft
 
         if (isFromCalendar) {
-          ev.dataTransfer.dropEffect = "copy";
+          ev.dataTransfer.dropEffect = "move";
           fromCalendar()
           function fromCalendar() {
+            styleBlock();
+            function styleBlock() {
+              const colWidth = dropTarget.getBoundingClientRect().width;
+              const blockSizeData = block.classList[block.classList.length - 2];
+              const blockSize = Number(blockSizeData.split('-')[0]);
+              const blockWidth = blockSize * colWidth + 'px';
+              const dropColNum = Number(dropTarget.classList[1]);
+              const spaceToTheRight = 25 - dropColNum;
+              const offset = spaceToTheRight - blockSize;
+
+              if (offset <= 0) {
+                block.style.marginLeft = (offset * colWidth) + 'px';
+              }
+              block.style.height = '100%';
+              block.style.borderRadius = '3%';
+              block.style.width = blockWidth;
+              block.style.zIndex = 2;
+              block.style.left = '0';
+            }
             dropTarget.appendChild(block);
           }
         }
@@ -1745,7 +1764,7 @@ function app() {
               const cloneSize = Number(cloneSizeData.split('-')[0]);
               const cloneWidth = cloneSize * colWidth + 'px';
               const dropColNum = Number(dropTarget.classList[1]);
-              const spaceToTheRight = 24 - dropColNum;
+              const spaceToTheRight = 25 - dropColNum;
               const offset = spaceToTheRight - cloneSize;
 
               if (offset <= 0) {
