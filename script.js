@@ -1659,6 +1659,9 @@ function app() {
 
     function dragAndDrop() {
       // I N T E R A C T I V E S
+      getEl_loopF('hourBlock', dragAndDrop.setDraggable);
+      getEl_loopF('hourMarksDropzoneCol', dragAndDrop.turnToDropzone);
+
       dragAndDrop.setDraggable = function (el) {
         el.setAttribute('draggable', true);
         el.addEventListener('dragstart', function (e) {
@@ -1762,8 +1765,6 @@ function app() {
           }
         }
       }
-      getEl_loopF('hourBlock', dragAndDrop.setDraggable);
-      getEl_loopF('hourMarksDropzoneCol', dragAndDrop.turnToDropzone);
     }
 
 
