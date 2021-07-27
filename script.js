@@ -396,9 +396,9 @@ function app() {
                 const plusText = projectBar.getElementsByClassName('plusText')[0];
                 const storeTimeBlocks = projectBar.getElementsByClassName('storeTimeBlocks')[0];
                 const hourBlocks = storeTimeBlocks.getElementsByClassName('hourBlock');
-
                 const projectBarIndex = [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
                 const calendarHourBlocks = document.getElementsByClassName('projectBar-' + projectBarIndex + ' ' + 'hourBlock');
+
                 projectBar.style.backgroundColor = color;
                 colorMenuBtn.style.backgroundColor = color;
                 plus.style.borderColor = color;
@@ -406,7 +406,6 @@ function app() {
                 storeTimeBlocks.style.borderBottomColor = color;
                 [...calendarHourBlocks].forEach(block => block.style.backgroundColor = color);
                 [...hourBlocks].forEach(block => block.style.backgroundColor = color);
-
                 colorMenu.style.display = 'none';
               }
               function updateProjectBarsSymbolLines() {
@@ -1720,20 +1719,22 @@ function app() {
               clone = block.cloneNode(true);
             }
             function styleClone() {
-              // const colWidth = dropTarget.getBoundingClientRect().width;
-              // const cloneSizeData = clone.classList[clone.classList.length - 1];
-              // const cloneSize = Number(sizeData.split('-')[0]);
-              // const cloneWidth = cloneSize * colWidth + 'px';
-              // const dropColNum = Number(dropTarget.classList[1]);
-              // const spaceLeft = dropColNum
+              const colWidth = dropTarget.getBoundingClientRect().width;
+              const cloneSizeData = clone.classList[clone.classList.length - 1];
+              const cloneSize = Number(cloneSizeData.split('-')[0]);
+              const cloneWidth = cloneSize * colWidth + 'px';
+              const dropColNum = Number(dropTarget.classList[1]);
 
-              // if spaceLeft, fill to the right for spaceLeft n
-              // then fill to the left
-              // data - is the col already occupied by another timeBlock
-              // data - if it is, move the drop location to the right
-              // data - cols left < size num => minus sum, add that to the right
+              // data - spaceToTheRight vs cloneSize
+              // data - spaceToTheRight - cloneSize, if < 0, the count is offset for -marginleft
+              const spaceToTheRight = 24 - dropColNum;
+              const offset = spaceToTheRight - cloneSize;
+              if (offset <= 0) {
+                clone.style.marginLeft = (offset * colWidth) + 'px';
+              }
+
+              clone.style.width = cloneWidth;
               clone.style.zIndex = 2;
-              // clone.style.width = cloneWidth;
               clone.style.left = '0';
             }
             function appendClone() {
@@ -1755,6 +1756,7 @@ function app() {
             }
             function updateBlockUndraggable() {
               block.setAttribute('draggable', false);
+              block.draggable = false;
               block.ondragstart = () => { return false };
             }
           }
