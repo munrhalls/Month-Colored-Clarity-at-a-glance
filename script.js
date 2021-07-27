@@ -396,14 +396,17 @@ function app() {
                 const plusText = projectBar.getElementsByClassName('plusText')[0];
                 const storeTimeBlocks = projectBar.getElementsByClassName('storeTimeBlocks')[0];
                 const hourBlocks = storeTimeBlocks.getElementsByClassName('hourBlock');
+
+                const projectBarIndex = [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
+                const calendarHourBlocks = document.getElementsByClassName('projectBar-' + projectBarIndex + ' ' + 'hourBlock');
                 projectBar.style.backgroundColor = color;
                 colorMenuBtn.style.backgroundColor = color;
                 plus.style.borderColor = color;
                 plusText.style.color = color;
                 storeTimeBlocks.style.borderBottomColor = color;
-                [...hourBlocks].forEach(function (block) {
-                  block.style.backgroundColor = color;
-                })
+                [...calendarHourBlocks].forEach(block => block.style.backgroundColor = color);
+                [...hourBlocks].forEach(block => block.style.backgroundColor = color);
+
                 colorMenu.style.display = 'none';
               }
               function updateProjectBarsSymbolLines() {
