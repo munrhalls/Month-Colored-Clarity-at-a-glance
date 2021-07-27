@@ -1658,41 +1658,40 @@ function app() {
     }
 
     function dragAndDrop() {
-      // I N T E R A C T I V E S
-      getEl_loopF('hourBlock', dragAndDrop.setDraggable);
-      getEl_loopF('hourMarksDropzoneCol', dragAndDrop.turnToDropzone);
+      (function () {
+        dragAndDrop.setDraggable = function (el) {
+          el.setAttribute('draggable', true);
+          el.addEventListener('dragstart', function (e) {
+            setUniqueClass();
+            function setUniqueClass() {
+              const projectBar = setup_findElementUp(e.target, 'projectBar');
+              let className = el.className;
+              className = 'projectBar-' + getProjectBarNum() + ' ' + 'numOfHourBlockFromSameSizeBlocks-' + getTimeBlockClass() + ' '
+                + e.target.className;
+              el.className = className;
 
-      dragAndDrop.setDraggable = function (el) {
-        el.setAttribute('draggable', true);
-        el.addEventListener('dragstart', function (e) {
-          setUniqueClass();
-          function setUniqueClass() {
-            const projectBar = setup_findElementUp(e.target, 'projectBar');
-            let className = el.className;
-            className = 'projectBar-' + getProjectBarNum() + ' ' + 'numOfHourBlockFromSameSizeBlocks-' + getTimeBlockClass() + ' '
-              + e.target.className;
-            el.className = className;
-
-            function getProjectBarNum() {
-              return [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
+              function getProjectBarNum() {
+                return [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
+              }
+              function getTimeBlockClass() {
+                const hourBlocksOfSameSize = projectBar.getElementsByClassName(e.target.className);
+                return [...hourBlocksOfSameSize].indexOf(e.target);
+              }
             }
-            function getTimeBlockClass() {
-              const hourBlocksOfSameSize = projectBar.getElementsByClassName(e.target.className);
-              return [...hourBlocksOfSameSize].indexOf(e.target);
-            }
-          }
-          e.dataTransfer.dropEffect = "copy";
-          e.dataTransfer.setData("text/html", el.className);
-        });
-      }
-
-      dragAndDrop.turnToDropzone = function (el) {
-        el.setAttribute('dragenter', 'event.preventDefault();');
-        el.setAttribute('ondragover', 'event.preventDefault();');
-        el.style.position = 'relative';
-        el.ondragstart = dragstart_handler;
-        el.ondrop = handleDrop;
-      }
+            e.dataTransfer.dropEffect = "copy";
+            e.dataTransfer.setData("text/html", el.className);
+          });
+        }
+        dragAndDrop.turnToDropzone = function (el) {
+          el.setAttribute('dragenter', 'event.preventDefault();');
+          el.setAttribute('ondragover', 'event.preventDefault();');
+          el.style.position = 'relative';
+          el.ondragstart = dragstart_handler;
+          el.ondrop = handleDrop;
+        }
+        getEl_loopF('hourBlock', dragAndDrop.setDraggable);
+        getEl_loopF('hourMarksDropzoneCol', dragAndDrop.turnToDropzone);
+      }());
       function dragstart_handler(ev) {
       }
       function handleDrop(ev) {
