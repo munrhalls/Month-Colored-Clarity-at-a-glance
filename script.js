@@ -1666,19 +1666,28 @@ function app() {
 
             function setUniqueClass() {
               const projectBar = setup_findElementUp(e.target, 'projectBar');
+              const timeBlock = getTimeBlock();
               const barNum = getProjectBarNum();
               const blockClass = getTimeBlockClass();
               let className = el.className;
               className = 'projectBar-' + barNum + ' ' + 'sameSizeNthNum-' + blockClass + ' '
-                + e.target.className;
+                + timeBlock.className;
               el.className = className;
 
+              function getTimeBlock() {
+                const timeBlock = hasClass(e.target, 'hourBlock') ? e.target : setup_findElementUp(e.target, 'hourBlock');
+                console.log(timeBlock)
+                return timeBlock;
+              }
               function getProjectBarNum() {
                 return [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
               }
               function getTimeBlockClass() {
-                const hourBlocksOfSameSize = projectBar.getElementsByClassName(e.target.className);
-                return [...hourBlocksOfSameSize].indexOf(e.target);
+                const hourBlocksOfSameSize = projectBar.getElementsByClassName(timeBlock.className);
+                if (timeBlock.className == undefined) {
+                  debugger;
+                }
+                return [...hourBlocksOfSameSize].indexOf(timeBlock);
               }
             }
             e.dataTransfer.dropEffect = "copy";
@@ -1696,13 +1705,25 @@ function app() {
         getEl_loopF('hourMarksDropzoneCol', dragAndDrop.turnToDropzone);
       }());
       function dragstart_handler(ev) {
+        const draggedFrom = ev.path[1];
       }
       function handleDrop(ev) {
         ev.preventDefault();
+        console.log(ev);
+
         const dropTarget = ev.target;
         const data = ev.dataTransfer.getData("text/html");
         const block = document.getElementsByClassName(data)[0];
         const isFromCalendar = data.split(' ').indexOf('is-in-calendar') > -1;
+        // what happens when you drop on top of existing time block
+        // dropzone is no longer dropzone, when it takes a drop
+        // when element is moved out of dropzone, it re-becomes dropzone
+        // check if it's dropzone
+        // if not a dropzone, check to the right
+        // check if the day has enough spaceLeft
+        // if no, move to the next day and repeat
+        // repeat until is dropzone & enough spaceLeft
+
 
         if (isFromCalendar) {
           ev.dataTransfer.dropEffect = "copy";
@@ -1718,6 +1739,7 @@ function app() {
             cloneDragged();
             styleClone();
             appendClone();
+            turnOffDropzone();
             turnCloneDraggable();
             updateBlockUndraggable();
             function cloneDragged() {
@@ -1751,6 +1773,9 @@ function app() {
                 clone.className = cloneClassName;
               }
               dropTarget.appendChild(clone);
+            }
+            function turnOffDropzone() {
+              dropTarget.ondrop = false;
             }
             function turnCloneDraggable() {
               clone.setAttribute('draggable', true);
