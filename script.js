@@ -1663,10 +1663,13 @@ function app() {
           el.setAttribute('draggable', true);
           el.addEventListener('dragstart', function (e) {
             setUniqueClass();
+
             function setUniqueClass() {
               const projectBar = setup_findElementUp(e.target, 'projectBar');
+              const barNum = getProjectBarNum();
+              const blockClass = getTimeBlockClass();
               let className = el.className;
-              className = 'projectBar-' + getProjectBarNum() + ' ' + 'numOfHourBlockFromSameSizeBlocks-' + getTimeBlockClass() + ' '
+              className = 'projectBar-' + barNum + ' ' + 'sameSizeNthNum-' + blockClass + ' '
                 + e.target.className;
               el.className = className;
 
@@ -1699,16 +1702,16 @@ function app() {
         const dropTarget = ev.target;
         const data = ev.dataTransfer.getData("text/html");
         const block = document.getElementsByClassName(data)[0];
-        const isDragFromCalendar = data.split(' ').indexOf('is-in-calendar') > -1;
+        const isFromCalendar = data.split(' ').indexOf('is-in-calendar') > -1;
 
-        if (isDragFromCalendar) {
+        if (isFromCalendar) {
           ev.dataTransfer.dropEffect = "copy";
           fromCalendar()
           function fromCalendar() {
             dropTarget.appendChild(block);
           }
         }
-        if (!isDragFromCalendar) {
+        if (!isFromCalendar) {
           fromProject();
           function fromProject() {
             let clone;
