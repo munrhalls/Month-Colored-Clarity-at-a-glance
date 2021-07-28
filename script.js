@@ -1718,7 +1718,9 @@ function app() {
         // check if the day has enough spaceLeft
         // if no, move to the next day and repeat
         // repeat until is dropzone & enough spaceLeft
-
+        if (ev.target.classList[0] !== 'hourMarksDropzoneCol') {
+          return;
+        }
         if (isFromCalendar) {
           ev.dataTransfer.dropEffect = "move";
           fromCalendar()
@@ -1727,14 +1729,18 @@ function app() {
             function styleBlock() {
               const colWidth = dropTarget.getBoundingClientRect().width;
               const blockSizeData = block.classList[block.classList.length - 2];
+              console.log(blockSizeData);
               const blockSize = Number(blockSizeData.split('-')[0]);
               const blockWidth = blockSize * colWidth + 'px';
               const dropColNum = Number(dropTarget.classList[1]);
+              console.log(dropColNum)
               const spaceToTheRight = 25 - dropColNum;
               const offset = spaceToTheRight - blockSize;
-
+              console.log(offset)
               if (offset <= 0) {
                 block.style.marginLeft = (offset * colWidth) + 'px';
+              } else {
+                block.style.marginLeft = 0;
               }
               block.style.height = '100%';
               block.style.borderRadius = '3%';
@@ -1755,6 +1761,7 @@ function app() {
             turnOffDropzone();
             turnCloneDraggable();
             updateBlockUndraggable();
+
             function cloneDragged() {
               clone = block.cloneNode(true);
             }
