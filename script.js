@@ -1753,8 +1753,8 @@ function app() {
               block.style.height = '100%';
               block.style.borderRadius = '3%';
               block.style.width = blockWidth;
-              block.style.paddingLeft = '3px'
-              block.style.paddingRight = '3px';
+              block.style.paddingLeft = '1px';
+              block.style.paddingRight = '1px';
               block.style.zIndex = 2;
               block.style.left = '0';
             }
@@ -1792,8 +1792,8 @@ function app() {
               clone.style.height = '100%';
               clone.style.borderRadius = '3%';
               clone.style.width = cloneWidth;
-              clone.style.paddingLeft = '3px';
-              clone.style.paddingRight = '3px';
+              clone.style.paddingLeft = '1px';
+              clone.style.paddingRight = '1px';
               clone.style.zIndex = 2;
               clone.style.left = '0';
             }
