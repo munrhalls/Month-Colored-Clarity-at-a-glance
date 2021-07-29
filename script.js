@@ -956,13 +956,15 @@ function app() {
           function inter_CLICK_addTimeBlock(el) {
             el.onclick = function () {
               let newHourBlock;
+              let qMark;
               const container = setup_findElementUp(el, 'projectBar');
+              const color = container.style.backgroundColor;
               const choice = container.getElementsByClassName('timeBlockChoice')[0];
               const number = choice.classList[1];
               getChosenBlock();
               cloneAndSetup();
               style();
-              addIsPlacedInCalendarQMark()
+              create_IsInCalendarMark()
               append();
 
               function getChosenBlock() {
@@ -988,11 +990,31 @@ function app() {
                 newHourBlock.style.textAlign = 'left';
                 newHourBlock.style.paddingLeft = '0.15rem';
               }
-              function addIsPlacedInCalendarQMark() {
+              function create_IsInCalendarMark(el) {
+                // trigger
+                // data - get element's className + is-in-calendar == check
+                createQMark();
+                styleQmark();
+                function createQMark() {
+                  qMark = document.createElement('div');
+                  qMark.innerText = '?';
+                }
+                function styleQmark() {
+                  qMark.style.position = 'absolute';
+                  qMark.style.top = '-1rem';
+                  qMark.style.fontSize = '1rem';
+                  qMark.style.color = color;
+                }
+                // data - 0 = q mark visible
+                // data - 1 = q mark not visible
+                // content - q mark
+                // style - q mark
+                // interactivity - q mark
 
               }
               function append() {
                 const log = container.getElementsByClassName('storeTimeBlocks')[0];
+                newHourBlock.appendChild(qMark);
                 log.appendChild(newHourBlock);
               }
             }
