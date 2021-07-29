@@ -574,7 +574,7 @@ function app() {
               visibility ? styleInScrollArea(line) : styleOutOfScrollArea(line);
             }
             function styleInScrollArea(el) {
-              el.style.height = '7px';
+              el.style.height = '4px';
               el.style.borderRadius = '50%'
             }
             function styleOutOfScrollArea(el) {
