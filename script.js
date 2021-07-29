@@ -955,12 +955,14 @@ function app() {
           }
           function inter_CLICK_addTimeBlock(el) {
             el.onclick = function () {
+              let newHourBlock;
               const container = setup_findElementUp(el, 'projectBar');
               const choice = container.getElementsByClassName('timeBlockChoice')[0];
               const number = choice.classList[1];
               getChosenBlock();
               cloneAndSetup();
               style();
+              addIsPlacedInCalendarQMark()
               append();
 
               function getChosenBlock() {
@@ -970,17 +972,14 @@ function app() {
               function cloneAndSetup() {
                 const chosenBlock = getChosenBlock();
                 let clone = chosenBlock.cloneNode(true);
-                const newHourBlock = clone;
+                newHourBlock = clone;
                 newHourBlock.className = 'hourBlock ' + number + '-hours';
                 dragAndDrop.setDraggable(newHourBlock);
-                return newHourBlock;
               }
               function style() {
-                const newHourBlock = cloneAndSetup();
                 const storeHourBlocks = container.getElementsByClassName('storeTimeBlocks')[0];
                 const blocksNum = storeHourBlocks.getElementsByClassName('hourBlock').length;
                 const bgColor = container.style.backgroundColor;
-
                 newHourBlock.style.position = 'absolute';
                 newHourBlock.style.left = blocksNum * 1.5 + 'rem';
                 newHourBlock.style.zIndex = blocksNum;
@@ -988,10 +987,11 @@ function app() {
                 newHourBlock.style.borderRadius = '15%';
                 newHourBlock.style.textAlign = 'left';
                 newHourBlock.style.paddingLeft = '0.15rem';
-                return newHourBlock;
+              }
+              function addIsPlacedInCalendarQMark() {
+
               }
               function append() {
-                const newHourBlock = style();
                 const log = container.getElementsByClassName('storeTimeBlocks')[0];
                 log.appendChild(newHourBlock);
               }
@@ -1705,19 +1705,22 @@ function app() {
       }
       function handleDrop(ev) {
         ev.preventDefault();
+        // add time block = add question mark /w calendar symbol
+
+        // drop to calendar = question mark becomes display none
+        // delete time block from calendar = question mark becomes display block again
+
+        // project menu contains buttons
+        // - add new - delete project - delete time blocks - revert
+        // delete changes cursor to delete project or delete time block symbol
+        // 
+
 
         const dropTarget = ev.target;
         const data = ev.dataTransfer.getData("text/html");
         const block = document.getElementsByClassName(data)[0];
         const isFromCalendar = data.split(' ').indexOf('is-in-calendar') > -1;
-        // what happens when you drop on top of existing time block
-        // dropzone is no longer dropzone, when it takes a drop
-        // when element is moved out of dropzone, it re-becomes dropzone
-        // check if it's dropzone
-        // if not a dropzone, check to the right
-        // check if the day has enough spaceLeft
-        // if no, move to the next day and repeat
-        // repeat until is dropzone & enough spaceLeft
+
         if (ev.target.classList[0] !== 'hourMarksDropzoneCol') {
           return;
         }
@@ -1731,7 +1734,12 @@ function app() {
               const blockSizeData = block.classList[block.classList.length - 2];
               console.log(blockSizeData);
               const blockSize = Number(blockSizeData.split('-')[0]);
+              console.log(blockSize, 'blockSize')
+              console.log(colWidth)
+
               const blockWidth = blockSize * colWidth + 'px';
+              console.log(blockWidth, 'blockWidth')
+              console.log(blockWidth)
               const dropColNum = Number(dropTarget.classList[1]);
               console.log(dropColNum)
               const spaceToTheRight = 25 - dropColNum;
@@ -1745,6 +1753,8 @@ function app() {
               block.style.height = '100%';
               block.style.borderRadius = '3%';
               block.style.width = blockWidth;
+              block.style.paddingLeft = '3px'
+              block.style.paddingRight = '3px';
               block.style.zIndex = 2;
               block.style.left = '0';
             }
@@ -1770,6 +1780,8 @@ function app() {
               const cloneSizeData = clone.classList[clone.classList.length - 1];
               const cloneSize = Number(cloneSizeData.split('-')[0]);
               const cloneWidth = cloneSize * colWidth + 'px';
+              console.log(cloneSize, 'cloneSize')
+              console.log(cloneWidth)
               const dropColNum = Number(dropTarget.classList[1]);
               const spaceToTheRight = 25 - dropColNum;
               const offset = spaceToTheRight - cloneSize;
@@ -1780,6 +1792,8 @@ function app() {
               clone.style.height = '100%';
               clone.style.borderRadius = '3%';
               clone.style.width = cloneWidth;
+              clone.style.paddingLeft = '3px';
+              clone.style.paddingRight = '3px';
               clone.style.zIndex = 2;
               clone.style.left = '0';
             }
