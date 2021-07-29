@@ -398,15 +398,31 @@ function app() {
                 const hourBlocks = storeTimeBlocks.getElementsByClassName('hourBlock');
                 const projectBarIndex = [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
                 const calendarHourBlocks = document.getElementsByClassName('projectBar-' + projectBarIndex + ' ' + 'hourBlock');
+                components();
+                inCalendar();
+                inProject();
+                closeMenu();
+                function components() {
+                  projectBar.style.backgroundColor = color;
+                  colorMenuBtn.style.backgroundColor = color;
+                  plus.style.borderColor = color;
+                  plusText.style.color = color;
+                  storeTimeBlocks.style.borderBottomColor = color;
+                }
 
-                projectBar.style.backgroundColor = color;
-                colorMenuBtn.style.backgroundColor = color;
-                plus.style.borderColor = color;
-                plusText.style.color = color;
-                storeTimeBlocks.style.borderBottomColor = color;
-                [...calendarHourBlocks].forEach(block => block.style.backgroundColor = color);
-                [...hourBlocks].forEach(block => block.style.backgroundColor = color);
-                colorMenu.style.display = 'none';
+                function inCalendar() {
+                  [...calendarHourBlocks].forEach(block => block.style.backgroundColor = color);
+                }
+                function inProject() {
+                  [...hourBlocks].forEach(block => {
+                    const qMark = block.getElementsByClassName('qMark')[0];
+                    qMark.style.color = color;
+                    block.style.backgroundColor = color;
+                  });
+                }
+                function closeMenu() {
+                  colorMenu.style.display = 'none';
+                }
               }
               function updateProjectBarsSymbolLines() {
                 const projectBars = document.getElementsByClassName('projectBar');
@@ -997,6 +1013,7 @@ function app() {
                 styleQmark();
                 function createQMark() {
                   qMark = document.createElement('div');
+                  qMark.className = 'qMark';
                   qMark.innerText = '?';
                 }
                 function styleQmark() {
