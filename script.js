@@ -1806,6 +1806,7 @@ function app() {
             let clone;
             cloneDragged();
             styleClone();
+            hideQMark();
             appendClone();
             turnOffDropzone();
             turnCloneDraggable();
@@ -1835,6 +1836,12 @@ function app() {
               clone.style.paddingRight = '1px';
               clone.style.zIndex = 2;
               clone.style.left = '0';
+            }
+            function hideQMark() {
+              const qMark = block.getElementsByClassName('qMark')[0];
+              const cloneQMark = clone.getElementsByClassName('qMark')[0];
+              qMark.style.display = 'none';
+              cloneQMark.style.display = 'none';
             }
             function appendClone() {
               ev.dataTransfer.dropEffect = "copy"
