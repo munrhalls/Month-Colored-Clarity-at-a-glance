@@ -811,14 +811,21 @@ function app() {
               const hoursNum = Number(timeBlockChosenEl.classList[1]);
               // data threads 
               // initial size
-              // 0.3
+              // 0.35
               // size increase per time block increase
-              // + 1 = 
+              // + 1 = 0,01 size increase, up to 0,24
+              // size increase amplification 
+              // 0,01 * 2 = 0,02, 0,04, 0,06 etc. up to 0,48
               // size extra increase per num of increases
-              const num = 0.35 + hoursNum / 100;
-              timeBlockChosenEl.style.height = num * 100 + '%';
-              timeBlockChosenEl.style.marginBottom = -(hoursNum / 6) + 'px';
-              timeBlockChosenEl.style.marginTop = '-3px';
+              // +0,02 & + sum of increases
+              // inverse of that extra increase per num of increases
+              // +0,02 & - sum of increases
+              const grow = hoursNum / 100;
+              const amplifyGrow = grow * 3;
+              const inverseCurveGrow = amplifyGrow - hoursNum / 100;
+              timeBlockChosenEl.style.height = (0.35 + inverseCurveGrow) * 100 + '%';
+              timeBlockChosenEl.style.marginBottom = -(inverseCurveGrow / 6) + 'px';
+              timeBlockChosenEl.style.marginTop = (inverseCurveGrow * 10) + 'px';
               timeBlockChosenEl.style.fontSize = 1.5 + hoursNum / 100 * 2 + 'rem';
               timeBlockChosenEl.style.border = '2px solid #000000';
               timeBlockChosenEl.style.paddingLeft = '1rem';
