@@ -969,7 +969,7 @@ function app() {
               let qMarkIsInCalendar;
               cloneAndSetup();
               style();
-              markIsInCalendar()
+              createQmarkIsInCalendar()
               append();
 
               function cloneAndSetup() {
@@ -990,17 +990,18 @@ function app() {
                 newHourBlock.style.textAlign = 'left';
                 newHourBlock.style.paddingLeft = '0.15rem';
               }
-              function markIsInCalendar() {
+              function createQmarkIsInCalendar() {
                 let qMark;
                 let crateMark;
-                create();
+                qMarkIsInCalendar = document.createElement('div');
+                qMarkIsInCalendar.className = 'qMarkIsInCalendar';
+                qMarkIsInCalendar.style.position = 'absolute';
+                qMarkIsInCalendar.style.top = '-0.15rem';
+                qMarkIsInCalendar.style.left = '0.15rem';
+
                 createQMark();
                 createCrateMark();
                 append();
-                function create() {
-                  qMarkIsInCalendar = document.createElement('div');
-                  qMarkIsInCalendar.className = 'qMarkIsInCalendar';
-                }
                 function createQMark() {
                   qMark = document.createElement('div');
                   qMark.className = 'qMark';
@@ -1008,7 +1009,8 @@ function app() {
                   styleQmark();
                   function styleQmark() {
                     qMark.style.position = 'absolute';
-                    qMark.style.top = '-1rem';
+                    qMark.style.left = '1rem';
+                    qMark.style.top = '-1.15rem';
                     qMark.style.fontSize = '1rem';
                     qMark.style.color = color;
                   }
@@ -1019,6 +1021,8 @@ function app() {
                   crateMark.style.height = '1rem';
                   crateMark.style.width = '1rem';
                   crateMark.style.border = '1px solid ' + color;
+                  crateMark.style.position = 'absolute';
+                  crateMark.style.left = '0';
 
                   crateLines();
                   function crateLines() {
