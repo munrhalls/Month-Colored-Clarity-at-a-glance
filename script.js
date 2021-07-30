@@ -809,17 +809,6 @@ function app() {
             for (let i = 0; i < allTimeBlockChosenEls.length; i++) {
               const timeBlockChosenEl = allTimeBlockChosenEls[i];
               const hoursNum = Number(timeBlockChosenEl.classList[1]);
-              // data threads 
-              // initial size
-              // 0.35
-              // size increase per time block increase
-              // + 1 = 0,01 size increase, up to 0,24
-              // size increase amplification 
-              // 0,01 * 2 = 0,02, 0,04, 0,06 etc. up to 0,48
-              // size extra increase per num of increases
-              // +0,02 & + sum of increases
-              // inverse of that extra increase per num of increases
-              // +0,02 & - sum of increases
               const grow = hoursNum / 100;
               const amplifyGrow = grow * 3;
               const inverseCurveGrow = amplifyGrow - hoursNum / 100;
