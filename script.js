@@ -960,24 +960,19 @@ function app() {
           }
           function inter_CLICK_addTimeBlock(el) {
             el.onclick = function () {
-              let newHourBlock;
-              let qMark;
               const container = setup_findElementUp(el, 'projectBar');
               const color = container.style.backgroundColor;
               const choice = container.getElementsByClassName('timeBlockChoice')[0];
               const number = choice.classList[1];
-              getChosenBlock();
+              const chosenBlock = choice.getElementsByClassName(number)[0];
+              let newHourBlock;
+              let qMarkIsInCalendar;
               cloneAndSetup();
               style();
-              create_IsInCalendarMark()
+              markIsInCalendar()
               append();
 
-              function getChosenBlock() {
-                const chosenBlock = choice.getElementsByClassName(number)[0];
-                return chosenBlock;
-              }
               function cloneAndSetup() {
-                const chosenBlock = getChosenBlock();
                 let clone = chosenBlock.cloneNode(true);
                 newHourBlock = clone;
                 newHourBlock.className = 'hourBlock ' + number + '-hours';
@@ -995,32 +990,87 @@ function app() {
                 newHourBlock.style.textAlign = 'left';
                 newHourBlock.style.paddingLeft = '0.15rem';
               }
-              function create_IsInCalendarMark(el) {
-                // trigger
-                // data - get element's className + is-in-calendar == check
+              function markIsInCalendar() {
+                let qMark;
+                let crateMark;
+                create();
                 createQMark();
-                styleQmark();
+                createCrateMark();
+                append();
+                function create() {
+                  qMarkIsInCalendar = document.createElement('div');
+                  qMarkIsInCalendar.className = 'qMarkIsInCalendar';
+                }
                 function createQMark() {
                   qMark = document.createElement('div');
                   qMark.className = 'qMark';
                   qMark.innerText = '?';
+                  styleQmark();
+                  function styleQmark() {
+                    qMark.style.position = 'absolute';
+                    qMark.style.top = '-1rem';
+                    qMark.style.fontSize = '1rem';
+                    qMark.style.color = color;
+                  }
                 }
-                function styleQmark() {
-                  qMark.style.position = 'absolute';
-                  qMark.style.top = '-1rem';
-                  qMark.style.fontSize = '1rem';
-                  qMark.style.color = color;
+                function createCrateMark() {
+                  crateMark = document.createElement('div');
+                  crateMark.className = 'crateMark';
+                  crateMark.style.height = '1rem';
+                  crateMark.style.width = '1rem';
+                  crateMark.style.border = '1px solid ' + color;
+
+                  crateLines();
+                  function crateLines() {
+                    const data = 3;
+                    for (let i = 0; i < data; i++) {
+                      vertical(i);
+                    }
+                    for (let i = 0; i < data; i++) {
+                      horizontal(i);
+                    }
+                    function vertical(i) {
+                      const line = document.createElement('div');
+                      line.style.position = 'absolute';
+                      line.style.left = (2.5 + i * 2.5) / 10 * 100 + '%';
+                      console.log(parseInt(crateMark.style.height))
+                      line.style.backgroundColor = color;
+                      line.style.height = '100%';
+                      line.style.width = '1px';
+                      crateMark.appendChild(line);
+                    }
+                    function horizontal(i) {
+                      const line = document.createElement('div');
+                      line.style.position = 'absolute';
+                      line.style.top = (2 + i * 2.5) / 10 * 100 + '%';
+                      line.style.backgroundColor = color;
+                      line.style.height = '1px';
+                      line.style.width = '100%';
+                      crateMark.appendChild(line);
+                    }
+                  }
+                  styleCrateMark();
+                  function styleCrateMark() {
+                    crateMark.style.height = '1rem';
+                    crateMark.style.width = '1rem';
+                    crateMark.style.position = 'absolute';
+                    crateMark.style.top = '-1rem';
+                    crateMark.style.left = '0';
+                  }
+                }
+                function append() {
+                  qMarkIsInCalendar.appendChild(crateMark);
+                  qMarkIsInCalendar.appendChild(qMark);
                 }
                 // data - 0 = q mark visible
                 // data - 1 = q mark not visible
                 // content - q mark
                 // style - q mark
                 // interactivity - q mark
-
               }
               function append() {
                 const log = container.getElementsByClassName('storeTimeBlocks')[0];
-                newHourBlock.appendChild(qMark);
+                newHourBlock.appendChild(qMarkIsInCalendar);
                 log.appendChild(newHourBlock);
               }
             }
