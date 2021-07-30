@@ -815,9 +815,10 @@ function app() {
               // size increase per time block increase
               // + 1 = 
               // size extra increase per num of increases
-              const num = 0.3 + hoursNum / 100;
+              const num = 0.35 + hoursNum / 100;
               timeBlockChosenEl.style.height = num * 100 + '%';
               timeBlockChosenEl.style.marginBottom = -(hoursNum / 6) + 'px';
+              timeBlockChosenEl.style.marginTop = '-3px';
               timeBlockChosenEl.style.fontSize = 1.5 + hoursNum / 100 * 2 + 'rem';
               timeBlockChosenEl.style.border = '2px solid #000000';
               timeBlockChosenEl.style.paddingLeft = '1rem';
@@ -893,22 +894,7 @@ function app() {
             el.style.textAlign = 'center';
             el.style.alignItems = 'center';
             el.style.position = 'relative';
-            el.style.backgroundColor = '#000000';
-            // const hours = el.children[0];
-            // hours.style.position = 'absolute';
-            // hours.style.bottom = '0';
-            // hours.style.left = '0';
-            // hours.style.right = '0';
-            // hours.style.flex = '5';
-            // hours.style.display = 'flex';
-            // for (let i = 0; i < hours.children.length; i++) {
-            //   const hour = hours.children[i];
-            //   hour.style.backgroundColor = '#000000';
-            //   hour.style.opacity = '0.85';
-            //   hour.style.color = '#ffffff';
-            //   hour.style.flex = '1';
-            //   hour.style.fontSize = '0.5rem';
-            // }
+            el.style.backgroundColor = '#000000'
           }
         }
         function interactives() {
