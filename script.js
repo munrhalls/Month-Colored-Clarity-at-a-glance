@@ -1196,7 +1196,7 @@ function app() {
 
         style();
         function style() {
-          const fontSize = 1;
+          const fontSize = 0.6;
           getEl_loopF('titleBarForProjects', style_titleBarForProjects);
           getEl_loopF('titleScrollProjects', style_titleScrollProjects);
           getEl_loopF('titleProjectColor', style_titleProjectColor)
@@ -1211,20 +1211,22 @@ function app() {
             // el.style.borderRight = '3rem solid transparent';
             // el.style.borderLeft = '3rem solid transparent';
             el.style.display = 'flex';
-            el.style.height = commonHeight / 2 + 'rem';
-            el.style.maxHeight = commonHeight / 2 + 'rem'
+            // el.style.height = commonHeight / 2 + 'rem';
+            // el.style.maxHeight = commonHeight / 2 + 'rem'
             el.style.backgroundColor = menuBgColor;
             el.style.color = '#ffffff';
             el.style.paddingTop = '0.2rem';
+            el.style.paddingBottom = '0.2rem'
           }
           function style_titleScrollProjects(el) {
             el.style.fontSize = fontSize + 'rem';
             el.style.display = 'flex';
-            el.style.justifyContent = 'center';
+            el.style.justifyContent = 'flex-start';
             el.style.alignItems = 'center';
-            el.style.textAlign = 'center';
-            el.style.maxWidth = commonWidth + 2.8 + 'rem';
-            el.style.width = commonWidth + 2.8 + 'rem ';
+            el.style.textAlign = 'left';
+            el.style.paddingLeft = '0.3rem'
+            el.style.maxWidth = commonWidth + 'rem';
+            el.style.width = commonWidth + 'rem ';
             el.style.borderRight = '1px solid #ffffff';
           }
           function style_titleProjectColor(el) {
