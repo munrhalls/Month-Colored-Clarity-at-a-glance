@@ -144,7 +144,7 @@ function app() {
           let div = document.createElement('div');
           div.className = el;
           // comment / uncomment
-          devHelperF_borderify(div);
+          // devHelperF_borderify(div);
           // devHelperF_textMark(div, el);
           container.appendChild(div);
         }
@@ -1112,7 +1112,6 @@ function app() {
             el.style.innerText = 'PROJECTS';
             el.style.color = '#ffffff';
             el.style.width = commonHeight;
-            el.style.border = '1px solid black';
             el.style.color = 'rgb(255, 255, 255)';
             el.style.fontWeight = 'bold';
             el.style.marginLeft = '1.5rem';
@@ -1438,8 +1437,8 @@ function app() {
 
           function style_menuCalendar(el) {
             el.style.flex = '1';
-            // el.style.maxHeight = commonHeight / 2 + 'rem';
-            // el.style.height = commonHeight / 2 + 'rem';
+            el.style.maxHeight = commonHeight / 4.25 + 'rem';
+            el.style.height = commonHeight / 4.25 + 'rem';
             el.style.backgroundColor = '#000000';
             el.style.display = 'flex';
           }
@@ -1450,7 +1449,7 @@ function app() {
             el.style.display = 'flex';
             el.style.flexDirection = 'column';
             el.style.justifyContent = 'center';
-            el.style.fontSize = '1.5rem';
+            el.style.fontSize = '0.75rem';
             el.style.letterSpacing = '1.75rem';
             el.style.marginLeft = commonWidth * 2 + 'rem';
           }
@@ -1464,7 +1463,8 @@ function app() {
           }
           function style_monthChoice(el) {
             // global
-            el.style.fontSize = menuTitleSize + 'rem';
+            el.style.fontSize = '1.25rem';
+            el.style.letterSpacing = '1px'
           }
           function style_prevMonth(el) {
             style_prevArr(el);
