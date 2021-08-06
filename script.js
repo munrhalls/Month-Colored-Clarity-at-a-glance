@@ -1316,6 +1316,7 @@ function app() {
             el.style.transform = 'rotate(180deg)';
             el.style.position = 'initial';
             el.style.marginBottom = commonHeight / 3 + 'rem';
+            el.style.marginTop = commonHeight / 9 + 'rem';
           }
           function style_projectBarsSymbolLines(el) {
             // el.style.padding = '1rem';
