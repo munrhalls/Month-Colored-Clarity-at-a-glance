@@ -1295,7 +1295,7 @@ function app() {
           getEl_loopF('projectBarsSymbolLines', style_projectBarsSymbolLines);
           getEl_loopF('nextProjectBar', style_nextProjectBar);
           function style_projectBarsScroll(el) {
-            el.style.width = commonWidth * 1.5 + 'rem';
+            el.style.width = commonWidth + 'rem';
             el.style.backgroundColor = '#000000';
             el.style.display = 'flex';
             el.style.flexDirection = 'column';
@@ -1552,10 +1552,10 @@ function app() {
             function content_weekHeader(week) {
               const weekHeader = document.createElement('span');
               weekHeader.classList = 'weekHeader';
-              const text = weeks[i].code.split('-')[1] + ' ' + weeks[i].code.split('-')[2];
+              const name = weeks[i].code.split('-')[1] + ' ' + weeks[i].code.split('-')[2];
               const title = document.createElement('span');
               title.className = 'weekTitle';
-              title.innerText = text;
+              title.innerText = name;
               title.style.userSelect = 'none'
               weekHeader.appendChild(title);
               week.appendChild(weekHeader);
@@ -1649,15 +1649,16 @@ function app() {
         el.style.flexDirection = 'column';
         el.style.alignItems = 'flex-end';
         el.style.justifyContent = 'flex-start';
+        el.style.paddingRight = '0.5rem';
         el.style.backgroundColor = '#000000';
         el.style.color = '#ffffff';
-        el.style.padding = '0 1rem';
-        el.style.width = commonWidth * 1.5 + 'rem';
+        el.style.width = commonWidth + 'rem';
+        el.style.textAlign = 'center';
       }
       function style_weekTitle(el) {
-        el.style.fontSize = fontSize * 1.25 + 'rem';
-        el.style.padding = '0 ' + (fontSize / 5) + 'rem';
-        el.style.paddingTop = (fontSize / 8) + 'rem';
+        el.style.fontSize = '0.75rem';
+        // el.style.padding = '0 ' + (fontSize / 5) + 'rem';
+        // el.style.paddingTop = (fontSize / 8) + 'rem';
       }
       function style_day(el) {
         el.style.fontSize = (fontSize - 0.25) + 'rem';
