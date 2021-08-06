@@ -4,7 +4,7 @@ var monthShown = 'July';
 
 // // DATA VALUES
 const level2ZIndex = '1000';
-const menuTitleSize = 1.5;
+const menuTitleSize = 1.25;
 const menuTitleMargin = 3;
 const _letterSpacing = 0.25;
 const menuBgColor = '#000000';
@@ -1083,12 +1083,12 @@ function app() {
       }
       function create_menuProjects() {
         getEl_loopF('headerProjects', content_menuProjects);
-        getEl_loopF('addProjectBarLabel', content_addProjectBarLabel);
+        getEl_loopF('addProjectBar', content_addProjectBar);
         function content_menuProjects(el) {
           el.innerText = 'PROJECTS';
           el.style.userSelect = 'none'
         }
-        function content_addProjectBarLabel(el) {
+        function content_addProjectBar(el) {
           el.innerText = '+';
           el.style.userSelect = 'none'
         }
@@ -1097,11 +1097,11 @@ function app() {
           getEl_loopF('menuProjects', style_menuProjects);
           getEl_loopF('headerProjects', style_headerProjects);
           getEl_loopF('addProjectBar', style_addProjectBar);
-          getEl_loopF('addProjectBarLabel', style_addProjectBarLabel);
+          // getEl_loopF('addProjectBarLabel', style_addProjectBarLabel);
           function style_menuProjects(el) {
             el.style.flex = '1';
-            // el.style.height = commonHeight / 2 + 'rem';
-            // el.style.maxHeight = commonHeight / 2 + 'rem'
+            el.style.height = commonHeight / 4.25 + 'rem';
+            el.style.maxHeight = commonHeight / 4.25 + 'rem'
             el.style.backgroundColor = menuBgColor;
             el.style.borderTop = '1px solid #ffffff';
             el.style.display = 'flex';
@@ -1119,30 +1119,23 @@ function app() {
             el.style.display = 'flex';
             el.style.flexDirection = 'column';
             el.style.justifyContent = 'center';
-            el.style.fontSize = '1.5rem';
+            el.style.fontSize = '0.75rem';
             el.style.letterSpacing = '1.75rem';
             el.style.marginLeft = commonWidth * 2 + 'rem';
           }
           function style_addProjectBar(el) {
+            el.style.textAlign = 'center';
             el.style.cursor = 'pointer';
             el.style.position = 'relative';
-            // el.style.height = '100%';
-            el.style.width = menuTitleMargin * 2 + 'rem';
             el.style.userSelect = 'none';
-          }
-          function style_addProjectBarLabel(el) {
-            el.style.position = 'absolute';
-            // el.style.top = -(menuTitleSize * 2) / 2 - (menuTitleSize * 3) / 8 + 'rem';
-            el.style.top = -(menuTitleSize + menuTitleSize / 6) + 'rem';
-            // el.style.bottom = '0';
-            // el.style.left = '0';
-            // el.style.right = '0';
             el.style.color = '#ffffff';
             el.style.marginLeft = menuTitleMargin + 'rem';
-            el.style.fontSize = menuTitleSize * 2 + 'rem';
+            el.style.fontSize = '1.25rem'
+            el.style.fontWeight = 'bold';
             el.style.width = menuTitleMargin + 'rem';
             el.style.userSelect = 'none';
-            el.style.border = 'none';
+            el.style.border = '1px solid #ffffff';
+            el.style.borderRadius = '50%';
           }
         }
         interactivity();
