@@ -465,10 +465,10 @@ function app() {
         for (let i = 0; i < letters.length; i++) {
           let letter = document.createElement('letter');
           letter.className = 'colorLetter';
-          letter.innerText = letters[i].toUpperCase();
+          letter.innerText = letters[i];
           letter.style.userSelect = 'none'
-          letter.style.color = colors[7 - i];
-          letter.style.letterSpacing = '3px';
+          letter.style.color = colors[i % 7];
+          letter.style.letterSpacing = '1px';
           el.appendChild(letter);
         }
       }
@@ -481,7 +481,6 @@ function app() {
       let title_height = '3rem';
       let title_bgColor = '#000000';
       let title_color = '#ffffff';
-      let title_fontSize = '1.5rem';
       let title_padding = '0.5rem';
       getEl_loopF('topBar', style_topbar);
       getEl_loopF('title', style_title);
@@ -493,11 +492,13 @@ function app() {
         el.style.height = '100%';
       }
       function style_title(el) {
+        el.style.display = 'flex';
+        el.style.alignItems = 'center';
+        el.style.paddingLeft = '0.25rem';
         el.style.background = title_bgColor;
         el.style.height = title_height;
         el.style.color = '#ffffff';
-        el.style.padding = title_padding
-        el.style.fontSize = title_fontSize;
+        el.style.fontSize = '1rem';
         el.style.borderRight = '1px solid #ffffff';
         el.style.letterSpacing = _letterSpacing + 'rem';
         const colorLetters = el.getElementsByClassName('colorLetter');
@@ -509,7 +510,7 @@ function app() {
       function style_about(el) {
         el.style.color = title_color;
         el.style.padding = title_padding;
-        el.style.fontSize = title_fontSize;
+        el.style.fontSize = '1rem';
       }
     }
     function create_main() {
