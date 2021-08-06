@@ -1397,8 +1397,7 @@ function app() {
         getEl_loopF('headerCalendar', content_headerCalendar);
         getEl_loopF('monthChoices', content_monthChoices);
         getEl_loopF('chooseMonth', content_monthChoice);
-        getEl_loopF('prevMonth', content_prevMonth);
-        getEl_loopF('nextMonth', content_nextMonth);
+
 
         function content_headerCalendar(el) {
           const title = document.createElement('span');
@@ -1417,10 +1416,6 @@ function app() {
           title.style.userSelect = 'none'
           title.style.userSelect = 'none'
           el.appendChild(title);
-        }
-        function content_prevMonth(el) {
-        }
-        function content_nextMonth(el) {
         }
 
         // C A L E N D A R  B A R -  S T Y L E
@@ -1468,11 +1463,17 @@ function app() {
           }
           function style_prevMonth(el) {
             style_prevArr(el);
-            el.style.marginLeft = 0 - menuTitleMargin + 'rem';
+            el.style.borderTop = commonHeight / 4 + 'rem solid #ffffff';
+            el.style.borderLeft = commonHeight / 12 + 'rem solid transparent';
+            el.style.borderRight = commonHeight / 12 + 'rem solid transparent';
+            el.style.borderBottom = '0';
           }
           function style_nextMonth(el) {
             style_nextArr(el)
-            el.style.marginRight = 0 - menuTitleMargin + 'rem';
+            el.style.borderTop = commonHeight / 4 + 'rem solid #ffffff';
+            el.style.borderLeft = commonHeight / 12 + 'rem solid transparent';
+            el.style.borderRight = commonHeight / 12 + 'rem solid transparent';
+            el.style.borderBottom = '0';
           }
         }
 
