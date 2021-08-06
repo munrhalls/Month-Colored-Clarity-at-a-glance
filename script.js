@@ -461,17 +461,13 @@ function app() {
       getEl_loopF('title', content_title);
       getEl_loopF('about', content_about);
       function content_title(el) {
-        let spanOne = document.createElement('span');
-        spanOne.innerText = ('CALENDAR: TIME BLOCKS ') + 'per ';
-        spanOne.style.userSelect = 'none'
-        el.appendChild(spanOne);
-        let letters = ('project').split('');
+        let letters = ('Project Time Blocks In Calendar').split('');
         for (let i = 0; i < letters.length; i++) {
           let letter = document.createElement('letter');
           letter.className = 'colorLetter';
           letter.innerText = letters[i].toUpperCase();
           letter.style.userSelect = 'none'
-          letter.style.color = colors[i];
+          letter.style.color = colors[7 - i];
           letter.style.letterSpacing = '3px';
           el.appendChild(letter);
         }
@@ -508,6 +504,7 @@ function app() {
         for (let i = 0; i < colorLetters.length; i++) {
           colorLetters[i].style.paddingLeft = _letterSpacing + 'rem';
         }
+        colorLetters[colorLetters.length - 1].style.marginRight = '0.5rem';
       }
       function style_about(el) {
         el.style.color = title_color;
@@ -1451,7 +1448,7 @@ function app() {
           function style_monthChoices(el) {
             el.style.display = 'flex';
             el.style.alignItems = 'center';
-            el.style.marginLeft = (menuTitleMargin * 3) + 'rem';
+            el.style.marginLeft = 5 + 'rem';
             el.style.color = '#ffffff';
             // position
             el.style.position = 'relative';
