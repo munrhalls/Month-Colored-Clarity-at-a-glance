@@ -1100,8 +1100,8 @@ function app() {
           getEl_loopF('addProjectBarLabel', style_addProjectBarLabel);
           function style_menuProjects(el) {
             el.style.flex = '1';
-            el.style.height = commonHeight / 2 + 'rem';
-            el.style.maxHeight = commonHeight / 2 + 'rem'
+            // el.style.height = commonHeight / 2 + 'rem';
+            // el.style.maxHeight = commonHeight / 2 + 'rem'
             el.style.backgroundColor = menuBgColor;
             el.style.borderTop = '1px solid #ffffff';
             el.style.display = 'flex';
@@ -1126,22 +1126,23 @@ function app() {
           function style_addProjectBar(el) {
             el.style.cursor = 'pointer';
             el.style.position = 'relative';
-            el.style.height = '100%';
+            // el.style.height = '100%';
             el.style.width = menuTitleMargin * 2 + 'rem';
             el.style.userSelect = 'none';
           }
           function style_addProjectBarLabel(el) {
             el.style.position = 'absolute';
-            el.style.top = -menuTitleSize / 2 + 'rem';
-            el.style.bottom = '0';
-            el.style.left = '0';
-            el.style.right = '0';
-            el.style.maxHeight = '100%';
+            // el.style.top = -(menuTitleSize * 2) / 2 - (menuTitleSize * 3) / 8 + 'rem';
+            el.style.top = -(menuTitleSize + menuTitleSize / 6) + 'rem';
+            // el.style.bottom = '0';
+            // el.style.left = '0';
+            // el.style.right = '0';
             el.style.color = '#ffffff';
             el.style.marginLeft = menuTitleMargin + 'rem';
-            el.style.fontSize = menuTitleSize * 3 + 'rem';
+            el.style.fontSize = menuTitleSize * 2 + 'rem';
             el.style.width = menuTitleMargin + 'rem';
             el.style.userSelect = 'none';
+            el.style.border = 'none';
           }
         }
         interactivity();
@@ -1444,8 +1445,8 @@ function app() {
 
           function style_menuCalendar(el) {
             el.style.flex = '1';
-            el.style.maxHeight = commonHeight / 2 + 'rem';
-            el.style.height = commonHeight / 2 + 'rem';
+            // el.style.maxHeight = commonHeight / 2 + 'rem';
+            // el.style.height = commonHeight / 2 + 'rem';
             el.style.backgroundColor = '#000000';
             el.style.display = 'flex';
           }
