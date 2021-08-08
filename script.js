@@ -107,7 +107,7 @@ function app() {
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
     const menuCalendar = ['headerCalendar', 'monthChoices', monthChoices];
     const calendar = ['calendarMenuArea', ['menuCalendar', menuCalendar], 'calendarDataArea'];
-    const sideBarMenu = ['dataPersistance', ['dataPersistanceHeader', 'saveToFillBtn', 'dropToFillBtn'], '$Btn', ['$Message', '$btn']];
+    const sideBarMenu = ['dataPersistance', ['dataPersistanceHeader', 'saveToTextBtn', 'dropToFillBtn'], '$Btn', ['$Message', '$btn']];
     // BASIC DOM
     const BASIC_DOM = [
       'root',
@@ -1753,8 +1753,17 @@ function app() {
 
     function create_sideBarMenu() {
       getLastEl_runF('dataPersistanceHeader', content_dataPersistanceHeader);
+      getLastEl_runF('saveToTextBtn', content_saveToTextBtn);
+      // getLastEl_runF('dataPersistanceHeader', content_dataPersistanceHeader);
+      // getLastEl_runF('dataPersistanceHeader', content_dataPersistanceHeader);
+
       function content_dataPersistanceHeader(el) {
         el.innerText = 'SAVE';
+      }
+      function content_saveToTextBtn(el) {
+        el.innerText = 'click to save';
+        const chartIcon = resourceCreateChartIcon();
+        el.appendChild(chartIcon)
       }
 
       style();
@@ -1763,9 +1772,8 @@ function app() {
         getLastEl_runF('dataPersistanceHeader', style_dataPersistanceHeader);
         getLastEl_runF('sideBarMenu', style_sideBarMenu);
         getLastEl_runF('sideBarMenu', style_sideBarMenu);
-
-
-        getLastEl_runF('saveToFillBtn', style_saveToFillBtn);
+        getLastEl_runF('saveToTextBtn', style_saveToTextBtn);
+        getLastEl_runF('dropToFillBtn', style_dropToFillBtn);
 
 
         function style_sideBarMenu(el) {
@@ -1788,11 +1796,19 @@ function app() {
           el.style.fontSize = '0.75rem';
           el.style.letterSpacing = '0.5rem';
         }
-        function style_saveToFillBtn(el) {
+        function style_saveToTextBtn(el) {
           el.style.height = '10vh';
           el.style.borderBottom = '1px solid #ffffff';
           el.style.borderTop = '1px solid #ffffff';
           el.style.textAlign = 'center';
+          el.style.color = '#ffffff';
+        }
+        function style_dropToFillBtn(el) {
+          el.style.height = '10vh';
+          el.style.borderBottom = '1px solid #ffffff';
+          el.style.borderTop = '1px solid #ffffff';
+          el.style.textAlign = 'center';
+          el.style.color = '#ffffff';
         }
       }
 
