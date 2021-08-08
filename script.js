@@ -1791,8 +1791,8 @@ function app() {
         function style_saveToFillBtn(el) {
           el.style.height = '10vh';
           el.style.borderBottom = '1px solid #ffffff';
+          el.style.borderTop = '1px solid #ffffff';
           el.style.textAlign = 'center';
-
         }
       }
 
