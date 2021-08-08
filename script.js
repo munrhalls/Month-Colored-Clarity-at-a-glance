@@ -1754,6 +1754,7 @@ function app() {
     function create_sideBarMenu() {
       getLastEl_runF('dataPersistanceHeader', content_dataPersistanceHeader);
       getLastEl_runF('saveToTextBtn', content_saveToTextBtn);
+      getLastEl_runF('dropToFillBtn', content_dropToFillBtn);
       // getLastEl_runF('dataPersistanceHeader', content_dataPersistanceHeader);
       // getLastEl_runF('dataPersistanceHeader', content_dataPersistanceHeader);
 
@@ -1761,6 +1762,14 @@ function app() {
         el.innerText = 'SAVE & FILL';
       }
       function content_saveToTextBtn(el) {
+        const chartIcon = resourceCreateChartIcon();
+        el.appendChild(chartIcon)
+        const label = document.createElement('div');
+        label.className = 'saveToTextLabel';
+        label.innerText = 'SAVE';
+        el.appendChild(label);
+      }
+      function content_dropToFillBtn(el) {
         const chartIcon = resourceCreateChartIcon();
         el.appendChild(chartIcon)
         const label = document.createElement('div');
@@ -1808,28 +1817,42 @@ function app() {
           el.style.letterSpacing = '0.5rem';
         }
         function style_saveToTextBtn(el) {
-          el.style.height = '10vh';
           el.style.marginTop = '2.25rem';
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+          el.style.alignItems = 'center';
+          el.style.justifyContent = 'center';
+          el.style.flex = '1';
+          el.style.height = '10vh';
           el.style.width = '7.5vw';
           el.style.borderBottom = '1px solid #ffffff';
           el.style.borderTop = '1px solid #ffffff';
           el.style.textAlign = 'center';
           el.style.color = '#ffffff';
-          el.style.background = '#ffffff';
+
           const svg = el.getElementsByTagName('svg')[0];
           svg.style.background = '#ffffff';
           svg.setAttribute('viewBox', '-25 -30 150 150');
+          svg.setAttribute('enableBackground', '');
+
           const label = el.getElementsByClassName('saveToTextLabel')[0];
-          label.style.borderBottom = '1px solid #ffffff';
           label.style.letterSpacing = '0.25rem';
+          label.style.paddingTop = '0.2rem';
           label.style.paddingBottom = '0.2rem';
         }
         function style_dropToFillBtn(el) {
+          el.style.marginTop = '2.25rem';
+
+          el.style.flex = '1';
           el.style.height = '10vh';
           el.style.borderBottom = '1px solid #ffffff';
           el.style.borderTop = '1px solid #ffffff';
           el.style.textAlign = 'center';
           el.style.color = '#ffffff';
+
+          const svg = el.getElementsByTagName('svg')[0];
+          svg.setAttribute('viewBox', '-25 -30 150 150');
+          svg.setAttribute('enableBackground', '');
         }
       }
 
