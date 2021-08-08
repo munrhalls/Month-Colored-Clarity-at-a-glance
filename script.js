@@ -1758,17 +1758,21 @@ function app() {
       // getLastEl_runF('dataPersistanceHeader', content_dataPersistanceHeader);
 
       function content_dataPersistanceHeader(el) {
-        el.innerText = 'SAVE';
+        el.innerText = 'SAVE & FILL';
       }
       function content_saveToTextBtn(el) {
-        el.innerText = 'click to save';
         const chartIcon = resourceCreateChartIcon();
         el.appendChild(chartIcon)
+        const label = document.createElement('div');
+        label.className = 'saveToTextLabel';
+        label.innerText = 'SAVE';
+        el.appendChild(label);
       }
 
       style();
       function style() {
         getLastEl_runF('sideBarMenu', style_sideBarMenu);
+        getLastEl_runF('dataPersistance', style_dataPersistance);
         getLastEl_runF('dataPersistanceHeader', style_dataPersistanceHeader);
         getLastEl_runF('sideBarMenu', style_sideBarMenu);
         getLastEl_runF('sideBarMenu', style_sideBarMenu);
@@ -1777,9 +1781,16 @@ function app() {
 
 
         function style_sideBarMenu(el) {
-          el.style.width = '10vw';
+          el.style.width = '15vw';
+          el.style.minWidth = '12rem';
           el.style.height = '100vh';
           el.style.backgroundColor = '#000000';
+        }
+        function style_dataPersistance(el) {
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+          el.style.justifyContent = 'center';
+          el.style.alignItems = 'center';
         }
         function style_dataPersistanceHeader(el) {
           el.style.height = commonHeight / 4.25 + 'rem';
@@ -1798,6 +1809,8 @@ function app() {
         }
         function style_saveToTextBtn(el) {
           el.style.height = '10vh';
+          el.style.marginTop = '2.25rem';
+          el.style.width = '7.5vw';
           el.style.borderBottom = '1px solid #ffffff';
           el.style.borderTop = '1px solid #ffffff';
           el.style.textAlign = 'center';
@@ -1805,7 +1818,11 @@ function app() {
           el.style.background = '#ffffff';
           const svg = el.getElementsByTagName('svg')[0];
           svg.style.background = '#ffffff';
-          svg.setAttribute('viewBox', '0 0 300 300');
+          svg.setAttribute('viewBox', '-25 -30 150 150');
+          const label = el.getElementsByClassName('saveToTextLabel')[0];
+          label.style.borderBottom = '1px solid #ffffff';
+          label.style.letterSpacing = '0.25rem';
+          label.style.paddingBottom = '0.2rem';
         }
         function style_dropToFillBtn(el) {
           el.style.height = '10vh';
