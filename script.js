@@ -107,7 +107,7 @@ function app() {
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
     const menuCalendar = ['headerCalendar', 'monthChoices', monthChoices];
     const calendar = ['calendarMenuArea', ['menuCalendar', menuCalendar], 'calendarDataArea'];
-    const menuBlock = ['dataPersistance', ['saveToFillBtn', 'dropToFillBtn'], '$Btn', ['$Message', '$btn']];
+    const sideBarMenu = ['dataPersistance', ['saveToFillBtn', 'dropToFillBtn'], '$Btn', ['$Message', '$btn']];
     // BASIC DOM
     const BASIC_DOM = [
       'root',
@@ -117,7 +117,7 @@ function app() {
           ['projects', projects,
             'calendar', calendar
           ],
-          'menuBlock', menuBlock],
+          'sideBarMenu', sideBarMenu],
         'footer'
       ],
     ];
@@ -127,6 +127,7 @@ function app() {
     create_main();
     create_visuals();
     create_projects();
+    create_sideBarMenu();
     create_calendar();
 
     dragAndDrop();
@@ -1748,6 +1749,16 @@ function app() {
       }
     }
 
+    function create_sideBarMenu() {
+      style();
+      function style() {
+      }
+
+      interactivity();
+      function interactivity() {
+
+      }
+    }
     function dragAndDrop() {
       (function () {
         dragAndDrop.setDraggable = function (el) {
