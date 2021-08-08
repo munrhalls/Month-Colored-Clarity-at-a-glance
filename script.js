@@ -1782,7 +1782,11 @@ function app() {
           el.style.justifyContent = 'center';
           el.style.alignItems = 'center';
           el.style.letterSpacing = '3px';
-
+          // el.style.borderBottom = '1px solid #ffffff';
+          el.style.fontWeight = 'bold';
+          el.style.display = 'flex';
+          el.style.fontSize = '0.75rem';
+          el.style.letterSpacing = '0.5rem';
         }
         function style_saveToFillBtn(el) {
           el.style.height = '10vh';
