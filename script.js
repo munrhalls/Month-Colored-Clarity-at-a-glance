@@ -1773,8 +1773,8 @@ function app() {
         const chartIcon = resourceCreateChartIcon();
         el.appendChild(chartIcon)
         const label = document.createElement('div');
-        label.className = 'saveToTextLabel';
-        label.innerText = 'SAVE';
+        label.className = 'dropToFillLabel';
+        label.innerText = 'FILL';
         el.appendChild(label);
       }
 
@@ -1842,17 +1842,28 @@ function app() {
         }
         function style_dropToFillBtn(el) {
           el.style.marginTop = '2.25rem';
-
+          el.style.display = 'flex';
+          el.style.flexDirection = 'column';
+          el.style.alignItems = 'center';
+          el.style.justifyContent = 'center';
           el.style.flex = '1';
           el.style.height = '10vh';
+          el.style.width = '7.5vw';
           el.style.borderBottom = '1px solid #ffffff';
           el.style.borderTop = '1px solid #ffffff';
           el.style.textAlign = 'center';
           el.style.color = '#ffffff';
 
           const svg = el.getElementsByTagName('svg')[0];
+          svg.style.background = '#ffffff';
+
           svg.setAttribute('viewBox', '-25 -30 150 150');
           svg.setAttribute('enableBackground', '');
+
+          const label = el.getElementsByClassName('dropToFillLabel')[0];
+          label.style.letterSpacing = '0.25rem';
+          label.style.paddingTop = '0.2rem';
+          label.style.paddingBottom = '0.2rem';
         }
       }
 
