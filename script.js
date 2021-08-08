@@ -473,7 +473,7 @@ function app() {
         }
       }
       function content_about(el) {
-        // el.innerText = 'ABOUT';
+        el.innerText = 'ABOUT';
         el.style.userSelect = 'none'
       }
 
@@ -509,8 +509,18 @@ function app() {
       }
       function style_about(el) {
         el.style.color = title_color;
-        el.style.padding = title_padding;
+        el.style.padding = '0.25rem'
+        el.style.display = 'flex';
+        el.style.alignItems = 'center';
+        el.style.textAlign = 'center';
+        el.style.justifyContent = 'center';
+        el.style.paddingLeft = '0.25rem';
+        el.style.background = title_bgColor;
+        el.style.height = title_height;
+        el.style.color = '#ffffff';
         el.style.fontSize = '1rem';
+        el.style.borderRight = '1px solid #ffffff';
+        el.style.letterSpacing = _letterSpacing + 'rem';
       }
     }
     function create_main() {
@@ -1386,6 +1396,7 @@ function app() {
           el.style.flex = '5';
           el.style.display = 'flex';
           el.style.flexDirection = 'column';
+          el.style.maxHeight = '45vh';
         }
       }
     }
