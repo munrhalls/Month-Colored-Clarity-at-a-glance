@@ -107,6 +107,7 @@ function app() {
     const monthChoices = ['prevMonth', 'chooseMonth', 'nextMonth'];
     const menuCalendar = ['headerCalendar', 'monthChoices', monthChoices];
     const calendar = ['calendarMenuArea', ['menuCalendar', menuCalendar], 'calendarDataArea'];
+    const menuBlock = ['dataPersistance', ['saveToFillBtn', 'dropToFillBtn'], '$Btn', ['$Message', '$btn']];
     // BASIC DOM
     const BASIC_DOM = [
       'root',
@@ -116,7 +117,7 @@ function app() {
           ['projects', projects,
             'calendar', calendar
           ],
-          'menuBlock'],
+          'menuBlock', menuBlock],
         'footer'
       ],
     ];
