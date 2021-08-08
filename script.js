@@ -492,6 +492,7 @@ function app() {
         el.style.display = 'flex';
         el.style.background = title_bgColor;
         el.style.height = '100%';
+        el.style.borderBottom = '1px solid #ffffff';
       }
       function style_title(el) {
         el.style.display = 'flex';
@@ -1113,7 +1114,6 @@ function app() {
             el.style.height = commonHeight / 4.25 + 'rem';
             el.style.maxHeight = commonHeight / 4.25 + 'rem'
             el.style.backgroundColor = menuBgColor;
-            el.style.borderTop = '1px solid #ffffff';
             el.style.display = 'flex';
             el.style.justifyContent = 'flex-start';
             el.style.alignItems = 'center';
@@ -1291,6 +1291,7 @@ function app() {
             el.style.alignItems = 'center';
             el.style.display = 'flex'
             el.style.textAlign = 'center';
+            el.style.borderRight = '1px solid #ffffff';
             // el.style.maxWidth = commonWidth * 4 + 'rem';
             // el.style.width = commonWidth * 4 + 'rem ';
             el.style.flex = '1';
@@ -1755,7 +1756,6 @@ function app() {
         getLastEl_runF('sideBarMenu', style_sideBarMenu);
 
         function style_sideBarMenu(el) {
-          // el.style.flex = '1';
           el.style.width = '10vw';
           el.style.height = '100vh';
           el.style.backgroundColor = '#000000';
