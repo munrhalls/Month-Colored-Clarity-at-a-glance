@@ -1802,6 +1802,10 @@ function app() {
           el.style.borderTop = '1px solid #ffffff';
           el.style.textAlign = 'center';
           el.style.color = '#ffffff';
+          el.style.background = '#ffffff';
+          const svg = el.getElementsByTagName('svg')[0];
+          svg.style.background = '#ffffff';
+          svg.setAttribute('viewBox', '0 0 300 300');
         }
         function style_dropToFillBtn(el) {
           el.style.height = '10vh';
