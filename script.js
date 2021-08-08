@@ -1752,11 +1752,22 @@ function app() {
     function create_sideBarMenu() {
       style();
       function style() {
+        getLastEl_runF('sideBarMenu', style_sideBarMenu);
+
+        function style_sideBarMenu(el) {
+          // el.style.flex = '1';
+          el.style.width = '10vw';
+          el.style.height = '100vh';
+          el.style.backgroundColor = '#000000';
+        }
       }
+
+
+
+
 
       interactivity();
       function interactivity() {
-
       }
     }
     function dragAndDrop() {
