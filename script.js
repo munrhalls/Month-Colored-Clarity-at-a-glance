@@ -381,7 +381,7 @@ function app() {
             colorMenu.style.display = 'none'
           }
         }
-        function inter_CLICK_chooseProjectBarColor() {
+        function inter_CLICK_chooseProjectBarColor(e) {
           const colorChoices = colorMenu.getElementsByClassName('colorChoice');
           for (let i = 0; i < colorChoices.length; i++) {
             const colorChoice = colorChoices[i];
@@ -389,8 +389,11 @@ function app() {
             colorChoice.onclick = function (e) {
               e.stopPropagation();
               handleColorShift();
+
               function handleColorShift() {
                 const color = colorChoice.classList[1];
+                const bar = setup_findElementUp(e.target, 'projectBar');
+                bar.classList.add('color-' + color);
 
                 shiftProjectBarColor();
                 updateProjectBarsSymbolLines();
@@ -1171,6 +1174,10 @@ function app() {
                 const projectBarList = document.getElementsByClassName('projectBar');
                 const lastProjectBar = projectBarList[projectBarList.length - 1];
                 const colorMenuBtn = lastProjectBar.getElementsByClassName('colorMenuBtn')[0];
+                addColorClass();
+                function addColorClass() {
+                  lastProjectBar.classList.add('color-' + color);
+                }
                 lastProjectBar.style.backgroundColor = color;
                 colorMenuBtn.style.backgroundColor = color;
               }
@@ -1892,9 +1899,10 @@ function app() {
               const dataStr = '';
               let projectBarDataAsStr = '';
 
-              const projectBars = document.getElementsByClassName('projectBar');
-              for (let i = 0; i < projectBars.length; i++) {
-                const projectBar = projectBars[i];
+              const bars = document.getElementsByClassName('projectBar');
+              for (let i = 0; i < bars.length; i++) {
+                const bar = bars[i];
+                console.log(bar.classList)
               }
             }
           }
