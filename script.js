@@ -1878,7 +1878,12 @@ function app() {
         getLastEl_runF('saveToTextBtn', inter_saveToTextBtn);
         getLastEl_runF('dropToFillBtn', inter_dropToFillBtn);
         function inter_saveToTextBtn(el) {
-
+          el.onclick = function (e) {
+            saveDataToTextFile();
+            function saveDataToTextFile() {
+              console.log('save to text file')
+            }
+          }
         }
         function inter_dropToFillBtn(el) {
 
