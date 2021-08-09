@@ -1902,14 +1902,15 @@ function app() {
 
             }
             function addBarClassesData() {
-
+              localStorage.clear();
+              //!!!
               const bars = document.getElementsByClassName('projectBar');
               for (let i = 0; i < bars.length; i++) {
                 const bar = bars[i];
                 const classes = [...bar.classList];
                 // const colorIndex = classes.indexOf('color') + 1;
-                data += '(' + classes + ')';
-                console.log(data)
+                data += '(' + 'i ' + i + ' ' + classes + ')' + '][';
+                localStorage.setItem('projectBars', data);
               }
             }
           }
@@ -1918,7 +1919,38 @@ function app() {
           el.onclick = function (e) {
             saveDataToTextFile();
             function saveDataToTextFile() {
-              console.log('fill data')
+              const data = localStorage.getItem('projectBars');
+              // const bars =  
+              const bars = data.split('][');
+              bars.pop();
+              for (let i = 0; i < bars.length; i++) {
+                const barClasses = bars[i];
+                fromData_createProjectBar();
+                function fromData_createProjectBar() {
+                  const projectBars = document.getElementsByClassName('projectBars')[0];
+                  const randomNum = Math.floor(Math.random() * 6);
+                  const color = colors[randomNum];
+                  assembleDOM(projectBar, projectBars);
+                  create_projects.create_projectBar();
+                  colorAddedProjectBar();
+                  create_projects.create_projectBarsSymbolLine();
+                  create_projects.handleSymbolLinesScroll();
+
+
+                  function colorAddedProjectBar() {
+                    const projectBarList = document.getElementsByClassName('projectBar');
+                    const lastProjectBar = projectBarList[projectBarList.length - 1];
+                    const colorMenuBtn = lastProjectBar.getElementsByClassName('colorMenuBtn')[0];
+                    addColorClass();
+                    function addColorClass() {
+                      lastProjectBar.classList.add('color');
+                      lastProjectBar.classList.add(color);
+                    }
+                    lastProjectBar.style.backgroundColor = color;
+                    colorMenuBtn.style.backgroundColor = color;
+                  }
+                }
+              }
             }
           }
         }
