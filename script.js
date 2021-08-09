@@ -1770,8 +1770,8 @@ function app() {
         el.appendChild(label);
       }
       function content_dropToFillBtn(el) {
-        const chartIcon = resourceCreateChartIcon();
-        el.appendChild(chartIcon)
+        const fillIcon = resourceCreateFillIcon();
+        el.appendChild(fillIcon)
         const label = document.createElement('div');
         label.className = 'dropToFillLabel';
         label.innerText = 'FILL';
@@ -1857,7 +1857,7 @@ function app() {
           const svg = el.getElementsByTagName('svg')[0];
           svg.style.background = '#ffffff';
 
-          svg.setAttribute('viewBox', '-25 -30 150 150');
+          svg.setAttribute('viewBox', '-52.5 -45 150 150');
           svg.setAttribute('enableBackground', '');
 
           const label = el.getElementsByClassName('dropToFillLabel')[0];
@@ -3176,16 +3176,11 @@ function resourceCreateChartIcon() {
 }
 function resourceCreateFillIcon() {
   const fillIcon = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  fillIcon.setAttributeNS(null, 'width', '512');
-  fillIcon.setAttributeNS(null, 'height', '512');
-  fillIcon.setAttributeNS(null, 'viewBox', '0 0 72 68');
   fillIcon.setAttributeNS(null, 'x', '0px');
   fillIcon.setAttributeNS(null, 'y', '0px');
+  fillIcon.setAttributeNS(null, 'enableBackground', 'new 0 0 100 100');
+  fillIcon.setAttributeNS(null, 'viewBox', '-17 6 100 100');
   // fillIcon.setAttributeNS(null, 'xml:space', 'preserve');  
-
-
-
-
 
 
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
