@@ -393,7 +393,8 @@ function app() {
               function handleColorShift() {
                 const color = colorChoice.classList[1];
                 const bar = setup_findElementUp(e.target, 'projectBar');
-                bar.classList.add('color-' + color);
+                bar.classList.add('color' + color);
+                bar.classList.add(color);
 
                 shiftProjectBarColor();
                 updateProjectBarsSymbolLines();
@@ -1176,7 +1177,8 @@ function app() {
                 const colorMenuBtn = lastProjectBar.getElementsByClassName('colorMenuBtn')[0];
                 addColorClass();
                 function addColorClass() {
-                  lastProjectBar.classList.add('color-' + color);
+                  lastProjectBar.classList.add('color');
+                  lastProjectBar.classList.add(color);
                 }
                 lastProjectBar.style.backgroundColor = color;
                 colorMenuBtn.style.backgroundColor = color;
@@ -1890,19 +1892,24 @@ function app() {
         getLastEl_runF('dropToFillBtn', inter_dropToFillBtn);
         function inter_saveToTextBtn(el) {
           el.onclick = function (e) {
+            let data = '';
+
+
             saveDataToTextFile();
-            getProjectBarsData();
+            addBarClassesData();
             function saveDataToTextFile() {
 
+
             }
-            function getProjectBarsData() {
-              const dataStr = '';
-              let projectBarDataAsStr = '';
+            function addBarClassesData() {
 
               const bars = document.getElementsByClassName('projectBar');
               for (let i = 0; i < bars.length; i++) {
                 const bar = bars[i];
-                console.log(bar.classList)
+                const classes = [...bar.classList];
+                // const colorIndex = classes.indexOf('color') + 1;
+                data += '(' + classes + ')';
+                console.log(data)
               }
             }
           }
