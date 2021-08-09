@@ -1788,7 +1788,6 @@ function app() {
         getLastEl_runF('saveToTextBtn', style_saveToTextBtn);
         getLastEl_runF('dropToFillBtn', style_dropToFillBtn);
 
-
         function style_sideBarMenu(el) {
           el.style.width = '15vw';
           el.style.minWidth = '12rem';
@@ -1874,12 +1873,16 @@ function app() {
         }
       }
 
-
-
-
-
       interactivity();
       function interactivity() {
+        getLastEl_runF('saveToTextBtn', inter_saveToTextBtn);
+        getLastEl_runF('dropToFillBtn', inter_dropToFillBtn);
+        function inter_saveToTextBtn(el) {
+
+        }
+        function inter_dropToFillBtn(el) {
+
+        }
       }
     }
     function dragAndDrop() {
