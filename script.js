@@ -381,7 +381,7 @@ function app() {
             colorMenu.style.display = 'none'
           }
         }
-        function inter_CLICK_chooseProjectBarColor(e) {
+        function inter_CLICK_chooseProjectBarColor() {
           const colorChoices = colorMenu.getElementsByClassName('colorChoice');
           for (let i = 0; i < colorChoices.length; i++) {
             const colorChoice = colorChoices[i];
@@ -979,10 +979,15 @@ function app() {
             }
           }
           function inter_CLICK_addTimeBlock(el) {
+            // ot to complete that func?
+            // imagine understand
+            // plan
+
+
             el.onclick = function () {
-              const container = setup_findElementUp(el, 'projectBar');
-              const color = container.style.backgroundColor;
-              const choice = container.getElementsByClassName('timeBlockChoice')[0];
+              const projectBar = setup_findElementUp(el, 'projectBar');
+              const color = projectBar.style.backgroundColor;
+              const choice = projectBar.getElementsByClassName('timeBlockChoice')[0];
               const number = choice.classList[1];
               const chosenBlock = choice.getElementsByClassName(number)[0];
               let newHourBlock;
@@ -999,9 +1004,9 @@ function app() {
                 dragAndDrop.setDraggable(newHourBlock);
               }
               function style() {
-                const storeHourBlocks = container.getElementsByClassName('storeTimeBlocks')[0];
+                const storeHourBlocks = projectBar.getElementsByClassName('storeTimeBlocks')[0];
                 const blocksNum = storeHourBlocks.getElementsByClassName('hourBlock').length;
-                const bgColor = container.style.backgroundColor;
+                const bgColor = projectBar.style.backgroundColor;
                 newHourBlock.style.position = 'absolute';
                 newHourBlock.style.left = blocksNum * 1.5 + 'rem';
                 newHourBlock.style.zIndex = blocksNum;
@@ -1092,10 +1097,13 @@ function app() {
                 // style - q mark
                 // interactivity - q mark
               }
+              function updateClassList() {
+                setup_findElementUp()
+              }
               function append() {
-                const log = container.getElementsByClassName('storeTimeBlocks')[0];
+                const storeTimeBlocks = projectBar.getElementsByClassName('storeTimeBlocks')[0];
                 newHourBlock.appendChild(qMarkIsInCalendar);
-                log.appendChild(newHourBlock);
+                storeTimeBlocks.appendChild(newHourBlock);
               }
             }
           }
