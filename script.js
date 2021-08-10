@@ -1924,6 +1924,12 @@ function app() {
               projectsData.pop();
               return projectsData;
             }
+            function getProjectColor(instance) {
+              const projectClasses = instance.split(',');
+              const colorIndex = projectClasses.indexOf('color') + 1;
+              const color = projectClasses[colorIndex];
+              return color;
+            }
 
             // one thing to debug 
             function saveDataToTextFile() {
@@ -1949,9 +1955,7 @@ function app() {
               // one thing to refactor that?
               function fromData_createProjectBar(instance) {
                 const projectBars = document.getElementsByClassName('projectBars')[0];
-                const projectClasses = instance.split(',');
-                const colorIndex = projectClasses.indexOf('color') + 1;
-                const color = projectClasses[colorIndex];
+                const color = getProjectColor(instance);
 
 
 
