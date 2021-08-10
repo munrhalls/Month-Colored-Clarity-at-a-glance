@@ -1921,24 +1921,18 @@ function app() {
         function inter_dropToFillBtn(el) {
           el.onclick = function (e) {
             saveDataToTextFile();
-            function getProjectData() {
-              const data = localStorage.getItem('projectBars');
-              const projectsData = data.split('][');
-              projectsData.pop();
-              return projectsData;
-            }
-            function getProjectColor(instance) {
-              const projectClasses = instance.split(',');
-              const colorIndex = projectClasses.indexOf('color') + 1;
-              const color = projectClasses[colorIndex];
-              return color;
-            }
             function saveDataToTextFile() {
               const projectsData = getProjectData();
               for (let i = 0; i < projectsData.length; i++) {
                 const instance = projectsData[i]
                 fromData_createProjectBar(instance);
               }
+            }
+            function getProjectData() {
+              const data = localStorage.getItem('projectBars');
+              const projectsData = data.split('][');
+              projectsData.pop();
+              return projectsData;
             }
             function fromData_createProjectBar(instance) {
               const projectBars = document.getElementsByClassName('projectBars')[0];
@@ -1948,6 +1942,12 @@ function app() {
               colorAddedProjectBar(color);
               create_projects.create_projectBarsSymbolLine();
               create_projects.handleSymbolLinesScroll();
+            }
+            function getProjectColor(instance) {
+              const projectClasses = instance.split(',');
+              const colorIndex = projectClasses.indexOf('color') + 1;
+              const color = projectClasses[colorIndex];
+              return color;
             }
             function colorAddedProjectBar(color) {
               const projectBarList = document.getElementsByClassName('projectBar');
