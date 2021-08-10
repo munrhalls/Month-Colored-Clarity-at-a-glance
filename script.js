@@ -1915,6 +1915,9 @@ function app() {
             }
           }
         }
+
+
+
         function inter_dropToFillBtn(el) {
           el.onclick = function (e) {
             saveDataToTextFile();
@@ -1930,62 +1933,43 @@ function app() {
               const color = projectClasses[colorIndex];
               return color;
             }
-
-            // one thing to debug 
             function saveDataToTextFile() {
-
               const projectsData = getProjectData();
-
               for (let i = 0; i < projectsData.length; i++) {
                 const instance = projectsData[i]
                 fromData_createProjectBar(instance);
               }
-              // what one thing to do to refactor?
-              // look around, notice common elements
+            }
+            function fromData_createProjectBar(instance) {
+              const projectBars = document.getElementsByClassName('projectBars')[0];
+              const color = getProjectColor(instance);
+              assembleDOM(projectBar, projectBars);
+              create_projects.create_projectBar();
+              colorAddedProjectBar(color);
+              create_projects.create_projectBarsSymbolLine();
+              create_projects.handleSymbolLinesScroll();
+            }
+            function colorAddedProjectBar(color) {
+              const projectBarList = document.getElementsByClassName('projectBar');
+              const lastProjectBar = projectBarList[projectBarList.length - 1];
+              const colorMenuBtn = lastProjectBar.getElementsByClassName('colorMenuBtn')[0];
+              addColorClass(lastProjectBar, color);
 
-              // enclosing func {}
-              // i
-              // iteration func
-              // }
-
-
-
-
-
-              // one thing to refactor that?
-              function fromData_createProjectBar(instance) {
-                const projectBars = document.getElementsByClassName('projectBars')[0];
-                const color = getProjectColor(instance);
-
-
-
-                // one thing to refactor that?
-                assembleDOM(projectBar, projectBars);
-                create_projects.create_projectBar();
-                colorAddedProjectBar();
-                create_projects.create_projectBarsSymbolLine();
-                create_projects.handleSymbolLinesScroll();
-
-
-                // one thing to refactor that?
-                function colorAddedProjectBar() {
-                  const projectBarList = document.getElementsByClassName('projectBar');
-                  const lastProjectBar = projectBarList[projectBarList.length - 1];
-                  const colorMenuBtn = lastProjectBar.getElementsByClassName('colorMenuBtn')[0];
-                  addColorClass();
-                  function addColorClass() {
-                    lastProjectBar.classList.add('color');
-                    lastProjectBar.classList.add(color);
-                  }
-                  lastProjectBar.style.backgroundColor = color;
-                  colorMenuBtn.style.backgroundColor = color;
-                }
-              }
+              lastProjectBar.style.backgroundColor = color;
+              colorMenuBtn.style.backgroundColor = color;
+            }
+            function addColorClass(lastProjectBar, color) {
+              lastProjectBar.classList.add('color');
+              lastProjectBar.classList.add(color);
             }
           }
         }
       }
     }
+
+
+
+
     function dragAndDrop() {
       (function () {
         dragAndDrop.setDraggable = function (el) {
