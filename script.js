@@ -674,7 +674,7 @@ function app() {
         getLastEl_runF('timeBlockChoice', content_timeBlockChoice);
         getLastEl_runF('addTimeBlock', content_addTimeBlock);
         getLastEl_runF('storeTimeBlocks', content_storeTimeBlocks);
-
+        // function 
         function content_chooseProjectBarColor(el) {
           const btn = create_colorMenuBtn();
           el.appendChild(btn);
@@ -921,6 +921,24 @@ function app() {
           getLastEl_runF('addTimeBlock', inter_CLICK_addTimeBlock);
           getLastEl_runF('projectBars', inter_SCROLL_highlightLines);
 
+          create_projects.colorAddedProjectBar = function () {
+            const projectBarList = document.getElementsByClassName('projectBar');
+            const lastProjectBar = projectBarList[projectBarList.length - 1];
+            const colorMenuBtn = lastProjectBar.getElementsByClassName('colorMenuBtn')[0];
+            addColorClass();
+            function addColorClass() {
+              lastProjectBar.classList.add('color');
+              lastProjectBar.classList.add(color);
+            }
+            lastProjectBar.style.backgroundColor = color;
+            colorMenuBtn.style.backgroundColor = color;
+          }
+          create_projects.updateColorClass = function (projectBar, color) {
+            const colorIndex = [...projectBar.classList].indexOf('color') + 1;
+            const currentColor = projectBar.classList[colorIndex];
+            projectBar.classList.replace(currentColor, color);
+          }
+
           function inter_SCROLL_highlightLines(el) {
             el.addEventListener('scroll', function () {
               debounceF();
@@ -1098,7 +1116,7 @@ function app() {
                 // interactivity - q mark
               }
               function updateClassList() {
-                setup_findElementUp()
+                // projectBar.classList
               }
               function append() {
                 const storeTimeBlocks = projectBar.getElementsByClassName('storeTimeBlocks')[0];
@@ -1175,23 +1193,11 @@ function app() {
               const color = colors[randomNum];
               assembleDOM(projectBar, projectBars);
               create_projects.create_projectBar();
-              colorAddedProjectBar();
               create_projects.create_projectBarsSymbolLine();
               create_projects.handleSymbolLinesScroll();
 
 
-              function colorAddedProjectBar() {
-                const projectBarList = document.getElementsByClassName('projectBar');
-                const lastProjectBar = projectBarList[projectBarList.length - 1];
-                const colorMenuBtn = lastProjectBar.getElementsByClassName('colorMenuBtn')[0];
-                addColorClass();
-                function addColorClass() {
-                  lastProjectBar.classList.add('color');
-                  lastProjectBar.classList.add(color);
-                }
-                lastProjectBar.style.backgroundColor = color;
-                colorMenuBtn.style.backgroundColor = color;
-              }
+
             }
           }
         }
@@ -1948,7 +1954,8 @@ function app() {
               const color = getProjectColor(instance);
               assembleDOM(projectBar, projectBars);
               create_projects.create_projectBar();
-              colorAddedProjectBar(color);
+              create_projects.colorAddedProjectBar(color);
+              create_projects.updateColorClass(color);
               create_projects.create_projectBarsSymbolLine();
               create_projects.handleSymbolLinesScroll();
             }
@@ -1957,19 +1964,6 @@ function app() {
               const colorIndex = projectClasses.indexOf('color') + 1;
               const color = projectClasses[colorIndex];
               return color;
-            }
-            function colorAddedProjectBar(color) {
-              const projectBarList = document.getElementsByClassName('projectBar');
-              const lastProjectBar = projectBarList[projectBarList.length - 1];
-              const colorMenuBtn = lastProjectBar.getElementsByClassName('colorMenuBtn')[0];
-              addColorClass(lastProjectBar, color);
-
-              lastProjectBar.style.backgroundColor = color;
-              colorMenuBtn.style.backgroundColor = color;
-            }
-            function addColorClass(lastProjectBar, color) {
-              lastProjectBar.classList.add('color');
-              lastProjectBar.classList.add(color);
             }
           }
         }
