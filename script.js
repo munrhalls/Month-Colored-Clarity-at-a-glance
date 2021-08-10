@@ -385,84 +385,80 @@ function app() {
           const colorChoices = colorMenu.getElementsByClassName('colorChoice');
           for (let i = 0; i < colorChoices.length; i++) {
             const colorChoice = colorChoices[i];
-
             colorChoice.onclick = function (e) {
               e.stopPropagation();
               handleColorShift();
+            }
+            function handleColorShift() {
+              const color = colorChoice.classList[1];
+              shiftProjectBarColor(color);
+              updateProjectBarsSymbolLines();
+              animateBgColorOfNextProjectBarArrow(color);
+            }
+            function updateProjectBarsSymbolLines() {
+              const projectBars = document.getElementsByClassName('projectBar');
+              const symbolLines = document.getElementsByClassName('projectBarSymbolLine');
 
-              function handleColorShift() {
-                const color = colorChoice.classList[1];
-
-                shiftProjectBarColor(color);
-                updateProjectBarsSymbolLines();
-                animateBgColorOfNextProjectBarArrow();
-
-                function updateProjectBarsSymbolLines() {
-                  const projectBars = document.getElementsByClassName('projectBar');
-                  const symbolLines = document.getElementsByClassName('projectBarSymbolLine');
-
-                  for (let i = 0; i < projectBars.length; i++) {
-                    const bar = projectBars[i];
-                    const symbolLine = symbolLines[i];
-                    symbolLine.style.transition = 'background-color 2s';
-                    symbolLine.style.backgroundColor = bar.style.backgroundColor;
-                  }
-                }
-                function animateBgColorOfNextProjectBarArrow() {
-                  const prevProjectBarArrow = document.getElementsByClassName('prevProjectBar')[0];
-                  const nextProjectBarArrow = document.getElementsByClassName('nextProjectBar')[0];
-                  animate(prevProjectBarArrow);
-                  animate(nextProjectBarArrow);
-                  function animate(el) {
-                    el.style.borderTopColor = color;
-                    el.style.transition = 'border-top-color 1s';
-                    setTimeout(function resetColor() {
-                      el.style.borderTopColor = '#ffffff';
-                    }, 1000);
-                  }
-                }
+              for (let i = 0; i < projectBars.length; i++) {
+                const bar = projectBars[i];
+                const symbolLine = symbolLines[i];
+                symbolLine.style.transition = 'background-color 2s';
+                symbolLine.style.backgroundColor = bar.style.backgroundColor;
               }
-              function shiftProjectBarColor(color) {
-                const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
-                const plus = projectBar.getElementsByClassName('plus')[0];
-                const plusText = projectBar.getElementsByClassName('plusText')[0];
-                const storeTimeBlocks = projectBar.getElementsByClassName('storeTimeBlocks')[0];
-                const hourBlocks = storeTimeBlocks.getElementsByClassName('hourBlock');
-                const projectBarIndex = [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
-                const calendarHourBlocks = document.getElementsByClassName('projectBar-' + projectBarIndex + ' ' + 'hourBlock');
-                className();
-                components();
-                inCalendar();
-                inProject();
-                closeMenu();
-                function className() {
-                  const projectBarClasses = [...projectBar.classList];
-                  const colorIndex = projectBarClasses.indexOf('color') + 1;
-                  const currentColor = projectBarClasses[colorIndex];
-                  projectBar.classList.replace(currentColor, color);
-                }
-                function components() {
-                  projectBar.style.backgroundColor = color;
-                  colorMenuBtn.style.backgroundColor = color;
-                  plus.style.borderColor = color;
-                  plusText.style.color = color;
-                  storeTimeBlocks.style.borderBottomColor = color;
-                }
-
-                function inCalendar() {
-                  [...calendarHourBlocks].forEach(block => block.style.backgroundColor = color);
-                }
-                function inProject() {
-                  [...hourBlocks].forEach(block => {
-                    const qMark = block.getElementsByClassName('qMark')[0];
-                    qMark.style.color = color;
-                    block.style.backgroundColor = color;
-                  });
-                }
-                function closeMenu() {
-                  colorMenu.style.display = 'none';
-                }
+            }
+            function animateBgColorOfNextProjectBarArrow(color) {
+              const prevProjectBarArrow = document.getElementsByClassName('prevProjectBar')[0];
+              const nextProjectBarArrow = document.getElementsByClassName('nextProjectBar')[0];
+              animate(prevProjectBarArrow);
+              animate(nextProjectBarArrow);
+              function animate(el) {
+                el.style.borderTopColor = color;
+                el.style.transition = 'border-top-color 1s';
+                setTimeout(function resetColor() {
+                  el.style.borderTopColor = '#ffffff';
+                }, 1000);
               }
+            }
+            function shiftProjectBarColor(color) {
+              const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
+              const plus = projectBar.getElementsByClassName('plus')[0];
+              const plusText = projectBar.getElementsByClassName('plusText')[0];
+              const storeTimeBlocks = projectBar.getElementsByClassName('storeTimeBlocks')[0];
+              const hourBlocks = storeTimeBlocks.getElementsByClassName('hourBlock');
+              const projectBarIndex = [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
+              const calendarHourBlocks = document.getElementsByClassName('projectBar-' + projectBarIndex + ' ' + 'hourBlock');
+              className(projectBar, color);
+              components(projectBar, color, plus, plusText, storeTimeBlocks);
+              inCalendar(calendarHourBlocks);
+              inProject(hourBlocks);
+              closeMenu();
+            }
+            function className(projectBar, color) {
+              const projectBarClasses = [...projectBar.classList];
+              const colorIndex = projectBarClasses.indexOf('color') + 1;
+              const currentColor = projectBarClasses[colorIndex];
+              projectBar.classList.replace(currentColor, color);
+            }
+            function components(projectBar, color, plus, plusText, storeTimeBlocks) {
+              projectBar.style.backgroundColor = color;
+              colorMenuBtn.style.backgroundColor = color;
+              plus.style.borderColor = color;
+              plusText.style.color = color;
+              storeTimeBlocks.style.borderBottomColor = color;
+            }
+
+            function inCalendar(calendarHourBlocks) {
+              [...calendarHourBlocks].forEach(block => block.style.backgroundColor = color);
+            }
+            function inProject(hourBlocks) {
+              [...hourBlocks].forEach(block => {
+                const qMark = block.getElementsByClassName('qMark')[0];
+                qMark.style.color = color;
+                block.style.backgroundColor = color;
+              });
+            }
+            function closeMenu() {
+              colorMenu.style.display = 'none';
             }
           }
         }
