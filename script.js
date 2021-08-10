@@ -925,13 +925,16 @@ function app() {
             const projectBarList = document.getElementsByClassName('projectBar');
             const lastProjectBar = projectBarList[projectBarList.length - 1];
             const colorMenuBtn = lastProjectBar.getElementsByClassName('colorMenuBtn')[0];
-            addColorClass();
-            function addColorClass() {
-              lastProjectBar.classList.add('color');
-              lastProjectBar.classList.add(color);
-            }
+            const randomNum = Math.floor(Math.random() * 6);
+            const color = colors[randomNum];
+            addColorClass(lastProjectBar, color);
+
             lastProjectBar.style.backgroundColor = color;
             colorMenuBtn.style.backgroundColor = color;
+          }
+          function addColorClass(projectBar, color) {
+            projectBar.classList.add('color');
+            projectBar.classList.add(color);
           }
           create_projects.updateColorClass = function (projectBar, color) {
             const colorIndex = [...projectBar.classList].indexOf('color') + 1;
@@ -1189,14 +1192,11 @@ function app() {
           function inter_addProjectBar(el) {
             el.onclick = function () {
               const projectBars = document.getElementsByClassName('projectBars')[0];
-              const randomNum = Math.floor(Math.random() * 6);
-              const color = colors[randomNum];
               assembleDOM(projectBar, projectBars);
               create_projects.create_projectBar();
+              create_projects.colorAddedProjectBar();
               create_projects.create_projectBarsSymbolLine();
               create_projects.handleSymbolLinesScroll();
-
-
 
             }
           }
