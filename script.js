@@ -392,9 +392,6 @@ function app() {
 
               function handleColorShift() {
                 const color = colorChoice.classList[1];
-                const bar = setup_findElementUp(e.target, 'projectBar');
-                bar.classList.add('color' + color);
-                bar.classList.add(color);
 
                 shiftProjectBarColor();
                 updateProjectBarsSymbolLines();
@@ -407,10 +404,16 @@ function app() {
                   const hourBlocks = storeTimeBlocks.getElementsByClassName('hourBlock');
                   const projectBarIndex = [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
                   const calendarHourBlocks = document.getElementsByClassName('projectBar-' + projectBarIndex + ' ' + 'hourBlock');
+                  className();
                   components();
                   inCalendar();
                   inProject();
                   closeMenu();
+                  function className() {
+                    const projectBarClasses = [...projectBar.classList];
+                    const colorIndex = projectBarClasses.indexOf('color') + 1;
+                    projectBarClasses[colorIndex] = color;
+                  }
                   function components() {
                     projectBar.style.backgroundColor = color;
                     colorMenuBtn.style.backgroundColor = color;
