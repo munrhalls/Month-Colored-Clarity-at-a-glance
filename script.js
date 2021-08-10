@@ -1922,16 +1922,17 @@ function app() {
               const data = localStorage.getItem('projectBars');
               const projectsData = data.split('][');
               projectsData.pop();
+              return projectsData;
             }
 
+            // one thing to debug 
             function saveDataToTextFile() {
 
-              const projectData = getProjectData();
-
-
+              const projectsData = getProjectData();
 
               for (let i = 0; i < projectsData.length; i++) {
-                fromData_createProjectBar();
+                const instance = projectsData[i]
+                fromData_createProjectBar(instance);
               }
               // what one thing to do to refactor?
               // look around, notice common elements
@@ -1946,9 +1947,9 @@ function app() {
 
 
               // one thing to refactor that?
-              function fromData_createProjectBar() {
+              function fromData_createProjectBar(instance) {
                 const projectBars = document.getElementsByClassName('projectBars')[0];
-                const projectClasses = projectsData[i].split(',');
+                const projectClasses = instance.split(',');
                 const colorIndex = projectClasses.indexOf('color') + 1;
                 const color = projectClasses[colorIndex];
 
