@@ -412,7 +412,8 @@ function app() {
                   function className() {
                     const projectBarClasses = [...projectBar.classList];
                     const colorIndex = projectBarClasses.indexOf('color') + 1;
-                    projectBarClasses[colorIndex] = color;
+                    const currentColor = projectBarClasses[colorIndex];
+                    projectBar.classList.replace(currentColor, color);
                   }
                   function components() {
                     projectBar.style.backgroundColor = color;
