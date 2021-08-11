@@ -226,8 +226,8 @@ function app() {
     function create_colorMenuBtn() {
       const colorMenuBtn = content_colorMenuBtn();
       const colorMenu = content_colorMenu();
-      content_colorChoices();
       content_colorChoiceBtns();
+      content_colorChoiceBtnBtns();
       content_menuCloser();
       content_btnClose();
 
@@ -242,16 +242,16 @@ function app() {
         colorMenuBtn.appendChild(colorMenu);
         return colorMenu;
       }
-      function content_colorChoices() {
+      function content_colorChoiceBtns() {
         const colorMenu = colorMenuBtn.getElementsByClassName('colorMenu')[0];
         colors.forEach(function (color) {
           const block = document.createElement('div');
-          block.classList = 'colorChoice ' + color;
+          block.classList = 'colorChoiceBtn ' + color;
           colorMenu.appendChild(block);
         });
       }
-      function content_colorChoiceBtns() {
-        const blocks = colorMenu.getElementsByClassName('colorChoice');
+      function content_colorChoiceBtnBtns() {
+        const blocks = colorMenu.getElementsByClassName('colorChoiceBtn');
         for (let i = 0; i < blocks.length; i++) {
           const btn = document.createElement('div');
           btn.classList = 'btn';
@@ -285,8 +285,8 @@ function app() {
       function style() {
         style_colorMenuBtn();
         style_colorMenu();
-        style_colorChoices();
         style_colorChoiceBtns();
+        style_colorChoiceBtnBtns();
         style_menuCloser();
         style_btnClose();
 
@@ -305,19 +305,19 @@ function app() {
           colorMenu.style.display = menuDisplay;
           colorMenu.style.position = 'absolute'; colorMenu.style.zIndex = menuZIndex; colorMenu.style.top = '0'; colorMenu.style.left = '100%'; colorMenu.style.display = 'flex';
         }
-        function style_colorChoices() {
-          const blocks = colorMenu.getElementsByClassName('colorChoice');
+        function style_colorChoiceBtns() {
+          const blocks = colorMenu.getElementsByClassName('colorChoiceBtn');
           for (let i = 0; i < colors.length; i++) {
-            const colorChoice = blocks[i];
-            colorChoice.style.backgroundColor = blockBgColor;
-            colorChoice.style.flex = '1';
-            colorChoice.style.display = 'flex';
-            colorChoice.style.justifyContent = 'center';
-            colorChoice.style.alignItems = 'center';
-            colorChoice.style.paddingLeft = btnDistance + 'rem';
+            const colorChoiceBtn = blocks[i];
+            colorChoiceBtn.style.backgroundColor = blockBgColor;
+            colorChoiceBtn.style.flex = '1';
+            colorChoiceBtn.style.display = 'flex';
+            colorChoiceBtn.style.justifyContent = 'center';
+            colorChoiceBtn.style.alignItems = 'center';
+            colorChoiceBtn.style.paddingLeft = btnDistance + 'rem';
           }
         }
-        function style_colorChoiceBtns() {
+        function style_colorChoiceBtnBtns() {
           const btns = colorMenu.getElementsByClassName('btn');
           for (let i = 0; i < colors.length; i++) {
             const choiceBtn = btns[i];
@@ -382,18 +382,32 @@ function app() {
           }
         }
         function inter_CLICK_chooseProjectBarColor() {
-          const colorChoices = colorMenu.getElementsByClassName('colorChoice');
-          for (let i = 0; i < colorChoices.length; i++) {
-            const colorChoice = colorChoices[i];
-            colorChoice.onclick = function (e) {
+          const colorChoiceBtns = colorMenu.getElementsByClassName('colorChoiceBtn');
+          for (let i = 0; i < colorChoiceBtns.length; i++) {
+            const colorChoiceBtn = colorChoiceBtns[i];
+            colorChoiceBtn.onclick = function (e) {
               e.stopPropagation();
               handleColorShift();
             }
             function handleColorShift() {
-              const color = colorChoice.classList[1];
+              const color = colorChoiceBtn.classList[1];
               shiftProjectBarColor(color);
               updateProjectBarsSymbolLines();
               animateBgColorOfNextProjectBarArrow(color);
+            }
+            function shiftProjectBarColor(color) {
+              const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
+              const plus = projectBar.getElementsByClassName('plus')[0];
+              const plusText = projectBar.getElementsByClassName('plusText')[0];
+              const storeTimeBlocks = projectBar.getElementsByClassName('storeTimeBlocks')[0];
+              const hourBlocks = storeTimeBlocks.getElementsByClassName('hourBlock');
+              const projectBarIndex = [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
+              const calendarHourBlocks = document.getElementsByClassName('projectBar-' + projectBarIndex + ' ' + 'hourBlock');
+              className(projectBar, color);
+              components(projectBar, color, plus, plusText, storeTimeBlocks);
+              inCalendar(calendarHourBlocks);
+              inProject(hourBlocks);
+              closeMenu();
             }
             function updateProjectBarsSymbolLines() {
               const projectBars = document.getElementsByClassName('projectBar');
@@ -418,20 +432,6 @@ function app() {
                   el.style.borderTopColor = '#ffffff';
                 }, 1000);
               }
-            }
-            function shiftProjectBarColor(color) {
-              const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
-              const plus = projectBar.getElementsByClassName('plus')[0];
-              const plusText = projectBar.getElementsByClassName('plusText')[0];
-              const storeTimeBlocks = projectBar.getElementsByClassName('storeTimeBlocks')[0];
-              const hourBlocks = storeTimeBlocks.getElementsByClassName('hourBlock');
-              const projectBarIndex = [...document.getElementsByClassName('projectBar')].indexOf(projectBar);
-              const calendarHourBlocks = document.getElementsByClassName('projectBar-' + projectBarIndex + ' ' + 'hourBlock');
-              className(projectBar, color);
-              components(projectBar, color, plus, plusText, storeTimeBlocks);
-              inCalendar(calendarHourBlocks);
-              inProject(hourBlocks);
-              closeMenu();
             }
             function className(projectBar, color) {
               const projectBarClasses = [...projectBar.classList];
