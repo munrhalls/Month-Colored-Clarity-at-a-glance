@@ -396,7 +396,7 @@ function app() {
               animateBgColorOfNextProjectBarArrow(color);
             }
             function shiftProjectBarColor(color) {
-              const projectBar = setup_findElementUp(colorMenuBtn, 'projectBar');
+              const projectBar = setup_findElementUp(colorChoiceBtn, 'projectBar');
               const plus = projectBar.getElementsByClassName('plus')[0];
               const plusText = projectBar.getElementsByClassName('plusText')[0];
               const storeTimeBlocks = projectBar.getElementsByClassName('storeTimeBlocks')[0];
