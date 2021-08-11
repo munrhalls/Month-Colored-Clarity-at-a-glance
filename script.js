@@ -937,7 +937,7 @@ function app() {
             projectBar.classList.add(color);
           }
           create_projects.updateColorClass = function (projectBar, color) {
-            const colorIndex = [...projectBar.classList].indexOf('color') + 1;
+            const colorIndex = [projectBar.classList].indexOf('color') + 1;
             const currentColor = projectBar.classList[colorIndex];
             projectBar.classList.replace(currentColor, color);
           }
@@ -1954,8 +1954,6 @@ function app() {
               const color = getProjectColor(instance);
               assembleDOM(projectBar, projectBars);
               create_projects.create_projectBar();
-              create_projects.colorAddedProjectBar(color);
-              create_projects.updateColorClass(color);
               create_projects.create_projectBarsSymbolLine();
               create_projects.handleSymbolLinesScroll();
             }
