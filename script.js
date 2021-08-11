@@ -364,7 +364,7 @@ function app() {
         inter_CLICK_colorMenuBtn(colorMenuBtn);
         inter_CLICK_closeBtn();
         inter_CLICK_chooseProjectBarColor();
-
+        colorMenu
         function setup_hideColorMenu() {
           colorMenu.style.display = 'none';
         }
@@ -387,13 +387,12 @@ function app() {
             const colorChoiceBtn = colorChoiceBtns[i];
             colorChoiceBtn.onclick = function (e) {
               e.stopPropagation();
-              handleColorShift();
+              create_projects.handleColorShift(colorChoiceBtn);
             }
-            function handleColorShift() {
+            create_projects.handleColorShift = function (colorChoiceBtn) {
               const color = colorChoiceBtn.classList[1];
               shiftProjectBarColor(color);
-              updateProjectBarsSymbolLines();
-              animateBgColorOfNextProjectBarArrow(color);
+              updateScrollBars();
             }
             function shiftProjectBarColor(color) {
               const projectBar = setup_findElementUp(colorChoiceBtn, 'projectBar');
@@ -408,6 +407,10 @@ function app() {
               inCalendar(calendarHourBlocks);
               inProject(hourBlocks);
               closeMenu();
+            }
+            function updateScrollBars(color) {
+              updateProjectBarsSymbolLines();
+              animateBgColorOfNextProjectBarArrow(color);
             }
             function updateProjectBarsSymbolLines() {
               const projectBars = document.getElementsByClassName('projectBar');
@@ -458,6 +461,7 @@ function app() {
               });
             }
             function closeMenu() {
+              console.log(colorMenu)
               colorMenu.style.display = 'none';
             }
           }
