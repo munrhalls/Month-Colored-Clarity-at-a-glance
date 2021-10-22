@@ -1,3 +1,5 @@
+import create_topBar from './create_topBar.js';
+
 // I N T E R A C T I V E S
 const localStorage = window.localStorage;
 var monthShown = "July";
@@ -96,15 +98,9 @@ function setDATA_monthsWeeksDays() {
 setDATA_Calendar();
 setDATA_monthsWeeksDays();
 function app() {
-  // const html = document.getElementsByTagName('html')[0];
-  // const body = document.getElementsByTagName('body')[0];
-  // html.style.height = '100%';
-  // html.style.overflow = 'auto';
-  // body.style.height = '100%';
-
   console.log("This function is executed once the page is fully loaded");
   const app = document.getElementById("app");
-  // INTERACTION DOM
+
   const chooseHourBlock = ["prevHourBlock", "timeBlockChoice", "nextHourBlock"];
   const timeBlocks = [
     "chooseHourBlock",
@@ -123,7 +119,7 @@ function app() {
     "projectBarsScrollMenu",
     ["prevProjectBar", "projectBarsSymbolLines", "nextProjectBar"],
   ];
-  // DOM COMPONENT PARTS
+
   const topBar = ["title", "about"];
   const menuProjects = [
     "headerProjects",
@@ -157,7 +153,7 @@ function app() {
     "$Btn",
     ["$Message", "$btn"],
   ];
-  // BASIC DOM
+
   const BASIC_DOM = [
     "root",
     [
