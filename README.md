@@ -1,11 +1,4 @@
-Entire project is raw javascript file and nothing else. 
-No framework or plugin of any kind.
-ZERO CSS.
-ZERO HTML.
-Everything - every DOM element, feature, interactivity, every piece of styling, everything - is executed in raw javascript.
-Even icons and svg's - raw javascript.
-
-Frankly, it was a weird practice experiment, kind of like resistance training, that grew into hundreds of hours of very hard-to-justify, unreasonably inefficient kind of work. It got out of hand but I think it's interesting.
+This is the original idea from the raw javascript, zero html and zero css practice experiment.
 
 Idea is: entire month's time investments at a glance. Minimalistic clarity.
 
