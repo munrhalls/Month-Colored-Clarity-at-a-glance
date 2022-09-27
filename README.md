@@ -1,5 +1,6 @@
 I've put a constraint, for training purposes - only Javascript, ZERO HTML, ZERO CSS, NOTHING, NOT A SINGLE LINE OF ANYTHING ELSE, THAN RAW JAVASCRIPT. That's what this project is.
 
+Website link, live: https://month-glancer.netlify.app/.
 It can be pasted into developer tools, and it will generate entire page, styles, functionalities, drag and drop effects, and so on. It's literally pure Javascript script and nothing else.
 
 This entire app is done with nothing other than Javascript – not even a single line of HTML or CSS. Javascript training challenge. All layout, graphics, components, drag & drop functionalities, icons, colored stylistic effects, and everything else is performed with raw Javascript and nothing else. 
