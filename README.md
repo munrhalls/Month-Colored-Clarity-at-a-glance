@@ -1,4 +1,6 @@
-I've put a constraint, for training purposes - only Javascript, ZERO HTML, ZERO CSS, NOTHING, NOT A SINGLE LINE OF ANYTHING ELSE, THAN RAW JAVASCRIPT. That's what this project is.
+I've put a constraint, for training purposes - only Javascript, ZERO HTML, ZERO CSS, NOTHING, NOT A SINGLE LINE OF ANYTHING ELSE, THAN RAW JAVASCRIPT. That's what this project is. However, it DOES have all the CSS/HTML inside Javascript. It's nothing more than that. 
+
+Also, it's a training project and nothing more. I had way less experience back when I was doing it. It was a huge challenge at the time, though.
 
 Website link, live: https://month-glancer.netlify.app/.
 It can be pasted into developer tools, and it will generate entire page, styles, functionalities, drag and drop effects, and so on. It's literally pure Javascript script and nothing else.
