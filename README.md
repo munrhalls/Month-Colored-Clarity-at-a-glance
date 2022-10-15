@@ -17,7 +17,7 @@ That was NOT time-cost-effective learning campaign.
 
 Still, I entered a land of struggling within struggling within struggling, and did SOMETHING.
 
-BE WARNED: LOOKING AT THE CODE IS NOT A GOOD IDEA FOR THIS PROJECT...
+BE WARNED: LOOKING AT THE CODE IN THIS PROJECT IS DANGEROUS.
 
 Why the heck put it in the pinned tabs, then?
 I don't care. To me it symbolizes the idea that I could start with such insanely wrong ideas and misunderstanding and still do SOMETHING, with enough persistance and regularity. If you add better ideas and less misunderstanding, and more initial understanding to that persistance...that's why it's there. I don't care.
