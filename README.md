@@ -75,6 +75,9 @@ I just had some very wrong starting assumptions.
 
 About how the learning process and training, and practice, and reps, and all that, really works.
 
+MEANWHILE, ANOTHER ERA OF TIME PASSED. 
+Money went well beyond dry. What's he doin'? Yep. You gussed it. Still coding that mammoth.
+
 Completing this monlithic mammoth of absurd and infinitely questionable code-meddling...well. 
 Because of that I was late. And the late after being late. And then stuck that in a perpetual loop...some veeeeery interesting things began to happen.
 Obviously, that project wasn't going anywhere, it was months already, I needed a job...you get the idea. 
@@ -84,6 +87,8 @@ And I did acquire resources.
 And I just kept on with this project.
 HAHAHA...well...it wasn't that funny later on...let's say, I became a much, much tougher version of myself and leave it at that.
 Long story short: building materials firm...other jobs like that...you get the idea. 
+
+LOOKING BACK, AT THIS PROJECT-FRENZY, FRINETIC ACTIVITIES:
 
 This project, man, talk about being...unrealistic, to say the least. 
 It's one thing to be ambitious, passionate and utterly persistent...
