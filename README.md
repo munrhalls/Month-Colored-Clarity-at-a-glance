@@ -8,6 +8,10 @@ It has colored styles.
 You can click stuff and it does something. 
 You can drag and drop onto the calendar month->week->day->hour columns. It'll fill it up according to size of what you drop.
 
+THIS APP IS A GREAT EXAMPLE - BECAUSE EVERYTHING IN - AND ABOUT - THIS APP - MAKES NO SENSE.
+
+
+
 It was a training project.
 
 Also, a massively misguided learning endeavor.
@@ -15,13 +19,18 @@ That was NOT time-cost-effective learning campaign.
 It's a phenomenal example of what NOT to do.
 
 Still, I entered a land of struggling within struggling within struggling, and did SOMETHING.
+
 BUT.
 This project was many-months, absolute, complete and utter failure.
 I crashed so hard with this project.
 It was an utter, unbelievable, total, abysmal failure.
 If you want to learn by picking on a massively-over-your-current-level challenge, this is how NOT to do that. 
 
+
+
 BE WARNED: LOOKING AT THE CODE IN THIS PROJECT IS DANGEROUS.
+
+
 
 Why the heck put it in the pinned tabs, then?
 I don't care. 
