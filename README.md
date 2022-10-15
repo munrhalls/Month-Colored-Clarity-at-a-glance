@@ -13,6 +13,7 @@ THIS APP IS A GREAT EXAMPLE - BECAUSE EVERYTHING IN - AND ABOUT - THIS APP - MAK
 
 
 It was a training project.
+In reality, it was a massive experience of HOW NOT TO TRAIN.
 
 Also, a massively misguided learning endeavor.
 That was NOT time-cost-effective learning campaign.
@@ -21,6 +22,7 @@ It's a phenomenal example of what NOT to do.
 Still, I entered a land of struggling within struggling within struggling, and did SOMETHING.
 
 BUT.
+
 This project was many-months, absolute, complete and utter failure.
 I crashed so hard with this project.
 It was an utter, unbelievable, total, abysmal failure.
@@ -29,8 +31,6 @@ If you want to learn by picking on a massively-over-your-current-level challenge
 
 
 BE WARNED: LOOKING AT THE CODE IN THIS PROJECT IS DANGEROUS.
-
-
 
 Why the heck put it in the pinned tabs, then?
 I don't care. 
@@ -48,6 +48,7 @@ I'm sharing a bit of that below.
 
 BEWARE.
 
+KNOCK, KNOCK.
 The reality of that project is that it was an insane, time-wasting, massively misguided learning and training endeavor. 
 It was a complete and utter failure, time-wise and time-cost-effectiveness-wise, and an extremely painful one.
 I was absolutely NOT in a position where anything could take too long. 
