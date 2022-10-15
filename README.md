@@ -1,6 +1,6 @@
-Aight, lemme say a little bit of something. 
-
 This APP IS NONSENSE.
+
+Everything about this app is a lesson on "HOW NOT TO".
 
 It's an app of sorts...and it has nothing but raw Javascript in it.
 It has a calendar. 
