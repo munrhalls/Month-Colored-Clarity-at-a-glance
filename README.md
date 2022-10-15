@@ -3,11 +3,8 @@ LESSONS:
 - it's HOW NOT TO DO a massive challenge to catalyze your learning endeavors
 - it's really about the importance of starting assumptions of any process
 
-- my starting assumption was: JUST GO GOGOGOGOGOGOGOGO GOG OGOGOGO FIRE ACTION GOGOGOGOGOGOOGOGOGOGOGOGOG ACTION MORE ACTION GGOGOOGOGGOOG FIRE ACTION GOGOGOOGOG
-- and that ultimately, I would learn whatever I needed to learn that way
-- NOPE. that DOES NOT work. 
-
-- It's an example of a closed feedback-loop - where something's just out of feedback range, and as a result, entire process can be literally a tree grown in a big pile of clouds high above - and look absolutely real - because what tunnel vision on make-believe of the original belief, which remains out of feedback range
+- my starting assumption was: "GO GO GO GO GO FIRE ACTION GO GO!!!"
+- It's an example of a closed feedback-loop - where something's just out of feedback range, and as a result, entire process can be literally a tree grown in a big pile of clouds high above - and look absolutely real - because of the tunnel vision on make-believe of the original belief, which remains out of feedback range
 
 This app is nonsense.
 Everything about this app, and also about it as a training challenge, is a lesson on "HOW NOT TO".
