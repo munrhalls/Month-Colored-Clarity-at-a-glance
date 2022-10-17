@@ -53,7 +53,7 @@ SUMMARY:
 CLOSINNG COMMENTS:
 - I am NOT deleting this project. I am not ashamed in the slightest about the fact that I wasted collosal amounts of time on it. Or the fact that it was a total failure. I gave it my all and I learned something very strategic about how the learning process operates.
 - extremely time-cost-ineffective. If you drew a worth-it graph, f(x) -> y ...I don't care what I tried to do, with the approach I had, I would not be training effectively. It was like a middle schooler attempting to develop muscle by lifting 250KG over and over and over and over and over and over and over, when they couldn't lift 25KG once.
-- still, this is what led me to experiments, that ultimately enabled me accelerate and balance my learning rate.
+- still, this is what led me to experiments, that ultimately enabled me to accelerate and balance my learning rate in some very simple, common sense ways.
 - more than anything, this project taught me that just putting your heart on the line, giving it your all every day very consistently, IS NOT enough - in fact, it's too much - it needs to be balanced with regularly detaching, stepping back, and just course-correcting the course; ultimately, learning well is all about making good choices from rich, true, accurate picture of understanding how things work.
 
 
